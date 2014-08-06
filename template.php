@@ -40,5 +40,5 @@ $pageTitle= "Class-wise Report";
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-include("../Master.php");
+include("Master.php");
 ?>
