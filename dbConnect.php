@@ -16,7 +16,7 @@ class dbConnect {
         $dbName = "";
 
         //Create Connection object
-        $connection = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
+        $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
         return $connection;
     }
