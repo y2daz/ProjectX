@@ -34,7 +34,7 @@ ob_start();
             Right:-335px;
             top:20px;
         }
-        .insert input {
+        .insert input{
             position:relative;
             font-weight:bold;
             font-size:15px;
@@ -74,64 +74,6 @@ ob_start();
                 <td><input class="button" type="button" value="Submit"></td>
             </tr>
         </table>
-
-<!--        <table id="timetable" >-->
-<!--            <tr>-->
-<!--                <th>Addmission No</th>-->
-<!--                <th>Studdent Name</th>-->
-<!--                <th>Percentage</th>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr><td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--                <td ></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-
     </form>
 </body>
 </html>
