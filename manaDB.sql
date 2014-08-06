@@ -16,5 +16,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `manaDB`;
 
+CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
+
 use manaDB;
 
