@@ -21,6 +21,21 @@ ob_start();
             h1{
                 text-align: center;
             }
+            .userList th{
+                background-color: #005e77;
+                color: white;
+                padding-right: 10px;
+                padding-left: 10px;
+            }
+            .userList .alt{
+                background-color: #bed9ff;
+            }
+            .userList td{
+                padding-right: 10px;
+                padding-left: 10px;
+                text-align: center;
+            }
+
 
 
         </style>
@@ -28,7 +43,7 @@ ob_start();
     <body>
         <h1>Manage Users</h1>
 
-        <table>
+        <table class="userList" align="center">
             <tr>
                 <th>Username</th>
                 <th>Reset Password</th>
@@ -36,7 +51,18 @@ ob_start();
             </tr>
 
             <?php
-                getAllUsers();
+                $result = getAllUsers();
+                $i = 1;
+
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
+                    echo $top;
+                    echo "$row";
+                    echo "<td><input name=\"Delete." . $row . "\" type=\"button\" value=\"Reset\" /> </td> ";
+                    echo "<td><input name=\"\" type=\"button\" value=\"Delete\" /> </td> ";
+                    echo "</td></tr>";
+                }
+
             ?>
 
 

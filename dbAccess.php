@@ -61,23 +61,21 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select * FROM User;"))
+        if ($stmt = $mysqli->prepare("Select userEmail FROM User;"))
         {
             if ($stmt->execute())
             {
-                $stmt->store_result();
-
-                $OUTuserEmail= NULL;
-
-                while( $stmt->more_results())
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
                 {
-                    $result = $stmt->next_result();
-                    var_dump($result);
+                        $set[$i++]=$row[0];
                 }
             }
         }
-
         $mysqli->close();
+
+        return $set;
     }
 
 

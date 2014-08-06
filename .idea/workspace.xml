@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master.php" afterPath="$PROJECT_DIR$/Master.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/manageUsers.php" afterPath="$PROJECT_DIR$/administration/manageUsers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -46,10 +45,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageUsers.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="manageUsers.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="24" selection-start="941" selection-end="941" vertical-scroll-proportion="-29.62963" vertical-offset="190" max-vertical-offset="1116">
+            <state line="60" column="59" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.5637149" vertical-offset="558" max-vertical-offset="1584">
               <folding>
                 <element signature="e#6#90#0" expanded="true" />
               </folding>
@@ -57,15 +56,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbAccess.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="63" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.475162" vertical-offset="64" max-vertical-offset="990">
+            <state line="77" column="20" selection-start="1862" selection-end="1862" vertical-scroll-proportion="-30.962963" vertical-offset="550" max-vertical-offset="1584">
               <folding>
                 <element signature="e#6#87#0" expanded="true" />
-                <element signature="n#login#0;n#!!top" expanded="false" />
-                <marker date="1407342538292" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
-                <marker date="1407342538292" expanded="true" signature="1498:1516" placeholder="Select * FRO..User..." />
+                <marker date="1407344668036" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+                <marker date="1407344668036" expanded="true" signature="1498:1524" placeholder="Select userE..User..." />
               </folding>
             </state>
           </provider>
@@ -114,8 +112,8 @@
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/template.php" />
         <option value="$PROJECT_DIR$/Master.php" />
-        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
+        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
       </list>
     </option>
   </component>
@@ -167,6 +165,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="attendance" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -450,7 +462,11 @@
       <created>1407341692630</created>
       <updated>1407341692630</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="manageUsers php&#10;">
+      <created>1407342557695</created>
+      <updated>1407342557695</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -490,7 +506,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Log in system works. Add a user and test." />
     <MESSAGE value="Added isFilled method" />
     <MESSAGE value="Fixed login return value" />
     <MESSAGE value="Minor changes&#10;" />
@@ -515,10 +530,13 @@
     <MESSAGE value="minor change" />
     <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="manageUsers php&#10;&#10;" />
+    <MESSAGE value="manageUsers php&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="manageUsers php&#10;" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/staffManagement/blacklist.php">
@@ -647,13 +665,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="0" selection-start="689" selection-end="731" vertical-scroll-proportion="-0.1274298" vertical-offset="694" max-vertical-offset="2538">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="145" column="23" selection-start="4213" selection-end="4213" vertical-scroll-proportion="0.6889849" vertical-offset="1972" max-vertical-offset="2898">
@@ -671,13 +682,6 @@
     <entry file="file://$PROJECT_DIR$/eventManagement/addEvent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="0.52483803" vertical-offset="0" max-vertical-offset="4392">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="0" selection-end="2181" vertical-scroll-proportion="0.45572355" vertical-offset="10" max-vertical-offset="1584">
           <folding />
         </state>
       </provider>
@@ -703,23 +707,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="24" selection-start="941" selection-end="941" vertical-scroll-proportion="-29.62963" vertical-offset="190" max-vertical-offset="1116">
+        <state line="77" column="20" selection-start="1862" selection-end="1862" vertical-scroll-proportion="-30.962963" vertical-offset="550" max-vertical-offset="1584">
           <folding>
-            <element signature="e#6#90#0" expanded="true" />
+            <element signature="e#6#87#0" expanded="true" />
+            <marker date="1407344668036" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+            <marker date="1407344668036" expanded="true" signature="1498:1524" placeholder="Select userE..User..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="63" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.475162" vertical-offset="64" max-vertical-offset="990">
+        <state line="25" column="34" selection-start="555" selection-end="562" vertical-scroll-proportion="-12.296296" vertical-offset="118" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="689" selection-end="731" vertical-scroll-proportion="-7.6296296" vertical-offset="370" max-vertical-offset="2538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="60" column="59" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.5637149" vertical-offset="558" max-vertical-offset="1584">
           <folding>
-            <element signature="e#6#87#0" expanded="true" />
-            <element signature="n#login#0;n#!!top" expanded="false" />
-            <marker date="1407342538292" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
-            <marker date="1407342538292" expanded="true" signature="1498:1516" placeholder="Select * FRO..User..." />
+            <element signature="e#6#90#0" expanded="true" />
           </folding>
         </state>
       </provider>
