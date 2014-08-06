@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master.php" afterPath="$PROJECT_DIR$/Master.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/manageUsers.php" afterPath="$PROJECT_DIR$/administration/manageUsers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,7 +31,7 @@
       <file leaf-file-name="Master.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Master.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="53" selection-start="7096" selection-end="7096" vertical-scroll-proportion="-50.296295" vertical-offset="1972" max-vertical-offset="3618">
+            <state line="185" column="65" selection-start="7108" selection-end="7108" vertical-scroll-proportion="-23.62963" vertical-offset="2692" max-vertical-offset="3618">
               <folding />
             </state>
           </provider>
@@ -44,11 +46,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="manageUsers.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="manageUsers.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.29157668" vertical-offset="0" max-vertical-offset="926">
-              <folding />
+            <state line="55" column="24" selection-start="941" selection-end="941" vertical-scroll-proportion="-29.62963" vertical-offset="190" max-vertical-offset="1116">
+              <folding>
+                <element signature="e#6#90#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbAccess.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="63" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.475162" vertical-offset="64" max-vertical-offset="990">
+              <folding>
+                <element signature="e#6#87#0" expanded="true" />
+                <element signature="n#login#0;n#!!top" expanded="false" />
+                <marker date="1407342538292" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+                <marker date="1407342538292" expanded="true" signature="1498:1516" placeholder="Select * FRO..User..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -76,7 +94,6 @@
         <option value="$PROJECT_DIR$/dbConnect.php" />
         <option value="$PROJECT_DIR$/formValidation.php" />
         <option value="$PROJECT_DIR$/Styles/main.css" />
-        <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/attendance/newMarkAttendance.php" />
         <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
@@ -95,9 +112,10 @@
         <option value="$PROJECT_DIR$/leaveManagement/newApproveLeave.php" />
         <option value="$PROJECT_DIR$/Template.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/template.php" />
+        <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/administration/manageUsers.php" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
       </list>
     </option>
   </component>
@@ -428,7 +446,11 @@
       <created>1407341668481</created>
       <updated>1407341668481</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="manageUsers php&#10;&#10;">
+      <created>1407341692630</created>
+      <updated>1407341692630</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -468,7 +490,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Gave manaSystem access in sql," />
     <MESSAGE value="Log in system works. Add a user and test." />
     <MESSAGE value="Added isFilled method" />
     <MESSAGE value="Fixed login return value" />
@@ -493,7 +514,8 @@
     <MESSAGE value="Fixed the reference path. Has to be individually edited" />
     <MESSAGE value="minor change" />
     <MESSAGE value="manageUsers php" />
-    <option name="LAST_COMMIT_MESSAGE" value="manageUsers php" />
+    <MESSAGE value="manageUsers php&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="manageUsers php&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -572,15 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="1238" column="17" selection-start="46407" selection-end="46407" vertical-scroll-proportion="3.598272" vertical-offset="18952" max-vertical-offset="22986">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="23" selection-start="172" selection-end="172" vertical-scroll-proportion="0.2526998" vertical-offset="18" max-vertical-offset="1116">
-          <folding>
-            <element signature="e#6#87#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,13 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Master.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="53" selection-start="7096" selection-end="7096" vertical-scroll-proportion="-50.296295" vertical-offset="1972" max-vertical-offset="3618">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="21" selection-start="694" selection-end="694" vertical-scroll-proportion="-24.666666" vertical-offset="0" max-vertical-offset="882">
@@ -690,10 +696,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Master.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="65" selection-start="7108" selection-end="7108" vertical-scroll-proportion="-23.62963" vertical-offset="2692" max-vertical-offset="3618">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="0" selection-start="286" selection-end="286" vertical-scroll-proportion="0.29157668" vertical-offset="0" max-vertical-offset="926">
-          <folding />
+        <state line="55" column="24" selection-start="941" selection-end="941" vertical-scroll-proportion="-29.62963" vertical-offset="190" max-vertical-offset="1116">
+          <folding>
+            <element signature="e#6#90#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="47" selection-start="1507" selection-end="1507" vertical-scroll-proportion="0.475162" vertical-offset="64" max-vertical-offset="990">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+            <element signature="n#login#0;n#!!top" expanded="false" />
+            <marker date="1407342538292" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+            <marker date="1407342538292" expanded="true" signature="1498:1516" placeholder="Select * FRO..User..." />
+          </folding>
         </state>
       </provider>
     </entry>

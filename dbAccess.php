@@ -51,6 +51,34 @@
         return false;
     }
 
+    function getAllUsers()
+    {
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select * FROM User;"))
+        {
+            if ($stmt->execute())
+            {
+                $stmt->store_result();
+
+                $OUTuserEmail= NULL;
+
+                while( $stmt->more_results())
+                {
+                    $result = $stmt->next_result();
+                    var_dump($result);
+                }
+            }
+        }
+
+        $mysqli->close();
+    }
 
 
 ?>

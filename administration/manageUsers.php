@@ -6,6 +6,10 @@
  * Time: 21:43
  *
  */
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+
 ob_start();
 ?>
     <html>
@@ -14,15 +18,29 @@ ob_start();
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-            /*
-            ADD YOUR CSS HERE
-            */
+            h1{
+                text-align: center;
+            }
+
 
         </style>
     </head>
     <body>
+        <h1>Manage Users</h1>
+
+        <table>
+            <tr>
+                <th>Username</th>
+                <th>Reset Password</th>
+                <th>Delete User</th>
+            </tr>
+
+            <?php
+                getAllUsers();
+            ?>
 
 
+        </table>
 
 
     </body>
@@ -35,5 +53,5 @@ $pageTitle= "Manage Users";
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-include("Master.php");
+require_once("../Master.php");
 ?>
