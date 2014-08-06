@@ -51,7 +51,6 @@
 <?php
     $class = "10A";
 ?>
-
     <h1>Keep Attendance</h1>
     <table id="classDate">
         <tr>
@@ -83,7 +82,6 @@
 
             </tr>
     </table>
-
     <table id="attendance">
         <tr>
             <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
@@ -126,8 +124,6 @@
         ?>
 
     </table>
-
-
 </body>
 </html>
 <?php

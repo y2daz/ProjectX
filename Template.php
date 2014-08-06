@@ -10,7 +10,6 @@
     if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
-
     }
 
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
@@ -116,8 +115,6 @@
             <div id="aboutus">
                 <p> ABOUT US</p>
                 <span>We're pretty amazing.</span>
-
-
             </div>
         </div>
 
@@ -134,8 +131,12 @@
             </li>
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
-                    <li><a href="#"><?php echo $registerStaffMember; ?></a><hr /></li>
-                    <li><a href="#"><?php echo $searchStaffMember; ?></a></li>
+                    <li><a href="/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
+                    <li><a href="/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
+                    <li><a href="/staffManagement/ClassInformation.php">Class Information</a><hr /></li>
+                    <li><a href="/staffManagement/searchViewStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
+<!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
+                    <li><a href="/staffManagement/teacherAchievenment.php">Staff Achievements</a></li>
                 </ul>
             </li>
             <li><a><?php echo $leaveManagement; ?></a>
