@@ -10,3 +10,14 @@
  * This file contains all the used validation functions that are common to all forms
  */
 
+
+function isFilled($value){
+    if (($value == NULL) || ($value == ""))
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
