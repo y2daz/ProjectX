@@ -13,6 +13,15 @@ if(!isset($_COOKIE['language']))
 
 }
 
+if (isset($_POST["submit"])) //USer has clicked the submit button
+{
+    //validate username and password
+    header("Location: Template.php");
+}
+
+
+
+
 /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 $fullPageHeight = 450;
 
@@ -152,14 +161,17 @@ else
 
     <div id="content">
 
-        <p>Email</p>
-        <input name="email" type="text" value=""/>
+        <form id="login" method="post">
+            <p>Email</p>
 
-        <p>Password</p>
-        <input name="password" type="password" value=""/>
+            <input name="email" type="text" value=""/>
 
-        <br/><br/>
-        <input id="submit" name="submit" type="submit" value="Sign in"/>
+            <p>Password</p>
+            <input name="password" type="password" value=""/>
+
+            <br/><br/>
+            <input id="submit" name="submit" type="submit" value="Sign in"/>
+        </form>
     </div>
 
     <div id="language">
