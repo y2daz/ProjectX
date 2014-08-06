@@ -5,47 +5,45 @@
  * Date: 7/26/14
  * Time: 3:24 PM
  */
-    session_start();
-
     ob_start();
 ?>
 <html>
-<head>
-<style type=text/css>
-        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-        #footer{ top:<?php echo "$footerTop" . "px";?> }
+    <head>
+        <style type=text/css>
+            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
+            #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-        h1{
-            text-align: center;
-        }
-        #classDate{
-            position:relative;
-            left:30px;
+            h1{
+                text-align: center;
+            }
+            #classDate{
+                position:relative;
+                left:30px;
 
-        }
-        #attendance{
-            position: relative;
-            top:0px;
-            left:30px;
-        }
-        #attendance th{
-            font-weight: 600;
-        }
-        #attendance tr.alt{
-            background-color: #bed9ff;;
-        }
-        #attendance td.disabled{
-            background-color: #ececec;
-        }
-        input.button {
-            position:relative;
-            font-weight:bold;
-            font-size:15px;
-            Right: -450px;
-            top: 1150px;
-        }
-</style>
-</head>
+            }
+            #attendance{
+                position: relative;
+                top:0px;
+                left:30px;
+            }
+            #attendance th{
+                font-weight: 600;
+            }
+            #attendance tr.alt{
+                background-color: #bed9ff;;
+            }
+            #attendance td.disabled{
+                background-color: #ececec;
+            }
+            input.button {
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                Right: -450px;
+                top: 1150px;
+            }
+        </style>
+    </head>
 
 <body>
 <?php
@@ -88,43 +86,40 @@
         </tr>
 
         <?php
-        $i = 0;
-        $noOfStudents = 40;
+            $i = 0;
+            $noOfStudents = 40;
 
-        for ($i = 0; $i < $noOfStudents; $i++)
-        {
-            $admissionNo = $i + 1;
-            $studentName = "Long Student Name " . $admissionNo;
-
-            if ($i % 2 == 1)
+            for ($i = 0; $i < $noOfStudents; $i++)
             {
-                echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>";
-            }
-            else{
-                echo "<tr><td>$admissionNo</td> <td>$studentName</td>";
-            }
+                $admissionNo = $i + 1;
+                $studentName = "Long Student Name " . $admissionNo;
 
-            for($x = 0; $x < 5; $x++)
-            {
-                if ($x == 3) //Insert holiday logic
+                if ($i % 2 == 1)
                 {
-                    $cBox = "<td class=\"disabled\"></td>";
+                    echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>";
                 }
-                else
-                {
-                    $cBox = "<td><input type=\"checkbox\" name=\"box" . $i . $x . "\" checked /></td>";
+                else{
+                    echo "<tr><td>$admissionNo</td> <td>$studentName</td>";
                 }
 
-                echo $cBox;
+                for($x = 0; $x < 5; $x++)
+                {
+                    if ($x == 3) //Insert holiday logic
+                    {
+                        $cBox = "<td class=\"disabled\"></td>";
+                    }
+                    else
+                    {
+                        $cBox = "<td><input type=\"checkbox\" name=\"box" . $i . $x . "\" checked /></td>";
+                    }
+                    echo $cBox;
+                }
+                echo "</tr>";
             }
-
-            echo "</tr>";
-
-        }
         ?>
 
-    </table>
-</body>
+        </table>
+    </body>
 </html>
 <?php
     //Assign all Page Specific variables
