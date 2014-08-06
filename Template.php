@@ -7,15 +7,10 @@
  */
     session_start();
 
-    $_SESSION['language']=0;
+    if(!isset($_COOKIE['language']))
+    {
+        setcookie('language', '1'); //where 0 is English and 1 is Sinhala
 
-    if(isset($_GET['lang']))
-    {
-        $_SESSION['language']=$_GET['lang'];
-    }
-    else
-    {
-        $_SESSION['language']=0; //where 0 is English and 1 is Sinhala
     }
 
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
@@ -29,7 +24,9 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+
         <script src="jquery-1.11.1.min.js"></script>
+        <script src="common.js"></script>
 
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="Styles/main.css">
@@ -67,36 +64,36 @@
     </head>
     <?php //Get language and make changes
 
-    if($_SESSION['language'] == 0)
-    {
-        $staffManagement = "Staff Management";
-        $leaveManagement = "Leave Management";
-        $timetables = "Timetables";
-        $eventManagement = "Event Management";
+        if($_COOKIE["language"] == "0")
+        {
+            $staffManagement = "Staff Management";
+            $leaveManagement = "Leave Management";
+            $timetables = "Timetables";
+            $eventManagement = "Event Management";
 
-        $registerStaffMember = "Register Staff Member";
-        $searchStaffMember = "Search Staff Member";
-        $applyForLeave = "Apply for Leave";
-        $approveLeave = "Approve Leave";
-        $viewLeaveHistory = "View Leave History";
-        $createTimetableByTeacher = "Create Timetable by Teacher";
-        $createTimetableByClass = "Create Timetable by Class";
-    }
-    else
-    {
-        $staffManagement = "කාර්යමණ්ඩලය කළමනාකරණය";
-        $leaveManagement = "නිවාඩුව කළමනාකරණය";
-        $timetables = "කාලසටහන";
-        $eventManagement = "උත්සවය කළමනාකරණය";
+            $registerStaffMember = "Register Staff Member";
+            $searchStaffMember = "Search Staff Member";
+            $applyForLeave = "Apply for Leave";
+            $approveLeave = "Approve Leave";
+            $viewLeaveHistory = "View Leave History";
+            $createTimetableByTeacher = "Create Timetable by Teacher";
+            $createTimetableByClass = "Create Timetable by Class";
+        }
+         else
+        {
+            $staffManagement = "කාර්යමණ්ඩලය කළමනාකරණය";
+            $leaveManagement = "නිවාඩුව කළමනාකරණය";
+            $timetables = "කාලසටහන";
+            $eventManagement = "උත්සවය කළමනාකරණය";
 
-        $registerStaffMember = "කාර්යමණ්ඩලය වාර්තාකරන්න";
-        $searchStaffMember = "කාර්යමණ්ඩලය සෙවීම";
-        $applyForLeave = "නිවාඩු ඉල්ලීම්කිරීම";
-        $approveLeave = "නිවාඩු අනුමතකිරීම";
-        $viewLeaveHistory = "ඉකුත් වූ නිවාඩු";
-        $createTimetableByTeacher = "ගුරුවරයා විසින් කාලසටහන සැකසුම";
-        $createTimetableByClass = "පන්තිය විසින් කාලසටහන සැකසුම";
-    }
+            $registerStaffMember = "කාර්යමණ්ඩලය වාර්තාකරන්න";
+            $searchStaffMember = "කාර්යමණ්ඩලය සෙවීම";
+            $applyForLeave = "නිවාඩු ඉල්ලීම්කිරීම";
+            $approveLeave = "නිවාඩු අනුමතකිරීම";
+            $viewLeaveHistory = "ඉකුත් වූ නිවාඩු";
+            $createTimetableByTeacher = "ගුරුවරයා විසින් කාලසටහන සැකසුම";
+            $createTimetableByClass = "පන්තිය විසින් කාලසටහන සැකසුම";
+        }
     ?>
     <body>
 
@@ -129,7 +126,7 @@
             $myURL = array();
             $myURL = explode("?", $_SERVER["REQUEST_URI"]);
             ?>
-            <ul><a href="<?php echo $myURL[0] . "?lang=1"; ?>">සිංහල</a> | <a href="<?php echo $myURL[0] . "?lang=0"; ?>">English</a></ul>
+            <ul><a href="#" onClick="setCookie('language','1')" ?>">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
         </div>
     
         <div id="nav">
