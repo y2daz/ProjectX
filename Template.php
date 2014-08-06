@@ -17,6 +17,8 @@
     $fullPageHeight = 700;
 
     $footerTop = $fullPageHeight + 50;
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -38,7 +40,6 @@
             /*Dynamic Styles*/
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
-
             /*Static Styles*/
             /*INSERT ALL YOUR CSS HERE*/
 
@@ -121,7 +122,7 @@
         </div>
     
         <div id="nav">
-            <li><a>Notices</a>
+            <li><a id="blue">Notices</a>
                 <ul>
                     <li><a href="#">View Notices</a><hr /></li>
                     <li><a href="#">Create Notice</a></li>

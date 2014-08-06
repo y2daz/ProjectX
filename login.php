@@ -10,10 +10,10 @@ session_start();
 require_once("dbAccess.php");
 require_once("formValidation.php");
 
+//Setting Language
 if(!isset($_COOKIE['language']))
 {
     setcookie('language', '0'); //where 0 is English and 1 is Sinhala
-
 }
 
 if (isset($_POST["submit"])) //USer has clicked the submit button
@@ -34,9 +34,6 @@ if (isset($_POST["submit"])) //USer has clicked the submit button
     }
 
 }
-
-
-
 
 /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 $fullPageHeight = 450;
@@ -59,7 +56,6 @@ $footerTop = $fullPageHeight + 50;
         /*Dynamic Styles*/
 <!--        #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--        #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
-
         /*Static Styles*/
         /*INSERT ALL YOUR CSS HERE*/
         *{
