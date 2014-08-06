@@ -150,6 +150,6 @@
     ob_end_clean();
     $pageTitle= "Approve Leave";
     //Apply the template
-    include("../Template.php");
+    include("../Master.php");
 ?>
 

@@ -93,5 +93,5 @@
     ob_end_clean();
     $pageTitle= "Apply for Leave";
     //Apply the template
-    require_once("../Template.php");
+    require_once("../Master.php");
 ?>

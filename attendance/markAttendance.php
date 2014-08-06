@@ -130,6 +130,6 @@
     ob_end_clean();
     $pageTitle= "Attendance";
     //Apply the template
-    include("../Template.php");
+    include("../Master.php");
 ?>
 

@@ -79,5 +79,5 @@ $pageContent = ob_get_contents();
 ob_end_clean();
 $pageTitle= "Class-wise Report";
 //Apply the template
-include("../Template.php");
+include("../Master.php");
 ?>
