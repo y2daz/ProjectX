@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leaveManagement/applyForLeave.php" afterPath="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Template.php" afterPath="$PROJECT_DIR$/Template.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Template.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Template.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="15" selection-start="3751" selection-end="3751" vertical-scroll-proportion="-22.962963" vertical-offset="1612" max-vertical-offset="3600">
+            <state line="143" column="67" selection-start="4890" selection-end="4890" vertical-scroll-proportion="0.45572355" vertical-offset="2152" max-vertical-offset="3600">
               <folding />
             </state>
           </provider>
@@ -39,15 +39,6 @@
         <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="131" column="24" selection-start="3159" selection-end="3159" vertical-scroll-proportion="-27.62963" vertical-offset="1612" max-vertical-offset="2538">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applyForLeave.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="55" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.6112311" vertical-offset="766" max-vertical-offset="1854">
               <folding />
             </state>
           </provider>
@@ -86,13 +77,13 @@
         <option value="$PROJECT_DIR$/attendance/classwise.php" />
         <option value="$PROJECT_DIR$/attendance/newStudentwise.php" />
         <option value="$PROJECT_DIR$/Yazdaan.txt" />
-        <option value="$PROJECT_DIR$/Template.php" />
         <option value="$PROJECT_DIR$/leaveManagement/PreviousLeaveHistory.php" />
         <option value="$PROJECT_DIR$/leaveManagement/CancelLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/ApproveLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/ApplyForLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/newApplyForLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
+        <option value="$PROJECT_DIR$/Template.php" />
       </list>
     </option>
   </component>
@@ -407,7 +398,11 @@
       <created>1407334993535</created>
       <updated>1407334993535</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Minor fixes">
+      <created>1407335421246</created>
+      <updated>1407335421246</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -470,9 +465,9 @@
     <MESSAGE value="Changes to template for Attendance" />
     <MESSAGE value="Account change&#10;" />
     <MESSAGE value="Account change final" />
-    <MESSAGE value="Minor fixes" />
     <MESSAGE value="Added applyForLeave to Template." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added applyForLeave to Template." />
+    <MESSAGE value="Minor fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -627,9 +622,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Template.php">
+    <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="15" selection-start="3751" selection-end="3751" vertical-scroll-proportion="-22.962963" vertical-offset="1612" max-vertical-offset="3600">
+        <state line="59" column="53" selection-start="1945" selection-end="1945" vertical-scroll-proportion="1.1468682" vertical-offset="0" max-vertical-offset="1854">
           <folding />
         </state>
       </provider>
@@ -641,9 +636,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
+    <entry file="file://$PROJECT_DIR$/Template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="55" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.6112311" vertical-offset="766" max-vertical-offset="1854">
+        <state line="143" column="67" selection-start="4890" selection-end="4890" vertical-scroll-proportion="0.45572355" vertical-offset="2152" max-vertical-offset="3600">
           <folding />
         </state>
       </provider>
