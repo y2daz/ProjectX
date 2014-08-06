@@ -168,7 +168,8 @@
             <li><a>Attendance</a>
                 <ul>
                     <li><a  href="/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
-                    <li><a  href="/attendance/viewAttendance.php">View Attendance</a></li>
+                    <li><a  href="/attendance/classwise.php">Class-wise Report</a><hr /></li>
+                    <li><a  href="/attendance/studentwise.php">Student-wise Report</a></li>
                 </ul>
             </li>
             <li><a>Marks and Grading</a>
