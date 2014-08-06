@@ -17,7 +17,7 @@
                 text-align: center;
             }
             #classDate{
-                position:relative;
+                    position:relative;
                 left:30px;
 
             }
@@ -30,7 +30,7 @@
                 font-weight: 600;
             }
             #attendance tr.alt{
-                background-color: #bed9ff;;
+                background-color: #bed9ff;
             }
             #attendance td.disabled{
                 background-color: #ececec;
@@ -45,78 +45,78 @@
         </style>
     </head>
 
-<body>
-<?php
-    $class = "10A";
-?>
-    <h1>Keep Attendance</h1>
-    <table id="classDate">
-        <tr>
-            <td>
-                Grade
-            </td>
-            <td>
-                <?php echo $class; ?>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <br/>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Week
-            </td>
-            <td>
-                <input name="week" type="date"/>
-            </td>
-        </tr>
-	        <tr>
-                <td></td>
-
-                <td><input class="button" type="button" value="Save"></td>
-
-
-            </tr>
-    </table>
-    <table id="attendance">
-        <tr>
-            <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
-        </tr>
-
+    <body>
         <?php
-            $i = 0;
-            $noOfStudents = 40;
-
-            for ($i = 0; $i < $noOfStudents; $i++)
-            {
-                $admissionNo = $i + 1;
-                $studentName = "Long Student Name " . $admissionNo;
-
-                if ($i % 2 == 1)
-                {
-                    echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>";
-                }
-                else{
-                    echo "<tr><td>$admissionNo</td> <td>$studentName</td>";
-                }
-
-                for($x = 0; $x < 5; $x++)
-                {
-                    if ($x == 3) //Insert holiday logic
-                    {
-                        $cBox = "<td class=\"disabled\"></td>";
-                    }
-                    else
-                    {
-                        $cBox = "<td><input type=\"checkbox\" name=\"box" . $i . $x . "\" checked /></td>";
-                    }
-                    echo $cBox;
-                }
-                echo "</tr>";
-            }
+            $class = "10A";
         ?>
+        <h1>Keep Attendance</h1>
+        <table id="classDate">
+            <tr>
+                <td>
+                    Grade
+                </td>
+                <td>
+                    <?php echo $class; ?>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Week
+                </td>
+                <td>
+                    <input name="week" type="date"/>
+                </td>
+            </tr>
+                <tr>
+                    <td></td>
+
+                    <td><input class="button" type="button" value="Save"></td>
+
+
+                </tr>
+        </table>
+        <table id="attendance">
+            <tr>
+                <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
+            </tr>
+
+            <?php
+                $i = 0;
+                $noOfStudents = 40;
+
+                for ($i = 0; $i < $noOfStudents; $i++)
+                {
+                    $admissionNo = $i + 1;
+                    $studentName = "Long Student Name " . $admissionNo;
+
+                    if ($i % 2 == 1)
+                    {
+                        echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>";
+                    }
+                    else{
+                        echo "<tr><td>$admissionNo</td> <td>$studentName</td>";
+                    }
+
+                    for($x = 0; $x < 5; $x++)
+                    {
+                        if ($x == 3) //Insert holiday logic
+                        {
+                            $cBox = "<td class=\"disabled\"></td>";
+                        }
+                        else
+                        {
+                            $cBox = "<td><input type=\"checkbox\" name=\"box" . $i . $x . "\" checked /></td>";
+                        }
+                        echo $cBox;
+                    }
+                    echo "</tr>";
+                }
+            ?>
 
         </table>
     </body>
