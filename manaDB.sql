@@ -18,9 +18,15 @@ USE `manaDB`;
 
 CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
 
-GRANT USAGE ON *.* TO 'manaSystem'@'localhost' IDENTIFIED BY PASSWORD '*11D0781D755AF7279E36F7C6CF3A9A356C6B8C5A';
-
-GRANT ALL PRIVILEGES ON `manaDB`.* TO 'manaSystem'@'localhost' WITH GRANT OPTION;
-
 use manaDB;
+
+CREATE TABLE User(
+	userEmail varchar(50) primary key,
+    userPassword varchar(50)
+);
+
+Use manaDB;
+
+INSERT INTO User values ('y', (SELECT PASSWORD('a'))); 
+
 

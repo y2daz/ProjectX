@@ -32,20 +32,37 @@
                 die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $query = "Select * FROM User ";
-        $query .= "WHERE userEmail='$username' ";
-        $query .= "AND userPassword='$password' ";
 
-        echo $query;
+        if ($stmt = $mysqli->prepare("Select PASSWORD(?), userPassword FROM User WHERE userEmail=? LIMIT 1;"))
+        {
+            $stmt -> bind_param("ss", $password, $username);
 
+            if ($stmt->execute())
+            {
+                $stmt->store_result();
 
-//        $result = $mysqli->query("SELECT 'The SQL Works, people.' AS _msg");
-//        $row = $result->fetch_assoc();
+                $OUTenteredPassword = NULL;
+                $OUTuserPassword = NULL;
 
-//        echo $row['_msg'];
+                $stmt->bind_result($OUTenteredPassword, $OUTuserPassword);
 
+                if( $stmt->num_rows > 0 )
+                {
+                    $stmt->fetch();
+                    if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
+                    {
+                        $mysqli->close();
+                        header("Location: Template.php");
+                        die();
+                    }
+                }
+            }
+            else
+            {
+                die ("Execute failed: (" . $mysqli->errno . ") " . $mysqli->error);
+            }
+        }
         $mysqli->close();
-
     }
 
 

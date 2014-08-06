@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) //USer has clicked the submit button
 {
     //validate username and password
 
-    //login
+
     login($_POST["email"],$_POST["password"]);
 //    header("Location: Template.php");
 
