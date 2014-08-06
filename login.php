@@ -7,15 +7,10 @@
  */
 session_start();
 
-$_SESSION['language']=0;
+if(!isset($_COOKIE['language']))
+{
+    setcookie('language', '0'); //where 0 is English and 1 is Sinhala
 
-if(isset($_GET['lang']))
-{
-    $_SESSION['language']=$_GET['lang'];
-}
-else
-{
-    $_SESSION['language']=0; //where 0 is English and 1 is Sinhala
 }
 
 /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
@@ -30,7 +25,7 @@ $footerTop = $fullPageHeight + 50;
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-
+    <script src="common.js"></script>
 
     <style type=text/css>
 
@@ -139,7 +134,7 @@ $footerTop = $fullPageHeight + 50;
 </head>
 <?php //Get language and make changes
 
-if($_SESSION['language'] == 0)
+if($_COOKIE["language"] == "0")
 {
 }
 else
@@ -168,14 +163,9 @@ else
     </div>
 
     <div id="language">
-        <?php
-        $myURL = array();
-        $myURL = explode("?", $_SERVER["REQUEST_URI"]);
-        ?>
-        <ul><a href="<?php echo $myURL[0] . "?lang=1"; ?>">සිංහල</a> | <a href="<?php echo $myURL[0] . "?lang=0"; ?>">English</a></ul>
+        <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
     </div>
 </div>
-
 
 
 <!-- DO NOT EDIT FOLLOWING -->

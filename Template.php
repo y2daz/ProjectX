@@ -9,7 +9,7 @@
 
     if(!isset($_COOKIE['language']))
     {
-        setcookie('language', '1'); //where 0 is English and 1 is Sinhala
+        setcookie('language', '0'); //where 0 is English and 1 is Sinhala
 
     }
 
@@ -102,11 +102,6 @@
         </div>
 
 
-
-
-
-
-
         <!-- DO NOT EDIT FOLLOWING -->
         <div id="header">
 
@@ -122,11 +117,7 @@
         </div>
 
         <div id="language">
-            <?php
-            $myURL = array();
-            $myURL = explode("?", $_SERVER["REQUEST_URI"]);
-            ?>
-            <ul><a href="#" onClick="setCookie('language','1')" ?>">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
+            <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
         </div>
     
         <div id="nav">
