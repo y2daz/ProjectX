@@ -142,7 +142,7 @@
             <li><a><?php echo $leaveManagement; ?></a>
                 <ul>
                     <li><a href="/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
-                    <li><a href="#"><?php echo $approveLeave; ?></a><hr /></li>
+                    <li><a href="/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
                     <li><a href="#"><?php echo $viewLeaveHistory; ?></a><hr /></li>
                     <li><a href="#">Generate Leave Report</a></li>
                 </ul>
