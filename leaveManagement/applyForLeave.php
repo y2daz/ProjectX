@@ -16,14 +16,9 @@
             h1{
                 text-align: center;
             }
-
-
         </style>
-
-
     </head>
     <body>
-
             <h1>Apply For Leave</h1>
 
             <form>
@@ -33,23 +28,23 @@
                 <table align="center">
                     <tr>
                         <td>Staff ID :</td>
-                        <td> <input type="text"; name="StaffID"; id="StaffID" /></td>
+                        <td><input type="text" name="StaffID" value="" /></td>
                     </tr>
                     <tr>
                         <td>Name :</td>
-                        <td><input type="text"; name="StaffName"; id="TeacherName" align="right" /></td>
+                        <td><input type="text" name="StaffName" /></td>
                     </tr>
                     <tr>
                         <td>Start Date :</td>
-                        <td><input type="date"; name="StartDate"; id="StartDate"  align="right"/></td>
+                        <td><input type="date" name="StartDate" /></td>
                     </tr>
                     <tr>
                         <td>End Date :</td>
-                        <td><input type="date"; name="EndDate"; id="EndDate" /></td>
+                        <td><input type="date" name="EndDate" /></td>
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
-                        <td>     <select>
+                        <td><select>
                                 <option value="Maternity Leave">Maternity</option>
                                 <option value="Short Leave">Short Leave</option>
                                 <option value="Annual Leave">Annual Leave</option>

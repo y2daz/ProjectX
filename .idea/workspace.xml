@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/leaveManagement/ApplyForLeave.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/leaveManagement/applyForLeave.php" afterPath="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -48,7 +47,7 @@
       <file leaf-file-name="applyForLeave.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="23" selection-start="3250" selection-end="3250" vertical-scroll-proportion="1.2332613" vertical-offset="532" max-vertical-offset="1944">
+            <state line="74" column="55" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.6112311" vertical-offset="766" max-vertical-offset="1854">
               <folding />
             </state>
           </provider>
@@ -93,6 +92,7 @@
         <option value="$PROJECT_DIR$/leaveManagement/ApproveLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/ApplyForLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/newApplyForLeave.php" />
+        <option value="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
       </list>
     </option>
   </component>
@@ -403,12 +403,16 @@
       <created>1407334183406</created>
       <updated>1407334183406</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added applyForLeave to Template.">
+      <created>1407334993535</created>
+      <updated>1407334993535</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -416,7 +420,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29791668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -443,7 +447,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Clicking SIgn in takes you to the template page" />
     <MESSAGE value="Added validations file" />
     <MESSAGE value="Deleted that file a.txt" />
     <MESSAGE value="Made that a txt. :P" />
@@ -468,7 +471,8 @@
     <MESSAGE value="Account change&#10;" />
     <MESSAGE value="Account change final" />
     <MESSAGE value="Minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fixes" />
+    <MESSAGE value="Added applyForLeave to Template." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added applyForLeave to Template." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -639,7 +643,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="23" selection-start="3250" selection-end="3250" vertical-scroll-proportion="1.2332613" vertical-offset="532" max-vertical-offset="1944">
+        <state line="74" column="55" selection-start="2750" selection-end="2750" vertical-scroll-proportion="0.6112311" vertical-offset="766" max-vertical-offset="1854">
           <folding />
         </state>
       </provider>
