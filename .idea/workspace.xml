@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="" />
+    <ignored path="ProjectX.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="ProjectX" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="manaDB.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manaDB.sql">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="-19.862068" vertical-offset="0" max-vertical-offset="684">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="viewAttendance.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/attendance/viewAttendance.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="5850">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Template.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Template.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="165" column="21" selection-start="5976" selection-end="5976" vertical-scroll-proportion="0.33909288" vertical-offset="2656" max-vertical-offset="3600">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/staffManagement/BlackList.php" />
+        <option value="$PROJECT_DIR$/staffManagement/SearchViewStaffDetails.php" />
+        <option value="$PROJECT_DIR$/staffManagement/ClassroomInformation.php" />
+        <option value="$PROJECT_DIR$/staffManagement/TeacherAchievenment.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/common.js" />
+        <option value="$PROJECT_DIR$/databases.php" />
+        <option value="$PROJECT_DIR$/dbConnect.php" />
+        <option value="$PROJECT_DIR$/formValidation.php" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/Styles/main.css" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
+        <option value="$PROJECT_DIR$/attendance/newMarkAttendance.php" />
+        <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
+        <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/attendance/markAttendance.php" />
+        <option value="$PROJECT_DIR$/attendance/newClasswise.php" />
+        <option value="$PROJECT_DIR$/attendance/classwise.php" />
+        <option value="$PROJECT_DIR$/attendance/newStudentwise.php" />
+        <option value="$PROJECT_DIR$/Template.php" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1920" />
+    <option name="y" value="-1056" />
+    <option name="width" value="1920" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="attendance" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="SearchEverywhereHistory" value="" />
+    <property name="options.lastSelected" value="settings.github" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/attendance" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="Moments ago" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/vimukthi.txt</PATH>
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.Template.php">
+    <configuration default="false" name="Template.php" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/ProjectX/Template.php">
+      <RunnerSettings RunnerId="JavascriptDebugRunner" />
+      <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Template.php" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Template.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="" />
+      <created>1407304464930</created>
+      <updated>1407304464930</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Test Commit 2&#10;">
+      <created>1407304511934</created>
+      <updated>1407304511934</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fixed some errors in some staff forms">
+      <created>1407304900573</created>
+      <updated>1407304900573</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Now when you visit the site, it takes you to the login page.">
+      <created>1407305151658</created>
+      <updated>1407305151658</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added javascript to change language. WIll make it easier when we add database.">
+      <created>1407306481925</created>
+      <updated>1407306481925</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changes to login.php language. Referenced common.js">
+      <created>1407306819433</created>
+      <updated>1407306819433</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Clicking SIgn in takes you to the template page">
+      <created>1407307820202</created>
+      <updated>1407307820202</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added validations file">
+      <created>1407307968129</created>
+      <updated>1407307968129</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Deleted that file a.txt">
+      <created>1407308056685</created>
+      <updated>1407308056685</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Made that a txt. :P">
+      <created>1407308101687</created>
+      <updated>1407308101687</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Database connection done using OOP">
+      <created>1407309531182</created>
+      <updated>1407309531182</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Database connection done using OOP&#10;">
+      <created>1407312546391</created>
+      <updated>1407312546391</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Database connection done using OOP&#10;">
+      <created>1407312608826</created>
+      <updated>1407312608826</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Database connection done using OOP&#10;">
+      <created>1407312718616</created>
+      <updated>1407312718616</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Deleted the yazdaan.txt">
+      <created>1407312779201</created>
+      <updated>1407312779201</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added the database creation sql, run that on PHP My admin when you can.">
+      <created>1407314726007</created>
+      <updated>1407314726007</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added the ManaSystem user to sql">
+      <created>1407314875872</created>
+      <updated>1407314875872</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Gave manaSystem access in sql,">
+      <created>1407316593186</created>
+      <updated>1407316593186</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Log in system works. Add a user and test.">
+      <created>1407321989724</created>
+      <updated>1407321989724</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Minor changes&#10;">
+      <created>1407322074301</created>
+      <updated>1407322074301</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added isFilled method">
+      <created>1407322553664</created>
+      <updated>1407322553664</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Fixed login return value">
+      <created>1407325155565</created>
+      <updated>1407325155565</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Minor changes&#10;">
+      <created>1407327396499</created>
+      <updated>1407327396499</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Minor changes to dbAccess&#10;&#10;">
+      <created>1407327634405</created>
+      <updated>1407327634405</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Maor change to template. Used markAttendance as sample">
+      <created>1407329095742</created>
+      <updated>1407329095742</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Linked Template to Staff Information">
+      <created>1407329685474</created>
+      <updated>1407329685474</updated>
+    </task>
+    <task id="LOCAL-00026" summary="sql update">
+      <created>1407329780261</created>
+      <updated>1407329780261</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added classwise to Template.php">
+      <created>1407331372684</created>
+      <updated>1407331372684</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Minor fixes">
+      <created>1407331413212</created>
+      <updated>1407331413212</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added Student-wise to Template">
+      <created>1407332029242</created>
+      <updated>1407332029242</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Changes to template for Attendance">
+      <created>1407332255386</created>
+      <updated>1407332255386</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="-1056" width="1920" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29791668" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="Added javascript to change language. WIll make it easier when we add database." />
+    <MESSAGE value="Changes to login.php language. Referenced common.js" />
+    <MESSAGE value="Clicking SIgn in takes you to the template page" />
+    <MESSAGE value="Added validations file" />
+    <MESSAGE value="Deleted that file a.txt" />
+    <MESSAGE value="Made that a txt. :P" />
+    <MESSAGE value="Database connection done using OOP" />
+    <MESSAGE value="Database connection done using OOP&#10;" />
+    <MESSAGE value="Deleted the yazdaan.txt" />
+    <MESSAGE value="Added the database creation sql, run that on PHP My admin when you can." />
+    <MESSAGE value="Added the ManaSystem user to sql" />
+    <MESSAGE value="Gave manaSystem access" />
+    <MESSAGE value="Gave manaSystem access in sql," />
+    <MESSAGE value="Log in system works. Add a user and test." />
+    <MESSAGE value="Added isFilled method" />
+    <MESSAGE value="Fixed login return value" />
+    <MESSAGE value="Minor changes&#10;" />
+    <MESSAGE value="Minor changes to dbAccess&#10;&#10;" />
+    <MESSAGE value="Maor change to template. Used markAttendance as sample" />
+    <MESSAGE value="Linked Template to Staff Information" />
+    <MESSAGE value="sql update" />
+    <MESSAGE value="Added classwise to Template.php" />
+    <MESSAGE value="Minor fixes" />
+    <MESSAGE value="Added Student-wise to Template" />
+    <MESSAGE value="Changes to template for Attendance" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes to template for Attendance" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/staffManagement/blacklist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="232" column="1" selection-start="6478" selection-end="6478" vertical-scroll-proportion="0.3736501" vertical-offset="3830" max-vertical-offset="6120">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/addEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="0.25917926" vertical-offset="246" max-vertical-offset="4392">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="232" column="1" selection-start="6478" selection-end="6478" vertical-scroll-proportion="0.1911447" vertical-offset="3999" max-vertical-offset="6678">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/ClassInformation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="235" column="1" selection-start="6481" selection-end="6481" vertical-scroll-proportion="-6.5555553" vertical-offset="4053" max-vertical-offset="6696">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/teacherAchievenment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="39" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.23660715" vertical-offset="796" max-vertical-offset="6822">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.16998951" vertical-offset="0" max-vertical-offset="953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dulip1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Madhushan.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shavin.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbConnect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="25" selection-start="276" selection-end="276" vertical-scroll-proportion="0.29157668" vertical-offset="0" max-vertical-offset="926">
+          <folding>
+            <element signature="e#6#87#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vimukthi.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="12" selection-start="345" selection-end="345" vertical-scroll-proportion="-1.0398741" vertical-offset="1333" max-vertical-offset="2286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="25" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.71058315" vertical-offset="386" max-vertical-offset="4140">
+          <folding>
+            <marker date="1407325407483" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1407325407483" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1238" column="17" selection-start="46407" selection-end="46407" vertical-scroll-proportion="3.598272" vertical-offset="18952" max-vertical-offset="22986">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="23" selection-start="172" selection-end="172" vertical-scroll-proportion="0.2526998" vertical-offset="18" max-vertical-offset="1116">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+            <marker date="1407327720987" expanded="true" signature="-1:-1" placeholder="Select PASSW..User..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.019438446" vertical-offset="0" max-vertical-offset="926">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formValidation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="11" selection-start="195" selection-end="195" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="926">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="299" selection-end="334" vertical-scroll-proportion="0.019438446" vertical-offset="270" max-vertical-offset="2538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/studentwise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="11" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-46.666668" vertical-offset="0" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="19" selection-start="2112" selection-end="2118" vertical-scroll-proportion="1.5356371" vertical-offset="0" max-vertical-offset="1584">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="716" selection-end="716" vertical-scroll-proportion="-19.862068" vertical-offset="0" max-vertical-offset="684">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/viewAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="21" selection-start="5976" selection-end="5976" vertical-scroll-proportion="0.33909288" vertical-offset="2656" max-vertical-offset="3600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
