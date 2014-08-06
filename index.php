@@ -1,3 +1,3 @@
-<?php 
-	phpinfo();
+<?php
+   header( 'Location: login.php' ) ;
 ?>
