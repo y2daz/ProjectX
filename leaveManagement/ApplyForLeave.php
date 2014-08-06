@@ -35,7 +35,7 @@
                 /*font-size: 14px;*/
             }
             body {
-                background-image:url('images/cream_pixels.png');
+                background-image:url('../images/cream_pixels.png');
                 background-repeat: repeat;
                 height:<?php echo "800px"; ?>
             }
@@ -239,80 +239,91 @@
 
         <div id="main">
 
-            <h1 align="center" style="background-color: lightblue"> Previous Leave History </h1>
-
-            <br>
-            <br>
+            <h1 align="center" style="background-color: lightblue">Apply For Leave</h1>
 
             <form>
 
-                <table align="center" style="width: 300px">
+                <br /><br /><br />
+
+                <table align="center" style="">
+
+                    <tr>
+                        <td>Staff ID :</td>
+                        <td> <input type="text"; name="StaffID"; id="StaffID" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Name :</td>
+                        <td><input type="text"; name="StaffName"; id="TeacherName" align="right" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Start Date :</td>
+                        <td><input type="date"; name="StartDate"; id="StartDate"  align="right"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>End Date :</td>
+                        <td><input type="date"; name="EndDate"; id="EndDate" /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Leave Type :</td>
+                        <td>     <select>
+                                <option value="Maternity Leave">Maternity</option>
+                                <option value="Short Leave">Short Leave</option>
+                                <option value="Annual Leave">Annual Leave</option>
+                                <option value="Casual Leave">Casual Leave</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Select Time Period Type :
+                        </td>
+
+                        <td>
+                            <input type="radio" name="TimeType" value="Hours"> Hours
+                            <input type="radio" name="TimeType" value="Days"> Days
+                            <input type="radio" name="TimeType" value="Months"> Months
+                        </td>
+
+                    </tr>
+
 
                     <tr>
 
-                        <td> Staff ID :</td>
-                        <td><input type="text" name="StaffID" </td>
-
-
+                        <td>Time Period :</td>
+                        <td><input type="text" name="timeperiod"></td>
 
                     </tr>
+
+
+
+                    <tr>
+                        <td>Other Reason(s)</td>
+                        <td><textarea rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
+                    </tr>
+
+                    <tr>
+                        <td>Number of Leave Days Left : </td>
+                        <td><input type="text"; name="NoofLeaveDaysLeft" disabled="disabled";	</td>
+                    <tr>
+
 
                 </table>
 
-                <br>
-                <br>
+                <br /><br /><br />
 
-                <table align="center" style="width: 700px" border="1">
+                <p align="center">
 
-                    <tr>
-                        <td>Staff ID</td>
-                        <td>Name</td>
-                        <td>Requested Date</td>
-                        <td>Leave Type</td>
-                        <td>Status </td>
-                    </tr>
+                    <input type="button"; name="Button1"; value="Apply for Leave"; id="ApplyforLeave"; />
 
-                    <tr>
-                        <td> SID001 </td>
-                        <td> Mrs. Andrea Gunaratne </td>
-                        <td>7/26/2014 11:55 AM </td>
-                        <td> Maternity Leave </td>
-                        <td>Pending</td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td> SID001 </td>
-                        <td> Mrs. Andrea Gunaratne </td>
-                        <td> 7/05/2014 12.00 AM </td>
-                        <td> Short Leave </td>
-                        <td> Approved </td>
-
-
-                    </tr>
-
-                    <tr>
-                        <td> SID001 </td>
-                        <td> Mrs. Andrea Gunaratne </td>
-                        <td> 01/15/2014 10.00 AM </td>
-                        <td> Short Leave </td>
-                        <td> Rejected </td>
-
-                    </tr>
-
-
-
-                </table>
-
-                <br>
-                <br>
-                
-
+                </p>
 
 
             </form>
-
 
 
         </div>

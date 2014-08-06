@@ -35,7 +35,7 @@
                 /*font-size: 14px;*/
             }
             body {
-                background-image:url('images/cream_pixels.png');
+                background-image:url('../images/cream_pixels.png');
                 background-repeat: repeat;
                 height:<?php echo "800px"; ?>
             }
@@ -239,7 +239,7 @@
 
         <div id="main">
 
-            <h1 align="center" style="background-color: lightblue"> Cancel Leave</h1>
+            <h1 align="center" style="background-color: lightblue"> Previous Leave History </h1>
 
             <br>
             <br>
@@ -250,7 +250,7 @@
 
                     <tr>
 
-                        <td>Enter Staff ID :</td>
+                        <td> Staff ID :</td>
                         <td><input type="text" name="StaffID" </td>
 
 
@@ -269,7 +269,7 @@
                         <td>Name</td>
                         <td>Requested Date</td>
                         <td>Leave Type</td>
-                        <td>Cancel Leave?</td>
+                        <td>Status </td>
                     </tr>
 
                     <tr>
@@ -277,7 +277,8 @@
                         <td> Mrs. Andrea Gunaratne </td>
                         <td>7/26/2014 11:55 AM </td>
                         <td> Maternity Leave </td>
-                        <td><input type="button" value="Yes" width="300px"> </td>
+                        <td>Pending</td>
+
 
                     </tr>
 
@@ -286,7 +287,8 @@
                         <td> Mrs. Andrea Gunaratne </td>
                         <td> 7/05/2014 12.00 AM </td>
                         <td> Short Leave </td>
-                        <td><input type="button" value="Yes" width="300px"></td>
+                        <td> Approved </td>
+
 
                     </tr>
 
@@ -295,7 +297,7 @@
                         <td> Mrs. Andrea Gunaratne </td>
                         <td> 01/15/2014 10.00 AM </td>
                         <td> Short Leave </td>
-                        <td><input type="button" value="Yes" width="300px"> </td>
+                        <td> Rejected </td>
 
                     </tr>
 
@@ -305,6 +307,9 @@
 
                 <br>
                 <br>
+                
+
+
 
             </form>
 

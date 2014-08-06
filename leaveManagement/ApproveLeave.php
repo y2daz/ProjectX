@@ -35,7 +35,7 @@
                 /*font-size: 14px;*/
             }
             body {
-                background-image:url('images/cream_pixels.png');
+                background-image:url('../images/cream_pixels.png');
                 background-repeat: repeat;
                 height:<?php echo "800px"; ?>
             }
@@ -239,88 +239,139 @@
 
         <div id="main">
 
-            <h1 align="center" style="background-color: lightblue">Apply For Leave</h1>
+            <h1 align="center" style="background-color: lightblue"> Approve Leave </h1>
+
+            <br>
+            <br>
 
             <form>
 
-                <br /><br /><br />
-
-                <table align="center" style="">
+                <table align="center">
 
                     <tr>
-                        <td>Staff ID :</td>
-                        <td> <input type="text"; name="StaffID"; id="StaffID" /></td>
-                    </tr>
+                        <td> Select Leave Time Range :</td>
+                        <td>
+                            <select>
 
-                    <tr>
-                        <td>Name :</td>
-                        <td><input type="text"; name="StaffName"; id="TeacherName" align="right" /></td>
-                    </tr>
+                                <option value="By Day"> By Day </option>
+                                <option value="By Week"> By Week </option>
+                                <option value="By Month"> By Month </option>
 
-                    <tr>
-                        <td>Start Date :</td>
-                        <td><input type="date"; name="StartDate"; id="StartDate"  align="right"/></td>
-                    </tr>
-
-                    <tr>
-                        <td>End Date :</td>
-                        <td><input type="date"; name="EndDate"; id="EndDate" /></td>
-                    </tr>
-
-                    <tr>
-                        <td>Leave Type :</td>
-                        <td>     <select>
-                                <option value="Maternity Leave">Maternity</option>
-                                <option value="Short Leave">Short Leave</option>
-                                <option value="Annual Leave">Annual Leave</option>
-                                <option value="Casual Leave">Casual Leave</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
-                        <td>
-                            Select Time Period Type :
-                        </td>
 
-                        <td>
-                            <input type="radio" name="TimeType" value="Hours"> Hours
-                            <input type="radio" name="TimeType" value="Days"> Days
-                            <input type="radio" name="TimeType" value="Months"> Months
-                        </td>
+                        <td> Select Day : </td>
+                        <td> <input type="date" name="selectday"></td>
 
                     </tr>
-
-
-                    <tr>
-
-                        <td>Time Period :</td>
-                        <td><input type="text" name="timeperiod"></td>
-
-                    </tr>
-
-
-
-                    <tr>
-                        <td>Other Reason(s)</td>
-                        <td><textarea rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
-                    </tr>
-
-                    <tr>
-                        <td>Number of Leave Days Left : </td>
-                        <td><input type="text"; name="NoofLeaveDaysLeft" disabled="disabled";	</td>
-                    <tr>
-
 
                 </table>
 
-                <br /><br /><br />
+                <br>
+                <br>
+                <br>
 
-                <p align="center">
 
-                    <input type="button"; name="Button1"; value="Apply for Leave"; id="ApplyforLeave"; />
+                <table align="center" border="1">
 
-                </p>
+                    <tr>
+                        <td> Staff ID </td>
+                        <td> Name </td>
+                        <td> Leave Type </td>
+                        <td> Time Period </td>
+                        <td> Status </td>
+                    </tr>
+
+                    <tr>
+                        <td> SIDXXX </td>
+                        <td> Mrs. Andrea DeSilva </td>
+                        <td> Short Leave </td>
+                        <td> 5 Hours </td>
+                        <td> Pending </td>
+                        <td> <input type="button" name="expand" value="Expand Details" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> SIDXXX </td>
+                        <td> Mr. Madusha Karunaratne </td>
+                        <td> Long Leave </td>
+                        <td> 5 Days </td>
+                        <td> Pending </td>
+                        <td> <input type="button" name="expand" value="Expand Details" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> SIDXXX </td>
+                        <td> Mr. Priyan Fernando </td>
+                        <td> Short Leave </td>
+                        <td> 8 am - 11 am</td>
+                        <td> Pending </td>
+                        <td> <input type="button" name="expand" value="Expand Details" /> </td>
+                    </tr>
+
+                </table>
+
+                <br>
+                <br>
+                <br>
+
+
+
+                <table align="center" style="width:500px; height:150px">
+
+                    <tr>
+                        <td> Staff ID </td>
+                        <td > <input type = "text" name="staffid" /> </td>
+                    </tr>
+
+
+                    <tr>
+                        <td> Name </td>
+                        <td > <input type = "text" name="staffid" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> Start Date </td>
+                        <td ><input type="date"; name="StartDate"; id="StartDate" align="right"/></td>
+                    </tr>
+
+
+                    <tr>
+                        <td> End Date </td>
+                        <td > <input type="date" name="enddate" align="right" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> Leave Type  </td>
+                        <td > <input type = "text" name="staffid" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> Time Period </td>
+                        <td > <input type = "text" name="staffid" /> </td>
+                    </tr>
+
+                    <tr>
+                        <td> Other Reasons(s) </td>
+                        <td > <input type = "text" name="staffid" /> </td>
+                    </tr>
+
+                </table>
+
+
+
+                <table align="center" style="width:150px; height:100px">
+
+                    <tr>
+                        <td> <input type="button" value="Approve"> </td>
+                        <td > <input type="button" value="Reject">  </td>
+                    </tr>
+
+                </table>
+
 
 
             </form>
