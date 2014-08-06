@@ -8,17 +8,10 @@
 
     require_once("dbConnect.php");
 
-
     $dbObj = new dbConnect();
 
     $mysqli = $dbObj->getConnection();
-//    $dbHost = "localhost";
-//    $dbUser = "root";
-//    $dbPass = "secret";
-//    $dbName = "";
 
-    //Create connection object
-//    $mysqli = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
