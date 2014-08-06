@@ -13,7 +13,7 @@ class dbConnect {
         $dbHost = "localhost";
         $dbUser = "manaSystem";
         $dbPass = "SMevHZxMEJVfv4Kc";
-        $dbName = "";
+        $dbName = "manaDB";
 
         //Create Connection object
         $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
