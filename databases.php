@@ -6,30 +6,19 @@
  * Time: 12:00 PM
  */
 
-    //1. create tbe database connection
+    require_once("dbConnect.php");
 
 
-    $dbHost = "localhost";
-    $dbUser = "root";
-    $dbPass = "secret";
-    $dbName = "";
+    $dbObj = new dbConnect();
 
-//    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-//
-//    //test if connection occured
-//
-//    if(mysqli_connect_errno()){
-//        die("Database connection failed: " .
-//                mysqli_connect_error() . " (" . mysqli_connect_errno() . ")"
-//        );
-//
-//    }
-
-    //Create Connection object
-    $mysqli = mysqli_connect( $dbHost, $dbUser, $dbPass, $dbName);
+    $mysqli = $dbObj->getConnection();
+//    $dbHost = "localhost";
+//    $dbUser = "root";
+//    $dbPass = "secret";
+//    $dbName = "";
 
     //Create connection object
-    $mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+//    $mysqli = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
