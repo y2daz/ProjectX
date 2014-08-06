@@ -27,6 +27,6 @@ CREATE TABLE User(
 
 Use manaDB;
 
-INSERT INTO User values ('y', (SELECT PASSWORD('a'))); 
-
+INSERT INTO User values ('y', (SELECT PASSWORD('a')));
+INSERT INTO User values ('a', (SELECT PASSWORD('a')));
 
