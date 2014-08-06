@@ -8,6 +8,7 @@
 session_start();
 
 require_once("dbAccess.php");
+require_once("formValidation.php");
 
 if(!isset($_COOKIE['language']))
 {
@@ -19,9 +20,18 @@ if (isset($_POST["submit"])) //USer has clicked the submit button
 {
     //validate username and password
 
+    if ((isFilled($_POST["email"])) && (isFilled($_POST["password"])))
+    {
+        if (login($_POST["email"],$_POST["password"]))
+        {
+            header("Location: Template.php");
+            die();
+        }
+    }
+    else
+    {
 
-    login($_POST["email"],$_POST["password"]);
-//    header("Location: Template.php");
+    }
 
 }
 

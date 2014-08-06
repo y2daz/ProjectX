@@ -49,19 +49,14 @@
                     $stmt->fetch();
                     if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
                     {
-                        $mysqli->close();
-                        header("Location: Template.php");
-                        $mysqli->close();
-                        die();
+                        return true;
                     }
                 }
             }
-            else
-            {
-                die ("Execute failed: (" . $mysqli->errno . ") " . $mysqli->error);
-            }
         }
         $mysqli->close();
+
+        return false;
     }
 
 
