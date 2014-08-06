@@ -7,6 +7,8 @@
  */
 session_start();
 
+
+
 if(!isset($_COOKIE['language']))
 {
     setcookie('language', '0'); //where 0 is English and 1 is Sinhala
@@ -17,6 +19,7 @@ if (isset($_POST["submit"])) //USer has clicked the submit button
 {
     //validate username and password
     header("Location: Template.php");
+
 }
 
 
