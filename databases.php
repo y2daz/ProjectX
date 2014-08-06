@@ -1,27 +1,43 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: User
+ * User: Shavin
  * Date: 8/5/14
  * Time: 12:00 PM
  */
 
     //1. create tbe database connection
 
-    $dbhost = "localhost";
-    $dbuser = "shavin";
-    $dbpass = "secretpassword";
-    $dbname = "testdb";
-    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
-    //test if connection occured
+    $dbHost = "localhost";
+    $dbUser = "root";
+    $dbPass = "secret";
+    $dbName = "";
 
-    if(mysqli_connect_errno()){
-        die("Database connection failed: " .
-                mysqli_connect_error() . " (" . mysqli_connect_errno() . ")"
-        );
+//    $connection = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+//
+//    //test if connection occured
+//
+//    if(mysqli_connect_errno()){
+//        die("Database connection failed: " .
+//                mysqli_connect_error() . " (" . mysqli_connect_errno() . ")"
+//        );
+//
+//    }
 
+    //Create Connection object
+    $mysqli = mysqli_connect( $dbHost, $dbUser, $dbPass, $dbName);
+
+    //Create connection object
+    $mysqli = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
+
+    $res = $mysqli->query("SELECT 'choices to please everybody.' AS _msg");
+    $row = $res->fetch_assoc();
+    echo $row['_msg'];
+
 
 ?>
 
@@ -29,17 +45,17 @@
 <?php
 
     //2. prepare the sql query
-
-    $query = "SELECT * FROM sub";
-    $result = mysqli_query($connection, $query);
-
-    //test if there is an error
-    if(!$result){
-
-            die("Database query failed.");
-    }
-
-
+//
+//    $query = "SELECT * FROM sub";
+//    $result = mysqli_query($connection, $query);
+//
+//    //test if there is an error
+//    if(!$result){
+//
+//            die("Database query failed.");
+//    }
+//
+//
 
 ?>
 
@@ -53,21 +69,21 @@
     <?php
 	
         //3. use returned data if any
-
-        while($row = mysqli_fetch_row($result)){
-            //output data from each row
-            var_dump($row);
-            echo "<hr />";
-
-
-        }
-
-    ?>
+//
+//        while($row = mysqli_fetch_row($result)){
+//            //output data from each row
+//            var_dump($row);
+//            echo "<hr />";
+//
+//
+//        }
+//
+//    ?>
 
     <?php
 
     //4. release the data
-    mysqli_free_result($result);
+//    mysqli_free_result($result);
 
     ?>
 
@@ -80,6 +96,7 @@
 
     //5 close the database
 
-    mysqli_close($connection);
+//    mysqli_close($connection);
+    $mysqli->close();
 
 ?>
