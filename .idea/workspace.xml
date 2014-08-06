@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="Working Manage Users. Retrieves user list from database.&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/manageUsers.php" afterPath="$PROJECT_DIR$/administration/manageUsers.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -48,7 +47,7 @@
       <file leaf-file-name="manageUsers.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="59" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.5637149" vertical-offset="558" max-vertical-offset="1584">
+            <state line="61" column="50" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.475162" vertical-offset="658" max-vertical-offset="1584">
               <folding>
                 <element signature="e#6#90#0" expanded="true" />
               </folding>
@@ -466,7 +465,11 @@
       <created>1407342557695</created>
       <updated>1407342557695</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Working Manage Users. Retrieves user list from database.">
+      <created>1407346093927</created>
+      <updated>1407346093927</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -506,7 +509,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added isFilled method" />
     <MESSAGE value="Fixed login return value" />
     <MESSAGE value="Minor changes&#10;" />
     <MESSAGE value="Minor changes to dbAccess&#10;&#10;" />
@@ -531,7 +533,8 @@
     <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
     <MESSAGE value="manageUsers php&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="manageUsers php&#10;" />
+    <MESSAGE value="Working Manage Users. Retrieves user list from database." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working Manage Users. Retrieves user list from database." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -734,7 +737,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="59" selection-start="1448" selection-end="1448" vertical-scroll-proportion="0.5637149" vertical-offset="558" max-vertical-offset="1584">
+        <state line="61" column="50" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.475162" vertical-offset="658" max-vertical-offset="1584">
           <folding>
             <element signature="e#6#90#0" expanded="true" />
           </folding>

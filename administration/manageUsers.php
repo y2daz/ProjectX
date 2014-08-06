@@ -58,8 +58,8 @@ ob_start();
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
                     echo $top;
                     echo "$row";
-                    echo "<td><input name=\"Delete." . $row . "\" type=\"button\" value=\"Reset\" /> </td> ";
-                    echo "<td><input name=\"\" type=\"button\" value=\"Delete\" /> </td> ";
+                    echo "<td><input name=\"Reset." . $row . "\" type=\"button\" value=\"Reset\" /> </td> ";
+                    echo "<td><input name=\"Delete." . $row . "\" type=\"button\" value=\"Delete\" /> </td> ";
                     echo "</td></tr>";
                 }
 
