@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/template.php" afterPath="$PROJECT_DIR$/template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -26,10 +26,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="template.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="template.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="9" selection-start="786" selection-end="786" vertical-scroll-proportion="0.8164147" vertical-offset="0" max-vertical-offset="926">
+            <state line="43" column="2" selection-start="802" selection-end="802" vertical-scroll-proportion="-28.666666" vertical-offset="0" max-vertical-offset="882">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="5" selection-start="626" selection-end="626" vertical-scroll-proportion="0.4384449" vertical-offset="116" max-vertical-offset="4140">
               <folding />
             </state>
           </provider>
@@ -57,7 +66,6 @@
         <option value="$PROJECT_DIR$/databases.php" />
         <option value="$PROJECT_DIR$/dbConnect.php" />
         <option value="$PROJECT_DIR$/formValidation.php" />
-        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/Styles/main.css" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/attendance/newMarkAttendance.php" />
@@ -78,6 +86,7 @@
         <option value="$PROJECT_DIR$/leaveManagement/newApproveLeave.php" />
         <option value="$PROJECT_DIR$/Template.php" />
         <option value="$PROJECT_DIR$/template.php" />
+        <option value="$PROJECT_DIR$/login.php" />
       </list>
     </option>
   </component>
@@ -396,7 +405,11 @@
       <created>1407338164130</created>
       <updated>1407338164130</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Fixed the reference path. Has to be individually edited">
+      <created>1407338317504</created>
+      <updated>1407338317504</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -436,7 +449,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added the database creation sql, run that on PHP My admin when you can." />
     <MESSAGE value="Added the ManaSystem user to sql" />
     <MESSAGE value="Gave manaSystem access" />
     <MESSAGE value="Gave manaSystem access in sql," />
@@ -461,7 +473,8 @@
     <MESSAGE value="Minor changes to Template&#10;" />
     <MESSAGE value="Refactored Template to Master" />
     <MESSAGE value="Added proper Template.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added proper Template.php" />
+    <MESSAGE value="Fixed the reference path. Has to be individually edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the reference path. Has to be individually edited" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -532,13 +545,6 @@
     <entry file="file://$PROJECT_DIR$/Styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="12" selection-start="345" selection-end="345" vertical-scroll-proportion="-1.0398741" vertical-offset="1333" max-vertical-offset="2286">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="25" selection-start="1290" selection-end="1290" vertical-scroll-proportion="0.71058315" vertical-offset="386" max-vertical-offset="4140">
           <folding />
         </state>
       </provider>
@@ -653,7 +659,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/template.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="9" selection-start="786" selection-end="786" vertical-scroll-proportion="0.8164147" vertical-offset="0" max-vertical-offset="926">
+        <state line="43" column="2" selection-start="802" selection-end="802" vertical-scroll-proportion="-28.666666" vertical-offset="0" max-vertical-offset="882">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="5" selection-start="626" selection-end="626" vertical-scroll-proportion="0.4384449" vertical-offset="116" max-vertical-offset="4140">
           <folding />
         </state>
       </provider>

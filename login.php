@@ -24,7 +24,7 @@ if (isset($_POST["submit"])) //USer has clicked the submit button
     {
         if (login($_POST["email"],$_POST["password"]))
         {
-            header("Location: Master.php");
+            header("Location: template.php");
             die();
         }
     }
