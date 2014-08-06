@@ -7,27 +7,13 @@
  */
     session_start();
 
-    /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
-    $fullPageHeight = 1400;
-
-    $footerTop = $fullPageHeight + 50;
-
+    ob_start();
 ?>
-<!DOCTYPE html>
 <html>
-
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
-    <script src="../jquery-1.11.1.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="../Styles/main.css">
-
-    <style type=text/css>
-
+<style type=text/css>
         #main{ height:<?php echo "$fullPageHeight" . "px";?> }
         #footer{ top:<?php echo "$footerTop" . "px";?> }
-
 
         h1{
             text-align: center;
@@ -51,7 +37,6 @@
         #attendance td.disabled{
             background-color: #ececec;
         }
-	
         input.button {
             position:relative;
             font-weight:bold;
@@ -59,37 +44,14 @@
             Right: -450px;
             top: 1150px;
         }
-    </style>
-
-    <script>
-
-        $(document).ready(function () {
-            $('#nav > li > a').click(function(){
-                if ($(this).attr('class') != 'active'){
-                    $('#nav li ul').slideUp(300);
-                    $(this).next().slideToggle(300);
-                    $('#nav li a').removeClass('active');
-                    $(this).addClass('active');
-                }
-                else{
-                    $('#nav li ul').slideUp(300);
-                    $('#nav li a').removeClass('active');
-                }
-            });
-        });
-
-
-    </script>
-
-
+</style>
 </head>
-<body>
 
+<body>
 <?php
     $class = "10A";
 ?>
 
-<div id="main">
     <h1>Keep Attendance</h1>
     <table id="classDate">
         <tr>
@@ -164,87 +126,19 @@
         ?>
 
     </table>
-</div>
-
-
-<!-- DO NOT EDIT FOLLOWING -->
-<div id="header">
-
-</div>
-
-<div id="footer">
-    <div id="aboutus">
-        <p> ABOUT US</p>
-        <span>We're pretty amazing.</span>
-
-
-    </div>
-</div>
-
-<div id="language">
-    <ul><a href="/PHP/KeepAttendance.php?lang=1">?????</a> | <a href="/PHP/KeepAttendance.php?lang=0">English</a></ul>
-</div>
-
-<div id="nav">
-        <li><a>Notices</a>
-                <ul>
-                    
-                </ul>
-    <li><a>Staff Management</a>
-        <ul>
-            <li><a href="#">Register Staff Member</a><hr /></li>
-            <li><a href="#">Search Staff Member</a></li>
-        </ul>
-    </li>
-    <li><a>Leave Management</a>
-        <ul>
-            <li><a href="#">Apply for Leave</a><hr /></li>
-            <li><a href="#">Approve Leave</a><hr /></li>
-            <li><a href="#">View Leave History</a></li>
-        </ul>
-    </li>
-    <li><a>Timetables</a>
-        <ul>
-            <li><a  href="#">Create Timetable by Teacher</a><hr /></li>
-            <li><a  href="#">Create Timetable by Class</a><hr /></li>
-            <li><a  href="#">Substitute Period by Teacher</a><hr /></li>
-            <li><a  href="#">Substitute Period by Class</a></li>
-        </ul>
-    </li>
-       <li><a>Substitute Teacher</a>
-                <ul>
-               </ul>
-    <li><a>Event Management</a>
-        <ul>
-            <li><a  href="#">View Event List</a><hr /></li>
-            <li><a  href="#">Manage Events</a></li>
-        </ul>
-    </li>
-    <li><a>Attendance</a>
-        <ul>
-            <li><a  href="#">Year plan </a><hr /></li>
-            <li><a  href="#">Keep Attendance</a><hr /></li>
-            <li><a  href="#">View Attendance</a><hr /></li>
-            <li><a  href="#">Reports</a></li>
-        </ul>
-    </li>
-	   <li><a>Marks and Grading</a>
-                <ul>
-                   
-                </ul>
-
-            </li>
-	      <li><a>Administrative Task</a>
-                <ul>
-                   
-                </ul>
-
-            </li>
-</div>
-
-
-
 
 
 </body>
 </html>
+<?php
+    //Assign all Page Specific variables
+    $fullPageHeight = 1400;
+    $footerTop = $fullPageHeight + 100;
+
+    $pageContent = ob_get_contents();
+    ob_end_clean();
+    $pageTitle= "Attendance";
+    //Apply the template
+    include("../Template.php");
+?>
+

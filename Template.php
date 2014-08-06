@@ -14,9 +14,9 @@
     }
 
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
-    $fullPageHeight = 700;
-
-    $footerTop = $fullPageHeight + 50;
+//    $fullPageHeight = 700;
+//
+//    $footerTop = $fullPageHeight + 50;
 
 
 ?>
@@ -24,14 +24,16 @@
 <html>
 
     <head>
+        <title><?php echo $pageTitle ?></title>
+
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-        <script src="jquery-1.11.1.min.js"></script>
-        <script src="common.js"></script>
+        <script src="/jquery-1.11.1.min.js"></script>
+        <script src="/common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
 
         <style type=text/css>
 
@@ -99,7 +101,9 @@
     <body>
 
         <div id="main">
-    
+            <?php
+                 echo $pageContent;
+            ?>
         </div>
 
 
@@ -162,8 +166,8 @@
             </li>
             <li><a>Attendance</a>
                 <ul>
-                    <li><a  href="attendance/markAttendance.php">Mark Attendance</a><hr /></li>
-                    <li><a  href="attendance/ViewAttendance.php">View Attendance</a></li>
+                    <li><a  href="/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
+                    <li><a  href="/attendance/viewAttendance.php">View Attendance</a></li>
                 </ul>
             </li>
             <li><a>Marks and Grading</a>

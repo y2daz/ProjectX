@@ -12,12 +12,11 @@
  */
 
 
-require_once("dbConnect.php");
-
-    $dbObj = new dbConnect();
+    require_once("dbConnect.php");
 
     function login($username, $password)
     {
+
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
@@ -49,7 +48,6 @@ require_once("dbConnect.php");
             }
         }
         $mysqli->close();
-
         return false;
     }
 
