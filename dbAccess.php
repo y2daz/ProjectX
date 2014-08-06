@@ -5,7 +5,6 @@
  * Date: 8/5/14
  * Time: 12:00 PM
  */
-
     require_once("dbConnect.php");
 
     $dbObj = new dbConnect();
@@ -16,8 +15,9 @@
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    $res = $mysqli->query("SELECT 'The SQL Works, people.' AS _msg");
-    $row = $res->fetch_assoc();
+    $result = $mysqli->query("SELECT 'The SQL Works, people.' AS _msg");
+    $row = $result->fetch_assoc();
+
     echo $row['_msg'];
 
 

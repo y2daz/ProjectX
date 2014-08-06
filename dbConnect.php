@@ -11,8 +11,8 @@ class dbConnect {
     public function getConnection()
     {
         $dbHost = "localhost";
-        $dbUser = "root";
-        $dbPass = "secret";
+        $dbUser = "manaSystem";
+        $dbPass = "SMevHZxMEJVfv4Kc";
         $dbName = "";
 
         //Create Connection object
