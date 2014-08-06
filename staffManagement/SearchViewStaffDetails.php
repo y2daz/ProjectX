@@ -231,13 +231,6 @@ h1 {
 table {
 		border-spacing:0px 5px;
 }
-
-.Search By {
-	position:absolute;
-	left:80px;
-	top:80px;
-	
-}
 th{
 	align:center;
 	color:white;

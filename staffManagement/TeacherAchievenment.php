@@ -40,7 +40,55 @@
             }
 
             /*Static Styles*/
-            /*INSERT ALL YOUR CSS HERE*/
+
+            body {
+                background-color:black;
+
+
+            }
+
+            h1 {
+
+                text-align:center;
+            }
+
+            .main {
+                position:absolute;
+                background-color:white;
+                height:500px;
+                width:800px;
+                left:273px;
+                top:85px;
+                border-radius:20px;
+                padding:10px;
+
+            }
+
+            table {
+                border-spacing:0px 5px;
+            }
+            th{
+                align:center;
+                color:white;
+                background-color:#154DC1;
+                height:30px;
+                padding:5px;
+            }
+
+            td {
+                padding:5px;
+            }
+
+
+
+            input.button {
+                position:relative;
+                font-weight:bold;
+                font-size:20px;
+                left:50px;
+                top:20px;
+            }
+
 
 
         </style>
@@ -202,68 +250,7 @@
 
 <html>
 <head>
-<style>
 
-body {
-	background-color:black;
-
-
-}
-
-* {
-	font-family:calibri;
-}
-
-h1 {
-
-	text-align:center;
-}
-
-.main {
-	position:absolute;
-	background-color:white;
-	height:500px;
-	width:800px;
-	left:273px;
-	top:85px;
-	border-radius:20px;
-	padding:10px;
-
-}
-
-table {
-		border-spacing:0px 5px;
-}
-
-.Teacher Achievement {
-	position:absolute;
-	left:80px;
-	top:80px;
-	
-}
-th{
-	align:center;
-	color:white;
-	background-color:#154DC1;
-	height:30px;
-	padding:5px;
-}
-
-td {	
-	padding:5px;
-}
-
-
-
-input.button {
-	position:relative;
-	font-weight:bold;
-	font-size:20px;
-	left:50px;
-	top:20px;
-}
-
-</style>
 
 <title>Vimukthi System - Staff Registration2</title>
 
