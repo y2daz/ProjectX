@@ -267,9 +267,55 @@ CREATE TABLE Student_Subject_Grade(
 
   PRIMARY KEY (AdmissionNo, SubjectID),
   FOREIGN KEY fk024 (AdmissionNo) REFERENCES Student(AdmissionNo),
-  FOREIGN KEY fk024 (SubjectID) REFERENCES Subject_Grade(SubjectID)
+  FOREIGN KEY fk025 (SubjectID) REFERENCES Subject_Grade(SubjectID)
 );
 CREATE TABLE TermMarks(
+  AdmissionNo VARCHAR(5),
+  SubjectID INTEGER,
+  Term INTEGER,
+  Mark INTEGER,
+  Remarks VARCHAR(127),
 
+  PRIMARY KEY (AdmissionNo, SubjectID, Term),
+  FOREIGN KEY fk026 (AdmissionNo, SubjectID) REFERENCES Student_Subject_Grade(AdmissionNo, SubjectID)
+);
 
-)
+# delimiter #
+# create procedure load_foo_test_data()
+#   begin
+#
+#     declare v_max int unsigned default 260;
+#     declare v_counter int unsigned default 0;
+#
+#     truncate table Attendance;
+#     start transaction;
+#     while v_counter < v_max do
+#       alter table Attendance (add column v_counter integer);
+#       set v_counter=v_counter+1;
+#     end while;
+#     commit;
+#   end #
+#
+# delimiter ;
+#
+# call load_foo_test_data();
+
+CREATE TABLE OLMarks(
+  IndexNo long,
+  AdmissionNo VARCHAR (5),
+  SubjectID integer,
+
+  PRIMARY KEY (IndexNo, SubjectID),
+  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo),
+  FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
+ );
+
+CREATE TABLE ALMarks(
+  IndexNo long,
+  AdmissionNo VARCHAR (5),
+  SubjectID integer,
+
+  PRIMARY KEY (IndexNo, SubjectID),
+  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo),
+  FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
+);
