@@ -12,6 +12,8 @@
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
 
+    define('ROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 //    $fullPageHeight = 700;
 //
@@ -32,7 +34,7 @@
         <script src="./common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="./Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo ROOT . "/Styles/main.css";?>">
 
         <style type=text/css>
 

@@ -11,13 +11,16 @@
  * Page title, and height are php variables you have to edit at the bottom.
  *
  */
-ob_start();
+
+    define('THISROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+
+    ob_start();
 ?>
 <html>
     <head>
         <style type=text/css>
-            #main{ height:800px }
-            #footer{ top:600px }
+            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
+            #footer{ top:<?php echo "$footerTop" . "px";?> }
 
             /*
             ADD YOUR CSS HERE
@@ -41,5 +44,5 @@ $pageTitle= "Template";
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-require_once("Master.php");
+require_once(THISROOT . "/Master.php");
 ?>

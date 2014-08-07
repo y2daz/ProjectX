@@ -10,14 +10,19 @@
 require_once("../formValidation.php");
 require_once("../dbAccess.php");
 
+define('THISROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+
 ob_start();
+
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Manage Users";
+
+
 ?>
     <html>
     <head>
         <style type=text/css>
-            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-            #footer{ top:<?php echo "$footerTop" . "px";?> }
-
             h1{
                 text-align: center;
             }
@@ -72,12 +77,8 @@ ob_start();
     </body>
     </html>
 <?php
-
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Manage Users";
-
-$pageContent = ob_get_contents();
-ob_end_clean();
-require_once("../Master.php");
+    $pageContent = ob_get_contents();
+    ob_end_clean();
+    require_once(THISROOT . "Master.php");
+    echo "" . THISROOT . "Master.php";
 ?>
