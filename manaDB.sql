@@ -204,7 +204,7 @@ CREATE  TABLE IF NOT EXISTS Student(
 
   PRIMARY KEY (AdmissionNo)
 );
-CREATE  TABLE IF NOT EXISTS ParentsInformation(
+CREATE TABLE IF NOT EXISTS ParentsInformation(
   AdmissionNo varchar(5),
   NamewithInitials Varchar(50),
   Parent_Guardian BIT, /*0 for parent. 1 for guardian */
@@ -218,7 +218,7 @@ CREATE  TABLE IF NOT EXISTS ParentsInformation(
   FOREIGN KEY fk017 (AdmissionNo) REFERENCES Student(AdmissionNo)
 );
 
-CREATE  TABLE IF NOT EXISTS Event(
+CREATE TABLE IF NOT EXISTS Event(
   EventID INTEGER,
   Name varCHAR(50),
   Description VARCHAR(200),
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS Transaction(
   FOREIGN KEY fk023 (EventID) REFERENCES Event(EventID)
 );
 
-CREATE  TABLE IF NOT EXISTS Student_Subject_Grade(
+CREATE TABLE IF NOT EXISTS Student_Subject_Grade(
   AdmissionNo VARCHAR(5),
   SubjectID INTEGER,
 
@@ -269,7 +269,7 @@ CREATE  TABLE IF NOT EXISTS Student_Subject_Grade(
   FOREIGN KEY fk024 (AdmissionNo) REFERENCES Student(AdmissionNo),
   FOREIGN KEY fk025 (SubjectID) REFERENCES Subject_Grade(SubjectID)
 );
-CREATE  TABLE IF NOT EXISTS TermMarks(
+CREATE TABLE IF NOT EXISTS TermMarks(
   AdmissionNo VARCHAR(5),
   SubjectID INTEGER,
   Term INTEGER,
@@ -325,4 +325,12 @@ CREATE TABLE IF NOT EXISTS Holiday(
   Day Date, /*Might store as integer*/
 
   PRIMARY KEY (Year, Day)
-)
+);
+
+CREATE TABLE IF NOT EXISTS Attendance(
+  AdmissionNo VARCHAR(5),
+  Year INTEGER,
+
+  PRIMARY KEY (AdmissionNo, Year),
+  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo)
+);

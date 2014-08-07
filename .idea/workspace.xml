@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="temp file for testing&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -24,7 +25,45 @@
     <favorites_list name="ProjectX" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="manaDB.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manaDB.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="311" column="0" selection-start="8021" selection-end="8021" vertical-scroll-proportion="-13.24138" vertical-offset="5214" max-vertical-offset="6138">
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="temp.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/temp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="45" selection-start="659" selection-end="659" vertical-scroll-proportion="0.37796977" vertical-offset="100" max-vertical-offset="1188">
+              <folding>
+                <element signature="e#6#87#0" expanded="true" />
+                <marker date="1407428874432" expanded="true" signature="406:445" placeholder="ALTER TABLE Attendance..." />
+                <marker date="1407428874432" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="79" selection-start="365" selection-end="428" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="1512">
+              <folding>
+                <marker date="1407426096803" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+                <marker date="1407426096803" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -63,22 +102,22 @@
         <option value="$PROJECT_DIR$/attendance/markAttendance.php" />
         <option value="$PROJECT_DIR$/leaveManagement/newApproveLeave.php" />
         <option value="$PROJECT_DIR$/Template.php" />
-        <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/manoj.txt" />
+        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/template.php" />
-        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
+        <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/temp.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="y" value="24" />
+    <option name="width" value="1920" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -121,20 +160,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ProjectX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjectX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjectX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="administration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,20 +511,40 @@
       <created>1407413083746</created>
       <updated>1407413083746</updated>
     </task>
-    <task id="LOCAL-00067" summary="Final SQL submission. Needs reviewing.&#10;">
-      <created>1407413127543</created>
-      <updated>1407413127543</updated>
+    <task id="LOCAL-00067" summary="Works on Ubuntu now. WIll try for everything now.">
+      <created>1407422234346</created>
+      <updated>1407422234346</updated>
     </task>
-    <task id="LOCAL-00068" summary="Final SQL submission. Needs reviewing.&#10;">
-      <created>1407429133877</created>
-      <updated>1407429133877</updated>
+    <task id="LOCAL-00068" summary="Works on Ubuntu now. WIll try for everything now.&#10;">
+      <created>1407424393471</created>
+      <updated>1407424393471</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="Fixed. Check fix on Windows.">
+      <created>1407425436124</created>
+      <updated>1407425436124</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Fixed. Check fix on Windows.&#10;">
+      <created>1407426002638</created>
+      <updated>1407426002638</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Login now auto-redirects to template page if already logged in.">
+      <created>1407426596500</created>
+      <updated>1407426596500</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Attendance table SQL">
+      <created>1407427290271</created>
+      <updated>1407427290271</updated>
+    </task>
+    <task id="LOCAL-00073" summary="temp file for testing">
+      <created>1407427852745</created>
+      <updated>1407427852745</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -507,7 +552,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29791668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -515,11 +560,11 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39876354" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39876354" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -555,13 +600,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added more LeaveManagement items to menu&#10;" />
-    <MESSAGE value="Added Approve Leave to Template&#10;" />
-    <MESSAGE value="Minor changes to Template&#10;" />
-    <MESSAGE value="Refactored Template to Master" />
-    <MESSAGE value="Added proper Template.php" />
-    <MESSAGE value="Fixed the reference path. Has to be individually edited" />
-    <MESSAGE value="minor change" />
     <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
     <MESSAGE value="manageUsers php&#10;" />
@@ -580,7 +618,14 @@
     <MESSAGE value="More changes to SQL&#10;&#10;" />
     <MESSAGE value="Final SQL submission. Needs reviewing." />
     <MESSAGE value="Final SQL submission. Needs reviewing.&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Final SQL submission. Needs reviewing.&#10;" />
+    <MESSAGE value="Works on Ubuntu now. WIll try for everything now." />
+    <MESSAGE value="Works on Ubuntu now. WIll try for everything now.&#10;" />
+    <MESSAGE value="Fixed. Check fix on Windows." />
+    <MESSAGE value="Fixed. Check fix on Windows.&#10;" />
+    <MESSAGE value="Login now auto-redirects to template page if already logged in." />
+    <MESSAGE value="Attendance table SQL" />
+    <MESSAGE value="temp file for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="temp file for testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -588,14 +633,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manaDB.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="0" selection-start="2126" selection-end="2126" vertical-scroll-proportion="0.0" vertical-offset="1070" max-vertical-offset="1666" />
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="41" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3451" />
@@ -756,11 +793,6 @@
         <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.019438446" vertical-offset="0" max-vertical-offset="926" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/formValidation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="11" selection-start="195" selection-end="195" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="926" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/attendance/studentwise.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="70" column="11" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-46.666668" vertical-offset="0" max-vertical-offset="1584" />
@@ -796,11 +828,6 @@
         <state line="27" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="0.52483803" vertical-offset="0" max-vertical-offset="4392" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="15" selection-start="780" selection-end="780" vertical-scroll-proportion="0.6911447" vertical-offset="116" max-vertical-offset="4140" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="34" selection-start="555" selection-end="562" vertical-scroll-proportion="-12.296296" vertical-offset="118" max-vertical-offset="1584" />
@@ -816,32 +843,82 @@
         <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/_superglobals.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="20" selection-start="1862" selection-end="1862" vertical-scroll-proportion="0.6857143" vertical-offset="816" max-vertical-offset="1411" />
+        <state line="118" column="0" selection-start="3751" selection-end="3751" vertical-scroll-proportion="0.05075594" vertical-offset="2077" max-vertical-offset="4176">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="71" column="0" selection-start="994" selection-end="1718" vertical-scroll-proportion="0.51428574" vertical-offset="901" max-vertical-offset="1513" />
+        <state line="12" column="0" selection-start="165" selection-end="372" vertical-scroll-proportion="0.116630666" vertical-offset="0" max-vertical-offset="1494">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template.php">
+    <entry file="file://$PROJECT_DIR$/formValidation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="26" selection-start="885" selection-end="898" vertical-scroll-proportion="0.8" vertical-offset="119" max-vertical-offset="714" />
+        <state line="13" column="11" selection-start="195" selection-end="195" vertical-scroll-proportion="0.15550756" vertical-offset="0" max-vertical-offset="926">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.54285717" vertical-offset="374" max-vertical-offset="3451" />
+        <state line="135" column="56" selection-start="4396" selection-end="4396" vertical-scroll-proportion="2.62419" vertical-offset="0" max-vertical-offset="3636">
+          <folding>
+            <marker date="1407425904747" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1407425904747" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1407425904747" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1407425904747" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="11" selection-start="632" selection-end="632" vertical-scroll-proportion="0.46652266" vertical-offset="0" max-vertical-offset="926">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="104" selection-end="133" vertical-scroll-proportion="-1.9827213" vertical-offset="1998" max-vertical-offset="4230">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="33" selection-start="944" selection-end="944" vertical-scroll-proportion="0.522807" vertical-offset="399" max-vertical-offset="5661" />
+        <state line="311" column="0" selection-start="8021" selection-end="8021" vertical-scroll-proportion="-13.24138" vertical-offset="5214" max-vertical-offset="6138">
+          <folding />
+        </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="79" selection-start="365" selection-end="428" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="1512">
+          <folding>
+            <marker date="1407426096803" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+            <marker date="1407426096803" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="45" selection-start="659" selection-end="659" vertical-scroll-proportion="0.37796977" vertical-offset="100" max-vertical-offset="1188">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+            <marker date="1407428874432" expanded="true" signature="406:445" placeholder="ALTER TABLE Attendance..." />
+            <marker date="1407428874432" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

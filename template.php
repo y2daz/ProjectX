@@ -12,9 +12,15 @@
  *
  */
 
-    define('THISROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 
-    ob_start();
+ob_start();
+
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Template";
+
+
 ?>
 <html>
     <head>
