@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/studentInformation/Searchclass.php" afterPath="$PROJECT_DIR$/studentInformation/SearchClass.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/studentInformation/StudntRegForm.php" afterPath="$PROJECT_DIR$/studentInformation/StudentRegistration.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master.php" afterPath="$PROJECT_DIR$/Master.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -31,7 +29,7 @@
       <file leaf-file-name="Master.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Master.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="165" column="94" selection-start="6513" selection-end="6513" vertical-scroll-proportion="0.45572355" vertical-offset="2548" max-vertical-offset="3744">
+            <state line="158" column="46" selection-start="6052" selection-end="6052" vertical-scroll-proportion="3.0712743" vertical-offset="0" max-vertical-offset="3744">
               <folding />
             </state>
           </provider>
@@ -547,7 +545,11 @@
       <created>1407430696275</created>
       <updated>1407430696275</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Added Student Information to Menu">
+      <created>1407433793462</created>
+      <updated>1407433793462</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -608,7 +610,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="manageUsers php&#10;" />
     <MESSAGE value="Working Manage Users. Retrieves user list from database." />
     <MESSAGE value="Minor fix" />
     <MESSAGE value="check" />
@@ -633,7 +634,8 @@
     <MESSAGE value="temp file for testing" />
     <MESSAGE value="More professional SQL file" />
     <MESSAGE value="Temp file fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Temp file fix" />
+    <MESSAGE value="Added Student Information to Menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Student Information to Menu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -917,7 +919,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="94" selection-start="6513" selection-end="6513" vertical-scroll-proportion="0.45572355" vertical-offset="2548" max-vertical-offset="3744">
+        <state line="158" column="46" selection-start="6052" selection-end="6052" vertical-scroll-proportion="3.0712743" vertical-offset="0" max-vertical-offset="3744">
           <folding />
         </state>
       </provider>
