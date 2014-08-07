@@ -311,7 +311,7 @@ CREATE TABLE IF NOT EXISTS OLMarks(
  );
 
 CREATE TABLE IF NOT EXISTS ALMarks(
-  IndexNo long,
+  IndexNo INTEGER,
   AdmissionNo VARCHAR (5),
   SubjectID integer,
 

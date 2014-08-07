@@ -29,7 +29,7 @@
       <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manaDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="327" column="1" selection-start="8406" selection-end="8406" vertical-scroll-proportion="0.942953" vertical-offset="4997" max-vertical-offset="5661">
+            <state line="313" column="17" selection-start="8076" selection-end="8076" vertical-scroll-proportion="0.6315789" vertical-offset="4961" max-vertical-offset="5661">
               <folding />
             </state>
           </provider>
@@ -492,7 +492,11 @@
       <created>1407412125964</created>
       <updated>1407412125964</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Final SQL submission. Needs reviewing.&#10;">
+      <created>1407413036444</created>
+      <updated>1407413036444</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -553,7 +557,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added applyForLeave to menu item" />
     <MESSAGE value="Added more LeaveManagement items to menu&#10;" />
     <MESSAGE value="Added Approve Leave to Template&#10;" />
     <MESSAGE value="Minor changes to Template&#10;" />
@@ -578,7 +581,8 @@
     <MESSAGE value="More changes to SQL&#10;" />
     <MESSAGE value="More changes to SQL&#10;&#10;" />
     <MESSAGE value="Final SQL submission. Needs reviewing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final SQL submission. Needs reviewing." />
+    <MESSAGE value="Final SQL submission. Needs reviewing.&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Final SQL submission. Needs reviewing.&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -838,7 +842,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="327" column="1" selection-start="8406" selection-end="8406" vertical-scroll-proportion="0.942953" vertical-offset="4997" max-vertical-offset="5661">
+        <state line="313" column="17" selection-start="8076" selection-end="8076" vertical-scroll-proportion="0.6315789" vertical-offset="4961" max-vertical-offset="5661">
           <folding />
         </state>
       </provider>
