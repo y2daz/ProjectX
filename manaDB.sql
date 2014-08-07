@@ -176,7 +176,7 @@ CREATE TABLE LeaveData(
 
   PRIMARY KEY (StaffID),
   FOREIGN KEY fk014 (StaffID) REFERENCES Staff(StaffID),
-)
+);
 CREATE TABLE IsSubstituted(
   StaffID VARCHAR(5),
   Grade integer,
@@ -189,6 +189,87 @@ CREATE TABLE IsSubstituted(
   FOREIGN KEY fk015 (StaffID) REFERENCES Staff(StaffID),
   FOREIGN KEY fk016 (Grade, Class, Day, Position, SubjectID) REFERENCES Timetable(Grade, Class, Day, Position, SubjectID)
   /*We have Day in the foreign key. Not sure about having that if we have Date.*/
-)
+);
 
-CREATE TABLE
+CREATE TABLE Student(
+  AdmissionNo varchar(5),
+  NameWithInitials Varchar(50),
+  Nationality_Race Integer,
+  Religion Integer,
+  Medium Integer,
+  Address varchar(100),
+  Grade Integer,
+  Class char(2),
+  House varchar(20),
+
+  PRIMARY KEY (AdmissionNo)
+);
+CREATE TABLE ParentsInformation(
+  AdmissionNo varchar(5),
+  NamewithInitials Varchar(50),
+  Parent_Guardian BIT, /*0 for parent. 1 for guardian */
+  Occupation Varchar(50),
+  PhoneLand VARCHAR(15),
+  PhoneMobile VARCHAR(15),
+  HomeAddress VARCHAR(100),
+  OfficeAddress VARCHAR(100),
+
+  PRIMARY KEY (AdmissionNo, NamewithInitials),
+  FOREIGN KEY fk017 (AdmissionNo) REFERENCES Student(AdmissionNo)
+);
+
+CREATE TABLE Event(
+  EventID INTEGER,
+  Name varCHAR(50),
+  Description VARCHAR(200),
+  Location VARCHAR(50),
+  Status integer, /*Postponed, cancelled, due, pending*/
+  EventDate Date,
+  EventCreator VARCHAR(5),
+  StartTime TIME.
+  EndTime TIME,
+
+  PRIMARY KEY (EventID),
+  FOREIGN KEY fk018 (EventCreator) REFERENCES Staff(StaffID)
+);
+CREATE TABLE Invitee(
+  EventID INTEGER,
+  AdmissionNo varchar(5),
+  ParentName Varchar(50),
+
+  PRIMARY KEY (EventID, AdmissionNo, ParentName),
+  FOREIGN KEY fk019 (EventID) REFERENCES Events(EventID),
+  FOREIGN KEY fk020 (AdmissionNo, ParentName) REFERENCES ParentsInformation(AdmissionNo, NamewithInitials)
+);
+CREATE TABLE EventManager(
+  EventID INTEGER,
+  StaffID varchar(5),
+
+  PRIMARY KEY (EventID, StaffID),
+  FOREIGN KEY fk021 (EventID) REFERENCES Events(EventID),
+  FOREIGN KEY fk022 (StaffID) REFERENCES Staff(StaffID)
+);
+CREATE TABLE Transaction(
+  EventID INTEGER,
+  TransactionID INTEGER,
+  TransactionDate Date,
+  TransactionType BIT, /*Income, Expenditure*/
+  Amount FLOAT,
+  Description VARCHAR (200),
+
+  PRIMARY KEY (EventID, TransactionID),
+  FOREIGN KEY fk023 (EventID) REFERENCES Events(EventID)
+);
+
+CREATE TABLE Student_Subject_Grade(
+  AdmissionNo VARCHAR(5),
+  SubjectID INTEGER,
+
+  PRIMARY KEY (AdmissionNo, SubjectID),
+  FOREIGN KEY fk024 (AdmissionNo) REFERENCES Student(AdmissionNo),
+  FOREIGN KEY fk024 (SubjectID) REFERENCES Subject_Grade(SubjectID)
+);
+CREATE TABLE TermMarks(
+
+
+)

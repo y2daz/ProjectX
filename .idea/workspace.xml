@@ -29,7 +29,7 @@
       <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manaDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="193" column="0" selection-start="4634" selection-end="4646" vertical-scroll-proportion="0.942953" vertical-offset="2719" max-vertical-offset="3383">
+            <state line="272" column="0" selection-start="6738" selection-end="6738" vertical-scroll-proportion="0.91442955" vertical-offset="4079" max-vertical-offset="4760">
               <folding />
             </state>
           </provider>
@@ -468,7 +468,15 @@
       <created>1407407729368</created>
       <updated>1407407729368</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="More changes to SQL&#10;&#10;">
+      <created>1407408649052</created>
+      <updated>1407408649052</updated>
+    </task>
+    <task id="LOCAL-00060" summary="More changes to SQL&#10;">
+      <created>1407409511302</created>
+      <updated>1407409511302</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -529,8 +537,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Account change final" />
-    <MESSAGE value="Added applyForLeave to Template." />
     <MESSAGE value="Minor fixes" />
     <MESSAGE value="Added applyForLeave to menu item" />
     <MESSAGE value="Added more LeaveManagement items to menu&#10;" />
@@ -554,7 +560,9 @@
     <MESSAGE value="Changes to sql&#10;&#10;" />
     <MESSAGE value="More changes to sql&#10;" />
     <MESSAGE value="More changes to SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="More changes to SQL" />
+    <MESSAGE value="More changes to SQL&#10;&#10;" />
+    <MESSAGE value="More changes to SQL&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="More changes to SQL&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -814,7 +822,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="193" column="0" selection-start="4634" selection-end="4646" vertical-scroll-proportion="0.942953" vertical-offset="2719" max-vertical-offset="3383">
+        <state line="272" column="0" selection-start="6738" selection-end="6738" vertical-scroll-proportion="0.91442955" vertical-offset="4079" max-vertical-offset="4760">
           <folding />
         </state>
       </provider>
