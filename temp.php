@@ -17,30 +17,38 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("ALTER TABLE Attendance(ADD COLUMN ? BIT);"))
+        $columnNo = 0;
+
+        if ($stmt = $mysqli->prepare("ALTER TABLE Attendance ADD COLUMN ? BIT;"))
         {
-            $stmt -> bind_param("ss", $password, $username);
-
-            if ($stmt->execute())
-            {
-                $stmt->store_result();
-
-                $OUTenteredPassword = NULL;
-                $OUTuserPassword = NULL;
-
-                $stmt->bind_result($OUTenteredPassword, $OUTuserPassword);
-
-                if( $stmt->num_rows > 0 )
-                {
-                    $stmt->fetch();
-                    if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
-                    {
-                        $_SESSION["user"]="$username";
-                        return true;
-                    }
-                }
-            }
+            $columnName = chr($columnNo/26)+(65-26);
+            echo $columnName;
+//            $stmt -> bind_param("s", $password);
+//
+//            if ($stmt->execute())
+//            {
+//                $stmt->store_result();
+//
+//                $OUTenteredPassword = NULL;
+//                $OUTuserPassword = NULL;
+//
+//                $stmt->bind_result($OUTenteredPassword, $OUTuserPassword);
+//
+//                if( $stmt->num_rows > 0 )
+//                {
+//                    $stmt->fetch();
+//                    if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
+//                    {
+//                        $_SESSION["user"]="$username";
+//                        return true;
+//                    }
+//                }
+//            }
         }
         $mysqli->close();
         return false;
     }
+
+    echo createAttendanceColumns();
+
+?>

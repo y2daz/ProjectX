@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/temp.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -27,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="manaDB.sql" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/manaDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="329" column="0" selection-start="8411" selection-end="8590" vertical-scroll-proportion="0.76623374" vertical-offset="5214" max-vertical-offset="6138">
+            <state line="311" column="0" selection-start="8021" selection-end="8021" vertical-scroll-proportion="-13.24138" vertical-offset="5214" max-vertical-offset="6138">
               <folding />
             </state>
           </provider>
@@ -39,14 +38,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="temp.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="temp.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/temp.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="38" selection-start="406" selection-end="447" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="918">
+            <state line="13" column="20" selection-start="219" selection-end="219" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="1062">
               <folding>
                 <element signature="e#6#87#0" expanded="true" />
-                <marker date="1407427031015" expanded="true" signature="406:446" placeholder="ALTER TABLE Attendance..." />
-                <marker date="1407427031015" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
+                <marker date="1407427790887" expanded="true" signature="430:469" placeholder="ALTER TABLE Attendance..." />
+                <marker date="1407427790887" expanded="true" signature="442:452" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -109,8 +108,8 @@
         <option value="$PROJECT_DIR$/template.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/temp.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/temp.php" />
       </list>
     </option>
   </component>
@@ -532,7 +531,11 @@
       <created>1407426596500</created>
       <updated>1407426596500</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Attendance table SQL">
+      <created>1407427290271</created>
+      <updated>1407427290271</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -593,7 +596,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Fixed the reference path. Has to be individually edited" />
     <MESSAGE value="minor change" />
     <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
@@ -618,7 +620,8 @@
     <MESSAGE value="Fixed. Check fix on Windows." />
     <MESSAGE value="Fixed. Check fix on Windows.&#10;" />
     <MESSAGE value="Login now auto-redirects to template page if already logged in." />
-    <option name="LAST_COMMIT_MESSAGE" value="Login now auto-redirects to template page if already logged in." />
+    <MESSAGE value="Attendance table SQL" />
+    <option name="LAST_COMMIT_MESSAGE" value="Attendance table SQL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -893,25 +896,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="38" selection-start="406" selection-end="447" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="918">
-          <folding>
-            <element signature="e#6#87#0" expanded="true" />
-            <marker date="1407427031015" expanded="true" signature="406:446" placeholder="ALTER TABLE Attendance..." />
-            <marker date="1407427031015" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="329" column="0" selection-start="8411" selection-end="8590" vertical-scroll-proportion="0.76623374" vertical-offset="5214" max-vertical-offset="6138">
+        <state line="311" column="0" selection-start="8021" selection-end="8021" vertical-scroll-proportion="-13.24138" vertical-offset="5214" max-vertical-offset="6138">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="20" selection-start="219" selection-end="219" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="1062">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+            <marker date="1407427790887" expanded="true" signature="430:469" placeholder="ALTER TABLE Attendance..." />
+            <marker date="1407427790887" expanded="true" signature="442:452" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
