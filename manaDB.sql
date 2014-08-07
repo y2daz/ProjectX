@@ -88,6 +88,107 @@ CREATE TABLE Blacklist(
 );
 
 
+CREATE TABLE Language(
+  Language integer,
+  Value VARCHAR(20),
+
+  PRIMARY KEY (Language)
+)
+CREATE TABLE LabelLanguage(
+  Label VARCHAR(50),
+  Language integer,
+  Value VARCHAR(200),
+
+  PRIMARY KEY (Label),
+  FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
+);
+CREATE TABLE LanguageGroup(
+  GroupNo integer,
+  GroupName VARCHAR(50),
+
+  PRIMARY KEY (GroupNo),
+  FOREIGN KEY fk005 (GroupName) REFERENCES LabelLanguage(Label)
+);
+CREATE TABLE LanguageOption(
+  GroupNo integer,
+  OptionNo integer,
+  Language integer,
+  Value VARCHAR(200),
+
+  PRIMARY KEY (GroupNo, OptionNo),
+  FOREIGN KEY fk005 (GroupNo) REFERENCES LanguageGroup(GroupNo),
+  FOREIGN KEY fk006 (Language) REFERENCES Language(Language)
+);
 
 
-CREATE TABLE LabelLanguage();
+CREATE TABLE Subject_Grade(
+  SubjectID Integer,
+  Grade integer,
+  Subject varchar(30),
+  Medium integer,
+
+  PRIMARY KEY (SubjectID),
+  FOREIGN KEY fk007 (Medium) REFERENCES Language(Language)
+);
+CREATE TABLE Teaches(
+  SubjectID Integer,
+  StaffID varchar(5),
+
+  PRIMARY KEY (SubjectID, StaffID),
+  FOREIGN KEY fk008 (SubjectID) REFERENCES Subject_Grade(SubjectID),
+  FOREIGN KEY fk009 (StaffID) REFERENCES Staff(StaffID)
+);
+
+CREATE TABLE Timetable(
+  Grade integer,
+  Class Char(2),
+  Day integer,
+  Position integer,
+  SubjectID INTEGER,
+  StaffID varchar(5),
+
+  PRIMARY KEY (Grade, Class, Day, Position, SubjectID),
+  FOREIGN KEY fk010 (SubjectID) REFERENCES Subject_Grade(SubjectID),
+  FOREIGN KEY fk011 (StaffID) REFERENCES Staff(StaffID)
+);
+
+CREATE TABLE ApplyLeave(
+  StaffID VARCHAR(5),
+  RequestDate Date, 
+  StartDate Date, 
+  EndDate Date, 
+  LeaveType INTEGER,
+  /*TimePeriod Integer,*/
+  OtherInformation VARCHAR(200),
+  Status INTEGER,
+  ReviewedBy VARCHAR(5), /*Approved/reject*/
+  ReviewedDate Date,
+
+  PRIMARY KEY (StaffID, StartDate),
+  FOREIGN KEY fk012 (StaffID) REFERENCES Staff(StaffID),
+  FOREIGN KEY fk013 (ReviewedBy) REFERENCES Staff(StaffID)
+);
+CREATE TABLE LeaveData(
+  StaffID VARCHAR(5),
+  OfficialLeave Integer,
+  MaternityLeave Integer,
+  OtherLeave Integer,
+
+  PRIMARY KEY (StaffID),
+  FOREIGN KEY fk014 (StaffID) REFERENCES Staff(StaffID),
+)
+CREATE TABLE IsSubstituted(
+  StaffID VARCHAR(5),
+  Grade integer,
+  Class Char(2),
+  Day integer,
+  Position integer,
+  SubjectID INTEGER,
+  Date DATE,
+
+  FOREIGN KEY fk015 (StaffID) REFERENCES Staff(StaffID),
+  FOREIGN KEY fk016 (Grade, Class, Day, Position, SubjectID) REFERENCES Timetable(Grade, Class, Day, Position, SubjectID)
+  /*We have Day in the foreign key. Not sure about having that if we have Date.*/
+)
+
+CREATE TABLE
