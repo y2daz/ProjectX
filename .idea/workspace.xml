@@ -29,7 +29,7 @@
       <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manaDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="313" column="17" selection-start="8076" selection-end="8076" vertical-scroll-proportion="0.6315789" vertical-offset="4961" max-vertical-offset="5661">
+            <state line="303" column="17" selection-start="7811" selection-end="7811" vertical-scroll-proportion="0.4631579" vertical-offset="4887" max-vertical-offset="5661">
               <folding />
             </state>
           </provider>
@@ -496,7 +496,11 @@
       <created>1407413036444</created>
       <updated>1407413036444</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Final SQL submission. Needs reviewing.&#10;">
+      <created>1407413083746</created>
+      <updated>1407413083746</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -842,7 +846,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="313" column="17" selection-start="8076" selection-end="8076" vertical-scroll-proportion="0.6315789" vertical-offset="4961" max-vertical-offset="5661">
+        <state line="303" column="17" selection-start="7811" selection-end="7811" vertical-scroll-proportion="0.4631579" vertical-offset="4887" max-vertical-offset="5661">
           <folding />
         </state>
       </provider>

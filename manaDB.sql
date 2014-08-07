@@ -301,7 +301,7 @@ CREATE  TABLE IF NOT EXISTS TermMarks(
 # call load_foo_test_data();
 
 CREATE TABLE IF NOT EXISTS OLMarks(
-  IndexNo long,
+  IndexNo INTEGER,
   AdmissionNo VARCHAR (5),
   SubjectID integer,
 
