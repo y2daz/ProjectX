@@ -133,7 +133,7 @@
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassInformation.php">Class Information</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/searchViewStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
 <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->

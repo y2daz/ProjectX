@@ -11,6 +11,7 @@ require_once("../formValidation.php");
 require_once("../dbAccess.php");
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 ob_start();
 
