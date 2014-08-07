@@ -26,7 +26,7 @@ FLUSH PRIVILEGES;
 
 use manaDB;
 
-CREATE TABLE User(
+CREATE  TABLE IF NOT EXISTS User(
 	userEmail varchar(50) primary key,
     userPassword varchar(50)
 );
@@ -38,7 +38,7 @@ INSERT INTO User values ('a', (SELECT PASSWORD('a')));
 
 
 
-CREATE TABLE Staff(
+CREATE  TABLE IF NOT EXISTS Staff(
   StaffID varchar(5) primary key,
   NamewithInitials varchar(60),
   DateofBirth date,
@@ -64,7 +64,7 @@ CREATE TABLE Staff(
   CourseofStudy Integer
 );
 
-CREATE TABLE ClassInformation(
+CREATE  TABLE IF NOT EXISTS ClassInformation(
   StaffID varchar(5),
   Grade INTEGER,
   Class char(2),
@@ -75,7 +75,7 @@ CREATE TABLE ClassInformation(
 
 /*SPORTS ACHIEVEMENTS*/
 
-CREATE TABLE Blacklist(
+CREATE  TABLE IF NOT EXISTS Blacklist(
   StaffID varchar(5),
   ListContributor varchar(5),
   EnterDate DATE,
@@ -88,13 +88,13 @@ CREATE TABLE Blacklist(
 );
 
 
-CREATE TABLE Language(
+CREATE  TABLE IF NOT EXISTS Language(
   Language integer,
   Value VARCHAR(20),
 
   PRIMARY KEY (Language)
-)
-CREATE TABLE LabelLanguage(
+);
+CREATE  TABLE IF NOT EXISTS LabelLanguage(
   Label VARCHAR(50),
   Language integer,
   Value VARCHAR(200),
@@ -102,14 +102,14 @@ CREATE TABLE LabelLanguage(
   PRIMARY KEY (Label),
   FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
 );
-CREATE TABLE LanguageGroup(
+CREATE  TABLE IF NOT EXISTS LanguageGroup(
   GroupNo integer,
   GroupName VARCHAR(50),
 
   PRIMARY KEY (GroupNo),
   FOREIGN KEY fk005 (GroupName) REFERENCES LabelLanguage(Label)
 );
-CREATE TABLE LanguageOption(
+CREATE  TABLE IF NOT EXISTS LanguageOption(
   GroupNo integer,
   OptionNo integer,
   Language integer,
@@ -121,7 +121,7 @@ CREATE TABLE LanguageOption(
 );
 
 
-CREATE TABLE Subject_Grade(
+CREATE  TABLE IF NOT EXISTS Subject_Grade(
   SubjectID Integer,
   Grade integer,
   Subject varchar(30),
@@ -130,7 +130,7 @@ CREATE TABLE Subject_Grade(
   PRIMARY KEY (SubjectID),
   FOREIGN KEY fk007 (Medium) REFERENCES Language(Language)
 );
-CREATE TABLE Teaches(
+CREATE  TABLE IF NOT EXISTS Teaches(
   SubjectID Integer,
   StaffID varchar(5),
 
@@ -139,7 +139,7 @@ CREATE TABLE Teaches(
   FOREIGN KEY fk009 (StaffID) REFERENCES Staff(StaffID)
 );
 
-CREATE TABLE Timetable(
+CREATE  TABLE IF NOT EXISTS Timetable(
   Grade integer,
   Class Char(2),
   Day integer,
@@ -152,7 +152,7 @@ CREATE TABLE Timetable(
   FOREIGN KEY fk011 (StaffID) REFERENCES Staff(StaffID)
 );
 
-CREATE TABLE ApplyLeave(
+CREATE  TABLE IF NOT EXISTS ApplyLeave(
   StaffID VARCHAR(5),
   RequestDate Date, 
   StartDate Date, 
@@ -168,16 +168,16 @@ CREATE TABLE ApplyLeave(
   FOREIGN KEY fk012 (StaffID) REFERENCES Staff(StaffID),
   FOREIGN KEY fk013 (ReviewedBy) REFERENCES Staff(StaffID)
 );
-CREATE TABLE LeaveData(
+CREATE  TABLE IF NOT EXISTS LeaveData(
   StaffID VARCHAR(5),
   OfficialLeave Integer,
   MaternityLeave Integer,
   OtherLeave Integer,
 
   PRIMARY KEY (StaffID),
-  FOREIGN KEY fk014 (StaffID) REFERENCES Staff(StaffID),
+  FOREIGN KEY fk014 (StaffID) REFERENCES Staff(StaffID)
 );
-CREATE TABLE IsSubstituted(
+CREATE  TABLE IF NOT EXISTS IsSubstituted(
   StaffID VARCHAR(5),
   Grade integer,
   Class Char(2),
@@ -191,7 +191,7 @@ CREATE TABLE IsSubstituted(
   /*We have Day in the foreign key. Not sure about having that if we have Date.*/
 );
 
-CREATE TABLE Student(
+CREATE  TABLE IF NOT EXISTS Student(
   AdmissionNo varchar(5),
   NameWithInitials Varchar(50),
   Nationality_Race Integer,
@@ -204,7 +204,7 @@ CREATE TABLE Student(
 
   PRIMARY KEY (AdmissionNo)
 );
-CREATE TABLE ParentsInformation(
+CREATE  TABLE IF NOT EXISTS ParentsInformation(
   AdmissionNo varchar(5),
   NamewithInitials Varchar(50),
   Parent_Guardian BIT, /*0 for parent. 1 for guardian */
@@ -218,7 +218,7 @@ CREATE TABLE ParentsInformation(
   FOREIGN KEY fk017 (AdmissionNo) REFERENCES Student(AdmissionNo)
 );
 
-CREATE TABLE Event(
+CREATE  TABLE IF NOT EXISTS Event(
   EventID INTEGER,
   Name varCHAR(50),
   Description VARCHAR(200),
@@ -226,30 +226,30 @@ CREATE TABLE Event(
   Status integer, /*Postponed, cancelled, due, pending*/
   EventDate Date,
   EventCreator VARCHAR(5),
-  StartTime TIME.
+  StartTime TIME,
   EndTime TIME,
 
   PRIMARY KEY (EventID),
   FOREIGN KEY fk018 (EventCreator) REFERENCES Staff(StaffID)
 );
-CREATE TABLE Invitee(
+CREATE TABLE IF NOT EXISTS Invitee(
   EventID INTEGER,
   AdmissionNo varchar(5),
   ParentName Varchar(50),
 
   PRIMARY KEY (EventID, AdmissionNo, ParentName),
-  FOREIGN KEY fk019 (EventID) REFERENCES Events(EventID),
+  FOREIGN KEY fk019 (EventID) REFERENCES Event(EventID),
   FOREIGN KEY fk020 (AdmissionNo, ParentName) REFERENCES ParentsInformation(AdmissionNo, NamewithInitials)
 );
-CREATE TABLE EventManager(
+CREATE TABLE IF NOT EXISTS EventManager(
   EventID INTEGER,
   StaffID varchar(5),
 
   PRIMARY KEY (EventID, StaffID),
-  FOREIGN KEY fk021 (EventID) REFERENCES Events(EventID),
+  FOREIGN KEY fk021 (EventID) REFERENCES Event(EventID),
   FOREIGN KEY fk022 (StaffID) REFERENCES Staff(StaffID)
 );
-CREATE TABLE Transaction(
+CREATE TABLE IF NOT EXISTS Transaction(
   EventID INTEGER,
   TransactionID INTEGER,
   TransactionDate Date,
@@ -258,10 +258,10 @@ CREATE TABLE Transaction(
   Description VARCHAR (200),
 
   PRIMARY KEY (EventID, TransactionID),
-  FOREIGN KEY fk023 (EventID) REFERENCES Events(EventID)
+  FOREIGN KEY fk023 (EventID) REFERENCES Event(EventID)
 );
 
-CREATE TABLE Student_Subject_Grade(
+CREATE  TABLE IF NOT EXISTS Student_Subject_Grade(
   AdmissionNo VARCHAR(5),
   SubjectID INTEGER,
 
@@ -269,7 +269,7 @@ CREATE TABLE Student_Subject_Grade(
   FOREIGN KEY fk024 (AdmissionNo) REFERENCES Student(AdmissionNo),
   FOREIGN KEY fk025 (SubjectID) REFERENCES Subject_Grade(SubjectID)
 );
-CREATE TABLE TermMarks(
+CREATE  TABLE IF NOT EXISTS TermMarks(
   AdmissionNo VARCHAR(5),
   SubjectID INTEGER,
   Term INTEGER,
@@ -300,7 +300,7 @@ CREATE TABLE TermMarks(
 #
 # call load_foo_test_data();
 
-CREATE TABLE OLMarks(
+CREATE TABLE IF NOT EXISTS OLMarks(
   IndexNo long,
   AdmissionNo VARCHAR (5),
   SubjectID integer,
@@ -310,7 +310,7 @@ CREATE TABLE OLMarks(
   FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
  );
 
-CREATE TABLE ALMarks(
+CREATE TABLE IF NOT EXISTS ALMarks(
   IndexNo long,
   AdmissionNo VARCHAR (5),
   SubjectID integer,
@@ -320,7 +320,7 @@ CREATE TABLE ALMarks(
   FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
 );
 
-CREATE TABLE Holiday(
+CREATE TABLE IF NOT EXISTS Holiday(
   Year INTEGER,
   Day Date, /*Might store as integer*/
 
