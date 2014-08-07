@@ -8,28 +8,24 @@
 
     require_once("dbAccess.php");
 
-
     function createAttendanceColumns(){
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
+//        $dbObj = new dbConnect();
+//        $mysqli = $dbObj->getConnection();
 
-        if ($mysqli->connect_errno) {
-            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-        }
+        $conn = mysqli_connect('localhost', "root", "secret", 'manaDB');
+        $columnName = "";
 
-        if ($stmt = $mysqli->prepare("ALTER TABLE Attendance ADD COLUMN ? BIT;"))
-        {
-            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-        }
         for ($columnNo = 0; $columnNo < 260; $columnNo++)
         {
-            $stmt -> bind_param('s', $columnName);
+//            $stmt -> bind_param('s', $columnName);
             $columnName = chr( ($columnNo/26)+(65)) . ($columnNo%26);
 //            echo ($columnNo/26) . "<br />";
 //            echo $columnNo . "<br />";
 //            echo $columnName . "<br />";
-            $stmt -> execute();
+//            $stmt -> execute();
             echo $columnName . "<br />";
+            mysqli_query($conn, " ALTER TABLE 'Attendance' ADD $columnName BIT;");
+
         }
 
 //
@@ -53,7 +49,7 @@
 //                }
 //            }
 //        }
-        $mysqli->close();
+        mysqli_close($conn);
     }
 
     createAttendanceColumns();
