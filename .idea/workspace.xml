@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="temp file for testing&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -27,25 +26,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/manaDB.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.21734358" vertical-offset="0" max-vertical-offset="20772">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="temp.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/temp.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="44" selection-start="290" selection-end="290" vertical-scroll-proportion="-8.962963" vertical-offset="10" max-vertical-offset="1116">
+            <state line="24" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="0.46652266" vertical-offset="0" max-vertical-offset="926">
               <folding>
-                <element signature="e#6#87#0" expanded="true" />
-                <marker date="1407430233792" expanded="true" signature="776:820" placeholder="ALTER TABLE ..." />
+                <marker date="1407430687505" expanded="true" signature="488:532" placeholder="ALTER TABLE ..." />
               </folding>
             </state>
           </provider>
@@ -108,8 +94,8 @@
         <option value="$PROJECT_DIR$/template.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/temp.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/temp.php" />
       </list>
     </option>
   </component>
@@ -539,13 +525,18 @@
       <created>1407427852745</created>
       <updated>1407427852745</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="More professional SQL file">
+      <created>1407430605448</created>
+      <updated>1407430605449</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -561,7 +552,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39876354" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -600,7 +590,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
     <MESSAGE value="manageUsers php&#10;" />
     <MESSAGE value="Working Manage Users. Retrieves user list from database." />
@@ -625,7 +614,8 @@
     <MESSAGE value="Login now auto-redirects to template page if already logged in." />
     <MESSAGE value="Attendance table SQL" />
     <MESSAGE value="temp file for testing" />
-    <option name="LAST_COMMIT_MESSAGE" value="temp file for testing" />
+    <MESSAGE value="More professional SQL file" />
+    <option name="LAST_COMMIT_MESSAGE" value="More professional SQL file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -897,24 +887,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/temp.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="44" selection-start="290" selection-end="290" vertical-scroll-proportion="-8.962963" vertical-offset="10" max-vertical-offset="1116">
-          <folding>
-            <element signature="e#6#87#0" expanded="true" />
-            <marker date="1407430233792" expanded="true" signature="776:820" placeholder="ALTER TABLE ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="284" selection-end="284" vertical-scroll-proportion="0.21734358" vertical-offset="0" max-vertical-offset="20772">
+        <state line="25" column="0" selection-start="633" selection-end="633" vertical-scroll-proportion="0.49396268" vertical-offset="0" max-vertical-offset="20772">
           <folding />
         </state>
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="594" selection-end="594" vertical-scroll-proportion="0.46652266" vertical-offset="0" max-vertical-offset="926">
+          <folding>
+            <marker date="1407430687505" expanded="true" signature="488:532" placeholder="ALTER TABLE ..." />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
