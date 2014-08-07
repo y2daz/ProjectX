@@ -16,7 +16,12 @@ if(!isset($_COOKIE['language']))
     setcookie('language', '0'); //where 0 is English and 1 is Sinhala
 }
 
-if (isset($_POST["submit"])) //USer has clicked the submit button
+if (isFilled($_SESSION["user"])) //User is already logged in
+{
+    header("Location: template.php");
+}
+
+if (isset($_POST["submit"])) //User has clicked the submit button
 {
     //validate username and password
 

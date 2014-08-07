@@ -42,6 +42,7 @@
                     $stmt->fetch();
                     if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
                     {
+                        $_SESSION["user"]="$username";
                         return true;
                     }
                 }
