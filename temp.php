@@ -17,13 +17,21 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $columnNo = 0;
-
         if ($stmt = $mysqli->prepare("ALTER TABLE Attendance ADD COLUMN ? BIT;"))
         {
-            $columnName = chr($columnNo/26)+(65-26);
-            echo $columnName;
-//            $stmt -> bind_param("s", $password);
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+        for ($columnNo = 0; $columnNo < 260; $columnNo++)
+        {
+            $stmt -> bind_param('s', $columnName);
+            $columnName = chr( ($columnNo/26)+(65)) . ($columnNo%26);
+//            echo ($columnNo/26) . "<br />";
+//            echo $columnNo . "<br />";
+//            echo $columnName . "<br />";
+            $stmt -> execute();
+            echo $columnName . "<br />";
+        }
+
 //
 //            if ($stmt->execute())
 //            {
@@ -44,11 +52,10 @@
 //                    }
 //                }
 //            }
-        }
+//        }
         $mysqli->close();
-        return false;
     }
 
-    echo createAttendanceColumns();
+    createAttendanceColumns();
 
 ?>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="temp file for testing&#10;">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/temp.php" afterPath="$PROJECT_DIR$/temp.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -41,11 +41,11 @@
       <file leaf-file-name="temp.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/temp.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="20" selection-start="219" selection-end="219" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="1062">
+            <state line="25" column="45" selection-start="659" selection-end="659" vertical-scroll-proportion="0.37796977" vertical-offset="100" max-vertical-offset="1188">
               <folding>
                 <element signature="e#6#87#0" expanded="true" />
-                <marker date="1407427790887" expanded="true" signature="430:469" placeholder="ALTER TABLE Attendance..." />
-                <marker date="1407427790887" expanded="true" signature="442:452" placeholder="INSERT INTO ..." />
+                <marker date="1407428874432" expanded="true" signature="406:445" placeholder="ALTER TABLE Attendance..." />
+                <marker date="1407428874432" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
               </folding>
             </state>
           </provider>
@@ -54,7 +54,7 @@
       <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="21" selection-start="448" selection-end="1270" vertical-scroll-proportion="-28.666666" vertical-offset="54" max-vertical-offset="1512">
+            <state line="23" column="79" selection-start="365" selection-end="428" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="1512">
               <folding>
                 <marker date="1407426096803" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
                 <marker date="1407426096803" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
@@ -535,7 +535,11 @@
       <created>1407427290271</created>
       <updated>1407427290271</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="temp file for testing">
+      <created>1407427852745</created>
+      <updated>1407427852745</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -596,7 +600,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="minor change" />
     <MESSAGE value="manageUsers php" />
     <MESSAGE value="manageUsers php&#10;&#10;" />
     <MESSAGE value="manageUsers php&#10;" />
@@ -621,7 +624,8 @@
     <MESSAGE value="Fixed. Check fix on Windows.&#10;" />
     <MESSAGE value="Login now auto-redirects to template page if already logged in." />
     <MESSAGE value="Attendance table SQL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Attendance table SQL" />
+    <MESSAGE value="temp file for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="temp file for testing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -886,16 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="21" selection-start="448" selection-end="1270" vertical-scroll-proportion="-28.666666" vertical-offset="54" max-vertical-offset="1512">
-          <folding>
-            <marker date="1407426096803" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
-            <marker date="1407426096803" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state line="311" column="0" selection-start="8021" selection-end="8021" vertical-scroll-proportion="-13.24138" vertical-offset="5214" max-vertical-offset="6138">
@@ -906,13 +900,23 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="79" selection-start="365" selection-end="428" vertical-scroll-proportion="-8.0" vertical-offset="108" max-vertical-offset="1512">
+          <folding>
+            <marker date="1407426096803" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+            <marker date="1407426096803" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/temp.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="20" selection-start="219" selection-end="219" vertical-scroll-proportion="0.2526998" vertical-offset="0" max-vertical-offset="1062">
+        <state line="25" column="45" selection-start="659" selection-end="659" vertical-scroll-proportion="0.37796977" vertical-offset="100" max-vertical-offset="1188">
           <folding>
             <element signature="e#6#87#0" expanded="true" />
-            <marker date="1407427790887" expanded="true" signature="430:469" placeholder="ALTER TABLE Attendance..." />
-            <marker date="1407427790887" expanded="true" signature="442:452" placeholder="INSERT INTO ..." />
+            <marker date="1407428874432" expanded="true" signature="406:445" placeholder="ALTER TABLE Attendance..." />
+            <marker date="1407428874432" expanded="true" signature="418:428" placeholder="INSERT INTO ..." />
           </folding>
         </state>
       </provider>
