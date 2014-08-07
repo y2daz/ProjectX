@@ -10,7 +10,7 @@
 require_once("../formValidation.php");
 require_once("../dbAccess.php");
 
-define('THISROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 
 ob_start();
 
@@ -79,6 +79,5 @@ $pageTitle= "Manage Users";
 <?php
     $pageContent = ob_get_contents();
     ob_end_clean();
-    require_once(THISROOT . "Master.php");
-    echo "" . THISROOT . "Master.php";
+    require_once(THISROOT . "/Master.php");
 ?>

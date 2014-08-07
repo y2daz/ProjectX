@@ -12,7 +12,7 @@
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
 
-    define('ROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+    define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 //    $fullPageHeight = 700;
@@ -30,11 +30,11 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-        <script src="./jquery-1.11.1.min.js"></script>
-        <script src="./common.js"></script>
+        <script src="/jquery-1.11.1.min.js"></script>
+        <script src="/common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="<?php echo ROOT . "/Styles/main.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo "/Styles/main.css";?>">
 
         <style type=text/css>
 
@@ -133,20 +133,20 @@
             </li>
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
-                    <li><a href="./staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
-                    <li><a href="./staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
-                    <li><a href="./staffManagement/ClassInformation.php">Class Information</a><hr /></li>
-                    <li><a href="./staffManagement/searchViewStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
+                    <li><a href="/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
+                    <li><a href="/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
+                    <li><a href="/staffManagement/ClassInformation.php">Class Information</a><hr /></li>
+                    <li><a href="/staffManagement/searchViewStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
 <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
-                    <li><a href="./staffManagement/teacherAchievenment.php">Staff Achievements</a></li>
+                    <li><a href="/staffManagement/teacherAchievenment.php">Staff Achievements</a></li>
                 </ul>
             </li>
             <li><a><?php echo $leaveManagement; ?></a>
                 <ul>
-                    <li><a href="./leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
-                    <li><a href="./leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
+                    <li><a href="/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
+                    <li><a href="/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
 <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
-                    <li><a href="./leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
+                    <li><a href="/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
                 </ul>
             </li>
             <li><a><?php echo $timetables; ?></a>
@@ -169,9 +169,9 @@
             </li>
             <li><a>Attendance</a>
                 <ul>
-                    <li><a  href="./attendance/markAttendance.php">Mark Attendance</a><hr /></li>
-                    <li><a  href="./attendance/classwise.php">Class-wise Report</a><hr /></li>
-                    <li><a  href="./attendance/studentwise.php">Student-wise Report</a></li>
+                    <li><a  href="/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
+                    <li><a  href="/attendance/classwise.php">Class-wise Report</a><hr /></li>
+                    <li><a  href="/attendance/studentwise.php">Student-wise Report</a></li>
                 </ul>
             </li>
             <li><a>Marks and Grading</a>
@@ -185,7 +185,7 @@
             <li><a>Administrative Tasks</a>
                 <ul>
                     <li><a  href="#">Manage Year Plan</a><hr /></li>
-                    <li><a  href="./administration/manageUsers.php">Manage Users</a></li>
+                    <li><a  href="/administration/manageUsers.php">Manage Users</a></li>
                 </ul>
             </li>
         </div>

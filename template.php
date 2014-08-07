@@ -12,7 +12,7 @@
  *
  */
 
-    define('THISROOT', $_SERVER['DOCUMENT_ROOT'] . "PHP/ProjectX");
+    define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 
     ob_start();
 ?>
