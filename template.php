@@ -13,11 +13,11 @@
  */
 ob_start();
 ?>
-    <html>
+<html>
     <head>
         <style type=text/css>
-            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-            #footer{ top:<?php echo "$footerTop" . "px";?> }
+            #main{ height:800px }
+            #footer{ top:600px }
 
             /*
             ADD YOUR CSS HERE
@@ -27,10 +27,11 @@ ob_start();
     </head>
     <body>
 
+    <p> TEST POST; PLEASE IGNORE.</p>
 <!--        ADD YOUR WEBPAGE HERE-->
 
     </body>
-    </html>
+</html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;
@@ -40,5 +41,5 @@ $pageTitle= "Template";
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-include("Master.php");
+require_once("Master.php");
 ?>

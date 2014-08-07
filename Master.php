@@ -28,11 +28,11 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-        <script src="/jquery-1.11.1.min.js"></script>
-        <script src="/common.js"></script>
+        <script src="./jquery-1.11.1.min.js"></script>
+        <script src="./common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="/Styles/main.css">
+        <link rel="stylesheet" type="text/css" href="./Styles/main.css">
 
         <style type=text/css>
 
@@ -101,7 +101,7 @@
 
         <div id="main">
             <?php
-                 echo $pageContent;
+                echo ($pageContent);
             ?>
         </div>
 
