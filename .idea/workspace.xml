@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="More changes to SQL&#10;">
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,7 +29,7 @@
       <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/manaDB.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="321" column="0" selection-start="7934" selection-end="7934" vertical-scroll-proportion="0.85738254" vertical-offset="4946" max-vertical-offset="5559">
+            <state line="325" column="0" selection-start="8012" selection-end="8012" vertical-scroll-proportion="0.88590604" vertical-offset="4997" max-vertical-offset="5661">
               <folding />
             </state>
           </provider>
@@ -484,7 +484,11 @@
       <created>1407411687912</created>
       <updated>1407411687913</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="More changes to SQL&#10;&#10;">
+      <created>1407411998900</created>
+      <updated>1407411998900</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -568,9 +572,9 @@
     <MESSAGE value="Changes to sql&#10;&#10;" />
     <MESSAGE value="More changes to sql&#10;" />
     <MESSAGE value="More changes to SQL" />
-    <MESSAGE value="More changes to SQL&#10;&#10;" />
     <MESSAGE value="More changes to SQL&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="More changes to SQL&#10;" />
+    <MESSAGE value="More changes to SQL&#10;&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="More changes to SQL&#10;&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -830,7 +834,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="321" column="0" selection-start="7934" selection-end="7934" vertical-scroll-proportion="0.85738254" vertical-offset="4946" max-vertical-offset="5559">
+        <state line="325" column="0" selection-start="8012" selection-end="8012" vertical-scroll-proportion="0.88590604" vertical-offset="4997" max-vertical-offset="5661">
           <folding />
         </state>
       </provider>

@@ -319,3 +319,10 @@ CREATE TABLE ALMarks(
   FOREIGN KEY (AdmissionNo) references Student(AdmissionNo),
   FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
 );
+
+CREATE TABLE Holiday(
+  Year INTEGER,
+  Day Date, /*Might store as integer*/
+
+  PRIMARY KEY (Year, Day)
+)
