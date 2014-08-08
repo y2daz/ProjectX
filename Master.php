@@ -162,10 +162,10 @@
             </li>
             <li><a>Student Information</a>
                 <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/StudentRegistration.php">Student Register</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/StudentRegistration.php">Register Student</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/studentInformation/SearchStudent.php">Search Student</a></li>
                 </ul>
-            </li>-
+            </li>
             <li><a><?php echo $eventManagement; ?></a>
                 <ul>
                     <li><a  href="#">View Event List</a><hr /></li>
