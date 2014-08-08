@@ -14,12 +14,14 @@ h2{
 #info{
     position: relative;
     top: 2px;
-    left: 20px;
+    left: 20px;;
 }
 
-#info  th{
+#info  td{
     width: 150px;
+    padding: 5px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 #info  tr{

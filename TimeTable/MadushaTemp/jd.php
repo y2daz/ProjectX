@@ -8,7 +8,7 @@
 
 ?>
 
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="script.js"></script>
@@ -22,14 +22,16 @@
 <h2>Choose Option</h2>
 
 <table id="info">
-    <td>
-        <th><input type="RADIO" name="Choice" value="Teacher"> by Teacher</th>
-        <th><input type="RADIO" name="Choice" value="Class"> by Class</th>
-    </td>
-
+    <tr>
+        <td><input type="RADIO" name="Choice" value="Teacher" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/> by Teacher</td>
+        <td><input type="RADIO" name="Choice" value="Class" onclick="document.getElementById('selection').innerHTML='Class : ';"/> by Class</td>
+    </tr>
+    <tr>
+        <td colspan="2"><span id="selection">Class : </span><input type="text1" name="class" value=""></td>
+    </tr>
 </table>
 
-<p>Class : <input type="text1" name="class" value=""></p>
+
 
 
 <table id="timetable" >
@@ -130,23 +132,23 @@
     </tr>
     <tr>
         <td >Subject 1</td>
-        <td ><input type="text2" name="t1"></td>
+        <td ><input type="text" name="t1"></td>
     </tr>
     <tr>
         <td >Subject 2</td>
-        <td ><input type="text2" name="t2"></td>
+        <td ><input type="text" name="t2"></td>
     </tr>
     <tr>
         <td >Subject 3</td>
-        <td ><input type="text2" name="t3"></td>
+        <td ><input type="text" name="t3"></td>
     </tr>
     <tr>
         <td >Subject 4</td>
-        <td ><input type="text2" name="t4"></td>
+        <td ><input type="text" name="t4"></td>
     </tr>
     <tr>
         <td >Subject 5</td>
-        <td ><input type="text2" name="t5"></td>
+        <td ><input type="text" name="t5"></td>
     </tr>
 
 </table>
