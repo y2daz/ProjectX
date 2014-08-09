@@ -33,6 +33,8 @@ $pageTitle= "Manage Users";
             }
             .userList{
                 border: 1px solid #005e77;
+                border-collapse: collapse;
+                border-spacing: 0;
             }
             .userList th{
                 background-color: #005e77;
@@ -45,6 +47,7 @@ $pageTitle= "Manage Users";
             .userList td{
                 padding: 5px;
                 text-align: center;
+                border: 1px solid #005e77;
             }
         </style>
     </head>
@@ -79,7 +82,10 @@ $pageTitle= "Manage Users";
 
 
             </table>
-
+            <form>
+            <input type="text"  required="true"  value=""/>
+            <input type="submit" value="Submit" name="Submit">
+            </form>
         </div>
     </body>
     </html>
