@@ -1,0 +1,182 @@
+
+h1{
+    text-align:center;
+}
+
+h2{
+    position: relative;
+    text-align:left;
+    left: 55px;
+    top : 10px;
+}
+
+
+#info{
+    position: relative;
+    top: 2px;
+    left: 20px;;
+}
+
+#info  td{
+    width: 150px;
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#info  tr{
+    width: 150px;
+    text-align: center;
+}
+
+
+p{
+    text-align: left;
+    position: relative;
+    left: 60px;
+    top: 15px;
+}
+
+
+#timetable{
+    position: relative;
+    top: 25px;
+    width: 900px;
+}
+
+#timetable, #timetable th, #timetable td{
+    border: 1px solid black;
+}
+
+#timetable  th{
+    width: 150;
+}
+
+#timetable  td{
+    width: 150;
+    text-align: center;
+}
+
+#timetable  tr{
+    height: 10px;
+}
+
+
+.text1 {
+    background: white;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDD inset;
+    color: #666;
+    outline: none;
+    height:20px;
+    width: 100px;
+}
+
+.text {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDD inset;
+    color: #666;
+    outline: none;
+    height:20px;
+    width: 150;
+}
+
+
+.text2 {
+    background: white;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #DDD inset;
+    color: #666;
+    outline: none;
+    height:20px;
+    width: 230px;
+}
+
+
+#assign{
+    position: relative;
+    top: 25px;
+    ;
+}
+
+#assign, #assign th, #assign td{
+    border: 1px solid black;
+}
+
+#assign  th{
+    width: 230px;
+}
+
+#assign  td{
+    width: 230px;
+    text-align: center;
+}
+
+#assign  tr{
+    height: 10px;
+}
+
+#submit{
+    position: relative;
+    top: 50px;
+}
+
+#submit  th{
+    width: 200px;
+    text-align: center;
+}
+
+#submit  tr{
+    width: 390px;
+    text-align: center;
+}
+
+
+#tinfo{
+    position: relative;
+    top: 15px;
+    left: 36px;
+}
+
+#tinfo  th{
+    width: 100px;
+    text-align: center;
+}
+
+#tinfo  tr{
+    width: 300px;
+    text-align: center;
+}
+
+#gradesubject{
+    position: relative;
+    top: 25px;
+    width: 200px;
+}
+
+#gradesubject, #gradesubject th, #gradesubject td{
+    border: 1px solid black;
+}
+
+#gradesubject  th{
+    width: 150;
+}
+
+#gradesubject  td{
+    width: 150;
+    text-align: center;
+    height: 20px;
+}
+
+#gradesubject  tr{
+    height: 10px;
+}
+
+
+
+
+
