@@ -1,3 +1,44 @@
+DROP TABLE LanguageOption;
+DROP TABLE LanguageGroup;
+DROP TABLE LabelLanguage;
+
+CREATE  TABLE IF NOT EXISTS Language(
+  Language integer,
+  Value VARCHAR(20),
+
+  PRIMARY KEY (Language)
+);
+
+CREATE  TABLE IF NOT EXISTS LabelLanguage(
+  Label VARCHAR(50),
+  Language integer,
+  Value VARCHAR(200),
+
+  PRIMARY KEY (Label, Language),
+  FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
+);
+
+CREATE  TABLE IF NOT EXISTS LanguageGroup(
+  GroupNo integer,
+  GroupName VARCHAR(50),
+
+  PRIMARY KEY (GroupNo),
+  FOREIGN KEY fk005 (GroupName) REFERENCES LabelLanguage(Label)
+);
+CREATE  TABLE IF NOT EXISTS LanguageOption(
+  GroupNo integer,
+  OptionNo integer,
+  Language integer,
+  Value VARCHAR(200),
+
+  PRIMARY KEY (GroupNo, OptionNo),
+  FOREIGN KEY fk005 (GroupNo) REFERENCES LanguageGroup(GroupNo),
+  FOREIGN KEY fk006 (Language) REFERENCES Language(Language)
+);
+
+INSERT INTO Language VALUES (0, "English");
+INSERT INTO Language VALUES (1, "Sinhala");
+
 INSERT INTO LabelLanguage VALUES ("staffManagement", 0, "Staff Management");
 INSERT INTO LabelLanguage VALUES ("leaveManagement", 0, "Leave Management");
 INSERT INTO LabelLanguage VALUES ("timetables", 0, "Timetables");

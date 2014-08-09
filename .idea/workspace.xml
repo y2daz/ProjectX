@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/enterData.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master.php" afterPath="$PROJECT_DIR$/Master.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/enterData.sql" afterPath="$PROJECT_DIR$/enterData.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -42,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dbAccess.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="13" selection-start="2700" selection-end="2700" vertical-scroll-proportion="0.7580994" vertical-offset="0" max-vertical-offset="936">
+            <state line="54" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="936">
               <folding>
                 <element signature="n#login#0;n#!!top" expanded="false" />
                 <element signature="n#getAllUsers#0;n#!!top" expanded="false" />
@@ -53,6 +50,30 @@
                 <marker date="1407606227316" expanded="true" signature="1593:1619" placeholder="Select userE..User..." />
                 <marker date="1407606227316" expanded="true" signature="2296:2372" placeholder="SELECT `Valu..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manaDB.sql" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manaDB.sql">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="90" column="0" selection-start="2185" selection-end="2293" vertical-scroll-proportion="-6.206897" vertical-offset="1440" max-vertical-offset="6174">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="enterData.sql" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/enterData.sql">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.43506494" vertical-offset="318" max-vertical-offset="1242">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -105,6 +126,7 @@
         <option value="$PROJECT_DIR$/temp.sql" />
         <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
+        <option value="$PROJECT_DIR$/enterData.sql" />
       </list>
     </option>
   </component>
@@ -584,7 +606,11 @@
       <created>1407601232387</created>
       <updated>1407601232387</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Added database use for language. Put that into the master page (and by extension template).">
+      <created>1407606940056</created>
+      <updated>1407606940056</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -645,7 +671,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Refactored Template to Master" />
     <MESSAGE value="Added proper Template.php" />
     <MESSAGE value="Fixed the reference path. Has to be individually edited" />
     <MESSAGE value="minor change" />
@@ -670,7 +695,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
     <MESSAGE value="Conflict resolution" />
     <MESSAGE value="Added language records to DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added language records to DB" />
+    <MESSAGE value="Added database use for language. Put that into the master page (and by extension template)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added database use for language. Put that into the master page (and by extension template)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -937,26 +963,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/manaDB.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="2" selection-start="2292" selection-end="2292" vertical-scroll-proportion="0.17532468" vertical-offset="1548" max-vertical-offset="6174">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enterData.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="33" selection-start="1712" selection-end="1712" vertical-scroll-proportion="0.42857143" vertical-offset="0" max-vertical-offset="924">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="73" column="45" selection-start="2237" selection-end="2237" vertical-scroll-proportion="-22.666666" vertical-offset="702" max-vertical-offset="3456">
@@ -970,7 +976,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="13" selection-start="2700" selection-end="2700" vertical-scroll-proportion="0.7580994" vertical-offset="0" max-vertical-offset="936">
+        <state line="54" column="0" selection-start="1317" selection-end="1317" vertical-scroll-proportion="-8.666667" vertical-offset="0" max-vertical-offset="936">
           <folding>
             <element signature="n#login#0;n#!!top" expanded="false" />
             <element signature="n#getAllUsers#0;n#!!top" expanded="false" />
@@ -978,6 +984,26 @@
             <marker date="1407606227316" expanded="true" signature="1593:1619" placeholder="Select userE..User..." />
             <marker date="1407606227316" expanded="true" signature="2296:2372" placeholder="SELECT `Valu..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="0" selection-start="2185" selection-end="2293" vertical-scroll-proportion="-6.206897" vertical-offset="1440" max-vertical-offset="6174">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/enterData.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="953" selection-end="953" vertical-scroll-proportion="0.43506494" vertical-offset="318" max-vertical-offset="1260">
+          <folding />
         </state>
       </provider>
     </entry>
