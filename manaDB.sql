@@ -94,6 +94,9 @@ CREATE  TABLE IF NOT EXISTS Language(
 
   PRIMARY KEY (Language)
 );
+
+INSERT INTO Language VALUES (0, "English"), (1, "Sinhala");
+
 CREATE  TABLE IF NOT EXISTS LabelLanguage(
   Label VARCHAR(50),
   Language integer,
@@ -102,6 +105,7 @@ CREATE  TABLE IF NOT EXISTS LabelLanguage(
   PRIMARY KEY (Label),
   FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
 );
+
 CREATE  TABLE IF NOT EXISTS LanguageGroup(
   GroupNo integer,
   GroupName VARCHAR(50),

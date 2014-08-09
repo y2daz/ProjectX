@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -26,64 +27,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="markAttendance.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="17" selection-start="2031" selection-end="2031" vertical-scroll-proportion="-0.0" vertical-offset="1530" max-vertical-offset="2538">
-              <folding />
+            <state line="83" column="0" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-32.296295" vertical-offset="532" max-vertical-offset="1602">
+              <folding>
+                <marker date="1407600965095" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+                <marker date="1407600965095" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="6" selection-start="58" selection-end="58" vertical-scroll-proportion="0.058189657" vertical-offset="0" max-vertical-offset="928">
-              <folding />
-            </state>
+      <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/manaDB.sql">
+          <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createTimeTablebyClass.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TimeTable/createTimeTablebyClass.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="316" column="4" selection-start="354" selection-end="8376" vertical-scroll-proportion="0.0" vertical-offset="5688" max-vertical-offset="10044">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Grade_Subject.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Temp/Grade_Subject.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="37" selection-start="292" selection-end="292" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1008">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Styles/main.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="12" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="2286">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="162">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="15" selection-start="772" selection-end="772" vertical-scroll-proportion="0.0" vertical-offset="756" max-vertical-offset="4230">
+            <state line="97" column="59" selection-start="2294" selection-end="2353" vertical-scroll-proportion="0.33116883" vertical-offset="1440" max-vertical-offset="6210">
               <folding />
             </state>
           </provider>
@@ -92,16 +54,7 @@
       <file leaf-file-name="Master.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Master.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="0" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0" vertical-offset="738" max-vertical-offset="3744">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="classwise.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="14" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1584">
+            <state line="19" column="40" selection-start="417" selection-end="417" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="3744">
               <folding />
             </state>
           </provider>
@@ -125,11 +78,9 @@
         <option value="$PROJECT_DIR$/staffManagement/ClassroomInformation.php" />
         <option value="$PROJECT_DIR$/staffManagement/TeacherAchievenment.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/common.js" />
         <option value="$PROJECT_DIR$/databases.php" />
         <option value="$PROJECT_DIR$/dbConnect.php" />
         <option value="$PROJECT_DIR$/formValidation.php" />
-        <option value="$PROJECT_DIR$/Styles/main.css" />
         <option value="$PROJECT_DIR$/attendance/newMarkAttendance.php" />
         <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
         <option value="$PROJECT_DIR$/attendance/newClasswise.php" />
@@ -147,13 +98,15 @@
         <option value="$PROJECT_DIR$/leaveManagement/newApproveLeave.php" />
         <option value="$PROJECT_DIR$/Template.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/manoj.txt" />
-        <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/template.php" />
         <option value="$PROJECT_DIR$/administration/manageUsers.php" />
-        <option value="$PROJECT_DIR$/manaDB.sql" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/Styles/main.css" />
+        <option value="$PROJECT_DIR$/common.js" />
+        <option value="$PROJECT_DIR$/Master.php" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
+        <option value="$PROJECT_DIR$/manaDB.sql" />
       </list>
     </option>
   </component>
@@ -218,6 +171,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Temp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Styles" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -597,13 +564,18 @@
       <created>1407494571740</created>
       <updated>1407494571740</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="Conflict resolution">
+      <created>1407594013461</created>
+      <updated>1407594013461</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30128205" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -619,7 +591,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30128205" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39876354" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -658,7 +629,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added Approve Leave to Template&#10;" />
     <MESSAGE value="Minor changes to Template&#10;" />
     <MESSAGE value="Refactored Template to Master" />
     <MESSAGE value="Added proper Template.php" />
@@ -683,7 +653,8 @@
     <MESSAGE value="Final SQL submission. Needs reviewing." />
     <MESSAGE value="Final SQL submission. Needs reviewing.&#10;" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;.idea/workspace.xml&#10;" />
+    <MESSAGE value="Conflict resolution" />
+    <option name="LAST_COMMIT_MESSAGE" value="Conflict resolution" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -801,11 +772,6 @@
         <state line="56" column="39" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.23660715" vertical-offset="796" max-vertical-offset="6822" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="26" selection-start="187" selection-end="187" vertical-scroll-proportion="0.16998951" vertical-offset="0" max-vertical-offset="953" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dulip1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="953" />
@@ -871,11 +837,6 @@
         <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="20" selection-start="1862" selection-end="1862" vertical-scroll-proportion="0.6857143" vertical-offset="816" max-vertical-offset="1411" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="71" column="0" selection-start="994" selection-end="1718" vertical-scroll-proportion="0.51428574" vertical-offset="901" max-vertical-offset="1513" />
@@ -884,14 +845,6 @@
     <entry file="file://$PROJECT_DIR$/template.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="46" column="26" selection-start="885" selection-end="898" vertical-scroll-proportion="0.8" vertical-offset="119" max-vertical-offset="714" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manaDB.sql">
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="33" selection-start="944" selection-end="944" vertical-scroll-proportion="0.522807" vertical-offset="399" max-vertical-offset="5661" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/formValidation.php">
@@ -904,6 +857,27 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="621" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="6" selection-start="58" selection-end="58" vertical-scroll-proportion="0.058189657" vertical-offset="0" max-vertical-offset="162">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="28" selection-start="2881" selection-end="2907" vertical-scroll-proportion="0.4859611" vertical-offset="1530" max-vertical-offset="2538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TimeTable/createTimeTablebyClass.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="316" column="4" selection-start="354" selection-end="8376" vertical-scroll-proportion="0.0" vertical-offset="5688" max-vertical-offset="10044">
@@ -913,21 +887,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Temp/Grade_Subject.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="37" selection-start="292" selection-end="292" vertical-scroll-proportion="-0.0" vertical-offset="221" max-vertical-offset="952">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="12" selection-start="345" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2159">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="162">
+        <state line="13" column="37" selection-start="292" selection-end="292" vertical-scroll-proportion="0.15550756" vertical-offset="0" max-vertical-offset="926">
           <folding />
         </state>
       </provider>
@@ -939,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Master.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="0" selection-start="1050" selection-end="1050" vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="3536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="14" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1496">
@@ -953,16 +906,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+    <entry file="file://$PROJECT_DIR$/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="17" selection-start="2031" selection-end="2031" vertical-scroll-proportion="-0.0" vertical-offset="1530" max-vertical-offset="2538">
+        <state line="12" column="1" selection-start="249" selection-end="249" vertical-scroll-proportion="0.22665268" vertical-offset="0" max-vertical-offset="953">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/Styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="6" selection-start="58" selection-end="58" vertical-scroll-proportion="0.058189657" vertical-offset="0" max-vertical-offset="162">
+        <state line="14" column="18" selection-start="252" selection-end="252" vertical-scroll-proportion="0.2644281" vertical-offset="0" max-vertical-offset="2286">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="0" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-32.296295" vertical-offset="532" max-vertical-offset="1602">
+          <folding>
+            <marker date="1407600965095" expanded="true" signature="478:546" placeholder="Select PASSW..User..." />
+            <marker date="1407600965095" expanded="true" signature="1553:1579" placeholder="Select userE..User..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Master.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="40" selection-start="417" selection-end="417" vertical-scroll-proportion="-12.666667" vertical-offset="0" max-vertical-offset="3744">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="59" selection-start="2294" selection-end="2353" vertical-scroll-proportion="0.33116883" vertical-offset="1440" max-vertical-offset="6210">
           <folding />
         </state>
       </provider>
