@@ -13,6 +13,7 @@
 
 
     require_once("dbConnect.php");
+    require_once("formValidation.php");
 
     function login($username, $password)
     {
@@ -79,9 +80,32 @@
         return $set;
     }
 
-    function getLanguage()
+    function getLanguage($label, $language)
     {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
 
+        $mysqli->set_charset("utf8") ;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("SELECT `Value` FROM `LabelLanguage` WHERE `Label`=? AND `Language`=? LIMIT 1;"))
+        {
+            $stmt -> bind_param("ss", $label, $language);
+
+            if ($stmt->execute())
+            {
+                $OUTvalue = "% NO LANG VAL %";
+                $stmt->bind_result($OUTvalue);
+                $stmt->fetch();
+
+                $stmt->close();
+                return $OUTvalue;
+            }
+        }
+        $mysqli->close();
     }
 
 

@@ -95,14 +95,12 @@ CREATE  TABLE IF NOT EXISTS Language(
   PRIMARY KEY (Language)
 );
 
-INSERT INTO Language VALUES (0, "English"), (1, "Sinhala");
-
 CREATE  TABLE IF NOT EXISTS LabelLanguage(
   Label VARCHAR(50),
   Language integer,
   Value VARCHAR(200),
 
-  PRIMARY KEY (Label),
+  PRIMARY KEY (Label, Language),
   FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
 );
 

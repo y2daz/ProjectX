@@ -6,13 +6,15 @@
  * Time: 17:04
  */
     session_start();
-
+    require_once("dbAccess.php");
     if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+
 
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 //    $fullPageHeight = 700;
@@ -67,36 +69,18 @@
     </head>
     <?php //Get language and make changes
 
-        if($_COOKIE["language"] == "0")
-        {
-            $staffManagement = "Staff Management";
-            $leaveManagement = "Leave Management";
-            $timetables = "Timetables";
-            $eventManagement = "Event Management";
+        $staffManagement = getLanguage("staffManagement", $_COOKIE["language"]);
+        $leaveManagement = getLanguage("leaveManagement ", $_COOKIE["language"]);
+        $eventManagement = getLanguage("eventManagement ", $_COOKIE["language"]);
+        $timetables = getLanguage("timetables ", $_COOKIE["language"]);
+        $registerStaffMember = getLanguage("registerStaffMember ", $_COOKIE["language"]);
+        $searchStaffMember = getLanguage("searchStaffMember ", $_COOKIE["language"]);
+        $applyForLeave = getLanguage("applyForLeave ", $_COOKIE["language"]);
+        $approveLeave = getLanguage("approveLeave ", $_COOKIE["language"]);
+        $viewLeaveHistory = getLanguage("viewLeaveHistory ", $_COOKIE["language"]);
+        $createTimetableByTeacher = getLanguage("createTimetableByTeacher ", $_COOKIE["language"]);
+        $createTimetableByClass = getLanguage("createTimetableByClass ", $_COOKIE["language"]);
 
-            $registerStaffMember = "Register Staff Member";
-            $searchStaffMember = "Search Staff Member";
-            $applyForLeave = "Apply for Leave";
-            $approveLeave = "Approve Leave";
-            $viewLeaveHistory = "View Leave History";
-            $createTimetableByTeacher = "Create Timetable by Teacher";
-            $createTimetableByClass = "Create Timetable by Class";
-        }
-         else
-        {
-            $staffManagement = "කාර්යමණ්ඩලය කළමනාකරණය";
-            $leaveManagement = "නිවාඩුව කළමනාකරණය";
-            $timetables = "කාලසටහන";
-            $eventManagement = "උත්සවය කළමනාකරණය";
-
-            $registerStaffMember = "කාර්යමණ්ඩලය වාර්තාකරන්න";
-            $searchStaffMember = "කාර්යමණ්ඩලය සෙවීම";
-            $applyForLeave = "නිවාඩු ඉල්ලීම්කිරීම";
-            $approveLeave = "නිවාඩු අනුමතකිරීම";
-            $viewLeaveHistory = "ඉකුත් වූ නිවාඩු";
-            $createTimetableByTeacher = "ගුරුවරයා විසින් කාලසටහන සැකසුම";
-            $createTimetableByClass = "පන්තිය විසින් කාලසටහන සැකසුම";
-        }
     ?>
     <body>
 
