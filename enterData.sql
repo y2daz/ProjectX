@@ -1,3 +1,16 @@
+USE manaDB;
+
+DROP TABLE IF EXISTS User;
+
+CREATE  TABLE IF NOT EXISTS User(
+  userEmail varchar(50) primary key,
+  userPassword varchar(50),
+  accessLevel INTEGER DEFAULT 1 #Where 1 is administrator. 2 is teacher.
+);
+
+INSERT INTO User values ('y', (SELECT PASSWORD('a')), 1);
+INSERT INTO User values ('a', (SELECT PASSWORD('a')), 1);
+
 DROP TABLE LanguageOption;
 DROP TABLE LanguageGroup;
 DROP TABLE LabelLanguage;
