@@ -17,6 +17,8 @@ li, ul {
     float: left;
     width: 230px;
     top: 260px;
+    /*margin: 0 auto 0 auto;*/
+    /*clear: both;*/
     left: 45px;
     border-top: 2px solid #f0f0f0;
     border-left: 2px solid #f0f0f0;

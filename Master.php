@@ -7,7 +7,8 @@
  */
     session_start();
     require_once("dbAccess.php");
-    if(!isset($_COOKIE['language']))
+
+    if(!isFilled($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
@@ -35,7 +36,7 @@
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/gradeSubject.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
 
         <style type=text/css>
 
@@ -92,23 +93,8 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <div id="header">
-
-        </div>
-
-        <div id="footer">
-            <div id="aboutus">
-                <p> ABOUT US</p>
-                <span>We're pretty amazing.</span>
-            </div>
-        </div>
-
-        <div id="language">
-            <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
-        </div>
-    
         <div id="nav">
-            <li><a id="blue">Notices</a>
+            <li id="Red"><a id="blue">Notices</a>
                 <ul>
                     <li><a href="#">View Notices</a><hr /></li>
                     <li><a href="#">Create Notice</a></li>
@@ -120,7 +106,7 @@
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassInformation.php">Class Information</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/searchViewStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
-<!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
+                    <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/teacherAchievenment.php">Staff Achievements</a></li>
                 </ul>
             </li>
@@ -128,21 +114,21 @@
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
-<!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
+                    <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
                 </ul>
             </li>
             <li><a><?php echo $timetables; ?></a>
-<!--                <ul>-->
-<!--                    <li><a  href="#">Create Timetable by Teacher</a><hr /></li>-->
-<!--                    <li><a  href="#">Create Timetable by Class</a></li>-->
-<!--                </ul>-->
+                <!--                <ul>-->
+                <!--                    <li><a  href="#">Create Timetable by Teacher</a><hr /></li>-->
+                <!--                    <li><a  href="#">Create Timetable by Class</a></li>-->
+                <!--                </ul>-->
             </li>
             <li><a>Substitute Teacher</a>
-<!--                <ul>-->
-<!--                    <li><a  href="#">Substitute Period by Teacher</a><hr /></li>-->
-<!--                    <li><a  href="#">Substitute Period by Class</a></li>-->
-<!--                </ul>-->
+                <!--                <ul>-->
+                <!--                    <li><a  href="#">Substitute Period by Teacher</a><hr /></li>-->
+                <!--                    <li><a  href="#">Substitute Period by Class</a></li>-->
+                <!--                </ul>-->
             </li>
             <li><a>Student Information</a>
                 <ul>
@@ -178,6 +164,24 @@
                 </ul>
             </li>
         </div>
+
+        <div id="header">
+
+        </div>
+
+
+        <div id="footer">
+            <div id="aboutus">
+                <p> ABOUT US</p>
+                <span>We're pretty amazing.</span>
+            </div>
+        </div>
+
+        <div id="language">
+            <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
+        </div>
+    
+
 
 
 
