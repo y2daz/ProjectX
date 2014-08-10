@@ -38,7 +38,7 @@
                 $stmt->bind_result($OUTuserPassword, $OUTaccessLevel);
                 $stmt->fetch();
 
-                echo $password . " " . $OUTuserPassword . "\n";
+//                echo $password . " " . $OUTuserPassword . "\n";
 //                echo password_hash($password, PASSWORD_DEFAULT);
 
 //                $hash=password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
@@ -66,7 +66,7 @@
         }
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        echo "Hashed password = " . $hashedPassword;
+//        echo "Hashed password = " . $hashedPassword;
         if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?);"))
         {
             $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel);
