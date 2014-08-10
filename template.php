@@ -13,7 +13,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-
+include(THISROOT . "/dbAccess.php");
 ob_start();
 
 $fullPageHeight = 600;
