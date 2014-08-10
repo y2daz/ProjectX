@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS User;
 CREATE  TABLE IF NOT EXISTS User(
   userEmail varchar(50) primary key,
   userPassword varchar(50),
-  accessLevel INTEGER DEFAULT 1 #Where 1 is administrator. 2 is teacher.
+  accessLevel INTEGER DEFAULT 2 #Where 1 is administrator. 2 is teacher.
 );
 
 INSERT INTO User values ('y', (SELECT PASSWORD('a')), 1);

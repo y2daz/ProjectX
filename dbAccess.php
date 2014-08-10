@@ -17,7 +17,6 @@
 
     function login($username, $password)
     {
-
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
@@ -63,7 +62,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select userEmail FROM User;"))
+        if ($stmt = $mysqli->prepare("Select userEmail, accessLevel FROM User;"))
         {
             if ($stmt->execute())
             {
@@ -71,7 +70,7 @@
                 $i = 0;
                 while($row = $result->fetch_array())
                 {
-                        $set[$i++]=$row[0];
+                        $set[$i++]=$row;
                 }
             }
         }
