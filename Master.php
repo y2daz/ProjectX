@@ -8,12 +8,17 @@
     session_start();
     require_once("dbAccess.php");
 
+    define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+
     if(!isFilled($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
-
-    define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+    if(!isFilled($_SESSION["user"]))
+    {
+        header("Location: " . PATHFRONT . "/login.php");
+    }
 
 
 
