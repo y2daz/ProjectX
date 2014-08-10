@@ -22,9 +22,9 @@ $pageTitle= "Manage Users";
 
 if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
-    if(strcmp($_POST["txtPassword"],$_POST["txtConfirmPassword"]) == 0)
+    if(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
     {
-        $operation = insertUser($_POST["txtEmail"],$_POST["txtPassword"],$_POST["txtAccessLevel"]);
+        $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
     }
 }
 else
@@ -76,7 +76,12 @@ else
             #newUser td{
                 text-align: center;
                 vertical-align: middle;
+                padding: 5px;
             }
+            .column{
+                border: 1px solid #005e77;
+            }
+
             .emailCol, .txtEmail{
                 min-width: 250px;
             }
@@ -128,19 +133,21 @@ else
                         <th></th>
                     </tr>
                     <tr>
-                        <td><input type="text" name="txtEmail" required="true"  value="" class="txtEmail"/></td>
-                        <td>
+                        <td class="column"><input type="text" name="txtEmail" required="true"  value="" class="txtEmail"/></td>
+                        <td class="column">
                             <table>
                                 <tr>
-                                    <td><input type="text" name="txtPassword" required="true"  value="Password" class="txtPassword"/></td>
+                                    <td><input type="text" name="txtPassword" required="true" value="Password" class="grayText"
+                                               onfocus="remGrayText(this, 'Password')" onblur="makeGrayText(this, 'Password')"/></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="txtConfirmPassword" required="true"  value="Confirm Password" class="txtPassword"/></td>
+                                    <td><input type="text" name="txtConfirmPassword" required="true" value="Confirm Password" class="grayText"
+                                               onfocus="remGrayText(this, 'Confirm Password')" onblur="makeGrayText(this, 'Confirm Password')"/></td>
                                 </tr>
                             </table>
                         </td>
-                        <td><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
-                        <td><input type="submit" value="Submit" name="newUser" formaction=""></td>
+                        <td class="column"><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
+                        <td class="column"><input type="submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
             </form>

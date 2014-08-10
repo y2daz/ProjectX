@@ -122,3 +122,8 @@ li, ul {
     font-size: 18px;
     color: #cc7f00;
 }
+
+.grayText{
+    text-align: center;
+    color: gray;
+}
