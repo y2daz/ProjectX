@@ -16,7 +16,6 @@
 
 <body>
     <h1>Assign Subjects for Grades </h1>
-
     <form>
     <table id="info">
         <tr>
@@ -32,7 +31,7 @@
         </tr>
     </table>
     <input name="Add" type="Button" value="Add another subject" onclick="addTextbox();"/>
-    <input name="Submit" type="Submit" value="Submit""/>
+    <input name="Submit" type="Submit" value="Submit" />
     </form>
 <?php
 //echo"<table id='gradesubject''>";
