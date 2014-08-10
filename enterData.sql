@@ -62,3 +62,35 @@ INSERT INTO LabelLanguage VALUES ("approveLeave", 1, "නිවාඩු අන�
 INSERT INTO LabelLanguage VALUES ("viewLeaveHistory", 1, "ඉකුත් වූ නිවාඩු");
 INSERT INTO LabelLanguage VALUES ("createTimetableByTeacher", 1, "ගුරුවරයා විසින් කාලසටහන සැකසුම");
 INSERT INTO LabelLanguage VALUES ("createTimetableByClass", 1, "පන්තිය විසින් කාලසටහන සැකසුම");
+
+INSERT INTO LabelLanguage VALUES ("eventid", 0, "Event ID");
+INSERT INTO LabelLanguage VALUES ("name", 0, "Name");
+INSERT INTO LabelLanguage VALUES ("description", 0, "Description");
+INSERT INTO LabelLanguage VALUES ("location", 0, "Location");
+INSERT INTO LabelLanguage VALUES ("eventtype", 0, "Event Type");
+INSERT INTO LabelLanguage VALUES ("status", 0, "Status");
+INSERT INTO LabelLanguage VALUES ("date", 0, "Date");
+INSERT INTO LabelLanguage VALUES ("eventcreator", 0, "Event Creator");
+INSERT INTO LabelLanguage VALUES ("starttime", 0, "Start Time ");
+INSERT INTO LabelLanguage VALUES ("endtime", 0, "End Time");
+INSERT INTO LabelLanguage VALUES ("addmanager", 0, "Add Event Managers ");
+INSERT INTO LabelLanguage VALUES ("saveevent", 0, "Save Event");
+INSERT INTO LabelLanguage VALUES ("prizegiving", 0, "Prize Giving Ceremony");
+INSERT INTO LabelLanguage VALUES ("sportmeet", 0, "Sports Meet");
+INSERT INTO LabelLanguage VALUES ("teacherday", 0, "Teacher's Day");
+
+INSERT INTO LabelLanguage VALUES ("eventid", 1, "සිදුවීම් අංකය");
+INSERT INTO LabelLanguage VALUES ("name", 1, "සිදුවීම");
+INSERT INTO LabelLanguage VALUES ("description", 1, "විස්තරය");
+INSERT INTO LabelLanguage VALUES ("location", 1, "ස්ථානය");
+INSERT INTO LabelLanguage VALUES ("eventtype", 1, "සිදුවීම් වර්ගය");
+INSERT INTO LabelLanguage VALUES ("status", 1, "තත්වය");
+INSERT INTO LabelLanguage VALUES ("date", 1, "දිනය");
+INSERT INTO LabelLanguage VALUES ("eventcreator", 1, "සිදුවීම් නිර්මාණකරු");
+INSERT INTO LabelLanguage VALUES ("starttime", 1, "ආරම්භක වෙලාව ");
+INSERT INTO LabelLanguage VALUES ("endtime", 1, "අවසන් වන වෙලාව");
+INSERT INTO LabelLanguage VALUES ("addmanager", 1, "සිදුවීම් කළමනාකරුවන් එක් කරන්න ");
+INSERT INTO LabelLanguage VALUES ("saveevent", 1, "සිදුවීම සුරකින්න");
+INSERT INTO LabelLanguage VALUES ("prizegiving", 1, "ත්‍යාග ප්‍රධානෝත්සවය");
+INSERT INTO LabelLanguage VALUES ("sportmeet", 1, "ක්‍රීඩා උත්සවය");
+INSERT INTO LabelLanguage VALUES ("teacherday", 1, "ගුරු දිනය");
