@@ -91,7 +91,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select userEmail, accessLevel FROM User;"))
+        if ($stmt = $mysqli->prepare("Select userEmail, accessLevel FROM User ORDER BY accessLevel;"))
         {
             if ($stmt->execute())
             {
