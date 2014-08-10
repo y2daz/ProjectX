@@ -13,13 +13,12 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-
+include(THISROOT . "/dbAccess.php");
 ob_start();
 
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
-
 
 ?>
 <html>
@@ -28,12 +27,65 @@ $pageTitle= "Template";
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-            /*
-            ADD YOUR CSS HERE
-            */
+
+            h1 {
+
+                text-align:center;
+            }
+            /*.general th{*/
+                /*align:center;*/
+                /*color:white;*/
+                /*background-color:#154DC1;*/
+                /*height:30px;*/
+                /*padding:5px;*/
+            /*}*/
+
+            .general td {
+                padding:5px;
+            }
+
+
+
+            input.button {
+                position:relative;
+                font-weight:bold;
+                font-size:12px;
+                left:50px;
+                top:45px;
+                width:150px;
+
+            }
+
+            input.button1 {
+                position:relative;
+                font-weight:bold;
+                font-size:12px;
+                right:-300px;
+                top:0px;
+            }
 
         </style>
     </head>
+
+    <?php
+        $staffManagement = getLanguage("staffManagement", $_COOKIE["language"]);
+        $eventid = getLanguage("eventid ", $_COOKIE["language"]);
+        $name = getLanguage("name ", $_COOKIE["language"]);
+        $description = getLanguage("description ", $_COOKIE["language"]);
+        $location = getLanguage("location ", $_COOKIE["language"]);
+        $eventtype = getLanguage("eventtype ", $_COOKIE["language"]);
+        $status = getLanguage("status ", $_COOKIE["language"]);
+        $date = getLanguage("date ", $_COOKIE["language"]);
+        $eventcreator = getLanguage("eventcreator ", $_COOKIE["language"]);
+        $starttime = getLanguage("starttime ", $_COOKIE["language"]);
+        $endtime = getLanguage("endtime ", $_COOKIE["language"]);
+        $addmanager = getLanguage("addmanager ", $_COOKIE["language"]);
+        $saveevent = getLanguage("saveevent ", $_COOKIE["language"]);
+//    $prizegiving="$prizegiving";
+//    $sportmeet="Sports Meet";
+//    $teacherday="Teacher's Day";
+    ?>
+
     <body>
         <h1>Add New Event</h1>
         <form onsubmit="" name="thisForm" method="post">
@@ -57,13 +109,13 @@ $pageTitle= "Template";
                 <tr class="alt">
                     <td><?php echo $location?></td>
                     <td><input type="Location" value=""></td>
-                    <td><?php echo $eventtype?></td>
-                    <td><select name="Event Type" value="">
-                            <option><?php echo $prizegiving?></option>
-                            <option><?php echo $sportmeet?></option>
-                            <option><?php echo $teacherday?></option>
-                            <option></option>
-                        </select></td>
+<!--                    <td>--><?php //echo $eventtype?><!--</td>-->
+<!--                    <td><select name="Event Type" value="">-->
+<!--                            <option>--><?php //echo $prizegiving?><!--</option>-->
+<!--                            <option>--><?php //echo $sportmeet?><!--</option>-->
+<!--                            <option>--><?php //echo $teacherday?><!--</option>-->
+<!--                            <option></option>-->
+<!--                        </select></td>-->
                 </tr>
                 <tr class="alt">
                     <td><?php echo $status?></td>

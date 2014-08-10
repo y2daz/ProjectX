@@ -20,8 +20,7 @@ h1 {
 
 	text-align:center;
 }
-.general{
-	align:center;
+.general th{
 	color:white;
 	background-color:#154DC1;
 	height:30px;
@@ -41,7 +40,7 @@ input.button {
 	left:50px;
 	top:45px;
 	width:150px;
-	
+
 }
 
 input.button1 {
@@ -51,10 +50,6 @@ input.button1 {
 	right:-300px;
 	top:0px;
 }
-
-
-
-
 
 </style>
 
