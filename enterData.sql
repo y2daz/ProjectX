@@ -4,12 +4,14 @@ DROP TABLE IF EXISTS User;
 
 CREATE  TABLE IF NOT EXISTS User(
   userEmail varchar(50) primary key,
-  userPassword varchar(50),
+  userPassword varchar(80),
   accessLevel INTEGER DEFAULT 2 #Where 1 is administrator. 2 is teacher.
 );
 
-INSERT INTO User values ('y', (SELECT PASSWORD('a')), 1);
-INSERT INTO User values ('a', (SELECT PASSWORD('a')), 1);
+Use manaDB;
+
+INSERT INTO User values ('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1);
+INSERT INTO User values ('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1);
 
 DROP TABLE LanguageOption;
 DROP TABLE LanguageGroup;

@@ -22,12 +22,14 @@ $pageTitle= "Manage Users";
 
 if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
-    echo "<script>alert('JAJAJA')</script>";
-
+    if(strcmp($_POST["txtPassword"],$_POST["txtConfirmPassword"]) == 0)
+    {
+        $operation = insertUser($_POST["txtEmail"],$_POST["txtPassword"],$_POST["txtAccessLevel"]);
+    }
 }
 else
 {
-    var_dump($_POST);
+
 }
 
 
@@ -107,8 +109,8 @@ else
                             echo $top;
                             echo "$row[0]";
                             echo "<td>$row[1]</td>";
-                            echo "<td><input name=\"Reset" . "\" type=\"submit\" value=\"Reset\" formaction=\"'\" /> </td> ";
-                            echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" /> </td> ";
+                            echo "<td><input name=\"Reset" . "\" type=\"submit\" value=\"Reset\" formaction=\"manageUsers.php?reset=" . $row[0] . "\" /> </td> ";
+                            echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"manageUsers.php?delete=" . $row[0] . "\" /> </td> ";
                             echo "</td></tr>";
                         }
                     ?>
@@ -126,18 +128,18 @@ else
                         <th></th>
                     </tr>
                     <tr>
-                        <td><input type="text"  required="true"  value="" class="txtEmail"/></td>
+                        <td><input type="text" name="txtEmail" required="true"  value="" class="txtEmail"/></td>
                         <td>
                             <table>
                                 <tr>
-                                    <td><input type="text"  required="true"  value="Password" class="txtPassword"/></td>
+                                    <td><input type="text" name="txtPassword" required="true"  value="Password" class="txtPassword"/></td>
                                 </tr>
                                 <tr>
-                                    <td><input type="text"  required="true"  value="Confirm Password" class="txtPassword"/></td>
+                                    <td><input type="text" name="txtConfirmPassword" required="true"  value="Confirm Password" class="txtPassword"/></td>
                                 </tr>
                             </table>
                         </td>
-                        <td><input type="text"   value="" maxlength="1" class="txtAccessLevel"/></td>
+                        <td><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
                         <td><input type="submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>

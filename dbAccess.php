@@ -15,7 +15,7 @@
     require_once("dbConnect.php");
     require_once("formValidation.php");
 
-    function login($username, $password)
+    function login($email, $password)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -24,28 +24,57 @@
                 die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select PASSWORD(?), userPassword FROM User WHERE userEmail=? LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("Select userPassword, accessLevel FROM User WHERE userEmail=? LIMIT 1;"))
         {
-            $stmt -> bind_param("ss", $password, $username);
+            $stmt -> bind_param("s", $email);
 
             if ($stmt->execute())
             {
-                $stmt->store_result();
+//                $stmt->store_result();
 
-                $OUTenteredPassword = NULL;
                 $OUTuserPassword = NULL;
+                $OUTaccessLevel = 0;
 
-                $stmt->bind_result($OUTenteredPassword, $OUTuserPassword);
+                $stmt->bind_result($OUTuserPassword, $OUTaccessLevel);
+                $stmt->fetch();
 
-                if( $stmt->num_rows > 0 )
+                echo $password . " " . $OUTuserPassword . "\n";
+//                echo password_hash($password, PASSWORD_DEFAULT);
+
+//                $hash=password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
+
+                if (password_verify($password, $OUTuserPassword))
                 {
-                    $stmt->fetch();
-                    if (strcmp($OUTenteredPassword, $OUTuserPassword) == 0)
-                    {
-                        $_SESSION["user"]="$username";
-                        return true;
-                    }
+                    $_SESSION["user"]="$email";
+                    $stmt->close();
+                    $mysqli->close();
+                    return true;
                 }
+            }
+        }
+        $mysqli->close();
+        return false;
+    }
+
+    function insertUser($email, $password, $accessLevel)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        echo "Hashed password = " . $hashedPassword;
+        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?);"))
+        {
+            $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
             }
         }
         $mysqli->close();
@@ -107,5 +136,8 @@
         $mysqli->close();
     }
 
+    function checkPrivelege() //Checking yo privelege
+    {
 
+    }
 ?>
