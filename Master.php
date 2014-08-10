@@ -35,7 +35,7 @@
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
         <!--Static Resource -->
-        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/gradeSubject.css";?>">
 
         <style type=text/css>
 

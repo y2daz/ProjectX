@@ -5,13 +5,17 @@
  * Date: 8/8/14
  * Time: 10:56 PM
  */
+
+define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="gradeSubject.css">
     <script src="timetable.js"></script>
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -26,7 +30,7 @@
 
     <table id="subjectList">
         <tr>
-            <td>1</td>
+            <td class="subNumber">1</td>
             <td><input type='text' class='text1' name='sub' required="true"></td>
         </tr>
     </table>
