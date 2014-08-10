@@ -20,12 +20,16 @@ $footerTop = $fullPageHeight + 100;
 $pageTitle= "Manage Users";
 
 
-if (isset($_POST["submit"])) //User has clicked the submit button
+if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
-    //validate email.
-
+    echo "<script>alert('JAJAJA')</script>";
 
 }
+else
+{
+    var_dump($_POST);
+}
+
 
 
 ?>
@@ -84,32 +88,32 @@ if (isset($_POST["submit"])) //User has clicked the submit button
 
         <div id="content">
 
+            <form method="post">
+                <h2>User List</h2>
+                <table class="userList">
+                    <tr>
+                        <th class="emailCol">Email</th>
+                        <th>Access Level</th>
+                        <th>Reset Password</th>
+                        <th>Delete User</th>
+                    </tr>
 
-            <h2>User List</h2>
-            <table class="userList">
-                <tr>
-                    <th class="emailCol">Email</th>
-                    <th>Access Level</th>
-                    <th>Reset Password</th>
-                    <th>Delete User</th>
-                </tr>
+                    <?php
+                        $result = getAllUsers();
+                        $i = 1;
 
-                <?php
-                    $result = getAllUsers();
-                    $i = 1;
-
-                    foreach($result as $row){
-                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
-                        echo $top;
-                        echo "$row[0]";
-                        echo "<td>$row[1]</td>";
-                        echo "<td><input name=\"Reset." . $row[0] . "\" type=\"button\" value=\"Reset\" /> </td> ";
-                        echo "<td><input name=\"Delete." . $row[0] . "\" type=\"button\" value=\"Delete\" /> </td> ";
-                        echo "</td></tr>";
-                    }
-
-                ?>
-            </table>
+                        foreach($result as $row){
+                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
+                            echo $top;
+                            echo "$row[0]";
+                            echo "<td>$row[1]</td>";
+                            echo "<td><input name=\"Reset" . "\" type=\"submit\" value=\"Reset\" formaction=\"'\" /> </td> ";
+                            echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" /> </td> ";
+                            echo "</td></tr>";
+                        }
+                    ?>
+                </table>
+            </form>
             <br />
             <br />
             <h2>New User</h2>
@@ -134,7 +138,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button
                             </table>
                         </td>
                         <td><input type="text"   value="" maxlength="1" class="txtAccessLevel"/></td>
-                        <td><input type="submit" value="Submit" name="Submit"></td>
+                        <td><input type="submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
             </form>
