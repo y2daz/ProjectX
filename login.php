@@ -15,7 +15,6 @@ if(!isset($_COOKIE['language']))
 {
     setcookie('language', '0'); //where 0 is English and 1 is Sinhala
 }
-
 if (isFilled($_SESSION["user"])) //User is already logged in
 {
     header("Location: template.php");

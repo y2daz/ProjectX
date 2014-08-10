@@ -19,9 +19,6 @@
     {
         header("Location: " . PATHFRONT . "/login.php");
     }
-
-
-
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 //    $fullPageHeight = 700;
 //
@@ -55,7 +52,6 @@
 
 
         </style>
-
         <script>
             $(document).ready(function () {
                 $('#nav > li > a').click(function(){
@@ -88,7 +84,7 @@
         $createTimetableByClass = getLanguage("createTimetableByClass ", $_COOKIE["language"]);
 
     ?>
-    <body>
+    <body onload="moveNav()">
 
         <div id="main">
             <?php

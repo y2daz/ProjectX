@@ -39,3 +39,22 @@ function remGrayText(element, text)
         $(element).val("");
     }
 }
+
+function moveNav()
+{
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+//    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+
+//    alert(w);
+
+    if (w <= 1280)
+    {
+        mainDiv = document.getElementById('')
+        element = document.getElementById('nav');
+            element.style.position = "absolute";
+            element.style.float = "left";
+            element.style.width = "230px";
+            element.style.top = "260px";
+            element.style.left = "0px";
+    }
+}

@@ -31,9 +31,6 @@ else
 {
 
 }
-
-
-
 ?>
     <html>
     <head>
