@@ -9,8 +9,8 @@
 
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-    <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="substitute.css">
+    <script src="timetable.js"></script>
 
 </head>
 

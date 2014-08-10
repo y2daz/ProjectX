@@ -11,7 +11,7 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" type="text/css" href="main.css">
-    <script src="script.js"></script>
+    <script src="timetable.js"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
     <table id="subjectList">
         <tr>
             <td>1</td>
-            <td><input type='text' class='myText' name='sub' required="true"></td>
+            <td><input type='text' class='text1' name='sub' required="true"></td>
         </tr>
     </table>
     <input name="Add" type="Button" value="Add another subject" onclick="addTextbox();"/>

@@ -8,66 +8,36 @@ h2{
     left: 55px;
     top : 10px;
 }
-
-
 #info{
     position: relative;
     top: 2px;
     left: 20px;;
 }
-
 #info  td{
     width: 150px;
     padding: 5px;
     text-align: center;
     margin-bottom: 10px;
 }
-
 #info  tr{
     width: 150px;
     text-align: center;
 }
-
-#submit{
-    position: relative;
-    top: 50px;
-}
-
-#submit  th{
-    width: 200px;
-    text-align: center;
-}
-
-#submit  tr{
-    width: 390px;
-    text-align: center;
-}
-
-#gradesubject{
+#timetable{
     position: relative;
     top: 25px;
-    width: 200px;
+    width: 900px;
 }
-
-#gradesubject, #gradesubject th, #gradesubject td{
+#timetable, #timetable th, #timetable td{
     border: 1px solid black;
 }
-
-#gradesubject  th{
-    width: 150px;
+#timetable  th{
+    width: 150;
 }
-
-#gradesubject  td{
-    width: 150px;
+#timetable  td{
+    width: 150;
     text-align: center;
-    height: 20px;
 }
-
-#gradesubject  tr{
+#timetable  tr{
     height: 10px;
 }
-
-
-
-
-
