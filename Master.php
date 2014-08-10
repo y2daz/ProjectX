@@ -160,16 +160,23 @@
             </li>
             <li><a>Administrative Tasks</a>
                 <ul>
-                    <li><a  href="#">Manage Year Plan</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/administration/manageUsers.php">Manage Users</a></li>
+                    <li><a href="#">Manage Year Plan</a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/administration/manageUsers.php">Manage Users</a></li>
                 </ul>
             </li>
         </div>
 
         <div id="header">
-
         </div>
 
+        <div id="buttons">
+            <table id="topMenu">
+                <tr>
+                    <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
+                    <td id="navHide" hidden="hidden">Menu</td>
+                </tr>
+            </table>
+        </div>
 
         <div id="footer">
             <div id="aboutus">

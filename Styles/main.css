@@ -18,9 +18,7 @@ li, ul {
     width: 230px;
     top: 260px;
     left: 45px;
-    border-top: 2px solid #f0f0f0;
-    border-left: 2px solid #f0f0f0;
-    border-bottom: 2px solid #f0f0f0;
+    border: 2px solid #f0f0f0;
 }
 #nav li a {
     display: block;
@@ -34,7 +32,7 @@ li, ul {
     color: #00aee9;
     cursor: pointer; cursor: hand;
 }
-#nav li a.active {
+#nav li a:active {
     background: #ececec;
     color: #0099d4;
 }
@@ -119,6 +117,44 @@ li, ul {
     font-weight: 600;
     font-size: 18px;
     color: #cc7f00;
+}
+#buttons{
+    position: absolute;
+    width:800px;
+    margin-left: auto;
+    margin-right: auto;
+    left: -3px;
+    right: 0;
+    clear: both;
+    top:48px;
+    height: 50px;
+}
+#topMenu{
+    border-collapse: collapse;
+}
+#topMenu td{
+    /*border: 1px solid #cc7f00;*/
+    background-color: #2d2d2d;
+    padding: 5px;
+    height: 50px;
+    width:120px;
+    text-align: center;
+    vertical-align: middle;
+    color: #cacaca;
+    font-weight: 600;
+    font-size: 18px;
+}
+#topMenu td a{
+    text-decoration: none;
+     color: #f0f0f0;
+     cursor: pointer; cursor: hand;
+}
+#topMenu td:hover{
+    color: #f0f0f0;
+    cursor: pointer; cursor: hand;
+}
+#topMenu #navHide{
+    width: 230px;
 }
 
 .grayText{

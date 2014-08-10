@@ -49,12 +49,15 @@ function moveNav()
 
     if (w <= 1280)
     {
-        mainDiv = document.getElementById('')
+        mainDiv = document.getElementById('main')
         element = document.getElementById('nav');
             element.style.position = "absolute";
             element.style.float = "left";
             element.style.width = "230px";
             element.style.top = "260px";
-            element.style.left = "0px";
+        var left = (w - 800) / 2;
+        var top = 50;
+            element.style.left = left + "px";
+            element.style.top = top + "px";
     }
 }
