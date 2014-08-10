@@ -49,15 +49,28 @@ function moveNav()
 
     if (w <= 1280)
     {
-        mainDiv = document.getElementById('main')
+        menuItem = document.getElementById('navHide')
+        menuItem.style.display = "block";
+        menuItem.style.left = ""
         element = document.getElementById('nav');
-            element.style.position = "absolute";
-            element.style.float = "left";
-            element.style.width = "230px";
-            element.style.top = "260px";
-        var left = (w - 800) / 2;
-        var top = 50;
-            element.style.left = left + "px";
-            element.style.top = top + "px";
+        element.style.left = -230 + "px";
+
+        $(document).ready(function(){
+            $('#navHide, #nav').mouseout(function(){
+                $('#nav').stop().animate({
+                    left: '-100%'
+                }, 200);
+            }).mouseover(function(){
+                $('#nav').stop().animate({
+                    left:'0'
+                }, 200);
+            });
+
+        });
+    }
+    else
+    {
+        menuItem = document.getElementById('navHide')
+        menuItem.style.display = "none";
     }
 }

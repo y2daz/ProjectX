@@ -67,6 +67,10 @@
                     }
                 });
             });
+
+            moveNav();
+
+
         </script>
     </head>
     <?php //Get language and make changes
@@ -85,6 +89,10 @@
 
     ?>
     <body onload="moveNav()">
+
+        <div id="navHide" hidden="hidden">
+            <table><tr><td>Menu</tr></td></table>
+        </div>
 
         <div id="main">
             <?php
@@ -169,11 +177,11 @@
         <div id="header">
         </div>
 
-        <div id="buttons">
+        <div id="divMenu">
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
-                    <td id="navHide" hidden="hidden">Menu</td>
+<!--                    <td id="navHide" hidden="hidden">Menu</td>-->
                 </tr>
             </table>
         </div>
