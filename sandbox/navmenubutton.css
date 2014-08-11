@@ -1,0 +1,53 @@
+#divMenuButton{
+    cursor: pointer; cursor: hand;
+    height:45px;
+    width: 55px;
+    display: block;
+    background-color: white;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border-radius: 4px;
+    border: 2px solid #f0f0f0;
+}
+#menuButton {
+    position: absolute;
+    left: 22px;
+    top: 22px;
+    cursor: pointer;
+    padding: 10px 35px 16px 0px;
+}
+#menuButton span, #menuButton span:before, #menuButton span:after {
+    cursor: pointer; cursor: hand;
+    border-radius: 1px;
+    height: 5px;
+    width: 35px;
+    background-color: #ececec;
+    position: absolute;
+    display: block;
+    content: '';
+}
+#menuButton span:before {
+    top: -10px;
+}
+#menuButton span:after {
+    bottom: -10px;
+}
+
+#menuButton span, #menuButton span:before, #menuButton span:after {
+    transition: all 100ms ease-in-out;
+}
+#menuButton.active span {
+    background-color: transparent;
+}
+#menuButton.active span:before, #menuButton.active span:after {
+    top: 0;
+    height: 4px;
+    background-color: #00aee9;
+}
+#menuButton.active span:before {
+    transform: rotate(45deg);
+}
+#menuButton.active span:after {
+    transform: rotate(-45deg);
+}

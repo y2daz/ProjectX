@@ -19,71 +19,28 @@
 
     <title>CSS Animated Hamburger Icon - CodePen</title>
 
-    <style>
-        /*body { background-color: black; height: 100%; }*/
-        /*h3 { color: white; }*/
-        #nav-toggle { position: absolute; left: 50%; top: 50%; }
-
-        #nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
-        #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-            cursor: pointer;
-            border-radius: 1px;
-            height: 5px;
-            width: 35px;
-            background: #808080;
-            position: absolute;
-            display: block;
-            content: '';
-        }
-        #nav-toggle span:before {
-            top: -10px;
-        }
-        #nav-toggle span:after {
-            bottom: -10px;
-        }
-
-        #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
-            transition: all 100ms ease-in-out;
-        }
-        #nav-toggle.active span {
-            background-color: transparent;
-        }
-        #nav-toggle.active span:before, #nav-toggle.active span:after {
-            top: 0;
-        }
-        #nav-toggle.active span:before {
-            transform: rotate(45deg);
-        }
-        #nav-toggle.active span:after {
-            transform: rotate(-45deg);
-        }</style>
+    <link rel="stylesheet" type="text/css" href="navmenubutton.css">
 
     <script>
+        //MENU BUTTON SCRIPT START
         window.open    = function(){};
         window.print   = function(){};
         // Support hover state for mobile.
         if (false) {
             window.ontouchstart = function(){};
         }
-    </script>
-    <script src='/jquery-1.11.1.min.js'></script>
-    <script>
         function myfunction(e) {
             e.classList.toggle( "active" );
         }
+        //MENU BUTTON SCRIPT END
     </script>
 </head>
 <body>
-<a id="nav-toggle" href="#" onclick="myfunction(this);"><span></span></a>
 
-<div style="height:50px; width: 50px; display: block; background-color: #d2d2d2;" onclick="myfunction(document.getElementById('nav-toggle'))">
 
-    <script>
-        //    document.querySelector( "#nav-toggle" )
-        //            .addEventListener( "click", function() {
-        //                this.classList.toggle( "active" );
-        //            });
-    </script>
+<div id="divMenuButton" style="" onclick="myfunction(document.getElementById('menuButton'))">
+</div>
+<a id="menuButton" href="#" onclick="myfunction(this);"><span></span></a>
 
 </body>
 </html>

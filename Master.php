@@ -39,6 +39,7 @@
 
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
 
         <style type=text/css>
 
@@ -68,8 +69,6 @@
                 });
             });
 
-            moveNav();
-
 
         </script>
     </head>
@@ -88,11 +87,7 @@
         $createTimetableByClass = getLanguage("createTimetableByClass ", $_COOKIE["language"]);
 
     ?>
-    <body onload="moveNav()">
-
-        <div id="navHide" hidden="hidden">
-            <table><tr><td>Menu</tr></td></table>
-        </div>
+    <body>
 
         <div id="main">
             <?php
@@ -102,6 +97,11 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
+        <div id="divMenuButton" class="hidden" onclick="menuClicked(document.getElementById('menuButton'))">
+        </div>
+        <a id="menuButton" hidden="hidden" onclick="menuClicked(this);"><span></span></a>
+
+
         <div id="nav">
             <li id="Red"><a id="blue">Notices</a>
                 <ul>

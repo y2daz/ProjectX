@@ -1,6 +1,21 @@
 /**
  * Created by yazdaan on 06/08/14.
  */
+
+$(document).ready(function() {
+    window.open    = function(){};
+    window.print   = function(){};
+    // Support hover state for mobile.
+    if (false) {
+        window.ontouchstart = function(){};
+    }
+    moveNav();
+});
+
+function menuClicked(e) {
+    e.classList.toggle("active");
+}
+
 function setCookie(cName,value) //Sets a cookie.
 {
     document.cookie = cName + " = " + value;
@@ -43,34 +58,34 @@ function remGrayText(element, text)
 function moveNav()
 {
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-//    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
-
-//    alert(w);
 
     if (w <= 1280)
     {
-        menuItem = document.getElementById('navHide')
-        menuItem.style.display = "block";
-        menuItem.style.left = ""
-        element = document.getElementById('nav');
-        element.style.left = -230 + "px";
-
-        $(document).ready(function(){
-            $('#navHide, #nav').mouseout(function(){
-                $('#nav').stop().animate({
-                    left: '-100%'
-                }, 200);
-            }).mouseover(function(){
-                $('#nav').stop().animate({
-                    left:'0'
-                }, 200);
-            });
-
-        });
-    }
-    else
-    {
-        menuItem = document.getElementById('navHide')
-        menuItem.style.display = "none";
+        var menuDiv = document.getElementById('divMenuButton');
+        $(menuDiv).removeClass('hidden');
+        var menuBut = document.getElementById('menuButton');
+        $(menuBut).setAttribute('hidden', '');
+//        alert(w);
+//            menuItem.style.left = "5px"
+//        var element = document.getElementById('nav');
+//        element.style.left = -230 + "px";
+//
+//        if($('#menuButton').classList.contains("navHide")){
+//            $('#navHide, #nav').click(function(){
+//                $('#nav').stop().animate({
+//                    left: '-100%'
+//                }, 200);
+//            })
+//        }else{
+//        function(){
+//            $('#nav').stop().animate({
+//            left:'0'
+//            }, 200);
+//        }}
+//    }
+//    else
+//    {
+//        menuItem = document.getElementById('navHide')
+//        menuItem.style.display = "none";
     }
 }

@@ -22,10 +22,10 @@
     <style>
     /*body { background-color: black; height: 100%; }*/
     /*h3 { color: white; }*/
-    #nav-toggle { position: absolute; left: 50%; top: 50%; }
+    #menuButton { position: absolute; left: 50%; top: 50%; }
 
-    #nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
-    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    #menuButton { cursor: pointer; padding: 10px 35px 16px 0px; }
+    #menuButton span, #menuButton span:before, #menuButton span:after {
         cursor: pointer;
         border-radius: 1px;
         height: 5px;
@@ -35,26 +35,26 @@
         display: block;
         content: '';
     }
-    #nav-toggle span:before {
+    #menuButton span:before {
         top: -10px;
     }
-    #nav-toggle span:after {
+    #menuButton span:after {
         bottom: -10px;
     }
 
-    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+    #menuButton span, #menuButton span:before, #menuButton span:after {
         transition: all 100ms ease-in-out;
     }
-    #nav-toggle.active span {
+    #menuButton.active span {
         background-color: transparent;
     }
-    #nav-toggle.active span:before, #nav-toggle.active span:after {
+    #menuButton.active span:before, #menuButton.active span:after {
         top: 0;
     }
-    #nav-toggle.active span:before {
+    #menuButton.active span:before {
         transform: rotate(45deg);
     }
-    #nav-toggle.active span:after {
+    #menuButton.active span:after {
         transform: rotate(-45deg);
     }</style>
 
@@ -74,9 +74,9 @@
     </script>
 </head>
 <body>
-<a id="nav-toggle" href="#" onclick="myfunction(this);"><span></span></a>
+<a id="menuButton" href="#" onclick="myfunction(this);"><span></span></a>
 
-<div style="height:50px; width: 50px; display: block; background-color: #d2d2d2;" onclick="myfunction(document.getElementById('nav-toggle'))">
+<div style="height:50px; width: 50px; display: block; background-color: #d2d2d2;" onclick="myfunction(document.getElementById('menuButton'))">
 
 <script>
 //    document.querySelector( "#nav-toggle" )
