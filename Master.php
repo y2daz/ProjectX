@@ -179,7 +179,6 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
-<!--                    <td id="navHide" hidden="hidden">Menu</td>-->
                 </tr>
             </table>
         </div>
@@ -194,12 +193,5 @@
         <div id="language">
             <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
         </div>
-    
-
-
-
-
-
-
     </body>
 </html>
