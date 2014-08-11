@@ -9,13 +9,29 @@ $(document).ready(function() {
     if (false) {
         window.ontouchstart = function(){};
     }
+
     moveNav();
+
+    $('#menuButton').click(function(){
+        this.classList.toggle("active");
+
+        if ($(this).hasClass('active')){
+            $('#nav').stop().animate({left:'0'}, 200);
+//            $(this).addClass('active');
+//            alert("shit");
+        }
+        else
+        {
+            $('#nav').stop().animate({left: '-100%'}, 200);
+            this.removeClass('active');
+        }
+    });
 });
 
-function menuClicked(e) {
-    e.classList.toggle("active");
-    slideNav(0);
-}
+//function menuClicked(e) {
+//    e.classList.toggle("active");
+//    slideNav(0);
+//}
 
 function setCookie(cName,value) //Sets a cookie.
 {
@@ -66,26 +82,31 @@ function moveNav()
 //        $(menuDiv).removeClass('hidden');
         var menuBut = document.getElementById('menuButton');
         $(menuBut).removeClass('hidden');
+        var element = document.getElementById('nav');
+        element.style.left = -230 + "px";
     }
 }
 
-function slideNav(direction){ //0 out in and 1 is out
-    if(direction == 1){
-        function(){
-        $('#nav').stop().animate(
-        {
-            left: '-100%'
-        }, 200);}
-    }
-    else
-    {
-        function(){
-        $('#nav').stop().animate(
-        {
-            left:'0'
-        }, 200);}
-    }
-}
+//function slideNav(direction){ //0 out in and 1 is out
+//    $('#menuButton').click(function(){
+//        function(){
+//        $('#nav').stop().animate(
+//        {
+//            left: '-100%'
+//        }, 200);}
+//    }
+//    else
+//    {
+//        function(){
+//        $('#nav').stop().animate(
+//        {
+//            left:'0'
+//        }, 200);}
+//    }
+//}
+
+
+//e.classList.toggle("active");
 //
 //}
 //        alert(w);

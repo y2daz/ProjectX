@@ -99,7 +99,7 @@
         <!-- DO NOT EDIT FOLLOWING -->
 <!--        <div id="divMenuButton" class="hidden" onclick="menuClicked(document.getElementById('menuButton'))">-->
 <!--        </div>-->
-        <a id="menuButton" class="hidden" onclick="menuClicked(this);"><span></span></a>
+        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"-->><span></span></a>
 
 
         <div id="nav">
