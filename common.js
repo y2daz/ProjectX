@@ -14,6 +14,7 @@ $(document).ready(function() {
 
 function menuClicked(e) {
     e.classList.toggle("active");
+    slideNav(0);
 }
 
 function setCookie(cName,value) //Sets a cookie.
@@ -61,10 +62,32 @@ function moveNav()
 
     if (w <= 1280)
     {
-        var menuDiv = document.getElementById('divMenuButton');
-        $(menuDiv).removeClass('hidden');
+//        var menuDiv = document.getElementById('divMenuButton');
+//        $(menuDiv).removeClass('hidden');
         var menuBut = document.getElementById('menuButton');
-        $(menuBut).setAttribute('hidden', '');
+        $(menuBut).removeClass('hidden');
+    }
+}
+
+function slideNav(direction){ //0 out in and 1 is out
+    if(direction == 1){
+        function(){
+        $('#nav').stop().animate(
+        {
+            left: '-100%'
+        }, 200);}
+    }
+    else
+    {
+        function(){
+        $('#nav').stop().animate(
+        {
+            left:'0'
+        }, 200);}
+    }
+}
+//
+//}
 //        alert(w);
 //            menuItem.style.left = "5px"
 //        var element = document.getElementById('nav');
@@ -87,5 +110,3 @@ function moveNav()
 //    {
 //        menuItem = document.getElementById('navHide')
 //        menuItem.style.display = "none";
-    }
-}
