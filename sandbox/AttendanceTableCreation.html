@@ -1,0 +1,89 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!--
+  Copyright (c) 2014 by Pramod Kumar (http://codepen.io/Pro/pen/hwfen)
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+  -->
+
+    <title>CSS Animated Hamburger Icon - CodePen</title>
+
+    <style>
+    /*body { background-color: black; height: 100%; }*/
+    /*h3 { color: white; }*/
+    #nav-toggle { position: absolute; left: 50%; top: 50%; }
+
+    #nav-toggle { cursor: pointer; padding: 10px 35px 16px 0px; }
+    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+        cursor: pointer;
+        border-radius: 1px;
+        height: 5px;
+        width: 35px;
+        background: #808080;
+        position: absolute;
+        display: block;
+        content: '';
+    }
+    #nav-toggle span:before {
+        top: -10px;
+    }
+    #nav-toggle span:after {
+        bottom: -10px;
+    }
+
+    #nav-toggle span, #nav-toggle span:before, #nav-toggle span:after {
+        transition: all 100ms ease-in-out;
+    }
+    #nav-toggle.active span {
+        background-color: transparent;
+    }
+    #nav-toggle.active span:before, #nav-toggle.active span:after {
+        top: 0;
+    }
+    #nav-toggle.active span:before {
+        transform: rotate(45deg);
+    }
+    #nav-toggle.active span:after {
+        transform: rotate(-45deg);
+    }</style>
+
+    <script>
+        window.open    = function(){};
+        window.print   = function(){};
+        // Support hover state for mobile.
+        if (false) {
+            window.ontouchstart = function(){};
+        }
+    </script>
+    <script src='/jquery-1.11.1.min.js'></script>
+    <script>
+        function myfunction(e) {
+            e.classList.toggle( "active" );
+        }
+    </script>
+</head>
+<body>
+<a id="nav-toggle" href="#" onclick="myfunction(this);"><span></span></a>
+
+<div style="height:50px; width: 50px; display: block; background-color: #d2d2d2;" onclick="myfunction(document.getElementById('nav-toggle'))">
+
+<script>
+//    document.querySelector( "#nav-toggle" )
+//            .addEventListener( "click", function() {
+//                this.classList.toggle( "active" );
+//            });
+</script>
+
+</body>
+</html>
