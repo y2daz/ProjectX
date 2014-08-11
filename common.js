@@ -17,21 +17,14 @@ $(document).ready(function() {
 
         if ($(this).hasClass('active')){
             $('#nav').stop().animate({left:'0'}, 200);
-//            $(this).addClass('active');
-//            alert("shit");
         }
         else
         {
             $('#nav').stop().animate({left: '-100%'}, 200);
-            this.removeClass('active');
         }
     });
-});
 
-//function menuClicked(e) {
-//    e.classList.toggle("active");
-//    slideNav(0);
-//}
+});
 
 function setCookie(cName,value) //Sets a cookie.
 {
@@ -78,56 +71,9 @@ function moveNav()
 
     if (w <= 1280)
     {
-//        var menuDiv = document.getElementById('divMenuButton');
-//        $(menuDiv).removeClass('hidden');
         var menuBut = document.getElementById('menuButton');
         $(menuBut).removeClass('hidden');
         var element = document.getElementById('nav');
         element.style.left = -230 + "px";
     }
 }
-
-//function slideNav(direction){ //0 out in and 1 is out
-//    $('#menuButton').click(function(){
-//        function(){
-//        $('#nav').stop().animate(
-//        {
-//            left: '-100%'
-//        }, 200);}
-//    }
-//    else
-//    {
-//        function(){
-//        $('#nav').stop().animate(
-//        {
-//            left:'0'
-//        }, 200);}
-//    }
-//}
-
-
-//e.classList.toggle("active");
-//
-//}
-//        alert(w);
-//            menuItem.style.left = "5px"
-//        var element = document.getElementById('nav');
-//        element.style.left = -230 + "px";
-//
-//        if($('#menuButton').classList.contains("navHide")){
-//            $('#navHide, #nav').click(function(){
-//                $('#nav').stop().animate({
-//                    left: '-100%'
-//                }, 200);
-//            })
-//        }else{
-//        function(){
-//            $('#nav').stop().animate({
-//            left:'0'
-//            }, 200);
-//        }}
-//    }
-//    else
-//    {
-//        menuItem = document.getElementById('navHide')
-//        menuItem.style.display = "none";
