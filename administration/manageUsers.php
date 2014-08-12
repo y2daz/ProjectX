@@ -28,6 +28,28 @@ else
 {
 
 }
+
+if (isset($_GET["reset"])) //User has clicked a reset password button
+{
+    echo "Reset, class.";
+}
+else
+{
+
+}
+
+if (isset($_GET["delete"])) //User has clicked a reset password button
+{
+    $deletedEmail = $_GET["delete"];
+    deleteUser($deletedEmail);
+}
+else
+{
+
+}
+
+
+
 ?>
     <html>
     <head>

@@ -24,7 +24,7 @@
                 die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select userPassword, accessLevel FROM User WHERE userEmail=? LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("Select userPassword, accessLevel FROM User WHERE userEmail=? AND isDeleted=0 LIMIT 1;"))
         {
             $stmt -> bind_param("s", $email);
 
@@ -91,7 +91,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select userEmail, accessLevel FROM User ORDER BY accessLevel;"))
+        if ($stmt = $mysqli->prepare("Select userEmail, accessLevel FROM User WHERE isDeleted = 0 ORDER BY accessLevel;"))
         {
             if ($stmt->execute())
             {
@@ -119,7 +119,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT `Value` FROM `LabelLanguage` WHERE `Label`=? AND `Language`=? LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("SELECT `Value` FROM `LabelLanguage` WHERE `Label`=? AND `Language`=? AND isDeleted = 0 LIMIT 1;"))
         {
             $stmt -> bind_param("ss", $label, $language);
 
@@ -141,7 +141,28 @@
 
     }
 
-    function deleteUser(){
+    function deleteUser($email){
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
 
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("UPDATE User SET isDeleted=? WHERE userEmail=?;"))
+        {
+            $deleteNo = 2;
+
+            $stmt -> bind_param("is", $deleteNo, $email);
+
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return TRUE;
+            }
+        }
+        $mysqli->close();
+        return false;
     }
 ?>
