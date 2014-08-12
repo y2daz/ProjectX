@@ -77,3 +77,8 @@ function moveNav()
         element.style.left = -230 + "px";
     }
 }
+
+function message(){
+
+
+}

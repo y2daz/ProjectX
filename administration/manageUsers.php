@@ -15,9 +15,6 @@ define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Manage Users";
 
 
 if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
@@ -85,7 +82,25 @@ else
             .txtAccessLevel{
                 width: 50px;
             }
+            .userList .search{
+                background-color: #D8FFBD;
+            }
         </style>
+        <script>
+
+             function searchEmail(element){
+//                 alert(element.value)
+                var text = element.value;
+                if (text.length >= 1){
+                    $("td.searchEmail").closest('tr').removeClass("search");
+                    $("td.searchEmail").filter(function() { return $.text([this]).indexOf(text) > -1; }).closest('tr').addClass("search");
+                }
+                else
+                {
+                    $("td.searchEmail").closest('tr').removeClass("search");
+                }
+             }
+        </script>
     </head>
     <body>
         <h1>Manage Users</h1>
@@ -94,6 +109,8 @@ else
 
             <form method="post">
                 <h2>User List</h2>
+                <span>Search User: <input type="text" value="" onkeyup="searchEmail(this)"/></span>
+                <p></p>
                 <table class="userList">
                     <tr>
                         <th class="emailCol">Email</th>
@@ -107,7 +124,7 @@ else
                         $i = 1;
 
                         foreach($result as $row){
-                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
+                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
                             echo $top;
                             echo "$row[0]";
                             echo "<td>$row[1]</td>";
@@ -152,6 +169,12 @@ else
     </body>
     </html>
 <?php
+
+    $fullPageHeight = 560  + ($i * 31);
+    $footerTop = $fullPageHeight + 100;
+    $pageTitle= "Manage Users";
+
+
     $pageContent = ob_get_contents();
     ob_end_clean();
     require_once(THISROOT . "/Master.php");
