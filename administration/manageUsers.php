@@ -24,29 +24,21 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
         $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
     }
 }
-else
-{
-
-}
 
 if (isset($_GET["reset"])) //User has clicked a reset password button
 {
-    echo "Reset, class.";
-}
-else
-{
-
+//    echo "Reset, class.";
 }
 
 if (isset($_GET["delete"])) //User has clicked a reset password button
 {
     $deletedEmail = $_GET["delete"];
-    deleteUser($deletedEmail);
+    if (!(deleteUser($deletedEmail)))
+    {
+        //user doesn.t exist, tell thm
+    }
 }
-else
-{
 
-}
 
 
 
