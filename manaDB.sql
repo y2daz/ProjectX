@@ -13,328 +13,1249 @@ SET time_zone = "+00:00";
 --
 -- Database: `manaDB`
 --
+DROP DATABASE IF EXISTS `manaDB`;
+
 CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `manaDB`;
 
 CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
 
-GRANT ALL PRIVILEGES ON * . * TO 'manaSystem'@'localhost';
-	
 GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
 
 FLUSH PRIVILEGES;
 
-use manaDB;
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Aug 12, 2014 at 10:22 PM
+-- Server version: 5.5.38-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.3
 
-DROP TABLE IF EXISTS User;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE  TABLE IF NOT EXISTS User(
-	userEmail varchar(50) primary key,
-  userPassword varchar(80),
-  accessLevel INTEGER DEFAULT 2 #Where 1 is administrator. 2 is teacher.
-);
+--
+-- Database: `manaDB`
+--
+CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `manaDB`;
 
-Use manaDB;
+-- --------------------------------------------------------
 
-INSERT INTO User values ('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1);
-INSERT INTO User values ('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1);
+--
+-- Table structure for table `ALMarks`
+--
 
+DROP TABLE IF EXISTS `ALMarks`;
+CREATE TABLE IF NOT EXISTS `ALMarks` (
+  `IndexNo` int(11) NOT NULL DEFAULT '0',
+  `AdmissionNo` varchar(5) DEFAULT NULL,
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IndexNo`,`SubjectID`),
+  KEY `AdmissionNo` (`AdmissionNo`),
+  KEY `SubjectID` (`SubjectID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE  TABLE IF NOT EXISTS Staff(
-  StaffID varchar(5) primary key,
-  NamewithInitials varchar(60),
-  DateofBirth date,
-  Gender INTEGER,
-  Nationality_Race INTEGER,
-  Religion Integer,
-  CivilStatus INTEGER,
-  NICNumber varchar(10),
-  MailDeliveryAddress varchar(100),
-  ContactNumber varchar(15),
-  DateAppointedastoPost DATE, /*Appointed as Teacher/Principal*/
-  DateJoinedthisSchool Date,
-  EmploymentStatus Integer,
-  Medium Integer,
-  PositioninSchool Integer,
-  Section Integer,
-  SubjectMostTaught Integer,
-  SubjectSecondMostTaught Integer,
-  ServiceGrade Integer, /*Grade at Sri Lanka Teacher Association/ Principal Association, etc.*/
-  Salary float,
-  HighestEducationalQualification Integer,
-  HighestProfessionalQualification Integer,
-  CourseofStudy Integer
-);
+--
+-- RELATIONS FOR TABLE `ALMarks`:
+--   `AdmissionNo`
+--       `Student` -> `AdmissionNo`
+--   `SubjectID`
+--       `Subject_Grade` -> `SubjectID`
+--
 
-CREATE  TABLE IF NOT EXISTS ClassInformation(
-  StaffID varchar(5),
-  Grade INTEGER,
-  Class char(2),
+--
+-- Truncate table before insert `ALMarks`
+--
 
-  FOREIGN KEY fk001 (StaffID) REFERENCES Staff(StaffID),
-  PRIMARY KEY (Grade, Class)
-);
+TRUNCATE TABLE `ALMarks`;
+-- --------------------------------------------------------
 
-/*SPORTS ACHIEVEMENTS*/
+--
+-- Table structure for table `ApplyLeave`
+--
 
-CREATE  TABLE IF NOT EXISTS Blacklist(
-  StaffID varchar(5),
-  ListContributor varchar(5),
-  EnterDate DATE,
-  Reason varchar(255),
+DROP TABLE IF EXISTS `ApplyLeave`;
+CREATE TABLE IF NOT EXISTS `ApplyLeave` (
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `RequestDate` date DEFAULT NULL,
+  `StartDate` date NOT NULL DEFAULT '0000-00-00',
+  `EndDate` date DEFAULT NULL,
+  `LeaveType` int(11) DEFAULT NULL,
+  `OtherInformation` varchar(200) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `ReviewedBy` varchar(5) DEFAULT NULL,
+  `ReviewedDate` date DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`,`StartDate`),
+  KEY `fk013` (`ReviewedBy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  FOREIGN KEY fk002 (StaffID) REFERENCES Staff(StaffID),
-  FOREIGN KEY fk003 (ListContributor) REFERENCES Staff(StaffID),
+--
+-- RELATIONS FOR TABLE `ApplyLeave`:
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--   `ReviewedBy`
+--       `Staff` -> `StaffID`
+--
 
-  PRIMARY KEY (StaffID, ListContributor, EnterDate)
-);
+--
+-- Truncate table before insert `ApplyLeave`
+--
 
+TRUNCATE TABLE `ApplyLeave`;
+-- --------------------------------------------------------
 
-CREATE  TABLE IF NOT EXISTS Language(
-  Language integer,
-  Value VARCHAR(20),
+--
+-- Table structure for table `Attendance`
+--
 
-  PRIMARY KEY (Language)
-);
+DROP TABLE IF EXISTS `Attendance`;
+CREATE TABLE IF NOT EXISTS `Attendance` (
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `Year` int(11) NOT NULL DEFAULT '0',
+  `A0` bit(1) DEFAULT NULL,
+  `A1` bit(1) DEFAULT NULL,
+  `A2` bit(1) DEFAULT NULL,
+  `A3` bit(1) DEFAULT NULL,
+  `A4` bit(1) DEFAULT NULL,
+  `A5` bit(1) DEFAULT NULL,
+  `A6` bit(1) DEFAULT NULL,
+  `A7` bit(1) DEFAULT NULL,
+  `A8` bit(1) DEFAULT NULL,
+  `A9` bit(1) DEFAULT NULL,
+  `A10` bit(1) DEFAULT NULL,
+  `A11` bit(1) DEFAULT NULL,
+  `A12` bit(1) DEFAULT NULL,
+  `A13` bit(1) DEFAULT NULL,
+  `A14` bit(1) DEFAULT NULL,
+  `A15` bit(1) DEFAULT NULL,
+  `A16` bit(1) DEFAULT NULL,
+  `A17` bit(1) DEFAULT NULL,
+  `A18` bit(1) DEFAULT NULL,
+  `A19` bit(1) DEFAULT NULL,
+  `A20` bit(1) DEFAULT NULL,
+  `A21` bit(1) DEFAULT NULL,
+  `A22` bit(1) DEFAULT NULL,
+  `A23` bit(1) DEFAULT NULL,
+  `A24` bit(1) DEFAULT NULL,
+  `A25` bit(1) DEFAULT NULL,
+  `B0` bit(1) DEFAULT NULL,
+  `B1` bit(1) DEFAULT NULL,
+  `B2` bit(1) DEFAULT NULL,
+  `B3` bit(1) DEFAULT NULL,
+  `B4` bit(1) DEFAULT NULL,
+  `B5` bit(1) DEFAULT NULL,
+  `B6` bit(1) DEFAULT NULL,
+  `B7` bit(1) DEFAULT NULL,
+  `B8` bit(1) DEFAULT NULL,
+  `B9` bit(1) DEFAULT NULL,
+  `B10` bit(1) DEFAULT NULL,
+  `B11` bit(1) DEFAULT NULL,
+  `B12` bit(1) DEFAULT NULL,
+  `B13` bit(1) DEFAULT NULL,
+  `B14` bit(1) DEFAULT NULL,
+  `B15` bit(1) DEFAULT NULL,
+  `B16` bit(1) DEFAULT NULL,
+  `B17` bit(1) DEFAULT NULL,
+  `B18` bit(1) DEFAULT NULL,
+  `B19` bit(1) DEFAULT NULL,
+  `B20` bit(1) DEFAULT NULL,
+  `B21` bit(1) DEFAULT NULL,
+  `B22` bit(1) DEFAULT NULL,
+  `B23` bit(1) DEFAULT NULL,
+  `B24` bit(1) DEFAULT NULL,
+  `B25` bit(1) DEFAULT NULL,
+  `C0` bit(1) DEFAULT NULL,
+  `C1` bit(1) DEFAULT NULL,
+  `C2` bit(1) DEFAULT NULL,
+  `C3` bit(1) DEFAULT NULL,
+  `C4` bit(1) DEFAULT NULL,
+  `C5` bit(1) DEFAULT NULL,
+  `C6` bit(1) DEFAULT NULL,
+  `C7` bit(1) DEFAULT NULL,
+  `C8` bit(1) DEFAULT NULL,
+  `C9` bit(1) DEFAULT NULL,
+  `C10` bit(1) DEFAULT NULL,
+  `C11` bit(1) DEFAULT NULL,
+  `C12` bit(1) DEFAULT NULL,
+  `C13` bit(1) DEFAULT NULL,
+  `C14` bit(1) DEFAULT NULL,
+  `C15` bit(1) DEFAULT NULL,
+  `C16` bit(1) DEFAULT NULL,
+  `C17` bit(1) DEFAULT NULL,
+  `C18` bit(1) DEFAULT NULL,
+  `C19` bit(1) DEFAULT NULL,
+  `C20` bit(1) DEFAULT NULL,
+  `C21` bit(1) DEFAULT NULL,
+  `C22` bit(1) DEFAULT NULL,
+  `C23` bit(1) DEFAULT NULL,
+  `C24` bit(1) DEFAULT NULL,
+  `C25` bit(1) DEFAULT NULL,
+  `D0` bit(1) DEFAULT NULL,
+  `D1` bit(1) DEFAULT NULL,
+  `D2` bit(1) DEFAULT NULL,
+  `D3` bit(1) DEFAULT NULL,
+  `D4` bit(1) DEFAULT NULL,
+  `D5` bit(1) DEFAULT NULL,
+  `D6` bit(1) DEFAULT NULL,
+  `D7` bit(1) DEFAULT NULL,
+  `D8` bit(1) DEFAULT NULL,
+  `D9` bit(1) DEFAULT NULL,
+  `D10` bit(1) DEFAULT NULL,
+  `D11` bit(1) DEFAULT NULL,
+  `D12` bit(1) DEFAULT NULL,
+  `D13` bit(1) DEFAULT NULL,
+  `D14` bit(1) DEFAULT NULL,
+  `D15` bit(1) DEFAULT NULL,
+  `D16` bit(1) DEFAULT NULL,
+  `D17` bit(1) DEFAULT NULL,
+  `D18` bit(1) DEFAULT NULL,
+  `D19` bit(1) DEFAULT NULL,
+  `D20` bit(1) DEFAULT NULL,
+  `D21` bit(1) DEFAULT NULL,
+  `D22` bit(1) DEFAULT NULL,
+  `D23` bit(1) DEFAULT NULL,
+  `D24` bit(1) DEFAULT NULL,
+  `D25` bit(1) DEFAULT NULL,
+  `E0` bit(1) DEFAULT NULL,
+  `E1` bit(1) DEFAULT NULL,
+  `E2` bit(1) DEFAULT NULL,
+  `E3` bit(1) DEFAULT NULL,
+  `E4` bit(1) DEFAULT NULL,
+  `E5` bit(1) DEFAULT NULL,
+  `E6` bit(1) DEFAULT NULL,
+  `E7` bit(1) DEFAULT NULL,
+  `E8` bit(1) DEFAULT NULL,
+  `E9` bit(1) DEFAULT NULL,
+  `E10` bit(1) DEFAULT NULL,
+  `E11` bit(1) DEFAULT NULL,
+  `E12` bit(1) DEFAULT NULL,
+  `E13` bit(1) DEFAULT NULL,
+  `E14` bit(1) DEFAULT NULL,
+  `E15` bit(1) DEFAULT NULL,
+  `E16` bit(1) DEFAULT NULL,
+  `E17` bit(1) DEFAULT NULL,
+  `E18` bit(1) DEFAULT NULL,
+  `E19` bit(1) DEFAULT NULL,
+  `E20` bit(1) DEFAULT NULL,
+  `E21` bit(1) DEFAULT NULL,
+  `E22` bit(1) DEFAULT NULL,
+  `E23` bit(1) DEFAULT NULL,
+  `E24` bit(1) DEFAULT NULL,
+  `E25` bit(1) DEFAULT NULL,
+  `F0` bit(1) DEFAULT NULL,
+  `F1` bit(1) DEFAULT NULL,
+  `F2` bit(1) DEFAULT NULL,
+  `F3` bit(1) DEFAULT NULL,
+  `F4` bit(1) DEFAULT NULL,
+  `F5` bit(1) DEFAULT NULL,
+  `F6` bit(1) DEFAULT NULL,
+  `F7` bit(1) DEFAULT NULL,
+  `F8` bit(1) DEFAULT NULL,
+  `F9` bit(1) DEFAULT NULL,
+  `F10` bit(1) DEFAULT NULL,
+  `F11` bit(1) DEFAULT NULL,
+  `F12` bit(1) DEFAULT NULL,
+  `F13` bit(1) DEFAULT NULL,
+  `F14` bit(1) DEFAULT NULL,
+  `F15` bit(1) DEFAULT NULL,
+  `F16` bit(1) DEFAULT NULL,
+  `F17` bit(1) DEFAULT NULL,
+  `F18` bit(1) DEFAULT NULL,
+  `F19` bit(1) DEFAULT NULL,
+  `F20` bit(1) DEFAULT NULL,
+  `F21` bit(1) DEFAULT NULL,
+  `F22` bit(1) DEFAULT NULL,
+  `F23` bit(1) DEFAULT NULL,
+  `F24` bit(1) DEFAULT NULL,
+  `F25` bit(1) DEFAULT NULL,
+  `G0` bit(1) DEFAULT NULL,
+  `G1` bit(1) DEFAULT NULL,
+  `G2` bit(1) DEFAULT NULL,
+  `G3` bit(1) DEFAULT NULL,
+  `G4` bit(1) DEFAULT NULL,
+  `G5` bit(1) DEFAULT NULL,
+  `G6` bit(1) DEFAULT NULL,
+  `G7` bit(1) DEFAULT NULL,
+  `G8` bit(1) DEFAULT NULL,
+  `G9` bit(1) DEFAULT NULL,
+  `G10` bit(1) DEFAULT NULL,
+  `G11` bit(1) DEFAULT NULL,
+  `G12` bit(1) DEFAULT NULL,
+  `G13` bit(1) DEFAULT NULL,
+  `G14` bit(1) DEFAULT NULL,
+  `G15` bit(1) DEFAULT NULL,
+  `G16` bit(1) DEFAULT NULL,
+  `G17` bit(1) DEFAULT NULL,
+  `G18` bit(1) DEFAULT NULL,
+  `G19` bit(1) DEFAULT NULL,
+  `G20` bit(1) DEFAULT NULL,
+  `G21` bit(1) DEFAULT NULL,
+  `G22` bit(1) DEFAULT NULL,
+  `G23` bit(1) DEFAULT NULL,
+  `G24` bit(1) DEFAULT NULL,
+  `G25` bit(1) DEFAULT NULL,
+  `H0` bit(1) DEFAULT NULL,
+  `H1` bit(1) DEFAULT NULL,
+  `H2` bit(1) DEFAULT NULL,
+  `H3` bit(1) DEFAULT NULL,
+  `H4` bit(1) DEFAULT NULL,
+  `H5` bit(1) DEFAULT NULL,
+  `H6` bit(1) DEFAULT NULL,
+  `H7` bit(1) DEFAULT NULL,
+  `H8` bit(1) DEFAULT NULL,
+  `H9` bit(1) DEFAULT NULL,
+  `H10` bit(1) DEFAULT NULL,
+  `H11` bit(1) DEFAULT NULL,
+  `H12` bit(1) DEFAULT NULL,
+  `H13` bit(1) DEFAULT NULL,
+  `H14` bit(1) DEFAULT NULL,
+  `H15` bit(1) DEFAULT NULL,
+  `H16` bit(1) DEFAULT NULL,
+  `H17` bit(1) DEFAULT NULL,
+  `H18` bit(1) DEFAULT NULL,
+  `H19` bit(1) DEFAULT NULL,
+  `H20` bit(1) DEFAULT NULL,
+  `H21` bit(1) DEFAULT NULL,
+  `H22` bit(1) DEFAULT NULL,
+  `H23` bit(1) DEFAULT NULL,
+  `H24` bit(1) DEFAULT NULL,
+  `H25` bit(1) DEFAULT NULL,
+  `I0` bit(1) DEFAULT NULL,
+  `I1` bit(1) DEFAULT NULL,
+  `I2` bit(1) DEFAULT NULL,
+  `I3` bit(1) DEFAULT NULL,
+  `I4` bit(1) DEFAULT NULL,
+  `I5` bit(1) DEFAULT NULL,
+  `I6` bit(1) DEFAULT NULL,
+  `I7` bit(1) DEFAULT NULL,
+  `I8` bit(1) DEFAULT NULL,
+  `I9` bit(1) DEFAULT NULL,
+  `I10` bit(1) DEFAULT NULL,
+  `I11` bit(1) DEFAULT NULL,
+  `I12` bit(1) DEFAULT NULL,
+  `I13` bit(1) DEFAULT NULL,
+  `I14` bit(1) DEFAULT NULL,
+  `I15` bit(1) DEFAULT NULL,
+  `I16` bit(1) DEFAULT NULL,
+  `I17` bit(1) DEFAULT NULL,
+  `I18` bit(1) DEFAULT NULL,
+  `I19` bit(1) DEFAULT NULL,
+  `I20` bit(1) DEFAULT NULL,
+  `I21` bit(1) DEFAULT NULL,
+  `I22` bit(1) DEFAULT NULL,
+  `I23` bit(1) DEFAULT NULL,
+  `I24` bit(1) DEFAULT NULL,
+  `I25` bit(1) DEFAULT NULL,
+  `J0` bit(1) DEFAULT NULL,
+  `J1` bit(1) DEFAULT NULL,
+  `J2` bit(1) DEFAULT NULL,
+  `J3` bit(1) DEFAULT NULL,
+  `J4` bit(1) DEFAULT NULL,
+  `J5` bit(1) DEFAULT NULL,
+  `J6` bit(1) DEFAULT NULL,
+  `J7` bit(1) DEFAULT NULL,
+  `J8` bit(1) DEFAULT NULL,
+  `J9` bit(1) DEFAULT NULL,
+  `J10` bit(1) DEFAULT NULL,
+  `J11` bit(1) DEFAULT NULL,
+  `J12` bit(1) DEFAULT NULL,
+  `J13` bit(1) DEFAULT NULL,
+  `J14` bit(1) DEFAULT NULL,
+  `J15` bit(1) DEFAULT NULL,
+  `J16` bit(1) DEFAULT NULL,
+  `J17` bit(1) DEFAULT NULL,
+  `J18` bit(1) DEFAULT NULL,
+  `J19` bit(1) DEFAULT NULL,
+  `J20` bit(1) DEFAULT NULL,
+  `J21` bit(1) DEFAULT NULL,
+  `J22` bit(1) DEFAULT NULL,
+  `J23` bit(1) DEFAULT NULL,
+  `J24` bit(1) DEFAULT NULL,
+  `J25` bit(1) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AdmissionNo`,`Year`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE  TABLE IF NOT EXISTS LabelLanguage(
-  Label VARCHAR(50),
-  Language integer,
-  Value VARCHAR(200),
+--
+-- RELATIONS FOR TABLE `Attendance`:
+--   `AdmissionNo`
+--       `Student` -> `AdmissionNo`
+--
 
-  PRIMARY KEY (Label, Language),
-  FOREIGN KEY fk004 (Language) REFERENCES Language(Language)
-);
+--
+-- Truncate table before insert `Attendance`
+--
 
-CREATE  TABLE IF NOT EXISTS LanguageGroup(
-  GroupNo integer,
-  GroupName VARCHAR(50),
+TRUNCATE TABLE `Attendance`;
+-- --------------------------------------------------------
 
-  PRIMARY KEY (GroupNo),
-  FOREIGN KEY fk005 (GroupName) REFERENCES LabelLanguage(Label)
-);
-CREATE  TABLE IF NOT EXISTS LanguageOption(
-  GroupNo integer,
-  OptionNo integer,
-  Language integer,
-  Value VARCHAR(200),
+--
+-- Table structure for table `Blacklist`
+--
 
-  PRIMARY KEY (GroupNo, OptionNo),
-  FOREIGN KEY fk005 (GroupNo) REFERENCES LanguageGroup(GroupNo),
-  FOREIGN KEY fk006 (Language) REFERENCES Language(Language)
-);
+DROP TABLE IF EXISTS `Blacklist`;
+CREATE TABLE IF NOT EXISTS `Blacklist` (
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `ListContributor` varchar(5) NOT NULL DEFAULT '',
+  `EnterDate` date NOT NULL DEFAULT '0000-00-00',
+  `Reason` varchar(255) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`,`ListContributor`,`EnterDate`),
+  KEY `fk003` (`ListContributor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- RELATIONS FOR TABLE `Blacklist`:
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--   `ListContributor`
+--       `Staff` -> `StaffID`
+--
 
-CREATE  TABLE IF NOT EXISTS Subject_Grade(
-  SubjectID Integer,
-  Grade integer,
-  Subject varchar(30),
-  Medium integer,
+--
+-- Truncate table before insert `Blacklist`
+--
 
-  PRIMARY KEY (SubjectID),
-  FOREIGN KEY fk007 (Medium) REFERENCES Language(Language)
-);
-CREATE  TABLE IF NOT EXISTS Teaches(
-  SubjectID Integer,
-  StaffID varchar(5),
+TRUNCATE TABLE `Blacklist`;
+-- --------------------------------------------------------
 
-  PRIMARY KEY (SubjectID, StaffID),
-  FOREIGN KEY fk008 (SubjectID) REFERENCES Subject_Grade(SubjectID),
-  FOREIGN KEY fk009 (StaffID) REFERENCES Staff(StaffID)
-);
+--
+-- Table structure for table `ClassInformation`
+--
 
-CREATE  TABLE IF NOT EXISTS Timetable(
-  Grade integer,
-  Class Char(2),
-  Day integer,
-  Position integer,
-  SubjectID INTEGER,
-  StaffID varchar(5),
+DROP TABLE IF EXISTS `ClassInformation`;
+CREATE TABLE IF NOT EXISTS `ClassInformation` (
+  `StaffID` varchar(5) DEFAULT NULL,
+  `Grade` int(11) NOT NULL DEFAULT '0',
+  `Class` char(2) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Grade`,`Class`),
+  KEY `fk001` (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  PRIMARY KEY (Grade, Class, Day, Position, SubjectID),
-  FOREIGN KEY fk010 (SubjectID) REFERENCES Subject_Grade(SubjectID),
-  FOREIGN KEY fk011 (StaffID) REFERENCES Staff(StaffID)
-);
+--
+-- RELATIONS FOR TABLE `ClassInformation`:
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
 
-CREATE  TABLE IF NOT EXISTS ApplyLeave(
-  StaffID VARCHAR(5),
-  RequestDate Date, 
-  StartDate Date, 
-  EndDate Date, 
-  LeaveType INTEGER,
-  /*TimePeriod Integer,*/
-  OtherInformation VARCHAR(200),
-  Status INTEGER,
-  ReviewedBy VARCHAR(5), /*Approved/reject*/
-  ReviewedDate Date,
+--
+-- Truncate table before insert `ClassInformation`
+--
 
-  PRIMARY KEY (StaffID, StartDate),
-  FOREIGN KEY fk012 (StaffID) REFERENCES Staff(StaffID),
-  FOREIGN KEY fk013 (ReviewedBy) REFERENCES Staff(StaffID)
-);
-CREATE  TABLE IF NOT EXISTS LeaveData(
-  StaffID VARCHAR(5),
-  OfficialLeave Integer,
-  MaternityLeave Integer,
-  OtherLeave Integer,
+TRUNCATE TABLE `ClassInformation`;
+-- --------------------------------------------------------
 
-  PRIMARY KEY (StaffID),
-  FOREIGN KEY fk014 (StaffID) REFERENCES Staff(StaffID)
-);
-CREATE  TABLE IF NOT EXISTS IsSubstituted(
-  StaffID VARCHAR(5),
-  Grade integer,
-  Class Char(2),
-  Day integer,
-  Position integer,
-  SubjectID INTEGER,
-  Date DATE,
+--
+-- Table structure for table `Event`
+--
 
-  FOREIGN KEY fk015 (StaffID) REFERENCES Staff(StaffID),
-  FOREIGN KEY fk016 (Grade, Class, Day, Position, SubjectID) REFERENCES Timetable(Grade, Class, Day, Position, SubjectID)
-  /*We have Day in the foreign key. Not sure about having that if we have Date.*/
-);
+DROP TABLE IF EXISTS `Event`;
+CREATE TABLE IF NOT EXISTS `Event` (
+  `EventID` int(11) NOT NULL DEFAULT '0',
+  `Name` varchar(50) DEFAULT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `Location` varchar(50) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `EventDate` date DEFAULT NULL,
+  `EventCreator` varchar(5) DEFAULT NULL,
+  `StartTime` time DEFAULT NULL,
+  `EndTime` time DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`EventID`),
+  KEY `fk018` (`EventCreator`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE  TABLE IF NOT EXISTS Student(
-  AdmissionNo varchar(5),
-  NameWithInitials Varchar(50),
-  Nationality_Race Integer,
-  Religion Integer,
-  Medium Integer,
-  Address varchar(100),
-  Grade Integer,
-  Class char(2),
-  House varchar(20),
+--
+-- RELATIONS FOR TABLE `Event`:
+--   `EventCreator`
+--       `Staff` -> `StaffID`
+--
 
-  PRIMARY KEY (AdmissionNo)
-);
-CREATE TABLE IF NOT EXISTS ParentsInformation(
-  AdmissionNo varchar(5),
-  NamewithInitials Varchar(50),
-  Parent_Guardian BIT, /*0 for parent. 1 for guardian */
-  Occupation Varchar(50),
-  PhoneLand VARCHAR(15),
-  PhoneMobile VARCHAR(15),
-  HomeAddress VARCHAR(100),
-  OfficeAddress VARCHAR(100),
+--
+-- Truncate table before insert `Event`
+--
 
-  PRIMARY KEY (AdmissionNo, NamewithInitials),
-  FOREIGN KEY fk017 (AdmissionNo) REFERENCES Student(AdmissionNo)
-);
+TRUNCATE TABLE `Event`;
+-- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS Event(
-  EventID INTEGER,
-  Name varCHAR(50),
-  Description VARCHAR(200),
-  Location VARCHAR(50),
-  Status integer, /*Postponed, cancelled, due, pending*/
-  EventDate Date,
-  EventCreator VARCHAR(5),
-  StartTime TIME,
-  EndTime TIME,
+--
+-- Table structure for table `EventManager`
+--
 
-  PRIMARY KEY (EventID),
-  FOREIGN KEY fk018 (EventCreator) REFERENCES Staff(StaffID)
-);
-CREATE TABLE IF NOT EXISTS Invitee(
-  EventID INTEGER,
-  AdmissionNo varchar(5),
-  ParentName Varchar(50),
+DROP TABLE IF EXISTS `EventManager`;
+CREATE TABLE IF NOT EXISTS `EventManager` (
+  `EventID` int(11) NOT NULL DEFAULT '0',
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`EventID`,`StaffID`),
+  KEY `fk022` (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  PRIMARY KEY (EventID, AdmissionNo, ParentName),
-  FOREIGN KEY fk019 (EventID) REFERENCES Event(EventID),
-  FOREIGN KEY fk020 (AdmissionNo, ParentName) REFERENCES ParentsInformation(AdmissionNo, NamewithInitials)
-);
-CREATE TABLE IF NOT EXISTS EventManager(
-  EventID INTEGER,
-  StaffID varchar(5),
+--
+-- RELATIONS FOR TABLE `EventManager`:
+--   `EventID`
+--       `Event` -> `EventID`
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
 
-  PRIMARY KEY (EventID, StaffID),
-  FOREIGN KEY fk021 (EventID) REFERENCES Event(EventID),
-  FOREIGN KEY fk022 (StaffID) REFERENCES Staff(StaffID)
-);
-CREATE TABLE IF NOT EXISTS Transaction(
-  EventID INTEGER,
-  TransactionID INTEGER,
-  TransactionDate Date,
-  TransactionType BIT, /*Income, Expenditure*/
-  Amount FLOAT,
-  Description VARCHAR (200),
+--
+-- Truncate table before insert `EventManager`
+--
 
-  PRIMARY KEY (EventID, TransactionID),
-  FOREIGN KEY fk023 (EventID) REFERENCES Event(EventID)
-);
+TRUNCATE TABLE `EventManager`;
+-- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS Student_Subject_Grade(
-  AdmissionNo VARCHAR(5),
-  SubjectID INTEGER,
+--
+-- Table structure for table `Holiday`
+--
 
-  PRIMARY KEY (AdmissionNo, SubjectID),
-  FOREIGN KEY fk024 (AdmissionNo) REFERENCES Student(AdmissionNo),
-  FOREIGN KEY fk025 (SubjectID) REFERENCES Subject_Grade(SubjectID)
-);
-CREATE TABLE IF NOT EXISTS TermMarks(
-  AdmissionNo VARCHAR(5),
-  SubjectID INTEGER,
-  Term INTEGER,
-  Mark INTEGER,
-  Remarks VARCHAR(127),
+DROP TABLE IF EXISTS `Holiday`;
+CREATE TABLE IF NOT EXISTS `Holiday` (
+  `Year` int(11) NOT NULL DEFAULT '0',
+  `Day` date NOT NULL DEFAULT '0000-00-00',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Year`,`Day`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  PRIMARY KEY (AdmissionNo, SubjectID, Term),
-  FOREIGN KEY fk026 (AdmissionNo, SubjectID) REFERENCES Student_Subject_Grade(AdmissionNo, SubjectID)
-);
+--
+-- Truncate table before insert `Holiday`
+--
 
-# delimiter #
-# create procedure load_foo_test_data()
-#   begin
-#
-#     declare v_max int unsigned default 260;
-#     declare v_counter int unsigned default 0;
-#
-#     truncate table Attendance;
-#     start transaction;
-#     while v_counter < v_max do
-#       alter table Attendance (add column v_counter integer);
-#       set v_counter=v_counter+1;
-#     end while;
-#     commit;
-#   end #
-#
-# delimiter ;
-#
-# call load_foo_test_data();
+TRUNCATE TABLE `Holiday`;
+-- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS OLMarks(
-  IndexNo INTEGER,
-  AdmissionNo VARCHAR (5),
-  SubjectID integer,
+--
+-- Table structure for table `Invitee`
+--
 
-  PRIMARY KEY (IndexNo, SubjectID),
-  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo),
-  FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
- );
+DROP TABLE IF EXISTS `Invitee`;
+CREATE TABLE IF NOT EXISTS `Invitee` (
+  `EventID` int(11) NOT NULL DEFAULT '0',
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `ParentName` varchar(50) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`EventID`,`AdmissionNo`,`ParentName`),
+  KEY `fk020` (`AdmissionNo`,`ParentName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS ALMarks(
-  IndexNo INTEGER,
-  AdmissionNo VARCHAR (5),
-  SubjectID integer,
+--
+-- RELATIONS FOR TABLE `Invitee`:
+--   `EventID`
+--       `Event` -> `EventID`
+--
 
-  PRIMARY KEY (IndexNo, SubjectID),
-  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo),
-  FOREIGN KEY (SubjectID) references Subject_Grade(SubjectID)
-);
+--
+-- Truncate table before insert `Invitee`
+--
 
-CREATE TABLE IF NOT EXISTS Holiday(
-  Year INTEGER,
-  Day Date, /*Might store as integer*/
+TRUNCATE TABLE `Invitee`;
+-- --------------------------------------------------------
 
-  PRIMARY KEY (Year, Day)
-);
+--
+-- Table structure for table `IsSubstituted`
+--
 
-CREATE TABLE IF NOT EXISTS Attendance(
-  AdmissionNo VARCHAR(5),
-  Year INTEGER,
+DROP TABLE IF EXISTS `IsSubstituted`;
+CREATE TABLE IF NOT EXISTS `IsSubstituted` (
+  `StaffID` varchar(5) DEFAULT NULL,
+  `Grade` int(11) DEFAULT NULL,
+  `Class` char(2) DEFAULT NULL,
+  `Day` int(11) DEFAULT NULL,
+  `Position` int(11) DEFAULT NULL,
+  `SubjectID` int(11) DEFAULT NULL,
+  `Date` date DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  KEY `fk015` (`StaffID`),
+  KEY `fk016` (`Grade`,`Class`,`Day`,`Position`,`SubjectID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  PRIMARY KEY (AdmissionNo, Year),
-  FOREIGN KEY (AdmissionNo) references Student(AdmissionNo)
-);
+--
+-- RELATIONS FOR TABLE `IsSubstituted`:
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
+
+--
+-- Truncate table before insert `IsSubstituted`
+--
+
+TRUNCATE TABLE `IsSubstituted`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LabelLanguage`
+--
+
+DROP TABLE IF EXISTS `LabelLanguage`;
+CREATE TABLE IF NOT EXISTS `LabelLanguage` (
+  `Label` varchar(50) NOT NULL DEFAULT '',
+  `Language` int(11) NOT NULL DEFAULT '0',
+  `Value` varchar(200) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Label`,`Language`),
+  KEY `fk004` (`Language`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LabelLanguage`:
+--   `Language`
+--       `Language` -> `Language`
+--
+
+--
+-- Truncate table before insert `LabelLanguage`
+--
+
+TRUNCATE TABLE `LabelLanguage`;
+--
+-- Dumping data for table `LabelLanguage`
+--
+
+INSERT INTO `LabelLanguage` VALUES
+  ('addmanager', 0, 'Add Event Managers ', 0),
+  ('addmanager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ', 0),
+  ('applyForLeave', 0, 'Apply for Leave', 0),
+  ('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම', 0),
+  ('approveLeave', 0, 'Approve Leave', 0),
+  ('approveLeave', 1, 'නිවාඩු අනුමතකිරීම', 0),
+  ('createTimetableByClass', 0, 'Create Timetable by Class', 0),
+  ('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම', 0),
+  ('createTimetableByTeacher', 0, 'Create Timetable by Teacher', 0),
+  ('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම', 0),
+  ('date', 0, 'Date', 0),
+  ('date', 1, 'දිනය', 0),
+  ('description', 0, 'Description', 0),
+  ('description', 1, 'විස්තරය', 0),
+  ('endtime', 0, 'End Time', 0),
+  ('endtime', 1, 'අවසන් වන වෙලාව', 0),
+  ('eventcreator', 0, 'Event Creator', 0),
+  ('eventcreator', 1, 'සිදුවීම් නිර්මාණකරු', 0),
+  ('eventid', 0, 'Event ID', 0),
+  ('eventid', 1, 'සිදුවීම් අංකය', 0),
+  ('eventManagement', 0, 'Event Management', 0),
+  ('eventManagement', 1, 'උත්සවය කළමනාකරණය', 0),
+  ('eventtype', 0, 'Event Type', 0),
+  ('eventtype', 1, 'සිදුවීම් වර්ගය', 0),
+  ('leaveManagement', 0, 'Leave Management', 0),
+  ('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය', 0),
+  ('location', 0, 'Location', 0),
+  ('location', 1, 'ස්ථානය', 0),
+  ('name', 0, 'Name', 0),
+  ('name', 1, 'සිදුවීම', 0),
+  ('prizegiving', 0, 'Prize Giving Ceremony', 0),
+  ('prizegiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය', 0),
+  ('registerStaffMember', 0, 'Register Staff Member', 0),
+  ('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න', 0),
+  ('saveevent', 0, 'Save Event', 0),
+  ('saveevent', 1, 'සිදුවීම සුරකින්න', 0),
+  ('searchStaffMember', 0, 'Search Staff Member', 0),
+  ('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම', 0),
+  ('sportmeet', 0, 'Sports Meet', 0),
+  ('sportmeet', 1, 'ක්‍රීඩා උත්සවය', 0),
+  ('staffManagement', 0, 'Staff Management', 0),
+  ('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය', 0),
+  ('starttime', 0, 'Start Time ', 0),
+  ('starttime', 1, 'ආරම්භක වෙලාව ', 0),
+  ('status', 0, 'Status', 0),
+  ('status', 1, 'තත්වය', 0),
+  ('teacherday', 0, 'Teacher''s Day', 0),
+  ('teacherday', 1, 'ගුරු දිනය', 0),
+  ('timetables', 0, 'Timetables', 0),
+  ('timetables', 1, 'කාලසටහන', 0),
+  ('viewLeaveHistory', 0, 'View Leave History', 0),
+  ('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Language`
+--
+
+DROP TABLE IF EXISTS `Language`;
+CREATE TABLE IF NOT EXISTS `Language` (
+  `Language` int(11) NOT NULL DEFAULT '0',
+  `Value` varchar(20) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Language`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `Language`
+--
+
+TRUNCATE TABLE `Language`;
+--
+-- Dumping data for table `Language`
+--
+
+INSERT INTO `Language` VALUES
+  (0, 'English', 0),
+  (1, 'Sinhala', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LanguageGroup`
+--
+
+DROP TABLE IF EXISTS `LanguageGroup`;
+CREATE TABLE IF NOT EXISTS `LanguageGroup` (
+  `GroupNo` int(11) NOT NULL DEFAULT '0',
+  `GroupName` varchar(50) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`GroupNo`),
+  KEY `fk005` (`GroupName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LanguageGroup`:
+--   `GroupName`
+--       `LabelLanguage` -> `Label`
+--
+
+--
+-- Truncate table before insert `LanguageGroup`
+--
+
+TRUNCATE TABLE `LanguageGroup`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LanguageOption`
+--
+
+DROP TABLE IF EXISTS `LanguageOption`;
+CREATE TABLE IF NOT EXISTS `LanguageOption` (
+  `GroupNo` int(11) NOT NULL DEFAULT '0',
+  `OptionNo` int(11) NOT NULL DEFAULT '0',
+  `Language` int(11) DEFAULT NULL,
+  `Value` varchar(200) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`GroupNo`,`OptionNo`),
+  KEY `fk006` (`Language`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LanguageOption`:
+--   `GroupNo`
+--       `LanguageGroup` -> `GroupNo`
+--   `Language`
+--       `Language` -> `Language`
+--
+
+--
+-- Truncate table before insert `LanguageOption`
+--
+
+TRUNCATE TABLE `LanguageOption`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `LeaveData`
+--
+
+DROP TABLE IF EXISTS `LeaveData`;
+CREATE TABLE IF NOT EXISTS `LeaveData` (
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `OfficialLeave` int(11) DEFAULT NULL,
+  `MaternityLeave` int(11) DEFAULT NULL,
+  `OtherLeave` int(11) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `LeaveData`:
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
+
+--
+-- Truncate table before insert `LeaveData`
+--
+
+TRUNCATE TABLE `LeaveData`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `OLMarks`
+--
+
+DROP TABLE IF EXISTS `OLMarks`;
+CREATE TABLE IF NOT EXISTS `OLMarks` (
+  `IndexNo` int(11) NOT NULL DEFAULT '0',
+  `AdmissionNo` varchar(5) DEFAULT NULL,
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`IndexNo`,`SubjectID`),
+  KEY `AdmissionNo` (`AdmissionNo`),
+  KEY `SubjectID` (`SubjectID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `OLMarks`:
+--   `AdmissionNo`
+--       `Student` -> `AdmissionNo`
+--   `SubjectID`
+--       `Subject_Grade` -> `SubjectID`
+--
+
+--
+-- Truncate table before insert `OLMarks`
+--
+
+TRUNCATE TABLE `OLMarks`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ParentsInformation`
+--
+
+DROP TABLE IF EXISTS `ParentsInformation`;
+CREATE TABLE IF NOT EXISTS `ParentsInformation` (
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `NamewithInitials` varchar(50) NOT NULL DEFAULT '',
+  `Parent_Guardian` bit(1) DEFAULT NULL,
+  `Occupation` varchar(50) DEFAULT NULL,
+  `PhoneLand` varchar(15) DEFAULT NULL,
+  `PhoneMobile` varchar(15) DEFAULT NULL,
+  `HomeAddress` varchar(100) DEFAULT NULL,
+  `OfficeAddress` varchar(100) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AdmissionNo`,`NamewithInitials`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `ParentsInformation`:
+--   `AdmissionNo`
+--       `Student` -> `AdmissionNo`
+--
+
+--
+-- Truncate table before insert `ParentsInformation`
+--
+
+TRUNCATE TABLE `ParentsInformation`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Staff`
+--
+
+DROP TABLE IF EXISTS `Staff`;
+CREATE TABLE IF NOT EXISTS `Staff` (
+  `StaffID` varchar(5) NOT NULL,
+  `NamewithInitials` varchar(60) DEFAULT NULL,
+  `DateofBirth` date DEFAULT NULL,
+  `Gender` int(11) DEFAULT NULL,
+  `Nationality_Race` int(11) DEFAULT NULL,
+  `Religion` int(11) DEFAULT NULL,
+  `CivilStatus` int(11) DEFAULT NULL,
+  `NICNumber` varchar(10) DEFAULT NULL,
+  `MailDeliveryAddress` varchar(100) DEFAULT NULL,
+  `ContactNumber` varchar(15) DEFAULT NULL,
+  `DateAppointedastoPost` date DEFAULT NULL,
+  `DateJoinedthisSchool` date DEFAULT NULL,
+  `EmploymentStatus` int(11) DEFAULT NULL,
+  `Medium` int(11) DEFAULT NULL,
+  `PositioninSchool` int(11) DEFAULT NULL,
+  `Section` int(11) DEFAULT NULL,
+  `SubjectMostTaught` int(11) DEFAULT NULL,
+  `SubjectSecondMostTaught` int(11) DEFAULT NULL,
+  `ServiceGrade` int(11) DEFAULT NULL,
+  `Salary` float DEFAULT NULL,
+  `HighestEducationalQualification` int(11) DEFAULT NULL,
+  `HighestProfessionalQualification` int(11) DEFAULT NULL,
+  `CourseofStudy` int(11) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `Staff`
+--
+
+TRUNCATE TABLE `Staff`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student`
+--
+
+DROP TABLE IF EXISTS `Student`;
+CREATE TABLE IF NOT EXISTS `Student` (
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `NameWithInitials` varchar(50) DEFAULT NULL,
+  `Nationality_Race` int(11) DEFAULT NULL,
+  `Religion` int(11) DEFAULT NULL,
+  `Medium` int(11) DEFAULT NULL,
+  `Address` varchar(100) DEFAULT NULL,
+  `Grade` int(11) DEFAULT NULL,
+  `Class` char(2) DEFAULT NULL,
+  `House` varchar(20) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AdmissionNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `Student`
+--
+
+TRUNCATE TABLE `Student`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Student_Subject_Grade`
+--
+
+DROP TABLE IF EXISTS `Student_Subject_Grade`;
+CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AdmissionNo`,`SubjectID`),
+  KEY `fk025` (`SubjectID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Student_Subject_Grade`:
+--   `AdmissionNo`
+--       `Student` -> `AdmissionNo`
+--   `SubjectID`
+--       `Subject_Grade` -> `SubjectID`
+--
+
+--
+-- Truncate table before insert `Student_Subject_Grade`
+--
+
+TRUNCATE TABLE `Student_Subject_Grade`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Subject_Grade`
+--
+
+DROP TABLE IF EXISTS `Subject_Grade`;
+CREATE TABLE IF NOT EXISTS `Subject_Grade` (
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `Grade` int(11) DEFAULT NULL,
+  `Subject` varchar(30) DEFAULT NULL,
+  `Medium` int(11) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`SubjectID`),
+  KEY `fk007` (`Medium`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Subject_Grade`:
+--   `Medium`
+--       `Language` -> `Language`
+--
+
+--
+-- Truncate table before insert `Subject_Grade`
+--
+
+TRUNCATE TABLE `Subject_Grade`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Teaches`
+--
+
+DROP TABLE IF EXISTS `Teaches`;
+CREATE TABLE IF NOT EXISTS `Teaches` (
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`SubjectID`,`StaffID`),
+  KEY `fk009` (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Teaches`:
+--   `SubjectID`
+--       `Subject_Grade` -> `SubjectID`
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
+
+--
+-- Truncate table before insert `Teaches`
+--
+
+TRUNCATE TABLE `Teaches`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `TermMarks`
+--
+
+DROP TABLE IF EXISTS `TermMarks`;
+CREATE TABLE IF NOT EXISTS `TermMarks` (
+  `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `Term` int(11) NOT NULL DEFAULT '0',
+  `Mark` int(11) DEFAULT NULL,
+  `Remarks` varchar(127) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`AdmissionNo`,`SubjectID`,`Term`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `TermMarks`
+--
+
+TRUNCATE TABLE `TermMarks`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Timetable`
+--
+
+DROP TABLE IF EXISTS `Timetable`;
+CREATE TABLE IF NOT EXISTS `Timetable` (
+  `Grade` int(11) NOT NULL DEFAULT '0',
+  `Class` char(2) NOT NULL DEFAULT '',
+  `Day` int(11) NOT NULL DEFAULT '0',
+  `Position` int(11) NOT NULL DEFAULT '0',
+  `SubjectID` int(11) NOT NULL DEFAULT '0',
+  `StaffID` varchar(5) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`Grade`,`Class`,`Day`,`Position`,`SubjectID`),
+  KEY `fk010` (`SubjectID`),
+  KEY `fk011` (`StaffID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Timetable`:
+--   `SubjectID`
+--       `Subject_Grade` -> `SubjectID`
+--   `StaffID`
+--       `Staff` -> `StaffID`
+--
+
+--
+-- Truncate table before insert `Timetable`
+--
+
+TRUNCATE TABLE `Timetable`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Transaction`
+--
+
+DROP TABLE IF EXISTS `Transaction`;
+CREATE TABLE IF NOT EXISTS `Transaction` (
+  `EventID` int(11) NOT NULL DEFAULT '0',
+  `TransactionID` int(11) NOT NULL DEFAULT '0',
+  `TransactionDate` date DEFAULT NULL,
+  `TransactionType` bit(1) DEFAULT NULL,
+  `Amount` float DEFAULT NULL,
+  `Description` varchar(200) DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`EventID`,`TransactionID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELATIONS FOR TABLE `Transaction`:
+--   `EventID`
+--       `Event` -> `EventID`
+--
+
+--
+-- Truncate table before insert `Transaction`
+--
+
+TRUNCATE TABLE `Transaction`;
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `User`
+--
+
+DROP TABLE IF EXISTS `User`;
+CREATE TABLE IF NOT EXISTS `User` (
+  `userEmail` varchar(50) NOT NULL,
+  `userPassword` varchar(80) DEFAULT NULL,
+  `accessLevel` int(11) DEFAULT '2',
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`userEmail`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Truncate table before insert `User`
+--
+
+TRUNCATE TABLE `User`;
+--
+-- Dumping data for table `User`
+--
+
+INSERT INTO `User` VALUES
+  ('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0),
+  ('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0),
+  ('arabic@gmail.com', '$2y$10$PvG7wnmtFqMvSj0CQhhKEeAg6COM2fzGs6JCA17Imp9SUY2TpsY22', 1, 0),
+  ('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 0),
+  ('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0),
+  ('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 0),
+  ('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 0),
+  ('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 0),
+  ('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0),
+  ('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0),
+  ('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0),
+  ('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0),
+  ('yazdaan.alimudeen@gmail.com', '$2y$10$U5A51bsgew2WjQ8LbQHPMuLChxkBFjFKwjLYJr0GdV7otPLoNi1L.', 1, 0);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `ALMarks`
+--
+ALTER TABLE `ALMarks`
+ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+
+--
+-- Constraints for table `ApplyLeave`
+--
+ALTER TABLE `ApplyLeave`
+ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
+ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `Attendance`
+--
+ALTER TABLE `Attendance`
+ADD CONSTRAINT `Attendance_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
+
+--
+-- Constraints for table `Blacklist`
+--
+ALTER TABLE `Blacklist`
+ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
+ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `ClassInformation`
+--
+ALTER TABLE `ClassInformation`
+ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `Event`
+--
+ALTER TABLE `Event`
+ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `EventManager`
+--
+ALTER TABLE `EventManager`
+ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
+ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `Invitee`
+--
+ALTER TABLE `Invitee`
+ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
+ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
+
+--
+-- Constraints for table `IsSubstituted`
+--
+ALTER TABLE `IsSubstituted`
+ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
+ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`Grade`, `Class`, `Day`, `Position`, `SubjectID`) REFERENCES `Timetable` (`Grade`, `Class`, `Day`, `Position`, `SubjectID`);
+
+--
+-- Constraints for table `LabelLanguage`
+--
+ALTER TABLE `LabelLanguage`
+ADD CONSTRAINT `LabelLanguage_ibfk_1` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
+
+--
+-- Constraints for table `LanguageGroup`
+--
+ALTER TABLE `LanguageGroup`
+ADD CONSTRAINT `LanguageGroup_ibfk_1` FOREIGN KEY (`GroupName`) REFERENCES `LabelLanguage` (`Label`);
+
+--
+-- Constraints for table `LanguageOption`
+--
+ALTER TABLE `LanguageOption`
+ADD CONSTRAINT `LanguageOption_ibfk_1` FOREIGN KEY (`GroupNo`) REFERENCES `LanguageGroup` (`GroupNo`),
+ADD CONSTRAINT `LanguageOption_ibfk_2` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
+
+--
+-- Constraints for table `LeaveData`
+--
+ALTER TABLE `LeaveData`
+ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `OLMarks`
+--
+ALTER TABLE `OLMarks`
+ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+
+--
+-- Constraints for table `ParentsInformation`
+--
+ALTER TABLE `ParentsInformation`
+ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
+
+--
+-- Constraints for table `Student_Subject_Grade`
+--
+ALTER TABLE `Student_Subject_Grade`
+ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+
+--
+-- Constraints for table `Subject_Grade`
+--
+ALTER TABLE `Subject_Grade`
+ADD CONSTRAINT `Subject_Grade_ibfk_1` FOREIGN KEY (`Medium`) REFERENCES `Language` (`Language`);
+
+--
+-- Constraints for table `Teaches`
+--
+ALTER TABLE `Teaches`
+ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
+ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `TermMarks`
+--
+ALTER TABLE `TermMarks`
+ADD CONSTRAINT `TermMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`, `SubjectID`) REFERENCES `Student_Subject_Grade` (`AdmissionNo`, `SubjectID`);
+
+--
+-- Constraints for table `Timetable`
+--
+ALTER TABLE `Timetable`
+ADD CONSTRAINT `Timetable_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
+ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `Transaction`
+--
+ALTER TABLE `Transaction`
+ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
+COMMIT;
