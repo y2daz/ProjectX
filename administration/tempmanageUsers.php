@@ -100,8 +100,6 @@ else
                     $("td.searchEmail").closest('tr').removeClass("search");
                 }
              }
-//             var s = "foo";
-//             alert(s.indexOf("oo") > -1);
         </script>
     </head>
     <body>
