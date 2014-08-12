@@ -141,7 +141,7 @@
 
     }
 
-    function deleteUser{
+    function deleteUser(){
 
     }
 ?>
