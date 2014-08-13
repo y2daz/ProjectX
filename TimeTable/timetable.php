@@ -36,11 +36,11 @@ $pageTitle= "Template";
 
     <table id="info">
         <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="clickedTeacher()"/> by Teacher</td>
+            <td><input type="RADIO" name="Choice" value="Teacher"  onclick="clickedTeacher()"/> by Teacher</td>
             <td><input type="RADIO" name="Choice" value="Class" onclick="clickedClass()" /> by Class</td>
         </tr>
         <tr>
-            <td colspan="2"><span id="selection">Class : </span><input type="text" class="text1" name="class" value=""></td>
+            <td colspan="2"><span id="selection">Teacher : </span><input type="text" class="text1" name="class" value=""></td>
         </tr>
     </table>
 
@@ -131,8 +131,10 @@ $pageTitle= "Template";
         </tr>
 
     </table>
-    <br>
-    <br>
+
+    <br />
+    <br />
+
     <div id="toHide" hidden="hidden">
         <h2>Assign Teachers</h2>
 

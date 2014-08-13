@@ -26,18 +26,33 @@ h2{
 #timetable{
     position: relative;
     top: 25px;
-    width: 900px;
+    left:10px;
+    max-width: 800px;
 }
 #timetable, #timetable th, #timetable td{
     border: 1px solid black;
 }
 #timetable  th{
-    width: 150;
+    /*width: 150px;*/
+    padding:2px 5px 2px 5px;
 }
 #timetable  td{
-    width: 150;
+    padding:2px 5px 2px 5px;
     text-align: center;
+    min-width: 100px;
 }
 #timetable  tr{
     height: 10px;
+}
+#submit{
+    position: relative;
+    top: 50px;
+}
+#submit  th{
+    width: 200px;
+    text-align: center;
+}
+#submit  tr{
+    width: 390px;
+    text-align: center;
 }
