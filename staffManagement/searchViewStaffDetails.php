@@ -18,11 +18,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 1200;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
@@ -31,10 +26,10 @@ $pageTitle= "Template";
             border-spacing:0px 5px;
         }
 
-        .general {
-            position:absolute;
-            left:80px;
-            top:80px;
+        #searchCriteria{
+            position:relative;
+            left:20px;
+            top:20px;
         }
 
         th{
@@ -47,6 +42,12 @@ $pageTitle= "Template";
 
         td {
             padding:5px;
+        }
+
+        #staffList{
+            position: relative;
+            top: 40px;
+        }
         }
 
         .staffimage{
@@ -120,62 +121,52 @@ else
 	
 
 			
-	<form onsubmit="return validateEverything()" name="thisForm" method="post">
-	<div class="main">		
-	<h1>Search and View Staff Details</h1>
-<table class="general" cellspacing="0">	
+
+	<div class="main">
+
+        <form onsubmit="" name="thisForm" method="post">
+
+            <h1>Search and View Staff Details</h1>
+
+            <table id="searchCriteria" cellspacing="0">
 				
-	<tr><th>Search By</th><th></th></tr>		
-				<tr class="alt">
+                <tr><th>Search By</th></tr>
+                <tr class="alt">
 					<td><?php echo $Searchby?></td>
-					
-						 
 				</tr>
-				
 				<tr class="alt">
-					
 					<td>
-					<br><input type="checkbox" name="checkbox" value=""><?php echo $staffID?>
+					    <input type="checkbox" name="checkbox" value=""><?php echo $staffID?>
 						<input type="checkbox" name="checkbox" value=""><?php echo $nameWithInitials?>
 						<input type="checkbox" name="checkbox" value=""><?php echo $dateOfBirth?>
-					<input type="checkbox" name="checkbox" value=""><?php echo $gender?></br>
-						<br><input type="checkbox" name="checkbox" value=""><?php echo $nationalityRace?>
+					    <input type="checkbox" name="checkbox" value=""><?php echo $gender?><br />
+                        <input type="checkbox" name="checkbox" value=""><?php echo $nationalityRace?>
 						<input type="checkbox" name="checkbox" value=""><?php echo $religion?>
 						<input type="checkbox" name="checkbox" value=""><?php echo $civilStatus?>
-						<input type="checkbox" name="checkbox" value=""><?php echo  $nicNumber?></br>
-						
-
+						<input type="checkbox" name="checkbox" value=""><?php echo  $nicNumber?><br />
 					</td>
 				</tr>
+            </table>
 
-				<table border="2px solid black" >
-
-
+            <table id="staffList">
                 <tr>
                     <th>Staff id</th>
                     <th>Name with initials</th>
                     <th>Date of birth</th>
-		    <th>Gender</th>
+                    <th>Gender</th>
                     <th>Nationality</th>
                     <th>Mailing Address</th>
-		    <th>Religion</th>
+                    <th>Religion</th>
                     <th>Civil Status</th>
                     <th>Contact number</th>
-		    <th>Nic Number</th>
-                   
-
+                    <th>Nic Number</th>
                 </tr>
-                
+                <tr>
+                    <td><input class="button" type="submit" value="Browse"></td>
+                </tr>
+            </table>
 
-
-				
-
-				<td><input class="button" type="submit" value="Browse"></td>
-				</tr>			
-			
-			</table>		
-
-		</form>
+        </form>
 
 			
 	
@@ -186,9 +177,9 @@ else
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 1200;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Search Staff Details";
 //Only change above
 
 $pageContent = ob_get_contents();
