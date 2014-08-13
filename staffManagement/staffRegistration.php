@@ -38,14 +38,14 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         .general {
             position:absolute;
-            left:80px;
+            left:10px;
             top:80px;
         }
 
         th{
             align:center;
             color:white;
-            background-color:#154DC1;
+            background-color: #005e77;
             height:25px;
             padding:5px;
             min-width: 200px;
@@ -61,7 +61,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             width:150px;
             top:130px;
             left:560px;
-            background-color:#154DC1;
+            background-color: #005e77;
             z-index:0;
         }
         .staffimage img
@@ -1009,17 +1009,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 <?php
                 for($c = 0; $c < 95; $c++)
                 {
-                if ($c == 17)
-                { 	echo "</optgroup>\n<optgroup label=\"Trained Teachers (Nat.Dip. in Teaching)\"";
-                } elseif ($c == 49) {
-                echo "</optgroup>\n<optgroup label=\"Untrained Teachers (Sri Lanka Teaching Service)\"";
-                } elseif ($c == 70) {
-                echo "</optgroup>\n<optgroup label=\"!Untrained something else\"";
-                } elseif ($c == 90) {
-                echo "</optgroup>\n<optgroup label=\"Contract-based and Other\"";
-                } else {
-                echo "\t<option value=\"$c\">" . $myarr[$c] . "</option>\n";
-                }
+                    if ($c == 17)
+                    { 	echo "</optgroup>\n<optgroup label=\"Trained Teachers (Nat.Dip. in Teaching)\"";
+                    } elseif ($c == 49) {
+                    echo "</optgroup>\n<optgroup label=\"Untrained Teachers (Sri Lanka Teaching Service)\"";
+                    } elseif ($c == 70) {
+                    echo "</optgroup>\n<optgroup label=\"!Untrained something else\"";
+                    } elseif ($c == 90) {
+                    echo "</optgroup>\n<optgroup label=\"Contract-based and Other\"";
+                    } else {
+                    echo "\t<option value=\"$c\">" . $myarr[$c] . "</option>\n";
+                    }
                 }
 
                 echo "</optgroup>";
