@@ -12,6 +12,7 @@ function addTextbox()
     var newTextbox = document.createElement('tr');
     newTextbox.innerHTML = "<td>" + (num + 1) + "</td><td><input type='text' class='subNumber' name='sub' ></td>";
 
+
     table.appendChild(newTextbox);
 
 //    var newText = "<tr><td>" + (num + 1) + "</td><td><input type='text' class='subNumber' name='sub' ></td><tr>";
@@ -19,14 +20,41 @@ function addTextbox()
 //    document.getElementById("subjectList").innerHTML = table + newText;
 }
 
+
+function addNewRow()
+{
+    var table = document.getElementById("assign");
+
+    var num = $('.noOfSubject').length;
+
+    var newTextbox = document.createElement('tr');
+
+    var a = "<td  class=\"noOfSubject\">Subject " + (num + 1) + "</td><td><input type='text' class=\"text2\" name=\"sub\""+(num + 1) + "></td>";
+
+    newTextbox.innerHTML = a;
+
+
+    table.appendChild(newTextbox);
+
+
+
+}
+
 function clickedTeacher()
 {
     document.getElementById('selection').innerHTML='Teacher : ';
     document.getElementById('toHide').hidden = "hidden";
+
+    $('#main').height(700);
+    $('#footer').css({ top: '800px' });
 }
 
 function clickedClass()
 {
     document.getElementById('selection').innerHTML='Class : ';
     document.getElementById('toHide').hidden = "";
+
+   $('#main').height(1000);
+   $('#footer').css({ top: '1100px' });
+
 }
