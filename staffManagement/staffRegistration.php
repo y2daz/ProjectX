@@ -1,4 +1,4 @@
-﻿<?php session_start();
+﻿﻿<?php session_start();
 
     $_SESSION['language']=0;
 
@@ -844,7 +844,7 @@ a:link, a:visited, a:hover, a:active{
 			
 		<form onsubmit="return validateEverything()" name="thisForm" method="post">
 			<div class="staffimage">
-				<img src="" alt="No any image"/>
+				<img src="" alt="No any image">
 			</div>
 			<table class="general" cellspacing="0">	
 				<tr><th><?php echo $generalInformation?></th><th></th></tr>
@@ -1126,128 +1126,132 @@ a:link, a:visited, a:hover, a:active{
 				<tr>
 					<td><?php echo $courseOfStudy?></td>
 
-					<td>
-                        <select name="courseOfStudy" type="text" value="">
-                            <option value="1"><?php echo $BscinEducation?></option>
-                            <option value="2"><?php echo $BscinPhysics?></option>
-                            <option value="3"><?php echo $BscinBiology?></option>
-                            <option value="4"><?php echo $BscinCombinedMathematics?></option>
-                            <option value="5"><?php echo $BScspecialisationinMathematics?></option>
-                            <option value="6"><?php echo $PassedMathswithoutadegreeinscience?></option>
-                            <option value="7"><?php echo $BscinAgriculture?></option>
-                            <option value="8"><?php echo $BscinHomeScience?></option>
-                            <option value="9"><?php echo $BscinIT?></option>
-                            <option value="10"><?php echo $BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
-                            <option value="11"><?php echo $BscinSocialScience?></option>
-                            <option value="12"><?php echo $BAinEasternMusicorequivalentDip?></option>
-                            <option value="13"><?php echo $BAinArts?></option>
-                            <option value="14"><?php echo $BAinDancingorequivalentDip?></option>
-                            <option value="15"><?php echo $BADegreesorequivalent?></option>
-                            <option value="16"><?php echo $BAinEnglishorequivalent?></option>
-                            <option value="17"><?php echo $BAinaForeignLanguageexcludingEnglish?></option>
+					<td><select name="courseOfStudy" type="text" value="">
+					 					
+					
+
+						<option value="1"><?php echo $BscinEducation?></option>
+						<option value="2"><?php echo $BscinPhysics?></option>
+						<option value="3"><?php echo $BscinBiology?></option>
+						<option value="4"><?php echo $BscinCombinedMathematics?></option>
+						<option value="5"><?php echo $BScspecialisationinMathematics?></option>
+						<option value="6"><?php echo $PassedMathswithoutadegreeinscience?></option>
+						<option value="7"><?php echo $BscinAgriculture?></option>
+						<option value="8"><?php echo $BscinHomeScience?></option>
+						<option value="9"><?php echo $BscinIT?></option>
+						<option value="10"><?php echo $BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
+						<option value="11"><?php echo $BscinSocialScience?></option>
+						<option value="12"><?php echo $BAinEasternMusicorequivalentDip?></option>
+						<option value="13"><?php echo $BAinArts?></option>
+						<option value="14"><?php echo $BAinDancingorequivalentDip?></option>
+						<option value="15"><?php echo $BADegreesorequivalent?></option>
+						<option value="16"><?php echo $BAinEnglishorequivalent?></option>
+						<option value="17"><?php echo $BAinaForeignLanguageexcludingEnglish?></option>
+
+				
+
+						<option value="18"><?php echo $IT?></option>
+						<option value="19"><?php echo $English?></option>
+						<option value="20"><?php echo $Maths?></option>
+						<option value="21"><?php echo $Science?></option>
+						<option value="22"><?php echo $ScienceandMaths?></option>
+						<option value="23"><?php echo $SocialStudies?></option>
+						<option value="24"><?php echo $Commerce?></option>
+						<option value="25"><?php echo $HomeScience?></option>
+						<option value="26"><?php echo $BTecConstruction?></option>
+						<option value="27"><?php echo $BTecMechanical?></option>
+						<option value="28"><?php echo $BTecElectronicandElectrical?></option>
+						<option value="29"><?php echo $Arts?></option>
+						<option value="30"><?php echo $Agriculture?></option>
+						<option value="31"><?php echo $WesternMusic?></option>
+						<option value="32"><?php echo $EasternMusic?></option>
+						<option value="33"><?php echo $ArtsAgain?></option>
+						<option value="34"><?php echo $Dancing?></option>
+						<option value="35"><?php echo $HealthandPhysicalEducation?></option>
+						<option value="36"><?php echo $Buddhism?></option>
+						<option value="37"><?php echo $Hinduism?></option>
+						<option value="38"><?php echo $Islam?></option>
+						<option value="39"><?php echo $RomanCatholicism?></option>
+						<option value="40"><?php echo $NonRomanCatholicism?></option>
+						<option value="41"><?php echo $SpecialEducation?></option>
+						<option value="42"><?php echo $Sinhala?></option>
+						<option value="43"><?php echo $Tamil?></option>
+						<option value="44"><?php echo $Arabic?></option>
+						<option value="45"><?php echo $PrimaryGeneral?></option>
+						<option value="46"><?php echo $LibraryandInformationScience?></option>
+						<option value="47"><?php echo $TheatreandDrama?></option>
+						<option value="48"><?php echo $Other?></option>
+		
+				
+						
+						<option value="19"><?php echo $Maths?></option>
+						<option value="20"><?php echo $Science?></option>
+						<option value="21"><?php echo $ScienceandMaths?></option>
+						<option value="22"><?php echo $English?></option>
+						<option value="23"><?php echo $Primary?></option>
+						<option value="24"><?php echo $Religion?></option>
+						<option value="25"><?php echo $SocialStudies?></option>
+						<option value="26"><?php echo $Commerce?></option>
+						<option value="27"><?php echo $Technology?></option>
+						<option value="28"><?php echo $HomeScience?></option>
+						<option value="29"><?php echo $Agriculture ?></option>
+						<option value="30"><?php echo $Sinhala?></option>
+						<option value="31"><?php echo $Tamil?></option>
+						<option value="32"><?php echo $WesternMusic?></option>
+						<option value="33"><?php echo $EasternMusic?></option>
+						<option value="34"><?php echo $Dancing?></option> 
+						<option value="35"><?php echo $Art?></option>
+						<option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
+						<option value="37"><?php echo $Malay?></option>
+						<option value="38"><?php echo $Other?></option>
+
+						
+					
+						
+						<option value="19"><?php echo $Maths?></option>
+						<option value="20"><?php echo $Science?></option>
+						<option value="21"><?php echo $ScienceandMaths?></option>
+						<option value="22"><?php echo $English?></option>
+						<option value="23"><?php echo $Primary?></option>
+						<option value="24"><?php echo $Religion?></option>
+						<option value="25"><?php echo $SocialStudies?></option>
+						<option value="26"><?php echo $Commerce?></option>
+						<option value="27"><?php echo $Technology?></option>
+						<option value="28"><?php echo $HomeScience?></option>
+						<option value="29"><?php echo $Agriculture ?></option>
+						<option value="30"><?php echo $Sinhala?></option>
+						<option value="31"><?php echo $Tamil?></option>
+						<option value="32"><?php echo $WesternMusic?></option>
+						<option value="33"><?php echo $EasternMusic?></option>
+						<option value="34"><?php echo $Dancing?></option> 
+						<option value="35"><?php echo $Art?></option>
+						<option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
+						<option value="37"><?php echo $Malay?></option>
+						<option value="38"><?php echo $Other?></option>
+
+						
+						<option value="19"><?php echo $Graduates?></option>
+						<option value="20"><?php echo $ALevel?></option>
+						<option value="21"><?php echo $OLevelandOther?></option>
 
 
+						for($c = 0; $c < 95; $c++)
+						{
+							if ($c == 17)
+							{ 	echo "</optgroup>\n<optgroup label=\"Trained Teachers (Nat.Dip. in Teaching)\""; 
+							} elseif ($c == 49) {
+								echo "</optgroup>\n<optgroup label=\"Untrained Teachers (Sri Lanka Teaching Service)\""; 
+							} elseif ($c == 70) {
+								echo "</optgroup>\n<optgroup label=\"!Untrained something else\""; 
+							} elseif ($c == 90) {
+								echo "</optgroup>\n<optgroup label=\"Contract-based and Other\""; 
+							} else {
+								echo "\t<option value=\"$c\">" . $myarr[$c] . "</option>\n";
+							}
+						} 
 
-                            <option value="18"><?php echo $IT?></option>
-                            <option value="19"><?php echo $English?></option>
-                            <option value="20"><?php echo $Maths?></option>
-                            <option value="21"><?php echo $Science?></option>
-                            <option value="22"><?php echo $ScienceandMaths?></option>
-                            <option value="23"><?php echo $SocialStudies?></option>
-                            <option value="24"><?php echo $Commerce?></option>
-                            <option value="25"><?php echo $HomeScience?></option>
-                            <option value="26"><?php echo $BTecConstruction?></option>
-                            <option value="27"><?php echo $BTecMechanical?></option>
-                            <option value="28"><?php echo $BTecElectronicandElectrical?></option>
-                            <option value="29"><?php echo $Arts?></option>
-                            <option value="30"><?php echo $Agriculture?></option>
-                            <option value="31"><?php echo $WesternMusic?></option>
-                            <option value="32"><?php echo $EasternMusic?></option>
-                            <option value="33"><?php echo $ArtsAgain?></option>
-                            <option value="34"><?php echo $Dancing?></option>
-                            <option value="35"><?php echo $HealthandPhysicalEducation?></option>
-                            <option value="36"><?php echo $Buddhism?></option>
-                            <option value="37"><?php echo $Hinduism?></option>
-                            <option value="38"><?php echo $Islam?></option>
-                            <option value="39"><?php echo $RomanCatholicism?></option>
-                            <option value="40"><?php echo $NonRomanCatholicism?></option>
-                            <option value="41"><?php echo $SpecialEducation?></option>
-                            <option value="42"><?php echo $Sinhala?></option>
-                            <option value="43"><?php echo $Tamil?></option>
-                            <option value="44"><?php echo $Arabic?></option>
-                            <option value="45"><?php echo $PrimaryGeneral?></option>
-                            <option value="46"><?php echo $LibraryandInformationScience?></option>
-                            <option value="47"><?php echo $TheatreandDrama?></option>
-                            <option value="48"><?php echo $Other?></option>
+						echo "</optgroup>";
 
-
-
-                            <option value="19"><?php echo $Maths?></option>
-                            <option value="20"><?php echo $Science?></option>
-                            <option value="21"><?php echo $ScienceandMaths?></option>
-                            <option value="22"><?php echo $English?></option>
-                            <option value="23"><?php echo $Primary?></option>
-                            <option value="24"><?php echo $Religion?></option>
-                            <option value="25"><?php echo $SocialStudies?></option>
-                            <option value="26"><?php echo $Commerce?></option>
-                            <option value="27"><?php echo $Technology?></option>
-                            <option value="28"><?php echo $HomeScience?></option>
-                            <option value="29"><?php echo $Agriculture ?></option>
-                            <option value="30"><?php echo $Sinhala?></option>
-                            <option value="31"><?php echo $Tamil?></option>
-                            <option value="32"><?php echo $WesternMusic?></option>
-                            <option value="33"><?php echo $EasternMusic?></option>
-                            <option value="34"><?php echo $Dancing?></option>
-                            <option value="35"><?php echo $Art?></option>
-                            <option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
-                            <option value="37"><?php echo $Malay?></option>
-                            <option value="38"><?php echo $Other?></option>
-
-
-
-
-                            <option value="19"><?php echo $Maths?></option>
-                            <option value="20"><?php echo $Science?></option>
-                            <option value="21"><?php echo $ScienceandMaths?></option>
-                            <option value="22"><?php echo $English?></option>
-                            <option value="23"><?php echo $Primary?></option>
-                            <option value="24"><?php echo $Religion?></option>
-                            <option value="25"><?php echo $SocialStudies?></option>
-                            <option value="26"><?php echo $Commerce?></option>
-                            <option value="27"><?php echo $Technology?></option>
-                            <option value="28"><?php echo $HomeScience?></option>
-                            <option value="29"><?php echo $Agriculture ?></option>
-                            <option value="30"><?php echo $Sinhala?></option>
-                            <option value="31"><?php echo $Tamil?></option>
-                            <option value="32"><?php echo $WesternMusic?></option>
-                            <option value="33"><?php echo $EasternMusic?></option>
-                            <option value="34"><?php echo $Dancing?></option>
-                            <option value="35"><?php echo $Art?></option>
-                            <option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
-                            <option value="37"><?php echo $Malay?></option>
-                            <option value="38"><?php echo $Other?></option>
-
-
-                            <option value="19"><?php echo $Graduates?></option>
-                            <option value="20"><?php echo $ALevel?></option>
-                            <option value="21"><?php echo $OLevelandOther?></option>
-
-
-                            for($c = 0; $c < 95; $c++)
-                            {
-                                if ($c == 17)
-                                { 	echo "</optgroup>\n<optgroup label=\"Trained Teachers (Nat.Dip. in Teaching)\"";
-                                } elseif ($c == 49) {
-                                    echo "</optgroup>\n<optgroup label=\"Untrained Teachers (Sri Lanka Teaching Service)\"";
-                                } elseif ($c == 70) {
-                                    echo "</optgroup>\n<optgroup label=\"!Untrained something else\"";
-                                } elseif ($c == 90) {
-                                    echo "</optgroup>\n<optgroup label=\"Contract-based and Other\"";
-                                } else {
-                                    echo "\t<option value=\"$c\">" . $myarr[$c] . "</option>\n";
-                                }
-                            }
-                            echo "</optgroup>";
 					?>
 					</td>
 					
