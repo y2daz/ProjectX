@@ -125,13 +125,13 @@
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
                 </ul>
             </li>
-            <li><a><?php echo $timetables; ?></a>
+            <li><a  href="<?php echo PATHFRONT ?>/TimeTable/timetable.php"><?php echo $timetables; ?></a>
                 <!--                <ul>-->
                 <!--                    <li><a  href="#">Create Timetable by Teacher</a><hr /></li>-->
                 <!--                    <li><a  href="#">Create Timetable by Class</a></li>-->
                 <!--                </ul>-->
             </li>
-            <li><a>Substitute Teacher</a>
+            <li><a href="<?php echo PATHFRONT ?>/TimeTable/substitute.php">Substitute Teacher</a>
                 <!--                <ul>-->
                 <!--                    <li><a  href="#">Substitute Period by Teacher</a><hr /></li>-->
                 <!--                    <li><a  href="#">Substitute Period by Class</a></li>-->
