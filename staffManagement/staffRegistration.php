@@ -16,9 +16,16 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 1200;
+$fullPageHeight = 1400;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
+
+if (isset($_POST["newStaff"])) //User has clicked the submit button to add a user
+{
+        $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nationalityRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"], $_POST["highestEducationalQualification"], $_POST["highestProfessionalQualification"], $_POST["courseOfStudy"]);
+        echo $operation;
+
+}
 
 
 ?>
@@ -41,6 +48,7 @@ $pageTitle= "Template";
             background-color:#154DC1;
             height:25px;
             padding:5px;
+            min-width: 200px;
         }
 
         td {
@@ -633,10 +641,7 @@ $pageTitle= "Template";
         <td><?php echo $nameWithInitials?></td>
         <td><input name="nameWithInitials" type="text" value=""></td>
     </tr>
-    <tr class="alt">
-        <td><?php echo $nameinfull?></td>
-        <td><input name="nameinfull" type="text" height="50" value=""></td>
-    </tr>
+
     <tr>
         <td><?php echo $dateOfBirth?></td>
         <td><input name="dateOfBirth" type="date" value=""></td>
@@ -652,31 +657,31 @@ $pageTitle= "Template";
     <tr>
         <td><?php echo $nationalityRace?></td>
         <td><select name="nationalityRace" type="text" value="">
-                <option><?php echo $sinhala?></option>
-                <option><?php echo $srilankantamil?></option>
-                <option><?php echo $indiantamil?></option>
-                <option><?php echo $srilankanmuslim?></option>
-                <option><?php echo $other?></option>
+                <option value="1"><?php echo $sinhala?></option>
+                <option value="2"><?php echo $srilankantamil?></option>
+                <option value="3"><?php echo $indiantamil?></option>
+                <option value="4"><?php echo $srilankanmuslim?></option>
+                <option value="5"><?php echo $other?></option>
             </select></td>
     </tr>
     <tr class="alt">
         <td><?php echo $religion?></td>
         <td><select name="religion" type="text" value="">
-                <option><?php echo $buddhism?></option>
-                <option><?php echo $hindusm?></option>
-                <option><?php echo $islam?></option>
-                <option><?php echo $catholic?></option>
-                <option><?php echo $christianity?></option>
-                <option><?php echo $other?></option>
+                <option value="1"><?php echo $buddhism?></option>
+                <option value="2"><?php echo $hindusm?></option>
+                <option value="3"><?php echo $islam?></option>
+                <option value="4"><?php echo $catholic?></option>
+                <option value="5"><?php echo $christianity?></option>
+                <option value="6"><?php echo $other?></option>
             </select></td>
     </tr>
     <tr class="alt">
         <td><?php echo $civilStatus?></td>
         <td><select name="civilStatus" type="text" value="">
-                <option><?php echo $married?></option>
-                <option><?php echo $unmarried?></option>
-                <option><?php echo $widow?></option>
-                <option><?php echo $other?></option>
+                <option value="1"><?php echo $married?></option>
+                <option value="2"><?php echo $unmarried?></option>
+                <option value="3"><?php echo $widow?></option>
+                <option value="4"><?php echo $other?></option>
 
             </select></td>
     </tr>
@@ -695,18 +700,6 @@ $pageTitle= "Template";
         <td><input name="contactnumber" type="text" value=""></td>
     </tr>
 
-    <tr class="alt">
-        <td><?php echo $contactpersonforemergency?></td>
-        <td><input name="contactpersonforemergency" type="text" value=""></td>
-    </tr>
-
-    <tr class="alt">
-        <td><?php echo $contactnumberforemergency?></td>
-        <td><input name="contactnumberforemergency" type="text" value=""></td>
-    </tr>
-
-
-
     <!--</table>
 
     <table class="employment" cellspacing="0"> -->
@@ -717,19 +710,19 @@ $pageTitle= "Template";
     </tr>
     <tr class="alt">
         <td><?php echo $dateJoinedSchool?></td>
-        <td><input name=""dateJoinedSchool" type="date" value=""></td>
+        <td><input name="dateJoinedSchool" type="date" value=""></td>
     </tr>
 
     <tr>
         <td><?php echo $employmentStatus?></td>
         <td><select name="employmentStatus" type="text" value="">
-                <option><?php echo $fulltime?></option>
-                <option><?php echo $parttime?></option>
-                <option><?php echo $fulltime_Releasedtootherschool?></option>
-                <option><?php echo $fulltime_Broughtfromotherschool?></option>
-                <option><?php echo $oncontract_Government?></option>
-                <option><?php echo $paidfromschoolfees?></option>
-                <option><?php echo $othergovernmentdepartment?></option>
+                <option value="1"><?php echo $fulltime?></option>
+                <option value="2"><?php echo $parttime?></option>
+                <option value="3"><?php echo $fulltime_Releasedtootherschool?></option>
+                <option value="4"><?php echo $fulltime_Broughtfromotherschool?></option>
+                <option value="5"><?php echo $oncontract_Government?></option>
+                <option value="6"><?php echo $paidfromschoolfees?></option>
+                <option value="7"><?php echo $othergovernmentdepartment?></option>
             </select>
 
         </td>
@@ -738,22 +731,22 @@ $pageTitle= "Template";
     <tr class="alt">
         <td><?php echo $medium?></td>
         <td><select name="medium" type="text" value="">
-                <option><?php echo $sinhala?></option>
-                <option><?php echo $tamil?></option>
-                <option><?php echo $english?></option>
+                <option value="1"><?php echo $sinhala?></option>
+                <option value="2"><?php echo $tamil?></option>
+                <option value="3"><?php echo $english?></option>
 
         </td>
     </tr>
     <tr class ="alt">
         <td><?php echo $positionInSchool?></td>
         <td><select name="positionInSchool" type="text" value="">
-                <option><?php echo $principal?></option>
-                <option><?php echo $actingprincipal?></option>
-                <option><?php echo $deputyprincipal?></option>
-                <option><?php echo $actingdeputyprincipal?></option>
-                <option><?php echo $assistantprincipal?></option>
-                <option><?php echo $actingassistantprincipal?></option>
-                <option><?php echo $teacher?></option>
+                <option value="1"><?php echo $principal?></option>
+                <option value="2"><?php echo $actingprincipal?></option>
+                <option value="3"><?php echo $deputyprincipal?></option>
+                <option value="4"><?php echo $actingdeputyprincipal?></option>
+                <option value="5"><?php echo $assistantprincipal?></option>
+                <option value="6"><?php echo $actingassistantprincipal?></option>
+                <option value="7"><?php echo $teacher?></option>
             </select>
 
         </td>
@@ -870,25 +863,25 @@ $pageTitle= "Template";
         <td><select name="highestProfessionalQualification" type="text" value="">
 
 
-                <option value="30"><?php echo $PhDEd?></option>
-                <option value="31"><?php echo $MPhilEd?></option>
-                <option value="32"><?php echo $MEd?></option>
-                <option value="33"><?php echo $MAinEd?></option>
-                <option value="34"><?php echo $DipinEd?></option>
-                <option value="35"><?php echo $MScinEdMgmt?></option>
-                <option value="36"><?php echo $PGDipinEdMgmt?></option>
-                <option value="37"><?php echo $PGDipinEASL ?></option>
-                <option value="38"><?php echo $BNIEBEd  ?></option>
-                <option value="39"><?php echo $DipinEASL?></option>
-                <option value="40"><?php echo $DipinLibrary?></option>
-                <option value="41"><?php echo $CertinLibrary?></option>
-                <option value="42"><?php echo $PGDipinLibraryScience?></option>
-                <option value="43"><?php echo $MScinLibrary?></option>
-                <option value="44"><?php echo $DipinAgriculture?></option>
-                <option value="45"><?php echo $CertinTeacherTrainingInstitute?></option>
-                <option value="46"><?php echo $CertinTeacherTrainingAway?></option>
-                <option value="47"><?php echo $NatDipinTeaching?></option>
-                <option value="47"><?php echo $None?></option>
+                <option value="1"><?php echo $PhDEd?></option>
+                <option value="2"><?php echo $MPhilEd?></option>
+                <option value="3"><?php echo $MEd?></option>
+                <option value="4"><?php echo $MAinEd?></option>
+                <option value="5"><?php echo $DipinEd?></option>
+                <option value="6"><?php echo $MScinEdMgmt?></option>
+                <option value="7"><?php echo $PGDipinEdMgmt?></option>
+                <option value="8"><?php echo $PGDipinEASL ?></option>
+                <option value="9"><?php echo $BNIEBEd  ?></option>
+                <option value="10"><?php echo $DipinEASL?></option>
+                <option value="11"><?php echo $DipinLibrary?></option>
+                <option value="12"><?php echo $CertinLibrary?></option>
+                <option value="13"><?php echo $PGDipinLibraryScience?></option>
+                <option value="14"><?php echo $MScinLibrary?></option>
+                <option value="15"><?php echo $DipinAgriculture?></option>
+                <option value="16"><?php echo $CertinTeacherTrainingInstitute?></option>
+                <option value="17"><?php echo $CertinTeacherTrainingAway?></option>
+                <option value="18"><?php echo $NatDipinTeaching?></option>
+                <option value="19"><?php echo $None?></option>
 
 
 
@@ -902,7 +895,6 @@ $pageTitle= "Template";
     </tr>
     <tr>
         <td><?php echo $courseOfStudy?></td>
-
         <td><select name="courseOfStudy" type="text" value="">
 
 
@@ -961,55 +953,55 @@ $pageTitle= "Template";
 
 
 
-                <option value="19"><?php echo $Maths?></option>
-                <option value="20"><?php echo $Science?></option>
-                <option value="21"><?php echo $ScienceandMaths?></option>
-                <option value="22"><?php echo $English?></option>
-                <option value="23"><?php echo $Primary?></option>
-                <option value="24"><?php echo $Religion?></option>
-                <option value="25"><?php echo $SocialStudies?></option>
-                <option value="26"><?php echo $Commerce?></option>
-                <option value="27"><?php echo $Technology?></option>
-                <option value="28"><?php echo $HomeScience?></option>
-                <option value="29"><?php echo $Agriculture ?></option>
-                <option value="30"><?php echo $Sinhala?></option>
-                <option value="31"><?php echo $Tamil?></option>
-                <option value="32"><?php echo $WesternMusic?></option>
-                <option value="33"><?php echo $EasternMusic?></option>
-                <option value="34"><?php echo $Dancing?></option>
-                <option value="35"><?php echo $Art?></option>
-                <option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
-                <option value="37"><?php echo $Malay?></option>
-                <option value="38"><?php echo $Other?></option>
+                <option value="49"><?php echo $Maths?></option>
+                <option value="50"><?php echo $Science?></option>
+                <option value="51"><?php echo $ScienceandMaths?></option>
+                <option value="52"><?php echo $English?></option>
+                <option value="53"><?php echo $Primary?></option>
+                <option value="54"><?php echo $Religion?></option>
+                <option value="55"><?php echo $SocialStudies?></option>
+                <option value="56"><?php echo $Commerce?></option>
+                <option value="57"><?php echo $Technology?></option>
+                <option value="58"><?php echo $HomeScience?></option>
+                <option value="59"><?php echo $Agriculture ?></option>
+                <option value="60"><?php echo $Sinhala?></option>
+                <option value="61"><?php echo $Tamil?></option>
+                <option value="62"><?php echo $WesternMusic?></option>
+                <option value="63"><?php echo $EasternMusic?></option>
+                <option value="64"><?php echo $Dancing?></option>
+                <option value="65"><?php echo $Art?></option>
+                <option value="66"><?php echo $ForeignLanguageExcludingEnglish?></option>
+                <option value="67"><?php echo $Malay?></option>
+                <option value="68"><?php echo $Other?></option>
 
 
 
 
-                <option value="19"><?php echo $Maths?></option>
-                <option value="20"><?php echo $Science?></option>
-                <option value="21"><?php echo $ScienceandMaths?></option>
-                <option value="22"><?php echo $English?></option>
-                <option value="23"><?php echo $Primary?></option>
-                <option value="24"><?php echo $Religion?></option>
-                <option value="25"><?php echo $SocialStudies?></option>
-                <option value="26"><?php echo $Commerce?></option>
-                <option value="27"><?php echo $Technology?></option>
-                <option value="28"><?php echo $HomeScience?></option>
-                <option value="29"><?php echo $Agriculture ?></option>
-                <option value="30"><?php echo $Sinhala?></option>
-                <option value="31"><?php echo $Tamil?></option>
-                <option value="32"><?php echo $WesternMusic?></option>
-                <option value="33"><?php echo $EasternMusic?></option>
-                <option value="34"><?php echo $Dancing?></option>
-                <option value="35"><?php echo $Art?></option>
-                <option value="36"><?php echo $ForeignLanguageExcludingEnglish?></option>
-                <option value="37"><?php echo $Malay?></option>
-                <option value="38"><?php echo $Other?></option>
+                <option value=""><?php echo $Maths?></option>
+                <option value=""><?php echo $Science?></option>
+                <option value=""><?php echo $ScienceandMaths?></option>
+                <option value=""><?php echo $English?></option>
+                <option value=""><?php echo $Primary?></option>
+                <option value=""><?php echo $Religion?></option>
+                <option value=""><?php echo $SocialStudies?></option>
+                <option value=""><?php echo $Commerce?></option>
+                <option value=""><?php echo $Technology?></option>
+                <option value=""><?php echo $HomeScience?></option>
+                <option value=""><?php echo $Agriculture ?></option>
+                <option value=""><?php echo $Sinhala?></option>
+                <option value=""><?php echo $Tamil?></option>
+                <option value=""><?php echo $WesternMusic?></option>
+                <option value=""><?php echo $EasternMusic?></option>
+                <option value=""><?php echo $Dancing?></option>
+                <option value=""><?php echo $Art?></option>
+                <option value=""><?php echo $ForeignLanguageExcludingEnglish?></option>
+                <option value=""><?php echo $Malay?></option>
+                <option value=""><?php echo $Other?></option>
 
 
-                <option value="19"><?php echo $Graduates?></option>
-                <option value="20"><?php echo $ALevel?></option>
-                <option value="21"><?php echo $OLevelandOther?></option>
+                <option value=""><?php echo $Graduates?></option>
+                <option value=""><?php echo $ALevel?></option>
+                <option value=""><?php echo $OLevelandOther?></option>
 
 
                 for($c = 0; $c < 95; $c++)
@@ -1034,7 +1026,7 @@ $pageTitle= "Template";
 
 
 
-        <td><input class="button" type="submit" value="Submit"></td>
+        <td><input class="button" name="newStaff" type="submit" value="Submit"></td>
 
     </table>
 
