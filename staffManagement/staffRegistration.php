@@ -847,6 +847,8 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 <option value="6"><?php echo $MPhil?></option>
                 <option value="7"><?php echo $PhD?></option>
 
+
+                <?php
                 $c = 0;
 
 
@@ -885,7 +887,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
 
 
-
+                <?php
                 for($c = 0; $c < 19; $c++)
                 {
                 echo "\t<option value=\"$c\"></option>\n";
@@ -1004,6 +1006,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 <option value=""><?php echo $OLevelandOther?></option>
 
 
+                <?php
                 for($c = 0; $c < 95; $c++)
                 {
                 if ($c == 17)
@@ -1027,23 +1030,14 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
 
         <td><input class="button" name="newStaff" type="submit" value="Submit"></td>
-
     </table>
-
-
     </form>
-
-
-
     </div>
-
-
-
     </body>
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 1400;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above

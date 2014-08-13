@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staffManagement/staffRegistration.php" afterPath="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -26,10 +26,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manaDB.sql" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <file leaf-file-name="staffRegistration.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="2" selection-start="722" selection-end="722" vertical-scroll-proportion="0.547744" vertical-offset="0" max-vertical-offset="17784">
+            <state line="1045" column="20" selection-start="43838" selection-end="43838" vertical-scroll-proportion="0.72398686" vertical-offset="17951" max-vertical-offset="18864">
               <folding />
             </state>
           </provider>
@@ -53,7 +53,6 @@
         <option value="$PROJECT_DIR$/databases.php" />
         <option value="$PROJECT_DIR$/dbConnect.php" />
         <option value="$PROJECT_DIR$/attendance/newMarkAttendance.php" />
-        <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
         <option value="$PROJECT_DIR$/attendance/newClasswise.php" />
         <option value="$PROJECT_DIR$/attendance/classwise.php" />
         <option value="$PROJECT_DIR$/attendance/newStudentwise.php" />
@@ -100,6 +99,7 @@
         <option value="$PROJECT_DIR$/Styles/main.css" />
         <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
       </list>
     </option>
   </component>
@@ -164,6 +164,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="staffManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -901,13 +915,18 @@
       <created>1407864786059</created>
       <updated>1407864786059</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="Updated database, now without medium on subjects.">
+      <created>1407946170157</created>
+      <updated>1407946170157</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30128205" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -924,7 +943,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32858595" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30128205" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39776194" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -963,7 +981,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="No access without logging in." />
     <MESSAGE value="Login system properly hashes passwords now. Full purge and redo." />
     <MESSAGE value="Removing test messages" />
     <MESSAGE value="Minor getAllUsers fix." />
@@ -988,7 +1005,8 @@
     <MESSAGE value="minor fix&#10;" />
     <MESSAGE value="Deleting Users works" />
     <MESSAGE value="Minore fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minore fixes" />
+    <MESSAGE value="Updated database, now without medium on subjects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated database, now without medium on subjects." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1061,11 +1079,6 @@
     <entry file="file://$PROJECT_DIR$/staffManagement/teacherAchievenment.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="56" column="39" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.23660715" vertical-offset="796" max-vertical-offset="6822" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1238" column="17" selection-start="46407" selection-end="46407" vertical-scroll-proportion="3.598272" vertical-offset="18952" max-vertical-offset="22986" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/cancelLeave.php">
@@ -1283,6 +1296,13 @@
       </provider>
       <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1045" column="20" selection-start="43838" selection-end="43838" vertical-scroll-proportion="0.72398686" vertical-offset="17951" max-vertical-offset="18864">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
