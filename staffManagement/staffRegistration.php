@@ -26,8 +26,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         echo $operation;
 
 }
-
-
 ?>
 <html>
     <head>
