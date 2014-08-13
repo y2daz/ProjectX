@@ -64,7 +64,7 @@ ob_start();
                 </tr>
                 <tr>
                     <td></td>
-                    <td><input class="button" type="button" value="Submit"></td>
+                    <td><input class="button" type="button" value="Submit"><p>Isuru</p></td>
                 </tr>
             </table>
         </form>
