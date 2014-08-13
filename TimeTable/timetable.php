@@ -166,7 +166,7 @@ $pageTitle= "Template";
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above
