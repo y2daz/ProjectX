@@ -25,8 +25,8 @@ $pageTitle= "Template";
 <html>
     <head>
         <style type=text/css>
-            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-            #footer{ top:<?php echo "$footerTop" . "px";?> }
+<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
+<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
             /*
             ADD YOUR CSS HERE
