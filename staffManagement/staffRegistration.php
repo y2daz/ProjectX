@@ -33,13 +33,11 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         table {
             border-spacing:0px 5px;
         }
-
         .general {
             position:absolute;
             left:10px;
             top:80px;
         }
-
         th{
             align:center;
             color:white;
