@@ -16,11 +16,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 1200;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
@@ -38,7 +33,7 @@ $pageTitle= "Template";
         th{
             align:center;
             color:white;
-            background-color:#154DC1;
+            background-color: #005e77;
             height:25px;
             padding:5px;
         }
@@ -46,25 +41,6 @@ $pageTitle= "Template";
         td {
             padding:5px;
         }
-
-        .staffimage{
-            position:absolute;
-            height:160px;
-            width:150px;
-            top:130px;
-            left:560px;
-            background-color:#154DC1;
-            z-index:0;
-        }
-        .staffimage img
-        {
-            position:absolute;
-            top:4px;
-            left:4px;
-            width:142px;
-            height:150px;
-        }
-
         input.button {
             position:relative;
             font-weight:bold;
@@ -76,9 +52,6 @@ $pageTitle= "Template";
     </style>
 </head>
 <?php
-
-
-
      //Get language and make changes
 
     if($_COOKIE['language'] == 0)
@@ -99,27 +72,14 @@ else
 
 <body>
 
+		<form name="thisForm" method="post">
 
-
-			
-	<div class="main">
-		<form onsubmit="return validateEverything()" name="thisForm" method="post">
-			<div class="staffimage">
-			
-			</div>
 			<h1>Classroom Information</h1>
 			<table class="general" cellspacing="0">	
 				<tr><th>Classroom Information</th><th></th></tr>		
 				<tr>
 					<td><?php echo $teachersname?></td>
-					<td><select name="teachersname" value="">
-						<option>Mr.kumara</option>
-						<option>MR.Saman</option>
-						<option>Mrs.kumari</option>	
-						<option></option>
-					</select></td>
-
-				
+					<td><input type="text" name="staffId" value="" /></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $grade?></td>
@@ -142,30 +102,11 @@ else
 				</tr>
 				<tr class="alt">
 					<td><?php echo $classname?></td>
-					<td><select name="classname" value="">	
-						<option value="1">A</option>
-						<option value="2">B</option>
-						<option value="3">C</option>
-						<option value="4">D</option>
-						<option value="5">E</option>
-						<option value="6">F</option>
-						<option value="7">G</option>
-
-						<option value="8">H</option>
-						<option value="9">I</option>
-						<option value="10">J</option>
-						
-						<option value="15">ARTS</option>
-						<option value="16">COMMERCE</option>
-						<option value="17">SCIENCE</option>
-						<option value="18">MATHS</option>
-						<option value="19">TECHNOLOGY</option>
-						</select></td>
-				
+                    <td><input type="text" name="className" value="" /></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $location?></td>
-					<td><input type="location" value=""></td>
+                    <td><input type="location" value=""></td>
 						 
 					<td><input class="button" type="submit" value="Submit"></td>
 				</tr>			
@@ -173,12 +114,7 @@ else
 			</table>		
 
 		</form>
-
-			
-	
-	</div>
-	
-</body>
+    </body>
 
 </html>
 <?php
