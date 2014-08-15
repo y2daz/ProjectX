@@ -9,19 +9,12 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
 <style type=text/css>
     <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
     <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
-
-
 
 
     table, th, td {
@@ -67,72 +60,57 @@ $pageTitle= "Template";
 
 <body>
 
-<div id="main">
-
-    <h1>Search Results</h1>
+    <h1>Term Test Details Form</h1>
 <form>
 
 <table class="insert" cellspacing="0">
 <tr>
-    <tr class="alt">
-    <tr>
-        <td>Term Test Marks</td>
-        <td>
-            <input type="radio" name="exam" value="term">
-        </td>
+    <td>Grade</td>
+    <td><select type="text" value="">
 
+            <option>--</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+        </select></td>
+</tr>
+<tr class="alt">
+    <td>Class</td>
+    <td><input type="text" value=""></td>
+</tr>
+<tr>
+    <td>Teacher's Name</td>
+    <td><input type="text" value=""></td>
+</tr>
+<tr class="alt">
+<tr>
+    <td>Subject</td>
+    <td><input type="text" value=""></td>
+</tr>
+<tr class="alt">
+<tr>
+    <td>Year</td>
+    <td><input type="text" value=""></td>
+</tr>
+<tr class="alt">
+    <td>Term</td>
+    <td>
+        <input type="radio" name="Term" value="Mid">Final
+        <input type="radio" name="Term" value="Final">Mid
+        <input type="radio" name="Term" value="Other">Other
 
-
-        <td>Addmission Number</td>
-        <td><input type="text" value=""></td>
-        <td>Grade</td>
-        <td><input type="text" value=""></td>
-        <td>Term</td>
-        <td><select type="text" value="">
-                <option>Mid</option>
-                <option>Final</option>
-                <option>Other</option>
-    </tr>
-
-
-    <tr class="alt">
-
-
-    <tr>
-        <td>G.C.E O/L Results</td>
-        <td>
-            <input type="radio" name="exam" value="ol">
-        </td>
-
-
-
-        <td>Index Number</td>
-        <td><input type="text" value=""></td>
-        <td>Year</td>
-        <td><input type="text" value=""></td>
-    </tr>
-
-    <tr class="alt">
-
-    <tr>
-        <td>G.C.E A/L Results</td>
-        <td>
-            <input type="radio" name="exam" value="al">
-        </td>
-
-
-
-
-        <td>Index Number</td>
-        <td><input type="text" value=""></td>
-        <td>Year</td>
-        <td><input type="text" value=""></td>
-    </tr>
-
-
-    </tr>
-
-
+    </td>
+</tr>
 
 <h2></h2>
 
@@ -159,17 +137,6 @@ $pageTitle= "Template";
 
 
 </tr>
-
-
-
-
-
-</div>
-
-
-
-
-
 
 </body>
 </html>

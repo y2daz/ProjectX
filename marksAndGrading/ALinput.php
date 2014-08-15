@@ -10,11 +10,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
@@ -66,7 +61,6 @@ $pageTitle= "Template";
 
 <body>
 
-<div id="main">
 
     <h1>G.C.E A/L Results Sheet</h1>
 <tr>
@@ -223,7 +217,6 @@ $pageTitle= "Template";
 
 
 </tr>
-</div>
 
 </body>
 </html>
