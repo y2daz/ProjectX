@@ -54,7 +54,7 @@ ob_start();
 <body>
 
 
-    <h1>G.C.E A/L Results Sheet</h1>
+    <h1>G.C.E A/L Results Marking</h1>
 
     <table>
     <tr>
