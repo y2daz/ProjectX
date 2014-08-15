@@ -33,13 +33,9 @@ ob_start();
                 width: 150px;
                 text-align: center;
             }
-
             tr{
                 height: 10px;
                     }
-
-
-
             input.button {
                 position:relative;
                 font-weight:bold;
@@ -54,21 +50,12 @@ ob_start();
                 left:100px;
                 top:20px;
             }
-
-
-
-
-
         </style>
     </head>
 
-
     <body>
-
-
-
-
-            <h1>G.C.E O/L Results Sheet</h1>
+        <h1>G.C.E O/L Results Sheet</h1>
+        <table>
             <tr>
                 <td>Index Number</td>
                 <td><input type="text" value=""></td>
@@ -77,229 +64,140 @@ ob_start();
                 <td>Year</td>
                 <td><input type=text" value=""</td>
             </tr>
-            <h2></h2>
+        </table>
 
-            <table   border="1px solid black" >
+        <br />
 
-
-                <tr>
-                    <th>Subject</th>
-                    <th>Grade</th>
-                    <th>Medium</th>
-
-                </tr>
-                <tr>
-                <td><input type="text" value="">
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
                 <td><select type="text" value="">
-
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>
                         <option>S</option>
                         <option>F</option>
-                <td><select type="text" value="">
-
-                                <option>--</option>
-                                <option>S</option>
-                                <option>E</option>
-                                <option>T</option>
-                       </select>
-                            </tr>
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-                <tr>
-                    <td><input type="text" value="">
-                    <td><select type="text" value="">
-
-                            <option>--</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
-                            <option>S</option>
-                            <option>F</option>
-                            <td><select type="text" value="">
-
-                                    <option>--</option>
-                                    <option>S</option>
-                                    <option>E</option>
-                                    <option>T</option>
-                                </select>
-                </tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </table>
-
-            <tr>
-                <td></td>
-
-                <td><input class="button" type="submit" value="Submit"></td>
-
-
-
-
-                <td><input class="button1" type="reset" value="Reset"></td>
-
-
-
-
-
-
-
-
+                    </select>
+                </td>
             </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="text" value=""></td>
+                <td><select type="text" value="">
+                        <option>--</option>
+                        <option>A</option>
+                        <option>B</option>
+                        <option>C</option>
+                        <option>S</option>
+                        <option>F</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
 
+        <br />
 
-
-
+        <table>
+            <tr>
+                <td><!--Blank td aligns the below buttons to the middle --></td>
+                <td><input class="button" type="submit" value="Submit"></td>
+                <td><input class="button1" type="reset" value="Reset"></td>
+            </tr>
+        </table>
 
     </body>
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1000;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above
