@@ -56,7 +56,7 @@
         return false;
     }
 
-    function insertUser($email, $password, $accessLevel)
+    function insertUser( $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -67,9 +67,9 @@
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //        echo "Hashed password = " . $hashedPassword;
-        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?, ?, ?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel);
+            $stmt -> bind_param("sssssssss",  $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime);
             if ($stmt->execute())
             {
                 $stmt->close();
