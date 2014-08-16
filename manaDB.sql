@@ -550,6 +550,9 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History', 0);
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
 
+
+
+
 -- --------------------------------------------------------
 
 --
