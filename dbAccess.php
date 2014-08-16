@@ -193,4 +193,31 @@
 
 
     }
+
+    function deleteStaffMember($staffID)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE staff SET isDeleted=? WHERE staffID=?"))
+
+    {
+        $deleteNo = 2;
+
+        $stmt -> bind_param("is", $deleteNo, $staffID);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return TRUE;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
 ?>
