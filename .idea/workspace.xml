@@ -446,7 +446,11 @@
       <created>1408173324504</created>
       <updated>1408173324504</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="check&#10;">
+      <created>1408173417694</created>
+      <updated>1408173417694</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -507,7 +511,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Linked Template to Staff Information" />
     <MESSAGE value="sql update" />
     <MESSAGE value="Added classwise to Template.php" />
     <MESSAGE value="Added Student-wise to Template" />
@@ -532,7 +535,8 @@
     <MESSAGE value="Test commit" />
     <MESSAGE value="Year Plan" />
     <MESSAGE value="check" />
-    <option name="LAST_COMMIT_MESSAGE" value="check" />
+    <MESSAGE value="check&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="check&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
