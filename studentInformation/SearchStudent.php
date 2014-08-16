@@ -24,51 +24,52 @@ $pageTitle= "Template";
 ?>
 <html>
     <head>
+
+        <script src="studentinformation.js"></script>
+
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
+
+
 
 table {
     border-spacing:0px 5px;
 }
 
-.general {
-    position:absolute;
-    left:80px;
-    top:80px;
+#searchCriteria{
+    position:relative;
+    left:20px;
+    top:20px;
 }
 
 th{
     align:center;
     color:white;
     background-color:#154DC1;
-    height:30px;
+    height:25px;
     padding:5px;
 }
 
 td {
     padding:5px;
 }
-input.button1 {
-    position:relative;
-    font-weight:bold;
-    font-size:20px;
-    left:50px;
-    top:10px;
+
+#staffList{
+    position: relative;
+    top: 40px;
 }
-input.button2 {
+
+
+
+
+input.button {
     position:relative;
     font-weight:bold;
     font-size:20px;
-    right:20px;
-    top:10px;
-}
-input.button3 {
-    position:relative;
-    font-weight:bold;
-    font-size:20px;
-    left:20px;
-    top:10px;
+    right:450px;
+    top:50px;
+
 }
 <?php //Get language and make changes
 
@@ -92,7 +93,44 @@ input.button3 {
     </head>
     <body>
 
+    <h1 align="center">Search Student</h1>
+
     <form>
+
+
+
+        <table style="height: 150px;" align="center">
+            <tr class="alt">
+                <td>
+
+                    <input type="radio" name="choice" value="AdmissionID" onclick="clickedAdmissionID()"> By Admission ID
+                    <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
+                    <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
+                    <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
+                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="class" value="">
+
+            </tr>
+
+            </table>
+
+        <table>
+
+            <tr>
+                <td style="padding-left: 110px"><input type="button" name="Search" value="Search"></td>
+            </tr>
+
+
+        </table>
+
+        <br>
+
+
         <table class="Searchedtable" align="center">
             <tr>
                 <th>AdmisionID</th>
@@ -110,17 +148,11 @@ input.button3 {
                 <td>1993/07/27</td>
                 <td><input type="button" name="expand" value="Expand Details" /></td>
             </tr>
-            <tr class="alt">
-                <td>
 
-                    <input type="checkbox" name="checkbox" value=""><?php echo $AdmissionID?>
-                    <input type="checkbox" name="checkbox" value=""><?php echo $Name?>
-                    <input type="checkbox" name="checkbox" value=""><?php echo $Class?>
-                    <input type="checkbox" name="checkbox" value=""><?php echo $Medium?>
-                    <input type="checkbox" name="checkbox" value=""><?php echo $DateOfBirth?>
-                </td>
-            </tr>
-        </table>
+            </table>
+
+
+
     </form>
 
 

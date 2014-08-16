@@ -19,37 +19,60 @@ ob_start();
 ?>
 <html>
     <head>
+        <script>
+            $(document).ready(function(){
+                    $('.days').click(function(){
+                        this.classList.toggle("selected");
+
+//                        if ($(this).hasClass('active')){
+//                            $('#nav').stop().animate({left:'0'}, 200);
+//                        }
+//                        else
+//                        {
+//                            $('#nav').stop().animate({left: '-100%'}, 200);
+//                        }
+                    });
+
+                }
+            )
+
+        </script>
+
+
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-body {
-    font-family:"Calibri";
-    color:#009;
-}
 .currentDay {
     background:#FFC;
     color:red;
 }
 table {
     border-collapse:collapse;
-    border:1px #009 solid;
+    border:1px #005e77 solid;
+}
+th{
+    background-color: #005e77;
+    color: white;
 }
 td {
-    height:60px;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-left:2px;
+    padding-right:2px;
     vertical-align:top;
     text-align:center;
-    width:30px;
+    min-width:15px;
 }
 .days:hover {
     background:#9F0;
     border-color:#000;
 }
 .day6 {
-    background:#ECECFF;
+    background:#ECECEC;
 }
 .day7 {
-    background:#ECECFF;
+    background:#ECECEC;
 }
 .monthName {
     text-align:left;
@@ -58,6 +81,11 @@ td {
 .monthName div {
     padding-left:10px;
 }
+.selected {
+    background-color: #bed9ff;
+}
+
+
 
     h1 {
         text-align:center;
@@ -66,52 +94,61 @@ td {
         </style>
     </head>
   <body>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+
 <?php
 $dDaysOnPage = 37;
 $dDay = 1;
-if ($_REQUEST['year'] <> "") { $dYear = $_REQUEST['year']; } else { $dYear = date("Y"); }
+$dYear = date("Y");
 ?>
 
     <table width="100%" border="1" cellspacing="0" cellpadding="0">
         <tr>
             <th><?php echo $dYear; ?></th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
-            <th>We</th>
-            <th>Th</th>
-            <th>Fr</th>
-            <th>Sa</th>
-            <th>Su</th>
-            <th>Mo</th>
-            <th>Tu</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>T</th>
+            <th>F</th>
+            <th>S</th>
+            <th>S</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>T</th>
+            <th>F</th>
+            <th>S</th>
+            <th>S</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>T</th>
+            <th>F</th>
+            <th>S</th>
+            <th>S</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>T</th>
+            <th>F</th>
+            <th>S</th>
+            <th>S</th>
+            <th>M</th>
+            <th>T</th>
+            <th>W</th>
+            <th>T</th>
+            <th>F</th>
+            <th>S</th>
+            <th>S</th>
+            <th>M</th>
+            <th>T</th>
         </tr>
 
     <?php
@@ -145,10 +182,11 @@ if ($_REQUEST['year'] <> "") { $dYear = $_REQUEST['year']; } else { $dYear = dat
         </html>
         <?php
         function InsertBlankTd($numberOfTdsToAdd) {
-        for($i=1;$i<=$numberOfTdsToAdd;$i++) {
-        $tdString .= "<td></td>";
-        }
-        return $tdString;
+            $tdString = "";
+            for($i = 1; $i <= $numberOfTdsToAdd; $i++) {
+                $tdString .= "<td></td>";
+            }
+            return $tdString;
         }
 ?>
 
@@ -157,7 +195,7 @@ if ($_REQUEST['year'] <> "") { $dYear = $_REQUEST['year']; } else { $dYear = dat
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above

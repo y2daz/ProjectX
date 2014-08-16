@@ -194,14 +194,7 @@
 
     }
 
-<<<<<<< HEAD
 
-    function insertLeave()
-    {
-
-
-    }
-=======
     function deleteStaffMember($staffID)
     {
         $dbObj = new dbConnect();
@@ -228,5 +221,4 @@
     $mysqli->close();
     return false;
 }
->>>>>>> origin/master
 ?>
