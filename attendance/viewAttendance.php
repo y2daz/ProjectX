@@ -32,7 +32,7 @@ ob_start();
     }
     .insert{
         position:absolute;
-        left:80px;
+        left:60px;
         top:80px;
     }
     th{
@@ -82,31 +82,22 @@ ob_start();
         padding:10px;
     }
 
-
-
-
-        </style>
-    </head>
+</style>
+</head>
     <body>
+      <form>
 
-    <div id="main">
-
-
-
+        <table class="insert" cellspacing="0">
         <h1>View Attendance</h1>
-
-        <form>
 
             <table class="insert">
                 <tr><th>View Attendance details</th><th></th></tr>
                 <tr class="alt">
                 <tr>
-
                     <td>Student Name</td>
                     <td><input name="studentName" type="text" value=""/></td>
                     <td>Admission Number</td>
                     <td><input name="admissionNumber" type="text" value=""/></td>
-
                 </tr>
 
                 <tr class="alt">
@@ -213,7 +204,7 @@ ob_start();
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 780;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above
