@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a33d991e-0b68-4dd0-8492-edf595be3823" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eventManagement/new invitees list.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/eventManagement/newManageEvents.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/eventManagement/manageEvents.php" afterPath="$PROJECT_DIR$/eventManagement/OldmanageEvents.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventManagement/addEvent.php" afterPath="$PROJECT_DIR$/eventManagement/addEvent.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/formValidation.php" afterPath="$PROJECT_DIR$/formValidation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/eventManagement/manageEvents.php" afterPath="$PROJECT_DIR$/eventManagement/manageEvents.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -35,18 +28,8 @@
       <file leaf-file-name="manageEvents.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventManagement/manageEvents.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="141" column="10" selection-start="3634" selection-end="4152" vertical-scroll-proportion="-14.730769" vertical-offset="2014" max-vertical-offset="2737">
-              <folding>
-                <element signature="e#6#213#0" expanded="true" />
-                <element signature="e#1948#2009#0" expanded="true" />
-                <element signature="e#2554#2585#0" expanded="true" />
-                <element signature="e#2783#2814#0" expanded="true" />
-                <element signature="e#3008#3039#0" expanded="true" />
-                <element signature="e#3240#3271#0" expanded="true" />
-                <element signature="e#3666#3722#0" expanded="true" />
-                <element signature="e#3848#3909#0" expanded="true" />
-                <element signature="e#4092#4139#0" expanded="true" />
-              </folding>
+            <state line="141" column="10" selection-start="3634" selection-end="4152" vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="2737">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,23 +37,17 @@
       <file leaf-file-name="eventList.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="68" column="57" selection-start="1527" selection-end="1653" vertical-scroll-proportion="-3.9230769" vertical-offset="867" max-vertical-offset="2312">
-              <folding>
-                <element signature="e#2003#2034#0" expanded="true" />
-                <element signature="e#2415#2446#0" expanded="true" />
-                <element signature="e#2801#2832#0" expanded="true" />
-              </folding>
+            <state line="68" column="57" selection-start="1527" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="2499">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="new invitees list.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="new invitees list.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/eventManagement/new invitees list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="65" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="-42.5" vertical-offset="0" max-vertical-offset="2244">
-              <folding>
-                <element signature="e#6#86#0" expanded="true" />
-              </folding>
+            <state line="65" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.66548043" vertical-offset="646" max-vertical-offset="2159">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -78,15 +55,8 @@
       <file leaf-file-name="newManageEvents.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventManagement/newManageEvents.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="199" column="75" selection-start="4449" selection-end="4449" vertical-scroll-proportion="-130.11539" vertical-offset="0" max-vertical-offset="3825">
-              <folding>
-                <element signature="e#6#87#0" expanded="true" />
-                <element signature="e#3417#3448#0" expanded="true" />
-                <element signature="e#3618#3649#0" expanded="true" />
-                <element signature="e#3815#3846#0" expanded="true" />
-                <element signature="e#4019#4050#0" expanded="true" />
-                <element signature="e#4604#4651#0" expanded="true" />
-              </folding>
+            <state line="199" column="75" selection-start="4449" selection-end="4449" vertical-scroll-proportion="0.0" vertical-offset="3383" max-vertical-offset="3825">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,7 +64,7 @@
       <file leaf-file-name="manageUsers.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="0" selection-start="286" selection-end="558" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="3332">
+            <state line="26" column="0" selection-start="286" selection-end="558" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="3434">
               <folding>
                 <marker date="1408158766295" expanded="true" signature="879:6253" placeholder="..." />
                 <marker date="1408158766295" expanded="true" signature="890:3071" placeholder="..." />
@@ -142,7 +112,7 @@
       <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="33" selection-start="1504" selection-end="1511" vertical-scroll-proportion="-11.115385" vertical-offset="612" max-vertical-offset="3349">
+            <state line="58" column="33" selection-start="1504" selection-end="1511" vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="3434">
               <folding>
                 <marker date="1408173365497" expanded="true" signature="514:598" placeholder="Select userP..User..." />
                 <marker date="1408173365497" expanded="true" signature="1966:2016" placeholder="INSERT INTO ..." />
@@ -158,16 +128,16 @@
       <file leaf-file-name="addEvent.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/eventManagement/addEvent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="32" selection-start="4658" selection-end="4658" vertical-scroll-proportion="-10.461538" vertical-offset="1785" max-vertical-offset="2584">
+            <state line="132" column="32" selection-start="4658" selection-end="4658" vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="2771">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="formValidation.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="formValidation.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/formValidation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.81850535" vertical-offset="713" max-vertical-offset="1309">
+            <state line="62" column="1" selection-start="949" selection-end="949" vertical-scroll-proportion="-9.346154" vertical-offset="726" max-vertical-offset="1309">
               <folding />
             </state>
           </provider>
@@ -265,6 +235,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eventManagement" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -332,7 +316,11 @@
       <created>1408152740552</created>
       <updated>1408152740552</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="seach student :|">
+      <created>1408187942875</created>
+      <updated>1408187942875</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -341,22 +329,22 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24304539" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3279483" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
@@ -380,140 +368,37 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
+    <entry file="file://$PROJECT_DIR$/eventManagement/manageEvents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="39" selection-start="1876" selection-end="2206" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="0" selection-start="4125" selection-end="4125" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="3094">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/ParentsDetailsForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2839" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/ParentsDetailsForm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="22" selection-start="145" selection-end="145" vertical-scroll-proportion="0.59859157" vertical-offset="0" max-vertical-offset="2839" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/StudentRegistration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="69" selection-start="2491" selection-end="2781" vertical-scroll-proportion="0.88736266" vertical-offset="1326" max-vertical-offset="2431">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="39" selection-start="1876" selection-end="2206" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2737">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="109" column="0" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2210">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="0" selection-start="3237" selection-end="3237" vertical-scroll-proportion="-0.65384614" vertical-offset="2244" max-vertical-offset="3094">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manaDB.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="10" selection-start="286" selection-end="286" vertical-scroll-proportion="0.31135532" vertical-offset="0" max-vertical-offset="16796">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventManagement/OldmanageEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="0" selection-start="5685" selection-end="5685" vertical-scroll-proportion="0.94168097" vertical-offset="2341" max-vertical-offset="5406">
+        <state line="141" column="10" selection-start="3634" selection-end="4152" vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="2737">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="57" selection-start="1527" selection-end="1653" vertical-scroll-proportion="-3.9230769" vertical-offset="867" max-vertical-offset="2312">
-          <folding>
-            <element signature="e#2003#2034#0" expanded="true" />
-            <element signature="e#2415#2446#0" expanded="true" />
-            <element signature="e#2801#2832#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventManagement/manageEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="141" column="10" selection-start="3634" selection-end="4152" vertical-scroll-proportion="-14.730769" vertical-offset="2014" max-vertical-offset="2737">
-          <folding>
-            <element signature="e#6#213#0" expanded="true" />
-            <element signature="e#1948#2009#0" expanded="true" />
-            <element signature="e#2554#2585#0" expanded="true" />
-            <element signature="e#2783#2814#0" expanded="true" />
-            <element signature="e#3008#3039#0" expanded="true" />
-            <element signature="e#3240#3271#0" expanded="true" />
-            <element signature="e#3666#3722#0" expanded="true" />
-            <element signature="e#3848#3909#0" expanded="true" />
-            <element signature="e#4092#4139#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventManagement/newManageEvents.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="199" column="75" selection-start="4449" selection-end="4449" vertical-scroll-proportion="-130.11539" vertical-offset="0" max-vertical-offset="3825">
-          <folding>
-            <element signature="e#6#87#0" expanded="true" />
-            <element signature="e#3417#3448#0" expanded="true" />
-            <element signature="e#3618#3649#0" expanded="true" />
-            <element signature="e#3815#3846#0" expanded="true" />
-            <element signature="e#4019#4050#0" expanded="true" />
-            <element signature="e#4604#4651#0" expanded="true" />
-          </folding>
+        <state line="68" column="57" selection-start="1527" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="2499">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eventManagement/new invitees list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="65" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="-42.5" vertical-offset="0" max-vertical-offset="2244">
-          <folding>
-            <element signature="e#6#86#0" expanded="true" />
-          </folding>
+        <state line="65" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.0" vertical-offset="1105" max-vertical-offset="2244">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
+    <entry file="file://$PROJECT_DIR$/eventManagement/newManageEvents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="90" column="42" selection-start="2527" selection-end="2527" vertical-scroll-proportion="171.96153" vertical-offset="5814" max-vertical-offset="17646">
+        <state line="199" column="75" selection-start="4449" selection-end="4449" vertical-scroll-proportion="0.0" vertical-offset="3383" max-vertical-offset="3825">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="0" selection-start="286" selection-end="558" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="3332">
+        <state line="26" column="0" selection-start="286" selection-end="558" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="3434">
           <folding>
             <marker date="1408158766295" expanded="true" signature="879:6253" placeholder="..." />
             <marker date="1408158766295" expanded="true" signature="890:3071" placeholder="..." />
@@ -559,7 +444,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="33" selection-start="1504" selection-end="1511" vertical-scroll-proportion="-11.115385" vertical-offset="612" max-vertical-offset="3349">
+        <state line="58" column="33" selection-start="1504" selection-end="1511" vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="3434">
           <folding>
             <marker date="1408173365497" expanded="true" signature="514:598" placeholder="Select userP..User..." />
             <marker date="1408173365497" expanded="true" signature="1966:2016" placeholder="INSERT INTO ..." />
@@ -573,14 +458,188 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eventManagement/addEvent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="32" selection-start="4658" selection-end="4658" vertical-scroll-proportion="-10.461538" vertical-offset="1785" max-vertical-offset="2584">
+        <state line="132" column="32" selection-start="4658" selection-end="4658" vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="2771">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/formValidation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="0.81850535" vertical-offset="713" max-vertical-offset="1309">
+        <state line="62" column="1" selection-start="949" selection-end="949" vertical-scroll-proportion="0.0" vertical-offset="1054" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="0" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="39" selection-start="1876" selection-end="2206" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2737" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="175" column="0" selection-start="4125" selection-end="4125" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="3094">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentInformation/ParentsDetailsForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2839" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentInformation/ParentsDetailsForm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="22" selection-start="145" selection-end="145" vertical-scroll-proportion="0.59859157" vertical-offset="0" max-vertical-offset="2839" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentInformation/StudentRegistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="108" column="69" selection-start="2491" selection-end="2781" vertical-scroll-proportion="0.88736266" vertical-offset="1326" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="39" selection-start="1876" selection-end="2206" vertical-scroll-proportion="0.0" vertical-offset="1224" max-vertical-offset="2737" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="109" column="0" selection-start="2324" selection-end="2324" vertical-scroll-proportion="0.0" vertical-offset="1853" max-vertical-offset="2210">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="0" selection-start="3237" selection-end="3237" vertical-scroll-proportion="-0.65384614" vertical-offset="2244" max-vertical-offset="3094">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="10" selection-start="286" selection-end="286" vertical-scroll-proportion="0.31135532" vertical-offset="0" max-vertical-offset="16796" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/OldmanageEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="0" selection-start="5685" selection-end="5685" vertical-scroll-proportion="0.94168097" vertical-offset="2341" max-vertical-offset="5406" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="68" column="57" selection-start="1527" selection-end="1653" vertical-scroll-proportion="0.0" vertical-offset="1156" max-vertical-offset="2499">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/manageEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="141" column="10" selection-start="3634" selection-end="4152" vertical-scroll-proportion="0.0" vertical-offset="2014" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/newManageEvents.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="199" column="75" selection-start="4449" selection-end="4449" vertical-scroll-proportion="0.0" vertical-offset="3383" max-vertical-offset="3825">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="90" column="42" selection-start="2527" selection-end="2527" vertical-scroll-proportion="171.96153" vertical-offset="5814" max-vertical-offset="17646">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="286" selection-end="558" vertical-scroll-proportion="0.0" vertical-offset="442" max-vertical-offset="3434">
+          <folding>
+            <marker date="1408158766295" expanded="true" signature="879:6253" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="890:3071" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="920:2401" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="936:987" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1008:1087" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1109:1245" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1270:1388" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1415:1473" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1498:1622" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1643:1779" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1803:1919" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="1943:2064" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2084:2142" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2176:2225" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2253:2297" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2327:2385" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2418:3059" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="2463:2968" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2584:2819" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2857:2953" placeholder="{...}" />
+            <marker date="1408158766295" expanded="true" signature="2969:3042" placeholder="//..." />
+            <marker date="1408158766295" expanded="true" signature="3082:6241" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="3140:6229" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="3174:4519" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="3374:4499" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="3399:3620" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="4620:6214" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="4657:6194" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="4682:4886" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="4911:6169" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5083:5891" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5119:5861" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5156:5456" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5197:5418" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5285:5413" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5493:5824" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5534:5786" placeholder="..." />
+            <marker date="1408158766295" expanded="true" signature="5637:5781" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="33" selection-start="1504" selection-end="1511" vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="3434">
+          <folding>
+            <marker date="1408173365497" expanded="true" signature="514:598" placeholder="Select userP..User..." />
+            <marker date="1408173365497" expanded="true" signature="1966:2016" placeholder="INSERT INTO ..." />
+            <marker date="1408173365497" expanded="true" signature="2666:2746" placeholder="Select userE..User..." />
+            <marker date="1408173365497" expanded="true" signature="3420:3514" placeholder="SELECT `Valu..." />
+            <marker date="1408173365497" expanded="true" signature="4228:4273" placeholder="UPDATE User ..." />
+            <marker date="1408173365497" expanded="true" signature="5288:5384" placeholder="INSERT INTO ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/addEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="132" column="32" selection-start="4658" selection-end="4658" vertical-scroll-proportion="0.0" vertical-offset="2244" max-vertical-offset="2771">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formValidation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="1" selection-start="949" selection-end="949" vertical-scroll-proportion="-9.346154" vertical-offset="726" max-vertical-offset="1309">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eventManagement/new invitees list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="65" column="0" selection-start="1230" selection-end="1230" vertical-scroll-proportion="0.66548043" vertical-offset="646" max-vertical-offset="2159">
           <folding />
         </state>
       </provider>
