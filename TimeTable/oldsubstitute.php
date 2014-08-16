@@ -16,7 +16,7 @@
 
 <body>
 
-<h1>Substitute Teacher Form</h1>
+<h1>Create TimeTable Form</h1>
 
 <h2>Choose Option</h2>
 
