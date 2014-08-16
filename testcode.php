@@ -6,4 +6,4 @@
  * Time: 10:50 PM
  */
 
-echo date("Y-m-d");
+echo date("Y-M-D");

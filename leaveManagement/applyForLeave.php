@@ -30,6 +30,17 @@
 
         </style>
 
+        <script>
+
+            function selectedvalue(data)
+            {
+
+                document.getElementById("check").value = data.value;
+            }
+
+        </script>
+
+
     </head>
     <body>
             <h1>Apply For Leave</h1>
@@ -53,11 +64,11 @@
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
-                        <td><select name="leavetype" type="text" value="">
+                        <td><select onchange="selectedvalue(this)">
                                 <option value="OfficialLeave">Offical Leave</option>
                                 <option value="MaternityLeave">Maternity Leave</option>
                                 <option value="CasualLeave">Casual Leave</option>
-                                <option value="Other">Other Leave</option>
+                                <option value="OtherLeave">Other Leave</option>
                             </select>
                         </td>
                     </tr>
@@ -75,8 +86,11 @@
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="Apply for Leave"/>
+                    <input type="submit" value="submit" id="submitme">
                 </p>
+
+                <input name="leavetype" id="check" value="OfficialLeave" >
+
 
             </form>
     </body>
@@ -86,10 +100,11 @@
     //Assign all Page Specific variables
     $fullPageHeight = 800;
     $footerTop = $fullPageHeight + 100;
+    $pageTitle= "Template";
+
+    //Only change above
 
     $pageContent = ob_get_contents();
     ob_end_clean();
-    $pageTitle= "Apply for Leave";
-    //Apply the template
-    require_once("../Master.php");
+    require_once(THISROOT . "/Master.php");
 ?>
