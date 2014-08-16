@@ -24,11 +24,12 @@ h2{
 }
 #timetable{
     position: relative;
+    border-collapse: collapse;
     top: 25px;
     max-width: 1000px;
 }
 #timetable, #timetable th, #timetable td{
-    border: 1px solid black;
+   /*border: 1px solid black;*/
 }
 #timetable  th{
     /*width: 120px;*/
@@ -36,6 +37,7 @@ h2{
 #timetable  td{
     /*width: 120px;*/
     text-align: center;
+    padding: 0;
 }
 #timetable th.time{
     width: 120px;
@@ -43,6 +45,7 @@ h2{
 #timetable  tr{
     height: 10px;
 }
+
 .text {
     background: white;
     border: none;
@@ -91,4 +94,17 @@ h2{
 #submit  tr{
     width: 390px;
     text-align: center;
+}
+.collapse{
+    border-collapse: collapse;
+    border: none;
+    margin: 0;
+}
+.collapse,.collapse th .collapse td{
+    border: none;
+}
+#timetable, #timetable th, #timetable td{
+    /*border: 1px solid black;*/
+}
+.rowToHide {
 }

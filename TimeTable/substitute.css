@@ -26,17 +26,20 @@ h2{
 #timetable{
     position: relative;
     top: 25px;
-    width: 900px;
+    max-width: 1000px;
 }
 #timetable, #timetable th, #timetable td{
     border: 1px solid black;
 }
 #timetable  th{
-    width: 150;
+    /*width: 120px;*/
 }
 #timetable  td{
-    width: 150;
+    width: 120px;
     text-align: center;
+}
+#timetable th.time{
+    width: 120px;
 }
 #timetable  tr{
     height: 10px;
