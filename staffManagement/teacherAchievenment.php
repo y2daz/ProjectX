@@ -26,6 +26,10 @@ $pageTitle= "Template";
 <html>
 <head>
     <style type=text/css>
+        h1{
+            text-align: center;
+        }
+
         table {
             border-spacing:0px 5px;
         }
@@ -69,8 +73,8 @@ $pageTitle= "Template";
         input.button {
             position:relative;
             font-weight:bold;
-            font-size:20px;
-            right:450px;
+            font-size:15px;
+            left:150px;
             top:50px;
 
 
@@ -79,7 +83,7 @@ $pageTitle= "Template";
 <?php
     if($_COOKIE['language'] == 0)
     {
-	$teachersname="Teacher's Name";
+    $staffID="Staff ID";
 	$achievement="Achievement";
 	$starteddate="Started Date";
 	$completeddate="Completed Date";
@@ -88,7 +92,7 @@ $pageTitle= "Template";
 }
 	else
 	{
-		$teachersname="ගුරුවරයාගේ නම";
+        $staffID="ගුරුවරයාගේ නම";
 		$achievement="කුසලතාවය";
 		$starteddate="ආරම්භ කල දිනය";
 		$completeddate="අවසන් කල දිනය";
@@ -105,15 +109,11 @@ $pageTitle= "Template";
 
 			<h1>Teacher Achievements Form</h1>
 				<table class="general" cellspacing="0">	
-				<tr><th>Teacher Achievements</th><th></th></tr>		
-				<tr>
-					<td><?php echo $teachersname?></td>
-					<td><select type="text" value="">
-						<option>Mr.kumara</option>
-						<option>MR.Saman</option>
-						<option>Mrs.kumari</option>	
-						<option></option>
-					</select></td>
+				<!--<tr><th>Teacher Achievements</th><th></th></tr>-->
+                    <tr>
+                        <td><?php echo $staffID?></td>
+                        <td><input name="staffID" type="text" value=""></td>
+                    </tr>
 
 				<tr class="alt">
 					<td><?php echo $achievement?></td>
@@ -121,20 +121,17 @@ $pageTitle= "Template";
 						 
 					
 				</tr>
-					
-				<tr class="alt">
-					<td><?php echo $starteddate?></td>
-					<td><input name="starteddate" value=""></td>
-						 
-					
-				</tr>
 
-				<tr class="alt">
-					<td><?php echo$completeddate?></td>
-					<td><input name="completeddate" value=""></td>
-						 
-				
-				</tr>
+                    <tr>
+                        <td><?php echo $starteddate?></td>
+                        <td><input name="starteddate" type="date" value=""></td>
+                    </tr>
+
+                    <tr>
+                        <td><?php echo $completeddate?></td>
+                        <td><input name="$completeddate" type="date" value=""></td>
+                    </tr>
+
 				<tr class="alt">
 					<td><?php echo $grade?></td>
 					<td><select name="grade" value="">

@@ -20,13 +20,18 @@ ob_start();
 <html>
 <head>
     <style type=text/css>
+        h1{
+            text-align: center;
+        }
+
+
         table {
             border-spacing:0px 5px;
         }
 
         .general {
             position:absolute;
-            left:80px;
+            left:50px;
             top:80px;
         }
 
@@ -44,9 +49,9 @@ ob_start();
         input.button {
             position:relative;
             font-weight:bold;
-            font-size:20px;
-            right:450px;
-            top:50px;
+            font-size:15px;
+            right:130px;
+            top:100px;
 
 
     </style>
@@ -56,14 +61,14 @@ ob_start();
 
     if($_COOKIE['language'] == 0)
     {
-	$teachersname="Teacher's Name";
+	$staffid="Staff ID";
 	$grade="Grade";
 	$classname="Class Name";
 	$location="Location";
     }
 else
     {
- 	$teachersname="ගුරුවරයාගේ නම";
+ 	$staffid="Staff ID";
 	$grade="ශ්‍රේනිය";
 	$classname="පන්තියේ නම";
 	$location="පිහිටි ස්ථානය";
@@ -75,15 +80,16 @@ else
 		<form name="thisForm" method="post">
 
 			<h1>Classroom Information</h1>
-			<table class="general" cellspacing="0">	
-				<tr><th>Classroom Information</th><th></th></tr>		
+		<table class="general" cellspacing="0">
+			<!--	<tr><th>Classroom Information</th><th></th></tr>	-->
 				<tr>
-					<td><?php echo $teachersname?></td>
+					<td><?php echo $staffid?></td>
 					<td><input type="text" name="staffId" value="" /></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $grade?></td>
-					<td><select name="grade" value="">
+                    <td><input type="text" name="grade" value="" /></td>
+					<!--<td><select name="grade" value="">
 						option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -98,7 +104,7 @@ else
 						<option value="11">11</option>
 						<option value="12">12</option>
 						<option value="13">13</option>
-						</select></td>
+						</select></td>-->
 				</tr>
 				<tr class="alt">
 					<td><?php echo $classname?></td>
