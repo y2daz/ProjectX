@@ -1,154 +1,173 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Yazdaan
+ * Date: 6/8/14
+ *
+ * THIS IS THE NEW TEMPLATE
+ *
+ * ONLY EDIT WHERE MENTIONED
+ *
+ * Page title, and height are php variables you have to edit at the bottom.
+ *
+ */
+
+define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+include(THISROOT . "/dbAccess.php");
+ob_start();
+
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Template";
+
+
+?>
 <html>
-<head>
-<style>
+    <head>
 
-body {
-	background-color:black;
+        <script src="studentinformation.js"></script>
+
+        <style type=text/css>
+<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
+<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
 
-}
-
-* {
-	font-family:calibri;
-}
-
-h1 {
-
-	text-align:center;
-}
-
-.main {
-	position:absolute;
-	background-color:white;
-	height:1400px;
-	width:800px;
-	left:283px;
-	top:50px;
-	border-radius:20px;
-	padding:10px;
-
-}
 
 table {
-		border-spacing:0px 5px;
+    border-spacing:0px 5px;
 }
 
-.general {
-	position:absolute;
-	left:80px;
-	top:80px;	
+#searchCriteria{
+    position:relative;
+    left:20px;
+    top:20px;
 }
 
 th{
-	align:center;
-	color:white;
-	background-color:#154DC1;
-	height:30px;
-	padding:5px;
+    align:center;
+    color:white;
+    background-color:#154DC1;
+    height:25px;
+    padding:5px;
 }
 
-td {	
-	padding:5px;
+td {
+    padding:5px;
 }
 
-.staffimage{
-	position:absolute;
-	height:160px;
-	width:150px;
-	top:130px;
-	left:560px;
-	background-color:#154DC1;
-	z-index:0;
-}
-.staffimage img
-{
-	position:absolute;
-	top:4px;
-	left:4px;
-	width:142px;
-	height:150px;
+#staffList{
+    position: relative;
+    top: 40px;
 }
 
-input.button1 {
-	position:relative;
-	font-weight:bold;
-	font-size:20px;
-	left:50px;
-	top:10px;
+
+
+
+input.button {
+    position:relative;
+    font-weight:bold;
+    font-size:20px;
+    right:450px;
+    top:50px;
+
 }
-input.button2 {
-	position:relative;
-	font-weight:bold;
-	font-size:20px;
-	right:20px;
-	top:10px;
-}
-input.button3 {
-	position:relative;
-	font-weight:bold;
-	font-size:20px;
-	left:20px;
-	top:10px;
-}
+<?php //Get language and make changes
 
-</style>
+    if($_COOKIE['language'] == 0)
+    {
+	    $AdmissionID = "AdmisionID";
+        $Name = "Name";
+        $Class = "Class";
+        $Medium = "Medium";
+        $DateOfBirth     = "DateOfBirth";
 
-<title>Search Student</title>
+    }
 
-
-</head>
+    ?>
 
 
 
-<body>
-	<div class="main">
 
-			<h1>Search Student Form</h1>
-			
-		<form>
-			<table class="general" cellspacing="0">	
-			<tr class="alt">
-			<td>Admission ID</td>
-					<td><input type="text" value=""></td>
-				
-				<tr>
-					<td>Name With Initials</td>
-					<td><input type="text" value=""></td>
-					</tr>
-				<tr>
-					<td>Date of Birth</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				<tr>
-					<td>Nationality/Race</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				
-					<td>Medium</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				<tr>
-					<td>Grade/Year</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				<tr>
-					<td>Class</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				<tr>
-					<td></td>
 
-					<td><input class="button1" type="button" value="Search"></td>
+        </style>
+    </head>
+    <body>
 
-					<td><input class="button2" type="button" value="Reset"></td>
-					
-					<td><input class="button3" type="button" value="Cancel"></td>
-				</tr>	
-				
-				
-	</div>
-							
-			
-</body>
+    <h1 align="center">Search Student</h1>
 
+    <form>
+
+
+
+        <table style="height: 150px;" align="center">
+            <tr class="alt">
+                <td>
+
+                    <input type="radio" name="choice" value="AdmissionID" onclick="clickedAdmissionID()"> By Admission ID
+                    <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
+                    <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
+                    <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
+                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth
+
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="class" value="">
+
+            </tr>
+
+            </table>
+
+        <table>
+
+            <tr>
+                <td style="padding-left: 110px"><input type="button" name="Search" value="Search"></td>
+            </tr>
+
+
+        </table>
+
+        <br>
+
+
+        <table class="Searchedtable" align="center">
+            <tr>
+                <th>AdmisionID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Medium</th>
+                <th>DateOfBirth</th>
+                <th></th>
+            </tr>
+            <tr class="alt">
+                <td>01111</td>
+                <td>Madhushan De Silva</td>
+                <td>13</td>
+                <td>English</td>
+                <td>1993/07/27</td>
+                <td><input type="button" name="expand" value="Expand Details" /></td>
+            </tr>
+
+            </table>
+
+
+
+    </form>
+
+
+
+
+    </body>
 </html>
+<?php
+//Change these to what you want
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Template";
+//Only change above
+
+$pageContent = ob_get_contents();
+ob_end_clean();
+require_once(THISROOT . "/Master.php");
+?>

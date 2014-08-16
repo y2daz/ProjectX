@@ -1,20 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Yazdaan
- * Date: 6/8/14
- *
- * THIS IS THE NEW TEMPLATE
- *
- * ONLY EDIT WHERE MENTIONED
- *
- * Page title, and height are php variables you have to edit at the bottom.
- *
+ * User: DR1215
+ * Date: 9/8/14
+ * time: 11.49
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
+
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Template";
+
 
 ?>
 <html>

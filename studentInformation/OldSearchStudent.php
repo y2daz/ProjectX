@@ -93,7 +93,7 @@ input.button3 {
 
 </style>
 
-<title>Student Registration</title>
+<title>Search Student</title>
 
 
 </head>
@@ -103,57 +103,28 @@ input.button3 {
 <body>
 	<div class="main">
 
-			<h1>Student Registration Form</h1>
+			<h1>Search Student Form</h1>
 			
 		<form>
-			<div class="staffimage">
-				<img src="" alt="No any image"></img>
-			</div>
 			<table class="general" cellspacing="0">	
-				<tr><th>General Information</th><th></th></tr>		
-				<tr>
-					<td>Admission ID</td>
+			<tr class="alt">
+			<td>Admission ID</td>
 					<td><input type="text" value=""></td>
-				</tr>
+				
 				<tr>
-					<td>Last Name</td>
-					<td><input type="text" value=""></td>
-				</tr>
-				<tr class="alt">
 					<td>Name With Initials</td>
+					<td><input type="text" value=""></td>
+					</tr>
+				<tr>
+					<td>Date of Birth</td>
 					<td><input type="text" value=""></td>
 				</tr>
 				<tr>
 					<td>Nationality/Race</td>
-					<td><select type="text" value="">
-						<option>Sinhala</option>
-						<option>Sri Lankan Tamil</option>
-						<option>Indian Tamil</option>
-						<option>Sri Lankan Muslim</option>	
-						<option>Other</option>
-					</select></td>
+					<td><input type="text" value=""></td>
 				</tr>
-				<tr class="alt">
-					<td>Religion</td>
-					<td><select type="text" value="">
-						<option>Buddhism</option>
-						<option>Hinduism</option>
-						<option>Islam</option>
-						<option>Christianity</option>	
-						<option>Othe	r</option>
-					</select></td>
-				</tr>
-				<tr class="alt">
+				
 					<td>Medium</td>
-					<td>
-						<input type="radio" name="Med" value="sinhala">Sinhala
-						<input type="radio" name="Med" value="english">English
-						<input type="radio" name="Med" value="tamil">Tamil
-
-					</td>
-				</tr>
-				<tr>
-					<td>Address</td>
 					<td><input type="text" value=""></td>
 				</tr>
 				<tr>
@@ -167,12 +138,14 @@ input.button3 {
 				<tr>
 					<td></td>
 
-					<td><input class="button1" type="button" value="Submit"></td>
+					<td><input class="button1" type="button" value="Search"></td>
 
 					<td><input class="button2" type="button" value="Reset"></td>
 					
 					<td><input class="button3" type="button" value="Cancel"></td>
-				</tr>	
+				</tr>
+                </table>
+            </form>
 				
 				
 	</div>

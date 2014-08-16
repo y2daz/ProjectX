@@ -1,197 +1,253 @@
 ﻿<?php
-
-
 /**
  * Created by PhpStorm.
  * User: vimukthi
- * Date: 6/8/14
- *
- * THIS IS THE NEW TEMPLATE
- *
- * ONLY EDIT WHERE MENTIONED
- *
- * Page title, and height are php variables you have to edit at the bottom.
- *
+ * Date: 19/07/14
+ * Time: 17:04
  */
-
-define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
 ob_start();
-
-$fullPageHeight = 1200;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
     <style type=text/css>
-        table {
-            border-spacing:0px 5px;
-        }
+        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
+        #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-        .general {
-            position:absolute;
-            left:80px;
-            top:80px;
+        h1{
+            text-align: center;
         }
-
-        th{
-            align:center;
+        h3{
+            position: relative;
+            left:50px;
+        }
+        #info{
+            position: relative;
+            left: 40px;
+        }
+        .viewTable{
+            position: relative;
+        }
+        .viewTable th{
+            font-weight: 600;
             color:white;
-            background-color:#154DC1;
-            height:25px;
-            padding:5px;
+            background-color: #005e77;
         }
-
-        td {
-            padding:5px;
+        .viewtable tr{
         }
-
-        .staffimage{
-            position:absolute;
-            height:160px;
-            width:150px;
-            top:130px;
-            left:560px;
-            background-color:#154DC1;
-            z-index:0;
+        .viewTable tr.alt{
+            background-color: #bed9ff;
         }
-        .staffimage img
-        {
-            position:absolute;
-            top:4px;
-            left:4px;
-            width:142px;
-            height:150px;
+        .viewTable td{
+            padding-left: 10px;
+            padding-right: 10px;
         }
-
-        input.button {
+        .details {
+            /*position: relative;*/
+            /*top:50px;*/
+            width:500px;
+            height:150px
+        }
+        input.button1 {
             position:relative;
             font-weight:bold;
-            font-size:20px;
-            right:450px;
-            top:50px;
-
-
+            font-size:15px;
+            right:-150px;
+            top:100px;
+        }
     </style>
 </head>
-
-
-</head>
-<?php //Get language and make changes
-
-    if($_COOKIE['language'] == 0)
-    {
-	    $staffID = "Staff ID";
-        $nameWithInitials = "Name with Initials";
-        $dateOfBirth = "Date of Birth";
-        $gender = "Gender";
-        $nationalityRace = "Nationality/Race";
-        $religion = "Religion";
-        $civilStatus = "Civil Status";
-        $nicNumber = "NIC Number";
-	    $maildeliveryaddress="Mail Delivery Address";
-	    $contactnumber="Contact Number";
-	    $Searchby="Search by";
-    }
-else
-    {
- 	$staffID = "අනුක්‍රමික අංකය";
-        $nameWithInitials = "නම් මුලකුරු සමඟ";
-	 
-        $dateOfBirth = "උපන් දිනය";
-        $gender = "ස්ත්‍රී/පුරුෂ භාවය";
-        $nationalityRace = "ජනවර්ගය";
-        $religion = "ආගම";
-        $civilStatus = "විවාහක /අවිවාහක බව";
-        $nicNumber = "ජාතික හැඳුනුම් පත් අංකය";
-
-	    $maildeliveryaddress="ලිපිනය";
-	    $contactnumber="දුරකථන අංකය";
-	    $Searchby="පිරික්සන්න";
-	
-    }
-?>	
-
-
 <body>
-	
+<h1> Search and View Staff Details </h1>
+<br />
+<!--<h3>Search by</h3>-->
 
-			
-	<form onsubmit="return validateEverything()" name="thisForm" method="post">
-	<div class="main">		
-	<h1>Search and View Staff Details</h1>
-<table class="general" cellspacing="0">	
-				
-	<tr><th>Search By</th><th></th></tr>		
-				<tr class="alt">
-					<td><?php echo $Searchby?></td>
-					
-						 
-				</tr>
-				
-				<tr class="alt">
-					
-					<td>
-					<br><input type="checkbox" name="checkbox" value=""><?php echo $staffID?>
-						<input type="checkbox" name="checkbox" value=""><?php echo $nameWithInitials?>
-						<input type="checkbox" name="checkbox" value=""><?php echo $dateOfBirth?>
-					<input type="checkbox" name="checkbox" value=""><?php echo $gender?></br>
-						<br><input type="checkbox" name="checkbox" value=""><?php echo $nationalityRace?>
-						<input type="checkbox" name="checkbox" value=""><?php echo $religion?>
-						<input type="checkbox" name="checkbox" value=""><?php echo $civilStatus?>
-						<input type="checkbox" name="checkbox" value=""><?php echo  $nicNumber?></br>
-						
+<form>
 
-					</td>
-				</tr>
+    <table id="info">
+        <tr>
+            <td colspan="2"><span id="selection">Search by : </span>
+             <input type="text" class="text1" name="class" value="">
+            </td>
+            <td><input class="button" name="newStaff" type="submit" value="Search"></td>
+        </tr>
+        <tr><td></td><td></td></tr>
+        <tr>
+            <td><input type="RADIO" name="Choice" value="Staffid"/>Staff ID</td>
+            <td><input type="RADIO" name="Choice" value="Name"  >Name</td>
+            <td><input type="RADIO" name="Choice" value="nicnumber"/>NIC Number</td>
+            <td><input type="RADIO" name="Choice" value="contactnumber"  >Contact Number</td>
+        </tr>
 
-				<table border="2px solid black" >
+    </table>
+
+    <br />
+
+    <table class="viewTable" align="center">
+        <tr>
+            <th>Staff ID</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Nic Number</th>
+            <th>Contact Number</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>SIDXXX</td>
+            <td>Mrs. Andrea De Silva</td>
+            <td>Female</td>
+            <td>578695412v</td>
+            <td>0719658712</td>
+            <td><input type="button" name="expand" value="Expand Details" /></td>
+        </tr>
+        <tr class="alt">
+            <td>SIDXXX</td>
+            <td>Mr. Madusha Karunaratne</td>
+            <td>Male</td>
+            <td>642531789v</td>
+            <td>0772596314</td>
+            <td><input type="button" name="expand" value="Expand Details" /></td>
+        </tr>
+        <tr>
+            <td> SIDXXX </td>
+            <td> Mr. Priyan Fernando </td>
+            <td> Male </td>
+            <td> 702358964v</td>
+            <td> 0774239651 </td>
+            <td> <input type="button" name="expand" value="Expand Details" /> </td>
+        </tr>
+    </table>
+
+    <br />
+    <br />
+
+    <table class="details" align="center">
+        <tr>
+            <td> Staff ID </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
 
 
-                <tr>
-                    <th>Staff id</th>
-                    <th>Name with initials</th>
-                    <th>Date of birth</th>
-		    <th>Gender</th>
-                    <th>Nationality</th>
-                    <th>Mailing Address</th>
-		    <th>Religion</th>
-                    <th>Civil Status</th>
-                    <th>Contact number</th>
-		    <th>Nic Number</th>
-                   
-
-                </tr>
-                
+        <tr>
+            <td> Name with Initials </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
 
 
-				
 
-				<td><input class="button" type="submit" value="Browse"></td>
-				</tr>			
-			
-			</table>		
+        <tr>
+            <td> Date of Birth  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
 
-		</form>
+        <tr>
+            <td> Gender </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
 
-			
-	
-	</div>	
+        <tr>
+            <td>Natinality/Race </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
 
+        <tr>
+            <td> Religion </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Civil Status  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>NIC Number  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>Mail Delivery Address</td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>Contact Number </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>Date Appointed as Teacher/principal</td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Date joined this school  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Employement status </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Medium </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Position in school  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Section  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Subject Most taught  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>  Subject Second Most taught </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>  Service Grade  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td>  Salary</td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Highest Educational Qualification  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Highest Professional Qualification  </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+        <tr>
+            <td> Course of Study </td>
+            <td > <input type = "text" name="staffid" /> </td>
+        </tr>
+
+
+        <td><input class="button1" name="newStaff" type="submit" value="UPDATE"></td>
+    </table>
+
+    <br />
+    <br />
+
+    <!--<table align="center">
+        <tr>
+            <td> <input type="button" value="Approve"> </td>
+            <td > <input type="button" value="Reject">  </td>
+        </tr>
+    </table>-->
+
+</form>
 </body>
-
 </html>
 <?php
-//Change these to what you want
-$fullPageHeight = 600;
+//Assign all Page Specific variables
+$fullPageHeight = 1300;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-//Only change above
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-require_once(THISROOT . "/Master.php");
+$pageTitle= "searchViewStaffdetails";
+//Apply the template
+include("../Master.php");
 ?>
+

@@ -24,31 +24,31 @@
 
   FLUSH PRIVILEGES;
 
-  -- phpMyAdmin SQL Dump
-  -- version 4.0.10deb1
-  -- http://www.phpmyadmin.net
-  --
-  -- Host: localhost
-  -- Generation Time: Aug 12, 2014 at 10:22 PM
-  -- Server version: 5.5.38-0ubuntu0.14.04.1
-  -- PHP Version: 5.5.9-1ubuntu4.3
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Aug 13, 2014 at 09:38 PM
+-- Server version: 5.5.38-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.3
 
   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
   SET AUTOCOMMIT = 0;
   START TRANSACTION;
   SET time_zone = "+00:00";
 
-  --
-  -- Database: `manaDB`
-  --
-  CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+--
+-- Database: `manaDB`
+--
+CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
   USE `manaDB`;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `ALMarks`
-  --
+--
+-- Table structure for table `ALMarks`
+--
 
   DROP TABLE IF EXISTS `ALMarks`;
   CREATE TABLE IF NOT EXISTS `ALMarks` (
@@ -61,24 +61,11 @@
     KEY `SubjectID` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `ALMarks`:
-  --   `AdmissionNo`
-  --       `Student` -> `AdmissionNo`
-  --   `SubjectID`
-  --       `Subject_Grade` -> `SubjectID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `ALMarks`
-  --
-
-  TRUNCATE TABLE `ALMarks`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `ApplyLeave`
-  --
+--
+-- Table structure for table `ApplyLeave`
+--
 
   DROP TABLE IF EXISTS `ApplyLeave`;
   CREATE TABLE IF NOT EXISTS `ApplyLeave` (
@@ -96,24 +83,11 @@
     KEY `fk013` (`ReviewedBy`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `ApplyLeave`:
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --   `ReviewedBy`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `ApplyLeave`
-  --
-
-  TRUNCATE TABLE `ApplyLeave`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Attendance`
-  --
+--
+-- Table structure for table `Attendance`
+--
 
   DROP TABLE IF EXISTS `Attendance`;
   CREATE TABLE IF NOT EXISTS `Attendance` (
@@ -383,22 +357,11 @@
     PRIMARY KEY (`AdmissionNo`,`Year`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Attendance`:
-  --   `AdmissionNo`
-  --       `Student` -> `AdmissionNo`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Attendance`
-  --
-
-  TRUNCATE TABLE `Attendance`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Blacklist`
-  --
+--
+-- Table structure for table `Blacklist`
+--
 
   DROP TABLE IF EXISTS `Blacklist`;
   CREATE TABLE IF NOT EXISTS `Blacklist` (
@@ -411,24 +374,11 @@
     KEY `fk003` (`ListContributor`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Blacklist`:
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --   `ListContributor`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Blacklist`
-  --
-
-  TRUNCATE TABLE `Blacklist`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `ClassInformation`
-  --
+--
+-- Table structure for table `ClassInformation`
+--
 
   DROP TABLE IF EXISTS `ClassInformation`;
   CREATE TABLE IF NOT EXISTS `ClassInformation` (
@@ -440,22 +390,11 @@
     KEY `fk001` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `ClassInformation`:
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `ClassInformation`
-  --
-
-  TRUNCATE TABLE `ClassInformation`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Event`
-  --
+--
+-- Table structure for table `Event`
+--
 
   DROP TABLE IF EXISTS `Event`;
   CREATE TABLE IF NOT EXISTS `Event` (
@@ -473,22 +412,11 @@
     KEY `fk018` (`EventCreator`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Event`:
-  --   `EventCreator`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Event`
-  --
-
-  TRUNCATE TABLE `Event`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `EventManager`
-  --
+--
+-- Table structure for table `EventManager`
+--
 
   DROP TABLE IF EXISTS `EventManager`;
   CREATE TABLE IF NOT EXISTS `EventManager` (
@@ -499,24 +427,11 @@
     KEY `fk022` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `EventManager`:
-  --   `EventID`
-  --       `Event` -> `EventID`
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `EventManager`
-  --
-
-  TRUNCATE TABLE `EventManager`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Holiday`
-  --
+--
+-- Table structure for table `Holiday`
+--
 
   DROP TABLE IF EXISTS `Holiday`;
   CREATE TABLE IF NOT EXISTS `Holiday` (
@@ -526,16 +441,11 @@
     PRIMARY KEY (`Year`,`Day`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Truncate table before insert `Holiday`
-  --
+-- --------------------------------------------------------
 
-  TRUNCATE TABLE `Holiday`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Invitee`
-  --
+--
+-- Table structure for table `Invitee`
+--
 
   DROP TABLE IF EXISTS `Invitee`;
   CREATE TABLE IF NOT EXISTS `Invitee` (
@@ -547,22 +457,11 @@
     KEY `fk020` (`AdmissionNo`,`ParentName`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Invitee`:
-  --   `EventID`
-  --       `Event` -> `EventID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Invitee`
-  --
-
-  TRUNCATE TABLE `Invitee`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `IsSubstituted`
-  --
+--
+-- Table structure for table `IsSubstituted`
+--
 
   DROP TABLE IF EXISTS `IsSubstituted`;
   CREATE TABLE IF NOT EXISTS `IsSubstituted` (
@@ -578,22 +477,11 @@
     KEY `fk016` (`Grade`,`Class`,`Day`,`Position`,`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `IsSubstituted`:
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `IsSubstituted`
-  --
-
-  TRUNCATE TABLE `IsSubstituted`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `LabelLanguage`
-  --
+--
+-- Table structure for table `LabelLanguage`
+--
 
   DROP TABLE IF EXISTS `LabelLanguage`;
   CREATE TABLE IF NOT EXISTS `LabelLanguage` (
@@ -605,80 +493,113 @@
     KEY `fk004` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `LabelLanguage`:
-  --   `Language`
-  --       `Language` -> `Language`
-  --
+--
+-- Dumping data for table `LabelLanguage`
+--
 
-  --
-  -- Truncate table before insert `LabelLanguage`
-  --
+  INSERT INTO `LabelLanguage` VALUES('addmanager', 0, 'Add Event Managers ', 0);
+  INSERT INTO `LabelLanguage` VALUES('addmanager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ', 0);
+  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave', 0);
+  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම', 0);
+  INSERT INTO `LabelLanguage` VALUES('approveLeave', 0, 'Approve Leave', 0);
+  INSERT INTO `LabelLanguage` VALUES('approveLeave', 1, 'නිවාඩු අනුමතකිරීම', 0);
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 0, 'Create Timetable by Class', 0);
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම', 0);
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 0, 'Create Timetable by Teacher', 0);
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම', 0);
+  INSERT INTO `LabelLanguage` VALUES('date', 0, 'Date', 0);
+  INSERT INTO `LabelLanguage` VALUES('date', 1, 'දිනය', 0);
+  INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description', 0);
+  INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය', 0);
+  INSERT INTO `LabelLanguage` VALUES('endtime', 0, 'End Time', 0);
+  INSERT INTO `LabelLanguage` VALUES('endtime', 1, 'අවසන් වන වෙලාව', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventcreator', 0, 'Event Creator', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventcreator', 1, 'සිදුවීම් නිර්මාණකරු', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventid', 0, 'Event ID', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventid', 1, 'සිදුවීම් අංකය', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventManagement', 0, 'Event Management', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventManagement', 1, 'උත්සවය කළමනාකරණය', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventtype', 0, 'Event Type', 0);
+  INSERT INTO `LabelLanguage` VALUES('eventtype', 1, 'සිදුවීම් වර්ගය', 0);
+  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 0, 'Leave Management', 0);
+  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය', 0);
+  INSERT INTO `LabelLanguage` VALUES('location', 0, 'Location', 0);
+  INSERT INTO `LabelLanguage` VALUES('location', 1, 'ස්ථානය', 0);
+  INSERT INTO `LabelLanguage` VALUES('name', 0, 'Name', 0);
+  INSERT INTO `LabelLanguage` VALUES('name', 1, 'සිදුවීම', 0);
+  INSERT INTO `LabelLanguage` VALUES('prizegiving', 0, 'Prize Giving Ceremony', 0);
+  INSERT INTO `LabelLanguage` VALUES('prizegiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය', 0);
+  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member', 0);
+  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න', 0);
+  INSERT INTO `LabelLanguage` VALUES('saveevent', 0, 'Save Event', 0);
+  INSERT INTO `LabelLanguage` VALUES('saveevent', 1, 'සිදුවීම සුරකින්න', 0);
+  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search Staff Member', 0);
+  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම', 0);
+  INSERT INTO `LabelLanguage` VALUES('sportmeet', 0, 'Sports Meet', 0);
+  INSERT INTO `LabelLanguage` VALUES('sportmeet', 1, 'ක්‍රීඩා උත්සවය', 0);
+  INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Management', 0);
+  INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය', 0);
+  INSERT INTO `LabelLanguage` VALUES('starttime', 0, 'Start Time ', 0);
+  INSERT INTO `LabelLanguage` VALUES('starttime', 1, 'ආරම්භක වෙලාව ', 0);
+  INSERT INTO `LabelLanguage` VALUES('status', 0, 'Status', 0);
+  INSERT INTO `LabelLanguage` VALUES('status', 1, 'තත්වය', 0);
+  INSERT INTO `LabelLanguage` VALUES('teacherday', 0, 'Teacher''s Day', 0);
+  INSERT INTO `LabelLanguage` VALUES('teacherday', 1, 'ගුරු දිනය', 0);
+  INSERT INTO `LabelLanguage` VALUES('timetables', 0, 'Timetables', 0);
+  INSERT INTO `LabelLanguage` VALUES('timetables', 1, 'කාලසටහන', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
 
-  TRUNCATE TABLE `LabelLanguage`;
-  --
-  -- Dumping data for table `LabelLanguage`
-  --
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 0, 'Keep Attendance', 0);
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 1, 'පැමිණීමේ වාර්තාව ', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර', 0);
+  INSERT INTO `LabelLanguage` VALUES('week', 0, ' Week', 0);
+  INSERT INTO `LabelLanguage` VALUES('week', 1, 'සතිය', 0);
+  INSERT INTO `LabelLanguage` VALUES('admissionNo', 0, 'Admission No', 0);
+  INSERT INTO `LabelLanguage` VALUES('admissionNo', 1, 'ඇතුලත්විමෙ අංකය ', 0);
+  INSERT INTO `LabelLanguage` VALUES('monday', 0, 'M', 0);
+  INSERT INTO `LabelLanguage` VALUES('monday',1 , 'ස', 0);
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 0, 'T', 0);
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 1, 'අ', 0);
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 0, 'W', 0);
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 1, 'බ', 0);
+  INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'T', 0);
+  INSERT INTO `LabelLanguage` VALUES('thursday', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('friday', 0, 'F', 0);
+  INSERT INTO `LabelLanguage` VALUES('friday', 1, 'සි', 0);
 
-  INSERT INTO `LabelLanguage` VALUES
-    ('addmanager', 0, 'Add Event Managers ', 0),
-    ('addmanager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ', 0),
-    ('applyForLeave', 0, 'Apply for Leave', 0),
-    ('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම', 0),
-    ('approveLeave', 0, 'Approve Leave', 0),
-    ('approveLeave', 1, 'නිවාඩු අනුමතකිරීම', 0),
-    ('createTimetableByClass', 0, 'Create Timetable by Class', 0),
-    ('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම', 0),
-    ('createTimetableByTeacher', 0, 'Create Timetable by Teacher', 0),
-    ('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම', 0),
-    ('date', 0, 'Date', 0),
-    ('date', 1, 'දිනය', 0),
-    ('description', 0, 'Description', 0),
-    ('description', 1, 'විස්තරය', 0),
-    ('endtime', 0, 'End Time', 0),
-    ('endtime', 1, 'අවසන් වන වෙලාව', 0),
-    ('eventcreator', 0, 'Event Creator', 0),
-    ('eventcreator', 1, 'සිදුවීම් නිර්මාණකරු', 0),
-    ('eventid', 0, 'Event ID', 0),
-    ('eventid', 1, 'සිදුවීම් අංකය', 0),
-    ('eventManagement', 0, 'Event Management', 0),
-    ('eventManagement', 1, 'උත්සවය කළමනාකරණය', 0),
-    ('eventtype', 0, 'Event Type', 0),
-    ('eventtype', 1, 'සිදුවීම් වර්ගය', 0),
-    ('leaveManagement', 0, 'Leave Management', 0),
-    ('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය', 0),
-    ('location', 0, 'Location', 0),
-    ('location', 1, 'ස්ථානය', 0),
-    ('name', 0, 'Name', 0),
-    ('name', 1, 'සිදුවීම', 0),
-    ('prizegiving', 0, 'Prize Giving Ceremony', 0),
-    ('prizegiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය', 0),
-    ('registerStaffMember', 0, 'Register Staff Member', 0),
-    ('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න', 0),
-    ('saveevent', 0, 'Save Event', 0),
-    ('saveevent', 1, 'සිදුවීම සුරකින්න', 0),
-    ('searchStaffMember', 0, 'Search Staff Member', 0),
-    ('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම', 0),
-    ('sportmeet', 0, 'Sports Meet', 0),
-    ('sportmeet', 1, 'ක්‍රීඩා උත්සවය', 0),
-    ('staffManagement', 0, 'Staff Management', 0),
-    ('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය', 0),
-    ('starttime', 0, 'Start Time ', 0),
-    ('starttime', 1, 'ආරම්භක වෙලාව ', 0),
-    ('status', 0, 'Status', 0),
-    ('status', 1, 'තත්වය', 0),
-    ('teacherday', 0, 'Teacher''s Day', 0),
-    ('teacherday', 1, 'ගුරු දිනය', 0),
-    ('timetables', 0, 'Timetables', 0),
-    ('timetables', 1, 'කාලසටහන', 0),
-    ('viewLeaveHistory', 0, 'View Leave History', 0),
-    ('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 0, 'Class-wise Attendance Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwisereport', 1, 'Class-wise Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwisereport', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 0, 'Grade', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර', 0);
+  INSERT INTO `LabelLanguage` VALUES('class', 0, 'Class', 0);
+  INSERT INTO `LabelLanguage` VALUES('class', 1, 'පන්තිය', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateFrom', 0, 'Date From', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateFrom', 1, 'දින සිට', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateTo', 0, 'Date To', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateTo', 1, 'දින දක්වා', 0);
 
-  -- --------------------------------------------------------
+  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 0, 'Student-wise Attendance Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, 'Student-wise Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentName', 0, 'Student Name', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentName', 1, 'ශිෂ්‍යාගේ නම', 0);
 
-  --
-  -- Table structure for table `Language`
-  --
+  INSERT INTO `LabelLanguage` VALUES('viewattendance', 0, 'View Attendance', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendance', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 0, 'View Attendance Details', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 1, '', 0);
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Language`
+--
 
   DROP TABLE IF EXISTS `Language`;
   CREATE TABLE IF NOT EXISTS `Language` (
@@ -688,24 +609,18 @@
     PRIMARY KEY (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Truncate table before insert `Language`
-  --
+--
+-- Dumping data for table `Language`
+--
 
-  TRUNCATE TABLE `Language`;
-  --
-  -- Dumping data for table `Language`
-  --
+  INSERT INTO `Language` VALUES(0, 'English', 0);
+  INSERT INTO `Language` VALUES(1, 'Sinhala', 0);
 
-  INSERT INTO `Language` VALUES
-    (0, 'English', 0),
-    (1, 'Sinhala', 0);
+-- --------------------------------------------------------
 
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `LanguageGroup`
-  --
+--
+-- Table structure for table `LanguageGroup`
+--
 
   DROP TABLE IF EXISTS `LanguageGroup`;
   CREATE TABLE IF NOT EXISTS `LanguageGroup` (
@@ -716,22 +631,11 @@
     KEY `fk005` (`GroupName`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `LanguageGroup`:
-  --   `GroupName`
-  --       `LabelLanguage` -> `Label`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `LanguageGroup`
-  --
-
-  TRUNCATE TABLE `LanguageGroup`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `LanguageOption`
-  --
+--
+-- Table structure for table `LanguageOption`
+--
 
   DROP TABLE IF EXISTS `LanguageOption`;
   CREATE TABLE IF NOT EXISTS `LanguageOption` (
@@ -744,24 +648,11 @@
     KEY `fk006` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `LanguageOption`:
-  --   `GroupNo`
-  --       `LanguageGroup` -> `GroupNo`
-  --   `Language`
-  --       `Language` -> `Language`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `LanguageOption`
-  --
-
-  TRUNCATE TABLE `LanguageOption`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `LeaveData`
-  --
+--
+-- Table structure for table `LeaveData`
+--
 
   DROP TABLE IF EXISTS `LeaveData`;
   CREATE TABLE IF NOT EXISTS `LeaveData` (
@@ -773,22 +664,11 @@
     PRIMARY KEY (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `LeaveData`:
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `LeaveData`
-  --
-
-  TRUNCATE TABLE `LeaveData`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `OLMarks`
-  --
+--
+-- Table structure for table `OLMarks`
+--
 
   DROP TABLE IF EXISTS `OLMarks`;
   CREATE TABLE IF NOT EXISTS `OLMarks` (
@@ -801,19 +681,6 @@
     KEY `SubjectID` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `OLMarks`:
-  --   `AdmissionNo`
-  --       `Student` -> `AdmissionNo`
-  --   `SubjectID`
-  --       `Subject_Grade` -> `SubjectID`
-  --
-
-  --
-  -- Truncate table before insert `OLMarks`
-  --
-
-  TRUNCATE TABLE `OLMarks`;
   -- --------------------------------------------------------
 
   --
@@ -834,22 +701,11 @@
     PRIMARY KEY (`AdmissionNo`,`NamewithInitials`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `ParentsInformation`:
-  --   `AdmissionNo`
-  --       `Student` -> `AdmissionNo`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `ParentsInformation`
-  --
-
-  TRUNCATE TABLE `ParentsInformation`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Staff`
-  --
+--
+-- Table structure for table `Staff`
+--
 
   DROP TABLE IF EXISTS `Staff`;
   CREATE TABLE IF NOT EXISTS `Staff` (
@@ -880,16 +736,11 @@
     PRIMARY KEY (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Truncate table before insert `Staff`
-  --
+-- --------------------------------------------------------
 
-  TRUNCATE TABLE `Staff`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Student`
-  --
+--
+-- Table structure for table `Student`
+--
 
   DROP TABLE IF EXISTS `Student`;
   CREATE TABLE IF NOT EXISTS `Student` (
@@ -906,16 +757,11 @@
     PRIMARY KEY (`AdmissionNo`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Truncate table before insert `Student`
-  --
+-- --------------------------------------------------------
 
-  TRUNCATE TABLE `Student`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Student_Subject_Grade`
-  --
+--
+-- Table structure for table `Student_Subject_Grade`
+--
 
   DROP TABLE IF EXISTS `Student_Subject_Grade`;
   CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
@@ -926,47 +772,21 @@
     KEY `fk025` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Student_Subject_Grade`:
-  --   `AdmissionNo`
-  --       `Student` -> `AdmissionNo`
-  --   `SubjectID`
-  --       `Subject_Grade` -> `SubjectID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Student_Subject_Grade`
-  --
-
-  TRUNCATE TABLE `Student_Subject_Grade`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Subject_Grade`
-  --
+--
+-- Table structure for table `Subject_Grade`
+--
 
   DROP TABLE IF EXISTS `Subject_Grade`;
   CREATE TABLE IF NOT EXISTS `Subject_Grade` (
     `SubjectID` int(11) NOT NULL DEFAULT '0',
     `Grade` int(11) DEFAULT NULL,
     `Subject` varchar(30) DEFAULT NULL,
-    `Medium` int(11) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`SubjectID`),
-    KEY `fk007` (`Medium`)
+    PRIMARY KEY (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Subject_Grade`:
-  --   `Medium`
-  --       `Language` -> `Language`
-  --
-
-  --
-  -- Truncate table before insert `Subject_Grade`
-  --
-
-  TRUNCATE TABLE `Subject_Grade`;
   -- --------------------------------------------------------
 
   --
@@ -982,24 +802,11 @@
     KEY `fk009` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Teaches`:
-  --   `SubjectID`
-  --       `Subject_Grade` -> `SubjectID`
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Teaches`
-  --
-
-  TRUNCATE TABLE `Teaches`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `TermMarks`
-  --
+--
+-- Table structure for table `TermMarks`
+--
 
   DROP TABLE IF EXISTS `TermMarks`;
   CREATE TABLE IF NOT EXISTS `TermMarks` (
@@ -1012,16 +819,11 @@
     PRIMARY KEY (`AdmissionNo`,`SubjectID`,`Term`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Truncate table before insert `TermMarks`
-  --
+-- --------------------------------------------------------
 
-  TRUNCATE TABLE `TermMarks`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Timetable`
-  --
+--
+-- Table structure for table `Timetable`
+--
 
   DROP TABLE IF EXISTS `Timetable`;
   CREATE TABLE IF NOT EXISTS `Timetable` (
@@ -1037,24 +839,11 @@
     KEY `fk011` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Timetable`:
-  --   `SubjectID`
-  --       `Subject_Grade` -> `SubjectID`
-  --   `StaffID`
-  --       `Staff` -> `StaffID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Timetable`
-  --
-
-  TRUNCATE TABLE `Timetable`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Transaction`
-  --
+--
+-- Table structure for table `Transaction`
+--
 
   DROP TABLE IF EXISTS `Transaction`;
   CREATE TABLE IF NOT EXISTS `Transaction` (
@@ -1068,22 +857,11 @@
     PRIMARY KEY (`EventID`,`TransactionID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- RELATIONS FOR TABLE `Transaction`:
-  --   `EventID`
-  --       `Event` -> `EventID`
-  --
+-- --------------------------------------------------------
 
-  --
-  -- Truncate table before insert `Transaction`
-  --
-
-  TRUNCATE TABLE `Transaction`;
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `User`
-  --
+--
+-- Table structure for table `User`
+--
 
   DROP TABLE IF EXISTS `User`;
   CREATE TABLE IF NOT EXISTS `User` (
@@ -1095,76 +873,70 @@
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
   --
-  -- Truncate table before insert `User`
-  --
-
-  TRUNCATE TABLE `User`;
-  --
   -- Dumping data for table `User`
   --
 
-  INSERT INTO `User` VALUES
-    ('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0),
-    ('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0),
-    ('arabic@gmail.com', '$2y$10$PvG7wnmtFqMvSj0CQhhKEeAg6COM2fzGs6JCA17Imp9SUY2TpsY22', 1, 0),
-    ('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 0),
-    ('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0),
-    ('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 0),
-    ('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 0),
-    ('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 0),
-    ('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0),
-    ('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0),
-    ('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0),
-    ('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0),
-    ('yazdaan.alimudeen@gmail.com', '$2y$10$U5A51bsgew2WjQ8LbQHPMuLChxkBFjFKwjLYJr0GdV7otPLoNi1L.', 1, 0);
+  INSERT INTO `User` VALUES('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0);
+  INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0);
+  INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$PvG7wnmtFqMvSj0CQhhKEeAg6COM2fzGs6JCA17Imp9SUY2TpsY22', 1, 0);
+  INSERT INTO `User` VALUES('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 0);
+  INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0);
+  INSERT INTO `User` VALUES('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 0);
+  INSERT INTO `User` VALUES('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 0);
+  INSERT INTO `User` VALUES('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 0);
+  INSERT INTO `User` VALUES('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0);
+  INSERT INTO `User` VALUES('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0);
+  INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0);
+  INSERT INTO `User` VALUES('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0);
+  INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$U5A51bsgew2WjQ8LbQHPMuLChxkBFjFKwjLYJr0GdV7otPLoNi1L.', 1, 0);
 
-  --
-  -- Constraints for dumped tables
-  --
+--
+-- Constraints for dumped tables
+--
 
-  --
-  -- Constraints for table `ALMarks`
-  --
-  ALTER TABLE `ALMarks`
+--
+-- Constraints for table `ALMarks`
+--
+ALTER TABLE `ALMarks`
   ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
   ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
-  --
-  -- Constraints for table `ApplyLeave`
-  --
-  ALTER TABLE `ApplyLeave`
+--
+-- Constraints for table `ApplyLeave`
+--
+ALTER TABLE `ApplyLeave`
   ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `Attendance`
-  --
-  ALTER TABLE `Attendance`
+--
+-- Constraints for table `Attendance`
+--
+ALTER TABLE `Attendance`
   ADD CONSTRAINT `Attendance_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `Blacklist`
-  --
-  ALTER TABLE `Blacklist`
+--
+-- Constraints for table `Blacklist`
+--
+ALTER TABLE `Blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `ClassInformation`
-  --
-  ALTER TABLE `ClassInformation`
+--
+-- Constraints for table `ClassInformation`
+--
+ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `Event`
-  --
-  ALTER TABLE `Event`
+--
+-- Constraints for table `Event`
+--
+ALTER TABLE `Event`
   ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `EventManager`
-  --
-  ALTER TABLE `EventManager`
+--
+-- Constraints for table `EventManager`
+--
+ALTER TABLE `EventManager`
   ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
@@ -1175,68 +947,62 @@
   ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
 
-  --
-  -- Constraints for table `IsSubstituted`
-  --
-  ALTER TABLE `IsSubstituted`
+--
+-- Constraints for table `IsSubstituted`
+--
+ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`Grade`, `Class`, `Day`, `Position`, `SubjectID`) REFERENCES `Timetable` (`Grade`, `Class`, `Day`, `Position`, `SubjectID`);
 
-  --
-  -- Constraints for table `LabelLanguage`
-  --
-  ALTER TABLE `LabelLanguage`
+--
+-- Constraints for table `LabelLanguage`
+--
+ALTER TABLE `LabelLanguage`
   ADD CONSTRAINT `LabelLanguage_ibfk_1` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
 
-  --
-  -- Constraints for table `LanguageGroup`
-  --
-  ALTER TABLE `LanguageGroup`
+--
+-- Constraints for table `LanguageGroup`
+--
+ALTER TABLE `LanguageGroup`
   ADD CONSTRAINT `LanguageGroup_ibfk_1` FOREIGN KEY (`GroupName`) REFERENCES `LabelLanguage` (`Label`);
 
-  --
-  -- Constraints for table `LanguageOption`
-  --
-  ALTER TABLE `LanguageOption`
+--
+-- Constraints for table `LanguageOption`
+--
+ALTER TABLE `LanguageOption`
   ADD CONSTRAINT `LanguageOption_ibfk_1` FOREIGN KEY (`GroupNo`) REFERENCES `LanguageGroup` (`GroupNo`),
   ADD CONSTRAINT `LanguageOption_ibfk_2` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
 
-  --
-  -- Constraints for table `LeaveData`
-  --
-  ALTER TABLE `LeaveData`
+--
+-- Constraints for table `LeaveData`
+--
+ALTER TABLE `LeaveData`
   ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `OLMarks`
-  --
-  ALTER TABLE `OLMarks`
+--
+-- Constraints for table `OLMarks`
+--
+ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
   ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
-  --
-  -- Constraints for table `ParentsInformation`
-  --
-  ALTER TABLE `ParentsInformation`
+--
+-- Constraints for table `ParentsInformation`
+--
+ALTER TABLE `ParentsInformation`
   ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `Student_Subject_Grade`
-  --
-  ALTER TABLE `Student_Subject_Grade`
+--
+-- Constraints for table `Student_Subject_Grade`
+--
+ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
-  --
-  -- Constraints for table `Subject_Grade`
-  --
-  ALTER TABLE `Subject_Grade`
-  ADD CONSTRAINT `Subject_Grade_ibfk_1` FOREIGN KEY (`Medium`) REFERENCES `Language` (`Language`);
-
-  --
-  -- Constraints for table `Teaches`
-  --
-  ALTER TABLE `Teaches`
+--
+-- Constraints for table `Teaches`
+--
+ALTER TABLE `Teaches`
   ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 

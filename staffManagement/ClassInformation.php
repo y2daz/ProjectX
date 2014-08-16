@@ -16,29 +16,29 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 1200;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
-
 ?>
 <html>
 <head>
     <style type=text/css>
+        h1{
+            text-align: center;
+        }
+
+
         table {
             border-spacing:0px 5px;
         }
 
         .general {
             position:absolute;
-            left:80px;
+            left:50px;
             top:80px;
         }
 
         th{
             align:center;
             color:white;
-            background-color:#154DC1;
+            background-color: #005e77;
             height:25px;
             padding:5px;
         }
@@ -46,51 +46,29 @@ $pageTitle= "Template";
         td {
             padding:5px;
         }
-
-        .staffimage{
-            position:absolute;
-            height:160px;
-            width:150px;
-            top:130px;
-            left:560px;
-            background-color:#154DC1;
-            z-index:0;
-        }
-        .staffimage img
-        {
-            position:absolute;
-            top:4px;
-            left:4px;
-            width:142px;
-            height:150px;
-        }
-
         input.button {
             position:relative;
             font-weight:bold;
-            font-size:20px;
-            right:450px;
-            top:50px;
+            font-size:15px;
+            right:130px;
+            top:100px;
 
 
     </style>
 </head>
 <?php
-
-
-
      //Get language and make changes
 
     if($_COOKIE['language'] == 0)
     {
-	$teachersname="Teacher's Name";
+	$staffid="Staff ID";
 	$grade="Grade";
 	$classname="Class Name";
 	$location="Location";
     }
 else
     {
- 	$teachersname="ගුරුවරයාගේ නම";
+ 	$staffid="Staff ID";
 	$grade="ශ්‍රේනිය";
 	$classname="පන්තියේ නම";
 	$location="පිහිටි ස්ථානය";
@@ -99,31 +77,19 @@ else
 
 <body>
 
+		<form name="thisForm" method="post">
 
-
-			
-	<div class="main">
-		<form onsubmit="return validateEverything()" name="thisForm" method="post">
-			<div class="staffimage">
-			
-			</div>
 			<h1>Classroom Information</h1>
-			<table class="general" cellspacing="0">	
-				<tr><th>Classroom Information</th><th></th></tr>		
+		<table class="general" cellspacing="0">
+			<!--	<tr><th>Classroom Information</th><th></th></tr>	-->
 				<tr>
-					<td><?php echo $teachersname?></td>
-					<td><select name="teachersname" value="">
-						<option>Mr.kumara</option>
-						<option>MR.Saman</option>
-						<option>Mrs.kumari</option>	
-						<option></option>
-					</select></td>
-
-				
+					<td><?php echo $staffid?></td>
+					<td><input type="text" name="staffId" value="" /></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $grade?></td>
-					<td><select name="grade" value="">
+                    <td><input type="text" name="grade" value="" /></td>
+					<!--<td><select name="grade" value="">
 						option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
@@ -138,34 +104,15 @@ else
 						<option value="11">11</option>
 						<option value="12">12</option>
 						<option value="13">13</option>
-						</select></td>
+						</select></td>-->
 				</tr>
 				<tr class="alt">
 					<td><?php echo $classname?></td>
-					<td><select name="classname" value="">	
-						<option value="1">A</option>
-						<option value="2">B</option>
-						<option value="3">C</option>
-						<option value="4">D</option>
-						<option value="5">E</option>
-						<option value="6">F</option>
-						<option value="7">G</option>
-
-						<option value="8">H</option>
-						<option value="9">I</option>
-						<option value="10">J</option>
-						
-						<option value="15">ARTS</option>
-						<option value="16">COMMERCE</option>
-						<option value="17">SCIENCE</option>
-						<option value="18">MATHS</option>
-						<option value="19">TECHNOLOGY</option>
-						</select></td>
-				
+                    <td><input type="text" name="className" value="" /></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $location?></td>
-					<td><input type="location" value=""></td>
+                    <td><input type="location" value=""></td>
 						 
 					<td><input class="button" type="submit" value="Submit"></td>
 				</tr>			
@@ -173,12 +120,7 @@ else
 			</table>		
 
 		</form>
-
-			
-	
-	</div>
-	
-</body>
+    </body>
 
 </html>
 <?php

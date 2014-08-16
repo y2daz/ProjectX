@@ -69,7 +69,6 @@
                 });
             });
 
-
         </script>
     </head>
     <?php //Get language and make changes
@@ -158,15 +157,15 @@
             </li>
             <li><a>Marks and Grading</a>
                 <ul>
-                    <li><a  href="#">Enter O/L Results</a><hr /></li>
-                    <li><a  href="#">Enter A/L Results</a><hr /></li>
-                    <li><a  href="#">Enter Term Marks</a><hr /></li>
-                    <li><a  href="#">Search Grading Information</a></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/OLinput.php">Enter O/L Results</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/ALinput.php">Enter A/L Results</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/termTestMarks.php">Enter Term Marks</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/searchMarks.php">Search Grading Information</a></li>
                 </ul>
             </li>
             <li><a>Administrative Tasks</a>
                 <ul>
-                    <li><a href="#">Manage Year Plan</a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/administration/yearPlan.php">Manage Year Plan</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/administration/manageUsers.php">Manage Users</a></li>
                 </ul>
             </li>

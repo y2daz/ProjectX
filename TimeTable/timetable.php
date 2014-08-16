@@ -36,7 +36,7 @@ $pageTitle= "Template";
 
     <table id="info">
         <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="clickedTeacher()"/> by Teacher</td>
+            <td><input type="RADIO" name="Choice" value="Teacher"  onclick="clickedTeacher()"/> by Teacher</td>
             <td><input type="RADIO" name="Choice" value="Class" onclick="clickedClass()" /> by Class</td>
         </tr>
         <tr>
@@ -56,537 +56,85 @@ $pageTitle= "Template";
 
         <tr>
             <td class="time">07.50-08.30</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td ><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo1"></td>
+            <td ><input type="text" class="text" name="tu1"></td>
+            <td ><input type="text" class="text" name="we1"></td>
+            <td ><input type="text" class="text" name="th1"></td>
+            <td ><input type="text" class="text" name="fr1"></td>
         </tr>
-
 
         <tr>
             <td class="time">08.30-09.10</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo2"></td>
+            <td ><input type="text" class="text" name="tu2"></td>
+            <td ><input type="text" class="text" name="we2"></td>
+            <td ><input type="text" class="text" name="th2"></td>
+            <td ><input type="text" class="text" name="fr2"></td>
         </tr>
-
-
 
         <tr>
             <td class="time">09.10-09.50</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo3"></td>
+            <td ><input type="text" class="text" name="tu3"></td>
+            <td ><input type="text" class="text" name="we3"></td>
+            <td ><input type="text" class="text" name="th3"></td>
+            <td ><input type="text" class="text" name="fr3"></td>
         </tr>
-
-
 
         <tr>
             <td class="time">09.50-10.30</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo4"></td>
+            <td ><input type="text" class="text" name="tu4"></td>
+            <td ><input type="text" class="text" name="we4"></td>
+            <td ><input type="text" class="text" name="th4"></td>
+            <td ><input type="text" class="text" name="fr4"></td>
         </tr>
-
         <tr>
             <td  class="time">10.30-10.50</td>
             <td  colspan="5" align="center">INTERVAL</td>
         </tr>
 
-
         <tr>
             <td class="time">10.50-11.30</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo5"></td>
+            <td ><input type="text" class="text" name="tu5"></td>
+            <td ><input type="text" class="text" name="we5"></td>
+            <td ><input type="text" class="text" name="th5"></td>
+            <td ><input type="text" class="text" name="fr5"></td>
         </tr>
-
-
 
         <tr>
             <td class="time">11.30-12.10</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-
+            <td ><input type="text" class="text" name="mo6"></td>
+            <td ><input type="text" class="text" name="tu6"></td>
+            <td ><input type="text" class="text" name="we6"></td>
+            <td ><input type="text" class="text" name="th6"></td>
+            <td ><input type="text" class="text" name="fr6"></td>
         </tr>
-
 
         <tr>
             <td class="time">12.10-12.50</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr >
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-
+            <td ><input type="text" class="text" name="mo7"></td>
+            <td ><input type="text" class="text" name="tu7"></td>
+            <td ><input type="text" class="text" name="we7"></td>
+            <td ><input type="text" class="text" name="th7"></td>
+            <td ><input type="text" class="text" name="fr7"></td>
         </tr>
-
 
         <tr>
             <td class="time">12.50-01.30</td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text"  name="txtClass" required="true" value="Class" class="grayText text  "
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
-            <td >
-                <table class="collapse">
-                    <tr class="rowToHide">
-                        <td><input type="text" name="txtClass" required="true" value="Class" class="grayText text"
-                                   onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="txtSubject" required="true" value="Subject" class="grayText text"
-                                   onfocus="remGrayText(this, 'Subject')" onblur="makeGrayText(this, 'Subject')"/></td>
-                    </tr>
-                </table>
-            </td>
+            <td ><input type="text" class="text" name="mo8"></td>
+            <td ><input type="text" class="text" name="tu8"></td>
+            <td ><input type="text" class="text" name="we8"></td>
+            <td ><input type="text" class="text" name="th8"></td>
+            <td ><input type="text" class="text" name="fr8"></td>
         </tr>
 
-
     </table>
-    <br>
-    <br>
+
+    <br />
+    <br />
+
     <div id="toHide" hidden="hidden">
         <h2>Assign Teachers</h2>
 
@@ -618,7 +166,7 @@ $pageTitle= "Template";
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 800;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above
