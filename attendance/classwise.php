@@ -43,6 +43,8 @@ ob_start();
             }
         </style>
     </head>
+
+
     <body>
         <h1>Class-wise Attendance Report</h1>
 

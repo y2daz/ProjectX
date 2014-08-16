@@ -194,6 +194,7 @@
 
     }
 
+
     function deleteStaffMember($staffID)
     {
         $dbObj = new dbConnect();
