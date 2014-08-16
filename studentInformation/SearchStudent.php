@@ -78,43 +78,31 @@ input.button3 {
     <body>
 
     <form>
-        <table class="general" cellspacing="0">
+        <table class="Searchedtable" align="center">
+            <tr>
+                <th>AdmisionID</th>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Medium</th>
+                <th>DateOfBirth</th>
+                <th></th>
+            </tr>
             <tr class="alt">
-                <td>Admission ID</td>
-                <td><input type="text" value=""></td>
-
-            <tr>
-                <td>Name With Initials</td>
-                <td><input type="text" value=""></td>
+                <td>01111</td>
+                <td>Madhushan De Silva</td>
+                <td>13</td>
+                <td>English</td>
+                <td>1993/07/27</td>
+                <td><input type="button" name="expand" value="Expand Details" /></td>
             </tr>
-            <tr>
-                <td>Date of Birth</td>
-                <td><input type="text" value=""></td>
-            </tr>
-            <tr>
-                <td>Nationality/Race</td>
-                <td><input type="text" value=""></td>
-            </tr>
-
-            <td>Medium</td>
-            <td><input type="text" value=""></td>
-            </tr>
-            <tr>
-                <td>Grade/Year</td>
-                <td><input type="text" value=""></td>
-            </tr>
-            <tr>
-                <td>Class</td>
-                <td><input type="text" value=""></td>
-            </tr>
-            <tr>
-                <td></td>
-
-                <td><input class="button1" type="button" value="Search"></td>
-
-                <td><input class="button2" type="button" value="Reset"></td>
-
-                <td><input class="button3" type="button" value="Cancel"></td>
+            <tr class="alt">
+                <td>
+                    <input type="checkbox" name="checkbox" value="AdmisionId">
+                    <input type="checkbox" name="checkbox" value="Name">
+                    <input type="checkbox" name="checkbox" value="Class">
+                    <input type="checkbox" name="checkbox" value="Medium">
+                    <input type="checkbox" name="checkbox" value="DateOfBirth">
+                </td>
             </tr>
         </table>
     </form>
