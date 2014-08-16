@@ -28,27 +28,27 @@
                 <table align="center">
                     <tr>
                         <td>Staff ID :</td>
-                        <td><input type="text" name="StaffID" value="" /></td>
+                        <td><input type="text" name="staffid" value="" /></td>
                     </tr>
                     <tr>
                         <td>Name :</td>
-                        <td><input type="text" name="StaffName" /></td>
+                        <td><input type="text" name="staffname" /></td>
                     </tr>
                     <tr>
                         <td>Start Date :</td>
-                        <td><input type="date" name="StartDate" /></td>
+                        <td><input type="date" name="startdate" /></td>
                     </tr>
                     <tr>
                         <td>End Date :</td>
-                        <td><input type="date" name="EndDate" /></td>
+                        <td><input type="date" name="enddate" /></td>
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
                         <td><select>
-                                <option value="Maternity Leave">Maternity</option>
-                                <option value="Short Leave">Short Leave</option>
-                                <option value="Annual Leave">Annual Leave</option>
-                                <option value="Casual Leave">Casual Leave</option>
+                                <option value="OfficialLeave">Maternity</option>
+                                <option value="MaternityLeave">Short Leave</option>
+                                <option value="CasualLeave">Annual Leave</option>
+                                <option value="Other">Casual Leave</option>
                             </select>
                         </td>
                     </tr>
