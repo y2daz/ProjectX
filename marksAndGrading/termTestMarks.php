@@ -107,7 +107,7 @@ ob_start();
     <td>
         <input type="radio" name="Term" value="Mid">Final
         <input type="radio" name="Term" value="Final">Mid
-        <input type="radio" name="Term" value="Other">Other
+
 
     </td>
 </tr>

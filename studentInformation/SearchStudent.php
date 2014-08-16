@@ -70,6 +70,21 @@ input.button3 {
     left:20px;
     top:10px;
 }
+<?php //Get language and make changes
+
+    if($_COOKIE['language'] == 0)
+    {
+	    $AdmissionID = "AdmisionID";
+        $Name = "Name";
+        $Class = "Class";
+        $Medium = "Medium";
+        $DateOfBirth     = "DateOfBirth";
+
+    }
+
+    ?>
+
+
 
 
 
@@ -97,11 +112,12 @@ input.button3 {
             </tr>
             <tr class="alt">
                 <td>
-                    <input type="checkbox" name="checkbox" value="AdmisionId">
-                    <input type="checkbox" name="checkbox" value="Name">
-                    <input type="checkbox" name="checkbox" value="Class">
-                    <input type="checkbox" name="checkbox" value="Medium">
-                    <input type="checkbox" name="checkbox" value="DateOfBirth">
+
+                    <input type="checkbox" name="checkbox" value=""><?php echo $AdmissionID?>
+                    <input type="checkbox" name="checkbox" value=""><?php echo $Name?>
+                    <input type="checkbox" name="checkbox" value=""><?php echo $Class?>
+                    <input type="checkbox" name="checkbox" value=""><?php echo $Medium?>
+                    <input type="checkbox" name="checkbox" value=""><?php echo $DateOfBirth?>
                 </td>
             </tr>
         </table>
