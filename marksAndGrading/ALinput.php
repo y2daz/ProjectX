@@ -17,7 +17,9 @@ ob_start();
         <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
         <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-
+            h1{
+                text-align: center;
+            }
             table, th, td {
                 border: 0px solid black;
 
@@ -53,8 +55,8 @@ ob_start();
     </head>
 <body>
 
-
-    <h1>G.C.E A/L Results Marking</h1>
+<form>
+    <h1>G.C.E A/L Results Sheet</h1>
 
     <table>
     <tr>
@@ -125,46 +127,39 @@ ob_start();
         </tr>
         <tr>
             <td>Common General Test</td>
-            <td><select type="text" value="">
-                    <option>--</option>
-                    <option>A</option>
-                    <option>B</option>
-                    <option>C</option>
-                    <option>S</option>
-                    <option>F</option>
-                </select>
+            <td><input type="text" value="" required="true">
+
             </td>
         </tr>
     </table>
-    <form>
+
         <br />
 
         <table>
                 <tr>
                     <td>Z-Score</td>
-                    <td><input type="text" value="">
+                    <td><input type="text" value="" required="true">
                     </td>
                 </tr>
                 <tr>
                     <td>Island Rank</td>
-                    <td><input type="text" value="">
+                    <td><input type="text" value="" required="true">
                     </td>
                 </tr>
                 <tr>
                     <td>District Rank</td>
-                    <td><input type="text" value="">
+                    <td><input type="text" value="" required="true">
                     </td>
                 </tr>
         </table>
-    </form>
 
-    <table>
-        <tr>
-            <td></td>
-            <td><input class="button" type="submit" value="Submit"></td>
-            <td><input class="button1" type="reset" value="Reset"></td>
-        </tr>
-    </table>
+
+
+
+            <input class="button" type="submit" value="Submit">
+            <input class="button1" type="reset" value="Reset">
+            </form>
+
 </body>
 </html>
 <?php
