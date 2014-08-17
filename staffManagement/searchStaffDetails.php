@@ -19,13 +19,85 @@ if (isset($_GET["delete"]))
 
 }
 
-if (isset($_POST["search"]))
+if (isset($_GET["expand"]))
+{
+    $result = getStaffMember($_GET["expand"]);
+
+    $i = 0;
+
+    echo "1<br />";
+
+    echo count($result);
+
+    $i = 0;
+    foreach($result as $row)
+    {
+        echo "<br />";
+
+        $staffid = $row[$i++];
+        $NamewithInitials =$row[$i++];
+        $DateofBirth = $row[$i++];
+        $Gender = $row[$i++];
+        $NationalityRace = $row[$i++];
+        $Religion =$row[$i++];
+        $CivilStatus = $row[$i++];
+        $NICNumber = $row[$i++];
+        $MailDeliveryAddress =$row[$i++];
+        $ContactNumber = $row[$i++];
+        $DateAppointedasTeacherPrincipal =$row[$i++];
+        $DateJoinedthisSchool = $row[$i++];
+        $EmploymentStatus = $row[$i++];
+        $Medium =$row[$i++];
+        $PositioninSchool =$row[$i++];
+        $Section =$row[$i++];
+        $SubjectMostTaught =$row[$i++];
+        $SubjectSecondMostTaught =$row[$i++];
+        $ServiceGrade =$row[$i++];
+        $Salary =$row[$i++];
+        $HighestEducationalQualification = $row[$i++];
+        $HighestProfessionalQualification =$row[$i++];
+        $CourseofStudy = $row[$i++];
+
+    }
+
+    echo "<br />1";
+}
+else
+{
+    $staffid="";
+    $NamewithInitials ="";
+    $DateofBirth = "";
+    $Gender = "";
+    $NationalityRace = "";
+    $Religion ="";
+    $CivilStatus = "";
+    $NICNumber = "";
+    $MailDeliveryAddress ="";
+    $ContactNumber = "";
+    $DateAppointedasTeacherPrincipal ="";
+    $DateJoinedthisSchool = "";
+    $EmploymentStatus = "";
+    $Medium ="";
+    $PositioninSchool ="";
+    $Section ="";
+    $SubjectMostTaught ="";
+    $SubjectSecondMostTaught ="";
+    $ServiceGrade ="";
+    $Salary ="";
+    $HighestEducationalQualification = "";
+    $HighestProfessionalQualification ="";
+    $CourseofStudy = "";
+}
+
+
+
+if (isset($_GET["search"]))
 {
     $currentStaffMembers = null;
 
-    if (isset($_POST["Choice"]))
+    if (isset($_GET["Choice"]))
     {
-        $currentStaffMembers = searchStaff($_POST["query"]);
+        $currentStaffMembers = searchStaff($_GET["query"]);
     }
     else
     {
@@ -36,6 +108,10 @@ else
 {
     $currentStaffMembers = getAllStaff();
 }
+
+
+
+
 ?>
 <html>
 <head>
@@ -93,7 +169,7 @@ else
 <br />
 <!--<h3>Search by</h3>-->
 
-<form method="post">
+<form method="GET">
 
     <table id="info">
         <tr>
@@ -141,7 +217,7 @@ else
                 echo "<td>$row[1]</td>";
                 echo "<td>$row[2]</td>";
                 echo "<td>$row[3]</td>";
-                echo "<td><input name=\"Expand" . "\" type=\"button\" value=\"Expand Details\"/> </td> ";
+                echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
                 echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
                 echo "</td></tr>";
             }
@@ -178,106 +254,107 @@ else
     <br />
     <br />
 
+<form>
     <table class="details" align="center">
         <tr>
             <td> Staff ID </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="staffid" readonly value="<?php echo $staffid?>"/> </td>
         </tr>
 
 
         <tr>
             <td> Name with Initials </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
         </tr>
 
 
 
         <tr>
             <td> Date of Birth  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
         </tr>
 
         <tr>
             <td> Gender </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="Gender" value="<?php echo $Gender?>"/> </td>
         </tr>
 
         <tr>
             <td>Natinality/Race </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/> </td>
         </tr>
 
         <tr>
             <td> Religion </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="Religion" value="<?php echo $Religion?>"/> </td>
         </tr>
         <tr>
             <td> Civil Status  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="CivilStatus" value="<?php echo $CivilStatus?>"/> </td>
         </tr>
         <tr>
             <td>NIC Number  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="NICNumber" value="<?php echo $NICNumber?>"/> </td>
         </tr>
         <tr>
             <td>Mail Delivery Address</td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="MailDeliveryAddress" value="<?php echo $MailDeliveryAddress?>"/> </td>
         </tr>
         <tr>
             <td>Contact Number </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="ContactNumber" value="<?php echo $ContactNumber?>"/> </td>
         </tr>
         <tr>
             <td>Date Appointed as Teacher/principal</td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="$DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
         </tr>
         <tr>
             <td> Date joined this school  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="DateJoinedthisSchool " value="<?php echo $DateJoinedthisSchool?>"/> </td>
         </tr>
         <tr>
             <td> Employement status </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="EmployementStatus" value="<?php echo $EmploymentStatus?>"/> </td>
         </tr>
         <tr>
             <td> Medium </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="Medium" value="<?php echo $Medium?>"/> </td>
         </tr>
         <tr>
             <td> Position in school  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="PositioninSchool" value="<?php echo $PositioninSchool?>"/> </td>
         </tr>
         <tr>
             <td> Section  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="Section" value="<?php echo $Section?>"/> </td>
         </tr>
         <tr>
             <td> Subject Most taught  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="SubjectMostTaught" value="<?php echo $SubjectMostTaught?>"/> </td>
         </tr>
         <tr>
             <td>  Subject Second Most taught </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="SubjectSecondMostTaught" value="<?php echo $SubjectSecondMostTaught?>"/> </td>
         </tr>
         <tr>
             <td>  Service Grade  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="ServiceGrade" value="<?php echo $ServiceGrade?>" /> </td>
         </tr>
         <tr>
             <td>  Salary</td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="Salary" value="<?php echo $Salary?>"/> </td>
         </tr>
         <tr>
             <td> Highest Educational Qualification  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"/> </td>
         </tr>
         <tr>
             <td> Highest Professional Qualification  </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>"/> </td>
         </tr>
         <tr>
             <td> Course of Study </td>
-            <td > <input type = "text" name="staffid" /> </td>
+            <td > <input type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>"/> </td>
         </tr>
 
 

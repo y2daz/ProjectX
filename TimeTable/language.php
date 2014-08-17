@@ -50,7 +50,7 @@ require_once("../dbAccess.php");
 
             <?php
             $result = getAllLanguage();
-            $i = 1;
+            $i = 0;
 
             foreach($result as $row){
                 $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>$i</td><td>" : "<tr><td>$i</td><td>";

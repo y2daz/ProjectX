@@ -19,7 +19,7 @@ ob_start();
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
-
+$lang = $_COOKIE["language"];
 
 ?>
 <html>
@@ -37,17 +37,17 @@ $pageTitle= "Template";
     </head>
     <body>
 
-    <h1>Substitute Teacher Form</h1>
+    <h1><?php echo getLanguage("substituteTeacherForm", $lang) ?></h1>
 
-    <h2>Choose Option</h2>
+    <h2><?php echo getLanguage("chooseOption", $lang) ?></h2>
 
     <table id="info">
         <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/> by Teacher</td>
-            <td><input type="RADIO" name="Choice" value="Class" onclick="document.getElementById('selection').innerHTML='Class : ';  " /> by Class</td>
+            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/><?php echo getLanguage("byTeacher",$lang)?></td>
+            <td><input type="RADIO" name="Choice" value="Class" onclick="document.getElementById('selection').innerHTML='Class : ';  " /> <?php echo getLanguage("byClass",$lang)?></td>
         </tr>
         <tr>
-            <td colspan="2"><span id="selection">Teacher : </span><input type="text" class="text1" name="class" value=""></td>
+            <td colspan="2"><span id="selection"><?php echo getLanguage("teachersName",$lang)?> : </span><input type="text" class="text1" name="class" value=""></td>
         </tr>
     </table>
 
@@ -56,12 +56,12 @@ $pageTitle= "Template";
 
     <table id="timetable" >
         <tr>
-            <th>Time</th>
-            <th>Monday</th>
-            <th>Tuesday</th>
-            <th>Wednesday</th>
-            <th>Thursday</th>
-            <th>Friday</th>
+            <th class="time"><?php echo getLanguage("time",$lang)?></th>
+            <th><?php echo getLanguage("monday",$lang)?></th>
+            <th><?php echo getLanguage("tuesday",$lang)?></th>
+            <th><?php echo getLanguage("wednesday",$lang)?></th>
+            <th><?php echo getLanguage("thursday",$lang)?></th>
+            <th><?php echo getLanguage("friday",$lang)?></th>
         </tr>
 
         <tr>
@@ -101,7 +101,7 @@ $pageTitle= "Template";
         </tr>
         <tr>
             <td  >10.30-10.50</td>
-            <td  colspan="5" align="center">INTERVAL</td>
+            <td  colspan="5" align="center"><?php echo getLanguage("interval",$lang)?></td>
         </tr>
 
         <tr>
