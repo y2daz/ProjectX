@@ -5,13 +5,43 @@
  * Date: 19/07/14
  * Time: 17:04
  */
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+
+define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
 ob_start();
+
+if (isset($_GET["delete"]))
+{
+    deleteStaff($_GET["delete"]);
+
+}
+
+if (isset($_POST["search"]))
+{
+    $currentStaffMembers = null;
+
+    if (isset($_POST["Choice"]))
+    {
+        $currentStaffMembers = searchStaff($_POST["query"]);
+    }
+    else
+    {
+        $currentStaffMembers = getAllStaff();
+    }
+}
+else
+{
+    $currentStaffMembers = getAllStaff();
+}
 ?>
 <html>
 <head>
     <style type=text/css>
-        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-        #footer{ top:<?php echo "$footerTop" . "px";?> }
+<!--        #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
+<!--        #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
         h1{
             text-align: center;
@@ -26,6 +56,7 @@ ob_start();
         }
         .viewTable{
             position: relative;
+            border-collapse: collapse;
         }
         .viewTable th{
             font-weight: 600;
@@ -40,6 +71,7 @@ ob_start();
         .viewTable td{
             padding-left: 10px;
             padding-right: 10px;
+            min-width: 60px;
         }
         .details {
             /*position: relative;*/
@@ -61,16 +93,16 @@ ob_start();
 <br />
 <!--<h3>Search by</h3>-->
 
-<form>
+<form method="post">
 
     <table id="info">
         <tr>
             <td colspan="2"><span id="selection">Search by : </span>
-             <input type="text" class="text1" name="class" value="">
+             <input type="text" class="text1" name="query" value="">
             </td>
-            <td><input class="button" name="newStaff" type="submit" value="Search"></td>
+            <td><input class="button" name="search" type="submit" value="Search"></td>
         </tr>
-        <tr><td></td><td></td></tr>
+        <tr><td></td><td>&nbsp;</td></tr>
         <tr>
             <td><input type="RADIO" name="Choice" value="Staffid"/>Staff ID</td>
             <td><input type="RADIO" name="Choice" value="Name"  >Name</td>
@@ -79,9 +111,10 @@ ob_start();
         </tr>
 
     </table>
-
+</form>
     <br />
 
+<form method="post">
     <table class="viewTable" align="center">
         <tr>
             <th>Staff ID</th>
@@ -91,32 +124,57 @@ ob_start();
             <th></th>
             <th></th>
         </tr>
-        <tr>
-            <td>SIDXXX</td>
-            <td>Mrs. Andrea De Silva</td>
-            <td>578695412v</td>
-            <td>0719658712</td>
-            <td><input type="button" name="expand" value="Expand Details" /></td>
-            <td><input type="button" name="delete" value="Delete" /></td>
-        </tr>
-        <tr class="alt">
-            <td>SIDXXX</td>
-            <td>Mr. Madusha Karunaratne</td>
-            <td>642531789v</td>
-            <td>0772596314</td>
-            <td><input type="button" name="expand" value="Expand Details" /></td>
-            <td><input type="button" name="delete" value="Delete" /></td>
-        </tr>
-        <tr>
-            <td> SIDXXX </td>
-            <td> Mr. Priyan Fernando </td>
-            <td> 702358964v</td>
-            <td> 0774239651 </td>
-            <td> <input type="button" name="expand" value="Expand Details" /> </td>
-            <td><input type="button" name="delete" value="Delete" /></td>
-        </tr>
-    </table>
+        <?php
+            $result = $currentStaffMembers;
 
+            $i = 1;
+
+            if (!isFilled($result))
+            {
+                $result = getAllStaff();
+            }
+
+            foreach($result as $row){
+                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
+                echo $top;
+                echo "$row[0]";
+                echo "<td>$row[1]</td>";
+                echo "<td>$row[2]</td>";
+                echo "<td>$row[3]</td>";
+                echo "<td><input name=\"Expand" . "\" type=\"button\" value=\"Expand Details\"/> </td> ";
+                echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
+                echo "</td></tr>";
+            }
+
+
+
+        ?>
+<!--        <tr>-->
+<!--            <td>SIDXXX</td>-->
+<!--            <td>Mrs. Andrea De Silva</td>-->
+<!--            <td>578695412v</td>-->
+<!--            <td>0719658712</td>-->
+<!--            <td><input type="button" name="expand" value="Expand Details" /></td>-->
+<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
+<!--        </tr>-->
+<!--        <tr class="alt">-->
+<!--            <td>SIDXXX</td>-->
+<!--            <td>Mr. Madusha Karunaratne</td>-->
+<!--            <td>642531789v</td>-->
+<!--            <td>0772596314</td>-->
+<!--            <td><input type="button" name="expand" value="Expand Details" /></td>-->
+<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td> SIDXXX </td>-->
+<!--            <td> Mr. Priyan Fernando </td>-->
+<!--            <td> 702358964v</td>-->
+<!--            <td> 0774239651 </td>-->
+<!--            <td> <input type="button" name="expand" value="Expand Details" /> </td>-->
+<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
+<!--        </tr>-->
+    </table>
+</form>
     <br />
     <br />
 
@@ -241,7 +299,7 @@ ob_start();
 </html>
 <?php
 //Assign all Page Specific variables
-$fullPageHeight = 1300;
+$fullPageHeight = 1300 + ($i * 18);
 $footerTop = $fullPageHeight + 100;
 
 $pageContent = ob_get_contents();

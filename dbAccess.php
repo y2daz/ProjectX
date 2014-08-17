@@ -221,10 +221,10 @@
     }
 
 
-    function deleteStaffMember($staffID)
-    {
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
+function deleteStaff($staffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -244,8 +244,41 @@
             return TRUE;
         }
     }
+    $stmt->close();
     $mysqli->close();
     return false;
+}
+
+function searchStaff($id)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE StaffID LIKE ? AND isDeleted = 0 ORDER BY StaffId;"))
+    {
+        $stmt -> bind_param("s", $id);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
+
 }
 
 function insertclassroom($staffID, $grade, $class)
@@ -284,7 +317,7 @@ function getNewStaffId()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT MAX(StaffId)+1 FROM staff LIMIT 1;"))
+    if ($stmt = $mysqli->prepare("SELECT MAX(CAST(StaffId AS UNSIGNED))+1 FROM staff LIMIT 1;;"))
     {
         if ($stmt->execute())
         {
@@ -302,6 +335,33 @@ function getNewStaffId()
         }
     }
     $mysqli->close();
+}
+
+function getAllStaff()
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
 }
 
 
@@ -332,32 +392,32 @@ function getNewStaffId()
 //    return false;
 //}
 //
-//function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
-//{
-//    $dbObj = new dbConnect();
-//    $mysqli = $dbObj->getConnection();
-//
-//    if ($mysqli->connect_errno) {
-//        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-//    }
-//
-//    if ($stmt = $mysqli->prepare("INSERT INTO blacklist values(?, ?, ?, ?);"))
-//    {
-//        $isdeleted = 0;
-//        $stmt -> bind_param("ssdsi",$staffID, $listcontributor, $enterdate, $reason, $isdeleted);
-//
-//        if ($stmt->execute())
-//        {
-//            $stmt->close();
-//            $mysqli->close();
-//            return true;
-//        }
-//    }
-//    $mysqli->close();
-//    return false;
-//
-//
-//}
+function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO blacklist values(?, ?, ?, ?, ?);"))
+    {
+        $isdeleted = 0;
+        $stmt -> bind_param("ssdsi",$staffID, $listcontributor, $enterdate, $reason, $isdeleted);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+
+
+}
 //
 //
 //function deleteblacklist($staffID)
