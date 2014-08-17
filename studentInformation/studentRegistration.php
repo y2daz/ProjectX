@@ -26,7 +26,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
     //Insert to database
 //    if (is_numeric( $_POST["admissionID"]))
 //    {
-    $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
+    $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"],$_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
 
     echo $operation;
 
@@ -103,9 +103,13 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                 <td><input name="admissionID" type="text" value="" required="true"></td>
             </tr>
 
-            <tr class="alt">
+            <tr>
                 <td>Name With Initials</td>
                 <td><input name="name" type="text" value="" required="true"></td>
+            </tr>
+            <tr>
+                <td>Date of Birth</td>
+                <td><input name="dateOfBirth" type="date" value="" required="true"></td>
             </tr>
             <tr>
                 <td>Nationality/Race</td>
@@ -117,7 +121,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                         <option value="5">Other</option>
                     </select></td>
             </tr>
-            <tr class="alt">
+            <tr>
                 <td>Religion</td>
                 <td><select name="religion" type="text" value="" required="true">
                         <option value="1">Buddhism</option>
@@ -127,7 +131,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                         <option value="5">Other</option>
                     </select></td>
             </tr>
-            <tr class="alt">
+            <tr>
                 <td>Medium</td>
                 <td>
                     <input type="radio" name="medium" value="1">Sinhala

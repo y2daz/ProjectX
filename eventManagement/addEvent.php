@@ -19,7 +19,6 @@ ob_start();
 if (isset($_POST["addevent"])) //user has clicked the button to apply leave
 {
     $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
-    echo $operation;
 }
 
 
@@ -59,7 +58,7 @@ if (isset($_POST["addevent"])) //user has clicked the button to apply leave
     <br>
     <br>
 
-    <form method="post">
+    <form method="POST">
 
         <table align="center">
 

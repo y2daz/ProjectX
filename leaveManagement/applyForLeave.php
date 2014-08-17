@@ -52,19 +52,19 @@
                 <table align="center">
                     <tr>
                         <td>Staff ID :</td>
-                        <td><input type="text" name="staffid" value="" /></td>
+                        <td><input type="text" name="staffid" value="" required="true"/></td>
                     </tr>
                     <tr>
                         <td>Start Date :</td>
-                        <td><input type="date" name="startdate" /></td>
+                        <td><input type="date" name="startdate" required="true"/></td>
                     </tr>
                     <tr>
                         <td>End Date :</td>
-                        <td><input type="date" name="enddate" /></td>
+                        <td><input type="date" name="enddate" required="true"/></td>
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
-                        <td><select name="leavetype" onchange="selectedvalue(this)">
+                        <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
                                 <option value="1">Offical Leave</option>
                                 <option value="2">Maternity Leave</option>
 <!--                                <option value="CasualLeave">Casual Leave</option>-->
@@ -86,7 +86,7 @@
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="submit" id="submitme">
+                    <input type="submit" name="ApplyforLeave" value="Submit" id="submitme">
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
