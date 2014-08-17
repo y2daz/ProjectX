@@ -25,15 +25,8 @@ if (isset($_GET["expand"]))
 
     $i = 0;
 
-    echo "1<br />";
-
-    echo count($result);
-
-    $i = 0;
     foreach($result as $row)
     {
-        echo "<br />";
-
         $staffid = $row[$i++];
         $NamewithInitials =$row[$i++];
         $DateofBirth = $row[$i++];
@@ -59,8 +52,6 @@ if (isset($_GET["expand"]))
         $CourseofStudy = $row[$i++];
 
     }
-
-    echo "<br />1";
 }
 else
 {
@@ -133,6 +124,7 @@ else
         .viewTable{
             position: relative;
             border-collapse: collapse;
+            min-width: 600px;
         }
         .viewTable th{
             font-weight: 600;
@@ -180,7 +172,7 @@ else
         </tr>
         <tr><td></td><td>&nbsp;</td></tr>
         <tr>
-            <td><input type="RADIO" name="Choice" value="Staffid"/>Staff ID</td>
+            <td><input type="RADIO" name="Choice" value="Staffid" checked />Staff ID</td>
             <td><input type="RADIO" name="Choice" value="Name"  >Name</td>
             <td><input type="RADIO" name="Choice" value="nicnumber"/>NIC Number</td>
             <td><input type="RADIO" name="Choice" value="contactnumber"  >Contact Number</td>
@@ -208,18 +200,22 @@ else
             if (!isFilled($result))
             {
                 $result = getAllStaff();
+
             }
 
-            foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
-                echo $top;
-                echo "$row[0]";
-                echo "<td>$row[1]</td>";
-                echo "<td>$row[2]</td>";
-                echo "<td>$row[3]</td>";
-                echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
-                echo "</td></tr>";
+            if (isFilled($result))
+            {
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
+                    echo $top;
+                    echo "$row[0]";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>$row[2]</td>";
+                    echo "<td>$row[3]</td>";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
+                    echo "</td></tr>";
+                }
             }
 
 

@@ -400,6 +400,8 @@ function getAllStaff()
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
+    $set = null;
+
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
