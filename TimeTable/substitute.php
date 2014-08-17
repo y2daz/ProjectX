@@ -16,35 +16,44 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Template";
+
+
 ?>
 <html>
     <head>
-
-        <link rel="stylesheet" type="text/css" href="substitute.css">
-        <script src="timetable.js"></script>
-
+        <link rel="stylesheet" href="substitute.css">
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
+
+            /*
+            ADD YOUR CSS HERE
+            */
 
         </style>
     </head>
     <body>
 
-
-    <h1>Create TimeTable Form</h1>
+    <h1>Substitute Teacher Form</h1>
 
     <h2>Choose Option</h2>
 
     <table id="info">
         <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/> by Teacher</td>
+            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/> by Teacher</td>
             <td><input type="RADIO" name="Choice" value="Class" onclick="document.getElementById('selection').innerHTML='Class : ';  " /> by Class</td>
         </tr>
         <tr>
-            <td colspan="2"><span id="selection">Class : </span><input type="text" class="text1" name="class" value=""></td>
+            <td colspan="2"><span id="selection">Teacher : </span><input type="text" class="text1" name="class" value=""></td>
         </tr>
     </table>
+
+
+
+
     <table id="timetable" >
         <tr>
             <th>Time</th>
@@ -130,12 +139,9 @@ ob_start();
             <td ></td>
             <td ></td>
         </tr>
+
     </table>
-    <table id="submit">
-        <tr>
-            <th><input type="submit" name="submit" value="SUBMIT"></th>
-        </tr>
-    </table>
+
     </body>
 </html>
 <?php

@@ -1025,3 +1025,7 @@ ALTER TABLE `Teaches`
   ALTER TABLE `Transaction`
   ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
   COMMIT;
+
+  ALTER TABLE `event` CHANGE `EventCreator` `EventCreator` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
+
+

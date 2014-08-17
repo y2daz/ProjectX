@@ -45,8 +45,10 @@ function clickedTeacher()
     document.getElementById('selection').innerHTML='Teacher : ';
     document.getElementById('toHide').hidden = "hidden";
 
-    $('#main').height(700);
-    $('#footer').css({ top: '800px' });
+    $('#main').height(800);
+    $('#footer').css({ top: '900px' });
+    $('.rowToHide').css({ display: '' });
+
 }
 
 function clickedClass()
@@ -54,7 +56,8 @@ function clickedClass()
     document.getElementById('selection').innerHTML='Class : ';
     document.getElementById('toHide').hidden = "";
 
-   $('#main').height(1000);
-   $('#footer').css({ top: '1100px' });
+   $('#main').height(800);
+   $('#footer').css({ top: '900px' });
+   $('.rowToHide').css({ display: 'none' });
 
 }

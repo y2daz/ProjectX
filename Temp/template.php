@@ -13,7 +13,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+
 ob_start();
 
 $fullPageHeight = 600;
@@ -25,8 +25,8 @@ $pageTitle= "Template";
 <html>
     <head>
         <style type=text/css>
-<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
+            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
+            #footer{ top:<?php echo "$footerTop" . "px";?> }
 
             /*
             ADD YOUR CSS HERE
@@ -37,8 +37,7 @@ $pageTitle= "Template";
     <body>
 
     <p> TEST POST; PLEASE IGNORE.</p>
-
-
+<!--        ADD YOUR WEBPAGE HERE-->
 
     </body>
 </html>
