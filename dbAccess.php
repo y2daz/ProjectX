@@ -540,5 +540,18 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
     }
 
+    function approveLeave()
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+
+    }
+
 
 ?>
