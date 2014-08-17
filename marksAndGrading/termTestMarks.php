@@ -10,12 +10,20 @@ include(THISROOT . "/dbAccess.php");
 ob_start();
 
 ?>
+
+
+
+
+
 <html>
 <head>
 <style type=text/css>
     <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
     <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
+    h1{
+        text-align: center;
+    }
 
     table, th, td {
         border: 0px solid black;
@@ -60,13 +68,15 @@ ob_start();
 
 <body>
 
-    <h1>Term Test Details Form</h1>
 <form>
+    <h1>Term Test Details Form</h1>
+
+
 
 <table class="insert" cellspacing="0">
 <tr>
     <td>Grade</td>
-    <td><select type="text" value="">
+    <td><select type="text" value="" >
 
             <option>--</option>
             <option>1</option>
@@ -86,21 +96,21 @@ ob_start();
 </tr>
 <tr class="alt">
     <td>Class</td>
-    <td><input type="text" value=""></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
 <tr>
     <td>Teacher's Name</td>
-    <td><input type="text" value=""></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
 <tr>
     <td>Subject</td>
-    <td><input type="text" value=""></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
 <tr>
     <td>Year</td>
-    <td><input type="text" value=""></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
     <td>Term</td>
@@ -117,20 +127,12 @@ ob_start();
 </table>
 
 
-        </form>
 
+    <input class="button" type="submit" value="Submit">
 
-    <tr>
-    <td></td>
+    <input class="button1" type="reset" value="Reset">
 
-    <td><input class="button" type="submit" value="Submit"></td>
-
-
-
-
-    <td><input class="button1" type="reset" value="Reset"></td>
-
-
+</form>
 
 
 

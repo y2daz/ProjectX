@@ -43,47 +43,48 @@ ob_start();
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-.currentDay {
-    background:#FFC;
-    color:red;
-}
-table {
-    border-collapse:collapse;
-    border:1px #005e77 solid;
-}
-th{
-    background-color: #005e77;
-    color: white;
-}
-td {
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:2px;
-    padding-right:2px;
-    vertical-align:top;
-    text-align:center;
-    min-width:15px;
-}
-.days:hover {
-    background:#9F0;
-    border-color:#000;
-}
-.day6 {
-    background:#ECECEC;
-}
-.day7 {
-    background:#ECECEC;
-}
-.monthName {
-    text-align:left;
-    vertical-align:middle;
-}
-.monthName div {
-    padding-left:10px;
-}
-.selected {
-    background-color: #bed9ff;
-}
+    .currentDay {
+        background:#FFC;
+        color:red;
+    }
+    table {
+        border-collapse:collapse;
+        border:1px #005e77 solid;
+    }
+    th{
+        background-color: #005e77;
+        color: white;
+    }
+    td {
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:2px;
+        padding-right:2px;
+        vertical-align:top;
+        text-align:center;
+        min-width:15px;
+    }
+
+    .days:hover {
+        background:#9F0;
+        border-color:#000;
+    }
+    .day6 {
+        background:#ECECEC;
+    }
+    .day7 {
+        background:#ECECEC;
+    }
+    .monthName {
+        text-align:left;
+        vertical-align:middle;
+    }
+    .monthName div {
+        padding-left:10px;
+    }
+    .selected {
+        background-color: #bed9ff;
+    }
 
 
 
@@ -91,17 +92,22 @@ td {
         text-align:center;
     }
 
+    .button{
+        left:100px;
+    }
+
         </style>
     </head>
   <body>
+  <h1>Year Plan</h1>
 
   <br />
   <br />
   <br />
   <br />
-  <br />
-  <br />
-  <br />
+
+
+
 
 <?php
 $dDaysOnPage = 37;
@@ -151,6 +157,8 @@ $dYear = date("Y");
             <th>T</th>
         </tr>
 
+
+
     <?php
 
         function FriendlyDayOfWeek($dayNum) {
@@ -189,7 +197,7 @@ $dYear = date("Y");
             return $tdString;
         }
 ?>
-
+    <input type="button" class="button" name="Update" value="Update">
 
     </body>
 </html>

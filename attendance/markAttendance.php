@@ -17,17 +17,23 @@
                 text-align: center;
             }
             #classDate{
-                    position:relative;
+                position:relative;
                 left:30px;
-
             }
             #attendance{
                 position: relative;
                 top:0px;
                 left:30px;
+                border-collapse: collapse;
             }
-            #attendance th{
+            #tHeader{
                 font-weight: 600;
+                color:white;
+                background-color: #005e77;
+                padding: 2px 5px 2px 5px;
+            }
+            #attendance td{
+                padding: 2px 5px 2px 5px;
             }
             #attendance tr.alt{
                 background-color: #bed9ff;
@@ -40,6 +46,7 @@
                 font-weight:bold;
                 font-size:15px;
                 Right: -450px;
+                left: 300px;
                 top: 1150px;
             }
         </style>
@@ -75,13 +82,13 @@
                 <tr>
                     <td></td>
 
-                    <td><input class="button" type="button" value="Save"></td>
+                    <td><input class="button" type="button" value="Submit"></td>
 
 
                 </tr>
         </table>
         <table id="attendance">
-            <tr>
+            <tr id="tHeader">
                 <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
             </tr>
 

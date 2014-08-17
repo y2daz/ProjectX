@@ -16,7 +16,9 @@ ob_start();
     <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
     <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-
+    h1{
+        text-align: center;
+    }
 
 
     table, th, td {
@@ -84,7 +86,7 @@ ob_start();
         <td><select type="text" value="">
                 <option>Mid</option>
                 <option>Final</option>
-                <option>Other</option>
+
     </tr>
 
 

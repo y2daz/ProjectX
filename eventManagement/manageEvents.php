@@ -39,6 +39,9 @@ ob_start();
         #Manager td{
             padding: 5px;
         }
+        #Manager #id{
+            width:300px;
+        }
         #Manager #name{
             width:200px;
         }
@@ -90,6 +93,7 @@ ob_start();
         <h3>Event Manager List</h3>
     <table id="Manager">
         <tr>
+            <th id="id">ID</th>
             <th id="name">Name</th>
             <th id="contact">Contact No</th>
             <th></th>
@@ -99,6 +103,7 @@ ob_start();
         </tr>
 
         <tr>
+            <td>063</td>
             <td>Chathuranga Liyanage</td>
             <td>0777123456</td>
             <td>
@@ -106,6 +111,7 @@ ob_start();
             </td>
         </tr>
         <tr>
+            <td>02</td>
             <td>Madusha Mendis</td>
             <td>0712345678</td>
             <td>
@@ -113,6 +119,7 @@ ob_start();
             </td>
         </tr>
         <tr>
+            <td>3</td>
             <td>Dulip Rathnayake</td>
             <td>0112789456</td>
             <td>
@@ -120,6 +127,7 @@ ob_start();
             </td>
         </tr>
         <tr>
+            <td><input type="text" name="textbox" value=""></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
             <td>
@@ -136,7 +144,7 @@ ob_start();
         <h3>Invitees List</h3>
 
 <span>No Of Invitees : </span><span id="invitees"> 0</span> <br />
-    <input type="button" name="button" id="button9" value="View Invitees List"/>
+    <input type="button" name="button" id="button9" value="View Invitees List" onClick="window.location = 'newinviteeslist.php';"/>
 </div>
 
 
