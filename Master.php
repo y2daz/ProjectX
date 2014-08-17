@@ -105,12 +105,12 @@
 
 
         <div id="nav">
-            <li id="Red"><a id="blue">Notices</a>
-                <ul>
-                    <li><a href="#">View Notices</a><hr /></li>
-                    <li><a href="#">Create Notice</a></li>
-                </ul>
-            </li>
+<!--            <li id="Red"><a id="blue">Notices</a>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">View Notices</a><hr /></li>-->
+<!--                    <li><a href="#">Create Notice</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
