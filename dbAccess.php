@@ -107,6 +107,31 @@
         return false;
     }
 
+    function insertStudent($admissionNo, $name, $nat_race, $religion, $medium, $address, $grade, $class, $house)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+
+        if ($stmt = $mysqli->prepare("INSERT INTO student values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
+        {
+            $stmt -> bind_param("ssiiisissi", $admissionNo, $name, $nat_race, $religion, $medium, $address, $grade, $class, $house, $isDeleted);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $mysqli->close();
+        return false;
+    }
+
     function getAllUsers()
     {
 
