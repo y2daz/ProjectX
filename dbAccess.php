@@ -95,7 +95,7 @@
     //        echo "Hashed password = " . $hashedPassword;
         if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel, $isDeleted);
+            $stmt -> bind_param("sssi", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
