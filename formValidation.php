@@ -21,3 +21,56 @@ function isFilled($value){
         return true;
     }
 }
+
+function isNIC($value)
+{
+    if(strlen($value) == 10)
+    {
+        $checknumber = substr($value, 0, (strlen($value)-1));
+
+        if(is_numeric($checknumber))
+        {
+           $checkifV = substr($value, strlen($value)-1, strlen($value));
+
+            if(strcmp($checkifV, "V"));
+            {
+                return true;
+            }
+
+        }
+    }
+    {
+        return false;
+    }
+}
+
+function isNumber($value)
+{
+    if(is_numeric($value))
+        return true;
+    else
+        return false;
+
+}
+
+function isLetters($value)
+{
+    if(is_string($value))
+        return true;
+    else
+        return false;
+
+}
+
+//Find a function to check the string for pattern
+
+function isContactNumber($value)
+{
+    if((preg_match("/[^0-9]/", '', $value)) && strlen($value) == 10)
+        return true;
+    else
+        return false;
+
+}
+
+?>

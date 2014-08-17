@@ -19,6 +19,11 @@
     {
         header("Location: " . PATHFRONT . "/login.php");
     }
+    if(isset($_GET["logout"]))
+    {
+        $_SESSION["user"] = NULL;
+        header("Location: " . PATHFRONT . "/login.php");
+    }
     /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 //    $fullPageHeight = 700;
 //
@@ -145,7 +150,7 @@
             <li><a><?php echo $eventManagement; ?></a>
                 <ul>
                     <li><a  href="<?php echo PATHFRONT ?>/eventManagement/eventList.php">View Event List</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/eventManagement/manageEvents.php">Manage Events</a></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/eventManagement/ManageEvents.php">Manage Events</a></li>
                 </ul>
             </li>
             <li><a>Attendance</a>
@@ -178,6 +183,8 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/template.php">Your account</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/template.php?logout=1">Log out</a></td>
                 </tr>
             </table>
         </div>

@@ -56,7 +56,7 @@
         return false;
     }
 
-    function insertUser($email, $password, $accessLevel)
+    function insertEvent( $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -67,9 +67,35 @@
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //        echo "Hashed password = " . $hashedPassword;
-        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?, ?, ?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel);
+            $stmt -> bind_param("sssssssss",  $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $mysqli->close();
+        return false;
+    }
+
+    function insertUser($email, $password, $accessLevel)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    //        echo "Hashed password = " . $hashedPassword;
+        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
+        {
+            $stmt -> bind_param("sssi", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
@@ -220,5 +246,42 @@
     }
     $mysqli->close();
     return false;
-}
+
+    }
+
+    function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
+    {
+        echo "it works here";
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+       if ($stmt = $mysqli->prepare("INSERT INTO  applyleave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+       {
+
+
+           $isdeleted = 0;
+           $currentdate = date("Y-M-D");
+           $status = "Pending";
+           $reviewedby = "adas";
+           $revieweddate = "dasdasd";
+
+           $stmt -> bind_param("ssssssssi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
+
+           if ($stmt->execute())
+           {
+               $stmt->close();
+               $mysqli->close();
+               return true;
+           }
+       }
+        $mysqli->close();
+        return false;
+    }
+
 ?>

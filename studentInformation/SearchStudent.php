@@ -113,7 +113,7 @@ input.button {
             </tr>
 
             <tr>
-                <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="class" value="">
+                <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="SearchBy" value="">
 
             </tr>
 
