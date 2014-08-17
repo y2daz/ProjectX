@@ -80,6 +80,8 @@ function insertLanguage($label, $english, $sinhala)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
+    $mysqli->set_charset("utf8") ;
+
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
