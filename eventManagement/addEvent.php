@@ -11,6 +11,8 @@
  * Page title, and height are php variables you have to edit at the bottom.
  *
  */
+session_start();
+
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
@@ -18,7 +20,7 @@ ob_start();
 
 if (isset($_POST["Save"])) //User has clicked the submit button to add a user
 {
-        $operation = insertUser($_POST["eventid"], $_POST["name"], $_POST["description"], $_POST["location"], $_POST["status"], $_POST["date"], $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+        $operation = insertEvent($_POST["eventid"], $_POST["name"], $_POST["description"], $_POST["location"], $_POST["status"], $_POST["date"], $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
 }
 
 ?>
@@ -76,12 +78,12 @@ if (isset($_POST["Save"])) //User has clicked the submit button to add a user
         $location = getLanguage("location ", $_COOKIE["language"]);
         $eventtype = getLanguage("eventtype ", $_COOKIE["language"]);
         $status = getLanguage("status ", $_COOKIE["language"]);
-        $date = getLanguage("date ", $_COOKIE["language"]);
-        $eventcreator = getLanguage("eventcreator ", $_COOKIE["language"]);
-        $starttime = getLanguage("starttime ", $_COOKIE["language"]);
-        $endtime = getLanguage("endtime ", $_COOKIE["language"]);
-        $addmanager = getLanguage("addmanager ", $_COOKIE["language"]);
-        $saveevent = getLanguage("saveevent ", $_COOKIE["language"]);
+        $date = getLanguage("date", $_COOKIE["language"]);
+        $eventcreator = getLanguage("eventcreator", $_COOKIE["language"]);
+        $starttime = getLanguage("starttime", $_COOKIE["language"]);
+        $endtime = getLanguage("endtime", $_COOKIE["language"]);
+        $addmanager = getLanguage("addmanager", $_COOKIE["language"]);
+        $saveevent = getLanguage("saveevent", $_COOKIE["language"]);
 //    $prizegiving="$prizegiving";
 //    $sportmeet="Sports Meet";
 //    $teacherday="Teacher's Day";
@@ -120,7 +122,7 @@ if (isset($_POST["Save"])) //User has clicked the submit button to add a user
                 </tr>
                 <tr class="alt">
                     <td><?php echo $status?></td>
-                    <td><input type="Status" name="status" value=""></td>
+                    <td><input type="text" name="status" value=""></td>
                 </tr>
                 <tr class="alt">
                     <td><?php echo $date?></td>
@@ -128,18 +130,18 @@ if (isset($_POST["Save"])) //User has clicked the submit button to add a user
                 </tr>
                 <tr class="alt">
                     <td><?php echo $eventcreator?></td>
-                    <td><input type="Event Creator" name="eventcreator" value=""></td>
+                    <td><span><?php echo $_SESSION["user"];?></span></td>
                 </tr>
                 <tr class="alt">
                     <td><?php echo $starttime?></td>
-                    <td><input type="Start Time" name="starttime" value=""></td>
+                    <td><input type="text" name="starttime" value=""></td>
                 </tr>
                 <tr class="alt">
                     <td><?php echo $endtime?></td>
-                    <td><input type="End Time" name="endtime" value=""></td>
+                    <td><input type="text" name="endtime" value=""></td>
                 </tr>
 
-                <td><input class="button" type="Button" name="addManager" value=<?php echo $addmanager?>></td>
+                <td><input class="button" type="Button" name="addManager" value=<?php echo "$addmanager"?>></td>
                 <td><input class="button" type="submit" name="saveEvent" value=<?php echo $saveevent?>></td>
             </table>
         </form>

@@ -56,7 +56,7 @@
         return false;
     }
 
-    function insertUser( $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime)
+    function insertEvent( $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -70,6 +70,32 @@
         if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?, ?, ?, ?, ?, ?);"))
         {
             $stmt -> bind_param("sssssssss",  $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $mysqli->close();
+        return false;
+    }
+
+    function insertUser($email, $password, $accessLevel)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+    //        echo "Hashed password = " . $hashedPassword;
+        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
+        {
+            $stmt -> bind_param("sss", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
