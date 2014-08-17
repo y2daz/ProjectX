@@ -73,6 +73,5 @@ function isContactNumber($value)
 
 }
 
-//tbis is a test
 
 ?>

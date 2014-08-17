@@ -17,51 +17,56 @@ ob_start();
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
 
-table, th, td {
-                border: 1px solid black;
 
-            }
-            table{
-                text-align: left;
-            }
-            h1{
-                text-align: center;
-            }
-            form{
-                text-align: left;
+        h1{
+            text-align: center;
+        }
+        #details .title{
+            background-color: #005e77;
+            color: white;
+            padding: 2px 10px 2px 10px;
+        }
+
+        #marks{
+            text-align: left;
+            position: relative;
+            top:0px;
+            left:30px;
+            border-collapse: collapse;
+        }
+        #marks th{
+            font-weight: 600;
+            color:white;
+            background-color: #005e77;
+            padding: 2px 5px 2px 5px;
+        }
+        #marks td{
+            padding: 2px 5px 2px 5px;
+
+        }
+        #marks tr.alt{
+            background-color: #bed9ff;
+                }
+
+        form{
+            text-align: left;
             }
 
 
-            th{
-                width: 1300px;
-                text-align: center;
-            }
-
-            td {
-                width: 150px;
-                text-align: left;
-            }
-
-            tr{
-                height: 10px;
-                    }
-
-
-
-            input.button {
-                position:relative;
-                font-weight:bold;
-                font-size:20px;
-                left:50px;
-                top:20px;
-            }
-            input.button1 {
-                position:relative;
-                font-weight:bold;
-                font-size:20px;
-                left:100px;
-                top:20px;
-            }
+        input.button {
+            position:relative;
+            font-weight:bold;
+            font-size:20px;
+            left:50px;
+            top:20px;
+        }
+        input.button1 {
+            position:relative;
+            font-weight:bold;
+            font-size:20px;
+            left:100px;
+            top:20px;
+        }
 
         </style>
     </head>
@@ -70,34 +75,36 @@ table, th, td {
     <form>
         <h1>Term Test Results</h1>
 
-        <table class="insert" cellspacing="0">
+        <table id="details" class="insert" cellspacing="0">
+
             <tr>
-                <td>Grade</td>
-                <td><input type="text" value="">
+                <td class="title">Grade</td>
+                <td><input type="text" value="" readonly></td>
 
 
-            </tr>
-            <tr class="alt">
-                <td>Class</td>
-                <td><input type="text" value=""></td>
+
             </tr>
             <tr>
-                <td>Teacher's Name</td>
-                <td><input type="text" value=""></td>
+                <td class="title">Class</td>
+                <td><input type="text" value="" readonly></td>
             </tr>
-            <tr class="alt">
             <tr>
-                <td>Subject</td>
-                <td><input type="text" value=""></td>
+                <td class="title">Teacher's Name</td>
+                <td><input type="text" value="" readonly></td>
             </tr>
-            <tr class="alt">
+
             <tr>
-                <td>Year</td>
-                <td><input type="text" value=""></td>
+                <td class="title">Subject</td>
+                <td><input type="text" value="" readonly></td>
             </tr>
-            <tr class="alt">
-                <td>Term</td>
-                <td><input type="text" value=""</td>
+
+            <tr>
+                <td class="title">Year</td>
+                <td><input type="text" value="" readonly></td>
+            </tr>
+            <tr>
+                <td class="title">Term</td>
+                <td><input type="text" value=""readonly></td>
             </tr>
             </table>
         </form>
@@ -105,8 +112,8 @@ table, th, td {
             <h1></h1>
             <h1></h1>
 
-            <table   border="1px solid black" >
-
+    <table id="marks">
+        <tr id="tHeader">
 
                 <tr>
                     <th>Admission Number</th>
@@ -231,23 +238,15 @@ table, th, td {
 
             </table>
 
-
+<table>
             <tr>
                 <td></td>
 
                 <td><input class="button" type="submit" value="Submit"></td>
 
                 <td><input class="button1" type="reset" value="Reset"></td>
-
-
-
-
-
-
-
-
             </tr>
-
+</table>
     </body>
 </html>
 

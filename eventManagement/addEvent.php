@@ -11,142 +11,126 @@
  * Page title, and height are php variables you have to edit at the bottom.
  *
  */
-session_start();
-
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-if (isset($_POST["Save"])) //User has clicked the submit button to add a user
+if (isset($_POST["addevent"])) //user has clicked the button to apply leave
 {
-        $operation = insertEvent($_POST["eventid"], $_POST["name"], $_POST["description"], $_POST["location"], $_POST["status"], $_POST["date"], $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+    $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], $_POST["eventstatus"], $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+    echo $operation;
 }
 
+
+
 ?>
-<html>
+    <html>
     <head>
         <style type=text/css>
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-
-            h1 {
-
-                text-align:center;
-            }
-            /*.general th{*/
-                /*align:center;*/
-                /*color:white;*/
-                /*background-color:#154DC1;*/
-                /*height:30px;*/
-                /*padding:5px;*/
-            /*}*/
-
-            .general td {
-                padding:5px;
-            }
-
-
-
-            input.button {
-                position:relative;
-                font-weight:bold;
-                font-size:12px;
-                left:50px;
-                top:45px;
-                width:150px;
-
-            }
-
-            input.button1 {
-                position:relative;
-                font-weight:bold;
-                font-size:12px;
-                right:-300px;
-                top:0px;
-            }
+            /*
+            ADD YOUR CSS HERE
+            */
 
         </style>
     </head>
 
     <?php
-        $staffManagement = getLanguage("staffManagement", $_COOKIE["language"]);
-        $eventid = getLanguage("eventid ", $_COOKIE["language"]);
-        $name = getLanguage("name ", $_COOKIE["language"]);
-        $description = getLanguage("description ", $_COOKIE["language"]);
-        $location = getLanguage("location ", $_COOKIE["language"]);
-        $eventtype = getLanguage("eventtype ", $_COOKIE["language"]);
-        $status = getLanguage("status ", $_COOKIE["language"]);
-        $date = getLanguage("date", $_COOKIE["language"]);
-        $eventcreator = getLanguage("eventcreator", $_COOKIE["language"]);
-        $starttime = getLanguage("starttime", $_COOKIE["language"]);
-        $endtime = getLanguage("endtime", $_COOKIE["language"]);
-        $addmanager = getLanguage("addmanager", $_COOKIE["language"]);
-        $saveevent = getLanguage("saveevent", $_COOKIE["language"]);
-//    $prizegiving="$prizegiving";
-//    $sportmeet="Sports Meet";
-//    $teacherday="Teacher's Day";
+    $eventid = getLanguage("eventid ", $_COOKIE["language"]);
+    $name = getLanguage("name ", $_COOKIE["language"]);
+    $description = getLanguage("description ", $_COOKIE["language"]);
+    $location = getLanguage("location ", $_COOKIE["language"]);
+    $eventtype = getLanguage("eventtype ", $_COOKIE["language"]);
+    $status = getLanguage("status ", $_COOKIE["language"]);
+    $date = getLanguage("date", $_COOKIE["language"]);
+    $eventcreator = getLanguage("eventcreator", $_COOKIE["language"]);
+    $starttime = getLanguage("starttime", $_COOKIE["language"]);
+    $endtime = getLanguage("endtime", $_COOKIE["language"]);
+    $addevent = getLanguage("saveevent", $_COOKIE["language"]);
     ?>
 
     <body>
-        <h1>Add New Event</h1>
-        <form onsubmit="" name="thisForm" method="post">
-            <table class="general" cellspacing="0">
-                <tr><th></th><th></th></tr>
-                <tr>
 
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $eventid?></td>
-                    <td><input type="Event Id" name="eventid" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $name?></td>
-                    <td><input type="Name" name="name" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $description?></td>
-                    <td><input type="Description" name="description" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $location?></td>
-                    <td><input type="Location" value=""></td>
-<!--                    <td>--><?php //echo $eventtype?><!--</td>-->
-<!--                    <td><select name="Event Type" value="">-->
-<!--                            <option>--><?php //echo $prizegiving?><!--</option>-->
-<!--                            <option>--><?php //echo $sportmeet?><!--</option>-->
-<!--                            <option>--><?php //echo $teacherday?><!--</option>-->
-<!--                            <option></option>-->
-<!--                        </select></td>-->
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $status?></td>
-                    <td><input type="text" name="status" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $date?></td>
-                    <td><input type="Date" name="date" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $eventcreator?></td>
-                    <td><span><?php echo $_SESSION["user"];?></span></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $starttime?></td>
-                    <td><input type="text" name="starttime" value=""></td>
-                </tr>
-                <tr class="alt">
-                    <td><?php echo $endtime?></td>
-                    <td><input type="text" name="endtime" value=""></td>
-                </tr>
+    <h1 align="center">Add Event</h1>
 
-                <td><input class="button" type="Button" name="addManager" value=<?php echo "$addmanager"?>></td>
-                <td><input class="button" type="submit" name="saveEvent" value=<?php echo $saveevent?>></td>
-            </table>
-        </form>
+    <br>
+    <br>
+
+    <form method="post">
+
+        <table align="center">
+
+            <tr>
+                <td><?php echo $eventid ?></td>
+                <td><input type="text" name="eventid"></td>
+            </tr>
+
+            <tr>
+                <td><?php echo $name ?></td>
+                <td><input type="text" name="eventname" </td>
+            </tr>
+
+            <tr>
+                <td><?php echo $description ?></td>
+                <td><input type="text" name="eventdescription" </td>
+            </tr>
+
+            <tr>
+                <td><?php echo $location ?></td>
+                <td><input type="text" name="eventlocation" </td>
+            </tr>
+
+            <tr>
+                <td><?php echo $status ?></td>
+                <td><input type="text" name="eventstatus"</td>
+            </tr>
+
+            <tr>
+                <td><?php echo $date ?></td>
+                <td><input type="date" name="eventdate" </td>
+            </tr>
+
+            <tr>
+                <td><?php echo $eventcreator ?></td>
+                <td><input type="text" name="eventcreator"></td>
+            </tr>
+            <tr>
+                <td><?php echo $starttime ?></td>
+                <td><input type="time" name="starttime"> </td>
+
+            </tr>
+
+            <tr>
+                <td><?php echo $endtime ?></td>
+                <td><input type="time" name="endtime" </td>
+            </tr>
+
+        </table>
+
+        <br>
+        <br>
+
+        <table align="center">
+
+            <tr>
+                <td>
+                    <input type="submit" name="addevent" value="<?php echo $addevent ?>" align="center">
+                </td>
+            </tr>
+
+        </table>
+
+
+    </form>
+
+
+
+
     </body>
-</html>
+    </html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;

@@ -42,8 +42,18 @@ function addNewRow()
 
 function clickedTeacher()
 {
-    document.getElementById('selection').innerHTML='Teacher : ';
+    var lang = getCookie("language");
+
+    if (lang == 0)
+    {
+        document.getElementById('selection').innerHTML='Teacher : ';
+    }
+    else
+    {
+        document.getElementById('selection').innerHTML='ගුරුවරයාගේ නම : ';
+    }
     document.getElementById('toHide').hidden = "hidden";
+
 
     $('#main').height(800);
     $('#footer').css({ top: '900px' });
@@ -53,7 +63,16 @@ function clickedTeacher()
 
 function clickedClass()
 {
-    document.getElementById('selection').innerHTML='Class : ';
+    var lang = getCookie("language");
+
+    if (lang == 0)
+    {
+        document.getElementById('selection').innerHTML='Class : ';
+    }
+    else
+    {
+        document.getElementById('selection').innerHTML='පන්තිය : ';
+    }
     document.getElementById('toHide').hidden = "";
 
    $('#main').height(800);
