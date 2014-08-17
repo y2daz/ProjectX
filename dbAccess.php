@@ -65,11 +65,9 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-//        echo "Hashed password = " . $hashedPassword;
         if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?, ?, ?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sssssssss",  $eventid, $name,$description,$location,$status, $date, $eventcreator,$starttime, $endtime);
+            $stmt -> bind_param("ssssissss",  $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime);
             if ($stmt->execute())
             {
                 $stmt->close();
