@@ -92,7 +92,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select EventID, Name, EventDate, Description FROM User WHERE isDeleted = 0 ORDER BY EventDate;"))
+        if ($stmt = $mysqli->prepare("Select EventID, Name, EventDate, Description FROM Event WHERE isDeleted = 0 ORDER BY EventDate;"))
         {
             if ($stmt->execute())
             {
