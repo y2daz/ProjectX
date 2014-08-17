@@ -21,7 +21,6 @@ require_once("../dbAccess.php");
 <body>
     <h1>Assign Subjects for Grades </h1>
     <form method="POST">
-    <form method="POST">
 
     <table id="labelList">
         <tr>

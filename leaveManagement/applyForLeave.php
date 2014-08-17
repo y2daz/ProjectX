@@ -45,7 +45,7 @@
     <body>
             <h1>Apply For Leave</h1>
 
-            <form>
+            <form method="post">
 
                 <br /><br /><br />
 
@@ -64,11 +64,11 @@
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
-                        <td><select onchange="selectedvalue(this)">
-                                <option value="OfficialLeave">Offical Leave</option>
-                                <option value="MaternityLeave">Maternity Leave</option>
-                                <option value="CasualLeave">Casual Leave</option>
-                                <option value="OtherLeave">Other Leave</option>
+                        <td><select name="leavetype" onchange="selectedvalue(this)">
+                                <option value="1">Offical Leave</option>
+                                <option value="2">Maternity Leave</option>
+<!--                                <option value="CasualLeave">Casual Leave</option>-->
+                                <option value="3">Other Leave</option>
                             </select>
                         </td>
                     </tr>
@@ -86,10 +86,10 @@
                 <br />
 
                 <p align="center">
-                    <input type="submit" value="submit" id="submitme">
+                    <input type="submit" name="ApplyforLeave" value="submit" id="submitme">
                 </p>
 
-                <input name="leavetype" id="check" value="OfficialLeave" >
+<!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
 
 
             </form>
