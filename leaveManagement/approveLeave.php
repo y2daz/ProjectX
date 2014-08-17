@@ -5,7 +5,21 @@
  * Date: 19/07/14
  * Time: 17:04
  */
+
+    require_once("../formValidation.php");
+    require_once("../dbAccess.php");
+
+    define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+    define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
     ob_start();
+
+
+
+
+
+
+
 ?>
 <html>
     <head>
