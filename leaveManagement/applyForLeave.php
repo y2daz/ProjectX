@@ -5,7 +5,18 @@
  * Date: 19/07/14
  * Time: 17:04
  */
+
+    define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+    include(THISROOT . "/dbAccess.php");
     ob_start();
+
+    if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
+    {
+        $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
+        echo $operation;
+    }
+
+
 ?>
 <html>
     <head>
@@ -16,7 +27,20 @@
             h1{
                 text-align: center;
             }
+
         </style>
+
+        <script>
+
+            function selectedvalue(data)
+            {
+
+                document.getElementById("check").value = data.value;
+            }
+
+        </script>
+
+
     </head>
     <body>
             <h1>Apply For Leave</h1>
@@ -31,10 +55,6 @@
                         <td><input type="text" name="staffid" value="" /></td>
                     </tr>
                     <tr>
-                        <td>Name :</td>
-                        <td><input type="text" name="staffname" /></td>
-                    </tr>
-                    <tr>
                         <td>Start Date :</td>
                         <td><input type="date" name="startdate" /></td>
                     </tr>
@@ -44,54 +64,47 @@
                     </tr>
                     <tr>
                         <td>Leave Type :</td>
-                        <td><select>
-                                <option value="OfficialLeave">Maternity</option>
-                                <option value="MaternityLeave">Short Leave</option>
-                                <option value="CasualLeave">Annual Leave</option>
-                                <option value="Other">Casual Leave</option>
+                        <td><select onchange="selectedvalue(this)">
+                                <option value="OfficialLeave">Offical Leave</option>
+                                <option value="MaternityLeave">Maternity Leave</option>
+                                <option value="CasualLeave">Casual Leave</option>
+                                <option value="OtherLeave">Other Leave</option>
                             </select>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            Select Time Period Type :
-                        </td>
-                        <td>
-                            <input type="radio" name="TimeType" value="Hours"> Hours
-                            <input type="radio" name="TimeType" value="Days"> Days
-                            <input type="radio" name="TimeType" value="Months"> Months
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Time Period :</td>
-                        <td><input type="text" name="timeperiod"></td>
-                    </tr>
+
                     <tr>
                         <td>Other Reason(s)</td>
-                        <td><textarea rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
+                        <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
                     </tr>
                     <tr>
-                        <td>Number of Leave Days Left : </td>
-                        <td><input type="text" name="NoofLeaveDaysLeft" disabled="disabled"	</td>
+                        <!--<td>Number of Leave Days Left : </td> -->
+                        <!--<td><input type="text" name="NoofLeaveDaysLeft" disabled="disabled"	</td> -->
                     <tr>
                 </table>
 
-                <br /><br /><br />
+                <br />
 
                 <p align="center">
-                    <input type="button" name="ApplyforLeave" value="Apply for Leave" id="ApplyforLeave" />
+                    <input type="submit" value="submit" id="submitme">
                 </p>
+
+                <input name="leavetype" id="check" value="OfficialLeave" >
+
+
             </form>
     </body>
 </html>
+
 <?php
     //Assign all Page Specific variables
     $fullPageHeight = 800;
     $footerTop = $fullPageHeight + 100;
+    $pageTitle= "Template";
+
+    //Only change above
 
     $pageContent = ob_get_contents();
     ob_end_clean();
-    $pageTitle= "Apply for Leave";
-    //Apply the template
-    require_once("../Master.php");
+    require_once(THISROOT . "/Master.php");
 ?>

@@ -220,5 +220,42 @@
     }
     $mysqli->close();
     return false;
-}
+
+    }
+
+    function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
+    {
+        echo "it works here";
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+       if ($stmt = $mysqli->prepare("INSERT INTO  applyleave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+       {
+
+
+           $isdeleted = 0;
+           $currentdate = date("Y-M-D");
+           $status = "Pending";
+           $reviewedby = "adas";
+           $revieweddate = "dasdasd";
+
+           $stmt -> bind_param("ssssssssi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
+
+           if ($stmt->execute())
+           {
+               $stmt->close();
+               $mysqli->close();
+               return true;
+           }
+       }
+        $mysqli->close();
+        return false;
+    }
+
 ?>
