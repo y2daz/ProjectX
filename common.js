@@ -48,6 +48,20 @@ function setCookie(cName,value) //Sets a cookie.
     refreshPage();
 }
 
+function getCookie(cname) {
+    var name = cname + "=";
+    var cookieArr= document.cookie.split(';');
+    for(var i=0; i < cookieArr.length; i++) {
+        var current = cookieArr[i];
+        while (current.charAt(0)==' ')
+            current = current.substring(1);
+        if (current.indexOf(name) != -1)
+            return current.substring(name.length,current.length);
+    }
+    return "";
+}
+
+
 function refreshPage() //Reloads the page from the server
 {
     location.reload(true);
@@ -56,6 +70,7 @@ function refreshPage() //Reloads the page from the server
 function makeGrayText(element, text)
 {
     var curText = element.value;
+
 
 //    alert(curText);
 
