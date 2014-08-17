@@ -550,6 +550,51 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History', 0);
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
 
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 0, 'Keep Attendance', 0);
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 1, 'පැමිණීමේ වාර්තාව ', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර', 0);
+  INSERT INTO `LabelLanguage` VALUES('week', 0, ' Week', 0);
+  INSERT INTO `LabelLanguage` VALUES('week', 1, 'සතිය', 0);
+  INSERT INTO `LabelLanguage` VALUES('admissionNo', 0, 'Admission No', 0);
+  INSERT INTO `LabelLanguage` VALUES('admissionNo', 1, 'ඇතුලත්විමෙ අංකය ', 0);
+  INSERT INTO `LabelLanguage` VALUES('monday', 0, 'M', 0);
+  INSERT INTO `LabelLanguage` VALUES('monday',1 , 'ස', 0);
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 0, 'T', 0);
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 1, 'අ', 0);
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 0, 'W', 0);
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 1, 'බ', 0);
+  INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'T', 0);
+  INSERT INTO `LabelLanguage` VALUES('thursday', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('friday', 0, 'F', 0);
+  INSERT INTO `LabelLanguage` VALUES('friday', 1, 'සි', 0);
+
+  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 0, 'Class-wise Attendance Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwisereport', 1, 'Class-wise Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('classwisereport', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 0, 'Grade', 0);
+  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර', 0);
+  INSERT INTO `LabelLanguage` VALUES('class', 0, 'Class', 0);
+  INSERT INTO `LabelLanguage` VALUES('class', 1, 'පන්තිය', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateFrom', 0, 'Date From', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateFrom', 1, 'දින සිට', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateTo', 0, 'Date To', 0);
+  INSERT INTO `LabelLanguage` VALUES('dateTo', 1, 'දින දක්වා', 0);
+
+  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 0, 'Student-wise Attendance Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, 'Student-wise Report', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentName', 0, 'Student Name', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentName', 1, 'ශිෂ්‍යාගේ නම', 0);
+
+  INSERT INTO `LabelLanguage` VALUES('viewattendance', 0, 'View Attendance', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendance', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 0, 'View Attendance Details', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 1, '', 0);
+
+
 -- --------------------------------------------------------
 
 --

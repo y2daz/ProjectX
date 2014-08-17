@@ -69,7 +69,6 @@
                 });
             });
 
-
         </script>
     </head>
     <?php //Get language and make changes
@@ -166,7 +165,7 @@
             </li>
             <li><a>Administrative Tasks</a>
                 <ul>
-                    <li><a href="#">Manage Year Plan</a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/administration/yearPlan.php">Manage Year Plan</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/administration/manageUsers.php">Manage Users</a></li>
                 </ul>
             </li>

@@ -19,6 +19,9 @@ ob_start();
 <html>
 <head>
     <style type=text/css>
+        h1{
+            text-align: center;
+        }
         table {
             border-spacing:0px 5px;
         }
@@ -40,9 +43,9 @@ ob_start();
         input.button {
             position:relative;
             font-weight:bold;
-            font-size:20px;
-            right:650px;
-            top:50px;
+            font-size:15px;
+            left:150px;
+            top:80px;
         }
     </style>
 </head>
@@ -65,9 +68,9 @@ ob_start();
 ?>
 
 <body>
-    <h1>Black ListForm</h1>
+    <h1>Black List Form</h1>
 	<form onsubmit="return validateEverything()" name="thisForm" method="post">
-			<table class="general" cellspacing="0">	
+			<table class="general" cellspacing="0">
 				
 				<tr><th>Black list</th><th></th></tr>		
 				<tr>
@@ -75,7 +78,7 @@ ob_start();
 					<td><input type="text" name="StaffID" value="" /></td>
 				<tr>
 					<td><?php echo $reason?></td>
-					<td><textarea name="reason" size="60" value="" ></textarea></td>
+					<td><input type="text"  name="Reason" value="" ></td>
 				</tr>
 				<tr>
 					<td><?php echo $date?></td>
