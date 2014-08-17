@@ -112,12 +112,12 @@ $pageTitle= "Template";
 				<!--<tr><th>Teacher Achievements</th><th></th></tr>-->
                     <tr>
                         <td><?php echo $staffID?></td>
-                        <td><input name="staffID" type="text" value=""></td>
+                        <td><input name="staffID" type="text" value="" required="true"></td>
                     </tr>
 
 				<tr class="alt">
 					<td><?php echo $achievement?></td>
-					<td><input name="achievement" size="55" width="50" value=""></td>
+					<td><input name="achievement" size="55" width="50" value="" required="true"></td>
 						 
 					
 				</tr>
@@ -134,7 +134,7 @@ $pageTitle= "Template";
 
 				<tr class="alt">
 					<td><?php echo $grade?></td>
-					<td><select name="grade" value="">
+					<td><select name="grade" value=""required="true">
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>

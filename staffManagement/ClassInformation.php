@@ -16,6 +16,12 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
+
+    if (isset($_POST["newclassinformation"])) //User has clicked the submit button to add a user
+    {
+    $operation = insertclassroom($_POST["staffID"], $_POST["grade"], $_POST["class"]);
+    echo $operation;
+    }
 ?>
 <html>
 <head>
@@ -50,8 +56,8 @@ ob_start();
             position:relative;
             font-weight:bold;
             font-size:15px;
-            right:130px;
-            top:100px;
+            leftt:130px;
+            top:50px;
 
 
     </style>
@@ -61,17 +67,17 @@ ob_start();
 
     if($_COOKIE['language'] == 0)
     {
-	$staffid="Staff ID";
+	$staffID="Staff ID";
 	$grade="Grade";
-	$classname="Class Name";
-	$location="Location";
+	$class="Class Name";
+
     }
 else
     {
- 	$staffid="Staff ID";
+ 	$staffID="Staff ID";
 	$grade="ශ්‍රේනිය";
-	$classname="පන්තියේ නම";
-	$location="පිහිටි ස්ථානය";
+	$class="පන්තියේ නම";
+
     }
 ?>	
 
@@ -83,12 +89,12 @@ else
 		<table class="general" cellspacing="0">
 			<!--	<tr><th>Classroom Information</th><th></th></tr>	-->
 				<tr>
-					<td><?php echo $staffid?></td>
-					<td><input type="text" name="staffId" value="" /></td>
+					<td><?php echo $staffID?></td>
+					<td><input type="text" name="staffId" value="" required="true"/></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $grade?></td>
-                    <td><input type="text" name="grade" value="" /></td>
+                    <td><input type="text" name="grade" value="" required="true"/></td>
 					<!--<td><select name="grade" value="">
 						option value="1">1</option>
 						<option value="2">2</option>
@@ -107,15 +113,13 @@ else
 						</select></td>-->
 				</tr>
 				<tr class="alt">
-					<td><?php echo $classname?></td>
-                    <td><input type="text" name="className" value="" /></td>
+					<td><?php echo $class?></td>
+                    <td><input type="text" name="className" value="" required="true"/></td>
 				</tr>
 				<tr class="alt">
-					<td><?php echo $location?></td>
-                    <td><input type="location" value=""></td>
-						 
-					<td><input class="button" type="submit" value="Submit"></td>
-				</tr>			
+
+                    <td><input class="button" name="newclassinformation" type="submit" value="Submit"></td>
+				</tr>
 			
 			</table>		
 
