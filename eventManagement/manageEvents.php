@@ -139,13 +139,10 @@ ob_start();
         </div>
 
 
-<div>
+    <h3>Invitees List</h3>
 
-        <h3>Invitees List</h3>
-
-<span>No Of Invitees : </span><span id="invitees"> 0</span> <br />
-    <input type="button" name="button" id="button9" value="View Invitees List" onClick="window.location = 'newinviteeslist.php';"/>
-</div>
+    <span>No Of Invitees : </span><span id="invitees"> 0</span> <br />
+        <input type="button" name="button" id="button9" value="View Invitees List" onClick="window.location = 'newinviteeslist.php';"/>
 
 
 

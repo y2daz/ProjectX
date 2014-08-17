@@ -65,6 +65,7 @@ $pageTitle= "Template";
         <div class="" id="general" style="">
 
             <h1>Event List</h1>
+            <form>
             <table id="eventTable">
                 <tr>
                     <th id="eventName">Event Name</th>
@@ -83,7 +84,7 @@ $pageTitle= "Template";
                     echo "$row[1]";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"eventList.php?manage=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"manageEvents.php?manage=" . $row[0] . "\" /> </td> ";
                     echo "</td></tr>";
                 }
                 ?>
@@ -143,6 +144,7 @@ $pageTitle= "Template";
                 <!--</td>-->
                 <!--</tr>-->
             </table>
+            </form>
 
         </div>
     </body>
