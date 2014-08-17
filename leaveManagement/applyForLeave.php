@@ -8,6 +8,7 @@
 
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
     include(THISROOT . "/dbAccess.php");
+
     ob_start();
 
     if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave

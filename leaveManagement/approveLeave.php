@@ -5,7 +5,21 @@
  * Date: 19/07/14
  * Time: 17:04
  */
+
+    require_once("../formValidation.php");
+    require_once("../dbAccess.php");
+
+    define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+    define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
     ob_start();
+
+
+
+
+
+
+
 ?>
 <html>
     <head>
@@ -13,43 +27,36 @@
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-            h1{
-                text-align: center;
+
+            table {
+                border-spacing:0px 5px;
             }
-            h3{
-                position: relative;
-                left:50px;
+
+            #searchCriteria{
+                position:relative;
+                left:20px;
+                top:20px;
             }
-            .leaveTable{
-                position: relative;
-            }
-            .leaveTable th{
-                font-weight: 600;
+
+            th{
+                align:center;
                 color:white;
-                background-color: #005e77;
+                background-color:#154DC1;
+                height:25px;
+                padding:5px;
             }
-            .leaveTable tr{
+
+            td {
+                padding:5px;
             }
-            .leaveTable tr.alt{
-                background-color: #bed9ff;
-            }
-            .leaveTable td{
-                padding-left: 10px;
-                padding-right: 10px;
-            }
-            .details {
-                /*position: relative;*/
-                /*top:50px;*/
-                width:500px;
-                height:150px
-            }
+
         </style>
     </head>
     <body>
-        <h1> Approve Leave </h1>
+        <h1 align="center"> Approve Leave </h1>
         <br />
-        <h3>Pending Leave</h3>
-        <form>
+
+        <form method="post">
             <table class="leaveTable" align="center">
                 <tr>
                     <th>Staff ID</th>
