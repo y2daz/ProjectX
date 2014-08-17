@@ -15,6 +15,12 @@
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
+
+if (isset($_POST["blacklist"])) //User has clicked the submit button to add a user
+{
+    $operation = insertblacklist($_POST["staffID"], $_POST["listcontributor"], $_POST["enterdate"], $_POST["reason"]);
+    echo $operation;
+}
 ?>
 <html>
 <head>
@@ -55,15 +61,15 @@ ob_start();
 
             $staffId="StaffID";
             $reason="Reason";
-            $date="Date";
-            $other="Other";
+            $enterdate="Date";
+            $listcontributor="List Contributor";
     }
     else
     {
         $staffId="ගුරුවරයාගේ නම";
         $reason="කාරණය";
-        $date="දීනය";
-        $other="වෙනත්";
+        $enterdate="දීනය";
+        $listcontributor="වෙනත්";
     }
 ?>
 
@@ -75,19 +81,22 @@ ob_start();
 				<tr><th>Black list</th><th></th></tr>		
 				<tr>
 					<td><?php echo $staffId?></td>
-					<td><input type="text" name="StaffID" value="" /></td>
+					<td><input type="text" name="StaffID" value="" required="true"/></td>
+                <tr>
+                    <td><?php echo $listcontributor?></td>
+                    <td><input type="text" name="List Contributor" value="" required="true"></td>
+                </tr>
+
 				<tr>
-					<td><?php echo $reason?></td>
-					<td><input type="text"  name="Reason" value="" ></td>
+					<td><?php echo $enterdate?></td>
+					<td><input type="date" type="date" value="" required="true"></td>
 				</tr>
-				<tr>
-					<td><?php echo $date?></td>
-					<td><input name="date" value=""></td>
-				</tr>
-				<tr>
-					<td><?php echo $other?></td>
-					<td><input name="other" size="60" value=""></td>
-				</tr>
+
+                <tr>
+                    <td><?php echo $reason?></td>
+                    <td><input type="text"  name="Reason" value="" required="true"></td>
+                </tr>
+
                 <tr>
 				    <td><input class="button" type="submit" value="Submit"></td>
                 </tr>

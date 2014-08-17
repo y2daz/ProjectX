@@ -221,10 +221,10 @@
     }
 
 
-    function deleteStaffMember($staffID)
-    {
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
+function deleteStaff($staffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -244,44 +244,206 @@
             return TRUE;
         }
     }
+    $stmt->close();
+    $mysqli->close();
+    return false;
+}
+
+function searchStaff($id)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE StaffID LIKE ? AND isDeleted = 0 ORDER BY StaffId;"))
+    {
+        $stmt -> bind_param("s", $id);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
+
+}
+
+function insertclassroom($staffID, $grade, $class)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO classinformation values(?, ?, ?, ?);"))
+    {
+        $isdeleted = 0;
+        $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
     $mysqli->close();
     return false;
 
+
+}
+
+function getNewStaffId()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
+    if ($stmt = $mysqli->prepare("SELECT MAX(CAST(StaffId AS UNSIGNED))+1 FROM staff LIMIT 1;;"))
     {
-        echo "it works here";
+        if ($stmt->execute())
+        {
+            $OUTvalue = "% NO Staff ID %";
+            $stmt->bind_result($OUTvalue);
+            $stmt->fetch();
 
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
+            if (!isFilled($OUTvalue))
+            {
+                return 1;
+            }
 
-        if ($mysqli->connect_errno) {
-
-            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+            $stmt->close();
+            return $OUTvalue;
         }
+    }
+    $mysqli->close();
+}
 
-       if ($stmt = $mysqli->prepare("INSERT INTO  applyleave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
-       {
+function getAllStaff()
+{
 
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
-           $isdeleted = 0;
-           $currentdate = date("Y-M-D");
-           $status = "Pending";
-           $reviewedby = "adas";
-           $revieweddate = "dasdasd";
-
-           $stmt -> bind_param("ssssssssi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
-
-           if ($stmt->execute())
-           {
-               $stmt->close();
-               $mysqli->close();
-               return true;
-           }
-       }
-        $mysqli->close();
-        return false;
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
+    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
+}
+
+
+//function deleteclassroom($staffID)
+//{
+//    $dbObj = new dbConnect();
+//    $mysqli = $dbObj->getConnection();
+//
+//    if ($mysqli->connect_errno) {
+//        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+//    }
+//
+//    if ($stmt = $mysqli->prepare("UPDATE classinformation SET isDeleted=? WHERE staffID=?"))
+//
+//    {
+//        $deleteNo = 2;
+//
+//        $stmt -> bind_param("is", $deleteNo, $staffID);
+//
+//        if ($stmt->execute())
+//        {
+//            $stmt->close();
+//            $mysqli->close();
+//            return TRUE;
+//        }
+//    }
+//    $mysqli->close();
+//    return false;
+//}
+//
+function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO blacklist values(?, ?, ?, ?, ?);"))
+    {
+        $isdeleted = 0;
+        $stmt -> bind_param("ssdsi",$staffID, $listcontributor, $enterdate, $reason, $isdeleted);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+
+
+}
+//
+//
+//function deleteblacklist($staffID)
+//{
+//    $dbObj = new dbConnect();
+//    $mysqli = $dbObj->getConnection();
+//
+//    if ($mysqli->connect_errno) {
+//        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+//    }
+//
+//    if ($stmt = $mysqli->prepare("UPDATE blacklist SET isDeleted=? WHERE staffID=?"))
+//
+//    {
+//        $deleteNo = 2;
+//
+//        $stmt -> bind_param("is", $deleteNo, $staffID);
+//
+//        if ($stmt->execute())
+//        {
+//            $stmt->close();
+//            $mysqli->close();
+//            return TRUE;
+//        }
+//    }
+//    $mysqli->close();
+//    return false;
+//}
 ?>
