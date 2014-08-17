@@ -20,6 +20,22 @@ $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 
+if (isset($_POST["submit"])) //User has clicked the submit button to add a student
+{
+    //Validate
+    //Insert to database
+//    if (is_numeric( $_POST["admissionID"]))
+//    {
+    $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
+
+    echo $operation;
+
+//    header("Location: parentDetailsForm.php");
+//    die();
+//    }
+}
+
+
 
 ?>
     <html>
@@ -28,21 +44,28 @@ $pageTitle= "Template";
             <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
             <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
+            #general{
+                /*width:50%;*/
+                height:auto;
+                text-align: center;
+            }
+
             th{
                 align:center;
                 color:white;
-                background-color:#154DC1;
-                height:30px;
+                background-color: #005e77;
+                height:20px;
                 padding:5px;
+                min-width: 350px;
             }
 
             td {
-                padding:5px;
+                padding:7px;
             }
             input.button1 {
                 position:relative;
                 font-weight:bold;
-                font-size:20px;
+                font-size:15px;
                 left:50px;
                 top:10px;
             }
@@ -66,68 +89,74 @@ $pageTitle= "Template";
     </head>
     <body>
 
-    <form>
+    <div  id="general" style="">
+
+    <h1>Student Registration Form</h1>
+        </div>
+
+
+        <form method="Post">
         <table class="general" cellspacing="0">
             <tr><th>General Information</th><th></th></tr>
             <tr>
                 <td>Admission ID</td>
-                <td><input type="text" value=""></td>
+                <td><input name="admissionID" type="text" value="" required="true"></td>
             </tr>
-            <tr>
-                <td>Last Name</td>
-                <td><input type="text" value=""></td>
-            </tr>
+
             <tr class="alt">
                 <td>Name With Initials</td>
-                <td><input type="text" value=""></td>
+                <td><input name="name" type="text" value="" required="true"></td>
             </tr>
             <tr>
                 <td>Nationality/Race</td>
-                <td><select type="text" value="">
-                        <option>Sinhala</option>
-                        <option>Sri Lankan Tamil</option>
-                        <option>Indian Tamil</option>
-                        <option>Sri Lankan Muslim</option>
-                        <option>Other</option>
+                <td><select name="race" type="text" value="" required="true">
+                        <option value="1">Sinhala</option>
+                        <option value="2">Sri Lankan Tamil</option>
+                        <option value="3">Indian Tamil</option>
+                        <option value="4">Sri Lankan Muslim</option>
+                        <option value="5">Other</option>
                     </select></td>
             </tr>
             <tr class="alt">
                 <td>Religion</td>
-                <td><select type="text" value="">
-                        <option>Buddhism</option>
-                        <option>Hinduism</option>
-                        <option>Islam</option>
-                        <option>Christianity</option>
-                        <option>Othe	r</option>
+                <td><select name="religion" type="text" value="" required="true">
+                        <option value="1">Buddhism</option>
+                        <option value="2">Hinduism</option>
+                        <option value="3">Islam</option>
+                        <option value="4">Christianity</option>
+                        <option value="5">Other</option>
                     </select></td>
             </tr>
             <tr class="alt">
                 <td>Medium</td>
                 <td>
-                    <input type="radio" name="Med" value="sinhala">Sinhala
-                    <input type="radio" name="Med" value="english">English
-                    <input type="radio" name="Med" value="tamil">Tamil
-
+                    <input type="radio" name="medium" value="1">Sinhala
+                    <input type="radio" name="medium" value="2">Tamil
+                    <input type="radio" name="medium" value="3">English
                 </td>
             </tr>
             <tr>
                 <td>Address</td>
-                <td><input type="text" value=""></td>
+                <td><input name="address" type="text" value="" required="true"></td>
             </tr>
             <tr>
                 <td>Grade/Year</td>
-                <td><input type="text" value=""></td>
+                <td><input name="grade" type="text" value="" required="true"></td>
             </tr>
             <tr>
                 <td>Class</td>
-                <td><input type="text" value=""></td>
+                <td><input name="class" type="text" value="" required="true"></td>
+            </tr>
+            <tr>
+                <td>House</td>
+                <td><input name="house" type="text" value="" required="true"></td>
             </tr>
             <tr>
                 <td></td>
 
-                <td><input class="button1" type="button" value="Submit"></td>
+                <td><input name="submit" class="button1" type="submit" value="Submit" required="true"></td>
 
-                <td><input class="button2" type="button" value="Reset"></td>
+
             </tr>
         </table>
     </form>
