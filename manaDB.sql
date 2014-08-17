@@ -585,14 +585,14 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 0, 'Student-wise Attendance Report', 0);
   INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
   INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, 'Student-wise Report', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, 'පන්ති මට්ටමේ වාර්තාව', 0);
   INSERT INTO `LabelLanguage` VALUES('studentName', 0, 'Student Name', 0);
   INSERT INTO `LabelLanguage` VALUES('studentName', 1, 'ශිෂ්‍යාගේ නම', 0);
 
   INSERT INTO `LabelLanguage` VALUES('viewattendance', 0, 'View Attendance', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewattendance', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendance', 1, 'පැමිණීම පරික්ෂා කිරීම', 0);
   INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 0, 'View Attendance Details', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 1, '', 0);
+  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 1, 'පැමිණීම පරික්ෂා කිරීමේ තොරතුරු', 0);
 
 
 -- --------------------------------------------------------

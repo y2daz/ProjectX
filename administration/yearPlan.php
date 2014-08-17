@@ -64,6 +64,7 @@ ob_start();
         text-align:center;
         min-width:15px;
     }
+
     .days:hover {
         background:#9F0;
         border-color:#000;
@@ -91,13 +92,8 @@ ob_start();
         text-align:center;
     }
 
-    .input button {
-        position:relative;
-        font-weight:bold;
-        font-size:15px;
-        Right: -335;
-        top: 50px;
-
+    .button{
+        left:100px;
     }
 
         </style>
@@ -109,14 +105,9 @@ ob_start();
   <br />
   <br />
   <br />
-  <br />
-  <br />
-  <br />
 
-  <tr>
-      <td></td>
-      <td><input class="button" type="button" value="Update"></td>
-        </tr>
+
+
 
 <?php
 $dDaysOnPage = 37;
@@ -166,6 +157,8 @@ $dYear = date("Y");
             <th>T</th>
         </tr>
 
+
+
     <?php
 
         function FriendlyDayOfWeek($dayNum) {
@@ -204,7 +197,7 @@ $dYear = date("Y");
             return $tdString;
         }
 ?>
-
+    <input type="button" class="button" name="Update" value="Update">
 
     </body>
 </html>
