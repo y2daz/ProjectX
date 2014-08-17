@@ -173,7 +173,7 @@ ob_start();
             <td>22/7/2014</td>
             <td>Income</td>
             <td>12,000</td>
-            <td>&nbsp;</td>
+            <td>From Students</td>
 
         </tr>
         <tr style="width:100px;height:30px">
@@ -181,7 +181,7 @@ ob_start();
             <td>24/7/2014</td>
             <td>Income</td>
             <td>11,000</td>
-            <td>&nbsp;</td>
+            <td>From OBA</td>
 
         </tr>
         <tr style="width:100px;height:30px">
@@ -189,7 +189,7 @@ ob_start();
             <td>24/7/2014</td>
             <td>Income</td>
             <td>45</td>
-            <td>&nbsp;</td>
+            <td>For Transports</td>
 
         </tr>
         <tr style="width:100px;height:30px">
@@ -197,7 +197,7 @@ ob_start();
             <td>27/7/2014</td>
             <td>Expenditure</td>
             <td>4000</td>
-            <td>&nbsp;</td>
+            <td>For Decorations</td>
 
         </tr>
         <tr style="width:150px;height:30px" >
@@ -205,10 +205,10 @@ ob_start();
                     <input type="submit" name="button" id="button" value="Add Transaction" />
                 </center>
             </td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox2" value=""></td>
+            <td><input type="text" name="textbox3" value=""></td>
+            <td><input type="text" name="textbox4" value=""></td>
 
         </tr>
 
