@@ -183,7 +183,7 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
-                    <td><a href="<?php echo PATHFRONT ?>/template.php">Your account</a></td>
+<!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
                     <td><a href="<?php echo PATHFRONT ?>/template.php?logout=1">Log out</a></td>
                 </tr>
             </table>
