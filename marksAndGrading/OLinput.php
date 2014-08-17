@@ -19,7 +19,9 @@ ob_start();
 
 
 
-
+               h1{
+                   text-align: center;
+               }
             table, th, td {
                 border: 0px solid black;
 
