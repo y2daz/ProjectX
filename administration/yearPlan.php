@@ -43,52 +43,61 @@ ob_start();
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-.currentDay {
-    background:#FFC;
-    color:red;
-}
-table {
-    border-collapse:collapse;
-    border:1px #005e77 solid;
-}
-th{
-    background-color: #005e77;
-    color: white;
-}
-td {
-    padding-top:10px;
-    padding-bottom:10px;
-    padding-left:2px;
-    padding-right:2px;
-    vertical-align:top;
-    text-align:center;
-    min-width:15px;
-}
-.days:hover {
-    background:#9F0;
-    border-color:#000;
-}
-.day6 {
-    background:#ECECEC;
-}
-.day7 {
-    background:#ECECEC;
-}
-.monthName {
-    text-align:left;
-    vertical-align:middle;
-}
-.monthName div {
-    padding-left:10px;
-}
-.selected {
-    background-color: #bed9ff;
-}
+    .currentDay {
+        background:#FFC;
+        color:red;
+    }
+    table {
+        border-collapse:collapse;
+        border:1px #005e77 solid;
+    }
+    th{
+        background-color: #005e77;
+        color: white;
+    }
+    td {
+        padding-top:10px;
+        padding-bottom:10px;
+        padding-left:2px;
+        padding-right:2px;
+        vertical-align:top;
+        text-align:center;
+        min-width:15px;
+    }
+    .days:hover {
+        background:#9F0;
+        border-color:#000;
+    }
+    .day6 {
+        background:#ECECEC;
+    }
+    .day7 {
+        background:#ECECEC;
+    }
+    .monthName {
+        text-align:left;
+        vertical-align:middle;
+    }
+    .monthName div {
+        padding-left:10px;
+    }
+    .selected {
+        background-color: #bed9ff;
+    }
 
 
 
     h1 {
         text-align:center;
+    }
+
+    .input button {
+        position:relative;
+        font-weight:bold;
+        font-size:15px;
+        Right: -335;
+        top: 50px;
+
     }
 
         </style>
@@ -103,6 +112,11 @@ td {
   <br />
   <br />
   <br />
+
+  <tr>
+      <td></td>
+      <td><input class="button" type="button" value="Update"></td>
+        </tr>
 
 <?php
 $dDaysOnPage = 37;
