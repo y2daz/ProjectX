@@ -90,7 +90,7 @@ else
 			<!--	<tr><th>Classroom Information</th><th></th></tr>	-->
 				<tr>
 					<td><?php echo $staffID?></td>
-					<td><input type="text" name="staffId" value="" required="true"/></td>
+					<td><input type="text" name="staffID" value="" required="true"/></td>
 				</tr>
 				<tr class="alt">
 					<td><?php echo $grade?></td>
@@ -114,7 +114,7 @@ else
 				</tr>
 				<tr class="alt">
 					<td><?php echo $class?></td>
-                    <td><input type="text" name="className" value="" required="true"/></td>
+                    <td><input type="text" name="class" value="" required="true"/></td>
 				</tr>
 				<tr class="alt">
 

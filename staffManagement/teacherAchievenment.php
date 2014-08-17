@@ -124,12 +124,12 @@ $pageTitle= "Template";
 
                     <tr>
                         <td><?php echo $starteddate?></td>
-                        <td><input name="starteddate" type="date" value=""></td>
+                        <td><input name="starteddate" type="date" value=""  required="true"></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $completeddate?></td>
-                        <td><input name="$completeddate" type="date" value=""></td>
+                        <td><input name="$completeddate" type="date" value=""  required="true"></td>
                     </tr>
 
 				<tr class="alt">
@@ -153,7 +153,7 @@ $pageTitle= "Template";
 				</tr>
 				<tr class="alt">
 					<td><?php echo $classname?></td>
-					<td><select name="classname" value="">		
+					<td><select name="classname" value=""  required="true">
 						<option value="1">A</option>
 						<option value="2">B</option>
 						<option value="3">C</option>

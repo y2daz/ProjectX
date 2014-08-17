@@ -59,17 +59,19 @@ if (isset($_POST["blacklist"])) //User has clicked the submit button to add a us
     if($_COOKIE['language'] == 0)
     {
 
-            $staffId="StaffID";
-            $reason="Reason";
-            $enterdate="Date";
+            $staffId="Staff ID";
             $listcontributor="List Contributor";
+            $enterdate="Date";
+            $reason="Reason";
+
     }
     else
     {
         $staffId="ගුරුවරයාගේ නම";
-        $reason="කාරණය";
-        $enterdate="දීනය";
         $listcontributor="වෙනත්";
+        $enterdate="දීනය";
+        $reason="කාරණය";
+
     }
 ?>
 
@@ -81,24 +83,24 @@ if (isset($_POST["blacklist"])) //User has clicked the submit button to add a us
 				<tr><th>Black list</th><th></th></tr>		
 				<tr>
 					<td><?php echo $staffId?></td>
-					<td><input type="text" name="StaffID" value="" required="true"/></td>
+					<td><input type="text" name="staffID" value="" required="true"/></td>
                 <tr>
                     <td><?php echo $listcontributor?></td>
-                    <td><input type="text" name="List Contributor" value="" required="true"></td>
+                    <td><input type="text" name="listcontributor" value="" required="true"></td>
                 </tr>
 
 				<tr>
 					<td><?php echo $enterdate?></td>
-					<td><input type="date" type="date" value="" required="true"></td>
+					<td><input type="date" name="enterdate" value="" required="true"></td>
 				</tr>
 
                 <tr>
                     <td><?php echo $reason?></td>
-                    <td><input type="text"  name="Reason" value="" required="true"></td>
+                    <td><input type="text"  name="reason" value="" required="true"></td>
                 </tr>
 
                 <tr>
-				    <td><input class="button" type="submit" value="Submit"></td>
+				    <td><input class="button" name="blacklist" type="submit" value="Submit"></td>
                 </tr>
 			</table>
 		</form>
