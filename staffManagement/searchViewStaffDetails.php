@@ -86,34 +86,34 @@ ob_start();
         <tr>
             <th>Staff ID</th>
             <th>Name</th>
-            <th>Gender</th>
             <th>Nic Number</th>
             <th>Contact Number</th>
+            <th></th>
             <th></th>
         </tr>
         <tr>
             <td>SIDXXX</td>
             <td>Mrs. Andrea De Silva</td>
-            <td>Female</td>
             <td>578695412v</td>
             <td>0719658712</td>
             <td><input type="button" name="expand" value="Expand Details" /></td>
+            <td><input type="button" name="delete" value="Delete" /></td>
         </tr>
         <tr class="alt">
             <td>SIDXXX</td>
             <td>Mr. Madusha Karunaratne</td>
-            <td>Male</td>
             <td>642531789v</td>
             <td>0772596314</td>
             <td><input type="button" name="expand" value="Expand Details" /></td>
+            <td><input type="button" name="delete" value="Delete" /></td>
         </tr>
         <tr>
             <td> SIDXXX </td>
             <td> Mr. Priyan Fernando </td>
-            <td> Male </td>
             <td> 702358964v</td>
             <td> 0774239651 </td>
             <td> <input type="button" name="expand" value="Expand Details" /> </td>
+            <td><input type="button" name="delete" value="Delete" /></td>
         </tr>
     </table>
 
