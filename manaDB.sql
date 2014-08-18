@@ -15,14 +15,11 @@
   --
   DROP DATABASE IF EXISTS `manaDB`;
 
-  CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-  USE `manaDB`;
-
-  CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
-
-  GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
-
-  FLUSH PRIVILEGES;
+#   CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
+#
+#   GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
+#
+#   FLUSH PRIVILEGES;
 
 -- phpMyAdmin SQL Dump
 -- version 4.0.10deb1

@@ -41,7 +41,7 @@
             th{
                 align:center;
                 color:white;
-                background-color:#154DC1;
+                background-color:#005e77;
                 height:25px;
                 padding:5px;
             }

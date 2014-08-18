@@ -20,4 +20,4 @@ class dbConnect {
 
         return $connection;
     }
-} 
+}

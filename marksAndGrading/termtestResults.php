@@ -33,6 +33,7 @@ ob_start();
             top:0px;
             left:30px;
             border-collapse: collapse;
+            min-width:600px;
         }
         #marks th{
             font-weight: 600;

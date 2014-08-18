@@ -26,12 +26,10 @@ ob_start();
 
     }
     th{
-        width: 1000px;
         text-align:left;
     }
 
     td {
-        width: 10px;
         text-align:left;
     }
 
@@ -125,39 +123,18 @@ ob_start();
     </tr>
 
 
-    </tr>
-
-
-
-<h2></h2>
 
 </table>
 
 
         </form>
 
-
-    <tr>
-    <td></td>
-
-    <td><input class="button" type="submit" value="Submit"></td>
+    <input class="button" type="submit" value="Submit">
 
 
 
 
-    <td><input class="button1" type="reset" value="Reset"></td>
-
-
-
-
-
-
-
-</tr>
-
-
-
-
+<input class="button1" type="reset" value="Reset">
 
 
 

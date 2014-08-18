@@ -79,12 +79,12 @@ $pageTitle= "Template";
                 $i = 1;
 
                 foreach($result as $row){
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
                     echo $top;
                     echo "$row[1]";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"manageEvents.php?manage=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"manageEvents.php?manage=" . $row[1] . "\" /> </td> ";
                     echo "</td></tr>";
                 }
                 ?>
@@ -112,7 +112,7 @@ $pageTitle= "Template";
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td><span class="table" style="width:570px;height:auto">
-                    <input type="submit" name="button" id="button" value="Add New Event" onClick="window.location = 'addEvent.php';"/>
+                    <input type="button" name="button" id="button" value="Add New Event" onClick="window.location = 'addEvent.php';"/>
                 </span>
                     </td>
                 </tr>
@@ -144,7 +144,7 @@ $pageTitle= "Template";
                 <!--</td>-->
                 <!--</tr>-->
             </table>
-            </form>
+<!--            </form>-->
 
         </div>
     </body>

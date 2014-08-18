@@ -124,9 +124,9 @@
             <li><a><?php echo $leaveManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a></li>
                     <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
+<!--                    <li><a href="--><?php //echo PATHFRONT ?><!--/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>-->
                 </ul>
             </li>
             <li><a  href="<?php echo PATHFRONT ?>/TimeTable/timetable.php"><?php echo $timetables; ?></a>
@@ -182,18 +182,18 @@
         <div id="divMenu">
             <table id="topMenu">
                 <tr>
-                    <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
 <!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
-                    <td><a href="<?php echo PATHFRONT ?>/template.php?logout=1">Log out</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
                 </tr>
             </table>
         </div>
 
         <div id="footer">
-            <div id="aboutus">
-                <p> ABOUT US</p>
-                <span>We're pretty amazing.</span>
-            </div>
+<!--            <div id="aboutus">-->
+<!--                <p> ABOUT US</p>-->
+<!--                <span>We're pretty amazing.</span>-->
+<!--            </div>-->
         </div>
 
         <div id="language">
