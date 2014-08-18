@@ -50,17 +50,32 @@ ob_start();
 
         <form>
 
+
+
             <table align="center">
 
                 <tr>
                     <td>
-                        <input type="radio" name="radiobutton" value="View All" id="r0" onchange="GenerateReport()" checked>View All
+                        Select:
                         <input type="radio" name="radiobutton" value="StaffID" id="r1" onchange="GenerateReport()">By Staff ID
                         <input type="radio" name="radiobutton" value="Date" id="r2" onchange="GenerateReport()">By Date
-                        <input type="radio" name="radiobutton" value="Approved" id="r3" onchange="GenerateReport()">By Approved
-                        <input type="radio" name="radiobutton" value="Rejected" id="r4" onchange="GenerateReport()">By Rejected
-                        <input type="radio" name="radiobutton" value="Status" id="r5" onchange="GenerateReport()">By Status
+
                     </td>
+
+            </table>
+
+            <br>
+
+            <table align="center">
+
+                <tr>
+                    <td>
+
+                        <input type="checkbox" name="check1" value="Approved" id="r3" ">Approved
+                        <input type="checkbox" name="check1" value="Rejected" id="r4" ">Rejected
+                        <input type="checkbox" name="check1" value="Status" id="r5" ">Status
+                    </td>
+                </tr>
 
             </table>
 
@@ -70,7 +85,7 @@ ob_start();
             <table align="center">
 
                 <tr>
-                    <td align="center" colspan="2"><span id="selection">View All </span><input type="text" class="text1" name="SearchBy" value="">
+                    <td align="center" colspan="2"><span id="selection">Staff ID </span><input type="text" class="text1" name="SearchBy" value="">
                 </tr>
 
             </table>
