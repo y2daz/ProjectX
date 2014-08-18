@@ -12,6 +12,10 @@
  *
  */
 
+
+/*Calendar was created with reference to
+http://www.opal-creations.co.uk/blog/free-scripts-and-code/php-linear-year-view-calendar*/
+
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
@@ -47,15 +51,15 @@ ob_start();
         background:#FFC;
         color:red;
     }
-    table {
+    #calendar {
         border-collapse:collapse;
         border:1px #005e77 solid;
     }
-    th{
+    #calendar th{
         background-color: #005e77;
         color: white;
     }
-    td {
+    #calendar td {
         padding-top:10px;
         padding-bottom:10px;
         padding-left:2px;
@@ -115,7 +119,7 @@ $dDay = 1;
 $dYear = date("Y");
 ?>
 
-    <table width="100%" border="1" cellspacing="0" cellpadding="0">
+    <table id="calendar" border="1">
         <tr>
             <th><?php echo $dYear; ?></th>
             <th>M</th>

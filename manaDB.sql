@@ -29,14 +29,13 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2014 at 09:38 PM
+-- Generation Time: Aug 17, 2014 at 11:10 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
   SET AUTOCOMMIT = 0;
   START TRANSACTION;
-  SET time_zone = "+00:00";
 
 --
 -- Database: `manaDB`
@@ -412,6 +411,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     KEY `fk018` (`EventCreator`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `Event`
+--
+
+  INSERT INTO `Event` VALUES(1, 'Prize Giving', 'For grades 1 to 5', 'Aufitorium', 0, '2014-08-14', '1', '11:11:00', '22:22:00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -549,49 +554,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('timetables', 1, 'කාලසටහන', 0);
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History', 0);
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
-
-  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 0, 'Keep Attendance', 0);
-  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 1, 'පැමිණීමේ වාර්තාව ', 0);
-  INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade', 0);
-  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර', 0);
-  INSERT INTO `LabelLanguage` VALUES('week', 0, ' Week', 0);
-  INSERT INTO `LabelLanguage` VALUES('week', 1, 'සතිය', 0);
-  INSERT INTO `LabelLanguage` VALUES('admissionNo', 0, 'Admission No', 0);
-  INSERT INTO `LabelLanguage` VALUES('admissionNo', 1, 'ඇතුලත්විමෙ අංකය ', 0);
-  INSERT INTO `LabelLanguage` VALUES('mo', 0, 'M', 0);
-  INSERT INTO `LabelLanguage` VALUES('mo',1 , 'ස', 0);
-  INSERT INTO `LabelLanguage` VALUES('tu', 0, 'T', 0);
-  INSERT INTO `LabelLanguage` VALUES('tu', 1, 'අ', 0);
-  INSERT INTO `LabelLanguage` VALUES('we', 0, 'W', 0);
-  INSERT INTO `LabelLanguage` VALUES('we', 1, 'බ', 0);
-  INSERT INTO `LabelLanguage` VALUES('th', 0, 'T', 0);
-  INSERT INTO `LabelLanguage` VALUES('th', 1, '', 0);
-  INSERT INTO `LabelLanguage` VALUES('fr', 0, 'F', 0);
-  INSERT INTO `LabelLanguage` VALUES('fr', 1, 'සි', 0);
-
-  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 0, 'Class-wise Attendance Report', 0);
-  INSERT INTO `LabelLanguage` VALUES('classwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
-  INSERT INTO `LabelLanguage` VALUES('classwisereport', 0, 'Class-wise Report', 0);
-  INSERT INTO `LabelLanguage` VALUES('classwisereport', 1, '', 0);
-  INSERT INTO `LabelLanguage` VALUES('class', 0, 'Class', 0);
-  INSERT INTO `LabelLanguage` VALUES('class', 1, 'පන්තිය', 0);
-  INSERT INTO `LabelLanguage` VALUES('dateFrom', 0, 'Date From', 0);
-  INSERT INTO `LabelLanguage` VALUES('dateFrom', 1, 'දින සිට', 0);
-  INSERT INTO `LabelLanguage` VALUES('dateTo', 0, 'Date To', 0);
-  INSERT INTO `LabelLanguage` VALUES('dateTo', 1, 'දින දක්වා', 0);
-
-  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 0, 'Student-wise Attendance Report', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentwiseattendancereport', 1, 'පන්ති මට්ටමේ පැමිණීමේ වාර්තාව', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 0, 'Student-wise Report', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentwisereport', 1, '', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentName', 0, 'Student Name', 0);
-  INSERT INTO `LabelLanguage` VALUES('studentName', 1, 'ශිෂ්‍යාගේ නම', 0);
-
-  INSERT INTO `LabelLanguage` VALUES('viewattendance', 0, 'View Attendance', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewattendance', 1, '', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 0, 'View Attendance Details', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewattendancedetails', 1, '', 0);
-
 
 -- --------------------------------------------------------
 
@@ -734,25 +696,22 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
+--
+-- Dumping data for table `Staff`
+--
 
-TRUNCATE TABLE `staff`;
-INSERT INTO `staff` VALUES('1', 'vimukthi', '2014-08-13', 1, 3, 1, 1, '123456789v', 'makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
-INSERT INTO `staff` VALUES('10', 'amritha', '2014-08-26', 2, 4, 1, 1, '123456789v', 'makola', '0756489326', '2014-08-06', '2014-08-30', 3, NULL, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
-INSERT INTO `staff` VALUES('11', 'bihara', '2014-08-26', 2, 2, 1, 1, '923578963', 'kolpity', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
-INSERT INTO `staff` VALUES('12', 'chathuri', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 2);
-INSERT INTO `staff` VALUES('2', 'dulip rr', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
-INSERT INTO `staff` VALUES('3', 'isuru', '2014-08-13', 1, 3, 3, 3, '93625789', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
-INSERT INTO `staff` VALUES('4', 'madhusha', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 2);
-INSERT INTO `staff` VALUES('5', 'manoj', '2014-08-13', 1, 2, 1, 1, '945263879', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
-INSERT INTO `staff` VALUES('6', 'shavin', '2014-08-30', 1, 3, 2, 1, '95896452', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
-INSERT INTO `staff` VALUES('7', 'madhushan', '2014-08-06', 2, 2, 3, 1, '932568745', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
-INSERT INTO `staff` VALUES('8', 'yazdaan', '2014-08-20', 1, 3, 1, 1, '923570039v', 'dehiwala', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
-INSERT INTO `staff` VALUES('9', 'niruthi', '2014-08-13', 2, 3, 2, 2, '4563218', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
-COMMIT;
-
+  INSERT INTO `Staff` VALUES('1', 'vimukthi', '2014-08-13', 1, 3, 1, 1, '123456789v', 'makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
+  INSERT INTO `Staff` VALUES('10', 'amritha', '2014-08-26', 2, 4, 1, 1, '123456789v', 'makola', '0756489326', '2014-08-06', '2014-08-30', 3, NULL, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
+  INSERT INTO `Staff` VALUES('11', 'bihara', '2014-08-26', 2, 2, 1, 1, '923578963', 'kolpity', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
+  INSERT INTO `Staff` VALUES('12', 'chathuri', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 2);
+  INSERT INTO `Staff` VALUES('2', 'dulip rr', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
+  INSERT INTO `Staff` VALUES('3', 'isuru', '2014-08-13', 1, 3, 3, 3, '93625789', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
+  INSERT INTO `Staff` VALUES('4', 'madhusha', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 2);
+  INSERT INTO `Staff` VALUES('5', 'manoj', '2014-08-13', 1, 2, 1, 1, '945263879', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
+  INSERT INTO `Staff` VALUES('6', 'shavin', '2014-08-30', 1, 3, 2, 1, '95896452', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
+  INSERT INTO `Staff` VALUES('7', 'madhushan', '2014-08-06', 2, 2, 3, 1, '932568745', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
+  INSERT INTO `Staff` VALUES('8', 'yazdaan', '2014-08-20', 1, 3, 1, 1, '923570039v', 'dehiwala', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
+  INSERT INTO `Staff` VALUES('9', 'niruthi', '2014-08-13', 2, 3, 2, 2, '4563218', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -764,6 +723,7 @@ COMMIT;
   CREATE TABLE IF NOT EXISTS `Student` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `NameWithInitials` varchar(50) DEFAULT NULL,
+    `DateOfBirth` date NOT NULL,
     `Nationality_Race` int(11) DEFAULT NULL,
     `Religion` int(11) DEFAULT NULL,
     `Medium` int(11) DEFAULT NULL,
@@ -790,11 +750,11 @@ COMMIT;
     KEY `fk025` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+  -- --------------------------------------------------------
 
---
--- Table structure for table `Subject_Grade`
---
+  --
+  -- Table structure for table `Subject_Grade`
+  --
 
   DROP TABLE IF EXISTS `Subject_Grade`;
   CREATE TABLE IF NOT EXISTS `Subject_Grade` (
@@ -805,11 +765,11 @@ COMMIT;
     PRIMARY KEY (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `Teaches`
-  --
+--
+-- Table structure for table `Teaches`
+--
 
   DROP TABLE IF EXISTS `Teaches`;
   CREATE TABLE IF NOT EXISTS `Teaches` (
@@ -875,11 +835,11 @@ COMMIT;
     PRIMARY KEY (`EventID`,`TransactionID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
+  -- --------------------------------------------------------
 
---
--- Table structure for table `User`
---
+  --
+  -- Table structure for table `User`
+  --
 
   DROP TABLE IF EXISTS `User`;
   CREATE TABLE IF NOT EXISTS `User` (
@@ -890,9 +850,9 @@ COMMIT;
     PRIMARY KEY (`userEmail`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Dumping data for table `User`
-  --
+--
+-- Dumping data for table `User`
+--
 
   INSERT INTO `User` VALUES('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0);
   INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0);
@@ -945,10 +905,10 @@ ALTER TABLE `Blacklist`
 ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `Event`
---
-ALTER TABLE `Event`
+  --
+  -- Constraints for table `Event`
+  --
+  ALTER TABLE `Event`
   ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
 --
@@ -958,10 +918,10 @@ ALTER TABLE `EventManager`
   ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `Invitee`
-  --
-  ALTER TABLE `Invitee`
+--
+-- Constraints for table `Invitee`
+--
+ALTER TABLE `Invitee`
   ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
 
@@ -1010,17 +970,17 @@ ALTER TABLE `OLMarks`
 ALTER TABLE `ParentsInformation`
   ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
---
--- Constraints for table `Student_Subject_Grade`
---
-ALTER TABLE `Student_Subject_Grade`
+  --
+  -- Constraints for table `Student_Subject_Grade`
+  --
+  ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
---
--- Constraints for table `Teaches`
---
-ALTER TABLE `Teaches`
+  --
+  -- Constraints for table `Teaches`
+  --
+  ALTER TABLE `Teaches`
   ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
@@ -1043,7 +1003,3 @@ ALTER TABLE `Teaches`
   ALTER TABLE `Transaction`
   ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
   COMMIT;
-
-  ALTER TABLE `event` CHANGE `EventCreator` `EventCreator` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
-
-

@@ -18,8 +18,7 @@ ob_start();
 
 if (isset($_POST["addevent"])) //user has clicked the button to apply leave
 {
-    $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], $_POST["eventstatus"], $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
-    echo $operation;
+    $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
 }
 
 
@@ -59,53 +58,47 @@ if (isset($_POST["addevent"])) //user has clicked the button to apply leave
     <br>
     <br>
 
-    <form method="post">
+    <form method="POST">
 
         <table align="center">
 
             <tr>
                 <td><?php echo $eventid ?></td>
-                <td><input type="text" name="eventid"></td>
+                <td><input type="text" name="eventid" required="true"></td>
             </tr>
 
             <tr>
                 <td><?php echo $name ?></td>
-                <td><input type="text" name="eventname" </td>
+                <td><input type="text" name="eventname" required="true" /></td>
             </tr>
 
             <tr>
                 <td><?php echo $description ?></td>
-                <td><input type="text" name="eventdescription" </td>
+                <td><input type="text" name="eventdescription" required="true"/> </td>
             </tr>
 
             <tr>
                 <td><?php echo $location ?></td>
-                <td><input type="text" name="eventlocation" </td>
+                <td><input type="text" name="eventlocation" required="true"/></td>
             </tr>
-
-            <tr>
-                <td><?php echo $status ?></td>
-                <td><input type="text" name="eventstatus"</td>
-            </tr>
-
             <tr>
                 <td><?php echo $date ?></td>
-                <td><input type="date" name="eventdate" </td>
+                <td><input type="date" name="eventdate" required="true"/></td>
             </tr>
 
             <tr>
                 <td><?php echo $eventcreator ?></td>
-                <td><input type="text" name="eventcreator"></td>
+                <td><input type="text" name="eventcreator" required="true"/></td>
             </tr>
             <tr>
                 <td><?php echo $starttime ?></td>
-                <td><input type="time" name="starttime"> </td>
+                <td><input type="time" name="starttime" required="true"/> </td>
 
             </tr>
 
             <tr>
                 <td><?php echo $endtime ?></td>
-                <td><input type="time" name="endtime" </td>
+                <td><input type="time" name="endtime" required="true"/></td>
             </tr>
 
         </table>

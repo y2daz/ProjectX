@@ -46,7 +46,7 @@ table {
 th{
     align:center;
     color:white;
-    background-color:#154DC1;
+    background-color:#005e77;
     height:25px;
     padding:5px;
 }
@@ -107,7 +107,7 @@ input.button {
                     <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
                     <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
                     <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
-                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth
+                    <input type="radio" name="choice" value="Date Of Birth" onclick="clickedDateOfBirth()">By Date of Birth
 
                 </td>
             </tr>
@@ -133,21 +133,23 @@ input.button {
 
         <table class="Searchedtable" align="center">
             <tr>
-                <th>AdmisionID</th>
+                <th>Admision No</th>
                 <th>Name</th>
                 <th>Class</th>
                 <th>Medium</th>
-                <th>DateOfBirth</th>
+                <th>Date Of Birth</th>
                 <th></th>
             </tr>
-            <tr class="alt">
-                <td>01111</td>
-                <td>Madhushan De Silva</td>
-                <td>13</td>
-                <td>English</td>
-                <td>1993/07/27</td>
-                <td><input type="button" name="expand" value="Expand Details" /></td>
-            </tr>
+
+
+<!--            <tr class="alt">-->
+<!--                <td>01111</td>-->
+<!--                <td>Madhushan De Silva</td>-->
+<!--                <td>13</td>-->
+<!--                <td>English</td>-->
+<!--                <td>1993/07/27</td>-->
+<!--                <td><input type="button" name="expand" value="Expand Details" /></td>-->
+<!--            </tr>-->
 
             </table>
 

@@ -400,6 +400,8 @@ function getAllStaff()
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
+    $set = null;
+
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
@@ -503,4 +505,53 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 //    $mysqli->close();
 //    return false;
 //}
+
+    function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("INSERT INTO  applyleave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+        {
+            $isdeleted = 0;
+            $currentdate = date("Y-m-d");
+            $status = 0;
+            $reviewedby = null;
+            $revieweddate = null;
+
+            $stmt -> bind_param("ssssisissi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
+
+
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+
+        $mysqli->close();
+        return false;
+
+    }
+
+    function approveLeave()
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+
+    }
+
+
 ?>

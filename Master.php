@@ -105,12 +105,12 @@
 
 
         <div id="nav">
-            <li id="Red"><a id="blue">Notices</a>
-                <ul>
-                    <li><a href="#">View Notices</a><hr /></li>
-                    <li><a href="#">Create Notice</a></li>
-                </ul>
-            </li>
+<!--            <li id="Red"><a id="blue">Notices</a>-->
+<!--                <ul>-->
+<!--                    <li><a href="#">View Notices</a><hr /></li>-->
+<!--                    <li><a href="#">Create Notice</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
@@ -143,15 +143,15 @@
             </li>
             <li><a>Student Information</a>
                 <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/StudentRegistration.php">Register Student</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/studentRegistration.php">Register Student</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/studentInformation/SearchStudent.php">Search Student</a></li>
                 </ul>
             </li>
-            <li><a><?php echo $eventManagement; ?></a>
-                <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/eventManagement/eventList.php">View Event List</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/eventManagement/manageEvents.php">Manage Events</a></li>
-                </ul>
+            <li><a href="<?php echo PATHFRONT ?>/eventManagement/eventList.php"><?php echo $eventManagement; ?></a>
+<!--                <ul>-->
+<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/eventList.php">View Event List</a><hr /></li>-->
+<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/manageEvents.php">Manage Events</a></li>-->
+<!--                </ul>-->
             </li>
             <li><a>Attendance</a>
                 <ul>
@@ -183,7 +183,7 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
-                    <td><a href="<?php echo PATHFRONT ?>/template.php">Your account</a></td>
+<!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
                     <td><a href="<?php echo PATHFRONT ?>/template.php?logout=1">Log out</a></td>
                 </tr>
             </table>
