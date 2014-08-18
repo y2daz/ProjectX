@@ -152,10 +152,11 @@
     //Assign all Page Specific variables
     $fullPageHeight = 800;
     $footerTop = $fullPageHeight + 100;
+    $pageTitle= "Approve Leave";
 
     $pageContent = ob_get_contents();
     ob_end_clean();
-    $pageTitle= "Approve Leave";
+
     //Apply the template
     include("../Master.php");
 ?>

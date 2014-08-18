@@ -16,9 +16,7 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+
 
 
 ?>
@@ -33,33 +31,61 @@ $pageTitle= "Template";
             */
 
         </style>
+
+        <script src="leave.js">
+
+
+
+        </script>
+
     </head>
     <body>
 
-    <div id="main">
+        <h1 align="center"> Generate Report </h1>
 
-        <h1 align="center"> Previous Leave History </h1>
+        <?php echo "<script>  </script>" ?>
 
         <br>
         <br>
 
         <form>
 
-            <table align="center" style="width: 300px">
+            <table align="center">
 
                 <tr>
+                    <td>
+                        <input type="radio" name="radiobutton" value="View All" id="r0" onchange="GenerateReport()" checked>View All
+                        <input type="radio" name="radiobutton" value="StaffID" id="r1" onchange="GenerateReport()">By Staff ID
+                        <input type="radio" name="radiobutton" value="Date" id="r2" onchange="GenerateReport()">By Date
+                        <input type="radio" name="radiobutton" value="Approved" id="r3" onchange="GenerateReport()">By Approved
+                        <input type="radio" name="radiobutton" value="Rejected" id="r4" onchange="GenerateReport()">By Rejected
+                        <input type="radio" name="radiobutton" value="Status" id="r5" onchange="GenerateReport()">By Status
+                    </td>
 
-                    <td> Staff ID :</td>
-                    <td><input type="text" name="StaffID" </td>
+            </table>
 
+            <br>
+            <br>
 
+            <table align="center">
 
+                <tr>
+                    <td align="center" colspan="2"><span id="selection">View All </span><input type="text" class="text1" name="SearchBy" value="">
                 </tr>
 
             </table>
 
             <br>
             <br>
+
+            <table align="center">
+                <td align="center"><input type="button" name="generatereport" value="Generate Report"</td>
+            </table>
+
+            <br>
+            <br>
+
+
 
             <table align="center" style="width: 700px" border="1">
 
@@ -109,23 +135,16 @@ $pageTitle= "Template";
 
         </form>
 
-
-
-    </div>
-
     </body>
     </html>
-
 <?php
+//Change these to what you want
+$fullPageHeight = 600;
+$footerTop = $fullPageHeight + 100;
+$pageTitle= "Generate Leave Report";
+//Only change above
 
-    //Change these to what you want
-    $fullPageHeight = 600;
-    $footerTop = $fullPageHeight + 100;
-    $pageTitle= "Template";
-    //Only change above
-
-    $pageContent = ob_get_contents();
-    ob_end_clean();
-    require_once(THISROOT . "/Master.php");
-
+$pageContent = ob_get_contents();
+ob_end_clean();
+require_once(THISROOT . "/Master.php");
 ?>

@@ -14,7 +14,15 @@
     if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
-        echo $operation;
+
+        if($operation)
+        {
+            echo "<script> alert('Request Submitted!') </script>";
+        }
+        else
+        {
+            echo "<script> alert('Request Submission Failed!') </script>";
+        }
     }
 
 
@@ -101,7 +109,7 @@
     //Assign all Page Specific variables
     $fullPageHeight = 800;
     $footerTop = $fullPageHeight + 100;
-    $pageTitle= "Template";
+    $pageTitle= "Apply for Leave";
 
     //Only change above
 
