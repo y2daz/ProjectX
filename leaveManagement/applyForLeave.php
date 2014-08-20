@@ -15,14 +15,7 @@
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
-        if($operation)
-        {
-            echo "<script> alert('Request Submitted!') </script>";
-        }
-        else
-        {
-            echo "<script> alert('Request Submission Failed!') </script>";
-        }
+        echo $operation;
     }
 
 
@@ -37,7 +30,45 @@
                 text-align: center;
             }
 
+            .insert
+            {
+                position:absolute;
+                left:40px;
+                top: 100px;
+            }
+
+            .insert th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left
+            ;
+            }
+
+            .insert td
+            {
+                padding:10px;
+            }
+
+            .insert input{
+                font-weight:bold;
+                font-size:15px;
+            }
+
+            .insert input.button{
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                Right:-335px;
+                top:20px;
+            }
+
+
         </style>
+
+
 
         <script>
 
@@ -54,19 +85,24 @@
     <body>
             <h1>Apply For Leave</h1>
 
-            <form method="post">
+            <form class="insert" method="post">
 
-                <br /><br /><br />
+                <table>
 
-                <table align="center">
+                    <tr><th>Enter Details</th></tr>
+
                     <tr>
                         <td>Staff ID :</td>
                         <td><input type="text" name="staffid" value="" required="true"/></td>
                     </tr>
+
+
                     <tr>
                         <td>Start Date :</td>
                         <td><input type="date" name="startdate" required="true"/></td>
                     </tr>
+
+
                     <tr>
                         <td>End Date :</td>
                         <td><input type="date" name="enddate" required="true"/></td>
@@ -82,25 +118,29 @@
                         </td>
                     </tr>
 
+
                     <tr>
                         <td>Other Reason(s)</td>
                         <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
                     </tr>
+
+
                     <tr>
                         <!--<td>Number of Leave Days Left : </td> -->
                         <!--<td><input type="text" name="NoofLeaveDaysLeft" disabled="disabled"	</td> -->
                     <tr>
+
+
                 </table>
 
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="Submit" id="submitme">
+                    <input type="submit" name="ApplyforLeave" value="Apply for Leave" id="submitme">
+                    <input type="reset" name="reset" value="Reset">
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
-
-
             </form>
     </body>
 </html>

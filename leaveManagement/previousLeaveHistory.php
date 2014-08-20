@@ -26,13 +26,45 @@ ob_start();
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
-            /*
-            ADD YOUR CSS HERE
-            */
+            .insert
+            {
+                position:absolute;
+                left:40px;
+                top: 100px;
+            }
+
+            .insert th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left
+            ;
+            }
+
+            .insert td
+            {
+                padding:10px;
+            }
+
+            .insert input{
+                font-weight:bold;
+                font-size:15px;
+            }
+
+            .insert input.button{
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                Right:-335px;
+                top:20px;
+            }
+
 
         </style>
 
-        <script src="leave.js">
+        <script type="text/javascript">
 
 
 
@@ -43,37 +75,33 @@ ob_start();
 
         <h1 align="center"> Generate Report </h1>
 
-        <?php echo "<script>  </script>" ?>
+        <form class="insert">
 
-        <br>
-        <br>
+            <table>
 
-        <form>
-
-
-
-            <table align="center">
+                <tr><th> Search by </th></tr>
 
                 <tr>
                     <td>
-                        Select:
-                        <input type="radio" name="radiobutton" value="StaffID" id="r1" onchange="GenerateReport()">By Staff ID
-                        <input type="radio" name="radiobutton" value="Date" id="r2" onchange="GenerateReport()">By Date
-
+                        <input type="radio" name="radiobutton" value="Staff ID" id="StaffID" checked>By Staff ID
+                        <input type="radio" name="radiobutton" value="Date" id="Date" >By Date
+                        <input type="text" class="text1" name="SearchBy" value="">
                     </td>
 
-            </table>
+                </tr>
 
-            <br>
 
-            <table align="center">
+                <tr><th>Select Search Results</th></tr>
 
                 <tr>
                     <td>
 
-                        <input type="checkbox" name="check1" value="Approved" id="r3" ">Approved
-                        <input type="checkbox" name="check1" value="Rejected" id="r4" ">Rejected
-                        <input type="checkbox" name="check1" value="Status" id="r5" ">Status
+                        <input type="checkbox" name="check1" value="RequestedDate" id="r3"> Requested Date
+                        <input type="checkbox" name="check1" value="Approved" id="r4">Approved
+                        <input type="checkbox" name="check1" value="Rejected" id="r5">Rejected
+                        <input type="checkbox" name="check1" value="LeaveType" id="r6"> Leave Type
+                        <input type="checkbox" name="check1" value="Status" id="r7" ">Status
+
                     </td>
                 </tr>
 
@@ -82,71 +110,9 @@ ob_start();
             <br>
             <br>
 
-            <table align="center">
 
-                <tr>
-                    <td align="center" colspan="2"><span id="selection">Staff ID </span><input type="text" class="text1" name="SearchBy" value="">
-                </tr>
-
-            </table>
-
-            <br>
-            <br>
-
-            <table align="center">
-                <td align="center"><input type="button" name="generatereport" value="Generate Report"</td>
-            </table>
-
-            <br>
-            <br>
-
-
-
-            <table align="center" style="width: 700px" border="1">
-
-                <tr>
-                    <td>Staff ID</td>
-                    <td>Name</td>
-                    <td>Requested Date</td>
-                    <td>Leave Type</td>
-                    <td>Status </td>
-                </tr>
-
-                <tr>
-                    <td> SID001 </td>
-                    <td> Mrs. Andrea Gunaratne </td>
-                    <td>7/26/2014 11:55 AM </td>
-                    <td> Maternity Leave </td>
-                    <td>Pending</td>
-
-
-                </tr>
-
-                <tr>
-                    <td> SID001 </td>
-                    <td> Mrs. Andrea Gunaratne </td>
-                    <td> 7/05/2014 12.00 AM </td>
-                    <td> Short Leave </td>
-                    <td> Approved </td>
-
-
-                </tr>
-
-                <tr>
-                    <td> SID001 </td>
-                    <td> Mrs. Andrea Gunaratne </td>
-                    <td> 01/15/2014 10.00 AM </td>
-                    <td> Short Leave </td>
-                    <td> Rejected </td>
-
-                </tr>
-
-
-
-            </table>
-
-            <br>
-            <br>
+            <input type="submit" name="GenerateReport" value="Generate Report">
+            <input type="reset" name="reset" align="center">
 
         </form>
 
@@ -154,7 +120,7 @@ ob_start();
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Generate Leave Report";
 //Only change above
