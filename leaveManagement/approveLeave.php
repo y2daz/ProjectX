@@ -57,6 +57,7 @@
         <br />
 
         <form method="post">
+
             <table class="leaveTable" align="center">
                 <tr>
                     <th>Staff ID</th>

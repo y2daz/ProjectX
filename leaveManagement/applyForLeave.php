@@ -43,7 +43,7 @@
                 background-color: #005e77;
                 height:30px;
                 padding:5px;
-                text-align: left
+                text-align: left;
             ;
             }
 
@@ -68,8 +68,6 @@
 
         </style>
 
-
-
         <script>
 
             function selectedvalue(data)
@@ -89,7 +87,8 @@
 
                 <table>
 
-                    <tr><th>Enter Details</th></tr>
+
+                    <tr><th>Enter Details<th></th></tr>
 
                     <tr>
                         <td>Staff ID :</td>
@@ -112,7 +111,6 @@
                         <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
                                 <option value="1">Offical Leave</option>
                                 <option value="2">Maternity Leave</option>
-<!--                                <option value="CasualLeave">Casual Leave</option>-->
                                 <option value="3">Other Leave</option>
                             </select>
                         </td>
