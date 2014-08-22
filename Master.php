@@ -94,6 +94,8 @@
     <body>
 
         <div id="main">
+            <div id="message">
+            </div>
             <?php
                 echo ($pageContent);
             ?>

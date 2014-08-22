@@ -106,10 +106,22 @@ function moveNav()
         $(menuBut).removeClass('hidden');
         var element = document.getElementById('nav');
         element.style.left = -230 + "px";
+
+        sendMessage("Small screen detected");
     }
 }
 
-function message(){
+function hideMessage(){
+    var area = document.getElementById('message');
 
+    area.innerHTML = "";
 
+}
+
+function sendMessage(text){
+    var area = document.getElementById('message');
+
+    area.innerHTML = "<p>" + text + "</p>";
+
+    setTimeout( hideMessage(), 5000);
 }
