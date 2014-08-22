@@ -18,6 +18,26 @@
         echo $operation;
     }
 
+    if(isset($_POST["GetLeaveData"]))
+    {
+        $result = getLeaveData($_POST["staffid"]);
+
+        $OfficialLeave = $result[0];
+        $MaternityLeave = $result[1];
+        $OtherLeave = $result[2];
+    }
+    else
+    {
+        $OfficialLeave = "";
+        $MaternityLeave = "";
+        $OtherLeave = "";
+    }
+
+    /*
+    echo $OfficialLeave;
+    echo $MaternityLeave;
+    echo $OtherLeave;
+    */
 
 ?>
 <html>
@@ -32,11 +52,33 @@
             #details{
                 border-collapse: collapse;
             }
+
+            #output
+            {
+                border-collapse: collapse;
+            }
+
             .insert
             {
                 position:absolute;
                 left:40px;
                 top: 100px;
+            }
+
+            .nigga
+            {
+                position: absolute;
+                left: 500px;
+                top: 100px;
+            }
+
+            .nigga th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left;
             }
 
             .insert th
@@ -124,12 +166,26 @@
                         <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
                     </tr>
 
+                </table>
+
+                <table class="nigga" id="output">
+
+                    <tr><th>Available Leave Days <th></th></tr>
 
                     <tr>
-                        <!--<td>Number of Leave Days Left : </td> -->
-                        <!--<td><input type="text" name="NoofLeaveDaysLeft" disabled="disabled"	</td> -->
-                    <tr>
+                        <td>Official Leave</td>
+                        <td> <?php echo $OfficialLeave ?> </td>
+                    </tr>
 
+                    <tr>
+                        <td>Maternity Leave</td>
+                        <td> <?php echo $MaternityLeave ?></td>
+                    </tr>
+
+                    <tr>
+                        <td>Other Leave</td>
+                        <td> <?php echo $OtherLeave ?></td>
+                    </tr>
 
                 </table>
 
@@ -138,6 +194,7 @@
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="Apply for Leave" id="submitme">
                     <input type="reset" name="reset" value="Reset">
+                    <input type="submit" name="GetLeaveData" value="Get Leave Data">
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->

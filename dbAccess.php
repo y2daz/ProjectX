@@ -337,7 +337,6 @@ function getStaffMember($StaffID)
 }
 
 
-
 function deleteStaff($staffID)
 {
     $dbObj = new dbConnect();
@@ -586,11 +585,35 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
             $stmt -> bind_param("ssssisissi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
 
+            $query = $mysqli->prepare("SELECT * FROM leavedata WHERE StaffID = $staffid");
+            $query -> execute();
+            $query -> store_result();
+
+            $rows = $query->num_rows;
+
+            $query->close();
+
+            if($rows == 0)
+            {
+                $OfficialLeave = 50;
+                $MaternityLeave = 100;
+                $OtherLeave = 50;
+
+                if($insertleavedata = $mysqli->prepare("INSERT INTO leavedata VALUES (?, ?, ?, ?, ?)"))
+                {
+                    $insertleavedata -> bind_param("siiii", $staffid, $OfficialLeave, $MaternityLeave, $OtherLeave, $isdeleted);
+
+                    if($insertleavedata->execute())
+                    {
+                        $insertleavedata->close();
+                    }
+                }
+            }
+
 
             if ($stmt->execute())
             {
                 $stmt->close();
-                $mysqli->close();
                 return true;
             }
         }
@@ -599,6 +622,33 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
         return false;
 
     }
+
+
+    function getLeaveData($StaffID)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = NULL;
+
+        if($mysqli->connect_errno)
+        {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
+        }
+
+        $query = "SELECT OfficialLeave, MaternityLeave, OtherLeave FROM leavedata WHERE StaffID = $StaffID";
+
+        $results = $mysqli->query($query);
+
+        $row = $results->fetch_array();
+
+        $results->free();
+
+        $mysqli->close();
+
+        return $row;
+    }
+
 
     function approveLeave()
     {
@@ -609,9 +659,6 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
-
-
-
 
     }
 
