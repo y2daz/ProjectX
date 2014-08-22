@@ -67,26 +67,26 @@
                     <th></th>
                 </tr>
                 <tr>
-                    <td>SIDXXX</td>
+                    <td>1</td>
                     <td>Mrs. Andrea De Silva</td>
-                    <td>Short Leave</td>
-                    <td>5 Hours</td>
-                    <td>Pending</td>
-                    <td><input type="button" name="expand" value="Expand Details" /></td>
-                </tr>
-                <tr class="alt">
-                    <td>SIDXXX</td>
-                    <td>Mr. Madusha Karunaratne</td>
-                    <td>Long Leave</td>
+                    <td>Official</td>
                     <td>5 Days</td>
                     <td>Pending</td>
                     <td><input type="button" name="expand" value="Expand Details" /></td>
                 </tr>
+                <tr class="alt">
+                    <td>212</td>
+                    <td>Mr. Madusha Karunaratne</td>
+                    <td>Other</td>
+                    <td>2 Days</td>
+                    <td>Pending</td>
+                    <td><input type="button" name="expand" value="Expand Details" /></td>
+                </tr>
                 <tr>
-                    <td> SIDXXX </td>
+                    <td> 123 </td>
                     <td> Mr. Priyan Fernando </td>
-                    <td> Short Leave </td>
-                    <td> 8 am - 11 am</td>
+                    <td> Official</td>
+                    <td> 1 Day</td>
                     <td> Pending </td>
                     <td> <input type="button" name="expand" value="Expand Details" /> </td>
                 </tr>

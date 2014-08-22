@@ -49,20 +49,11 @@ ob_start();
             width:300px;
         }
 
-        #transaction #id{
-            width:200px;
+        #transaction td{
+            max-width:200px;
         }
-        #transaction #date{
-            width:200px;
-        }
-        #transaction #type{
-            width:200px;
-        }
-        #transaction #amount{
-            width:200px;
-        }
-        #transaction #description{
-            width:200px;
+        #transaction input{
+            max-width:10s0px;
         }
 
         #Manager th{

@@ -75,7 +75,7 @@ $footerTop = $fullPageHeight + 50;
             height:400px;
             /*margin: 0px auto 0px auto;*/
             /*clear: both;*/
-            left:800px;
+            left:600px;
             top:100px;
             background-color: #ffffff;
             border: 2px solid #f0f0f0;
@@ -142,7 +142,7 @@ $footerTop = $fullPageHeight + 50;
             position: absolute;
             color:#cc7f00;
             top:120px;
-            left:150px;
+            left:50px;
             max-width: 500px;
         }
         #description h1{

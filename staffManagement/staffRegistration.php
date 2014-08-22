@@ -853,10 +853,13 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><input id="NumberCb8" type="text" name="$subjectMostTaught" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb8"name="subjectMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
-                    <option value="1">Baa</option>
-                    <option value="2">Baa</option>
-                    <option value="3">Black</option>
-                    <option value="4">Sheep</option>
+                    <option value="1">Maths</option>
+                    <option value="2">Science</option>
+                    <option value="3">English</option>
+                    <option value="4">Information Technology</option>
+                    <option value="5">History</option>
+                    <option value="6">Sinhala</option>
+                    <option value="7">Tamil</option>
                 </select>
             </td>
         </tr>
@@ -865,10 +868,13 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><input id="NumberCb9" type="text" name="$subjectSecondMostTaugh" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb9"name="subjectSecondMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
-                    <option value="1">Baa</option>
-                    <option value="2">Baa</option>
-                    <option value="3">Black</option>
-                    <option value="4">Sheep</option>
+                    <option value="1">Maths</option>
+                    <option value="2">Science</option>
+                    <option value="3">English</option>
+                    <option value="4">Information Technology</option>
+                    <option value="5">History</option>
+                    <option value="6">Sinhala</option>
+                    <option value="7">Tamil</option>
                 </select>
             </td>
         </tr>
