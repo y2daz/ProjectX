@@ -29,7 +29,9 @@
             h1{
                 text-align: center;
             }
-
+            #details{
+                border-collapse: collapse;
+            }
             .insert
             {
                 position:absolute;
@@ -85,7 +87,7 @@
 
             <form class="insert" method="post">
 
-                <table>
+                <table id="details">
 
 
                     <tr><th>Enter Details<th></th></tr>
