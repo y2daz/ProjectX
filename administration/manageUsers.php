@@ -24,13 +24,16 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
     if(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
     {
         $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
+        if ($operation == 1)
+            sendNotification("User added successfully.");
+        else
+            sendNotification("Error adding user.");
     }
 }
 
 if (isset($_POST["reset"])) //User has clicked a reset password button
 {
     $operation = changePassword($_POST["user"], $_POST["newPassword"]);
-    sendNotification("Good job!");
 }
 
 if (isset($_GET["delete"])) //User has clicked a reset password button
