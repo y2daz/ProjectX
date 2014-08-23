@@ -7,6 +7,7 @@
  */
     session_start();
     require_once("dbAccess.php");
+    require_once("common.php");
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
@@ -28,6 +29,7 @@
 //    $fullPageHeight = 700;
 //
 //    $footerTop = $fullPageHeight + 50;
+
 
 ?>
 <!DOCTYPE html>
@@ -108,6 +110,8 @@
         <!-- DO NOT EDIT FOLLOWING -->
         <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"-->><span></span></a>
 
+
+        <span id="messagingSystem"></span>
 
         <div id="nav">
 <!--            <li id="Red"><a id="blue">Notices</a>-->
