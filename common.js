@@ -1,5 +1,5 @@
 /**
- * Created by yazdaan on 06/08/14.
+ * Created by Yazdaan on 06/08/14.
  */
 
 $(document).ready(function() {
@@ -106,11 +106,93 @@ function moveNav()
         $(menuBut).removeClass('hidden');
         var element = document.getElementById('nav');
         element.style.left = -230 + "px";
-
-        sendMessage("Small-screen mode enabled.")
     }
 }
 
 function sendMessage(text){
     $.prompt(text);
+}
+
+function resetPassword(user){
+    var states = {
+        state0: {
+            title: "New Password for " + user,
+            html:'<table><tr><td><label>Password </td><td><input type="password" name="jTxtPassword" value=""></label></td></tr>'+
+                '<tr><td><label>Confirm Password </td><td><input type="password" name="jTxtConfirmPassword" value=""></label></td></tr></table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtPassword']",
+            submit:function(e,v,m,f){
+                e.preventDefault();
+
+                var password = f["jTxtPassword"];
+                var confPassword = f["jTxtConfirmPassword"];
+
+                if(v==1){
+                    if (password === confPassword){
+                        if (password !== ""){
+                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+                            post(document.URL, params, "post");
+                        }
+                        else
+                            $.prompt.goToState('state2');
+                    }
+                    else
+                    {
+                        $.prompt.goToState('state1');
+                    }
+                }
+                else
+                    $.prompt.close();
+            }
+        },
+        state1: {
+            title: "Error",
+            html:'<span>Passwords do not match</span>',
+            buttons: { Retry: 1, Cancel: -1 },
+            submit:function(e,v,m,f){
+                e.preventDefault();
+
+                if(v==1)
+                    $.prompt.goToState('state0');
+                else
+                    $.prompt.close();
+            }
+        },
+        state2: {
+            title: "Error",
+            html:'<span>Password is invalid</span>',
+            buttons: { Retry: 1, Cancel: -1 },
+            submit:function(e,v,m,f){
+                e.preventDefault();
+
+                if(v==1)
+                    $.prompt.goToState('state0');
+                else
+                    $.prompt.close();
+            }
+        }
+    }
+    $.prompt(states);
+}
+
+function post(path, params, method) { //Allows us to set POST variables with javascript
+    method = method || "post"; // Set method to post by default if not specified.
+
+    var form = document.createElement("form");
+    form.setAttribute("method", method);
+    form.setAttribute("action", path);
+
+    for(var key in params) {
+        if(params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement("input");
+            hiddenField.setAttribute("type", "hidden");
+            hiddenField.setAttribute("name", key);
+            hiddenField.setAttribute("value", params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
 }

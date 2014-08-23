@@ -27,7 +27,7 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 
 if (isset($_GET["reset"])) //User has clicked a reset password button
 {
-//    echo "Reset, class.";
+    echo "ALALALAL";
 }
 
 if (isset($_GET["delete"])) //User has clicked a reset password button
@@ -144,7 +144,7 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
                             echo $top;
                             echo "$row[0]";
                             echo "<td>$row[1]</td>";
-                            echo "<td><input name=\"Reset" . "\" type=\"submit\" value=\"Reset\" formaction=\"manageUsers.php?reset=" . $row[0] . "\" /> </td> ";
+                            echo "<td><input name=\"Reset" . "\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
                             echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"manageUsers.php?delete=" . $row[0] . "\" /> </td> ";
                             echo "</td></tr>";
                         }
@@ -177,7 +177,7 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
                             </table>
                         </td>
                         <td class="column"><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
-                        <td class="column"><input type="submit" value="Submit" name="newUser" formaction=""></td>
+                        <td class="column"><input type="Submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
             </form>
