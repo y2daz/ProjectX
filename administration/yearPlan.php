@@ -30,7 +30,7 @@ $dYear = date("Y");
 
 if (isFilled($_POST[0]))
 {
-    echo insertHolidays($dYear, $_POST);
+//    echo insertHolidays($dYear, $_POST);
 }
 
 ?>

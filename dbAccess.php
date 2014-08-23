@@ -193,7 +193,7 @@
         return false;
     }
 
-    function insertHolidays($year, $dayArray)
+    function insertHolidays($year, $dayArray) //NEEDS MORE WORK.
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -203,26 +203,16 @@
         }
 
         $isDeleted = 0;
-        $i = 0;
-        $thisDate = "";
 
         if ($stmt = $mysqli->prepare("INSERT INTO Holiday values(?, (SELECT STR_TO_DATE(?, '%d/%m/%Y') ), ?);"))
         {
-
-
-            $stmt -> bind_param("isi", $year, $dayArray[$i], $isDeleted);
-
             for($i = 0; $i < count($dayArray); $i++)
             {
-                date("Y-m-d", strtotime($dayArray[$i]));
+                $stmt -> bind_param("isi", $year, $dayArray[$i], $isDeleted);
+                $stmt -> execute();
 
-                if (!$stmt->execute())
-                {
-                    $stmt->close();
-                    $mysqli->close();
-                    return false;
-                }
             }
+
             $stmt->close();
             $mysqli->close();
             return true;
