@@ -25,23 +25,15 @@ ob_start();
     <head>
         <script>
             $(document).ready(function(){
-                    $('.days').click(function(){
+                    $('.day1, .day2, .day3, .day4, .day5').click(function(){  //Only allows selecting of weekdays
                         this.classList.toggle("selected");
-
-//                        if ($(this).hasClass('active')){
-//                            $('#nav').stop().animate({left:'0'}, 200);
-//                        }
-//                        else
-//                        {
-//                            $('#nav').stop().animate({left: '-100%'}, 200);
-//                        }
                     });
 
                 }
             )
 
         </script>
-
+        <script src="yearPlan.js"></script>
 
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
@@ -50,6 +42,7 @@ ob_start();
     .currentDay {
         background:#FFC;
         color:red;
+        font-weight: 600;
     }
     #calendar {
         border-collapse:collapse;
@@ -115,7 +108,7 @@ ob_start();
 
 <?php
 $dDaysOnPage = 37;
-$dDay = 1;
+$dDay = 1;//Sets weekend
 $dYear = date("Y");
 ?>
 
@@ -165,34 +158,6 @@ $dYear = date("Y");
 
     <?php
 
-        function FriendlyDayOfWeek($dayNum) {
-        // converts the sunday to 7
-        // This function can be removed in php 5 by - date("N"),
-        // just remove function calls below and replace by swapping date("w" for date("N"
-        if ($dayNum == 0){ return 7; } else { return $dayNum; }
-        }
-
-        for ($mC=1;$mC<=12;$mC++) {
-        $currentDT = mktime(0,0,0,$mC,$dDay,$dYear);
-        echo "<tr><td class='monthName'><div>".date("F",$currentDT)."</div></td>";
-        $daysInMonth = date("t",$currentDT);
-
-        echo InsertBlankTd(FriendlyDayOfWeek(date("w",$currentDT))-1);
-
-        for ($i=1;$i<=$daysInMonth;$i++) {
-        $exactDT = mktime(0,0,0,$mC,$i,$dYear);
-        if ($i==date("d")&&date("m",$currentDT)==date("m")) { $class="currentDay"; } else { $class = ""; }
-        echo "<td class='".$class." days day".FriendlyDayOfWeek(date("w",$exactDT))."'>".$i."</td>";
-        }
-
-        echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT))+1);
-        echo "</tr>";
-        }
-        ?>
-            </table>
-            </body>
-        </html>
-        <?php
         function InsertBlankTd($numberOfTdsToAdd) {
             $tdString = "";
             for($i = 1; $i <= $numberOfTdsToAdd; $i++) {
@@ -200,8 +165,49 @@ $dYear = date("Y");
             }
             return $tdString;
         }
-?>
-    <input type="button" class="button" name="Update" value="Update">
+
+        function FriendlyDayOfWeek($dayNum) //Converts Sunday to 7
+        {
+            if ($dayNum == 0)
+            {
+                return 7;
+            }
+            else
+            {
+                return $dayNum;
+            }
+        }
+
+        for ($mC=1;$mC<=12;$mC++)
+        { //mc is Month, dDay is digit of day
+            $currentDT = mktime(0, 0, 0, $mC, $dDay, $dYear);
+            echo "<tr><td class='monthName'><div>" . date("F", $currentDT) . "</div></td>";
+            $daysInMonth = date("t", $currentDT);
+            echo InsertBlankTd(FriendlyDayOfWeek(date("w", $currentDT)) - 1);
+
+            for ($i = 1; $i <= $daysInMonth; $i++) {
+                $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
+//                if ($i==date("d") && date("m",$currentDT) == date("m")) //Look for today (Not important to us)
+//                {
+//                    $class="currentDay";
+//                }
+//                else
+//                {
+                    $class = "";
+//                }
+                echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $i . "/$mC" . "/$dYear\"  >$i</td>";
+            }
+
+            echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT)) + 1);
+            echo "</tr>";
+        }
+    ?>
+            </table>
+            </body>
+        </html>
+
+    <br />
+    <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
 
     </body>
 </html>

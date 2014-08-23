@@ -1,0 +1,19 @@
+/**
+ * Created by yazdaan on 23/08/14.
+ */
+
+
+function submitYearPlan()
+{
+    alert($('.selected').length);
+
+    var dates = new Array();
+
+    $('.selected').each(function(i, obj)
+        {
+            var name = $(obj).attr('name');
+            dates.push(name);
+            post(document.URL, dates, "get");
+        });
+
+}
