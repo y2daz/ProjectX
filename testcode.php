@@ -29,9 +29,10 @@
 
         $testcode = "Shavin Peiris";
 
+        sendNotification("this is a sample test");
     ?>
 
-    <input type="button" value="Testing" onclick="sendMessage('<?php echo $testcode ?>')"
+   <!--<input type="button" value="Testing" onclick="sendMessage(<?php //echo $testcode ?>')" -->
 
 </body>
 

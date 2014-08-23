@@ -7,6 +7,7 @@
  */
 
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+    require_once(THISROOT . "/common.php");
     include(THISROOT . "/dbAccess.php");
 
     ob_start();
@@ -15,7 +16,20 @@
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
-        echo $operation;
+
+        $success = "Leave Request Sent!";
+        $fail = "Request Failed!";
+
+        if($operation)
+        {
+           sendNotification($success);
+        }
+        else
+        {
+           sendNotification($fail);
+        }
+
+        //echo $operation;
     }
 
     if(isset($_POST["GetLeaveData"]))
