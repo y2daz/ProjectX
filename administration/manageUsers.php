@@ -25,9 +25,9 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
     }
 }
 
-if (isset($_GET["reset"])) //User has clicked a reset password button
+if (isset($_POST["reset"])) //User has clicked a reset password button
 {
-    echo "ALALALAL";
+    $operation = changePassword($_POST["user"], $_POST["newPassword"]);
 }
 
 if (isset($_GET["delete"])) //User has clicked a reset password button

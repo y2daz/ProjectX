@@ -140,6 +140,33 @@
         return false;
     }
 
+    function changePassword($email, $password)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        //        echo "Hashed password = " . $hashedPassword;
+        if ($stmt = $mysqli->prepare("UPDATE User SET userPassword=? WHERE userEmail=?;"))
+        {
+            $stmt -> bind_param("ss", $hashedPassword, $email);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $stmt->close();
+        $mysqli->close();
+        return false;
+    }
+
+
     function insertStudent($admissionNo, $name, $dateOfBirth,$nat_race, $religion, $medium, $address, $grade, $class, $house)
     {
         $dbObj = new dbConnect();
