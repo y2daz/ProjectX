@@ -13,11 +13,12 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
 ob_start();
 
 ?>
-<html>
     <head>
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
@@ -35,7 +36,6 @@ ob_start();
 
 
     </body>
-</html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;

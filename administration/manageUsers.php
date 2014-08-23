@@ -7,11 +7,13 @@
  *
  */
 
-require_once("../formValidation.php");
-require_once("../dbAccess.php");
-
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
+
 
 ob_start();
 
@@ -28,14 +30,16 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 if (isset($_POST["reset"])) //User has clicked a reset password button
 {
     $operation = changePassword($_POST["user"], $_POST["newPassword"]);
+    sendNotification("Good job!");
 }
 
 if (isset($_GET["delete"])) //User has clicked a reset password button
 {
+    sendNotification("Good job!");
     $deletedEmail = $_GET["delete"];
     if (!(deleteUser($deletedEmail)))
     {
-        //user doesn.t exist, tell thm
+        //user doesn't exist, tell thm
     }
 }
 
