@@ -30,7 +30,7 @@ function isNIC($value)
 
         if(is_numeric($checknumber))
         {
-           $checkifV = substr($value, strlen($value)-1, strlen($value));
+           $checkifV = ucfirst(substr($value, strlen($value)-1, strlen($value)));
 
             if(strcmp($checkifV, "V"));
             {
@@ -53,7 +53,7 @@ function isNumber($value)
 
 }
 
-function isLetters($value)
+function isLetters($value) //Works for all string must change
 {
     if(is_string($value))
         return true;
@@ -71,6 +71,18 @@ function isContactNumber($value)
     else
         return false;
 
+}
+
+function hasSpaces($value)
+{
+    for ($i = 0; $i < strlen($value); $i++)
+    {
+        $curr = substr($value, $i, 1);
+
+        if(strcmp($curr, " ") == 0)
+            return 1;
+    }
+    return 0;
 }
 
 

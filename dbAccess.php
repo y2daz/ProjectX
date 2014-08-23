@@ -294,7 +294,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("UPDATE User SET isDeleted=? WHERE userEmail=?;"))
+        if ($stmt = $mysqli->prepare("UPDATE User SET isDeleted=? WHERE userEmail=? AND isDeleted=0;"))
         {
             $deleteNo = 2;
 
@@ -302,9 +302,12 @@
 
             if ($stmt->execute())
             {
-                $stmt->close();
-                $mysqli->close();
-                return TRUE;
+                if ($stmt->affected_rows > 0)
+                {
+                    $stmt->close();
+                    $mysqli->close();
+                    return TRUE;
+                }
             }
         }
         $stmt->close();
