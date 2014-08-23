@@ -15,10 +15,11 @@
 
 <head>
 
-    <script type="text/javascript" src="common.js">
+    <script type="text/javascript" src="common.js"></script>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery-impromptu.min.js"></script>
 
-    </script>
-
+    <link rel="stylesheet" href="scripts/jquery-impromptu.min.css"
 
 </head>
 
@@ -30,7 +31,7 @@
 
     ?>
 
-    <input type="button" value="Testing" onclick="sendMessage(<?php echo $testcode ?>)"
+    <input type="button" value="Testing" onclick="sendMessage('<?php echo $testcode ?>')"
 
 </body>
 
