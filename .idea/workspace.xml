@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="Manage Event Button works">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/javascript/LICENSE.md" afterPath="$PROJECT_DIR$/scripts/LICENSE.md" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/javascript/popModal.min.css" afterPath="$PROJECT_DIR$/scripts/popModal.min.css" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/javascript/popModal.min.js" afterPath="$PROJECT_DIR$/scripts/popModal.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master.php" afterPath="$PROJECT_DIR$/Master.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/common.js" afterPath="$PROJECT_DIR$/common.js" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="More changes to manageUsers.&#10;">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/yearPlan.js" afterPath="$PROJECT_DIR$/administration/yearPlan.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/yearPlan.php" afterPath="$PROJECT_DIR$/administration/yearPlan.php" />
     </list>
     <ignored path="ProjectX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,7 +15,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="ChangesViewManager" flattened_view="false" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -30,11 +28,68 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="common.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="common.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="116" column="22" selection-start="3301" selection-end="3301" vertical-scroll-proportion="0.822563" vertical-offset="1337" max-vertical-offset="2250">
+            <state line="154" column="59" selection-start="4516" selection-end="4533" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="4032">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbAccess.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="212" column="53" selection-start="6095" selection-end="6095" vertical-scroll-proportion="0.5530474" vertical-offset="3326" max-vertical-offset="14004">
+              <folding>
+                <element signature="e#6#87#0" expanded="true" />
+                <marker date="1408816226951" expanded="true" signature="514:598" placeholder="Select userP..User..." />
+                <marker date="1408816226951" expanded="true" signature="1895:1949" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="2662:2756" placeholder="Select Event..Event..." />
+                <marker date="1408816226951" expanded="true" signature="3519:3586" placeholder="SELECT * FRO..." />
+                <marker date="1408816226951" expanded="true" signature="3855:3916" placeholder="UPDATE User ..." />
+                <marker date="1408816226951" expanded="true" signature="4409:4444" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="5224:5272" placeholder="UPDATE User ..." />
+                <marker date="1408816226951" expanded="true" signature="5955:6025" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="5986:6019" placeholder="SELECT STR_T..." />
+                <marker date="1408816226951" expanded="true" signature="6986:7045" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="7763:7843" placeholder="Select userE..User..." />
+                <marker date="1408816226951" expanded="true" signature="8509:8624" placeholder="Select Admis..User..." />
+                <marker date="1408816226951" expanded="true" signature="9317:9411" placeholder="SELECT `Valu..." />
+                <marker date="1408816226951" expanded="true" signature="10183:10244" placeholder="UPDATE User ..." />
+                <marker date="1408816226951" expanded="true" signature="11377:11473" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="12521:12587" placeholder="Select * FRO..Staff..." />
+                <marker date="1408816226951" expanded="true" signature="13186:13230" placeholder="UPDATE Staff..." />
+                <marker date="1408816226951" expanded="true" signature="13788:13913" placeholder="Select Staff..Staff..." />
+                <marker date="1408816226951" expanded="true" signature="14526:14573" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="15129:15187" placeholder="SELECT MAX(C..Staff..." />
+                <marker date="1408816226951" expanded="true" signature="15856:15962" placeholder="Select Staff..Staff..." />
+                <marker date="1408816226951" expanded="true" signature="17196:17239" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="18540:18599" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="18984:19032" placeholder="SELECT * FRO..LeaveData..." />
+                <marker date="1408816226951" expanded="true" signature="19385:19429" placeholder="INSERT INTO ..." />
+                <marker date="1408816226951" expanded="true" signature="20302:20390" placeholder="SELECT Offic..LeaveData..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yearPlan.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/yearPlan.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="17" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yearPlan.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/administration/yearPlan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="40" selection-start="675" selection-end="675" vertical-scroll-proportion="-10.0" vertical-offset="108" max-vertical-offset="2862">
+              <folding>
+                <element signature="tag#style#0;tag#head#0;tag#html#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,22 +107,14 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Temp/Grade_Subject.php" />
-        <option value="$PROJECT_DIR$/TimeTable/timetable.css" />
-        <option value="$PROJECT_DIR$/TimeTable/main.css" />
-        <option value="$PROJECT_DIR$/TimeTable/gradeSubject.php" />
-        <option value="$PROJECT_DIR$/TimeTable/timetable.js" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/attendance/viewAttendance.php" />
         <option value="$PROJECT_DIR$/eventManagement/OldaddEvent.php" />
         <option value="$PROJECT_DIR$/eventManagement/OldEventList.php" />
-        <option value="$PROJECT_DIR$/formValidation.php" />
         <option value="$PROJECT_DIR$/enterData.sql" />
         <option value="$PROJECT_DIR$/sandbox/AttendanceTableCreation.php" />
         <option value="$PROJECT_DIR$/sandbox/navmenubutton.css" />
         <option value="$PROJECT_DIR$/sandbox/temp.html" />
         <option value="$PROJECT_DIR$/administration/tempmanageUsers.php" />
-        <option value="$PROJECT_DIR$/Styles/main.css" />
         <option value="$PROJECT_DIR$/sandbox/AttendanceTableCreation.html" />
         <option value="$PROJECT_DIR$/Styles/navmenubutton.css" />
         <option value="$PROJECT_DIR$/template.php" />
@@ -85,7 +132,6 @@
         <option value="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" />
         <option value="$PROJECT_DIR$/studentInformation/studentRegistration.php" />
         <option value="$PROJECT_DIR$/eventManagement/addEvent.php" />
-        <option value="$PROJECT_DIR$/administration/yearPlan.php" />
         <option value="$PROJECT_DIR$/dbConnect.php" />
         <option value="$PROJECT_DIR$/marksAndGrading/termtestResults.php" />
         <option value="$PROJECT_DIR$/marksAndGrading/termTestMarks.php" />
@@ -94,15 +140,24 @@
         <option value="$PROJECT_DIR$/eventManagement/eventList.php" />
         <option value="$PROJECT_DIR$/Menu.php" />
         <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
-        <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/manaDB.sql" />
         <option value="$PROJECT_DIR$/leaveManagement/approveLeave.php" />
         <option value="$PROJECT_DIR$/eventManagement/manageEvents.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
+        <option value="$PROJECT_DIR$/Styles/main.css" />
+        <option value="$PROJECT_DIR$/scripts/jquery-impromptu.min.css" />
+        <option value="$PROJECT_DIR$/scripts/jquery-impromptu.min.js" />
+        <option value="$PROJECT_DIR$/testcode.php" />
         <option value="$PROJECT_DIR$/Master.php" />
+        <option value="$PROJECT_DIR$/Template.php" />
+        <option value="$PROJECT_DIR$/common.php" />
+        <option value="$PROJECT_DIR$/formValidation.php" />
+        <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/common.js" />
+        <option value="$PROJECT_DIR$/administration/yearPlan.js" />
+        <option value="$PROJECT_DIR$/administration/yearPlan.php" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
       </list>
     </option>
   </component>
@@ -185,7 +240,49 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="TimeTable" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Styles" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="scripts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ProjectX" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="administration" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -203,7 +300,7 @@
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="SearchEverywhereHistory" value="datab" />
+    <property name="SearchEverywhereHistory" value="&#10;datab" />
     <property name="options.lastSelected" value="usage.statistics" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
@@ -242,10 +339,7 @@
             <option name="mySupportsDeletion" value="false" />
             <option name="myCanBeAbsent" value="false" />
             <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/leaveManagement/applyForLeave.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/leaveManagement/approveLeave.php</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/leaveManagement/leave.js</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/leaveManagement/previousLeaveHistory.php</PATH>
+            <PATH vcs="Git" revision="">$PROJECT_DIR$/testcode.php</PATH>
           </FILE-GROUP>
           <FILE-GROUP>
             <option name="myUpdateName" value="Created" />
@@ -342,10 +436,13 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.Template.php">
+  <component name="RunManager" selected="PHP Script.dbAccess.php">
     <configuration default="false" name="Template.php" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true" temporary="true" uri="http://localhost:63342/ProjectX/Template.php">
       <RunnerSettings RunnerId="JavascriptDebugRunner" />
       <ConfigurationWrapper RunnerId="JavascriptDebugRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="dbAccess.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/dbAccess.php">
       <method />
     </configuration>
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -367,12 +464,14 @@
       <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Template.php" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.dbAccess.php" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.Template.php" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="PHP Script.dbAccess.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.Template.php" />
       </list>
     </recent_temporary>
   </component>
@@ -1020,14 +1119,66 @@
       <created>1408725075501</created>
       <updated>1408725075501</updated>
     </task>
-    <option name="localTasksCounter" value="156" />
+    <task id="LOCAL-00156" summary="Basic message sending from popModal works. Use sendMessage() from common.js">
+      <created>1408728398459</created>
+      <updated>1408728398459</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Fix for the too many SQL connections error">
+      <created>1408778276961</created>
+      <updated>1408778276961</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Darkened nav menu line">
+      <created>1408780440780</created>
+      <updated>1408780440780</updated>
+    </task>
+    <task id="LOCAL-00159" summary="New messaging system.">
+      <created>1408780770138</created>
+      <updated>1408780770138</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Messaging System in place.">
+      <created>1408785347058</created>
+      <updated>1408785347058</updated>
+    </task>
+    <task id="LOCAL-00161" summary="Reset password works... :D">
+      <created>1408786121851</created>
+      <updated>1408786121851</updated>
+    </task>
+    <task id="LOCAL-00162" summary="Included all the necessary files. (They're all included in the master page, so just calling the function from the page in the template will work.)">
+      <created>1408797248576</created>
+      <updated>1408797248576</updated>
+    </task>
+    <task id="LOCAL-00163" summary="Testing messaging with php.">
+      <created>1408798942003</created>
+      <updated>1408798942003</updated>
+    </task>
+    <task id="LOCAL-00164" summary="Testing messaging with php.&#10;">
+      <created>1408798985271</created>
+      <updated>1408798985271</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Made error messaging work with PHP.">
+      <created>1408799146653</created>
+      <updated>1408799146653</updated>
+    </task>
+    <task id="LOCAL-00166" summary="Several changes to manageUsers.">
+      <created>1408803468482</created>
+      <updated>1408803468482</updated>
+    </task>
+    <task id="LOCAL-00167" summary="More changes to manageUsers.&#10;">
+      <created>1408810100963</created>
+      <updated>1408810100963</updated>
+    </task>
+    <task id="LOCAL-00168" summary="Working on yearplan">
+      <created>1408814273501</created>
+      <updated>1408814273501</updated>
+    </task>
+    <option name="localTasksCounter" value="169" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294979" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32845187" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.17604166" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1039,6 +1190,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18489583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="552" y="45" width="261" height="647" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39748955" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="100" y="124" width="1720" height="856" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1046,7 +1198,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39776194" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1066,9 +1217,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18489583" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" x="552" y="45" width="261" height="647" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39776194" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39776194" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1083,19 +1234,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Minor stuff&#10;" />
-    <MESSAGE value="Added compyright notices for the slide-out enu button" />
-    <MESSAGE value="Template minor fix" />
-    <MESSAGE value="Added substitute to template&#10;" />
-    <MESSAGE value="Timetable small fixes" />
-    <MESSAGE value="Marks and grading interface fixes" />
-    <MESSAGE value="ALInput changes" />
-    <MESSAGE value="ALInput changes&#10;" />
-    <MESSAGE value="OLInput changes&#10;" />
-    <MESSAGE value="blacklist changes&#10;" />
-    <MESSAGE value="ClassroomInformation changes&#10;" />
-    <MESSAGE value="Search Staff minor changes&#10;" />
-    <MESSAGE value="Event management link change" />
     <MESSAGE value="getAllEvents" />
     <MESSAGE value="Simple changes" />
     <MESSAGE value="Inserting events works" />
@@ -1108,47 +1246,27 @@
     <MESSAGE value="Rename generateLeaveReport" />
     <MESSAGE value="Apply for leave table border fix." />
     <MESSAGE value="Trying messaging system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Trying messaging system" />
+    <MESSAGE value="Basic message sending from popModal works. Use sendMessage() from common.js" />
+    <MESSAGE value="Fix for the too many SQL connections error" />
+    <MESSAGE value="Darkened nav menu line" />
+    <MESSAGE value="New messaging system." />
+    <MESSAGE value="Messaging System in place." />
+    <MESSAGE value="Reset password works... :D" />
+    <MESSAGE value="Included all the necessary files. (They're all included in the master page, so just calling the function from the page in the template will work.)" />
+    <MESSAGE value="Testing messaging with php." />
+    <MESSAGE value="Testing messaging with php.&#10;" />
+    <MESSAGE value="Made error messaging work with PHP." />
+    <MESSAGE value="Several changes to manageUsers." />
+    <MESSAGE value="More changes to manageUsers.&#10;" />
+    <MESSAGE value="Working on yearplan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on yearplan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/enterData.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="13" selection-end="13" vertical-scroll-proportion="0.038961038" vertical-offset="0" max-vertical-offset="2088" />
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/gradeSubject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="91" selection-end="91" vertical-scroll-proportion="0.15550756" vertical-offset="0" max-vertical-offset="926" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="56" selection-start="710" selection-end="710" vertical-scroll-proportion="0.45330536" vertical-offset="0" max-vertical-offset="953" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/temp.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="1706" selection-end="1881" vertical-scroll-proportion="-25.814816" vertical-offset="23" max-vertical-offset="936" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sandbox/navmenubutton.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="13" selection-start="978" selection-end="978" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1062" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="30" selection-start="1061" selection-end="1061" vertical-scroll-proportion="1.095488" vertical-offset="0" max-vertical-offset="3420" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Styles/navmenubutton.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="0" selection-start="507" selection-end="507" vertical-scroll-proportion="0.19148937" vertical-offset="0" max-vertical-offset="1224" />
@@ -1209,11 +1327,6 @@
         <state line="129" column="2" selection-start="2765" selection-end="2765" vertical-scroll-proportion="0.9611231" vertical-offset="1234" max-vertical-offset="2232" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="0" selection-start="89" selection-end="89" vertical-scroll-proportion="0.13606912" vertical-offset="0" max-vertical-offset="926" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/cancelLeave.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="37" column="41" selection-start="890" selection-end="890" vertical-scroll-proportion="0.4276458" vertical-offset="270" max-vertical-offset="6840" />
@@ -1239,11 +1352,6 @@
         <state line="21" column="0" selection-start="640" selection-end="640" vertical-scroll-proportion="0.20618556" vertical-offset="0" max-vertical-offset="2358" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/administration/yearPlan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="49" selection-start="1202" selection-end="1202" vertical-scroll-proportion="0.38148984" vertical-offset="4" max-vertical-offset="1638" />
-      </provider>
-    </entry>
     <entry file="uml://DATABASE/10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.schema:manaDB">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1256,8 +1364,8 @@
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Timetable</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Blacklist</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.TermMarks</node>
-            <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Student_Subject_Grade</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.LanguageOption</node>
+            <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Student_Subject_Grade</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.ALMarks</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.ApplyLeave</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Staff</node>
@@ -1296,30 +1404,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/marksAndGrading/termTestMarks.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="2" selection-start="2652" selection-end="2652" vertical-scroll-proportion="-31.296297" vertical-offset="1747" max-vertical-offset="2718">
-          <folding />
-        </state>
+        <state line="144" column="2" selection-start="2652" selection-end="2652" vertical-scroll-proportion="-31.296297" vertical-offset="1747" max-vertical-offset="2718" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/marksAndGrading/searchMarks.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.3003337" vertical-offset="180" max-vertical-offset="2934">
-          <folding />
-        </state>
+        <state line="25" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.3003337" vertical-offset="180" max-vertical-offset="2934" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/marksAndGrading/termtestResults.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="28" selection-start="770" selection-end="770" vertical-scroll-proportion="0.70077866" vertical-offset="0" max-vertical-offset="4842">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Template.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="926">
-          <folding />
-        </state>
+        <state line="35" column="28" selection-start="770" selection-end="770" vertical-scroll-proportion="0.70077866" vertical-offset="0" max-vertical-offset="4842" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
@@ -1329,48 +1424,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="55" selection-start="1845" selection-end="1845" vertical-scroll-proportion="-0.22024472" vertical-offset="1332" max-vertical-offset="2808">
-          <folding />
-        </state>
+        <state line="74" column="55" selection-start="1845" selection-end="1845" vertical-scroll-proportion="-0.22024472" vertical-offset="1332" max-vertical-offset="2808" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="-11.962963" vertical-offset="217" max-vertical-offset="1224">
-          <folding>
-            <element signature="e#6#215#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dbAccess.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="0" selection-start="4581" selection-end="4581" vertical-scroll-proportion="-15.666667" vertical-offset="2277" max-vertical-offset="11160">
-          <folding />
-        </state>
+        <state line="30" column="23" selection-start="691" selection-end="691" vertical-scroll-proportion="-11.962963" vertical-offset="217" max-vertical-offset="1224" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eventManagement/manageEvents.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="25" selection-start="1165" selection-end="1165" vertical-scroll-proportion="0.5839695" vertical-offset="594" max-vertical-offset="4122">
-          <folding />
-        </state>
+        <state line="55" column="25" selection-start="1165" selection-end="1165" vertical-scroll-proportion="0.5839695" vertical-offset="594" max-vertical-offset="4122" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="30" selection-start="2234" selection-end="2234" vertical-scroll-proportion="1.1129326" vertical-offset="883" max-vertical-offset="2952">
-          <folding />
-        </state>
+        <state line="88" column="30" selection-start="2234" selection-end="2234" vertical-scroll-proportion="1.1129326" vertical-offset="883" max-vertical-offset="2952" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="-1.0174216" vertical-offset="1772" max-vertical-offset="3042">
-          <folding>
-            <element signature="e#1449#1471#0" expanded="false" />
-          </folding>
-        </state>
+        <state line="77" column="0" selection-start="1161" selection-end="1161" vertical-scroll-proportion="-1.0174216" vertical-offset="1772" max-vertical-offset="3042" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
@@ -1380,18 +1454,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="571" column="0" selection-start="22169" selection-end="22169" vertical-scroll-proportion="-10.478556" vertical-offset="19364" max-vertical-offset="20250">
-          <folding>
-            <element signature="e#51407#52203#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="24" selection-start="2969" selection-end="2969" vertical-scroll-proportion="0.0" vertical-offset="2250" max-vertical-offset="4212">
-          <folding />
-        </state>
+        <state line="571" column="0" selection-start="22169" selection-end="22169" vertical-scroll-proportion="-10.478556" vertical-offset="19364" max-vertical-offset="20250" />
       </provider>
     </entry>
     <entry file="uml://DATABASE/10fc2720-44da-4b75-9e19-f3b1c7cc8d9b">
@@ -1406,8 +1469,8 @@
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Timetable</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Blacklist</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.TermMarks</node>
-            <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.LanguageOption</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Student_Subject_Grade</node>
+            <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.LanguageOption</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.ALMarks</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.ApplyLeave</node>
             <node x="" y="">10fc2720-44da-4b75-9e19-f3b1c7cc8d9b.table:manaDB.Staff</node>
@@ -1429,12 +1492,13 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.10900473933649289" x="9249.847826086956" y="5920.934782608696" />
+          <settings layout="Hierarchic Group" zoom="0.10900473933649289" x="9250.0" y="5921.0" />
           <SelectedNodes />
           <Categories>
             <Category>Columns</Category>
             <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1444,15 +1508,15 @@
           <ID>DATABASE</ID>
           <OriginalElement>6a4e7f05-4582-459c-a5c5-9aa23bfa1043</OriginalElement>
           <nodes>
-            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:LeaveData</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Teaches</node>
+            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:LeaveData</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:User</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Language</node>
-            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Staff</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Timetable</node>
-            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Blacklist</node>
-            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:IsSubstituted</node>
+            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Staff</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:LabelLanguage</node>
+            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:IsSubstituted</node>
+            <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:Blacklist</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:EventManager</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:TermMarks</node>
             <node x="" y="">6a4e7f05-4582-459c-a5c5-9aa23bfa1043.table:ALMarks</node>
@@ -1473,73 +1537,203 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.13116428362999707" x="4650.034482758621" y="3337.233592880979" />
+          <settings layout="Hierarchic Group" zoom="0.13116428362999707" x="4650.0" y="3337.0" />
           <SelectedNodes />
           <Categories>
             <Category>Columns</Category>
             <Category>Key columns</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manaDB.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="561" column="41" selection-start="19456" selection-end="19456" vertical-scroll-proportion="0.23767799" vertical-offset="9881" max-vertical-offset="20394">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="13" selection-start="1919" selection-end="1919" vertical-scroll-proportion="-17.333334" vertical-offset="900" max-vertical-offset="3528">
-          <folding />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="24" selection-start="1981" selection-end="1982" vertical-scroll-proportion="-2.096774" vertical-offset="3307" max-vertical-offset="7020">
-          <folding />
-        </state>
+        <state line="79" column="24" selection-start="1981" selection-end="1982" vertical-scroll-proportion="-2.096774" vertical-offset="3307" max-vertical-offset="7020" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="13" selection-start="1235" selection-end="1235" vertical-scroll-proportion="-31.962963" vertical-offset="19" max-vertical-offset="2880">
+        <state line="54" column="13" selection-start="1235" selection-end="1235" vertical-scroll-proportion="-31.962963" vertical-offset="19" max-vertical-offset="2880" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/jquery-impromptu.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="33" selection-start="870" selection-end="870" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="576">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/popModal.min.js">
+    <entry file="file://$PROJECT_DIR$/scripts/jquery-impromptu.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="913">
+        <state line="24" column="0" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.4731654" vertical-offset="0" max-vertical-offset="913" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="36" selection-start="485" selection-end="485" vertical-scroll-proportion="0.48053393" vertical-offset="0" max-vertical-offset="899">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="926">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider editor-type-id="com.intellij.persistence.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="561" column="41" selection-start="19456" selection-end="19456" vertical-scroll-proportion="0.0" vertical-offset="9881" max-vertical-offset="20394">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="12" selection-start="657" selection-end="686" vertical-scroll-proportion="0.6006674" vertical-offset="0" max-vertical-offset="4212">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="24" selection-start="151" selection-end="151" vertical-scroll-proportion="-6.0" vertical-offset="0" max-vertical-offset="360">
           <folding>
-            <element signature="n#!!doc" expanded="false" />
+            <element signature="e#6#87#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/popModal.min.css">
+    <entry file="file://$PROJECT_DIR$/formValidation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="95" selection-end="95" vertical-scroll-proportion="0.09857612" vertical-offset="0" max-vertical-offset="913">
+        <state line="80" column="0" selection-start="1324" selection-end="1324" vertical-scroll-proportion="-23.962963" vertical-offset="703" max-vertical-offset="1620">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="8" selection-start="1415" selection-end="1415" vertical-scroll-proportion="-17.962963" vertical-offset="379" max-vertical-offset="3816">
+          <folding>
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1408803326715" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3420">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="101" column="0" selection-start="3572" selection-end="3572" vertical-scroll-proportion="0.4393771" vertical-offset="1423" max-vertical-offset="3834">
+        <state line="52" column="8" selection-start="1551" selection-end="1630" vertical-scroll-proportion="0.36040044" vertical-offset="612" max-vertical-offset="3906">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="264" selection-end="393" vertical-scroll-proportion="-2.6666667" vertical-offset="0" max-vertical-offset="774">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TimeTable/language.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="77" column="0" selection-start="1797" selection-end="2632" vertical-scroll-proportion="0.08577878" vertical-offset="1220" max-vertical-offset="2646">
+          <folding>
+            <marker date="1408287871152" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1408287871152" expanded="true" signature="-1:-1" placeholder="Select e.lab..LabelLanguage..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="116" column="22" selection-start="3301" selection-end="3301" vertical-scroll-proportion="0.822563" vertical-offset="1337" max-vertical-offset="2250">
+        <state line="154" column="59" selection-start="4516" selection-end="4533" vertical-scroll-proportion="0.0" vertical-offset="2520" max-vertical-offset="4032">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/yearPlan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="17" selection-start="272" selection-end="272" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="432">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/yearPlan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="40" selection-start="675" selection-end="675" vertical-scroll-proportion="-10.0" vertical-offset="108" max-vertical-offset="2862">
+          <folding>
+            <element signature="tag#style#0;tag#head#0;tag#html#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="212" column="53" selection-start="6095" selection-end="6095" vertical-scroll-proportion="0.5530474" vertical-offset="3326" max-vertical-offset="14004">
+          <folding>
+            <element signature="e#6#87#0" expanded="true" />
+            <marker date="1408816226951" expanded="true" signature="514:598" placeholder="Select userP..User..." />
+            <marker date="1408816226951" expanded="true" signature="1895:1949" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="2662:2756" placeholder="Select Event..Event..." />
+            <marker date="1408816226951" expanded="true" signature="3519:3586" placeholder="SELECT * FRO..." />
+            <marker date="1408816226951" expanded="true" signature="3855:3916" placeholder="UPDATE User ..." />
+            <marker date="1408816226951" expanded="true" signature="4409:4444" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="5224:5272" placeholder="UPDATE User ..." />
+            <marker date="1408816226951" expanded="true" signature="5955:6025" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="5986:6019" placeholder="SELECT STR_T..." />
+            <marker date="1408816226951" expanded="true" signature="6986:7045" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="7763:7843" placeholder="Select userE..User..." />
+            <marker date="1408816226951" expanded="true" signature="8509:8624" placeholder="Select Admis..User..." />
+            <marker date="1408816226951" expanded="true" signature="9317:9411" placeholder="SELECT `Valu..." />
+            <marker date="1408816226951" expanded="true" signature="10183:10244" placeholder="UPDATE User ..." />
+            <marker date="1408816226951" expanded="true" signature="11377:11473" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="12521:12587" placeholder="Select * FRO..Staff..." />
+            <marker date="1408816226951" expanded="true" signature="13186:13230" placeholder="UPDATE Staff..." />
+            <marker date="1408816226951" expanded="true" signature="13788:13913" placeholder="Select Staff..Staff..." />
+            <marker date="1408816226951" expanded="true" signature="14526:14573" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="15129:15187" placeholder="SELECT MAX(C..Staff..." />
+            <marker date="1408816226951" expanded="true" signature="15856:15962" placeholder="Select Staff..Staff..." />
+            <marker date="1408816226951" expanded="true" signature="17196:17239" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="18540:18599" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="18984:19032" placeholder="SELECT * FRO..LeaveData..." />
+            <marker date="1408816226951" expanded="true" signature="19385:19429" placeholder="INSERT INTO ..." />
+            <marker date="1408816226951" expanded="true" signature="20302:20390" placeholder="SELECT Offic..LeaveData..." />
+          </folding>
         </state>
       </provider>
     </entry>

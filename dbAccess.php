@@ -193,6 +193,44 @@
         return false;
     }
 
+    function insertHolidays($year, $dayArray)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+        $i = 0;
+        $thisDate = "";
+
+        if ($stmt = $mysqli->prepare("INSERT INTO Holiday values(?, (SELECT STR_TO_DATE(?, '%d/%m/%Y') ), ?);"))
+        {
+
+
+            $stmt -> bind_param("isi", $year, $dayArray[$i], $isDeleted);
+
+            for($i = 0; $i < count($dayArray); $i++)
+            {
+                date("Y-m-d", strtotime($dayArray[$i]));
+
+                if (!$stmt->execute())
+                {
+                    $stmt->close();
+                    $mysqli->close();
+                    return false;
+                }
+            }
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $mysqli->close();
+        return false;
+    }
+
 
     function insertStudent($admissionNo, $name, $dateOfBirth,$nat_race, $religion, $medium, $address, $grade, $class, $house)
     {

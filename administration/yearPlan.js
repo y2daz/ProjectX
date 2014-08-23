@@ -5,15 +5,15 @@
 
 function submitYearPlan()
 {
-    alert($('.selected').length);
+    if ($('.selected').length > 0)
+    {
+        var dates = new Array();
 
-    var dates = new Array();
-
-    $('.selected').each(function(i, obj)
-        {
-            var name = $(obj).attr('name');
-            dates.push(name);
-            post(document.URL, dates, "get");
-        });
-
+        $('.selected').each(function(i, obj)
+            {
+                var name = $(obj).attr('name');
+                dates.push(name);
+                post(document.URL, dates, "POST");
+            });
+    }
 }

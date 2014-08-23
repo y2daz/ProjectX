@@ -17,8 +17,21 @@
 http://www.opal-creations.co.uk/blog/free-scripts-and-code/php-linear-year-view-calendar*/
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
 ob_start();
+
+
+$dDaysOnPage = 37;
+$dDay = 1;//Sets weekend
+$dYear = date("Y");
+
+
+if (isFilled($_POST[0]))
+{
+    echo insertHolidays($dYear, $_POST);
+}
 
 ?>
 <html>
@@ -97,20 +110,6 @@ ob_start();
     </head>
   <body>
   <h1>Year Plan</h1>
-
-  <br />
-  <br />
-  <br />
-  <br />
-
-
-
-
-<?php
-$dDaysOnPage = 37;
-$dDay = 1;//Sets weekend
-$dYear = date("Y");
-?>
 
     <table id="calendar" border="1">
         <tr>
