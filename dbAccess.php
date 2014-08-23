@@ -52,6 +52,7 @@
                 }
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -77,6 +78,7 @@
                 return true;
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -104,6 +106,7 @@
                 }
             }
         }
+        $stmt->close();
         $mysqli->close();
 
         return $set;
@@ -132,6 +135,7 @@
                 return true;
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -157,6 +161,7 @@
                 return true;
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -185,8 +190,8 @@
                 }
             }
         }
+        $stmt->close();
         $mysqli->close();
-
         return $set;
     }
 
@@ -214,8 +219,8 @@
                 }
             }
         }
+        $stmt->close();
         $mysqli->close();
-
         return $set;
     }
 
@@ -241,9 +246,11 @@
                 $stmt->fetch();
 
                 $stmt->close();
+                $mysqli->close();
                 return $OUTvalue;
             }
         }
+        $stmt->close();
         $mysqli->close();
     }
 
@@ -273,6 +280,7 @@
                 return TRUE;
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -299,10 +307,9 @@
                 return true;
             }
         }
+        $stmt->close();
         $mysqli->close();
         return false;
-
-
     }
 
 function getStaffMember($StaffID)
@@ -331,8 +338,8 @@ function getStaffMember($StaffID)
             }
         }
     }
+    $stmt->close();
     $mysqli->close();
-
     return $set;
 }
 
@@ -391,10 +398,9 @@ function searchStaff($id)
             }
         }
     }
+    $stmt->close();
     $mysqli->close();
-
     return $set;
-
 }
 
 function insertclassroom($staffID, $grade, $class)
@@ -418,10 +424,9 @@ function insertclassroom($staffID, $grade, $class)
             return true;
         }
     }
+    $stmt->close();
     $mysqli->close();
     return false;
-
-
 }
 
 function getNewStaffId()
@@ -447,9 +452,11 @@ function getNewStaffId()
             }
 
             $stmt->close();
+            $mysqli->close();
             return $OUTvalue;
         }
     }
+    $stmt->close();
     $mysqli->close();
 }
 
@@ -477,8 +484,8 @@ function getAllStaff()
             }
         }
     }
+    $stmt->close();
     $mysqli->close();
-
     return $set;
 }
 
@@ -531,10 +538,9 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
             return true;
         }
     }
+    $stmt->close();
     $mysqli->close();
     return false;
-
-
 }
 //
 //
@@ -614,10 +620,11 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
             if ($stmt->execute())
             {
                 $stmt->close();
+                $mysqli->close();
                 return true;
             }
         }
-
+        $stmt->close();
         $mysqli->close();
         return false;
 
@@ -644,6 +651,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
         $results->free();
 
+        $query->close();
         $mysqli->close();
 
         return $row;
@@ -660,6 +668,9 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
+
+        //Make sure to close both the statement and mysqli objects, I think it's what causing the
+        //"too many connections" error.
     }
 
 
