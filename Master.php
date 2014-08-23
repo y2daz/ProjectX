@@ -46,9 +46,9 @@
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
 
-        <!--PopModal Links-->
-        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/scripts/popModal.min.css";?>">
-        <script src="<?php echo PATHFRONT ?>/scripts/popModal.min.js"></script>
+        <!--impromptu Links-->
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/scripts/jquery-impromptu.min.css";?>">
+        <script src="<?php echo PATHFRONT ?>/scripts/jquery-impromptu.min.js"></script>
 
 
         <style type=text/css>

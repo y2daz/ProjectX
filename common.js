@@ -106,14 +106,11 @@ function moveNav()
         $(menuBut).removeClass('hidden');
         var element = document.getElementById('nav');
         element.style.left = -230 + "px";
+
+        sendMessage("Small-screen mode enabled.")
     }
 }
 
 function sendMessage(text){
-    $(text).notifyModal({
-        duration : 2500,
-        placement : 'center',
-        type : 'notify',
-        overlay : true
-    })
+    $.prompt(text);
 }
