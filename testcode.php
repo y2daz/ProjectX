@@ -6,4 +6,32 @@
  * Time: 10:50 PM
  */
 
-echo date("Y-M-D");
+?>
+
+
+<html>
+
+<title> Header </title>
+
+<head>
+
+    <script type="text/javascript" src="common.js">
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <?php
+
+        $testcode = "Shavin Peiris";
+
+    ?>
+
+    <input type="button" value="Testing" onclick="sendMessage(<?php echo $testcode ?>)"
+
+</body>
+
+</html>
