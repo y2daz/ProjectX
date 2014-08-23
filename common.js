@@ -113,6 +113,28 @@ function sendMessage(text){
     $.prompt(text);
 }
 
+function askConfirmation(question)
+{
+    var states = {
+        state0: {
+            title: "Confirmation",
+            html:'<p>' + question + '</p>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtPassword']",
+
+            submit:function(e,v,m,f){
+                e.preventDefault();
+
+                $.prompt.close();
+
+                return v;
+            }
+        }
+    }
+    $.prompt(states);
+}
+
+
 function resetPassword(user){
     var states = {
         state0: {
@@ -192,7 +214,6 @@ function post(path, params, method) { //Allows us to set POST variables with jav
             form.appendChild(hiddenField);
         }
     }
-
     document.body.appendChild(form);
     form.submit();
 }

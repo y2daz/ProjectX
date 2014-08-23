@@ -118,14 +118,41 @@
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
+        $isDeleted = 0;
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
         if ($mysqli->connect_errno) {
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $isDeleted = 0;
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    //        echo "Hashed password = " . $hashedPassword;
-        if ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("SELECT * FROM `User` WHERE `userEmail`=? AND isDeleted <> 0 LIMIT 1;"))
+        {
+            $stmt -> bind_param("s", $email);
+
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0)
+            {
+                $isDeleted = 0;
+
+                if ($stmt = $mysqli->prepare("UPDATE User SET userPassword=?, isDeleted=? WHERE userEmail=?;"))
+                {
+                    $stmt -> bind_param("sis", $hashedPassword, $isDeleted, $email);
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return true;
+                    }
+                }
+                $stmt->close();
+                $mysqli->close();
+                return false;
+            }
+        }
+        elseif ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
         {
             $stmt -> bind_param("sssi", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
@@ -442,7 +469,7 @@ function insertclassroom($staffID, $grade, $class)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO classinformation values(?, ?, ?, ?);"))
+    if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
     {
         $isdeleted = 0;
         $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
@@ -468,7 +495,7 @@ function getNewStaffId()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT MAX(CAST(StaffId AS UNSIGNED))+1 FROM Staff LIMIT 1;"))
+    if ($stmt = $mysqli->prepare("SELECT MAX(CAST(StaffID AS UNSIGNED))+1 FROM Staff LIMIT 1;"))
     {
         if ($stmt->execute())
         {
@@ -611,7 +638,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("INSERT INTO  applyleave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+        if ($stmt = $mysqli->prepare("INSERT INTO ApplyLeave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
         {
             $isdeleted = 0;
             $currentdate = date("Y-m-d");
@@ -621,7 +648,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
             $stmt -> bind_param("ssssisissi", $staffid, $currentdate, $startdate, $enddate, $leavetype, $otherreasons, $status, $reviewedby, $revieweddate, $isdeleted);
 
-            $query = $mysqli->prepare("SELECT * FROM leavedata WHERE StaffID = $staffid");
+            $query = $mysqli->prepare("SELECT * FROM LeaveData WHERE StaffID = $staffid");
             $query -> execute();
             $query -> store_result();
 
@@ -635,7 +662,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
                 $MaternityLeave = 100;
                 $OtherLeave = 50;
 
-                if($insertleavedata = $mysqli->prepare("INSERT INTO leavedata VALUES (?, ?, ?, ?, ?)"))
+                if($insertleavedata = $mysqli->prepare("INSERT INTO LeaveData VALUES (?, ?, ?, ?, ?)"))
                 {
                     $insertleavedata -> bind_param("siiii", $staffid, $OfficialLeave, $MaternityLeave, $OtherLeave, $isdeleted);
 
@@ -673,7 +700,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
-        $query = "SELECT OfficialLeave, MaternityLeave, OtherLeave FROM leavedata WHERE StaffID = $StaffID";
+        $query = "SELECT OfficialLeave, MaternityLeave, OtherLeave FROM LeaveData WHERE StaffID = $StaffID";
 
         $results = $mysqli->query($query);
 
