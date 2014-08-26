@@ -2,7 +2,8 @@
  * Created by Shavin on 8/16/14.
  */
 
- function GenerateReport()
+
+/* function GenerateReport()
  {
  var value;
 
@@ -24,5 +25,5 @@
  {
  document.getElementById('selection').innerHTML='Staff ID ';
  }
- }
+ }*/
 

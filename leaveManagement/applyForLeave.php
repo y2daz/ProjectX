@@ -79,14 +79,14 @@
                 top: 100px;
             }
 
-            .nigga
+            .insert2
             {
                 position: absolute;
                 left: 500px;
                 top: 100px;
             }
 
-            .nigga th
+            .insert2 th
             {
                 color:white;
                 background-color: #005e77;
@@ -126,7 +126,7 @@
 
         </style>
 
-        <script>
+        <script src="leave.js">
 
             function selectedvalue(data)
             {
@@ -150,7 +150,7 @@
 
                     <tr>
                         <td>Staff ID :</td>
-                        <td><input type="text" name="staffid" value="" required="true"/></td>
+                        <td><input type="text" id="StaffID" name="staffid" value="" required="true"/></td>
                     </tr>
 
 
@@ -182,7 +182,7 @@
 
                 </table>
 
-                <table class="nigga" id="output">
+                <table class="insert2" id="output">
 
                     <tr><th>Available Leave Days <th></th></tr>
 

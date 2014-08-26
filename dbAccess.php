@@ -736,7 +736,6 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
         $results->free();
 
-        $query->close();
         $mysqli->close();
 
         return $row;
