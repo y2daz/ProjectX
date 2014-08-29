@@ -49,6 +49,9 @@
             td {
                 padding:5px;
             }
+            .leaveTable .alt{
+                background-color: #bed9ff;
+            }
 
         </style>
     </head>
@@ -56,46 +59,48 @@
         <h1 align="center"> Approve Leave </h1>
         <br />
 
-        <form method="post">
+
 
             <table class="leaveTable" align="center">
                 <tr>
                     <th>Staff ID</th>
                     <th>Name</th>
                     <th>Leave Type</th>
-                    <th>Time Period</th>
+                    <th>Request Date</th>
                     <th>Status</th>
                     <th></th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Mrs. Andrea De Silva</td>
-                    <td>Official</td>
-                    <td>5 Days</td>
-                    <td>Pending</td>
-                    <td><input type="button" name="expand" value="Expand Details" /></td>
-                </tr>
-                <tr class="alt">
-                    <td>212</td>
-                    <td>Mr. Madusha Karunaratne</td>
-                    <td>Other</td>
-                    <td>2 Days</td>
-                    <td>Pending</td>
-                    <td><input type="button" name="expand" value="Expand Details" /></td>
-                </tr>
-                <tr>
-                    <td> 123 </td>
-                    <td> Mr. Priyan Fernando </td>
-                    <td> Official</td>
-                    <td> 1 Day</td>
-                    <td> Pending </td>
-                    <td> <input type="button" name="expand" value="Expand Details" /> </td>
-                </tr>
+                <?php
+                $result = getLeaveToApprove();
+                $i = 1;
+
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+                    echo $top;
+                    echo "<td>$row[0]</td>";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>$row[2]</td>";
+                    echo "<td>$row[3]</td>";
+
+                    if ($row[4] == 0)
+                    {
+                        $leaveStatus = "Not reviewed";
+                    }
+
+                    echo "<td>$leaveStatus</td>";
+                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+
+//                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+//                            post(document.URL, params, "post");
+                    echo "</tr>";
+                }
+                ?>
             </table>
 
             <br />
             <br />
 
+        <form method="post">
             <table class="details" align="center">
                 <tr>
                     <td> Staff ID </td>
