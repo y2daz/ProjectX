@@ -23,7 +23,7 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
     if(hasSpaces($_POST["txtEmail"]))
     {
-        sendNotification("Error adding user.");
+        sendNotification("Illegal email address.");
     }
     elseif(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
     {

@@ -113,7 +113,7 @@
 
     }
 
-    function insertUser($email, $password, $accessLevel)
+    function insertUser($email, $password, $accessLevel) //BROKEN IF CONDITIONS, YAZDAAN FIX FIX.
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -125,7 +125,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT * FROM `User` WHERE `userEmail`=? AND isDeleted <> 0 LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("SELECT * FROM User WHERE userEmail=? AND isDeleted <> 0 LIMIT 1;"))
         {
             $stmt -> bind_param("s", $email);
 
@@ -154,7 +154,7 @@
         }
         elseif ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sssi", $email, $hashedPassword, $accessLevel, $isDeleted);
+            $stmt -> bind_param("ssii", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
