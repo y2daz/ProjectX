@@ -167,6 +167,7 @@
         }
         $stmt->close();
         $mysqli->close();
+        return false;
     }
 
     function changePassword($email, $password)
