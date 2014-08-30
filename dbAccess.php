@@ -196,7 +196,45 @@
         return false;
     }
 
-    function insertHolidays($year, $dayArray) //NEEDS MORE WORK.
+    function getHolidays($year){
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = array();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select (DATE_FORMAT(Day, '%d/%m/%Y') ) FROM Holiday WHERE Year = ? ORDER BY Day;"))
+        {
+            $stmt -> bind_param("i", $year);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row[0];
+                }
+            }
+        }
+        $stmt->close();
+        $mysqli->close();
+        return $set;
+
+    }
+
+    function insertHolidays($year, $dayArray)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();

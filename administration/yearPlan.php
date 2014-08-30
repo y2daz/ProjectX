@@ -30,32 +30,47 @@ $dYear = date("Y");
 
 var_dump($_POST);
 
-if (isFilled($_POST[0]))
-{
-    $operation = insertHolidays($dYear, $_POST);
+//if (isFilled($_POST[0]))
+//{
+//    $operation = insertHolidays($dYear, $_POST);
+//
+////    if ($operation == 1)
+//        sendNotification($operation);
+////    else
+////        sendNotification("Error changing year plan.");
+//}
 
-//    if ($operation == 1)
-        sendNotification($operation);
-//    else
-//        sendNotification("Error changing year plan.");
+$holidaysArr = getHolidays($dYear);
+function printArrJs($Arr){
+    $output = "[";
 
+    for ($z = 0; $z < count($Arr) - 1; $z++)
+    {
+        $output .= " '$Arr[$z]',";
+    }
+    $no = count($Arr) - 1;
+    $output .= " '$Arr[$no]'";
+    $output .= "]";
+    echo $output;
 }
 
 ?>
 <html>
     <head>
+        <script src="yearPlan.js"></script>
         <script>
             $(document).ready(function(){
-                    $('.day1, .day2, .day3, .day4, .day5').click(function(){  //Only allows selecting of weekdays
-                        this.classList.toggle("selected");
-                    });
 
-                }
-            )
+                $('.day1, .day2, .day3, .day4, .day5').click(function(){  //Only allows selecting of weekdays
+                    this.classList.toggle("selected");
+                });
+
+
+
+                fillYearPlan(  <?php printArrJs($holidaysArr); ?> );
+            });
 
         </script>
-        <script src="yearPlan.js"></script>
-
         <style type=text/css>
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
@@ -194,15 +209,27 @@ if (isFilled($_POST[0]))
 
             for ($i = 1; $i <= $daysInMonth; $i++) {
                 $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
-//                if ($i==date("d") && date("m",$currentDT) == date("m")) //Look for today (Not important to us)
+                $formattedDate = $i . "/$mC" . "/$dYear";
+
+
+//                $noLeft = count($holidays);
+//                $class = "";
+
+//                var_dump($holidays);
+//
+//                while($noLeft > 0)
 //                {
-//                    $class="currentDay";
+//                    for($x = 0; $x < $noLeft; $x++)
+//                    {
+//                        if (strcmp($formattedDate, $holidays[$x]) == 0) //Look for today (Not important to us)
+//                        {
+//                            $class = "selected"; break;
+//                        }
+//                    }
 //                }
-//                else
-//                {
-                    $class = "";
-//                }
-                echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $i . "/$mC" . "/$dYear\"  >$i</td>";
+                $class = "";
+
+                echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>";
             }
 
             echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT)) + 1);
@@ -216,8 +243,6 @@ if (isFilled($_POST[0]))
     <br />
     <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
 
-    </body>
-</html>
 <?php
 //Change these to what you want
 $fullPageHeight = 800;

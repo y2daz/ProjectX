@@ -17,3 +17,19 @@ function submitYearPlan()
             });
     }
 }
+
+function fillYearPlan(holidays){
+    var i;
+    alert ("Bla" + " yellow");
+    for ( i = 0; i < $(holidays).length; i++)
+    {
+        alert(holidays[i]);
+
+
+//        $.(".day").each( function(x, obj){
+//        if ( $(obj).attr('name') == holidays[i] )
+//            $(obj).addClass("selected");
+//        });
+//        $( ).addClass("selected");
+    }
+}
