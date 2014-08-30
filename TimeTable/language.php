@@ -17,7 +17,7 @@ require_once("../dbAccess.php");
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
 
-    <link rel="stylesheet" href="../reportico/stylesheet/cleanandsimple.css" type="text/css" />
+<!--    <link rel="stylesheet" href="../reportico/stylesheet/cleanandsimple.css" type="text/css" />-->
 
 </head>
 
