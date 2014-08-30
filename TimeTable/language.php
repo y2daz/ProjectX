@@ -16,6 +16,9 @@ require_once("../dbAccess.php");
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+
+    <link rel="stylesheet" href="../reportico/stylesheet/cleanandsimple.css" type="text/css" />
+
 </head>
 
 <body>
@@ -65,6 +68,27 @@ require_once("../dbAccess.php");
             ?>
         </table>
 
+
+    <!-- Start of Reportico Report -->
+    <?php
+/*
+    set_include_path('../reportico/');
+    require('reportico.php');
+    $a = new reportico();
+    $a->initial_project = "test";
+//    $a->initial_project_password = "password";
+    $a->report = "TestRep.xml";
+    $a->execute_mode= "EXECUTE";
+    $a->target_format = "PDF";
+    $a->target_style= "table";
+//    $a->initial_output_format = "HTML";
+    $a->access_mode = "REPORTOUTPUT";
+    $a->embedded_report = false;
+    $a->execute();
+
+//    $a->forward_url_get_parameters = "x1=y1&x2=y2";
+    */?>
+
 <?php
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
@@ -73,8 +97,6 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
     {
 
     }
-
-
 }
 
 function insertLanguage($label, $english, $sinhala)
