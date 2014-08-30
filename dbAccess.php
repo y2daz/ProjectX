@@ -113,7 +113,7 @@
 
     }
 
-    function insertUser($email, $password, $accessLevel) //BROKEN IF CONDITIONS, YAZDAAN FIX FIX.
+    function insertUser($email, $password, $accessLevel)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -151,20 +151,22 @@
                 $mysqli->close();
                 return false;
             }
-        }
-        elseif ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
-        {
-            $stmt -> bind_param("ssii", $email, $hashedPassword, $accessLevel, $isDeleted);
-            if ($stmt->execute())
+            elseif ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
             {
-                $stmt->close();
-                $mysqli->close();
-                return true;
+                $stmt -> bind_param("ssii", $email, $hashedPassword, $accessLevel, $isDeleted);
+                if ($stmt->execute())
+                {
+                    $stmt->close();
+                    $mysqli->close();
+                    return true;
+                }
             }
+            $stmt->close();
+            $mysqli->close();
+            return false;
         }
         $stmt->close();
         $mysqli->close();
-        return false;
     }
 
     function changePassword($email, $password)
