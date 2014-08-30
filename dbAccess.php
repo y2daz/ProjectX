@@ -113,7 +113,7 @@
 
     }
 
-    function insertUser($email, $password, $accessLevel)
+    function insertUser($email, $password, $accessLevel) //BROKEN IF CONDITIONS, YAZDAAN FIX FIX.
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -125,7 +125,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT * FROM `User` WHERE `userEmail`=? AND isDeleted <> 0 LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("SELECT * FROM User WHERE userEmail=? AND isDeleted <> 0 LIMIT 1;"))
         {
             $stmt -> bind_param("s", $email);
 
@@ -154,7 +154,7 @@
         }
         elseif ($stmt = $mysqli->prepare("INSERT INTO User values(?, ?, ?, ?);"))
         {
-            $stmt -> bind_param("sssi", $email, $hashedPassword, $accessLevel, $isDeleted);
+            $stmt -> bind_param("ssii", $email, $hashedPassword, $accessLevel, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
@@ -220,7 +220,6 @@
         $mysqli->close();
         return false;
     }
-
 
     function insertStudent($admissionNo, $name, $dateOfBirth,$nat_race, $religion, $medium, $address, $grade, $class, $house)
     {
@@ -370,7 +369,6 @@
         return false;
     }
 
-
     function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
     {
         $dbObj = new dbConnect();
@@ -427,7 +425,6 @@ function getStaffMember($StaffID)
     $mysqli->close();
     return $set;
 }
-
 
 function deleteStaff($staffID)
 {
@@ -574,7 +571,6 @@ function getAllStaff()
     return $set;
 }
 
-
 //function deleteclassroom($staffID)
 //{
 //    $dbObj = new dbConnect();
@@ -602,6 +598,7 @@ function getAllStaff()
 //    return false;
 //}
 //
+
 function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 {
     $dbObj = new dbConnect();
@@ -715,7 +712,6 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
     }
 
-
     function getLeaveData($StaffID)
     {
         $dbObj = new dbConnect();
@@ -741,7 +737,6 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
         return $row;
     }
 
-
     function approveLeave()
     {
         $dbObj = new dbConnect();
@@ -755,6 +750,34 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
 
         //Make sure to close both the statement and mysqli objects, I think it's what causing the
         //"too many connections" error.
+    }
+
+    function getLeaveToApprove(){
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.LeaveType, l.RequestDate, l.Status, l.StartDate FROM applyLeave l INNER JOIN Staff s ON (s.StaffId = l.StaffId) WHERE l.Status = 0 AND l.isDeleted = 0 ORDER BY l.RequestDate;"))
+        {
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+        }
+        $stmt->close();
+        $mysqli->close();
+        return $set;
     }
 
 
