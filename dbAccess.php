@@ -778,7 +778,7 @@ function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
                 }
             }
         }
-        $stmt->close();
+//        $stmt->close();
         $mysqli->close();
         return $set;
     }

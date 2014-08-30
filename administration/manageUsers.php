@@ -152,17 +152,24 @@ if (isset($_POST["delete"])) //User has clicked a delete button
                         $result = getAllUsers();
                         $i = 1;
 
-                        foreach($result as $row){
-                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
-                            echo $top;
-                            echo "$row[0]";
-                            echo "<td>$row[1]</td>";
-                            echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
-                            echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
-                            echo "</td></tr>";
+                        if ($result == null)
+                        {
+                            echo "<tr><td colspan='4'>THere are no records to show.</td></tr>";
+                        }
+                        else
+                        {
+                            foreach($result as $row){
+                                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                                echo $top;
+                                echo "$row[0]";
+                                echo "<td>$row[1]</td>";
+                                echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+                                echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                                echo "</td></tr>";
 
-//                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
-//                            post(document.URL, params, "post");
+    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+    //                            post(document.URL, params, "post");
+                            }
                         }
                     ?>
                 </table>

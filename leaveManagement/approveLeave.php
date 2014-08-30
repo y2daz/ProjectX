@@ -28,8 +28,9 @@
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
 
-            table {
+            table.leaveTable {
                 border-spacing:0px 5px;
+                min-width: 500px;
             }
 
             #searchCriteria{
@@ -74,25 +75,32 @@
                 $result = getLeaveToApprove();
                 $i = 1;
 
-                foreach($result as $row){
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
-                    echo $top;
-                    echo "<td>$row[0]</td>";
-                    echo "<td>$row[1]</td>";
-                    echo "<td>$row[2]</td>";
-                    echo "<td>$row[3]</td>";
+                if ($result == null)
+                {
+                    echo "<tr><td colspan='6'>There are no records to show.</td></tr>";
+                }
+                else
+                {
+                    foreach($result as $row){
+                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+                        echo $top;
+                        echo "<td>$row[0]</td>";
+                        echo "<td>$row[1]</td>";
+                        echo "<td>$row[2]</td>";
+                        echo "<td>$row[3]</td>";
 
-                    if ($row[4] == 0)
-                    {
-                        $leaveStatus = "Not reviewed";
+                        if ($row[4] == 0)
+                        {
+                            $leaveStatus = "Not reviewed";
+                        }
+
+                        echo "<td>$leaveStatus</td>";
+                        echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+
+    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+    //                            post(document.URL, params, "post");
+                        echo "</tr>";
                     }
-
-                    echo "<td>$leaveStatus</td>";
-                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
-
-//                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
-//                            post(document.URL, params, "post");
-                    echo "</tr>";
                 }
                 ?>
             </table>
