@@ -19,7 +19,7 @@ require_once("../dbAccess.php");
 </head>
 
 <body>
-    <h1>Assign Subjects for Grades </h1>
+    <h1>Assign Language Data</h1>
     <form method="POST">
 
     <table id="labelList">
@@ -27,15 +27,17 @@ require_once("../dbAccess.php");
             <th>Label</th>
             <th>English</th>
             <th>Sinhala</th>
+            <th></th>
         </tr>
         <tr>
             <td><input type='text'class="text1" name="label" required="true"/></td>
             <td><input type='text' class='text1' name='english' required="true"></td>
             <td><input type='text' class='text1' name='sinhala' required="true"></td>
+            <td><input name="Submit" type="Submit" value="Submit" /></td>
         </tr>
     </table>
 
-    <input name="Submit" type="Submit" value="Submit" />
+
 
     </form>
 
@@ -121,7 +123,7 @@ function getAllLanguage(){
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select e.label, e.Value, s.Value FROM LabelLanguage e INNER JOIN LabelLanguage s ON e.Label=s.Label AND e.Language <> s.language  WHERE  s.isDeleted = 0 ORDER BY Label;"))
+    if ($stmt = $mysqli->prepare("SELECT l1.Label, l1.Value, l2.Value FROM LabelLanguage l1 LEFT OUTER JOIN LabelLanguage l2 ON (l1.Label = l2.Label) WHERE l1.Language=0 AND l2.Language=1 ORDER BY l1.Label;"))
     {
         if ($stmt->execute())
         {

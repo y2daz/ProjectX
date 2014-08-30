@@ -4,11 +4,6 @@
  * User: vimukthi
  * Date: 6/8/14
  *
- * THIS IS THE NEW TEMPLATE
- *
- * ONLY EDIT WHERE MENTIONED
- *
- * Page title, and height are php variables you have to edit at the bottom.
  *
  */
 
@@ -20,7 +15,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 {
         $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nationalityRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"], $_POST["highestEducationalQualification"], $_POST["highestProfessionalQualification"], $_POST["courseOfStudy"]);
         echo $operation;
-
 }
 ?>
 <html>
@@ -45,11 +39,9 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             padding:5px;
             min-width: 200px;
         }
-
         td {
             padding:5px;
         }
-
         .staffimage{
             position:absolute;
             height:160px;
@@ -67,7 +59,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             width:142px;
             height:150px;
         }
-
         input.button {
             position:relative;
             font-weight:bold;
@@ -78,15 +69,10 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         .number {
             width:40px;
         }
-
-
         </style>
-
         <script>
-
             function changeTextbox(element){
                 var elementTag = element.tagName.toLowerCase();
-
                 var changeId;
 
                 if (elementTag == "select"){
@@ -104,11 +90,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     var toChange = document.getElementById(changeId);
                     toChange.value = element.value;
                 }
-
-
             }
-
-
         </script>
 
     </head>
