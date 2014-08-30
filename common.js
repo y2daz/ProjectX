@@ -44,7 +44,7 @@ $(document).ready(function() {
 
 function setCookie(cName,value) //Sets a cookie.
 {
-    document.cookie = cName + " = " + value;
+    document.cookie = cName + " = " + value + "; path=/";
     refreshPage();
 }
 
