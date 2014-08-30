@@ -28,9 +28,17 @@ $dDay = 1;//Sets weekend
 $dYear = date("Y");
 
 
+var_dump($_POST);
+
 if (isFilled($_POST[0]))
 {
-//    echo insertHolidays($dYear, $_POST);
+    $operation = insertHolidays($dYear, $_POST);
+
+//    if ($operation == 1)
+        sendNotification($operation);
+//    else
+//        sendNotification("Error changing year plan.");
+
 }
 
 ?>
