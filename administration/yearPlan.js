@@ -20,16 +20,16 @@ function submitYearPlan()
 
 function fillYearPlan(holidays){
     var i;
-    alert ("Bla" + " yellow");
+//    alert ("Bla" + " yellow");
+
+//    alert('[name="' + '1/1/2014' + '"]');
+//    $('[name="' + '1/1/2014' + '"]').addClass("selected");
+
     for ( i = 0; i < $(holidays).length; i++)
     {
-        alert(holidays[i]);
+//        alert('[name="' + holidays[i] + '"]');
 
-
-//        $.(".day").each( function(x, obj){
-//        if ( $(obj).attr('name') == holidays[i] )
-//            $(obj).addClass("selected");
-//        });
+        $('[name="' + holidays[i] + '"]').addClass("selected");
 //        $( ).addClass("selected");
     }
 }

@@ -231,7 +231,6 @@
         $stmt->close();
         $mysqli->close();
         return $set;
-
     }
 
     function insertHolidays($year, $dayArray)

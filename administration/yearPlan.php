@@ -28,17 +28,17 @@ $dDay = 1;//Sets weekend
 $dYear = date("Y");
 
 
-var_dump($_POST);
+//var_dump($_POST);
 
-//if (isFilled($_POST[0]))
-//{
-//    $operation = insertHolidays($dYear, $_POST);
-//
-////    if ($operation == 1)
-//        sendNotification($operation);
-////    else
-////        sendNotification("Error changing year plan.");
-//}
+if (isFilled($_POST[0]))
+{
+    $operation = insertHolidays($dYear, $_POST);
+
+    if ($operation == 1)
+        sendNotification("Year plan updated.");
+    else
+        sendNotification("Error changing year plan.");
+}
 
 $holidaysArr = getHolidays($dYear);
 function printArrJs($Arr){
@@ -75,11 +75,6 @@ function printArrJs($Arr){
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-    .currentDay {
-        background:#FFC;
-        color:red;
-        font-weight: 600;
-    }
     #calendar {
         border-collapse:collapse;
         border:1px #005e77 solid;
@@ -96,6 +91,7 @@ function printArrJs($Arr){
         vertical-align:top;
         text-align:center;
         min-width:15px;
+        opacity: 1;
     }
 
     .days:hover {
@@ -209,7 +205,9 @@ function printArrJs($Arr){
 
             for ($i = 1; $i <= $daysInMonth; $i++) {
                 $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
-                $formattedDate = $i . "/$mC" . "/$dYear";
+                $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
+//                echo $formattedDate . "\n";
+
 
 
 //                $noLeft = count($holidays);

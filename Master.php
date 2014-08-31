@@ -108,7 +108,7 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"-->><span></span></a>
+        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"--><span></span></a>
 
 
         <span id="messagingSystem"></span>
