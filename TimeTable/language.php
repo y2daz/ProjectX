@@ -15,6 +15,8 @@ require_once("../dbAccess.php");
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
 
     <script>
@@ -26,23 +28,31 @@ require_once("../dbAccess.php");
             if (text.length >= 1)
             {
 //                alert(text);
-                $("td.searchLanguage").closest('tr').removeClass("search").addClass("noAlt");
-//                $("td.searchLanguage").filter(function(){
-//                    return $.text([this]).indexOf(text) > -1; })
-//                        .closest('tr').addClass("search");
-//                $("td.searchLanguage").filter(function(){ return $.text([this]).indexOf(text) > -1; }).closest('tr').addClass("search");
-                $("td.searchLanguage").filter(function(){ return($.text([this]).indexOf(text) > -1); }).closest('tr').addClass("search");
+                $("td.searchLanguage").closest('tr').addClass("hide");
+                $("td.searchLanguage").filter(function(){ return($.text([this]).indexOf(text) > -1); }).closest('tr').removeClass("hide");
             }
             else
             {
-                $("td.searchLanguage").closest('tr').removeClass("search").removeClass("noAlt");
+                $("td.searchLanguage").closest('tr').removeClass("hide");
             }
         }
 
 
     </script>
     <style>
-
+        *{
+            font-family: "Open Sans";
+            font-weight: 400;
+        }
+        h1{
+            font-weight: 600;
+        }
+        .LanguageList{
+            min-width: 600px;
+        }
+        .LanguageList td.content{
+            min-width: 150px;
+        }
         .LanguageList .alt{
             background-color: #bed9ff;
         }
@@ -51,6 +61,15 @@ require_once("../dbAccess.php");
         }
         .LanguageList .search{
             background-color: #D8FFBD;
+        }
+        .hide{
+            display: none;
+        }
+        td{
+            padding: 2px 6px 2px 6px;
+        }
+        th {
+            font-weight: 600;
         }
 
     </style>
@@ -61,7 +80,7 @@ require_once("../dbAccess.php");
 
 <body>
     <h1>Assign Label Language Data</h1>
-    <h2>This is for labels and button text and <stuff class=""></stuff></h2>
+    <h2>This is for labels and button text and stuff.<stuff class=""></stuff></h2>
     <form method="POST">
 
     <table id="labelList">
@@ -97,11 +116,11 @@ require_once("../dbAccess.php");
             $i = 0;
 
             foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$i</td><td class=\"searchLanguage\" >" : "<tr><td>$i</td><td class=\"searchLanguage\" >\n";
+                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$i</td><td class=\"searchLanguage content\" >" : "<tr><td>$i</td><td class=\"searchLanguage content\" >\n";
                 echo $top;
                 echo "$row[0]";
-                echo "<td>$row[1]</td>\n";
-                echo "<td>$row[2]</td>\n";
+                echo "<td class=\"content\">$row[1]</td>\n";
+                echo "<td class=\"content\">$row[2]</td>\n";
                 echo "</td></tr>\n";
             }
             ?>

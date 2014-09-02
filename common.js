@@ -44,13 +44,15 @@ $(document).ready(function() {
 
 function setCookie(cName,value) //Sets a cookie.
 {
-    document.cookie = cName + " = " + value + "; path=/";
+    document.cookie = cName + "=" + value /*+ "; path=/"*/;
     refreshPage();
 }
 
 function getCookie(cname) {
     var name = cname + "=";
     var cookieArr= document.cookie.split(';');
+    alert (cookieArr.toString());
+
     for(var i=0; i < cookieArr.length; i++) {
         var current = cookieArr[i];
         while (current.charAt(0)==' ')

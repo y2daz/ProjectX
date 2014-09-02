@@ -365,7 +365,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT `Value` FROM `LabelLanguage` WHERE `Label`=? AND `Language`=? AND isDeleted = 0 LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("SELECT Value FROM LabelLanguage WHERE Label=? AND Language=? LIMIT 1;"))
         {
             $stmt -> bind_param("ss", $label, $language);
 
@@ -380,7 +380,6 @@
                 return $OUTvalue;
             }
         }
-        $stmt->close();
         $mysqli->close();
     }
 
