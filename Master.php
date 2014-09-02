@@ -36,7 +36,7 @@
 <html>
 
     <head>
-        <title><?php echo $pageTitle . " " . $_COOKIE["language"] ?> </title>
+        <title><?php echo $pageTitle ?> </title>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <!--        <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>-->
