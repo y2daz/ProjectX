@@ -17,12 +17,51 @@ require_once("../dbAccess.php");
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
 
+    <script>
+
+        function searchEmail(element){
+//                 alert(element.value)
+            var text = $(element).val();
+
+            if (text.length >= 1)
+            {
+//                alert(text);
+                $("td.searchLanguage").closest('tr').removeClass("search").addClass("noAlt");
+//                $("td.searchLanguage").filter(function(){
+//                    return $.text([this]).indexOf(text) > -1; })
+//                        .closest('tr').addClass("search");
+//                $("td.searchLanguage").filter(function(){ return $.text([this]).indexOf(text) > -1; }).closest('tr').addClass("search");
+                $("td.searchLanguage").filter(function(){ return($.text([this]).indexOf(text) > -1); }).closest('tr').addClass("search");
+            }
+            else
+            {
+                $("td.searchLanguage").closest('tr').removeClass("search").removeClass("noAlt");
+            }
+        }
+
+
+    </script>
+    <style>
+
+        .LanguageList .alt{
+            background-color: #bed9ff;
+        }
+        .LanguageList .noAlt{
+            background-color: #ffffff;
+        }
+        .LanguageList .search{
+            background-color: #D8FFBD;
+        }
+
+    </style>
+
 <!--    <link rel="stylesheet" href="../reportico/stylesheet/cleanandsimple.css" type="text/css" />-->
 
 </head>
 
 <body>
-    <h1>Assign Language Data</h1>
+    <h1>Assign Label Language Data</h1>
+    <h2>This is for labels and button text and <stuff class=""></stuff></h2>
     <form method="POST">
 
     <table id="labelList">
@@ -33,7 +72,7 @@ require_once("../dbAccess.php");
             <th></th>
         </tr>
         <tr>
-            <td><input type='text'class="text1" name="label" required="true"/></td>
+            <td><input type='text'class="text1" name="label" required="true" onkeyup="searchEmail(this)"/></td>
             <td><input type='text' class='text1' name='english' required="true"></td>
             <td><input type='text' class='text1' name='sinhala' required="true"></td>
             <td><input name="Submit" type="Submit" value="Submit" /></td>
@@ -58,12 +97,12 @@ require_once("../dbAccess.php");
             $i = 0;
 
             foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>$i</td><td>" : "<tr><td>$i</td><td>";
+                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$i</td><td class=\"searchLanguage\" >" : "<tr><td>$i</td><td class=\"searchLanguage\" >\n";
                 echo $top;
                 echo "$row[0]";
-                echo "<td>$row[1]</td>";
-                echo "<td>$row[2]</td>";
-                echo "</td></tr>";
+                echo "<td>$row[1]</td>\n";
+                echo "<td>$row[2]</td>\n";
+                echo "</td></tr>\n";
             }
             ?>
         </table>

@@ -682,14 +682,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                                     <option value="5"><?php echo "5 - " . $other?></option>
                             </select>
             </td>
-
-<!--            <td><select name="" type="text" value="">-->
-<!--                    <option value="1">--><?php //echo $sinhala?><!--</option>-->
-<!--                    <option value="2">--><?php //echo $srilankantamil?><!--</option>-->
-<!--                    <option value="3">--><?php //echo $indiantamil?><!--</option>-->
-<!--                    <option value="4">--><?php //echo $srilankanmuslim?><!--</option>-->
-<!--                    <option value="5">--><?php //echo $other?><!--</option>-->
-<!--                </select></td>-->
         </tr>
         <tr >
             <td><?php echo $religion?></td>

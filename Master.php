@@ -39,7 +39,8 @@
         <title><?php echo $pageTitle ?></title>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<!--        <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>-->
+        <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
