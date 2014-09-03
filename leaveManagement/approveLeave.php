@@ -12,34 +12,114 @@
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
     define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+    require_once(THISROOT . "/common.php");
+
     ob_start();
 
-$staffid = "";
-$name = "";
-$startdate = "";
-$enddate = "";
-$leavetypeexpand = "";
-$otherreasons = "";
-
-if (isset($_GET["expand"]))
-{
-    if (isset($_GET["sdate"]))
+    if(isset($_POST["reject"]))
     {
-        $result = getStaffLeavetoApprove($_GET["expand"], $_GET["sdate"]);
+        $Principal = "12345";
 
-        if (isFilled($result))
+        $operation = rejectLeave($_POST["staffid"], $_POST["startdate"], $Principal);
+
+        if($operation)
         {
-            $row = $result[0];
+            sendNotification("Leave Request Rejected!");
+        }
+        else
+        {
+            sendNotification("Leave Request Rejection Failed!");
+        }
 
-            $staffid  = $row[0];
-            $name = $row[1];
-            $startdate = $row[5];
-            $enddate = $row[6];
-            $leavetypeexpand = $row[2];
-            $otherreasons = $row[7];
+    }
+
+
+    if(isset($_POST["approve"]))
+    {
+        $result = getLeaveData($_POST["staffid"]);
+
+        $startdate = $_POST["startdate"];
+        $enddate = $_POST["enddate"];
+
+        $now = strtotime($startdate); // or your date as well
+        $your_date = strtotime($enddate);
+        $datediff = $your_date - $now;
+
+        $datediff = floor($datediff/(60*60*24));
+
+        abs($datediff);
+
+        if(isFilled($result))
+        {
+
+            $OfficialLeave = $result[0];
+            $MaternityLeave = $result[1];
+            $OtherLeave = $result[2];
+        }
+
+        $leavetype = $_POST["leavetype"];
+
+        if($leavetype == "Official Leave")
+        {
+            $OfficialLeave = $OfficialLeave - $datediff;
+        }
+        else if ($leavetype == "Maternity Leave")
+        {
+            $MaternityLeave = $MaternityLeave - $datediff;
+
+        }
+        else if ($leavetype == "Other Leave")
+        {
+            $OtherLeave = $OtherLeave - $datediff;
+        }
+
+        $Principal = "12345";
+
+        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $Principal, $OfficialLeave, $MaternityLeave, $OtherLeave);
+
+        $success = "Leave Approved!";
+        $fail = "Approval Failed!";
+
+        if($operation)
+        {
+            sendNotification($success);
+
+
+        }
+        else
+        {
+            sendNotification($fail);
+        }
+
+
+    }
+
+    $staffid = "";
+    $name = "";
+    $startdate = "";
+    $enddate = "";
+    $leavetypeexpand = "";
+    $otherreasons = "";
+
+    if (isset($_GET["expand"]))
+    {
+        if (isset($_GET["sdate"]))
+        {
+            $result = getStaffLeavetoApprove($_GET["expand"], $_GET["sdate"]);
+
+            if (isFilled($result))
+            {
+                $row = $result[0];
+
+                $staffid  = $row[0];
+                $name = $row[1];
+                $startdate = $row[5];
+                $enddate = $row[6];
+                $leavetypeexpand = $row[2];
+                $otherreasons = $row[7];
+            }
         }
     }
-}
 
 ?>
 <html>
@@ -108,15 +188,15 @@ if (isset($_GET["expand"]))
                         $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
 
-                        if($row[2] == 0)
+                        if($row[2] == 1)
                         {
                             $leavetype = "Official Leave";
                         }
-                        else if ($row[2] == 1)
+                        else if ($row[2] == 2)
                         {
                             $leavetype = "Maternity Leave";
                         }
-                        else if($row[2] == 2)
+                        else if($row[2] == 3)
                         {
                             $leavetype = "Other Leave";
                         }
@@ -131,11 +211,19 @@ if (isset($_GET["expand"]))
                         {
                             $leaveStatus = "Not reviewed";
                         }
+                        else if($row[4] == 1)
+                        {
+                            $leaveStatus = "Approved";
+                        }
+                        else if($row[4] == 2)
+                        {
+                            $leaveStatus = "Rejected";
+                        }
 
                         echo "<td>$leaveStatus</td>";
                         echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand Details\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
 
-    //
+
                         echo "</tr>";
                     }
                 }
@@ -147,6 +235,25 @@ if (isset($_GET["expand"]))
             <br />
 
         <form method="post">
+
+            <?php
+
+                if($leavetypeexpand == 1)
+                {
+                    $leavetypeexpand = "Official Leave";
+                }
+                else if($leavetypeexpand == 2)
+                {
+                    $leavetypeexpand = "Maternity Leave";
+                }
+                else if($leavetypeexpand == 3)
+                {
+                    $leavetypeexpand = "Other Leave";
+
+                }
+
+            ?>
+
             <table class="details" align="center">
                 <tr>
                     <td> Staff ID </td>
@@ -187,8 +294,9 @@ if (isset($_GET["expand"]))
 
             <table align="center">
                 <tr>
-                    <td> <input type="submit" value="Approve"> </td>
-                    <td > <input type="submit" value="Reject">  </td>
+                    <td> <input type="submit" name="approve" value="Approve"> </td>
+                    <td> <input type="submit" name="reject"  value="Reject">  </td>
+                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>
                 </tr>
             </table>
 

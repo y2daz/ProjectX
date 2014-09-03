@@ -906,12 +906,12 @@
                 }
             }
         }
-    //        $stmt->close();
+
         $mysqli->close();
         return $set;
     }
 
-    function approveLeave($StaffID, $sDate)
+    function approveLeave($StaffID, $sDate, $ReviewedBy, $OfficialLeave, $MaternityLeave, $OtherLeave)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -921,9 +921,49 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if($stmt = $mysqli->prepare("UPDATE applyleave ")){}
+        if($stmt = $mysqli->prepare("UPDATE applyleave l, leavedata a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+        {
+            $ReviewedDate = date("Y-m-d");
 
+            $stmt->bind_param("ssiiiss", $ReviewedBy, $ReviewedDate, $OfficialLeave, $MaternityLeave, $OtherLeave, $StaffID, $sDate);
 
+            if($stmt->execute())
+            {
+                $stmt->close();
+                return true;
+            }
+
+        }
+        $mysqli->close();
+
+    }
+
+    function rejectLeave($StaffID, $sDate, $ReviewedBy)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if($mysqli->connect_errno)
+        {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
+        }
+
+        if($stmt = $mysqli->prepare("UPDATE applyleave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
+        {
+            $status = 2;
+            $ReviewedDate = date("Y-m-d");
+
+            $stmt->bind_param("sisss", $ReviewedBy, $status, $ReviewedDate, $StaffID, $sDate);
+
+            if($stmt->execute())
+            {
+                $stmt->close();
+                return true;
+            }
+
+            $mysqli->close();
+
+        }
     }
 
 
