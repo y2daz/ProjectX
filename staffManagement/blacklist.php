@@ -59,7 +59,7 @@ if (isset($_POST["blacklist"])) //User has clicked the submit button to add a us
     if($_COOKIE['language'] == 0)
     {
 
-            $staffId="Staff ID";
+            $staffID="Staff ID";
             $listcontributor="List Contributor";
             $enterdate="Date";
             $reason="Reason";
@@ -67,7 +67,7 @@ if (isset($_POST["blacklist"])) //User has clicked the submit button to add a us
     }
     else
     {
-        $staffId="ගුරුවරයාගේ නම";
+        $staffID="ගුරුවරයාගේ නම";
         $listcontributor="වෙනත්";
         $enterdate="දීනය";
         $reason="කාරණය";
@@ -77,12 +77,12 @@ if (isset($_POST["blacklist"])) //User has clicked the submit button to add a us
 
 <body>
     <h1>Black List Form</h1>
-	<form onsubmit="return validateEverything()" name="thisForm" method="post">
+	<form name="thisForm" method="post">
 			<table class="general" cellspacing="0">
 				
-				<tr><th>Black list</th><th></th></tr>		
+
 				<tr>
-					<td><?php echo $staffId?></td>
+					<td><?php echo $staffID?></td>
 					<td><input type="text" name="staffID" value="" required="true"/></td>
                 <tr>
                     <td><?php echo $listcontributor?></td>

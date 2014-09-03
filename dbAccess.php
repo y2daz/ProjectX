@@ -474,7 +474,7 @@
         return $set;
     }
 
-    function deleteStaff($staffID)
+    function deleteStaff($staffID) // yAZDAAN FIX
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -483,21 +483,29 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE staffID=?"))
+        $newStaffID=NULL;
 
+        if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE staffID=?; "))
         {
             $deleteNo = 2;
-
             $stmt -> bind_param("is", $deleteNo, $staffID);
-
             if ($stmt->execute())
             {
-                $stmt->close();
-                $mysqli->close();
-                return TRUE;
+                if ($stmt = $mysqli->prepare("UPDATE ClassroomInformation SET StaffID = ? where StaffID = ? "))
+                {
+                    $stmt -> bind_param("ss", $newStaffID, $staffID);
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return TRUE;
+                    }
+                }
             }
+//            $stmt->close();
+            $mysqli->close();
+            return TRUE;
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -558,8 +566,38 @@
         $mysqli->close();
         return false;
     }
+function getAllClassroom()
+{
 
-    function getNewStaffId()
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select ci.Grade, ci.Class, s.StaffID, s.NamewithInitials From ClassInformation ci LEFT OUTER JOIN Staff s ON (s.StaffID = ci.StaffID);"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+//    $stmt->close();
+    $mysqli->close();
+    return $set;
+}
+
+
+
+function getNewStaffId()
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();

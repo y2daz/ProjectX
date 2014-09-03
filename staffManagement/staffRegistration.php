@@ -1031,25 +1031,25 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
 
 
-                    <option value=""><?php echo "60 - " .$Maths?></option>
-                    <option value=""><?php echo "60 - " .$Science?></option>
-                    <option value=""><?php echo "60 - " .$ScienceandMaths?></option>
-                    <option value=""><?php echo "60 - " .$English?></option>
-                    <option value=""><?php echo "60 - " .$Primary?></option>
-                    <option value=""><?php echo "60 - " .$Religion?></option>
-                    <option value=""><?php echo "60 - " .$SocialStudies?></option>
-                    <option value=""><?php echo "60 - " .$Commerce?></option>
-                    <option value=""><?php echo "60 - " .$Technology?></option>
-                    <option value=""><?php echo "60 - " .$HomeScience?></option>
-                    <option value=""><?php echo "60 - " .$Agriculture ?></option>
-                    <option value=""><?php echo "60 - " .$Sinhala?></option>
-                    <option value=""><?php echo "60 - " .$Tamil?></option>
-                    <option value=""><?php echo "60 - " .$WesternMusic?></option>
-                    <option value=""><?php echo "60 - " .$EasternMusic?></option>
-                    <option value=""><?php echo "60 - " .$Dancing?></option>
-                    <option value=""><?php echo "60 - " .$Art?></option>
-                    <option value=""><?php echo "60 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value=""><?php echo "60 - " .$Malay?></option>
+                    <option value=""><?php echo "72 - " .$Maths?></option>
+                    <option value=""><?php echo "73 - " .$Science?></option>
+                    <option value=""><?php echo "74 - " .$ScienceandMaths?></option>
+                    <option value=""><?php echo "75 - " .$English?></option>
+                    <option value=""><?php echo "76 - " .$Primary?></option>
+                    <option value=""><?php echo "77 - " .$Religion?></option>
+                    <option value=""><?php echo "78 - " .$SocialStudies?></option>
+                    <option value=""><?php echo "79 - " .$Commerce?></option>
+                    <option value=""><?php echo "80 - " .$Technology?></option>
+                    <option value=""><?php echo "81 - " .$HomeScience?></option>
+                    <option value=""><?php echo "82 - " .$Agriculture ?></option>
+                    <option value=""><?php echo "83 - " .$Sinhala?></option>
+                    <option value=""><?php echo "84 - " .$Tamil?></option>
+                    <option value=""><?php echo "85 - " .$WesternMusic?></option>
+                    <option value=""><?php echo "86 - " .$EasternMusic?></option>
+                    <option value=""><?php echo "87 - " .$Dancing?></option>
+                    <option value=""><?php echo "88 - " .$Art?></option>
+                    <option value=""><?php echo "89 - " .$ForeignLanguageExcludingEnglish?></option>
+                    <option value=""><?php echo "90 - " .$Malay?></option>
                     <option value=""><?php echo "60 - " .$Other?></option>
 
 
