@@ -417,7 +417,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Event` VALUES(2, 'Sports Meet', 'Inter House sports meet', 'Sugathadasa Stadium', 0, '2014-08-13', '1', '15:00:00', '20:00:00', 0);
   INSERT INTO `Event` VALUES(3, 'Junior Concert', 'Grades 1 to 5. Chief Guest Mr. Liyanage', 'Main Auditorium', 0, '2014-08-21', '1', '18:00:00', '20:00:00', 0);
   INSERT INTO `Event` VALUES(4, 'Founder''s Day', 'Walk around the school', 'School', 0, '2014-08-13', '2', '08:00:00', '12:00:00', 0);
-  INSERT INTO `Event` VALUES(11, 'teachers da', 'hyhhh', 'main hall', 0, '2014-08-13', '1', '05:55:00', '07:09:00', 0);
 
 -- --------------------------------------------------------
 
