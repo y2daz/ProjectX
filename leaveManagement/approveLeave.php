@@ -29,30 +29,17 @@ if (isset($_GET["expand"]))
 
         if (isFilled($result))
         {
-            foreach($result as $row)
-            {
-                $staffid  = $row[0];
-                $name = $row[1];
-                $startdate = $row[5];
-                $enddate = $row[6];
-                $leavetypeexpand = $row[2];
-                $otherreasons = $row[7];
-            }
+            $row = $result[0];
+
+            $staffid  = $row[0];
+            $name = $row[1];
+            $startdate = $row[5];
+            $enddate = $row[6];
+            $leavetypeexpand = $row[2];
+            $otherreasons = $row[7];
         }
     }
 }
-else
-{
-    $staffid = "";
-    $name = "";
-    $startdate = "";
-    $enddate = "";
-    $leavetypeexpand = "";
-    $otherreasons = "";
-}
-
-
-
 
 ?>
 <html>
