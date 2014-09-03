@@ -186,7 +186,7 @@ if (isset($_POST["delete"])) //User has clicked a delete button
                         <th></th>
                     </tr>
                     <tr>
-                        <td class="column"><input type="text" name="txtEmail" required="true"  value="" class="txtEmail"/></td>
+                        <td class="column"><input type="text" name="txtEmail" required="true"  value="" class="txtEmail" /></td>
                         <td class="column">
                             <table>
                                 <tr>
