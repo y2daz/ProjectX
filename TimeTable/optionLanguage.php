@@ -19,7 +19,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
     $groupLabel = $_POST["groupLabel"];
     if ( true /*$operation = insertLanguage($_POST["label"], $_POST["english"], $_POST["sinhala"])*/)
     {
-
+        insertOption( $_POST["groupLabel"], $_POST["option"], $_POST["english"], $_POST["sinhala"] );
 
     }
 }
@@ -103,7 +103,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
         </tr>
         <tr>
             <td><input type='text'class="text1" name="groupLabel" required="true" value="<?php echo $groupLabel ?>" onkeyup="searchEmail(this)"/></td>
-            <td><input type='text' class='text1' name='optionLabel' required="true" value="" onkeyup="searchEmail(this)"></td>
+            <td><input type='text' class='text1' name='option' required="true" value="" onkeyup="searchEmail(this)"></td>
             <td><input type='text' class='text1' name='english' required="true"></td>
             <td><input type='text' class='text1' name='sinhala' required="true"></td>
             <td><input name="Submit" type="Submit" value="Submit" /></td>
@@ -123,16 +123,17 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
             </tr>
 
             <?php
-            $result = getAllLanguage();
+            $result = getAllOptions();
             $i = 0;
 
             foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$i</td><td class=\"searchLanguage content\" >" : "<tr><td>$i</td><td class=\"searchLanguage content\" >\n";
+                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$row[0]</td><td class=\"searchLanguage content\" >" : "<tr><td>$row[0]</td><td class=\"searchLanguage content\" >\n";
                 echo $top;
-                echo "$row[0]";
-                echo "<td class=\"content\">$row[1]</td>\n";
-                echo "<td class=\"content\">$row[2]</td>\n";
-                echo "</td></tr>\n";
+                echo "$row[1]";
+                echo "<td class=\"\">$row[2]</td>\n";
+                echo "<td class=\"content\">$row[3]</td>\n";
+                echo "<td class=\"content\">$row[3]</td>\n";
+                echo "</tr>\n";
             }
             ?>
         </table>
@@ -162,38 +163,88 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 
 
 
-function insertLanguage($label, $english, $sinhala)
+function insertOption($groupLabel, $english, $sinhala)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
     $mysqli->set_charset("utf8") ;
 
+    $noE = 0;
+    $noS = 1;
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    $isDeleted = 0;
-    $noE = 0;
-    $noS = 1;
-
-    if ($stmt = $mysqli->prepare("INSERT INTO LabelLanguage values(?, ?, ?, ?);"))
+    if ($stmt = $mysqli->prepare("Select GroupNo FROM LanguageGroup WHERE GroupName = ? LIMIT 1;"))
     {
-        $stmt -> bind_param("sisi", $label, $noE, $english, $isDeleted);
-        if ($stmt->execute())
+        $stmt -> bind_param("s", $groupLabel);
+        $stmt -> execute();
+
+        $result = $stmt ->get_result();
+
+        if ($result -> num_rows > 0)
         {
-            $stmt -> bind_param("sisi", $label, $noS, $sinhala, $isDeleted);
-            if ($stmt->execute())
+            $row = $result ->fetch_array();
+            $groupNo = $row[0];
+
+            $stmt = $mysqli->prepare("SELECT (MAX(OptionNo)+1) FROM LanguageOption where GroupNo=?;");
+            $stmt -> bind_param("i", $groupNo);
+            $stmt -> execute();
+
+            $result = $stmt ->get_result();
+
+            if ($result -> num_rows > 0)
             {
-                $stmt->close();
-                $mysqli->close();
-                return true;
+                $row = $result ->fetch_array();
+                $optionNo = ( isFilled($row[0])) ? $row[0] : 0;
             }
+
+            echo "optionNo = $optionNo<br />";
+            echo "groupNo = $groupNo<br />";
+
+            if ($stmt = $mysqli->prepare("INSERT INTO LanguageOption values(?, ?, ?, ?);"))
+            {
+                $stmt -> bind_param("iiis", $groupNo, $optionNo, $noE, $english);
+                if ($stmt->execute())
+                {
+                    $stmt -> bind_param("iiis", $groupNo, $optionNo, $noS, $sinhala);
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return true;
+                    }
+                }
+            }
+            $mysqli->close();
+            return false;
+
         }
+
+
     }
-    $stmt->close();
-    $mysqli->close();
-    return false;
+
+//    $noE = 0;
+//    $noS = 1;
+//
+//    if ($stmt = $mysqli->prepare("INSERT INTO LanguageOption values(?, (SELECT (MAX(OptionNo)+1) FROM LanguageOption ), ?, ?);"))
+//    {
+//        $stmt -> bind_param("iis", $groupNo, $noE, $value);
+//        if ($stmt->execute())
+//        {
+//            $stmt -> bind_param("iis", $groupNo, $noS, $value);
+//            if ($stmt->execute())
+//            {
+//                $stmt->close();
+//                $mysqli->close();
+//                return true;
+//            }
+//        }
+//    }
+//    $stmt->close();
+//    $mysqli->close();
+//    return false;
 }
 
 function getAllOptions(){
@@ -208,7 +259,7 @@ function getAllOptions(){
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT * FROM LanguageOption lo RIGHT OUTER JOIN LanguageGroup lg ON (lo.GroupNo = lg.GroupNo) ;"))
+    if ($stmt = $mysqli->prepare("SELECT lg.GroupNo, lg.GroupName, lo.OptionNo, lo.Value FROM LanguageOption lo RIGHT OUTER JOIN LanguageGroup lg ON (lo.GroupNo = lg.GroupNo);"))
     {
         if ($stmt->execute())
         {
