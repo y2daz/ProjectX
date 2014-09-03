@@ -541,7 +541,7 @@
         return $set;
     }
 
-    function insertclassroom($staffID, $grade, $class)
+    function insertClassroom($staffID, $grade, $class)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -550,21 +550,45 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
+        if ($stmtCheck = $mysqli->prepare("SELECT * FROM ClassInformation WHERE Grade=? AND Class=?;"))
         {
-            $isdeleted = 0;
-            $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
+            $stmtCheck -> bind_param("is", $grade, $class);
+            $stmtCheck -> execute();
+            $result = $stmtCheck->get_result();
 
-            if ($stmt->execute())
+            if ($result->num_rows == 0)
             {
-                $stmt->close();
-                $mysqli->close();
-                return true;
+                if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
+                {
+                    $isdeleted = 0;
+                    $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
+
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return 1; //Inserted new classroom
+                    }
+                }
+            }
+            else
+            {
+                if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID=?, isDeleted=? WHERE Grade=? AND Class=? ;"))
+                {
+                    $isDeleted = 0;
+                    $stmt -> bind_param("iiis",$staffID, $isDeleted, $grade, $class );
+
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return 2; //Updated old classroom
+                    }
+                }
             }
         }
-        $stmt->close();
         $mysqli->close();
-        return false;
+        return 0; //Failed Adding Classroom
     }
 function getAllClassroom()
 {
@@ -578,7 +602,7 @@ function getAllClassroom()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select ci.Grade, ci.Class, s.StaffID, s.NamewithInitials From ClassInformation ci LEFT OUTER JOIN Staff s ON (s.StaffID = ci.StaffID);"))
+    if ($stmt = $mysqli->prepare("Select ci.Grade, ci.Class, s.StaffID, s.NamewithInitials From ClassInformation ci LEFT OUTER JOIN Staff s ON (s.StaffID = ci.StaffID) ORDER BY ci.Grade, ci.Class;"))
     {
         if ($stmt->execute())
         {

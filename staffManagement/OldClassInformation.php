@@ -19,8 +19,8 @@ ob_start();
 
     if (isset($_POST["newclassinformation"])) //User has clicked the submit button to add a user
     {
-    $operation = insertclassroom($_POST["staffID"], $_POST["grade"], $_POST["class"]);
-    echo $operation;
+        $operation = insertClassroom($_POST["staffID"], $_POST["grade"], $_POST["class"]);
+        echo $operation;
     }
 ?>
 <html>
