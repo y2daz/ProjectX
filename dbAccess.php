@@ -483,7 +483,7 @@
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $newStaffID=NULL;
+        $newStaffID="";
 
         if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE staffID=?; "))
         {
