@@ -84,7 +84,6 @@
         {
             sendNotification($success);
 
-            //header("Location: http://localhost/leaveManagement/approveLeave.php");
 
         }
         else
@@ -224,7 +223,7 @@
                         echo "<td>$leaveStatus</td>";
                         echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand Details\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
 
-    //
+
                         echo "</tr>";
                     }
                 }
@@ -297,7 +296,7 @@
                 <tr>
                     <td> <input type="submit" name="approve" value="Approve"> </td>
                     <td> <input type="submit" name="reject"  value="Reject">  </td>
-                    <td> <input type="button" name="reset" value="Reset" onclick=""> </td>
+                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>
                 </tr>
             </table>
 
