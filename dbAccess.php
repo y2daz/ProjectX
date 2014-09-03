@@ -866,5 +866,35 @@ function getNewStaffId()
         return $set;
     }
 
+    function getStaffLeavetoApprove( $StaffID, $sDate ){
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.LeaveType, l.RequestDate, l.Status, l.StartDate FROM applyLeave l INNER JOIN Staff s ON (s.StaffId = l.StaffId) WHERE l.StaffId=? AND l.StartDate=?"))
+        {
+            $stmt->bind_param("ss", $StaffID, $sDate);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+        }
+    //        $stmt->close();
+        $mysqli->close();
+        return $set;
+    }
+
 
 ?>

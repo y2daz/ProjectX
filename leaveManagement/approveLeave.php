@@ -16,6 +16,35 @@
 
 
 
+if (isset($_GET["expand"]))
+{
+    if (isset($_GET["sdate"]))
+    {
+        $result = getStaffLeavetoApprove($_GET["expand"], $_GET["sdate"]);
+
+        if (isFilled($result))
+        {
+            foreach($result as $row)
+            {
+                $staffid  = $row[0];
+                $name = $row[1];
+                $startdate = $row[2];
+                $enddate = $row[3];
+                $leavetypeexpand = $row[4];
+                $otherreasons = $row[5];
+            }
+        }
+    }
+}
+else
+{
+    $staffid = "";
+    $name = "";
+    $startdate = "";
+    $enddate = "";
+    $leavetypeexpand = "";
+    $otherreasons = "";
+}
 
 
 
@@ -61,7 +90,7 @@
         <br />
 
 
-
+        <form method="post">
             <table class="leaveTable" align="center">
                 <tr>
                     <th>Staff ID</th>
@@ -71,11 +100,13 @@
                     <th>Status</th>
                     <th></th>
                 </tr>
+
                 <?php
                 $result = getLeaveToApprove();
                 $i = 1;
 
-                if ($result == null)
+
+                if (!isFilled($result))
                 {
                     echo "<tr><td colspan='6'>There are no records to show.</td></tr>";
                 }
@@ -83,10 +114,24 @@
                 {
                     foreach($result as $row){
                         $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+
+                        if($row[2] == 1)
+                        {
+                            $leavetype = "Official Leave";
+                        }
+                        else if ($row[2] == 2)
+                        {
+                            $leavetype = "Maternity Leave";
+                        }
+                        else if($row[2] == 3)
+                        {
+                            $leavetype = "Other Leave";
+                        }
+
                         echo $top;
                         echo "<td>$row[0]</td>";
                         echo "<td>$row[1]</td>";
-                        echo "<td>$row[2]</td>";
+                        echo "<td>$leavetype</td>";
                         echo "<td>$row[3]</td>";
 
                         if ($row[4] == 0)
@@ -95,15 +140,15 @@
                         }
 
                         echo "<td>$leaveStatus</td>";
-                        echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                        echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand Details\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
 
-    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
-    //                            post(document.URL, params, "post");
+    //
                         echo "</tr>";
                     }
                 }
                 ?>
             </table>
+        </form>
 
             <br />
             <br />
@@ -112,39 +157,34 @@
             <table class="details" align="center">
                 <tr>
                     <td> Staff ID </td>
-                    <td > <input type = "text" name="staffid" /> </td>
+                    <td > <input type = "text" name="staffid" value=<?php echo $staffid ?>> </td>
                 </tr>
 
 
                 <tr>
                     <td> Name </td>
-                    <td > <input type = "text" name="staffid" /> </td>
+                    <td > <input type = "text" name="name" value="<?php echo $name ?>"/> </td>
                 </tr>
 
                 <tr>
                     <td> Start Date </td>
-                    <td ><input type="date"; name="StartDate"; id="StartDate" align="right"/></td>
+                    <td ><input type="date" name="startdate" value="<?php echo $startdate ?>"/></td>
                 </tr>
 
 
                 <tr>
                     <td> End Date </td>
-                    <td > <input type="date" name="enddate" align="right" /> </td>
+                    <td > <input type="date" name="enddate" value="<?php echo $enddate ?>" /> </td>
                 </tr>
 
                 <tr>
                     <td> Leave Type  </td>
-                    <td > <input type = "text" name="staffid" /> </td>
-                </tr>
-
-                <tr>
-                    <td> Time Period </td>
-                    <td > <input type = "text" name="staffid" /> </td>
+                    <td > <input type = "text" name="leavetype" value="<?php echo $leavetypeexpand ?>"/> </td>
                 </tr>
 
                 <tr>
                     <td> Other Reasons(s) </td>
-                    <td > <input type = "text" name="staffid" /> </td>
+                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $otherreasons ?>"/> </td>
                 </tr>
 
             </table>
