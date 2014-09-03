@@ -28,10 +28,10 @@ if (isset($_GET["expand"]))
             {
                 $staffid  = $row[0];
                 $name = $row[1];
-                $startdate = $row[2];
-                $enddate = $row[3];
-                $leavetypeexpand = $row[4];
-                $otherreasons = $row[5];
+                $startdate = $row[5];
+                $enddate = $row[6];
+                $leavetypeexpand = $row[2];
+                $otherreasons = $row[7];
             }
         }
     }

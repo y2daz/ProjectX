@@ -877,7 +877,7 @@ function getNewStaffId()
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.LeaveType, l.RequestDate, l.Status, l.StartDate FROM applyLeave l INNER JOIN Staff s ON (s.StaffId = l.StaffId) WHERE l.StaffId=? AND l.StartDate=?"))
+        if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.LeaveType, l.RequestDate, l.Status, l.StartDate, l.EndDate, l.OtherInformation FROM applyLeave l INNER JOIN Staff s ON (s.StaffId = l.StaffId) WHERE l.StaffId=? AND l.StartDate=?"))
         {
             $stmt->bind_param("ss", $StaffID, $sDate);
 
