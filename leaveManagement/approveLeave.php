@@ -107,15 +107,16 @@ if (isset($_GET["expand"]))
                     foreach($result as $row){
                         $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                        if($row[2] == 1)
+
+                        if($row[2] == 0)
                         {
                             $leavetype = "Official Leave";
                         }
-                        else if ($row[2] == 2)
+                        else if ($row[2] == 1)
                         {
                             $leavetype = "Maternity Leave";
                         }
-                        else if($row[2] == 3)
+                        else if($row[2] == 2)
                         {
                             $leavetype = "Other Leave";
                         }
