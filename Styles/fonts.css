@@ -49,13 +49,13 @@
 
  /*sinhala*/
  /*Sinhala-Apple*/
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Open Sans'), local('OpenSans'), url(fonts/SinhalaApple.TTF) format('woff2');
-    unicode-range: U+0D80-0DFF, U+111E0–111FF;
-}
+/*@font-face {*/
+    /*font-family: 'Open Sans';*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: local('Open Sans'), local('OpenSans'), url(fonts/SinhalaApple.TTF) format('woff2');*/
+    /*unicode-range: U+0D80-0DFF, U+111E0–111FF;*/
+/*}*/
  /*sinhala-ext*/
 /*@font-face {*/
     /*font-family: 'Open Sans';  Sinhala Font*/
