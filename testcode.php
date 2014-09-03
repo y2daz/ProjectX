@@ -25,14 +25,14 @@
 
 <body>
 
-    <?php
+<?php
 
-        $testcode = "Shavin Peiris";
+$now = strtotime("2014-01-01"); // or your date as well
+$your_date = strtotime("2014-01-02");
+$datediff = $your_date - $now;
+echo floor($datediff/(60*60*24));
 
-        sendNotification("this is a sample test");
-    ?>
-
-   <!--<input type="button" value="Testing" onclick="sendMessage(<?php //echo $testcode ?>')" -->
+?>
 
 </body>
 
