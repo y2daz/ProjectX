@@ -186,8 +186,8 @@ if (isset($_GET["expand"]))
 
             <table align="center">
                 <tr>
-                    <td> <input type="button" value="Approve"> </td>
-                    <td > <input type="button" value="Reject">  </td>
+                    <td> <input type="submit" value="Approve"> </td>
+                    <td > <input type="submit" value="Reject">  </td>
                 </tr>
             </table>
 
