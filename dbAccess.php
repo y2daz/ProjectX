@@ -852,20 +852,6 @@
         return $row;
     }
 
-    function approveLeave()
-    {
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
-
-        if ($mysqli->connect_errno) {
-
-            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-        }
-
-
-        //Make sure to close both the statement and mysqli objects, I think it's what causing the
-        //"too many connections" error.
-    }
 
     function getLeaveToApprove(){
 
@@ -923,6 +909,21 @@
     //        $stmt->close();
         $mysqli->close();
         return $set;
+    }
+
+    function approveLeave($StaffID, $sDate)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if($stmt = $mysqli->prepare("UPDATE applyleave ")){}
+
+
     }
 
 
