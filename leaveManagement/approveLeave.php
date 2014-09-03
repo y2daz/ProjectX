@@ -14,7 +14,12 @@
 
     ob_start();
 
-
+$staffid = "";
+$name = "";
+$startdate = "";
+$enddate = "";
+$leavetypeexpand = "";
+$otherreasons = "";
 
 if (isset($_GET["expand"]))
 {
