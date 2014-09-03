@@ -23,15 +23,15 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 
     if ($operation == 1)
     {
-        sendNotification("Classroom successfully added.");
+        sendNotification("Class successfully added.");
     }
     elseif ($operation == 2)
     {
-        sendNotification("Classroom successfully updated.");
+        sendNotification("Class successfully updated.");
     }
     else
     {
-        sendNotification("Error inserting classroom information.");
+        sendNotification("Error inserting class information.");
     }
 }
 
@@ -40,10 +40,17 @@ if( isset($_GET["delete"]) )
     if( isset($_GET["className"]) )
     {
         $delClassName = $_GET["className"];
-        $delGrade = $_GET["grade"];
+        $delGrade = $_GET["delete"];
+
+        $operation = deleteClassroom($delGrade, $delClassName);
+
+        if ($operation == TRUE){
+            sendNotification("Class successfully deleted.");
+        } elseif ($operation == FALSE) {
+            sendNotification("Error deleting class.");
+        }
     }
 }
-
 
 $className = "";
 $grade = "";

@@ -590,38 +590,41 @@
         $mysqli->close();
         return 0; //Failed Adding Classroom
     }
-function getAllClassroom()
-{
 
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    $set = null;
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    if ($stmt = $mysqli->prepare("Select ci.Grade, ci.Class, s.StaffID, s.NamewithInitials From ClassInformation ci LEFT OUTER JOIN Staff s ON (s.StaffID = ci.StaffID) ORDER BY ci.Grade, ci.Class;"))
+    function getAllClassroom()
     {
-        if ($stmt->execute())
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select ci.Grade, ci.Class, s.StaffID, s.NamewithInitials From ClassInformation ci LEFT OUTER JOIN Staff s ON (s.StaffID = ci.StaffID) WHERE ci.isDeleted=? ORDER BY ci.Grade, ci.Class;"))
         {
-            $result = $stmt->get_result();
-            $i = 0;
-            while($row = $result->fetch_array())
+            $isDeleted = 0;
+
+            $stmt->bind_param("i", $isDeleted);
+
+            if ($stmt->execute())
             {
-                $set[$i++]=$row;
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
             }
         }
+    //    $stmt->close();
+        $mysqli->close();
+        return $set;
     }
-//    $stmt->close();
-    $mysqli->close();
-    return $set;
-}
 
-
-
-function getNewStaffId()
+    function getNewStaffId()
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -681,33 +684,35 @@ function getNewStaffId()
         return $set;
     }
 
-    //function deleteclassroom($staffID)
-    //{
-    //    $dbObj = new dbConnect();
-    //    $mysqli = $dbObj->getConnection();
-    //
-    //    if ($mysqli->connect_errno) {
-    //        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    //    }
-    //
-    //    if ($stmt = $mysqli->prepare("UPDATE classinformation SET isDeleted=? WHERE staffID=?"))
-    //
-    //    {
-    //        $deleteNo = 2;
-    //
-    //        $stmt -> bind_param("is", $deleteNo, $staffID);
-    //
-    //        if ($stmt->execute())
-    //        {
-    //            $stmt->close();
-    //            $mysqli->close();
-    //            return TRUE;
-    //        }
-    //    }
-    //    $mysqli->close();
-    //    return false;
-    //}
-    //
+    function deleteClassroom($grade, $class)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET isDeleted=? WHERE Grade=? AND Class=? AND isDeleted=?"))
+        {
+            $deleteNo = 2;
+            $oldDeleteNo = 0;
+
+            $stmt -> bind_param("iisi", $deleteNo, $grade, $class, $oldDeleteNo);
+
+            $stmt->execute();
+
+            if ($stmt->affected_rows > 0)
+            {
+                $stmt->close();
+                $mysqli->close();
+                return TRUE;
+            }
+        }
+        $mysqli->close();
+        return FALSE;
+    }
+
 
     function insertblacklist($staffID, $listcontributor, $enterdate, $reason)
     {
