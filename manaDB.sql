@@ -784,7 +784,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `OptionNo` int(11) NOT NULL DEFAULT '0',
     `Language` int(11) DEFAULT NULL,
     `Value` varchar(200) DEFAULT NULL,
-    PRIMARY KEY (`GroupNo`,`OptionNo`),
+    PRIMARY KEY (`GroupNo`,`OptionNo`, `Language`),
     KEY `fk006` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

@@ -19,8 +19,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
     $groupLabel = $_POST["groupLabel"];
     if ( true /*$operation = insertLanguage($_POST["label"], $_POST["english"], $_POST["sinhala"])*/)
     {
-        insertOption( $_POST["groupLabel"], $_POST["option"], $_POST["english"], $_POST["sinhala"] );
-
+        insertOption( $_POST["groupLabel"], $_POST["english"], $_POST["sinhala"] );
     }
 }
 ?>
@@ -103,7 +102,6 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
         </tr>
         <tr>
             <td><input type='text'class="text1" name="groupLabel" required="true" value="<?php echo $groupLabel ?>" onkeyup="searchEmail(this)"/></td>
-            <td><input type='text' class='text1' name='option' required="true" value="" onkeyup="searchEmail(this)"></td>
             <td><input type='text' class='text1' name='english' required="true"></td>
             <td><input type='text' class='text1' name='sinhala' required="true"></td>
             <td><input name="Submit" type="Submit" value="Submit" /></td>
@@ -126,14 +124,18 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
             $result = getAllOptions();
             $i = 0;
 
-            foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$row[0]</td><td class=\"searchLanguage content\" >" : "<tr><td>$row[0]</td><td class=\"searchLanguage content\" >\n";
-                echo $top;
-                echo "$row[1]";
-                echo "<td class=\"\">$row[2]</td>\n";
-                echo "<td class=\"content\">$row[3]</td>\n";
-                echo "<td class=\"content\">$row[3]</td>\n";
-                echo "</tr>\n";
+            if (isFilled($result))
+            {
+
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$row[0]</td><td class=\"searchLanguage content\" >" : "<tr><td>$row[0]</td><td class=\"searchLanguage content\" >\n";
+                    echo $top;
+                    echo "&nbsp;";
+                    echo "<td class=\"\">$row[1]</td>\n";
+                    echo "<td class=\"content\">$row[2]</td>\n";
+                    echo "<td class=\"content\">$row[3]</td>\n";
+                    echo "</tr>\n";
+                }
             }
             ?>
         </table>
@@ -171,6 +173,7 @@ function insertOption($groupLabel, $english, $sinhala)
 
     $noE = 0;
     $noS = 1;
+
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -254,12 +257,13 @@ function getAllOptions(){
 
     $mysqli->set_charset("utf8") ;
 
+    $set = null;
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT lg.GroupNo, lg.GroupName, lo.OptionNo, lo.Value FROM LanguageOption lo RIGHT OUTER JOIN LanguageGroup lg ON (lo.GroupNo = lg.GroupNo);"))
+    if ($stmt = $mysqli->prepare("SELECT lo1.GroupNo, lo1.OptionNo, lo1.Value, lo2.Value FROM LanguageOption lo1 LEFT OUTER JOIN LanguageOption lo2 ON (lo1.GroupNo = lo2.GroupNo AND lo1.OptionNo = lo2.OptionNo ) WHERE lo1.Language=0 AND lo2.Language=1 ;"))
     {
         if ($stmt->execute())
         {

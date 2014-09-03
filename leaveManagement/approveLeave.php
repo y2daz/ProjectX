@@ -20,7 +20,7 @@
     {
         $Principal = "12345";
 
-        $operation = rejectLeave($_POST["staffid"], $_POST["startdate"], $Principal);
+        $operation = rejectLeave($_POST["staffid"], $_POST["startdate"], null);
 
         if($operation)
         {
@@ -30,11 +30,9 @@
         {
             sendNotification("Leave Request Rejection Failed!");
         }
-
     }
 
-
-    if(isset($_POST["approve"]))
+    if(isset($_POST["approve"])) //Yazdaan, this is ugly, doesn't work and puts DB logic in the not-DB file. Fix fix.
     {
         $result = getLeaveData($_POST["staffid"]);
 
@@ -47,11 +45,10 @@
 
         $datediff = floor($datediff/(60*60*24));
 
-        abs($datediff);
+        $datediff = abs($datediff);
 
         if(isFilled($result))
         {
-
             $OfficialLeave = $result[0];
             $MaternityLeave = $result[1];
             $OtherLeave = $result[2];
@@ -73,7 +70,7 @@
             $OtherLeave = $OtherLeave - $datediff;
         }
 
-        $Principal = "12345";
+        $Principal = null;
 
         $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $Principal, $OfficialLeave, $MaternityLeave, $OtherLeave);
 
@@ -83,15 +80,11 @@
         if($operation)
         {
             sendNotification($success);
-
-
         }
         else
         {
             sendNotification($fail);
         }
-
-
     }
 
     $staffid = "";

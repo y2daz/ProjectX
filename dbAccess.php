@@ -957,13 +957,18 @@
 
             if($stmt->execute())
             {
+                if ($stmt -> affected_rows = 1)
+                {
                 $stmt->close();
+                $mysqli->close();
                 return true;
+                }
             }
-
-            $mysqli->close();
-
+            $stmt->close();
         }
+        $mysqli->close();
+
+        return false;
     }
 
 
