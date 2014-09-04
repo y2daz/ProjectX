@@ -56,11 +56,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `ALMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) NOT NULL DEFAULT '0',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`IndexNo`,`SubjectID`),
-    KEY `AdmissionNo` (`AdmissionNo`),
-    KEY `SubjectID` (`SubjectID`)
+    PRIMARY KEY (`IndexNo`,`Subject`),
+    KEY `AdmissionNo` (`AdmissionNo`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -365,12 +364,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 
   CREATE TABLE IF NOT EXISTS `Blacklist` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
-    `ListContributor` varchar(5) NOT NULL DEFAULT '',
     `EnterDate` date NOT NULL DEFAULT '0000-00-00',
     `Reason` varchar(255) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`StaffID`,`ListContributor`,`EnterDate`),
-    KEY `fk003` (`ListContributor`)
+    PRIMARY KEY (`StaffID`, `EnterDate`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -541,11 +538,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `Class` char(2) DEFAULT NULL,
     `Day` int(11) DEFAULT NULL,
     `Position` int(11) DEFAULT NULL,
-    `SubjectID` int(11) DEFAULT NULL,
     `Date` date DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     KEY `fk015` (`StaffID`),
-    KEY `fk016` (`Grade`,`Class`,`Day`,`Position`,`SubjectID`)
+    KEY `fk016` (`Grade`,`Class`,`Day`,`Position`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -812,11 +808,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `OLMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) NOT NULL DEFAULT '',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`IndexNo`,`SubjectID`),
-    KEY `AdmissionNo` (`AdmissionNo`),
-    KEY `SubjectID` (`SubjectID`)
+    PRIMARY KEY (`IndexNo`,`Subject`),
+    KEY `AdmissionNo` (`AdmissionNo`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -926,10 +921,9 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 
   CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) NOT NULL DEFAULT '0',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`AdmissionNo`,`SubjectID`),
-    KEY `fk025` (`SubjectID`)
+    PRIMARY KEY (`AdmissionNo`,`Subject`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -953,10 +947,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 --
 
   CREATE TABLE IF NOT EXISTS `Teaches` (
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`SubjectID`,`StaffID`),
+    PRIMARY KEY (`Subject`,`StaffID`),
     KEY `fk009` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -968,12 +962,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 
   CREATE TABLE IF NOT EXISTS `TermMarks` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) NOT NULL DEFAULT '0',
     `Term` int(11) NOT NULL DEFAULT '0',
     `Mark` int(11) DEFAULT NULL,
-    `Remarks` varchar(127) DEFAULT NULL,
+    `Remarks` varchar(128) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`AdmissionNo`,`SubjectID`,`Term`)
+    PRIMARY KEY (`AdmissionNo`,`Subject`,`Term`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -987,11 +981,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `Class` char(2) NOT NULL DEFAULT '',
     `Day` int(11) NOT NULL DEFAULT '0',
     `Position` int(11) NOT NULL DEFAULT '0',
-    `SubjectID` int(11) NOT NULL DEFAULT '0',
+    `Subject` varchar(64) DEFAULT NULL,
     `StaffID` varchar(5) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`Grade`,`Class`,`Day`,`Position`,`SubjectID`),
-    KEY `fk010` (`SubjectID`),
+    PRIMARY KEY (`StaffID`, `Grade`,`Class`,`Day`,`Position`),
     KEY `fk011` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1066,7 +1059,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 --
 ALTER TABLE `ALMarks`
   ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
-  ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+#   ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
 --
 -- Constraints for table `ApplyLeave`
@@ -1119,7 +1112,7 @@ ALTER TABLE `Invitee`
 --
 ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
-  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`Grade`, `Class`, `Day`, `Position`, `SubjectID`) REFERENCES `Timetable` (`Grade`, `Class`, `Day`, `Position`, `SubjectID`);
+  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`Grade`, `Class`, `Day`, `Position`) REFERENCES `Timetable` (`Grade`, `Class`, `Day`, `Position`);
 
 --
 -- Constraints for table `LabelLanguage`
@@ -1151,7 +1144,7 @@ ALTER TABLE `LeaveData`
 --
 ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
-  ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+#   ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`Subject`);
 
   --
   -- Constraints for table `ParentsInformation`
@@ -1164,26 +1157,26 @@ ALTER TABLE `OLMarks`
   --
   ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
-  ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
+#   ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`SubjectID`);
 
   --
   -- Constraints for table `Teaches`
   --
   ALTER TABLE `Teaches`
-  ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
+#   ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`SubjectID`),
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
   --
   -- Constraints for table `TermMarks`
   --
   ALTER TABLE `TermMarks`
-  ADD CONSTRAINT `TermMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`, `SubjectID`) REFERENCES `Student_Subject_Grade` (`AdmissionNo`, `SubjectID`);
+#   ADD CONSTRAINT `TermMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`, `Subject`) REFERENCES `Student_Subject_Grade` (`AdmissionNo`, `SubjectID`);
 
   --
   -- Constraints for table `Timetable`
   --
   ALTER TABLE `Timetable`
-  ADD CONSTRAINT `Timetable_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
+#   ADD CONSTRAINT `Timetable_ibfk_1` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`),
   ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
   --
