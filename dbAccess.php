@@ -52,7 +52,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -78,7 +77,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -106,7 +104,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
 
         return $set;
@@ -165,7 +162,6 @@
             $mysqli->close();
             return false;
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -191,7 +187,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -228,7 +223,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -291,7 +285,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -320,7 +313,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -349,7 +341,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -412,7 +403,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -438,7 +428,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -469,7 +458,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -536,7 +524,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -651,7 +638,6 @@
                 return $OUTvalue;
             }
         }
-        $stmt->close();
         $mysqli->close();
     }
 
@@ -679,7 +665,6 @@
                 }
             }
         }
-        $stmt->close();
         $mysqli->close();
         return $set;
     }
@@ -735,7 +720,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
     }
@@ -821,7 +805,6 @@
                 return true;
             }
         }
-        $stmt->close();
         $mysqli->close();
         return false;
 
@@ -935,7 +918,7 @@
 
         }
         $mysqli->close();
-
+        return false;
     }
 
     function rejectLeave($StaffID, $sDate, $ReviewedBy)
