@@ -4,11 +4,6 @@
  * User: vimukthi
  * Date: 6/8/14
  *
- * THIS IS THE NEW TEMPLATE
- *
- * ONLY EDIT WHERE MENTIONED
- *
- * Page title, and height are php variables you have to edit at the bottom.
  *
  */
 
@@ -20,7 +15,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 {
         $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nationalityRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"], $_POST["highestEducationalQualification"], $_POST["highestProfessionalQualification"], $_POST["courseOfStudy"]);
         echo $operation;
-
 }
 ?>
 <html>
@@ -45,11 +39,9 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             padding:5px;
             min-width: 200px;
         }
-
         td {
             padding:5px;
         }
-
         .staffimage{
             position:absolute;
             height:160px;
@@ -67,7 +59,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             width:142px;
             height:150px;
         }
-
         input.button {
             position:relative;
             font-weight:bold;
@@ -78,15 +69,10 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         .number {
             width:40px;
         }
-
-
         </style>
-
         <script>
-
             function changeTextbox(element){
                 var elementTag = element.tagName.toLowerCase();
-
                 var changeId;
 
                 if (elementTag == "select"){
@@ -104,11 +90,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     var toChange = document.getElementById(changeId);
                     toChange.value = element.value;
                 }
-
-
             }
-
-
         </script>
 
     </head>
@@ -700,14 +682,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                                     <option value="5"><?php echo "5 - " . $other?></option>
                             </select>
             </td>
-
-<!--            <td><select name="" type="text" value="">-->
-<!--                    <option value="1">--><?php //echo $sinhala?><!--</option>-->
-<!--                    <option value="2">--><?php //echo $srilankantamil?><!--</option>-->
-<!--                    <option value="3">--><?php //echo $indiantamil?><!--</option>-->
-<!--                    <option value="4">--><?php //echo $srilankanmuslim?><!--</option>-->
-<!--                    <option value="5">--><?php //echo $other?><!--</option>-->
-<!--                </select></td>-->
         </tr>
         <tr >
             <td><?php echo $religion?></td>
@@ -853,10 +827,13 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><input id="NumberCb8" type="text" name="$subjectMostTaught" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb8"name="subjectMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
-                    <option value="1">Baa</option>
-                    <option value="2">Baa</option>
-                    <option value="3">Black</option>
-                    <option value="4">Sheep</option>
+                    <option value="1">Maths</option>
+                    <option value="2">Science</option>
+                    <option value="3">English</option>
+                    <option value="4">Information Technology</option>
+                    <option value="5">History</option>
+                    <option value="6">Sinhala</option>
+                    <option value="7">Tamil</option>
                 </select>
             </td>
         </tr>
@@ -865,10 +842,13 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><input id="NumberCb9" type="text" name="$subjectSecondMostTaugh" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb9"name="subjectSecondMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
-                    <option value="1">Baa</option>
-                    <option value="2">Baa</option>
-                    <option value="3">Black</option>
-                    <option value="4">Sheep</option>
+                    <option value="1">Maths</option>
+                    <option value="2">Science</option>
+                    <option value="3">English</option>
+                    <option value="4">Information Technology</option>
+                    <option value="5">History</option>
+                    <option value="6">Sinhala</option>
+                    <option value="7">Tamil</option>
                 </select>
             </td>
         </tr>
@@ -1051,25 +1031,25 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
 
 
-                    <option value=""><?php echo "60 - " .$Maths?></option>
-                    <option value=""><?php echo "60 - " .$Science?></option>
-                    <option value=""><?php echo "60 - " .$ScienceandMaths?></option>
-                    <option value=""><?php echo "60 - " .$English?></option>
-                    <option value=""><?php echo "60 - " .$Primary?></option>
-                    <option value=""><?php echo "60 - " .$Religion?></option>
-                    <option value=""><?php echo "60 - " .$SocialStudies?></option>
-                    <option value=""><?php echo "60 - " .$Commerce?></option>
-                    <option value=""><?php echo "60 - " .$Technology?></option>
-                    <option value=""><?php echo "60 - " .$HomeScience?></option>
-                    <option value=""><?php echo "60 - " .$Agriculture ?></option>
-                    <option value=""><?php echo "60 - " .$Sinhala?></option>
-                    <option value=""><?php echo "60 - " .$Tamil?></option>
-                    <option value=""><?php echo "60 - " .$WesternMusic?></option>
-                    <option value=""><?php echo "60 - " .$EasternMusic?></option>
-                    <option value=""><?php echo "60 - " .$Dancing?></option>
-                    <option value=""><?php echo "60 - " .$Art?></option>
-                    <option value=""><?php echo "60 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value=""><?php echo "60 - " .$Malay?></option>
+                    <option value=""><?php echo "72 - " .$Maths?></option>
+                    <option value=""><?php echo "73 - " .$Science?></option>
+                    <option value=""><?php echo "74 - " .$ScienceandMaths?></option>
+                    <option value=""><?php echo "75 - " .$English?></option>
+                    <option value=""><?php echo "76 - " .$Primary?></option>
+                    <option value=""><?php echo "77 - " .$Religion?></option>
+                    <option value=""><?php echo "78 - " .$SocialStudies?></option>
+                    <option value=""><?php echo "79 - " .$Commerce?></option>
+                    <option value=""><?php echo "80 - " .$Technology?></option>
+                    <option value=""><?php echo "81 - " .$HomeScience?></option>
+                    <option value=""><?php echo "82 - " .$Agriculture ?></option>
+                    <option value=""><?php echo "83 - " .$Sinhala?></option>
+                    <option value=""><?php echo "84 - " .$Tamil?></option>
+                    <option value=""><?php echo "85 - " .$WesternMusic?></option>
+                    <option value=""><?php echo "86 - " .$EasternMusic?></option>
+                    <option value=""><?php echo "87 - " .$Dancing?></option>
+                    <option value=""><?php echo "88 - " .$Art?></option>
+                    <option value=""><?php echo "89 - " .$ForeignLanguageExcludingEnglish?></option>
+                    <option value=""><?php echo "90 - " .$Malay?></option>
                     <option value=""><?php echo "60 - " .$Other?></option>
 
 

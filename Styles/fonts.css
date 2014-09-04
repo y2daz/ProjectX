@@ -1,0 +1,66 @@
+ /*latin-ext*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(fonts/OpenSans400ext.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+ /*latin*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(fonts/OpenSans400.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+ /*latin-ext*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(fonts/OpenSans600ext.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+ /*latin*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(fonts/OpenSans600.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+ /*latin-ext*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans700ext.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+ /*latin*/
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'), url(fonts/OpenSans700.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+ /*sinhala*/
+ /*Sinhala-Apple*/
+/*@font-face {*/
+    /*font-family: 'Open Sans';*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: local('Open Sans'), local('OpenSans'), url(fonts/SinhalaApple.TTF) format('woff2');*/
+    /*unicode-range: U+0D80-0DFF, U+111E0–111FF;*/
+/*}*/
+ /*sinhala-ext*/
+/*@font-face {*/
+    /*font-family: 'Open Sans';  Sinhala Font*/
+    /*font-style: normal;*/
+    /*font-weight: 400;*/
+    /*src: local('Open Sans'), local('OpenSans'), url(fonts/SinhalaApple.TTF) format('woff2');*/
+    /*unicode-range: U+111E0–111FF;*/
+/*}*/

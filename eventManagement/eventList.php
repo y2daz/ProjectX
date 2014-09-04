@@ -40,6 +40,9 @@ $pageTitle= "Template";
                 border:1px solid #005e77;
                 border-collapse: collapse;
             }
+            #eventTable .alt{
+                background-color: #bed9ff;
+            }
             #eventTable td{
                 padding: 5px;
             }
@@ -62,6 +65,7 @@ $pageTitle= "Template";
         <div class="" id="general" style="">
 
             <h1>Event List</h1>
+            <form>
             <table id="eventTable">
                 <tr>
                     <th id="eventName">Event Name</th>
@@ -70,30 +74,45 @@ $pageTitle= "Template";
                     <th></th>
                     <!--<span class="table" style="width:570px;height:auto">-->
                 </tr>
-                <tr>
-                    <td>Prize Giving</td>
-                    <td>07/07/2015</td>
-                    <td>Prize giving ceremony for primary grades</td>
-                    <td><span class="table" style="width:570px;height:auto">
-                    <input type="button" name="manage1" id="manage1" value="Manage" />
-                    </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Sports Meet</td>
-                    <td>07/09/2014</td>
-                    <td>Inter house secondary grades sports meet</td>
-                    <td><span class="table" style="width:570px;height:auto">
-                    <center><input type="button" name="manage2" id="manage2" value="Manage" /></center>
-                    </span>
-                    </td>
-                </tr>
+                <?php
+                $result = getAllEvents();
+                $i = 1;
+
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
+                    echo $top;
+                    echo "$row[1]";
+                    echo "<td>$row[2]</td>";
+                    echo "<td>$row[3]</td>";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"manageEvents.php?manage=" . $row[1] . "\" /> </td> ";
+                    echo "</td></tr>";
+                }
+                ?>
+
+<!--                <tr>-->
+<!--                    <td>Prize Giving</td>-->
+<!--                    <td>07/07/2015</td>-->
+<!--                    <td>Prize giving ceremony for primary grades</td>-->
+<!--                    <td><span class="table" style="width:570px;height:auto">-->
+<!--                    <input type="button" name="manage1" id="manage1" value="Manage" />-->
+<!--                    </span>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Sports Meet</td>-->
+<!--                    <td>07/09/2014</td>-->
+<!--                    <td>Inter house secondary grades sports meet</td>-->
+<!--                    <td><span class="table" style="width:570px;height:auto">-->
+<!--                    <center><input type="button" name="manage2" id="manage2" value="Manage" /></center>-->
+<!--                    </span>-->
+<!--                    </td>-->
+<!--                </tr>-->
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td><span class="table" style="width:570px;height:auto">
-                    <input type="submit" name="button" id="button" value="Add New Event" onClick="window.location = 'addEvent.php';"/>
+                    <input type="button" name="button" id="button" value="Add New Event" onClick="window.location = 'addEvent.php';"/>
                 </span>
                     </td>
                 </tr>
@@ -125,6 +144,7 @@ $pageTitle= "Template";
                 <!--</td>-->
                 <!--</tr>-->
             </table>
+<!--            </form>-->
 
         </div>
     </body>

@@ -7,6 +7,7 @@
  */
     session_start();
     require_once("dbAccess.php");
+    require_once("common.php");
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
@@ -29,15 +30,17 @@
 //
 //    $footerTop = $fullPageHeight + 50;
 
+
 ?>
 <!DOCTYPE html>
 <html>
 
     <head>
-        <title><?php echo $pageTitle ?></title>
+        <title><?php echo $pageTitle ?> </title>
 
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+<!--        <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>-->
+        <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
@@ -45,6 +48,11 @@
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
+
+        <!--impromptu Links-->
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/scripts/jquery-impromptu.min.css";?>">
+        <script src="<?php echo PATHFRONT ?>/scripts/jquery-impromptu.min.js"></script>
+
 
         <style type=text/css>
 
@@ -101,8 +109,10 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"-->><span></span></a>
+        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"--><span></span></a>
 
+
+        <span id="messagingSystem"></span>
 
         <div id="nav">
 <!--            <li id="Red"><a id="blue">Notices</a>-->
@@ -115,7 +125,7 @@
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassInformation.php">Class Information</a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassroomInformation.php">Class Information</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/searchStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
                     <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/teacherAchievenment.php">Staff Achievements</a></li>
@@ -124,9 +134,9 @@
             <li><a><?php echo $leaveManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a><hr /></li>
+                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a></li>
                     <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>
+<!--                    <li><a href="--><?php //echo PATHFRONT ?><!--/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>-->
                 </ul>
             </li>
             <li><a  href="<?php echo PATHFRONT ?>/TimeTable/timetable.php"><?php echo $timetables; ?></a>
@@ -182,18 +192,18 @@
         <div id="divMenu">
             <table id="topMenu">
                 <tr>
-                    <td><a href="<?php echo PATHFRONT ?>/template.php">Home</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
 <!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
-                    <td><a href="<?php echo PATHFRONT ?>/template.php?logout=1">Log out</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
                 </tr>
             </table>
         </div>
 
         <div id="footer">
-            <div id="aboutus">
-                <p> ABOUT US</p>
-                <span>We're pretty amazing.</span>
-            </div>
+<!--            <div id="aboutus">-->
+<!--                <p> ABOUT US</p>-->
+<!--                <span>We're pretty amazing.</span>-->
+<!--            </div>-->
         </div>
 
         <div id="language">

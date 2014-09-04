@@ -14,6 +14,7 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 ob_start();
 
 ?>
@@ -23,17 +24,29 @@ ob_start();
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-            /*
-            ADD YOUR CSS HERE
-            */
+
+            #flag {
+                position: relative;
+                top: 50px;
+                left: 90px;
+            }
+            #content {
+                position: relative;
+                top: 50px;
+                width: 80%;
+                left: 10%;
+            }
 
         </style>
     </head>
     <body>
 
-    <p> TEST POST; PLEASE IGNORE.</p>
 
+    <img id="flag" src="<?php echo THISPATHFRONT . "/images/DsFlag.jpg" ?>" />
 
+    <p id="content"> D.S. Senanyake College is a public school in Sri Lanka, named after the first Prime Minister
+        of Independent Sri Lanka, Rt.Hon. D.S. Senanayake. It was established on February 10, 1967 under the
+        stewardship of R.I.T. Alles.</p>
 
     </body>
 </html>
@@ -41,7 +54,7 @@ ob_start();
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Menu";
 //Only change above
 
 $pageContent = ob_get_contents();

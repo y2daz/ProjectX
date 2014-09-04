@@ -7,6 +7,7 @@
  */
 
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+    require_once(THISROOT . "/common.php");
     include(THISROOT . "/dbAccess.php");
 
     ob_start();
@@ -15,16 +16,42 @@
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
+
+        $success = "Leave Request Sent!";
+        $fail = "Request Failed!";
+
         if($operation)
         {
-            echo "<script> alert('Request Submitted!') </script>";
+           sendNotification($success);
         }
         else
         {
-            echo "<script> alert('Request Submission Failed!') </script>";
+           sendNotification($fail);
         }
+
+        //echo $operation;
     }
 
+    if(isset($_POST["GetLeaveData"]))
+    {
+        $result = getLeaveData($_POST["staffid"]);
+
+        $OfficialLeave = $result[0];
+        $MaternityLeave = $result[1];
+        $OtherLeave = $result[2];
+    }
+    else
+    {
+        $OfficialLeave = "";
+        $MaternityLeave = "";
+        $OtherLeave = "";
+    }
+
+    /*
+    echo $OfficialLeave;
+    echo $MaternityLeave;
+    echo $OtherLeave;
+    */
 
 ?>
 <html>
@@ -36,10 +63,70 @@
             h1{
                 text-align: center;
             }
+            #details{
+                border-collapse: collapse;
+            }
+
+            #output
+            {
+                border-collapse: collapse;
+            }
+
+            .insert
+            {
+                position:absolute;
+                left:40px;
+                top: 100px;
+            }
+
+            .insert2
+            {
+                position: absolute;
+                left: 500px;
+                top: 100px;
+            }
+
+            .insert2 th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left;
+            }
+
+            .insert th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left;
+            ;
+            }
+
+            .insert td
+            {
+                padding:10px;
+            }
+
+            .insert input{
+                font-weight:bold;
+                font-size:15px;
+            }
+
+            .insert input.button{
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                Right:-335px;
+                top:20px;
+            }
+
 
         </style>
 
-        <script>
+        <script src="leave.js">
 
             function selectedvalue(data)
             {
@@ -54,19 +141,25 @@
     <body>
             <h1>Apply For Leave</h1>
 
-            <form method="post">
+            <form class="insert" method="post">
 
-                <br /><br /><br />
+                <table id="details">
 
-                <table align="center">
+
+                    <tr><th>Enter Details<th></th></tr>
+
                     <tr>
                         <td>Staff ID :</td>
-                        <td><input type="text" name="staffid" value="" required="true"/></td>
+                        <td><input type="text" id="StaffID" name="staffid" value="" required="true"/></td>
                     </tr>
+
+
                     <tr>
                         <td>Start Date :</td>
                         <td><input type="date" name="startdate" required="true"/></td>
                     </tr>
+
+
                     <tr>
                         <td>End Date :</td>
                         <td><input type="date" name="enddate" required="true"/></td>
@@ -76,31 +169,49 @@
                         <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
                                 <option value="1">Offical Leave</option>
                                 <option value="2">Maternity Leave</option>
-<!--                                <option value="CasualLeave">Casual Leave</option>-->
                                 <option value="3">Other Leave</option>
                             </select>
                         </td>
                     </tr>
 
+
                     <tr>
                         <td>Other Reason(s)</td>
                         <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
                     </tr>
+
+                </table>
+
+                <table class="insert2" id="output">
+
+                    <tr><th>Available Leave Days <th></th></tr>
+
                     <tr>
-                        <!--<td>Number of Leave Days Left : </td> -->
-                        <!--<td><input type="text" name="NoofLeaveDaysLeft" disabled="disabled"	</td> -->
+                        <td>Official Leave</td>
+                        <td> <?php echo $OfficialLeave ?> </td>
+                    </tr>
+
                     <tr>
+                        <td>Maternity Leave</td>
+                        <td> <?php echo $MaternityLeave ?></td>
+                    </tr>
+
+                    <tr>
+                        <td>Other Leave</td>
+                        <td> <?php echo $OtherLeave ?></td>
+                    </tr>
+
                 </table>
 
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="Submit" id="submitme">
+                    <input type="submit" name="ApplyforLeave" value="Apply for Leave" id="submitme">
+                    <input type="reset" name="reset" value="Reset">
+                    <input type="submit" name="GetLeaveData" value="Get Leave Data">
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
-
-
             </form>
     </body>
 </html>

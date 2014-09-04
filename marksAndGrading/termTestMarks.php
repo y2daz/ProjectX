@@ -25,24 +25,20 @@ ob_start();
         text-align: center;
     }
 
-    table, th, td {
+    .insert, th, td {
         border: 0px solid black;
 
     }
-    th{
-        width: 1000px;
+    .insert th{
+        /*width: 1000px;*/
         text-align:left;
     }
 
-    td {
-        width: 10px;
+    .insert td {
+        /*width: 10px;*/
         text-align:left;
+        padding: 2px 5px 2px 5px;;
     }
-
-    tr{
-        height: 20px;
-    }
-
 
 
     input.button {
@@ -68,7 +64,7 @@ ob_start();
 
 <body>
 
-<form>
+<form method="POST"  action="termTestMarks.php">
     <h1>Term Test Details Form</h1>
 
 
@@ -96,21 +92,21 @@ ob_start();
 </tr>
 <tr class="alt">
     <td>Class</td>
-    <td><input type="text" value="" required="true"></td>
+    <td><input name="class" type="text" value="" required="true"></td>
 </tr>
 <tr>
-    <td>Teacher's Name</td>
-    <td><input type="text" value="" required="true"></td>
+    <td>Teacher's ID</td>
+    <td><input name="staffID" type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
 <tr>
     <td>Subject</td>
-    <td><input type="text" value="" required="true"></td>
+    <td><input name="subject" type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
 <tr>
     <td>Year</td>
-    <td><input type="text" value="" required="true"></td>
+    <td><input name="year" type="text" value="" required="true"></td>
 </tr>
 <tr class="alt">
     <td>Term</td>
@@ -122,11 +118,9 @@ ob_start();
     </td>
 </tr>
 
-<h2></h2>
+<br />
 
 </table>
-
-
 
     <input class="button" type="submit" value="Submit">
 
@@ -135,10 +129,6 @@ ob_start();
 </form>
 
 
-
-
-
-</tr>
 
 </body>
 </html>

@@ -7,11 +7,13 @@
  *
  */
 
-require_once("../formValidation.php");
-require_once("../dbAccess.php");
-
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
+
 
 ob_start();
 
@@ -19,28 +21,39 @@ ob_start();
 
 if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
-    if(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
+    if(hasSpaces($_POST["txtEmail"]))
+    {
+        sendNotification("Illegal email address.");
+    }
+    elseif(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
     {
         $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
+        if ($operation == 1)
+            sendNotification("User added successfully.");
+        else
+            sendNotification("Error adding user.");
     }
 }
 
-if (isset($_GET["reset"])) //User has clicked a reset password button
+if (isset($_POST["reset"])) //User has clicked a reset password button
 {
-//    echo "Reset, class.";
+    $operation = changePassword($_POST["user"], $_POST["newPassword"]);
+    if ($operation == 1)
+        sendNotification("Password changed successfully.");
+    else
+        sendNotification("Error changing password.");
 }
 
-if (isset($_GET["delete"])) //User has clicked a reset password button
+if (isset($_POST["delete"])) //User has clicked a delete button
 {
-    $deletedEmail = $_GET["delete"];
-    if (!(deleteUser($deletedEmail)))
-    {
-        //user doesn.t exist, tell thm
-    }
+    $deletedEmail = $_POST["delete"];
+    $operation = deleteUser($deletedEmail);
+
+    if ($operation == 1)
+        sendNotification("User deleted successfully.");
+    else
+        sendNotification("Error deleting user.");
 }
-
-
-
 
 ?>
     <html>
@@ -139,14 +152,24 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
                         $result = getAllUsers();
                         $i = 1;
 
-                        foreach($result as $row){
-                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
-                            echo $top;
-                            echo "$row[0]";
-                            echo "<td>$row[1]</td>";
-                            echo "<td><input name=\"Reset" . "\" type=\"submit\" value=\"Reset\" formaction=\"manageUsers.php?reset=" . $row[0] . "\" /> </td> ";
-                            echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"manageUsers.php?delete=" . $row[0] . "\" /> </td> ";
-                            echo "</td></tr>";
+                        if ($result == null)
+                        {
+                            echo "<tr><td colspan='4'>THere are no records to show.</td></tr>";
+                        }
+                        else
+                        {
+                            foreach($result as $row){
+                                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                                echo $top;
+                                echo "$row[0]";
+                                echo "<td>$row[1]</td>";
+                                echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+                                echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                                echo "</td></tr>";
+
+    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+    //                            post(document.URL, params, "post");
+                            }
                         }
                     ?>
                 </table>
@@ -163,7 +186,7 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
                         <th></th>
                     </tr>
                     <tr>
-                        <td class="column"><input type="text" name="txtEmail" required="true"  value="" class="txtEmail"/></td>
+                        <td class="column"><input type="text" name="txtEmail" required="true"  value="" class="txtEmail" /></td>
                         <td class="column">
                             <table>
                                 <tr>
@@ -177,7 +200,7 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
                             </table>
                         </td>
                         <td class="column"><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
-                        <td class="column"><input type="submit" value="Submit" name="newUser" formaction=""></td>
+                        <td class="column"><input type="Submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
             </form>
@@ -186,7 +209,7 @@ if (isset($_GET["delete"])) //User has clicked a reset password button
     </html>
 <?php
 
-    $fullPageHeight = 560  + ($i * 31);
+    $fullPageHeight = 560  + ($i * 35);
     $footerTop = $fullPageHeight + 100;
     $pageTitle= "Manage Users";
 

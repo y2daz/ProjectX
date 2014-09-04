@@ -15,27 +15,31 @@
   --
   DROP DATABASE IF EXISTS `manaDB`;
 
-  CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-  USE `manaDB`;
+#   CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
+#
+#   GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
+#
+#   FLUSH PRIVILEGES;
 
-  CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
-
-  GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
-
-  FLUSH PRIVILEGES;
+#   CREATE USER 'manaReporting'@'localhost' IDENTIFIED BY 'eveA0njJ7pYsFC1M';
+#
+#   GRANT SELECT, FILE, CREATE TEMPORARY TABLES, CREATE VIEW, SHOW VIEW ON manaDB.* TO 'manaReporting'@'localhost' IDENTIFIED BY 'eveA0njJ7pYsFC1M' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+#
+#   FLUSH PRIVILEGES;
 
 -- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 17, 2014 at 11:10 PM
+-- Generation Time: Sep 03, 2014 at 12:00 AM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
   SET AUTOCOMMIT = 0;
   START TRANSACTION;
+  SET time_zone = "+00:00";
 
 --
 -- Database: `manaDB`
@@ -49,7 +53,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ALMarks`
 --
 
-  DROP TABLE IF EXISTS `ALMarks`;
   CREATE TABLE IF NOT EXISTS `ALMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
@@ -66,7 +69,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ApplyLeave`
 --
 
-  DROP TABLE IF EXISTS `ApplyLeave`;
   CREATE TABLE IF NOT EXISTS `ApplyLeave` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `RequestDate` date DEFAULT NULL,
@@ -88,7 +90,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Attendance`
 --
 
-  DROP TABLE IF EXISTS `Attendance`;
   CREATE TABLE IF NOT EXISTS `Attendance` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `Year` int(11) NOT NULL DEFAULT '0',
@@ -362,7 +363,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Blacklist`
 --
 
-  DROP TABLE IF EXISTS `Blacklist`;
   CREATE TABLE IF NOT EXISTS `Blacklist` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `ListContributor` varchar(5) NOT NULL DEFAULT '',
@@ -379,7 +379,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ClassInformation`
 --
 
-  DROP TABLE IF EXISTS `ClassInformation`;
   CREATE TABLE IF NOT EXISTS `ClassInformation` (
     `StaffID` varchar(5) DEFAULT NULL,
     `Grade` int(11) NOT NULL DEFAULT '0',
@@ -395,7 +394,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Event`
 --
 
-  DROP TABLE IF EXISTS `Event`;
   CREATE TABLE IF NOT EXISTS `Event` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `Name` varchar(50) DEFAULT NULL,
@@ -415,7 +413,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `Event`
 --
 
-  INSERT INTO `Event` VALUES(1, 'Prize Giving', 'For grades 1 to 5', 'Aufitorium', 0, '2014-08-14', '1', '11:11:00', '22:22:00', 0);
+  INSERT INTO `Event` VALUES(1, 'Prize Giving', 'For O/Level examinations', 'Main Auditorium', 0, '2014-08-14', '2', '15:20:00', '17:50:00', 0);
+  INSERT INTO `Event` VALUES(2, 'Sports Meet', 'Inter House sports meet', 'Sugathadasa Stadium', 0, '2014-08-13', '1', '15:00:00', '20:00:00', 0);
+  INSERT INTO `Event` VALUES(3, 'Junior Concert', 'Grades 1 to 5. Chief Guest Mr. Liyanage', 'Main Auditorium', 0, '2014-08-21', '1', '18:00:00', '20:00:00', 0);
+  INSERT INTO `Event` VALUES(4, 'Founder''s Day', 'Walk around the school', 'School', 0, '2014-08-13', '2', '08:00:00', '12:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -423,7 +424,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `EventManager`
 --
 
-  DROP TABLE IF EXISTS `EventManager`;
   CREATE TABLE IF NOT EXISTS `EventManager` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -438,13 +438,81 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Holiday`
 --
 
-  DROP TABLE IF EXISTS `Holiday`;
   CREATE TABLE IF NOT EXISTS `Holiday` (
     `Year` int(11) NOT NULL DEFAULT '0',
-    `Day` date NOT NULL DEFAULT '0000-00-00',
-    `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`Year`,`Day`)
+    `Day` date NOT NULL,
+    PRIMARY KEY (`Year`,`Day`),
+    KEY `Day` (`Day`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Holiday`
+--
+
+  INSERT INTO `Holiday` VALUES(2014, '2014-01-01');
+  INSERT INTO `Holiday` VALUES(2014, '2014-01-02');
+  INSERT INTO `Holiday` VALUES(2014, '2014-01-03');
+  INSERT INTO `Holiday` VALUES(2014, '2014-02-04');
+  INSERT INTO `Holiday` VALUES(2014, '2014-02-14');
+  INSERT INTO `Holiday` VALUES(2014, '2014-02-27');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-11');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-14');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-15');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-16');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-17');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-18');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-21');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-22');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-23');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-24');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-25');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-28');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-29');
+  INSERT INTO `Holiday` VALUES(2014, '2014-04-30');
+  INSERT INTO `Holiday` VALUES(2014, '2014-05-01');
+  INSERT INTO `Holiday` VALUES(2014, '2014-05-14');
+  INSERT INTO `Holiday` VALUES(2014, '2014-05-15');
+  INSERT INTO `Holiday` VALUES(2014, '2014-06-12');
+  INSERT INTO `Holiday` VALUES(2014, '2014-07-29');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-08');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-11');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-12');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-13');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-14');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-15');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-18');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-19');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-20');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-21');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-22');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-25');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-26');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-27');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-28');
+  INSERT INTO `Holiday` VALUES(2014, '2014-08-29');
+  INSERT INTO `Holiday` VALUES(2014, '2014-09-01');
+  INSERT INTO `Holiday` VALUES(2014, '2014-09-02');
+  INSERT INTO `Holiday` VALUES(2014, '2014-09-22');
+  INSERT INTO `Holiday` VALUES(2014, '2014-09-23');
+  INSERT INTO `Holiday` VALUES(2014, '2014-10-08');
+  INSERT INTO `Holiday` VALUES(2014, '2014-10-22');
+  INSERT INTO `Holiday` VALUES(2014, '2014-11-06');
+  INSERT INTO `Holiday` VALUES(2014, '2014-11-20');
+  INSERT INTO `Holiday` VALUES(2014, '2014-11-21');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-10');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-11');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-12');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-15');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-16');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-17');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-18');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-19');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-23');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-24');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-25');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-26');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-30');
+  INSERT INTO `Holiday` VALUES(2014, '2014-12-31');
 
 -- --------------------------------------------------------
 
@@ -452,7 +520,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Invitee`
 --
 
-  DROP TABLE IF EXISTS `Invitee`;
   CREATE TABLE IF NOT EXISTS `Invitee` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
@@ -468,7 +535,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `IsSubstituted`
 --
 
-  DROP TABLE IF EXISTS `IsSubstituted`;
   CREATE TABLE IF NOT EXISTS `IsSubstituted` (
     `StaffID` varchar(5) DEFAULT NULL,
     `Grade` int(11) DEFAULT NULL,
@@ -488,12 +554,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LabelLanguage`
 --
 
-  DROP TABLE IF EXISTS `LabelLanguage`;
   CREATE TABLE IF NOT EXISTS `LabelLanguage` (
     `Label` varchar(50) NOT NULL DEFAULT '',
     `Language` int(11) NOT NULL DEFAULT '0',
     `Value` varchar(200) DEFAULT NULL,
-    `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`Label`,`Language`),
     KEY `fk004` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -502,58 +566,174 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `LabelLanguage`
 --
 
-  INSERT INTO `LabelLanguage` VALUES('addmanager', 0, 'Add Event Managers ', 0);
-  INSERT INTO `LabelLanguage` VALUES('addmanager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ', 0);
-  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave', 0);
-  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම', 0);
-  INSERT INTO `LabelLanguage` VALUES('approveLeave', 0, 'Approve Leave', 0);
-  INSERT INTO `LabelLanguage` VALUES('approveLeave', 1, 'නිවාඩු අනුමතකිරීම', 0);
-  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 0, 'Create Timetable by Class', 0);
-  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම', 0);
-  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 0, 'Create Timetable by Teacher', 0);
-  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම', 0);
-  INSERT INTO `LabelLanguage` VALUES('date', 0, 'Date', 0);
-  INSERT INTO `LabelLanguage` VALUES('date', 1, 'දිනය', 0);
-  INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description', 0);
-  INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය', 0);
-  INSERT INTO `LabelLanguage` VALUES('endtime', 0, 'End Time', 0);
-  INSERT INTO `LabelLanguage` VALUES('endtime', 1, 'අවසන් වන වෙලාව', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventcreator', 0, 'Event Creator', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventcreator', 1, 'සිදුවීම් නිර්මාණකරු', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventid', 0, 'Event ID', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventid', 1, 'සිදුවීම් අංකය', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventManagement', 0, 'Event Management', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventManagement', 1, 'උත්සවය කළමනාකරණය', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventtype', 0, 'Event Type', 0);
-  INSERT INTO `LabelLanguage` VALUES('eventtype', 1, 'සිදුවීම් වර්ගය', 0);
-  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 0, 'Leave Management', 0);
-  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය', 0);
-  INSERT INTO `LabelLanguage` VALUES('location', 0, 'Location', 0);
-  INSERT INTO `LabelLanguage` VALUES('location', 1, 'ස්ථානය', 0);
-  INSERT INTO `LabelLanguage` VALUES('name', 0, 'Name', 0);
-  INSERT INTO `LabelLanguage` VALUES('name', 1, 'සිදුවීම', 0);
-  INSERT INTO `LabelLanguage` VALUES('prizegiving', 0, 'Prize Giving Ceremony', 0);
-  INSERT INTO `LabelLanguage` VALUES('prizegiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය', 0);
-  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member', 0);
-  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න', 0);
-  INSERT INTO `LabelLanguage` VALUES('saveevent', 0, 'Save Event', 0);
-  INSERT INTO `LabelLanguage` VALUES('saveevent', 1, 'සිදුවීම සුරකින්න', 0);
-  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search Staff Member', 0);
-  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම', 0);
-  INSERT INTO `LabelLanguage` VALUES('sportmeet', 0, 'Sports Meet', 0);
-  INSERT INTO `LabelLanguage` VALUES('sportmeet', 1, 'ක්‍රීඩා උත්සවය', 0);
-  INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Management', 0);
-  INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය', 0);
-  INSERT INTO `LabelLanguage` VALUES('starttime', 0, 'Start Time ', 0);
-  INSERT INTO `LabelLanguage` VALUES('starttime', 1, 'ආරම්භක වෙලාව ', 0);
-  INSERT INTO `LabelLanguage` VALUES('status', 0, 'Status', 0);
-  INSERT INTO `LabelLanguage` VALUES('status', 1, 'තත්වය', 0);
-  INSERT INTO `LabelLanguage` VALUES('teacherday', 0, 'Teacher''s Day', 0);
-  INSERT INTO `LabelLanguage` VALUES('teacherday', 1, 'ගුරු දිනය', 0);
-  INSERT INTO `LabelLanguage` VALUES('timetables', 0, 'Timetables', 0);
-  INSERT INTO `LabelLanguage` VALUES('timetables', 1, 'කාලසටහන', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History', 0);
-  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු', 0);
+  INSERT INTO `LabelLanguage` VALUES('addManager', 0, 'Add Event Managers ');
+  INSERT INTO `LabelLanguage` VALUES('addManager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ');
+  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave');
+  INSERT INTO `LabelLanguage` VALUES('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම');
+  INSERT INTO `LabelLanguage` VALUES('approveLeave', 0, 'Approve Leave');
+  INSERT INTO `LabelLanguage` VALUES('approveLeave', 1, 'නිවාඩු අනුමතකිරීම');
+  INSERT INTO `LabelLanguage` VALUES('buddhism', 0, 'Buddhism');
+  INSERT INTO `LabelLanguage` VALUES('buddhism', 1, 'බෞද්ධ');
+  INSERT INTO `LabelLanguage` VALUES('byClass', 0, 'by Class');
+  INSERT INTO `LabelLanguage` VALUES('byClass', 1, 'පන්ති මට්ටමින්');
+  INSERT INTO `LabelLanguage` VALUES('byTeacher', 0, 'by Teacher');
+  INSERT INTO `LabelLanguage` VALUES('byTeacher', 1, 'ගුරුවරයාගේ නමින්');
+  INSERT INTO `LabelLanguage` VALUES('catholic', 0, 'Catholic');
+  INSERT INTO `LabelLanguage` VALUES('catholic', 1, 'කතෝලික');
+  INSERT INTO `LabelLanguage` VALUES('chooseOption', 0, 'Choose Option');
+  INSERT INTO `LabelLanguage` VALUES('chooseOption', 1, 'විකල්පය තෝරගන්න');
+  INSERT INTO `LabelLanguage` VALUES('christianity', 0, 'Christianity');
+  INSERT INTO `LabelLanguage` VALUES('christianity', 1, 'ක්‍රිස්තියානි');
+  INSERT INTO `LabelLanguage` VALUES('class', 0, 'Class');
+  INSERT INTO `LabelLanguage` VALUES('class', 1, 'පන්තිය');
+  INSERT INTO `LabelLanguage` VALUES('contactNumber', 0, 'Contact Number');
+  INSERT INTO `LabelLanguage` VALUES('contactNumber', 1, 'දුරකථන අංකය');
+  INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 0, 'Course of Study');
+  INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 1, 'වර්ගමාන පත්වීමේ වර්ගීකරණය');
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 0, 'Create Timetable by Class');
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම');
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 0, 'Create Timetable by Teacher');
+  INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම');
+  INSERT INTO `LabelLanguage` VALUES('date', 0, 'Date');
+  INSERT INTO `LabelLanguage` VALUES('date', 1, 'දිනය');
+  INSERT INTO `LabelLanguage` VALUES('dateAppointedAsTeacher', 0, 'Date Appointed as Teacher/Principal');
+  INSERT INTO `LabelLanguage` VALUES('dateAppointedAsTeacher', 1, 'සේවයට පත්වූ වර්ෂය හා මාසය');
+  INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 0, 'Date Joined this School');
+  INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 1, 'මෙම විදුහලේ පත්වීම භාරගත් වර්ෂය හා මාසය');
+  INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 0, 'Date of Birth');
+  INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 1, 'උපන් දිනය');
+  INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description');
+  INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය');
+  INSERT INTO `LabelLanguage` VALUES('educationInformation', 0, 'Education Information');
+  INSERT INTO `LabelLanguage` VALUES('educationInformation', 1, 'අධ්‍යාපනික තොරතුරු');
+  INSERT INTO `LabelLanguage` VALUES('emergencyContact', 0, 'Emergency Contact''s Name');
+  INSERT INTO `LabelLanguage` VALUES('emergencyContact', 1, 'හදිසි අවස්ථාවකදී  සමබන්ද කරගත යුතු පුදගලයාගේ නම');
+  INSERT INTO `LabelLanguage` VALUES('emergencyContactNumber', 0, 'Emergency Contact''s Name');
+  INSERT INTO `LabelLanguage` VALUES('emergencyContactNumber', 1, 'හදිසි අවස්ථාවකදී ඇමතිය යුතු දුරකථන අංකය');
+  INSERT INTO `LabelLanguage` VALUES('employmentInformation', 0, 'Employment Information');
+  INSERT INTO `LabelLanguage` VALUES('employmentInformation', 1, 'සේවයේ තොරතුරු');
+  INSERT INTO `LabelLanguage` VALUES('employmentStatus', 0, 'Employment Status');
+  INSERT INTO `LabelLanguage` VALUES('employmentStatus', 1, 'පාසලට පතවීමේ ස්වභාවය');
+  INSERT INTO `LabelLanguage` VALUES('endTime', 0, 'End Time');
+  INSERT INTO `LabelLanguage` VALUES('endTime', 1, 'අවසන් වන වෙලාව');
+  INSERT INTO `LabelLanguage` VALUES('eventCreator', 0, 'Event Creator');
+  INSERT INTO `LabelLanguage` VALUES('eventCreator', 1, 'සිදුවීම් නිර්මාණකරු');
+  INSERT INTO `LabelLanguage` VALUES('eventId', 0, 'Event ID');
+  INSERT INTO `LabelLanguage` VALUES('eventId', 1, 'සිදුවීම් අංකය');
+  INSERT INTO `LabelLanguage` VALUES('eventManagement', 0, 'Event Management');
+  INSERT INTO `LabelLanguage` VALUES('eventManagement', 1, 'උත්සවය කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('eventType', 0, 'Event Type');
+  INSERT INTO `LabelLanguage` VALUES('eventType', 1, 'සිදුවීම් වර්ගය');
+  INSERT INTO `LabelLanguage` VALUES('fr', 0, 'F');
+  INSERT INTO `LabelLanguage` VALUES('fr', 1, 'සි');
+  INSERT INTO `LabelLanguage` VALUES('friday', 0, 'Friday');
+  INSERT INTO `LabelLanguage` VALUES('friday', 1, 'සිකුරාදා');
+  INSERT INTO `LabelLanguage` VALUES('gender', 0, 'Gender');
+  INSERT INTO `LabelLanguage` VALUES('gender', 1, 'ස්ත්‍රී/පුරුෂ භාවය');
+  INSERT INTO `LabelLanguage` VALUES('generalInformation', 0, 'General Information');
+  INSERT INTO `LabelLanguage` VALUES('generalInformation', 1, 'සාමාන්‍ය තොරතුරු');
+  INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade');
+  INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර');
+  INSERT INTO `LabelLanguage` VALUES('highestEducationalQualification', 0, 'Highest Educational Qualification');
+  INSERT INTO `LabelLanguage` VALUES('highestEducationalQualification', 1, 'ඉහලම අධ්‍යාපන සුදුසුකම');
+  INSERT INTO `LabelLanguage` VALUES('highestProfessionalQualification', 0, 'Highest Professional Qualification');
+  INSERT INTO `LabelLanguage` VALUES('highestProfessionalQualification', 1, 'ඉහලම වෘත්තීය සුදුසුකම');
+  INSERT INTO `LabelLanguage` VALUES('indianTamil', 0, 'Indian Tamil');
+  INSERT INTO `LabelLanguage` VALUES('indianTamil', 1, 'ඉන්දියානු  දෙමළ');
+  INSERT INTO `LabelLanguage` VALUES('interval', 0, 'INTERVAL');
+  INSERT INTO `LabelLanguage` VALUES('interval', 1, 'විවේක කාලය');
+  INSERT INTO `LabelLanguage` VALUES('islam', 0, 'Islam');
+  INSERT INTO `LabelLanguage` VALUES('islam', 1, 'ඉස්ලාම්');
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 0, 'Keep Attendance');
+  INSERT INTO `LabelLanguage` VALUES('keepAttendance', 1, 'පැමිණීමේ වාර්තාව ');
+  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 0, 'Leave Management');
+  INSERT INTO `LabelLanguage` VALUES('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('location', 0, 'Location');
+  INSERT INTO `LabelLanguage` VALUES('location', 1, 'ස්ථානය');
+  INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 0, 'Mail Delivery Address');
+  INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 1, 'ලිපිනය');
+  INSERT INTO `LabelLanguage` VALUES('married', 0, 'Married');
+  INSERT INTO `LabelLanguage` VALUES('married', 1, 'විවාහක');
+  INSERT INTO `LabelLanguage` VALUES('medium', 0, 'Medium');
+  INSERT INTO `LabelLanguage` VALUES('medium', 1, 'පත්වීම ලද මාධ්‍යය');
+  INSERT INTO `LabelLanguage` VALUES('mo', 0, 'M');
+  INSERT INTO `LabelLanguage` VALUES('mo', 1, 'ස');
+  INSERT INTO `LabelLanguage` VALUES('monday', 0, 'Monday');
+  INSERT INTO `LabelLanguage` VALUES('monday', 1, 'සදුදා');
+  INSERT INTO `LabelLanguage` VALUES('name', 0, 'Name');
+  INSERT INTO `LabelLanguage` VALUES('name', 1, 'සිදුවීම');
+  INSERT INTO `LabelLanguage` VALUES('nameInFull', 0, 'Name in Full');
+  INSERT INTO `LabelLanguage` VALUES('nameInFull', 1, 'සම්පුර්ණ නම');
+  INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 0, 'Name with Initials');
+  INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 1, 'නම් මුලකුරු සමඟ');
+  INSERT INTO `LabelLanguage` VALUES('nationalityRace', 0, 'Nationality Race');
+  INSERT INTO `LabelLanguage` VALUES('nationalityRace', 1, 'ජනවර්ගය');
+  INSERT INTO `LabelLanguage` VALUES('other', 0, 'Other');
+  INSERT INTO `LabelLanguage` VALUES('other', 1, 'වෙනත්');
+  INSERT INTO `LabelLanguage` VALUES('positionInSchool', 0, 'Position in School');
+  INSERT INTO `LabelLanguage` VALUES('positionInSchool', 1, 'පාසලේ දරන තනතුර');
+  INSERT INTO `LabelLanguage` VALUES('prizeGiving', 0, 'Prize Giving Ceremony');
+  INSERT INTO `LabelLanguage` VALUES('prizeGiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය');
+  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member');
+  INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න');
+  INSERT INTO `LabelLanguage` VALUES('salary', 0, 'Salary');
+  INSERT INTO `LabelLanguage` VALUES('salary', 1, 'මුළු වැටුප');
+  INSERT INTO `LabelLanguage` VALUES('saveEvent', 0, 'Save Event');
+  INSERT INTO `LabelLanguage` VALUES('saveEvent', 1, 'සිදුවීම සුරකින්න');
+  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search Staff Member');
+  INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම');
+  INSERT INTO `LabelLanguage` VALUES('section', 0, 'Section');
+  INSERT INTO `LabelLanguage` VALUES('section', 1, 'නිරතවන කාර්යය');
+  INSERT INTO `LabelLanguage` VALUES('serviceGrade', 0, 'Service Grade');
+  INSERT INTO `LabelLanguage` VALUES('serviceGrade', 1, 'අදාල සේවය/ශ්‍රේණිය');
+  INSERT INTO `LabelLanguage` VALUES('sportMeet', 0, 'Sports Meet');
+  INSERT INTO `LabelLanguage` VALUES('sportMeet', 1, 'ක්‍රීඩා උත්සවය');
+  INSERT INTO `LabelLanguage` VALUES('srilankanMuslim', 0, 'Sri Lankan Muslim');
+  INSERT INTO `LabelLanguage` VALUES('srilankanMuslim', 1, 'ශ්‍රී ලාංකික මුස්ලිම්');
+  INSERT INTO `LabelLanguage` VALUES('srilankanTamil', 0, 'Sri Lankan Tamil');
+  INSERT INTO `LabelLanguage` VALUES('srilankanTamil', 1, 'ශ්‍රී ලාංකික දෙමළ');
+  INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
+  INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
+  INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Management');
+  INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('startTime', 0, 'Start Time ');
+  INSERT INTO `LabelLanguage` VALUES('startTime', 1, 'ආරම්භක වෙලාව ');
+  INSERT INTO `LabelLanguage` VALUES('status', 0, 'Status');
+  INSERT INTO `LabelLanguage` VALUES('status', 1, 'තත්වය');
+  INSERT INTO `LabelLanguage` VALUES('subjectMostTaught', 0, 'Subject Most Taught');
+  INSERT INTO `LabelLanguage` VALUES('subjectMostTaught', 1, 'වැඩිම කාලයක් උගන්වන විෂයය');
+  INSERT INTO `LabelLanguage` VALUES('subjectSecondMostTaught', 0, 'Subject Second Most Taught');
+  INSERT INTO `LabelLanguage` VALUES('subjectSecondMostTaught', 1, 'දෙවනුව වැඩි කාලයක් උගන්වන විෂයය');
+  INSERT INTO `LabelLanguage` VALUES('submit', 0, 'Submit');
+  INSERT INTO `LabelLanguage` VALUES('submit', 1, 'තහවුරු කරන්න');
+  INSERT INTO `LabelLanguage` VALUES('teacherDay', 0, 'Teacher''s Day');
+  INSERT INTO `LabelLanguage` VALUES('teacherDay', 1, 'ගුරු දිනය');
+  INSERT INTO `LabelLanguage` VALUES('teachersName', 0, 'Teacher''s Name');
+  INSERT INTO `LabelLanguage` VALUES('teachersName', 1, 'ගුරුවරයාගේ නම');
+  INSERT INTO `LabelLanguage` VALUES('th', 0, 'T');
+  INSERT INTO `LabelLanguage` VALUES('th', 1, '');
+  INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'Thursday');
+  INSERT INTO `LabelLanguage` VALUES('thursday', 1, 'බ්‍රහස්පතින්දා');
+  INSERT INTO `LabelLanguage` VALUES('time', 0, 'Time');
+  INSERT INTO `LabelLanguage` VALUES('time', 1, 'වේලාව');
+  INSERT INTO `LabelLanguage` VALUES('timetables', 0, 'Timetables');
+  INSERT INTO `LabelLanguage` VALUES('timetables', 1, 'කාලසටහන');
+  INSERT INTO `LabelLanguage` VALUES('tu', 0, 'T');
+  INSERT INTO `LabelLanguage` VALUES('tu', 1, 'අ');
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 0, 'Tuesday');
+  INSERT INTO `LabelLanguage` VALUES('tuesday', 1, 'අගහරුවදා');
+  INSERT INTO `LabelLanguage` VALUES('unmarried', 0, 'Not Married');
+  INSERT INTO `LabelLanguage` VALUES('unmarried', 1, 'අවිවාහක');
+  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History');
+  INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු');
+  INSERT INTO `LabelLanguage` VALUES('we', 0, 'W');
+  INSERT INTO `LabelLanguage` VALUES('we', 1, 'බ');
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 0, 'Wednesday');
+  INSERT INTO `LabelLanguage` VALUES('wednesday', 1, 'බදාදා');
+  INSERT INTO `LabelLanguage` VALUES('week', 0, ' Week');
+  INSERT INTO `LabelLanguage` VALUES('week', 1, 'සතිය');
+  INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
+  INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
 
 -- --------------------------------------------------------
 
@@ -561,11 +741,9 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Language`
 --
 
-  DROP TABLE IF EXISTS `Language`;
   CREATE TABLE IF NOT EXISTS `Language` (
     `Language` int(11) NOT NULL DEFAULT '0',
     `Value` varchar(20) DEFAULT NULL,
-    `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -573,8 +751,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `Language`
 --
 
-  INSERT INTO `Language` VALUES(0, 'English', 0);
-  INSERT INTO `Language` VALUES(1, 'Sinhala', 0);
+  INSERT INTO `Language` VALUES(0, 'English');
+  INSERT INTO `Language` VALUES(1, 'Sinhala');
 
 -- --------------------------------------------------------
 
@@ -582,14 +760,18 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LanguageGroup`
 --
 
-  DROP TABLE IF EXISTS `LanguageGroup`;
   CREATE TABLE IF NOT EXISTS `LanguageGroup` (
     `GroupNo` int(11) NOT NULL DEFAULT '0',
     `GroupName` varchar(50) DEFAULT NULL,
-    `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`GroupNo`),
     KEY `fk005` (`GroupName`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `LanguageGroup`
+--
+
+  INSERT INTO `LanguageGroup` VALUES(0, 'nationalityRace');
 
 -- --------------------------------------------------------
 
@@ -597,14 +779,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LanguageOption`
 --
 
-  DROP TABLE IF EXISTS `LanguageOption`;
   CREATE TABLE IF NOT EXISTS `LanguageOption` (
     `GroupNo` int(11) NOT NULL DEFAULT '0',
     `OptionNo` int(11) NOT NULL DEFAULT '0',
     `Language` int(11) DEFAULT NULL,
     `Value` varchar(200) DEFAULT NULL,
-    `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`GroupNo`,`OptionNo`),
+    PRIMARY KEY (`GroupNo`,`OptionNo`, `Language`),
     KEY `fk006` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -614,7 +794,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LeaveData`
 --
 
-  DROP TABLE IF EXISTS `LeaveData`;
   CREATE TABLE IF NOT EXISTS `LeaveData` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `OfficialLeave` int(11) DEFAULT NULL,
@@ -630,7 +809,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `OLMarks`
 --
 
-  DROP TABLE IF EXISTS `OLMarks`;
   CREATE TABLE IF NOT EXISTS `OLMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
@@ -641,13 +819,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     KEY `SubjectID` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `ParentsInformation`
-  --
+--
+-- Table structure for table `ParentsInformation`
+--
 
-  DROP TABLE IF EXISTS `ParentsInformation`;
   CREATE TABLE IF NOT EXISTS `ParentsInformation` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `NamewithInitials` varchar(50) NOT NULL DEFAULT '',
@@ -667,7 +844,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Staff`
 --
 
-  DROP TABLE IF EXISTS `Staff`;
   CREATE TABLE IF NOT EXISTS `Staff` (
     `StaffID` varchar(5) NOT NULL,
     `NamewithInitials` varchar(60) DEFAULT NULL,
@@ -704,6 +880,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Staff` VALUES('10', 'amritha', '2014-08-26', 2, 4, 1, 1, '123456789v', 'makola', '0756489326', '2014-08-06', '2014-08-30', 3, NULL, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
   INSERT INTO `Staff` VALUES('11', 'bihara', '2014-08-26', 2, 2, 1, 1, '923578963', 'kolpity', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
   INSERT INTO `Staff` VALUES('12', 'chathuri', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 2);
+  INSERT INTO `Staff` VALUES('13', 'Mark A.O', '1992-02-12', 1, 1, 2, 1, '123456789v', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 55, 2);
   INSERT INTO `Staff` VALUES('2', 'dulip rr', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
   INSERT INTO `Staff` VALUES('3', 'isuru', '2014-08-13', 1, 3, 3, 3, '93625789', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
   INSERT INTO `Staff` VALUES('4', 'madhusha', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 2);
@@ -719,7 +896,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Student`
 --
 
-  DROP TABLE IF EXISTS `Student`;
   CREATE TABLE IF NOT EXISTS `Student` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `NameWithInitials` varchar(50) DEFAULT NULL,
@@ -735,13 +911,19 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`AdmissionNo`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `Student`
+--
+
+  INSERT INTO `Student` VALUES('1', 'Madushan G.LN.A.M', '2014-08-05', 1, 1, 1, 'Negomobo', 11, 'A', 'Blue', 0);
+  INSERT INTO `Student` VALUES('3', 'Isuru l.k', '2014-08-14', 1, 1, 2, 'negmbo', 11, 'A', 'Madura', 0);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Student_Subject_Grade`
 --
 
-  DROP TABLE IF EXISTS `Student_Subject_Grade`;
   CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `SubjectID` int(11) NOT NULL DEFAULT '0',
@@ -750,13 +932,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     KEY `fk025` (`SubjectID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `Subject_Grade`
-  --
+--
+-- Table structure for table `Subject_Grade`
+--
 
-  DROP TABLE IF EXISTS `Subject_Grade`;
   CREATE TABLE IF NOT EXISTS `Subject_Grade` (
     `SubjectID` int(11) NOT NULL DEFAULT '0',
     `Grade` int(11) DEFAULT NULL,
@@ -771,7 +952,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Teaches`
 --
 
-  DROP TABLE IF EXISTS `Teaches`;
   CREATE TABLE IF NOT EXISTS `Teaches` (
     `SubjectID` int(11) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -786,7 +966,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `TermMarks`
 --
 
-  DROP TABLE IF EXISTS `TermMarks`;
   CREATE TABLE IF NOT EXISTS `TermMarks` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `SubjectID` int(11) NOT NULL DEFAULT '0',
@@ -803,7 +982,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Timetable`
 --
 
-  DROP TABLE IF EXISTS `Timetable`;
   CREATE TABLE IF NOT EXISTS `Timetable` (
     `Grade` int(11) NOT NULL DEFAULT '0',
     `Class` char(2) NOT NULL DEFAULT '',
@@ -823,7 +1001,6 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Transaction`
 --
 
-  DROP TABLE IF EXISTS `Transaction`;
   CREATE TABLE IF NOT EXISTS `Transaction` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `TransactionID` int(11) NOT NULL DEFAULT '0',
@@ -835,13 +1012,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`EventID`,`TransactionID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `User`
-  --
+--
+-- Table structure for table `User`
+--
 
-  DROP TABLE IF EXISTS `User`;
   CREATE TABLE IF NOT EXISTS `User` (
     `userEmail` varchar(50) NOT NULL,
     `userPassword` varchar(80) DEFAULT NULL,
@@ -854,19 +1030,32 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `User`
 --
 
-  INSERT INTO `User` VALUES('a', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0);
+  INSERT INTO `User` VALUES('1', '$2y$10$bEOYHN38SCG2xjwgLBXude39avl5ohE/NeMl4UkmnK7/hCdpQS.l.', 1, 2);
+  INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
+  INSERT INTO `User` VALUES('ab', '$2y$10$8Az470QmxIuRqy5a6TNmfOiYKvPoJmUSvo08m9CfC6F6PpXKyWEoe', 2, 2);
+  INSERT INTO `User` VALUES('abc', '$2y$10$3TeoYC5i/ROkO.ZC6nomLeniQ/PYn1jbkxw4hKm5wbO8LZoduMshK', 1, 2);
   INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0);
-  INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$PvG7wnmtFqMvSj0CQhhKEeAg6COM2fzGs6JCA17Imp9SUY2TpsY22', 1, 0);
-  INSERT INTO `User` VALUES('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 0);
+  INSERT INTO `User` VALUES('apple', '$2y$10$X67s43KjvUygW5GVeoStCOFVylBbXsUeyD2e6EKCMMUEjxqcEsIFa', 1, 2);
+  INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$hVONYOoTGLmmG.dfVBJm1.DuPsUTlhJhIqvsYSkQC3KNr0JzDb5bO', 1, 0);
+  INSERT INTO `User` VALUES('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 2);
   INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0);
-  INSERT INTO `User` VALUES('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 0);
-  INSERT INTO `User` VALUES('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 0);
-  INSERT INTO `User` VALUES('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 0);
+  INSERT INTO `User` VALUES('blue', '$2y$10$FV/zw6c6WkCfHgALLROEmOnjDaiE9ARHAqcHdoQkll3lzPCVqeck.', 1, 0);
+  INSERT INTO `User` VALUES('blue table', '$2y$10$nACqSmTdjU/VZp4Oae3d2.pzSw1MxI1hEcOpG79WxbtId5uj9GPmq', 1, 0);
+  INSERT INTO `User` VALUES('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 2);
+  INSERT INTO `User` VALUES('cd', '$2y$10$blpnAfzAvx22sggBq4A2FO9b8AMlB8hlRB6a.eTJYwVcC//aV0zJ2', 1, 0);
+  INSERT INTO `User` VALUES('chair', '$2y$10$c6d3EBGdek9QN9y5pN33oeU3P1xpTbVbJQixQXS.BW0VD1mJfL.vO', 1, 0);
+  INSERT INTO `User` VALUES('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 2);
+  INSERT INTO `User` VALUES('free', '$2y$10$05tBD.F8Nxi45Ww7oiTUdOeV/qYsk2Dyaa0a8gKWfQrK3PZitmi0y', 1, 2);
+  INSERT INTO `User` VALUES('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 2);
+  INSERT INTO `User` VALUES('isuru@sliit.lk', '$2y$10$7kD7JsAbPk5fSgIVfnqyguoDlFJML9uBVb12UZ3aqXOEJkze7EHcC', 1, 0);
   INSERT INTO `User` VALUES('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0);
   INSERT INTO `User` VALUES('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0);
+  INSERT INTO `User` VALUES('sh', '$2y$10$k6WWAhhSBD7UkvbcHDQVj.l6zLYTBpwuyCrO8a2o10qhTR.6gJBKe', 1, 2);
+  INSERT INTO `User` VALUES('shavin47', '$2y$10$QmPP8f1zzx0qW6b3v.h.X.Fox.FyA3mLwy7LrlzkJHdhF8D3srp5.', 1, 0);
   INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0);
-  INSERT INTO `User` VALUES('y', '$2y$10$/2q2Bgdr7L2ocN1HE56GueofwhPfK/i4KJX/cEj.ISY4mhfbRq8E2', 1, 0);
-  INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$U5A51bsgew2WjQ8LbQHPMuLChxkBFjFKwjLYJr0GdV7otPLoNi1L.', 1, 0);
+  INSERT INTO `User` VALUES('viim@ubuntu.org', '$2y$10$UFAPQ5ujD/CMvgVBHSxOBeWtGScNAFajP1NG2yvxx/qtMz1SqUfUS', 2, 0);
+  INSERT INTO `User` VALUES('y', '$2y$10$VKCBn2MD5Q4hifDqhlbPWO.J7hYmW.VNU2oi7lWwoPmH76mSr/Z3e', 1, 2);
+  INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$PbyD11uQUq0dQMLbidQAr.R3N/HY.Kg..GEkk3QXBvlL2mQ1tDXr6', 1, 0);
 
 --
 -- Constraints for dumped tables
@@ -899,16 +1088,16 @@ ALTER TABLE `Blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `ClassInformation`
---
-ALTER TABLE `ClassInformation`
+  --
+  -- Constraints for table `ClassInformation`
+  --
+  ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `Event`
-  --
-  ALTER TABLE `Event`
+--
+-- Constraints for table `Event`
+--
+ALTER TABLE `Event`
   ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
 --
@@ -964,10 +1153,10 @@ ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
   ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
---
--- Constraints for table `ParentsInformation`
---
-ALTER TABLE `ParentsInformation`
+  --
+  -- Constraints for table `ParentsInformation`
+  --
+  ALTER TABLE `ParentsInformation`
   ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
   --

@@ -10,6 +10,18 @@ define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 require_once("../dbAccess.php");
 
+
+
+$groupLabel = "";
+
+if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
+{
+    $groupLabel = $_POST["groupLabel"];
+    if ( true /*$operation = insertLanguage($_POST["label"], $_POST["english"], $_POST["sinhala"])*/)
+    {
+        insertOption( $_POST["groupLabel"], $_POST["english"], $_POST["sinhala"] );
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +36,6 @@ require_once("../dbAccess.php");
         function searchEmail(element){
 //                 alert(element.value)
             var text = $(element).val();
-
             if (text.length >= 1)
             {
 //                alert(text);
@@ -36,8 +47,6 @@ require_once("../dbAccess.php");
                 $("td.searchLanguage").closest('tr').removeClass("hide");
             }
         }
-
-
     </script>
     <style>
         *{
@@ -79,26 +88,25 @@ require_once("../dbAccess.php");
 </head>
 
 <body>
-    <h1>Assign Label Language Data</h1>
-    <h2>This is for labels and button text and stuff. <a href="optionLanguage.php">Click here for entering values for drop-down lists and such.</a></h2>
+    <h1>Assign Option Language Data</h1>
+    <h2>This is for drop-down lists and such. <a href="language.php">Click here for entering values labels and button text and stuff.</a></h2>
     <form method="POST">
 
     <table id="labelList">
         <tr>
-            <th>Label</th>
+            <th>Group Label</th>
+            <th>Option Label</th>
             <th>English</th>
             <th>Sinhala</th>
             <th></th>
         </tr>
         <tr>
-            <td><input type='text'class="text1" name="label" required="true" onkeyup="searchEmail(this)"/></td>
+            <td><input type='text'class="text1" name="groupLabel" required="true" value="<?php echo $groupLabel ?>" onkeyup="searchEmail(this)"/></td>
             <td><input type='text' class='text1' name='english' required="true"></td>
             <td><input type='text' class='text1' name='sinhala' required="true"></td>
             <td><input name="Submit" type="Submit" value="Submit" /></td>
         </tr>
     </table>
-
-
 
     </form>
 
@@ -106,22 +114,28 @@ require_once("../dbAccess.php");
         <table class="LanguageList">
             <tr>
                 <th>#</th>
-                <th>Label</th>
+                <th>Group</th>
+                <th>Option</th>
                 <th>English</th>
                 <th>Sinhala</th>
             </tr>
 
             <?php
-            $result = getAllLanguage();
+            $result = getAllOptions();
             $i = 0;
 
-            foreach($result as $row){
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$i</td><td class=\"searchLanguage content\" >" : "<tr><td>$i</td><td class=\"searchLanguage content\" >\n";
-                echo $top;
-                echo "$row[0]";
-                echo "<td class=\"content\">$row[1]</td>\n";
-                echo "<td class=\"content\">$row[2]</td>\n";
-                echo "</td></tr>\n";
+            if (isFilled($result))
+            {
+
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt \"><td>$row[0]</td><td class=\"searchLanguage content\" >" : "<tr><td>$row[0]</td><td class=\"searchLanguage content\" >\n";
+                    echo $top;
+                    echo "&nbsp;";
+                    echo "<td class=\"\">$row[1]</td>\n";
+                    echo "<td class=\"content\">$row[2]</td>\n";
+                    echo "<td class=\"content\">$row[3]</td>\n";
+                    echo "</tr>\n";
+                }
             }
             ?>
         </table>
@@ -149,59 +163,107 @@ require_once("../dbAccess.php");
 
 <?php
 
-if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
-{
-    if ( $operation = insertLanguage($_POST["label"], $_POST["english"], $_POST["sinhala"]))
-    {
 
-    }
-}
 
-function insertLanguage($label, $english, $sinhala)
+function insertOption($groupLabel, $english, $sinhala)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
     $mysqli->set_charset("utf8") ;
-
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
 
     $noE = 0;
     $noS = 1;
 
-    if ($stmt = $mysqli->prepare("INSERT INTO LabelLanguage values(?, ?, ?);"))
-    {
-        $stmt -> bind_param("sis", $label, $noE, $english);
-        if ($stmt->execute())
-        {
-            $stmt -> bind_param("sis", $label, $noS, $sinhala);
-            if ($stmt->execute())
-            {
-                $mysqli->close();
-                return true;
-            }
-        }
-        $stmt->close();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
-    $mysqli->close();
-    return false;
+
+    if ($stmt = $mysqli->prepare("Select GroupNo FROM LanguageGroup WHERE GroupName = ? LIMIT 1;"))
+    {
+        $stmt -> bind_param("s", $groupLabel);
+        $stmt -> execute();
+
+        $result = $stmt ->get_result();
+
+        if ($result -> num_rows > 0)
+        {
+            $row = $result ->fetch_array();
+            $groupNo = $row[0];
+
+            $stmt = $mysqli->prepare("SELECT (MAX(OptionNo)+1) FROM LanguageOption where GroupNo=?;");
+            $stmt -> bind_param("i", $groupNo);
+            $stmt -> execute();
+
+            $result = $stmt ->get_result();
+
+            if ($result -> num_rows > 0)
+            {
+                $row = $result ->fetch_array();
+                $optionNo = ( isFilled($row[0])) ? $row[0] : 0;
+            }
+
+            echo "optionNo = $optionNo<br />";
+            echo "groupNo = $groupNo<br />";
+
+            if ($stmt = $mysqli->prepare("INSERT INTO LanguageOption values(?, ?, ?, ?);"))
+            {
+                $stmt -> bind_param("iiis", $groupNo, $optionNo, $noE, $english);
+                if ($stmt->execute())
+                {
+                    $stmt -> bind_param("iiis", $groupNo, $optionNo, $noS, $sinhala);
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return true;
+                    }
+                }
+            }
+            $mysqli->close();
+            return false;
+
+        }
+
+
+    }
+
+//    $noE = 0;
+//    $noS = 1;
+//
+//    if ($stmt = $mysqli->prepare("INSERT INTO LanguageOption values(?, (SELECT (MAX(OptionNo)+1) FROM LanguageOption ), ?, ?);"))
+//    {
+//        $stmt -> bind_param("iis", $groupNo, $noE, $value);
+//        if ($stmt->execute())
+//        {
+//            $stmt -> bind_param("iis", $groupNo, $noS, $value);
+//            if ($stmt->execute())
+//            {
+//                $stmt->close();
+//                $mysqli->close();
+//                return true;
+//            }
+//        }
+//    }
+//    $stmt->close();
+//    $mysqli->close();
+//    return false;
 }
 
-function getAllLanguage(){
+function getAllOptions(){
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
     $mysqli->set_charset("utf8") ;
 
+    $set = null;
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT l1.Label, l1.Value, l2.Value FROM LabelLanguage l1 LEFT OUTER JOIN LabelLanguage l2 ON (l1.Label = l2.Label) WHERE l1.Language=0 AND l2.Language=1 ORDER BY l1.Label;"))
+    if ($stmt = $mysqli->prepare("SELECT lo1.GroupNo, lo1.OptionNo, lo1.Value, lo2.Value FROM LanguageOption lo1 LEFT OUTER JOIN LanguageOption lo2 ON (lo1.GroupNo = lo2.GroupNo AND lo1.OptionNo = lo2.OptionNo ) WHERE lo1.Language=0 AND lo2.Language=1 ;"))
     {
         if ($stmt->execute())
         {

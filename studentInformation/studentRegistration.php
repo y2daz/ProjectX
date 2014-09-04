@@ -50,7 +50,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                 text-align: center;
             }
 
-            th{
+            .general th{
                 align:center;
                 color:white;
                 background-color: #005e77;
@@ -59,7 +59,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                 min-width: 350px;
             }
 
-            td {
+            .general td {
                 padding:7px;
             }
             input.button1 {

@@ -18,7 +18,7 @@ li, ul {
     width: 230px;
     top: 260px;
     left: 0px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid #d5d5d5;
 }
 #nav li a {
     display: block;
@@ -178,7 +178,7 @@ li, ul {
     vertical-align: middle;
     text-align: center;
 }
-
+d
 .grayText{
     text-align: center;
     color: gray;

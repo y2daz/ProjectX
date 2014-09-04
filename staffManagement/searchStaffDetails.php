@@ -16,7 +16,31 @@ ob_start();
 if (isset($_GET["delete"]))
 {
     deleteStaff($_GET["delete"]);
+}
 
+$tableDetails = "none";
+$tableViewTable = "none";
+$fullPageHeight = 600;
+
+if (isset($_GET["search"]))
+{
+    $currentStaffMembers = null;
+
+    if (isset($_GET["Choice"]))
+    {
+        $currentStaffMembers = searchStaff($_GET["query"]);
+    }
+    else
+    {
+        $currentStaffMembers = getAllStaff();
+    }
+    $tableDetails= "none";
+    $tableViewTable= "block";
+
+}
+else
+{
+    $currentStaffMembers = getAllStaff();
 }
 
 if (isset($_GET["expand"]))
@@ -50,8 +74,12 @@ if (isset($_GET["expand"]))
         $HighestEducationalQualification = $row[$i++];
         $HighestProfessionalQualification =$row[$i++];
         $CourseofStudy = $row[$i++];
-
     }
+
+    $fullPageHeight = 1200;
+
+    $tableDetails= "block";
+    $tableViewTable= "none";
 }
 else
 {
@@ -80,35 +108,10 @@ else
     $CourseofStudy = "";
 }
 
-
-
-if (isset($_GET["search"]))
-{
-    $currentStaffMembers = null;
-
-    if (isset($_GET["Choice"]))
-    {
-        $currentStaffMembers = searchStaff($_GET["query"]);
-    }
-    else
-    {
-        $currentStaffMembers = getAllStaff();
-    }
-}
-else
-{
-    $currentStaffMembers = getAllStaff();
-}
-
-
-
-
 ?>
 <html>
 <head>
     <style type=text/css>
-<!--        #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-<!--        #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
         h1{
             text-align: center;
@@ -124,7 +127,9 @@ else
         .viewTable{
             position: relative;
             border-collapse: collapse;
-            min-width: 600px;
+            left:50px;
+            max-width: 875px;
+            display: <?php echo $tableViewTable ?>;
         }
         .viewTable th{
             font-weight: 600;
@@ -145,7 +150,8 @@ else
             /*position: relative;*/
             /*top:50px;*/
             width:500px;
-            height:150px
+            height:150px;
+            display: <?php echo $tableDetails ?>
         }
         input.button1 {
             position:relative;
@@ -173,9 +179,9 @@ else
         <tr><td></td><td>&nbsp;</td></tr>
         <tr>
             <td><input type="RADIO" name="Choice" value="Staffid" checked />Staff ID</td>
-            <td><input type="RADIO" name="Choice" value="Name"  >Name</td>
-            <td><input type="RADIO" name="Choice" value="nicnumber"/>NIC Number</td>
-            <td><input type="RADIO" name="Choice" value="contactnumber"  >Contact Number</td>
+            <td><input type="RADIO" name="Choice" value="Name"  />Name</td>
+            <td><input type="RADIO" name="Choice" value="nicnumber" />NIC Number</td>
+            <td><input type="RADIO" name="Choice" value="contactnumber" />Contact Number</td>
         </tr>
 
     </table>
@@ -183,7 +189,7 @@ else
     <br />
 
 <form method="post">
-    <table class="viewTable" align="center">
+    <table class="viewTable">
         <tr>
             <th>Staff ID</th>
             <th>Name</th>
@@ -205,7 +211,8 @@ else
 
             if (isFilled($result))
             {
-                foreach($result as $row){
+                foreach($result as $row)
+                {
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
                     echo $top;
                     echo "$row[0]";
@@ -217,34 +224,12 @@ else
                     echo "</td></tr>";
                 }
             }
-
-
+            if (isset($_GET["search"]))
+            {
+                $fullPageHeight = ( 600 + ($i * 18) );
+            }
 
         ?>
-<!--        <tr>-->
-<!--            <td>SIDXXX</td>-->
-<!--            <td>Mrs. Andrea De Silva</td>-->
-<!--            <td>578695412v</td>-->
-<!--            <td>0719658712</td>-->
-<!--            <td><input type="button" name="expand" value="Expand Details" /></td>-->
-<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
-<!--        </tr>-->
-<!--        <tr class="alt">-->
-<!--            <td>SIDXXX</td>-->
-<!--            <td>Mr. Madusha Karunaratne</td>-->
-<!--            <td>642531789v</td>-->
-<!--            <td>0772596314</td>-->
-<!--            <td><input type="button" name="expand" value="Expand Details" /></td>-->
-<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td> SIDXXX </td>-->
-<!--            <td> Mr. Priyan Fernando </td>-->
-<!--            <td> 702358964v</td>-->
-<!--            <td> 0774239651 </td>-->
-<!--            <td> <input type="button" name="expand" value="Expand Details" /> </td>-->
-<!--            <td><input type="button" name="delete" value="Delete" /></td>-->
-<!--        </tr>-->
     </table>
 </form>
     <br />
@@ -255,12 +240,12 @@ else
         <tr>
             <td> Staff ID </td>
             <td > <input type = "text" name="staffid" readonly value="<?php echo $staffid?>"/> </td>
+            <td></td>
         </tr>
-
-
         <tr>
             <td> Name with Initials </td>
             <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
+            <td></td>
         </tr>
 
 
@@ -268,93 +253,119 @@ else
         <tr>
             <td> Date of Birth  </td>
             <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
+            <td></td>
         </tr>
 
         <tr>
             <td> Gender </td>
-            <td > <input type = "text" name="Gender" value="<?php echo $Gender?>"/> </td>
+            <td>
+                <input type="radio" name="gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> />Male
+                <input type="radio" name="gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> />Female
+            </td>
+            <td></td>
         </tr>
 
         <tr>
             <td>Natinality/Race </td>
             <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/> </td>
+            <td></td>
         </tr>
+
 
         <tr>
             <td> Religion </td>
             <td > <input type = "text" name="Religion" value="<?php echo $Religion?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Civil Status  </td>
             <td > <input type = "text" name="CivilStatus" value="<?php echo $CivilStatus?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>NIC Number  </td>
             <td > <input type = "text" name="NICNumber" value="<?php echo $NICNumber?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>Mail Delivery Address</td>
             <td > <input type = "text" name="MailDeliveryAddress" value="<?php echo $MailDeliveryAddress?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>Contact Number </td>
             <td > <input type = "text" name="ContactNumber" value="<?php echo $ContactNumber?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>Date Appointed as Teacher/principal</td>
             <td > <input type = "text" name="$DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Date joined this school  </td>
             <td > <input type = "text" name="DateJoinedthisSchool " value="<?php echo $DateJoinedthisSchool?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Employement status </td>
             <td > <input type = "text" name="EmployementStatus" value="<?php echo $EmploymentStatus?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Medium </td>
             <td > <input type = "text" name="Medium" value="<?php echo $Medium?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Position in school  </td>
             <td > <input type = "text" name="PositioninSchool" value="<?php echo $PositioninSchool?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Section  </td>
             <td > <input type = "text" name="Section" value="<?php echo $Section?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Subject Most taught  </td>
             <td > <input type = "text" name="SubjectMostTaught" value="<?php echo $SubjectMostTaught?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>  Subject Second Most taught </td>
             <td > <input type = "text" name="SubjectSecondMostTaught" value="<?php echo $SubjectSecondMostTaught?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td>  Service Grade  </td>
             <td > <input type = "text" name="ServiceGrade" value="<?php echo $ServiceGrade?>" /> </td>
+            <td></td>
         </tr>
         <tr>
             <td>  Salary</td>
             <td > <input type = "text" name="Salary" value="<?php echo $Salary?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Highest Educational Qualification  </td>
             <td > <input type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Highest Professional Qualification  </td>
             <td > <input type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>"/> </td>
+            <td></td>
         </tr>
         <tr>
             <td> Course of Study </td>
             <td > <input type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>"/> </td>
+            <td></td>
         </tr>
 
-
-        <td><input class="button1" name="newStaff" type="submit" value="UPDATE"></td>
+        <tr>
+            <td colspan="3"><input class="button1" name="newStaff" type="submit" value="UPDATE"></td>
+        </tr>
     </table>
 
     <br />
@@ -372,7 +383,7 @@ else
 </html>
 <?php
 //Assign all Page Specific variables
-$fullPageHeight = 1300 + ($i * 18);
+//$fullPageHeight = 1300 + ($i * 18);
 $footerTop = $fullPageHeight + 100;
 
 $pageContent = ob_get_contents();
