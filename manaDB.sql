@@ -539,9 +539,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `Day` int(11) DEFAULT NULL,
     `Position` int(11) DEFAULT NULL,
     `Date` date DEFAULT NULL,
+    `SubsttitutedTeachedID` varchar(5) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     KEY `fk015` (`StaffID`),
-    KEY `fk016` (`Grade`,`Class`,`Day`,`Position`)
+    KEY `fk016` (`SubsttitutedTeachedID`,`Grade`,`Class`,`Day`,`Position`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1058,7 +1059,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Constraints for table `ALMarks`
 --
 ALTER TABLE `ALMarks`
-  ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+  ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 #   ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
 --
@@ -1078,8 +1079,8 @@ ALTER TABLE `Attendance`
 -- Constraints for table `Blacklist`
 --
 ALTER TABLE `Blacklist`
-  ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
-  ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
+  ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+#   ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
 
   --
   -- Constraints for table `ClassInformation`
@@ -1112,7 +1113,7 @@ ALTER TABLE `Invitee`
 --
 ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
-  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`Grade`, `Class`, `Day`, `Position`) REFERENCES `Timetable` (`Grade`, `Class`, `Day`, `Position`);
+  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`,`Grade`, `Class`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`,`Grade`, `Class`, `Day`, `Position`);
 
 --
 -- Constraints for table `LabelLanguage`
@@ -1143,7 +1144,7 @@ ALTER TABLE `LeaveData`
 -- Constraints for table `OLMarks`
 --
 ALTER TABLE `OLMarks`
-  ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+  ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 #   ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`Subject`);
 
   --
@@ -1156,7 +1157,7 @@ ALTER TABLE `OLMarks`
   -- Constraints for table `Student_Subject_Grade`
   --
   ALTER TABLE `Student_Subject_Grade`
-  ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`),
+  ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 #   ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`SubjectID`);
 
   --
@@ -1169,7 +1170,7 @@ ALTER TABLE `OLMarks`
   --
   -- Constraints for table `TermMarks`
   --
-  ALTER TABLE `TermMarks`
+#   ALTER TABLE `TermMarks`
 #   ADD CONSTRAINT `TermMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`, `Subject`) REFERENCES `Student_Subject_Grade` (`AdmissionNo`, `SubjectID`);
 
   --
