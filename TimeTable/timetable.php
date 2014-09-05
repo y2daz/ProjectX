@@ -29,10 +29,10 @@ $_GET["getTimetable"] = $_GET["getTimetable"] | "";
 $currentStaffId = "";
 $currentStaffName = "";
 
+error_reporting(0);//Temporarily turn of all errors
+
 if (isFilled($_GET["getTimetable"]))
 {
-    error_reporting(0);//Temporarily turn of all errors
-
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
 
@@ -58,11 +58,11 @@ if (isFilled($_GET["getTimetable"]))
 
 //                setInterval(function(){
 ////                    alert("try");
-//                    $("#" + i).toggleClass("animated");
+//                    $("#" + i).addClass("animated", 600);
 //                    i++;
 //                    if(i >= 40)
 //                        i=0;
-//                }, 25);
+//                }, 12);
 
             });
         </script>

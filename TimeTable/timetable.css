@@ -123,7 +123,7 @@ h2{
 #timetable, #timetable th, #timetable td{
     border: 1px solid black;
 }
-.animated input{
-    background-color: gray;
-    color: red;
+.animated{
+    background-color: #bed9ff;
+    /*color: red;*/
 }
