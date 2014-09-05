@@ -168,6 +168,7 @@
                     <li><a  href="<?php echo PATHFRONT ?>/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/attendance/classwise.php">Class-wise Report</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/attendance/studentwise.php">Student-wise Report</a></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/attendance/viewAttendance.php">View Attendance</a></li>
                 </ul>
             </li>
             <li><a>Marks and Grading</a>

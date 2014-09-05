@@ -82,8 +82,8 @@ ob_start();
         padding:10px;
     }
 
-</style>
-</head>
+        </style>
+    </head>
     <body>
       <form>
 
@@ -117,99 +117,25 @@ ob_start();
 
                     <td><input class="button" type="button" value="Search"></td>
 
-
-                </tr>
-
-
-            </table>
-
-            <table id="timetable" >
-                <tr>
-                    <th>Date</th>
-                    <th>Day</th>
-                    <th>Status</th>
-                    <th>Details</th>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr><td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
                 </tr>
             </table>
-        </form>
-    </div>
+      </form>
+   </div>
 
 
 
-
-    </body>
+</body>
 </html>
 <?php
 //Change these to what you want
 $fullPageHeight = 780;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "View Attendance";
 //Only change above
 
 $pageContent = ob_get_contents();
 ob_end_clean();
 require_once(THISROOT . "/Master.php");
+include("../Master.php");
+
 ?>
