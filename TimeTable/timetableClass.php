@@ -20,7 +20,6 @@ class Timetable {
         {
             $slot[$i] = new SlotDetail();
             $a = new SlotDetail();
-
         }
     }
 
@@ -76,16 +75,16 @@ class Timetable {
 
     private function insertSLot($number, $grade, $class, $subject)
     {
-        $this->slot[$number]->sGrade = $grade;
-        $this->slot[$number]->sClass = $class;
-        $this->slot[$number]->sSubject = $subject;
+        $this->slot[$number]->Grade = $grade;
+        $this->slot[$number]->Class = $class;
+        $this->slot[$number]->Subject = $subject;
     }
 
 
 }
 
 class SlotDetail {
-    public $sGrade;
-    public $sClass;
-    public $sSubject;
+    public $Grade;
+    public $Class;
+    public $Subject;
 }
