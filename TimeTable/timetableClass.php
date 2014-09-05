@@ -24,53 +24,19 @@ class Timetable {
     }
 
     public function getTimetable(){
-//        $dbObj = new dbConnect();
-//        $mysqli = $dbObj->getConnection();
-//
-//        if ($mysqli->connect_errno) {
-//            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-//        }
-//
-//        if ($stmt = $mysqli->prepare("Select userPassword, accessLevel FROM User WHERE userEmail=? AND isDeleted=0 LIMIT 1;"))
-//        {
-//            $stmt -> bind_param("s", $email);
-//
-//            if ($stmt->execute())
-//            {
-////                $stmt->store_result();
-//
-//                $OUTuserPassword = NULL;
-//                $OUTaccessLevel = 0;
-//
-//                $stmt->bind_result($OUTuserPassword, $OUTaccessLevel);
-//                $stmt->fetch();
-//
-////                echo $password . " " . $OUTuserPassword . "\n";
-////                echo password_hash($password, PASSWORD_DEFAULT);
-//
-////                $hash=password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
-//
-//                if (password_verify($password, $OUTuserPassword))
-//                {
-//                    $_SESSION["user"]="$email";
-//                    $stmt->close();
-//                    $mysqli->close();
-//                    return true;
-//                }
-//            }
-//        }
-//        $stmt->close();
-//        $mysqli->close();
-//        return false;
+//Put object to html
     }
 
     public function setTimetable( $array ){
-        //Probably 2d array. Associative.
+//Store html timetable to object
 
     }
 
-    public function dbUpdate(){
-
+    public function dbGet(){
+//STore timetable from db to object
+    }
+    public function dbSet(){
+//Store object in db
     }
 
     private function insertSLot($number, $grade, $class, $subject)

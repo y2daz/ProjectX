@@ -14,6 +14,7 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
 
 $fullPageHeight = 1000;
@@ -21,6 +22,23 @@ $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 
 $lang = $_COOKIE["language"];
+
+$_GET["getTimetable"] = $_GET["getTimetable"] | "";
+
+$currentStaffId = "";
+$currentStaffName = "";
+
+if (isFilled($_GET["getTimetable"]))
+{
+    $currentStaffId = $_GET["staffID"];
+    $result = getStaffMember($_GET["staffID"]);
+
+    $row = $result[0];
+    $currentStaffName = $row[1];
+}
+else
+{
+}
 
 ?>
 <html>
@@ -32,19 +50,22 @@ $lang = $_COOKIE["language"];
 
     <form>
 
-    <h1><?php echo getLanguage("createTimeTableForm", $lang) ?></h1>
+    <h1><?php echo getLanguage("createTimetable", $lang) ?></h1>
 
-    <h2><?php echo getLanguage("chooseOption", $lang) ?></h2>
+<!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
+    <form method="get">
+        <table id="info">
+            <tr>
+                <td><label><?php echo getLanguage("staffId",$lang)?></td>
+                    <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
+                    <td><input type="submit" class="text1" name="getTimetable" value="Submit" /></td>
 
-    <table id="info">
-        <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="clickedTeacher()"/><?php echo getLanguage("byTeacher",$lang)?> </td>
-            <td><input type="RADIO" name="Choice" value="Class" onclick="clickedClass()" /> <?php echo getLanguage("byClass",$lang)?></td>
-        </tr>
-        <tr>
-            <td colspan="2"><span id="selection"><?php echo getLanguage("teachersName",$lang)?> : </span><input type="text" class="text1" name="class" value=""></td>
-        </tr>
-    </table>
+            </tr>
+            <tr><td></td>
+                <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
+            </tr>
+        </table>
+    </form>
 
     <table id="timetable" >
         <tr>
@@ -60,7 +81,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">07.50-08.30</td>
             <td >
-                <table id="collapse" border="0px">
+                <table id="" class="collapse" border="0px">
                     <tr class="rowToHide" >
                         <td><input type="text"  name="txtClass1" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, '<?php echo getLanguage('class', $lang);?>')" onblur="makeGrayText(this, '<?php echo getLanguage('class', $lang);?>')"/></td>
@@ -72,7 +93,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td ><input type="text" name="txtClass2" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -84,7 +105,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass3" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -96,7 +117,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass4" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -108,7 +129,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass5" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -125,7 +146,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">08.30-09.10</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass6" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -137,7 +158,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass7" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -149,7 +170,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass8" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -161,7 +182,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass9" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -173,7 +194,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass10" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -191,7 +212,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">09.10-09.50</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass11" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -203,7 +224,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass12" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -215,7 +236,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass13" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -227,7 +248,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass14" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -239,7 +260,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass15" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -257,7 +278,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">09.50-10.30</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass16" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -269,7 +290,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass17" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -281,7 +302,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass18" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -293,7 +314,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass19" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -305,7 +326,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass20" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -327,7 +348,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">10.50-11.30</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass21" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -339,7 +360,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass22" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -351,7 +372,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass23" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -363,7 +384,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass24" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -375,7 +396,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass25" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -393,7 +414,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">11.30-12.10</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass26" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -405,7 +426,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass27" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -417,7 +438,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass28" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -429,7 +450,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass29" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -441,7 +462,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass30" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -459,7 +480,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">12.10-12.50</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass31" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -471,7 +492,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass32" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -483,7 +504,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass33" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -495,7 +516,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass34" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -507,7 +528,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass35" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -525,7 +546,7 @@ $lang = $_COOKIE["language"];
         <tr>
             <td class="time">12.50-01.30</td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass36" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -537,7 +558,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass37" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -549,7 +570,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass38" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -561,7 +582,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass39" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -573,7 +594,7 @@ $lang = $_COOKIE["language"];
                 </table>
             </td>
             <td >
-                <table id="collapse">
+                <table  class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass40" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>

@@ -10,18 +10,18 @@ h2{
 #info{
     position: relative;
     top: 2px;
-    left: 20px;;
+    left: 20px;
 }
 #info  td{
     width: 150px;
     padding: 5px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px;
 }
 #info  tr{
-    width: 150px;
-    text-align: center;
+    /*width: 150px;*/
 }
+
 #timetable{
     position: relative;
     border-collapse: collapse;
@@ -95,12 +95,12 @@ h2{
     width: 390px;
     text-align: center;
 }
-#collapse{
+.collapse{
     border-collapse: collapse;
     border: 0px #ffffff;
     margin: 1;
 }
-#collapse,#collapse tr > th #collapse tr > td{
+.collapse, .collapse tr > th .collapse tr > td{
     /*border-collapse: collapse;*/
     /*border: none;*/
 }
