@@ -60,11 +60,11 @@ ob_start();
         <table>
             <tr>
                 <td>Index Number</td>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value="" readonly></td>
                 <td>Name</td>
-                <td><input type="text" value="" </td>
+                <td><input type="text" value="" readonly></td>
                 <td>Year</td>
-                <td><input type=text" value=""</td>
+                <td><input type=text" value=""readonly></td>
             </tr>
         </table>
 
@@ -76,7 +76,7 @@ ob_start();
                 <th>Grade</th>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -88,7 +88,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -100,7 +100,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -112,7 +112,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -124,7 +124,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -136,7 +136,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -148,7 +148,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -160,7 +160,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -172,7 +172,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
