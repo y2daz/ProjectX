@@ -15,6 +15,7 @@
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
+include("timetableClass.php");
 ob_start();
 
 $fullPageHeight = 1000;
@@ -35,6 +36,12 @@ if (isFilled($_GET["getTimetable"]))
 
     $row = $result[0];
     $currentStaffName = $row[1];
+
+    $myTime = new Timetable();
+
+    $myTime->staffId = "$currentStaffId";
+    $myTime->getTimetable();
+    var_dump($myTime);
 }
 else
 {

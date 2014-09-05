@@ -13,7 +13,7 @@
 class Timetable {
 
     public $slot = array();
-    public $staffId;
+    public $staffId = 0;
 
     function __construct(){
         for ($i = 0; $i < 40; $i++)
@@ -24,7 +24,17 @@ class Timetable {
     }
 
     public function getTimetable(){
-//Put object to html
+        $result = getTimetable($this->staffId);
+
+        if(isFilled($result)){
+            $i = 0;
+            foreach($result as $row){
+                $this->slot[$i]->Grade = $row[0];
+                $this->slot[$i]->Class = $row[1];
+                $this->slot[$i]->Subject = $row[4];
+                $i++;
+            }
+        }
     }
 
     public function setTimetable( $array ){
