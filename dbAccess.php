@@ -10,8 +10,6 @@
  * This is where all the sql commands are kept
  *
  */
-
-
     require_once("dbConnect.php");
     require_once("formValidation.php");
 
@@ -308,8 +306,8 @@
             {
                 for($position=0; $position < 8; $position++)
                 {
-                    $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue,@$staffId, $isDeleted  );
-                    $stmt->execute();echo "ADDED";
+                    $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue, $staffId, $isDeleted  );
+                    $stmt->execute();
                 }
             }
             $stmt->close();
@@ -1012,5 +1010,39 @@
 
         return false;
     }
+
+/*insertAllTimetable();
+
+function insertAllTimetable()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare('INSERT INTO Timetable (Grade, Class, Day, Position, Subject, StaffID, isDeleted) values (?,?,?,?,?,?,?);' ))
+    {
+        $nullValue = null;
+
+        for($staff = 1; $staff < 17; $staff++)
+            for($day = 0; $day < 5; $day++)
+            {
+                for($position=0; $position < 8; $position++)
+                {
+                    $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue,$staff, $isDeleted  );
+                    $stmt->execute();echo "ADDED";
+                }
+            }
+        $stmt->close();
+        $mysqli->close();
+        return true;
+    }
+    $mysqli->close();
+    return false;
+}*/
 
 ?>
