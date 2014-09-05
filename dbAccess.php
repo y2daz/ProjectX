@@ -331,6 +331,7 @@
 
         if ($stmt = $mysqli->prepare("Select Grade, Class, Day, Position, Subject  FROM Timetable WHERE isDeleted = 0 AND StaffId = ? ORDER BY Day,position ;"))
         {
+            $stmt->bind_param("s", $staffId);
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();

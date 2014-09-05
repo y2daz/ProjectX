@@ -19,7 +19,6 @@ class Timetable {
         for ($i = 0; $i < 40; $i++)
         {
             $slot[$i] = new SlotDetail();
-            $a = new SlotDetail();
         }
     }
 
@@ -28,10 +27,9 @@ class Timetable {
 
         if(isFilled($result)){
             $i = 0;
+
             foreach($result as $row){
-                $this->slot[$i]->Grade = $row[0];
-                $this->slot[$i]->Class = $row[1];
-                $this->slot[$i]->Subject = $row[4];
+                $this->insertSLot($i, $row[0], $row[1], $row[2] );
                 $i++;
             }
         }
@@ -63,4 +61,10 @@ class SlotDetail {
     public $Grade;
     public $Class;
     public $Subject;
+
+    function __construct(){
+        $this->Class="";
+        $this->Grade="";
+        $this->Subject="";
+    }
 }

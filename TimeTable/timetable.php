@@ -31,6 +31,8 @@ $currentStaffName = "";
 
 if (isFilled($_GET["getTimetable"]))
 {
+    error_reporting(0);//Temporarily turn of all errors
+
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
 
@@ -41,7 +43,14 @@ if (isFilled($_GET["getTimetable"]))
 
     $myTime->staffId = "$currentStaffId";
     $myTime->getTimetable();
-    var_dump($myTime);
+
+//    $result = getTimetable($currentStaffId);
+//
+//    if (isFilled($result)){
+//        foreach($result as $row){
+//            var_dump($row);
+//        }
+//    }
 }
 else
 {
