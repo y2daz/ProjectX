@@ -43,6 +43,7 @@
         <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
         <!--Static Resource -->
