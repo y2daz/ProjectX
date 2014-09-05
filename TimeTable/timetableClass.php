@@ -29,7 +29,7 @@ class Timetable {
             $i = 0;
 
             foreach($result as $row){
-                $this->insertSLot($i, $row[0], $row[1], $row[2] );
+                $this->insertSLot($i, $row[0], $row[1], $row[4] );
                 $i++;
             }
         }

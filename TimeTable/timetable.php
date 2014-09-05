@@ -43,17 +43,6 @@ if (isFilled($_GET["getTimetable"]))
 
     $myTime->staffId = "$currentStaffId";
     $myTime->getTimetable();
-
-//    $result = getTimetable($currentStaffId);
-//
-//    if (isFilled($result)){
-//        foreach($result as $row){
-//            var_dump($row);
-//        }
-//    }
-}
-else
-{
 }
 
 ?>
@@ -61,6 +50,22 @@ else
     <head>
         <link rel="stylesheet" href="timetable.css">
         <script src="timetable.js"></script>
+
+        <script>
+            $(document).ready(function() {
+
+                var i = 0;
+
+//                setInterval(function(){
+////                    alert("try");
+//                    $("#" + i).toggleClass("animated");
+//                    i++;
+//                    if(i >= 40)
+//                        i=0;
+//                }, 25);
+
+            });
+        </script>
     </head>
     <body>
 
@@ -91,15 +96,48 @@ else
             <th><?php echo getLanguage("wednesday",$lang)?></th>
             <th><?php echo getLanguage("thursday",$lang)?></th>
             <th><?php echo getLanguage("friday",$lang)?></th>
-
         </tr>
 
+        <?php
+            $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
+
+            for($i = 0; $i < 8; $i++){
+
+                if(($i == 4)){ //INTERVAL
+                    $intervalRow = "\t<tr>\t<td>10.30-10.50</td> \t<td colspan=\"5\" id=\"interval\">" . "INTERVAL" . "</td>\t</tr>\n";
+                    $i++; $x = -1;
+                    echo $intervalRow;
+                }
+
+                for($x = 0; $x < 6; $x++){
+                    $thisCell = "";
+                    if($x == 0){
+                        $thisCell = "\t<tr>\t";
+                        $thisCell .= "<td>" . $timeArray[ $i ] . "</td>";
+                    }
+                    else{ //Normal rows are here.
+                        $thisCell = "\t<td id=\"" . ($i + (8 * ($x - 1) )) . "\">" . "$i _ $x" . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        if ($x % 5 == 0)
+                            $thisCell .= "\t</tr>\n";
+                    }
+
+
+                    echo $thisCell;
+                }
+            }
+        ?>
+</table>
+
+    <br/>
+    <br/>
+    <br/>
+<table>
         <tr>
             <td class="time">07.50-08.30</td>
             <td >
-                <table id="" class="collapse" border="0px">
+                <table id="0" class="collapse" border="0px">
                     <tr class="rowToHide" >
-                        <td><input type="text"  name="txtClass1" required="true" value="Class" class="grayText text  "
+                        <td><input type="text"  name="txtClass_0" required="true" value="<?php echo getLanguage('class', $lang);?>" class="grayText text"
                                    onfocus="remGrayText(this, '<?php echo getLanguage('class', $lang);?>')" onblur="makeGrayText(this, '<?php echo getLanguage('class', $lang);?>')"/></td>
                     </tr>
                     <tr>
@@ -109,7 +147,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="8" class="collapse">
                     <tr class="rowToHide">
                         <td ><input type="text" name="txtClass2" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -121,7 +159,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="16" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass3" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -133,7 +171,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="24" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass4" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -145,7 +183,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="32" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass5" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -158,11 +196,10 @@ else
             </td>
         </tr>
 
-
         <tr>
             <td class="time">08.30-09.10</td>
             <td >
-                <table  class="collapse">
+                <table id="1" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass6" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -174,7 +211,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="9" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass7" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -186,7 +223,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="17" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass8" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -198,7 +235,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="25" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass9" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -210,7 +247,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="33" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass10" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -223,12 +260,10 @@ else
             </td>
         </tr>
 
-
-
         <tr>
             <td class="time">09.10-09.50</td>
             <td >
-                <table  class="collapse">
+                <table id="2" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass11" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -240,7 +275,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="10" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass12" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -252,7 +287,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="18" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass13" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -264,7 +299,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="26" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass14" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -276,7 +311,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="34" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass15" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -289,12 +324,10 @@ else
             </td>
         </tr>
 
-
-
         <tr>
             <td class="time">09.50-10.30</td>
             <td >
-                <table  class="collapse">
+                <table id="3" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass16" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -306,7 +339,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="11" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass17" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -318,7 +351,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="19" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass18" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -330,7 +363,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="27" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass19" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -342,7 +375,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="35" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass20" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -360,11 +393,10 @@ else
             <td  colspan="5" align="center"><?php echo getLanguage("interval",$lang)?></td>
         </tr>
 
-
         <tr>
             <td class="time">10.50-11.30</td>
             <td >
-                <table  class="collapse">
+                <table id="4" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass21" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -376,7 +408,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="12" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass22" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -388,7 +420,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="20" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass23" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -400,7 +432,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="28" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass24" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -412,7 +444,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="36" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass25" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -425,12 +457,10 @@ else
             </td>
         </tr>
 
-
-
         <tr>
             <td class="time">11.30-12.10</td>
             <td >
-                <table  class="collapse">
+                <table id="5" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass26" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -442,7 +472,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="13" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass27" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -454,7 +484,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="21" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass28" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -466,7 +496,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="29" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass29" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -478,7 +508,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="37" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass30" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -492,11 +522,10 @@ else
 
         </tr>
 
-
         <tr>
             <td class="time">12.10-12.50</td>
             <td >
-                <table  class="collapse">
+                <table id="6" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass31" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -508,7 +537,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="14" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass32" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -520,7 +549,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="22" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass33" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -532,7 +561,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="30" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass34" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -544,7 +573,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="38" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass35" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -558,11 +587,10 @@ else
 
         </tr>
 
-
         <tr>
             <td class="time">12.50-01.30</td>
             <td >
-                <table  class="collapse">
+                <table id="7" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text"  name="txtClass36" required="true" value="Class" class="grayText text  "
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -574,7 +602,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="15" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass37" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -586,7 +614,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="23" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass38" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -598,7 +626,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="31" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass39" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
@@ -610,7 +638,7 @@ else
                 </table>
             </td>
             <td >
-                <table  class="collapse">
+                <table id="39" class="collapse">
                     <tr class="rowToHide">
                         <td><input type="text" name="txtClass40" required="true" value="Class" class="grayText text"
                                    onfocus="remGrayText(this, 'Class')" onblur="makeGrayText(this, 'Class')"/></td>
