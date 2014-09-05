@@ -115,7 +115,8 @@ if (isFilled($_GET["getTimetable"]))
                         $thisCell .= "<td>" . $timeArray[ $i ] . "</td>";
                     }
                     else{ //Normal rows are here.
-                        $thisCell = "\t<td id=\"" . ($i + (8 * ($x - 1) )) . "\">" . "$i _ $x" . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        $number=($i + (8 * ($x - 1) ));
+                        $thisCell = "\t<td id=\"" . $number . "\">" . $myTime->slot[$number]->Subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
