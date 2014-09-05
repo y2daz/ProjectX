@@ -135,7 +135,7 @@ $pageTitle= "View Attendance";
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-require_once(THISROOT . "/Master.php");
+//require_once(THISROOT . "/Master.php");
 include("../Master.php");
 
 ?>
