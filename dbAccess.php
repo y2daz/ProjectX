@@ -262,7 +262,7 @@
         return 0;
     }
 
-    function insertStudent($admissionNo, $name, $dateOfBirth,$nat_race, $religion, $medium, $address, $grade, $class, $house)
+    function insertStudent($admissionNo, $name, $dateOfBirth, $nat_race, $religion, $medium, $address, $grade, $class, $house)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();

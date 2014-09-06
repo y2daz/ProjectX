@@ -34,16 +34,10 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
         }
         else
         {
-            sendNotification("Error!");
+            echo "Error";
         }
+
     }
-    else
-    {
-        sendNotification("Admission ID is not a Number");
-    }
-
-
-
 
 }
 
