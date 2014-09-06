@@ -390,7 +390,7 @@ Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
 }
 
 
-function insertNewTimetable($staffId)
+    function insertNewTimetable($staffId)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -411,6 +411,38 @@ function insertNewTimetable($staffId)
                 {
                     $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue, $staffId, $isDeleted  );
                     $stmt->execute();
+                }
+            }
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $mysqli->close();
+        return false;
+    }
+
+    function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+
+        if ($stmt = $mysqli->prepare('UPDATE Timetable set Grade=?, Class=?, Subject=?, isDeleted=? WHERE Day = ? AND Position = ? AND StaffId = ?;'))
+        {
+
+            for($i = 0; $i < 5; $i++){
+                for($x = 0; $x < 8; $x++){
+                    $number = ($i * 8) + $x;
+
+                    $curGrade = ($GradeArr[$number] == 0 ? null : $GradeArr[$number]);
+
+                    $stmt -> bind_param("issiiii", $curGrade, $ClassArr[$number], $SubjectArr[$number], $isDeleted, $i, $x, $staffId);
+                    $stmt -> execute();
                 }
             }
             $stmt->close();
@@ -728,7 +760,6 @@ function insertNewTimetable($staffId)
 
     function searchStaff($id)
     {
-
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
@@ -775,8 +806,8 @@ function insertNewTimetable($staffId)
             {
                 if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
                 {
-                    $isdeleted = 0;
-                    $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
+                    $isDeleted = 0;
+                    $stmt -> bind_param("sisi",$staffID, $grade, $class, $isDeleted);
 
                     if ($stmt->execute())
                     {
@@ -893,6 +924,7 @@ function insertNewTimetable($staffId)
                 }
             }
         }
+
         $mysqli->close();
         return $set;
     }
@@ -1050,17 +1082,25 @@ function insertNewTimetable($staffId)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
-        $query = "SELECT OfficialLeave, MaternityLeave, OtherLeave FROM LeaveData WHERE StaffID = $StaffID";
+        if($stmt = $mysqli->prepare("SELECT OfficialLeave, MaternityLeave, OtherLeave FROM leavedata WHERE StaffID = ?"))
+        {
+            $stmt->bind_param("s", $StaffID);
 
-        $results = $mysqli->query($query);
+            if($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
 
-        $row = $results->fetch_array();
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++ ]=$row;
+                }
 
-        $results->free();
+            }
+        }
 
         $mysqli->close();
-
-        return $row;
+        return $set;
     }
 
 
@@ -1081,13 +1121,14 @@ function insertNewTimetable($staffId)
             {
                 $result = $stmt->get_result();
                 $i = 0;
+
                 while($row = $result->fetch_array())
                 {
                     $set[$i++]=$row;
                 }
             }
         }
-//        $stmt->close();
+
         $mysqli->close();
         return $set;
     }
@@ -1141,13 +1182,15 @@ function insertNewTimetable($staffId)
 
         $datediff = abs($datediff);
 
-
-
-        if(isFilled($result))
+        foreach($result as $row)
         {
-            $OfficialLeave = $result[0];
-            $MaternityLeave = $result[1];
-            $OtherLeave = $result[2];
+            if(isFilled($result))
+            {
+                $OfficialLeave = $row[0];
+                $MaternityLeave = $row[1];
+                $OtherLeave = $row[2];
+            }
+
         }
 
         if($leavetype == "Official Leave")

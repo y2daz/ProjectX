@@ -55,8 +55,9 @@ h2{
     color: white;
     padding: 5px;
 }
-.timetable th.time{
+.timetable .time{
     width: 100px;
+    vertical-align: middle;
 }
 /*.text {*/
     /*background: white;*/
@@ -99,10 +100,17 @@ h2{
     border: 0px solid;
     outline: 0;
 }
+#edit{
+    position: relative;
+    left: 50px;
+    width: 700px;
+    text-align: center;
+}
 #submit{
     position: relative;
     /*top: 10px;*/
     left: 50px;
+    width: 700px;
 }
 #submit  th{
     width: 200px;
