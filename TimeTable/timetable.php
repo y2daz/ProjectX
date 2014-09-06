@@ -41,7 +41,7 @@ if (isFilled($_POST["Submit"]))
         $gradeArr = array();
 
         $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
-        $tempClassroom = $_POST[ ($prefixClassroom . $i) ];
+        $tempClassroom = trim($_POST[ ($prefixClassroom . $i) ]);
 
         $tempClassroom = explode(" ", $tempClassroom);
         $tempGrade = $tempClassroom[0];
@@ -133,13 +133,29 @@ if (isFilled($_GET["getTimetable"]))
                     }
                 });
 
+                function doNothing(){
+                    classValidation();
+                    doNothingElse();
+                }
+                function doNothingElse(){
+                    doNothing();
+                }
+
+
+                function classValidation(){
+//                    $('.classroom input').each( function(i, obj){
+////                        var value = $(obj).val().trim();
+////                        if (( i == 1 ) ))
+////                            alert(( value.indexOf(" ") );
+//                    });
+                    return false;
+                }
+
 
             });
         </script>
     </head>
     <body>
-
-    <form>
 
     <h1><?php echo getLanguage("timetable", $lang) ?></h1>
 
@@ -158,8 +174,8 @@ if (isFilled($_GET["getTimetable"]))
     </form>
 
 
-    <form method="post">
-        <input name="staffId" value="<?php echo $currentStaffId?>" hidden="true"/>
+    <form name="frmTimetable" onsubmit="return classValidation()" method="post">
+        <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
 
         <table id="edit">
