@@ -36,7 +36,7 @@
     {
         $Principal = null;
 
-        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $Principal, $OfficialLeave, $MaternityLeave, $OtherLeave);
+        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $Principal);
 
         $success = "Leave Approved!";
         $fail = "Approval Failed!";

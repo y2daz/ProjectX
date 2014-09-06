@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
         }
         else
         {
-            sendNotification("Error!");
+            sendNotification("yako!");
         }
     }
     else

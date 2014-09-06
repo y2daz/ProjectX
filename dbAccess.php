@@ -1081,7 +1081,7 @@ function insertNewTimetable($staffId)
         return $set;
     }
 
-    function approveLeave($StaffID, $sDate, $ReviewedBy, $OfficialLeave, $MaternityLeave, $OtherLeave)
+    function approveLeave($StaffID, $sDate, $eDate, $leavetype, $ReviewedBy)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -1089,10 +1089,39 @@ function insertNewTimetable($staffId)
         $result = getLeaveData($StaffID);
 
         $startdate = $sDate;
-        $enddate = $enddate;
+        $enddate = $eDate;
+
+        $start = strtotime($startdate);
+        $end = strtotime($enddate);
+
+        $datediff = $end - $start;
+
+        $datediff = floor($datediff/(60*60*24));
+
+        $datediff = abs($datediff);
 
 
 
+        if(isFilled($result))
+        {
+            $OfficialLeave = $result[0];
+            $MaternityLeave = $result[1];
+            $OtherLeave = $result[2];
+        }
+
+        if($leavetype == "Official Leave")
+        {
+            $OfficialLeave = $OfficialLeave - $datediff;
+        }
+        else if ($leavetype == "Maternity Leave")
+        {
+            $MaternityLeave = $MaternityLeave - $datediff;
+
+        }
+        else if ($leavetype == "Other Leave")
+        {
+            $OtherLeave = $OtherLeave - $datediff;
+        }
 
         if ($mysqli->connect_errno) {
 

@@ -28,9 +28,13 @@
 <?php
 
 $now = strtotime("2014-01-01"); // or your date as well
-$your_date = strtotime("2014-01-02");
-$datediff = $your_date - $now;
-echo floor($datediff/(60*60*24));
+$your_date = strtotime("2014-01-20");
+$datediff = $now - $your_date;
+$datediff =  floor($datediff/(60*60*24));
+
+
+echo abs($datediff);
+
 
 ?>
 
