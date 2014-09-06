@@ -126,7 +126,8 @@ if( isset($_GET["staffID"]) )
 
 if (isset($_GET["delete"]))
 {
-    deleteStaff($_GET["delete"]);
+    $operation = deleteStaff($_GET["delete"]);
+    sendNotification($operation);
 }
 
 $tableDetails = "none";
@@ -147,7 +148,6 @@ if (isset($_GET["search"]))
     }
     $tableDetails= "none";
     $tableViewTable= "block";
-
 }
 else
 {
@@ -163,27 +163,27 @@ if (isset($_GET["expand"]))
     foreach($result as $row)
     {
         $staffid = $row[$i++];
-        $NamewithInitials =$row[$i++];
+        $NamewithInitials = $row[$i++];
         $DateofBirth = $row[$i++];
         $Gender = $row[$i++];
         $NationalityRace = $row[$i++];
-        $Religion =$row[$i++];
+        $Religion = $row[$i++];
         $CivilStatus = $row[$i++];
         $NICNumber = $row[$i++];
-        $MailDeliveryAddress =$row[$i++];
+        $MailDeliveryAddress = $row[$i++];
         $ContactNumber = $row[$i++];
-        $DateAppointedasTeacherPrincipal =$row[$i++];
+        $DateAppointedasTeacherPrincipal = $row[$i++];
         $DateJoinedthisSchool = $row[$i++];
         $EmploymentStatus = $row[$i++];
-        $Medium =$row[$i++];
-        $PositioninSchool =$row[$i++];
-        $Section =$row[$i++];
-        $SubjectMostTaught =$row[$i++];
-        $SubjectSecondMostTaught =$row[$i++];
-        $ServiceGrade =$row[$i++];
-        $Salary =$row[$i++];
+        $Medium = $row[$i++];
+        $PositioninSchool = $row[$i++];
+        $Section = $row[$i++];
+        $SubjectMostTaught = $row[$i++];
+        $SubjectSecondMostTaught = $row[$i++];
+        $ServiceGrade = $row[$i++];
+        $Salary = $row[$i++];
         $HighestEducationalQualification = $row[$i++];
-        $HighestProfessionalQualification =$row[$i++];
+        $HighestProfessionalQualification = $row[$i++];
         $CourseofStudy = $row[$i++];
     }
 
@@ -317,7 +317,6 @@ else
             if (!isFilled($result))
             {
                 $result = getAllStaff();
-
             }
 
             if (isFilled($result))
@@ -335,6 +334,7 @@ else
                     echo "</td></tr>";
                 }
             }
+
             if (isset($_GET["search"]))
             {
                 $fullPageHeight = ( 600 + ($i * 18) );

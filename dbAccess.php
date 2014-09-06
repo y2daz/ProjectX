@@ -1086,6 +1086,14 @@ function insertNewTimetable($staffId)
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
+        $result = getLeaveData($StaffID);
+
+        $startdate = $sDate;
+        $enddate = $enddate;
+
+
+
+
         if ($mysqli->connect_errno) {
 
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -1127,7 +1135,7 @@ function insertNewTimetable($staffId)
 
             if($stmt->execute())
             {
-                if ($stmt -> affected_rows = 1)
+                if ($stmt -> affected_rows > 0)
                 {
                 $stmt->close();
                 $mysqli->close();
