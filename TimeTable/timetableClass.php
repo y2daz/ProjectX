@@ -22,7 +22,7 @@ class Timetable {
         }
     }
 
-    public function getTimetable(){
+    public function getTimetableFromDB(){
         $result = getTimetable($this->staffId);
 
         if(isFilled($result)){

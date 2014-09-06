@@ -379,7 +379,7 @@ function insertNewTimetable($staffId)
         return false;
     }
 
-    function FgetTimetable($staffId)
+    function getTimetable($staffId)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();

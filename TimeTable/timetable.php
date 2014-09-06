@@ -39,7 +39,7 @@ if (isFilled($_GET["getTimetable"]))
     $myTime = new Timetable();
 
     $myTime->staffId = "$currentStaffId";
-    $myTime->getTimetable();
+    $myTime->getTimetableFromDB();
 }
 
 ?>
@@ -53,13 +53,13 @@ if (isFilled($_GET["getTimetable"]))
 
                 var i = 0;
 
-//                setInterval(function(){
-////                    alert("try");
-//                    $("#" + i).addClass("animated", 600);
-//                    i++;
-//                    if(i >= 40)
-//                        i=0;
-//                }, 12);
+                setInterval(function(){
+//                    alert("try");
+                    $("#" + i).toggleClass("animated", 600);
+                    i++;
+                    if(i >= 40)
+                        i=0;
+                }, 12);
 
             });
         </script>
