@@ -58,25 +58,35 @@ if (isset($_GET["search"]))
     $tableViewTable= "block";
 
 }
+$admissionNo = "";
+$NamewithInitials ="";
+$DateofBirth = "";
+$NationalityRace = "";
+$Religion = "";
+$Medium ="";
+$Address = "";
+$Grade ="";
+$Class ="";
+$House ="";
 
 if (isset($_GET["expand"]))
 {
     $result = getStudent($_GET["expand"]);
 
-
+    var_dump($result);
 
     foreach($result as $row) //
     {
-        $admissionNo = $row[1];
-        $NamewithInitials =$row[2];
-        $DateofBirth = $row[3];
-        $NationalityRace = $row[4];
-        $Religion = $row[5];
-        $Medium =$row[6];
-        $Address = $row[7];
-        $Grade = $row[8];
-        $Class =$row[9];
-        $House = $row[10];
+        $admissionNo = $row[0];
+        $NamewithInitials =$row[1];
+        $DateofBirth = $row[2];
+        $NationalityRace = $row[3];
+        $Religion = $row[4];
+        $Medium =$row[5];
+        $Address = $row[6];
+        $Grade = $row[7];
+        $Class =$row[8];
+        $House = $row[9];
     }
 
     $fullPageHeight = 1200;
@@ -189,7 +199,7 @@ else
                 <th></th>
             </tr>
             <?php
-            $res = $currentStudent;
+            $res = $result;
 
             $i = 1;
 
@@ -210,9 +220,7 @@ else
                     echo "<td>$row[1]</td>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"Expand" . "\" type=\"submit\" 
-value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0]
-                        . "\" /> </td> ";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"SearchStudent.php?expand=" . $row[0] . "\" /> </td> ";
 
                     echo "</td></tr>";
                 }
@@ -232,44 +240,37 @@ value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0]
     <table class="details" align="center">
     <tr>
         <td> Staff ID </td>
-        <td > <input type = "text" name="staffid" readonly value="<?php
-            echo $admissionNo?>"/> </td>
+        <td > <input type = "text" name="staffid"  value="<?php echo $admissionNo?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td> Name with Initials </td>
-        <td > <input type = "text" name="NamewithInitials" value="<?php
-            echo $NamewithInitials?>"/> </td>
+        <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td> Date of Birth  </td>
-        <td > <input type = "text" name="DateofBirth" value="<?php echo
-            $DateofBirth?>"/> </td>
+        <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td>Natinality/Race </td>
-        <td > <input type = "text" name="NationalityRace" value="<?php echo
-            $NationalityRace?>"/> </td>
+        <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td> Religion </td>
-        <td > <input type = "text" name="Religion" value="<?php echo
-            $Religion?>"/> </td>
+        <td > <input type = "text" name="Religion" value="<?php echo $Religion?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td> Medium  </td>
-        <td > <input type = "text" name="Medium" value="<?php echo
-            $Medium?>"/> </td>
+        <td > <input type = "text" name="Medium" value="<?php echo $Medium?>"/> </td>
         <td></td>
     </tr>
     <tr>
         <td>Address  </td>
-        <td > <input type = "text" name="Address" value="<?php echo
-            $Address?>"/> </td>
+        <td > <input type = "text" name="Address" value="<?php echo $Address?>"/> </td>
         <td></td>
     </tr>
     <tr>

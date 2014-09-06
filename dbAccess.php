@@ -331,9 +331,9 @@ function SearchStudent($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select AdmissionNO, NamewithInitials, Class, Date FROM student WHERE AdmissionNo LIKE ? AND isDeleted = 0 ORDER BY AdmissionNo;"))
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, CONCAT(Grade, ' ', Class) FROM Student WHERE AdmissionNo = ? AND isDeleted = 0;"))
     {
-        $stmt -> bind_param("sss", $id);
+        $stmt -> bind_param("s", $id);
 
         if ($stmt->execute())
         {
@@ -548,7 +548,7 @@ Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class, FROM User WHERE isDeleted = 0 AND AdmissionNo = ?  ORDER BY accessLevel;"))
+        if ($stmt = $mysqli->prepare("Select * FROM Student WHERE isDeleted = 0 AND AdmissionNo = ?;"))
         {
             $stmt->bind_param("s", $AdmissionNo);
 
