@@ -424,6 +424,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `EventManager` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
+    `ManagerName` varchar(30) NOT NULL DEFAULT '',
+    `ContactNo` int(10) NOT NULL DEFAULT '0',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`EventID`,`StaffID`),
     KEY `fk022` (`StaffID`)
