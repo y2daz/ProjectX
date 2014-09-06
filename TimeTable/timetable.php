@@ -39,7 +39,7 @@ if (isFilled($_GET["getTimetable"]))
     $myTime = new Timetable();
 
     $myTime->staffId = "$currentStaffId";
-    $myTime->getTimetable();
+    $myTime->getTimetableFromDB();
 }
 
 ?>
@@ -53,13 +53,47 @@ if (isFilled($_GET["getTimetable"]))
 
                 var i = 0;
 
-//                setInterval(function(){
-////                    alert("try");
-//                    $("#" + i).addClass("animated", 600);
-//                    i++;
-//                    if(i >= 40)
-//                        i=0;
-//                }, 12);
+                setInterval(function(){
+//                    alert("try");
+                    $("#" + i).toggleClass("animated", 600);
+                    i++;
+                    if(i >= 40)
+                        i=0;
+                }, 12);
+
+                var editable = false;
+
+                $('#btnMakeEditable').on('click', function(e){
+                    if (editable == false){
+                        $('.classroom input').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", false)
+                                .closest("div")
+                                    .css("opacity",".7");
+                        });
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", false)
+                                .css("color", "#101010");
+                        });
+                        editable = true;
+                    }
+                    else{
+                        $('.classroom input').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", true)
+                                .closest("div")
+                                .css("opacity",".5");
+                        });
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", true)
+                                .css("color", "#444444");
+                        });
+                        editable = false;
+                    }
+                });
+
 
             });
         </script>
@@ -97,8 +131,9 @@ if (isFilled($_GET["getTimetable"]))
 
         <?php
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
-            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80"); //14
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
+            $classColour = array();
 
 
             for($i = 0; $i < 8; $i++){
@@ -118,12 +153,29 @@ if (isFilled($_GET["getTimetable"]))
                         $number=($i + (8 * ($x - 1) ));
                         $thisCell = "";
 
-                        $currColour = $colourArray[(rand(0,12))];
-                        $subject = "Business Studies";
+                        $subject = $myTime->slot[$number]->Subject;
+                        $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
-                        $classDiv = "<div class='classroom'>12 B</div>";
+                        $currColour = $colourArray[(rand(0,14))];
+                        while ( in_array($currColour, $classColour) )
+                        {
+                            $currColour = $colourArray[(rand(0,14))];
+                        }
 
-                        $thisCell .= "\t<td style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv . /*$myTime->slot[$number]->*/$subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        if( trim($class) == ""){
+                            $classColour[$class] = "#dedede";
+                        }
+                        if ($classColour[$class] == ""){
+                            $classColour[$class] = $currColour;
+                        }
+                        else{
+                            $currColour = $classColour[$class];
+                        }
+
+                        $classDiv = "<div class='classroom'><input readonly value='" . $class . "' /></div>";
+
+                        $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;  //($i + (8 * ($x - 1) )) Array position
+                        $thisCell .= "<textarea readonly style='background-color:$currColour;'>" . $subject . "</textarea></td>";
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
@@ -679,9 +731,11 @@ if (isFilled($_GET["getTimetable"]))
             </tr>
             </table>
     </div>
+
     <table id="submit">
         <tr>
-            <th><input type="submit" name="submit" value="SUBMIT" onclick=""></th>
+            <td><input id="btnMakeEditable" type="submit" name="btnMakeEditable" value="Edit Timetable"></td>
+            <td><input type="submit" name="submit" value="Save Timetable" onclick="" ></td>
         </tr>
     </table>
 
