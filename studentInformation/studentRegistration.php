@@ -28,18 +28,13 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
         if($operation)
         {
-            sendNotification("Submitted Successfully!");
-        }
-
-        if($operation)
-        {
             //
             header("Location: parentDetailsForm.php");
             die();
         }
         else
         {
-            sendNotification("yako!");
+            sendNotification("Error!");
         }
     }
     else
