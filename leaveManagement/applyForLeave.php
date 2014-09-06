@@ -12,9 +12,10 @@
 
     ob_start();
 
-    if(is_numeric($_POST["staffid"]))
+
+    if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
     {
-        if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
+        if(is_numeric($_POST["staffid"]))
         {
             $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
@@ -30,16 +31,12 @@
             {
                 sendNotification($fail);
             }
-
-            //echo $operation;
+        }
+        else
+        {
+            sendNotification("Invalid Staff ID Entered");
         }
     }
-    else
-    {
-        sendNotification("Invalid Staff ID");
-    }
-
-
 
     if(isset($_POST["GetLeaveData"]))
     {
