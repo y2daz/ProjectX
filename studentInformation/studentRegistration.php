@@ -14,26 +14,39 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/common.php");
+require_once(THISROOT . "/formValidation.php");
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
 
 if (isset($_POST["submit"])) //User has clicked the submit button to add a student
 {
-    //Validate
-    //Insert to database
-//    if (is_numeric( $_POST["admissionID"]))
-//    {
-    $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"],$_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
 
-    echo $operation;
+    if(is_numeric($_POST["admissionID"]))
+    {
+        $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"],$_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
 
-//    header("Location: parentDetailsForm.php");
-//    die();
-//    }
+        if($operation)
+        {
+            //sendNotification("Submitted Successfully!");
+            header("Location: parentDetailsForm.php");
+            die();
+        }
+        else
+        {
+            sendNotification("Error!");
+        }
+    }
+    else
+    {
+        sendNotification("Admission ID is not a Number");
+    }
+
+
+
+
 }
+
 
 
 
@@ -158,7 +171,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
             <tr>
                 <td></td>
 
-                <td><input name="submit" class="button1" type="submit" value="Submit" required="true"></td>
+                <td><input name="submit" class="button1" type="submit" value="Submit" onclick="window.location = 'parentDetailsForm.php'" required="true"></td>
 
 
             </tr>

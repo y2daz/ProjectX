@@ -287,7 +287,38 @@
         return false;
     }
 
-    function insertNewTimetable($staffId)
+function insertParent($admin_no, $name, $par_gur, $p_name,$occupation, $p_number, $m_number, $address, $o_address )
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+
+
+    if ($stmt = $mysqli->prepare("INSERT INTO parentsinformation (admissionno, namewithinitials, parent_guardian, occupation, phoneland, phonemobile, homeaddress, officeaddress, isDeleted) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    {
+        $isDeleted = 0;
+
+        $stmt -> bind_param("ssisssssi", $admin_no, $name, $par_gur, $occupation, $p_number, $m_number, $address, $o_address , $isDeleted);
+
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+}
+
+
+function insertNewTimetable($staffId)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -318,7 +349,7 @@
         return false;
     }
 
-    function getTimetable($staffId)
+    function FgetTimetable($staffId)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
