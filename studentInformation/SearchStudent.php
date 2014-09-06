@@ -16,6 +16,7 @@ require_once(THISROOT . "/common.php");
 
 
 ob_start();
+$currentStudent="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
@@ -184,6 +185,10 @@ else
                            checked />Admission Number</td>
                 <td><input type="RADIO" name="Choice" value="Name"  />Name with
                     Initials</td>
+                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>
+                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>
+                <td><input type="RADIO" name="Choice" value="Class"  />Class</td>
+                <td><input type="RADIO" name="Choice" value="House"  />House</td>
             </tr>
 
         </table>
@@ -199,6 +204,7 @@ else
                 <th></th>
             </tr>
             <?php
+
             $res = $currentStudent;
 
             $i = 1;
