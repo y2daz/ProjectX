@@ -73,7 +73,7 @@ if (isset($_GET["expand"]))
 {
     $result = getStudent($_GET["expand"]);
 
-    var_dump($result);
+//    var_dump($result);
 
     foreach($result as $row) //
     {
