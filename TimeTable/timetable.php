@@ -18,9 +18,6 @@ include(THISROOT . "/common.php");
 include("timetableClass.php");
 ob_start();
 
-$fullPageHeight = 1000;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
 
 $lang = $_COOKIE["language"];
 
@@ -100,6 +97,9 @@ if (isFilled($_GET["getTimetable"]))
 
         <?php
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80"); //14
+
+
 
             for($i = 0; $i < 8; $i++){
 
@@ -116,7 +116,14 @@ if (isFilled($_GET["getTimetable"]))
                     }
                     else{ //Normal rows are here.
                         $number=($i + (8 * ($x - 1) ));
-                        $thisCell = "\t<td id=\"" . $number . "\">" . $myTime->slot[$number]->Subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        $thisCell = "";
+
+                        $currColour = $colourArray[(rand(0,12))];
+                        $subject = "Business Studies";
+
+                        $classDiv = "<div class='classroom'>12 B</div>";
+
+                        $thisCell .= "\t<td style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv . /*$myTime->slot[$number]->*/$subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
@@ -684,9 +691,9 @@ if (isFilled($_GET["getTimetable"]))
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 800;
+$fullPageHeight = 1100;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Timetable";
 //Only change above
 
 $pageContent = ob_get_contents();
