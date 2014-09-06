@@ -317,6 +317,36 @@ function insertParent($admin_no, $name, $par_gur, $p_name,$occupation, $p_number
     return false;
 }
 
+function SearchStudent($id)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNO, NamewithInitials, Class, Date FROM student WHERE AdmissionNo LIKE ? AND isDeleted = 0 ORDER BY AdmissionNo;"))
+    {
+        $stmt -> bind_param("sss", $id);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
 
 function insertNewTimetable($staffId)
     {
@@ -432,6 +462,38 @@ function insertNewTimetable($staffId)
         $mysqli->close();
         return $set;
     }
+
+    function getStudent($AdmissionNo)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class, FROM User WHERE isDeleted = 0 AND AdmissionNo = ?  ORDER BY accessLevel;"))
+        {
+            $stmt->bind_param("s", $AdmissionNo);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+        }
+
+        $mysqli->close();
+        return $set;
+
+    }
+
 
     function getLanguage($label, $language)
     {

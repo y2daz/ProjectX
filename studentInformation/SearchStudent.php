@@ -21,69 +21,70 @@ $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 
 
+
 ?>
-<html>
+    <html>
     <head>
 
         <script src="studentinformation.js"></script>
 
         <style type=text/css>
-<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
+            <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
+            <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
 
 
-table {
-    border-spacing:0px 5px;
-}
+            table {
+                border-spacing:0px 5px;
+            }
 
-#searchCriteria{
-    position:relative;
-    left:20px;
-    top:20px;
-}
+            #searchCriteria{
+                position:relative;
+                left:20px;
+                top:20px;
+            }
 
-th{
-    align:center;
-    color:white;
-    background-color:#005e77;
-    height:25px;
-    padding:5px;
-}
+            th{
+                align:center;
+                color:white;
+                background-color:#005e77;
+                height:25px;
+                padding:5px;
+            }
 
-td {
-    padding:5px;
-}
+            td {
+                padding:5px;
+            }
 
-#staffList{
-    position: relative;
-    top: 40px;
-}
-
-
+            #staffList{
+                position: relative;
+                top: 40px;
+            }
 
 
-input.button {
-    position:relative;
-    font-weight:bold;
-    font-size:20px;
-    right:450px;
-    top:50px;
 
-}
-<?php //Get language and make changes
 
-    if($_COOKIE['language'] == 0)
-    {
-	    $AdmissionID = "AdmisionID";
-        $Name = "Name";
-        $Class = "Class";
-        $Medium = "Medium";
-        $DateOfBirth     = "DateOfBirth";
+            input.button {
+                position:relative;
+                font-weight:bold;
+                font-size:20px;
+                right:450px;
+                top:50px;
 
-    }
+            }
+            <?php //Get language and make changes
 
-    ?>
+                if($_COOKIE['language'] == 0)
+                {
+                    $AdmissionID = "AdmisionID";
+                    $Name = "Name";
+                    $Class = "Class";
+                    $Medium = "Medium";
+                    $DateOfBirth     = "DateOfBirth";
+
+                }
+
+                ?>
 
 
 
@@ -107,7 +108,7 @@ input.button {
                     <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
                     <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
                     <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
-                    <input type="radio" name="choice" value="Date Of Birth" onclick="clickedDateOfBirth()">By Date of Birth
+                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth
 
                 </td>
             </tr>
@@ -117,7 +118,7 @@ input.button {
 
             </tr>
 
-            </table>
+        </table>
 
         <table>
 
@@ -133,25 +134,14 @@ input.button {
 
         <table class="Searchedtable" align="center">
             <tr>
-                <th>Admision No</th>
+                <th>AdmisionID</th>
                 <th>Name</th>
                 <th>Class</th>
                 <th>Medium</th>
-                <th>Date Of Birth</th>
+                <th>DateOfBirth</th>
                 <th></th>
             </tr>
-
-
-<!--            <tr class="alt">-->
-<!--                <td>01111</td>-->
-<!--                <td>Madhushan De Silva</td>-->
-<!--                <td>13</td>-->
-<!--                <td>English</td>-->
-<!--                <td>1993/07/27</td>-->
-<!--                <td><input type="button" name="expand" value="Expand Details" /></td>-->
-<!--            </tr>-->
-
-            </table>
+        </table>
 
 
 
@@ -161,7 +151,7 @@ input.button {
 
 
     </body>
-</html>
+    </html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;
