@@ -104,17 +104,22 @@ $pageTitle= "Template";
             <tr class="alt">
                 <td>
 
-                    <input type="radio" name="choice" value="AdmissionID" onclick="clickedAdmissionID()"> By Admission ID
+                    Admission Number :
+
+                   <!-- <input type="radio" name="choice" value="AdmissionID" onclick="clickedAdmissionID()"> By Admission ID
                     <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
                     <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
                     <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
-                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth
+                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth -->
 
                 </td>
             </tr>
 
             <tr>
-                <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="SearchBy" value="">
+
+                <td> <input type="text" name="AdmissionNumber" </td>
+
+                <!-- <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="SearchBy" value=""> -->
 
             </tr>
 
@@ -156,7 +161,7 @@ $pageTitle= "Template";
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Search Student";
 //Only change above
 
 $pageContent = ob_get_contents();
