@@ -54,7 +54,7 @@ ob_start();
                 <tr><th>Class-wise Report</th><th></th></tr>
                 <tr>
                     <td>Grade</td>
-                    <td><input name="studentGrade" type="text" value=""></td>
+                    <td><input name="studentGrade" type="text" value="" required="true"></td>
                     <td>Class</td>
                     <td><input name="studentClass" type="text" value=""></td>
                 </tr>
