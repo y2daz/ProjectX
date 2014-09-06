@@ -613,7 +613,7 @@ function insertNewTimetable($staffId)
         return $set;
     }
 
-    function deleteStaff($staffID) // yAZDAAN FIX
+    function deleteStaff($staffID)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -624,24 +624,30 @@ function insertNewTimetable($staffId)
 
         $newStaffID="";
 
-        if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE staffID=?; "))
+        if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE StaffID=?; "))
         {
             $deleteNo = 2;
             $stmt -> bind_param("is", $deleteNo, $staffID);
             if ($stmt->execute())
             {
-                if ($stmt = $mysqli->prepare("UPDATE ClassroomInformation SET StaffID = ? where StaffID = ? "))
+                if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID = ? where StaffID = ? "))
                 {
                     $stmt -> bind_param("ss", $newStaffID, $staffID);
                     if ($stmt->execute())
                     {
-                        $stmt->close();
-                        $mysqli->close();
-                        return TRUE;
+                        if ($stmt = $mysqli->prepare("UPDATE Timetable SET isDeleted = ? where StaffID = ? ")){
+                            $stmt -> bind_param("is", $deleteNo, $staffID);
+
+                            if($stmt->execute()){
+                                $stmt->close();
+                                $mysqli->close();
+                                return TRUE;
+                            }
+                        }
                     }
                 }
             }
-//            $stmt->close();
+            $stmt->close();
             $mysqli->close();
             return TRUE;
         }

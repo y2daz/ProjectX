@@ -61,6 +61,26 @@ if (isFilled($_GET["getTimetable"]))
                         i=0;
                 }, 12);
 
+                var editable = false;
+
+                $('#btnMakeEditable').on('click', function(e){
+                    if (editable == false){
+                        $('.classroom input').each( function(i, obj){
+                            $(obj).attr("readonly", false);});
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj).attr("readonly", false);});
+                        editable = true;
+                    }
+                    else{
+                        $('.classroom input').each( function(i, obj){
+                            $(obj).attr("readonly", true);});
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj).attr("readonly", true);});
+                        editable = false;
+                    }
+                });
+
+
             });
         </script>
     </head>
@@ -138,10 +158,10 @@ if (isFilled($_GET["getTimetable"]))
                             $currColour = $classColour[$class];
                         }
 
+                        $classDiv = "<div class='classroom'><input readonly value='" . $class . "' /></div>";
 
-                        $classDiv = "<div class='classroom'>$class</div>";
-
-                        $thisCell .= "\t<td style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv . $subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;  //($i + (8 * ($x - 1) )) Array position
+                        $thisCell .= "<textarea readonly style='background-color:$currColour;'>" . $subject . "</textarea></td>";
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
@@ -697,9 +717,11 @@ if (isFilled($_GET["getTimetable"]))
             </tr>
             </table>
     </div>
+
     <table id="submit">
         <tr>
-            <th><input type="submit" name="submit" value="SUBMIT" onclick=""></th>
+            <td><input id="btnMakeEditable" type="submit" name="btnMakeEditable" value="Edit Timetable"></td>
+            <td><input type="submit" name="submit" value="Save Timetable" onclick="" ></td>
         </tr>
     </table>
 
