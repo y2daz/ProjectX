@@ -591,8 +591,8 @@ function insertNewTimetable($staffId)
 
     function updateStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
     {
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
         if ($mysqli->connect_errno) {
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
