@@ -36,13 +36,14 @@ h2{
     padding: 10px 5px 10px 5px;
 }
 .subject textarea{
-    width:90px;
+    width:100px;
     height:45px;
     resize: none;
     border: 0px solid;
     outline: 0;
     font-size: 1em;
     text-align: center;
+    color: #444444;
 }
 .timetable .interval{
     background-color: #005e77;
