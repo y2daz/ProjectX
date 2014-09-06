@@ -199,7 +199,7 @@ else
                 <th></th>
             </tr>
             <?php
-            $res = $result;
+            $res = $currentStudent;
 
             $i = 1;
 
