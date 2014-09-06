@@ -160,7 +160,7 @@ if (isset($_GET["expand"]))
 
     $i = 0;
 
-    foreach($result as $row)
+    foreach($result as $row) //
     {
         $staffid = $row[$i++];
         $NamewithInitials = $row[$i++];

@@ -318,6 +318,7 @@ function insertParent($admin_no, $name, $par_gur, $p_name,$occupation, $p_number
     return false;
 }
 
+
 function SearchStudent($id)
 {
 
@@ -346,6 +347,46 @@ function SearchStudent($id)
     }
     $mysqli->close();
     return $set;
+}
+
+function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
+                       $Medium, $Address, $Grade, $Class, $House)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmtCheck = $mysqli->prepare("SELECT * FROM Student WHERE
+AdmissionNo=? "))
+    {
+        $stmtCheck -> bind_param("s", $admissionNo);
+        $stmtCheck -> execute();
+        $result = $stmtCheck->get_result();
+
+
+        if ($stmt = $mysqli->prepare("UPDATE Student SET AdmissionNo=?,
+NameWithInitials=?, $DateOfBirth=?, Nationality_Race=?, Religion=?, Medium=?,
+Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
+        {
+            $isDeleted = 0;
+            $stmt -> bind_param("sssiiisissi",$AdmissionNo,
+                $NamewithInitials, $DOB, $Race, $Religion, $Medium, $Address, $Grade, $Class,
+                $House);
+
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return 1; //Updated old classroom
+            }
+        }
+    }
+
+    $mysqli->close();
+    return 0; //Failed Adding Classroom
 }
 
 
