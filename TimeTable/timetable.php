@@ -36,6 +36,8 @@ if (isFilled($_GET["getTimetable"]))
     $row = $result[0];
     $currentStaffName = $row[1];
 
+    echo $currentStaffName;
+
     $myTime = new Timetable();
 
     $myTime->staffId = "$currentStaffId";
@@ -97,7 +99,7 @@ if (isFilled($_GET["getTimetable"]))
 
         <?php
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
-            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80"); //14
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
             $classColour = array();
 
@@ -122,7 +124,12 @@ if (isFilled($_GET["getTimetable"]))
                         $subject = $myTime->slot[$number]->Subject;
                         $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
-                        $currColour = $colourArray[(rand(0,12))];
+                        $currColour = $colourArray[(rand(0,14))];
+
+                        if( trim($class) == ""){
+                            $classColour[$class] = "#dedede";
+                        }
+
                         if ($classColour[$class] == ""){
                             $classColour[$class] = $currColour;
                         }
