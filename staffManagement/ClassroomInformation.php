@@ -15,7 +15,7 @@ require_once(THISROOT . "/common.php");
 
 ob_start();
 
-if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
+if (isset($_POST["Submit"])) //User has clicked the submit button to add a classroom
 {
     $operation = insertClassroom($_POST["staffId"], $_POST["grade"], strtoupper($_POST["className"]));
 
@@ -42,7 +42,7 @@ if( isset($_GET["delete"]) )
 
         $operation = deleteClassroom($delGrade, $delClassName);
 
-        if ($operation == TRUE){
+        if ($operation == TRUE) {
             sendNotification("Class successfully deleted.");
         } elseif ($operation == FALSE) {
             sendNotification("Error deleting class.");
