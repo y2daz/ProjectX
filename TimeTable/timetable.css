@@ -18,27 +18,32 @@ h2{
     text-align: left;
     margin-bottom: 10px;
 }
-#info  tr{
-    /*width: 150px;*/
-}
-
 .timetable{
     position: relative;
     border-collapse: collapse;
     /*border: none;*/
     top: 25px;
     left: 15px;
-    max-width: 800px;
+    max-width: 775px;
     min-width: 775px;
     border: 2px solid #005e77;
 }
-/*.timetable td{*/
-    /*border-collapse: collapse;*/
-    /*border: 1px solid #005e77;*/
-/*}*/
 .timetable td{
     border: 5px solid white;
     border-collapse: collapse;
+    text-align: center;
+    vertical-align: top;
+    padding: 10px 5px 10px 5px;
+}
+.subject textarea{
+    width:100px;
+    height:45px;
+    resize: none;
+    border: 0px solid;
+    outline: 0;
+    font-size: 1em;
+    text-align: center;
+    color: #444444;
 }
 .timetable .interval{
     background-color: #005e77;
@@ -53,55 +58,51 @@ h2{
 .timetable th.time{
     width: 100px;
 }
-.timetable  td{
-    /*width: 120px;*/
-    text-align: center;
-    padding: 4px 8px 4px 8px;
-}
-.timetable  tr{
-    height: 10px;
-}
-
-.text {
-    background: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #DDD inset;
-    color: #666;
-    outline: none;
-    height:20px;
-    width: 120px;
-}
-.text2 {
-    background: white;
-    border: 1px solid #DDD;
-    border-radius: 5px;
+/*.text {*/
+    /*background: white;*/
+    /*border: none;*/
+    /*border-radius: 5px;*/
     /*box-shadow: 0 0 5px #DDD inset;*/
-    color: #666;
-    outline: none;
-    height:20px;
-    width: 230px;
+    /*color: #666;*/
+    /*outline: none;*/
+    /*height:20px;*/
+    /*width: 120px;*/
+/*}*/
+/*.text2 {*/
+    /*background: white;*/
+    /*border: 1px solid #DDD;*/
+    /*border-radius: 5px;*/
+    /*box-shadow: 0 0 5px #DDD inset;*/
+    /*color: #666;*/
+    /*outline: none;*/
+    /*height:20px;*/
+    /*width: 230px;*/
+/*}*/
+.classroom{
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 18px;
+    opacity: .5;
+    top: -10px;
+    left: -4px;
 }
-/*#assign{*/
-    /*position: relative;*/
-    /*top: 25px;*/
-/*}*/
-/*#assign, #assign th, #assign td{*/
-    /*border: 1px solid black;*/
-/*}*/
-/*#assign  th{*/
-    /*width: 230px;*/
-/*}*/
-/*#assign  td{*/
-    /*width: 230px;*/
-    /*text-align: center;*/
-/*}*/
-/*#assign  tr{*/
-    /*height: 10px;*/
-/*}*/
+.classroom input{
+    background-color: #151612;
+    color: white;
+    width: 40px;
+    height: 18px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 1.0em;
+    border: 0px solid;
+    outline: 0;
+}
 #submit{
     position: relative;
-    top: 50px;
+    /*top: 10px;*/
+    left: 50px;
 }
 #submit  th{
     width: 200px;
@@ -111,19 +112,7 @@ h2{
     width: 390px;
     text-align: center;
 }
-.collapse{
-    border-collapse: collapse;
-    border: 0px #ffffff;
-    margin: 1;
-}
-.collapse, .collapse tr > th .collapse tr > td{
-    /*border-collapse: collapse;*/
-    /*border: none;*/
-}
-#timetable, #timetable th, #timetable td{
-    border: 1px solid black;
-}
 .animated{
-    background-color: #bed9ff;
+    background-color: white;
     /*color: red;*/
 }
