@@ -43,6 +43,7 @@
         <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
         <!--Static Resource -->
@@ -167,7 +168,8 @@
                 <ul>
                     <li><a  href="<?php echo PATHFRONT ?>/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/attendance/classwise.php">Class-wise Report</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/attendance/studentwise.php">Student-wise Report</a></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/attendance/studentwise.php">Student-wise Report</a><hr /></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/attendance/viewAttendance.php">View Attendance</a></li>
                 </ul>
             </li>
             <li><a>Marks and Grading</a>

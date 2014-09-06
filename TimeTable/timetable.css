@@ -10,39 +10,55 @@ h2{
 #info{
     position: relative;
     top: 2px;
-    left: 20px;;
+    left: 20px;
 }
 #info  td{
     width: 150px;
     padding: 5px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 10px;
 }
 #info  tr{
-    width: 150px;
-    text-align: center;
+    /*width: 150px;*/
 }
-#timetable{
+
+.timetable{
     position: relative;
     border-collapse: collapse;
+    /*border: none;*/
     top: 25px;
-    max-width: 1000px;
+    left: 15px;
+    max-width: 800px;
+    min-width: 775px;
+    border: 2px solid #005e77;
 }
-#timetable, #timetable th, #timetable td{
-   /*border: 1px solid black;*/
+/*.timetable td{*/
+    /*border-collapse: collapse;*/
+    /*border: 1px solid #005e77;*/
+/*}*/
+.timetable td{
+    border: 5px solid white;
+    border-collapse: collapse;
 }
-#timetable  th{
-    /*width: 120px;*/
+.timetable .interval{
+    background-color: #005e77;
+    color: white;
 }
-#timetable  td{
+.timetable  th{
+    width: 120px;
+    background-color: #005e77;
+    color: white;
+    padding: 5px;
+}
+.timetable th.time{
+    width: 100px;
+}
+.timetable  td{
     /*width: 120px;*/
     text-align: center;
-    padding: 0;
+    padding: 4px 8px 4px 8px;
 }
-#timetable th.time{
-    width: 120px;
-}
-#timetable  tr{
+.timetable  tr{
     height: 10px;
 }
 
@@ -66,23 +82,23 @@ h2{
     height:20px;
     width: 230px;
 }
-#assign{
-    position: relative;
-    top: 25px;
-}
-#assign, #assign th, #assign td{
-    border: 1px solid black;
-}
-#assign  th{
-    width: 230px;
-}
-#assign  td{
-    width: 230px;
-    text-align: center;
-}
-#assign  tr{
-    height: 10px;
-}
+/*#assign{*/
+    /*position: relative;*/
+    /*top: 25px;*/
+/*}*/
+/*#assign, #assign th, #assign td{*/
+    /*border: 1px solid black;*/
+/*}*/
+/*#assign  th{*/
+    /*width: 230px;*/
+/*}*/
+/*#assign  td{*/
+    /*width: 230px;*/
+    /*text-align: center;*/
+/*}*/
+/*#assign  tr{*/
+    /*height: 10px;*/
+/*}*/
 #submit{
     position: relative;
     top: 50px;
@@ -95,17 +111,19 @@ h2{
     width: 390px;
     text-align: center;
 }
-#collapse{
+.collapse{
     border-collapse: collapse;
     border: 0px #ffffff;
     margin: 1;
 }
-#collapse,#collapse tr > th #collapse tr > td{
+.collapse, .collapse tr > th .collapse tr > td{
     /*border-collapse: collapse;*/
     /*border: none;*/
 }
 #timetable, #timetable th, #timetable td{
     border: 1px solid black;
 }
-.rowToHide {
+.animated{
+    background-color: #bed9ff;
+    /*color: red;*/
 }
