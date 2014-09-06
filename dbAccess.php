@@ -852,6 +852,7 @@ function insertNewTimetable($staffId)
                 }
             }
         }
+
         $mysqli->close();
         return $set;
     }
@@ -1009,17 +1010,25 @@ function insertNewTimetable($staffId)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
-        $query = "SELECT OfficialLeave, MaternityLeave, OtherLeave FROM LeaveData WHERE StaffID = $StaffID";
+        if($stmt = $mysqli->prepare("SELECT OfficialLeave, MaternityLeave, OtherLeave FROM leavedata WHERE StaffID = ?"))
+        {
+            $stmt->bind_param("s", $StaffID);
 
-        $results = $mysqli->query($query);
+            if($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
 
-        $row = $results->fetch_array();
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++ ]=$row;
+                }
 
-        $results->free();
+            }
+        }
 
         $mysqli->close();
-
-        return $row;
+        return $set;
     }
 
 
@@ -1040,13 +1049,14 @@ function insertNewTimetable($staffId)
             {
                 $result = $stmt->get_result();
                 $i = 0;
+
                 while($row = $result->fetch_array())
                 {
                     $set[$i++]=$row;
                 }
             }
         }
-//        $stmt->close();
+
         $mysqli->close();
         return $set;
     }
@@ -1100,13 +1110,15 @@ function insertNewTimetable($staffId)
 
         $datediff = abs($datediff);
 
-
-
-        if(isFilled($result))
+        foreach($result as $row)
         {
-            $OfficialLeave = $result[0];
-            $MaternityLeave = $result[1];
-            $OtherLeave = $result[2];
+            if(isFilled($result))
+            {
+                $OfficialLeave = $row[0];
+                $MaternityLeave = $row[1];
+                $OtherLeave = $row[2];
+            }
+
         }
 
         if($leavetype == "Official Leave")
