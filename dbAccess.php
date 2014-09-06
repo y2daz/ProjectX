@@ -349,7 +349,7 @@ function SearchStudent($id)
 }
 
 
-function insertNewTimetable($staffId)
+    function insertNewTimetable($staffId)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -370,6 +370,38 @@ function insertNewTimetable($staffId)
                 {
                     $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue, $staffId, $isDeleted  );
                     $stmt->execute();
+                }
+            }
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $mysqli->close();
+        return false;
+    }
+
+    function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+
+        if ($stmt = $mysqli->prepare('UPDATE Timetable set Grade=?, Class=?, Subject=?, isDeleted=? WHERE Day = ? AND Position = ? AND StaffId = ?;'))
+        {
+
+            for($i = 0; $i < 5; $i++){
+                for($x = 0; $x < 8; $x++){
+                    $number = ($i * 8) + $x;
+
+                    $curGrade = ($GradeArr[$number] == 0 ? null : $GradeArr[$number]);
+
+                    $stmt -> bind_param("issiiii", $curGrade, $ClassArr[$number], $SubjectArr[$number], $isDeleted, $i, $x, $staffId);
+                    $stmt -> execute();
                 }
             }
             $stmt->close();
@@ -687,7 +719,6 @@ function insertNewTimetable($staffId)
 
     function searchStaff($id)
     {
-
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
 
@@ -734,8 +765,8 @@ function insertNewTimetable($staffId)
             {
                 if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
                 {
-                    $isdeleted = 0;
-                    $stmt -> bind_param("sisi",$staffID, $grade, $class, $isdeleted);
+                    $isDeleted = 0;
+                    $stmt -> bind_param("sisi",$staffID, $grade, $class, $isDeleted);
 
                     if ($stmt->execute())
                     {
