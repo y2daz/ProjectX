@@ -9,7 +9,44 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
+
+if($_COOKIE['language'] == 0)
+{
+    $termtestresults= "Term Test Results";
+    $admissionnumber = "Admission Number";
+    $grade="Garde";
+    $class = "Class";
+    $teachername = "Teacher's Name";
+    $subject="Subject";
+    $year="Year";
+    $term="Term";
+    $marks="Marks";
+    $remarks="Remarks";
+    $name="Name";
+    $submit="Submit";
+    $reset="Reset";
+}
+else
+{
+
+    $term="වාරය";
+    $year = "වර්ෂය";
+    $subject="විෂය";
+    $grade="ශ්‍රේණිය";
+    $class="පංතිය";
+    $admissionnumber ="ඇතුලත්වීමේ අංකය";
+    $teachername="ගුරුවරයාගේ නම";
+    $termtestresults="වාර විභාග ප්‍රතිඵල සටහන";
+    $marks="ලකුණු";
+    $remarks="අදහස්";
+    $name="නම";
+    $submit="යොමු කරන්න";
+    $reset="නැවත පිහිටුවන්න";
+
+}
+
 ?>
+
 <html>
 <head>
 <style type=text/css>
@@ -58,15 +95,15 @@ ob_start();
             position:relative;
             font-weight:bold;
             font-size:20px;
-            left:50px;
-            top:20px;
+            left:200px;
+            top:40px;
         }
         input.button1 {
             position:relative;
             font-weight:bold;
             font-size:20px;
-            left:100px;
-            top:20px;
+            left:280px;
+            top:40px;
         }
 
         </style>
@@ -74,37 +111,37 @@ ob_start();
     <body>
 
     <form>
-        <h1>Term Test Results</h1>
+        <h1><?php echo $termtestresults ?></h1>
 
         <table id="details" class="insert" cellspacing="0">
 
             <tr>
-                <td class="title">Grade</td>
-                <td><input type="text" value=""readonly></td>
+                <td class="title"><?php echo $grade ?></td>
+                <td><input type="text" id="grade" name="grade" value=""readonly></td>
 
 
 
             </tr>
             <tr>
-                <td class="title">Class</td>
+                <td class="title"><?php echo $class ?></td>
                 <td><input type="text" value="" readonly></td>
             </tr>
             <tr>
-                <td class="title">Teacher's Name</td>
-                <td><input type="text" value="" readonly></td>
-            </tr>
-
-            <tr>
-                <td class="title">Subject</td>
+                <td class="title"><?php echo $teachername ?></td>
                 <td><input type="text" value="" readonly></td>
             </tr>
 
             <tr>
-                <td class="title">Year</td>
+                <td class="title"><?php echo $subject ?></td>
+                <td><input type="text" value="" readonly></td>
+            </tr>
+
+            <tr>
+                <td class="title"><?php echo $year ?></td>
                 <td><input type="text" value="" readonly></td>
             </tr>
             <tr>
-                <td class="title">Term</td>
+                <td class="title"><?php echo $term ?></td>
                 <td><input type="text" value=""readonly></td>
             </tr>
             </table>
@@ -117,10 +154,10 @@ ob_start();
         <tr id="tHeader">
 
                 <tr>
-                    <th>Admission Number</th>
-                    <th>Name</th>
-                    <th>Marks</th>
-                    <th>Remarks</th>
+                    <th><?php echo $admissionnumber ?></th>
+                    <th><?php echo $name ?></th>
+                    <th><?php echo $marks ?></th>
+                    <th><?php echo $remarks ?></th>
 
                 </tr>
 
@@ -243,9 +280,9 @@ ob_start();
             <tr>
                 <td></td>
 
-                <td><input class="button" type="submit" value="Submit"></td>
+                <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
 
-                <td><input class="button1" type="reset" value="Reset"></td>
+                <td><input class="button1" type="reset" value="<?php echo $reset ?>"></td>
             </tr>
 </table>
     </body>
