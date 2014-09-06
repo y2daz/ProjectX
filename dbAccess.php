@@ -263,7 +263,7 @@
         return 0;
     }
 
-    function insertStudent($admissionNo, $name, $nat_race, $religion, $medium, $address, $grade, $class, $house)
+    function insertStudent($admissionNo, $name, $dateofbirth, $nat_race, $religion, $medium, $address, $grade, $class, $house)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -274,9 +274,9 @@
 
         $isDeleted = 0;
 
-        if ($stmt = $mysqli->prepare("INSERT INTO Student values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("INSERT INTO student values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
         {
-            $stmt -> bind_param("ssiiisissi", $admissionNo, $name, $nat_race, $religion, $medium, $address, $grade, $class, $house, $isDeleted);
+            $stmt -> bind_param("sssiiisissi", $admissionNo, $name, $dateofbirth ,$nat_race, $religion, $medium, $address, $grade, $class, $house, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();

@@ -24,11 +24,10 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
     if(is_numeric($_POST["admissionID"]))
     {
-        $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
+        $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"], $_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
 
         if($operation)
         {
-            //
             header("Location: parentDetailsForm.php");
             die();
         }
