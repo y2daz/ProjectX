@@ -1,170 +1,330 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Yazdaan
- * Date: 6/8/14
- *
- * THIS IS THE NEW TEMPLATE
- *
- * ONLY EDIT WHERE MENTIONED
- *
- * Page title, and height are php variables you have to edit at the bottom.
- *
+ * User: Madhushan
+ * Date: 19/07/14
+ * Time: 17:04
  */
-
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/common.php");
+
+
+
+
 ob_start();
 
+if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
+{
+    $operation = UpdateStudent($_POST["AdmissionNo"], strtoupper($_POST
+        ["NamewithInitials"]), $_POST["DateofBirth"], ($_POST["NationalityRace"]),
+        ($_POST["Religion"]), $_POST["Medium"], strtoupper($_POST["Address"]), $_POST
+        ["Grade"], $_POST["Class"], $_POST["House"]);
+
+    if ($operation == 1)
+    {
+        sendNotification("Student Details successfully updated.");
+    }
+    else
+    {
+        sendNotification("Error updating information.");
+    }
+}
+if( isset($_GET["AdmissionNo"]) )
+{
+    $admissionNo = $_GET["AdmissionNo"];
+
+}
+
+
+
+$tableDetails = "none";
+$tableViewTable = "none";
 $fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+
+if (isset($_GET["search"]))
+{
+    $currentStudent = null;
+
+    if (isset($_GET["Choice"]))
+    {
+        $currentStudent = searchStudent($_GET["value"]);
+    }
+
+    $tableDetails= "none";
+    $tableViewTable= "block";
+
+}
+
+if (isset($_GET["expand"]))
+{
+    $result = getStudent($_GET["expand"]);
 
 
+
+    foreach($result as $row) //
+    {
+        $admissionNo = $row[1];
+        $NamewithInitials =$row[2];
+        $DateofBirth = $row[3];
+        $NationalityRace = $row[4];
+        $Religion = $row[5];
+        $Medium =$row[6];
+        $Address = $row[7];
+        $Grade = $row[8];
+        $Class =$row[9];
+        $House = $row[10];
+    }
+
+    $fullPageHeight = 1200;
+
+    $tableDetails= "block";
+    $tableViewTable= "none";
+}
+else
+{
+    $admissionNo = "";
+    $NamewithInitials ="";
+    $DateofBirth = "";
+    $NationalityRace = "";
+    $Religion = "";
+    $Medium ="";
+    $Address = "";
+    $Grade ="";
+    $Class ="";
+    $House ="";
+}
 
 ?>
-    <html>
+<html>
     <head>
-
-        <script src="studentinformation.js"></script>
-
         <style type=text/css>
-            <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-            <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-
-
-            table {
-                border-spacing:0px 5px;
+            h1{
+                text-align: center;
             }
-
-            #searchCriteria{
-                position:relative;
-                left:20px;
-                top:20px;
-            }
-
-            th{
-                align:center;
-                color:white;
-                background-color:#005e77;
-                height:25px;
-                padding:5px;
-            }
-
-            td {
-                padding:5px;
-            }
-
-            #staffList{
+            h3{
                 position: relative;
-                top: 40px;
+                left:50px;
             }
-
-
-
-
-            input.button {
+            #info{
+                position: relative;
+                left: 40px;
+            }
+            .viewTable{
+                position: relative;
+                border-collapse: collapse;
+                left:50px;
+                max-width: 600px;
+                display: <?php echo $tableViewTable ?>;
+            }
+            .viewTable th{
+                width: 300px;
+                font-weight: 600;
+                color:white;
+                background-color: #005e77;
+            }
+            .viewtable tr{
+            }
+            .viewTable tr.alt{
+                background-color: #bed9ff;
+            }
+            .viewTable td{
+                padding-left: 10px;
+                padding-right: 10px;
+                min-width: 60px;
+            }
+            .details {
+                /*position: relative;*/
+                /*top:50px;*/
+                width:500px;
+                height:150px;
+                display: <?php echo $tableDetails ?>
+            }
+            input.button1 {
                 position:relative;
                 font-weight:bold;
-                font-size:20px;
-                right:450px;
-                top:50px;
-
+                font-size:15px;
+                right:-150px;
+                top:100px;
             }
-            <?php //Get language and make changes
-
-                if($_COOKIE['language'] == 0)
-                {
-                    $AdmissionID = "AdmisionID";
-                    $Name = "Name";
-                    $Class = "Class";
-                    $Medium = "Medium";
-                    $DateOfBirth     = "DateOfBirth";
-
-                }
-
-                ?>
-
-
-
-
-
         </style>
     </head>
-    <body>
+<body>
+    <h1> Search and View Student Details </h1>
+    <br />
+    <!--<h3>Search by</h3>-->
 
-    <h1 align="center">Search Student</h1>
+    <form method="GET">
 
-    <form>
-
-
-
-        <table style="height: 150px;" align="center">
-            <tr class="alt">
-                <td>
-
-                    Admission Number :
-
-                   <!-- <input type="radio" name="choice" value="AdmissionID" onclick="clickedAdmissionID()"> By Admission ID
-                    <input type="radio" name="choice" value="Name" onclick="clickedName()">By Name
-                    <input type="radio" name="choice" value="Class" onclick="clickedClass()">By Class
-                    <input type="radio" name="choice" value="Medium" onclick="clickedMedium()">By Medium
-                    <input type="radio" name="choice" value="DateOfBirth" onclick="clickedDateOfBirth()">By Date of Birth -->
-
+        <table id="info">
+            <tr>
+                <td colspan="2"><span id="selection">Search by : </span>
+                    <input type="text" class="text1" name="value" value="">
                 </td>
+                <td><input class="button" name="search" type="submit"
+                           value="Search"></td>
             </tr>
-
+            <tr><td></td><td>&nbsp;</td></tr>
             <tr>
-
-                <td> <input type="text" name="AdmissionNumber" </td>
-
-                <!-- <td colspan="2"><span id="selection">Addmission ID:</span><input type="text" class="text1" name="SearchBy" value=""> -->
-
+                <td><input type="RADIO" name="Choice" value="AdmissionNumber"
+                           checked />Admission Number</td>
+                <td><input type="RADIO" name="Choice" value="Name"  />Name with
+                    Initials</td>
             </tr>
 
         </table>
+    </form>
+    <br />
 
-        <table>
-
+    <form method="post">
+        <table class="viewTable">
             <tr>
-                <td style="padding-left: 110px"><input type="button" name="Search" value="Search"></td>
-            </tr>
-
-
-        </table>
-
-        <br>
-
-
-        <table class="Searchedtable" align="center">
-            <tr>
-                <th>AdmisionID</th>
-                <th>Name</th>
-                <th>Class</th>
-                <th>Medium</th>
-                <th>DateOfBirth</th>
+                <th>Admisson Number</th>
+                <th>Name with Initials</th>
+                <th></th>
                 <th></th>
             </tr>
+            <?php
+            $res = $currentStudent;
+
+            $i = 1;
+
+            if (!isFilled($res))
+            {
+                $res = getAllStudents();
+
+            }
+
+            if (isFilled($res))
+            {
+                foreach($res as $row)
+                {
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" :
+                        "<tr><td>";
+                    echo $top;
+                    echo "$row[0]";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>$row[2]</td>";
+                    echo "<td>$row[3]</td>";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" 
+value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0]
+                        . "\" /> </td> ";
+
+                    echo "</td></tr>";
+                }
+            }
+            if (isset($_GET["search"]))
+            {
+                $fullPageHeight = ( 600 + ($i * 18) );
+            }
+
+            ?>
         </table>
-
-
-
     </form>
+    <br />
+    <br />
 
+<form>
+    <table class="details" align="center">
+    <tr>
+        <td> Staff ID </td>
+        <td > <input type = "text" name="staffid" readonly value="<?php
+            echo $admissionNo?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> Name with Initials </td>
+        <td > <input type = "text" name="NamewithInitials" value="<?php
+            echo $NamewithInitials?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> Date of Birth  </td>
+        <td > <input type = "text" name="DateofBirth" value="<?php echo
+            $DateofBirth?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Natinality/Race </td>
+        <td > <input type = "text" name="NationalityRace" value="<?php echo
+            $NationalityRace?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> Religion </td>
+        <td > <input type = "text" name="Religion" value="<?php echo
+            $Religion?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td> Medium  </td>
+        <td > <input type = "text" name="Medium" value="<?php echo
+            $Medium?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Address  </td>
+        <td > <input type = "text" name="Address" value="<?php echo
+            $Address?>"/> </td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Grade</td>
+        <td > <input type = "text" name="Grade" value="<?php echo $Grade?>"/> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Class</td>
+            <td > <input type = "text" name="Class" value="<?php echo $Class?>"/> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Grade</td>
+            <td > <input type = "text" name="Grade" value="<?php echo $Grade?>"/> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> Class </td>
+            <td > <input type = "text" name="Class" value="<?php echo $Class?>"/> </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> House </td>
+            <td > <input type = "text" name="House" value="<?php echo $House?>"/> </td>
+            <td></td>
+        </tr>
+                <tr>
+            <td> <input type="Submit" value="Update" name="Submit" /> </td>
 
+        </tr>
+    </table>
 
+    <br />
+    <br />
 
-    </body>
-    </html>
+    <!--<table align="center">
+        <tr>
+            <td> <input type="button" value="Approve"> </td>
+            <td > <input type="button" value="Reject">  </td>
+        </tr>
+    </table>-->
+
+</form>
+</body>
+</html>
 <?php
-//Change these to what you want
-$fullPageHeight = 600;
+//Assign all Page Specific variables
+//$fullPageHeight = 1300 + ($i * 18);
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Search Student";
-//Only change above
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-require_once(THISROOT . "/Master.php");
+$pageTitle= "newsearchStaffdetails";
+//Apply the template
+include("../Master.php");
 ?>
+

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="Student and Parent Insert and Link works&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" afterPath="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studentInformation/SearchStudent.php" afterPath="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -30,55 +29,84 @@
       <file leaf-file-name="dbAccess.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dbAccess.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="326" column="0" selection-start="9507" selection-end="9507" vertical-scroll-proportion="0.1954023" vertical-offset="5355" max-vertical-offset="21369">
+            <state line="525" column="33" selection-start="15357" selection-end="15357" vertical-scroll-proportion="12.103239" vertical-offset="2861" max-vertical-offset="22100">
               <folding>
-                <marker date="1410025464546" expanded="true" signature="512:596" placeholder="Select userP..User..." />
-                <marker date="1410025464546" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
-                <marker date="1410025464546" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
-                <marker date="1410025464546" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
-                <marker date="1410025464546" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
-                <marker date="1410025464546" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
-                <marker date="1410025464546" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
-                <marker date="1410025464546" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
-                <marker date="1410025464546" expanded="true" signature="8066:8122" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="9673:9799" placeholder="Select Admis..." />
-                <marker date="1410025464546" expanded="true" signature="10494:10535" placeholder="SELECT * FRO..Student..." />
-                <marker date="1410025464546" expanded="true" signature="10716:10897" placeholder="UPDATE Stude..." />
-                <marker date="1410025464546" expanded="true" signature="11692:11795" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="12627:12744" placeholder="Select Grade..." />
-                <marker date="1410025464546" expanded="true" signature="13427:13507" placeholder="Select userE..User..." />
-                <marker date="1410025464546" expanded="true" signature="14149:14264" placeholder="Select Admis..User..." />
-                <marker date="1410025464546" expanded="true" signature="14909:15045" placeholder="Select Admis..User..." />
-                <marker date="1410025464546" expanded="true" signature="15768:15836" placeholder="SELECT Value..LabelLanguage..." />
-                <marker date="1410025464546" expanded="true" signature="16584:16645" placeholder="UPDATE User ..." />
-                <marker date="1410025464546" expanded="true" signature="17759:17855" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="19425:19900" placeholder="UPDATE staff..." />
-                <marker date="1410025464546" expanded="true" signature="20935:21001" placeholder="Select * FRO..Staff..." />
-                <marker date="1410025464546" expanded="true" signature="21696:21740" placeholder="UPDATE Staff..." />
-                <marker date="1410025464546" expanded="true" signature="21937:21994" placeholder="UPDATE Class..." />
-                <marker date="1410025464546" expanded="true" signature="22205:22257" placeholder="UPDATE Timet..." />
-                <marker date="1410025464546" expanded="true" signature="23091:23216" placeholder="Select Staff..Staff..." />
-                <marker date="1410025464546" expanded="true" signature="23906:23962" placeholder="SELECT * FRO..ClassInformation..." />
-                <marker date="1410025464546" expanded="true" signature="24223:24270" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="24752:24828" placeholder="UPDATE Class..." />
-                <marker date="1410025464546" expanded="true" signature="25622:25804" placeholder="Select ci.Gr..ClassInformation..." />
-                <marker date="1410025464546" expanded="true" signature="26522:26580" placeholder="SELECT MAX(C..Staff..." />
-                <marker date="1410025464546" expanded="true" signature="27333:27439" placeholder="Select Staff..Staff..." />
-                <marker date="1410025464546" expanded="true" signature="28070:28151" placeholder="UPDATE Class..." />
-                <marker date="1410025464546" expanded="true" signature="28893:28936" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="30381:30440" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="30825:30873" placeholder="SELECT * FRO..LeaveData..." />
-                <marker date="1410025464546" expanded="true" signature="31226:31270" placeholder="INSERT INTO ..." />
-                <marker date="1410025464546" expanded="true" signature="32118:32206" placeholder="SELECT Offic..LeaveData..." />
-                <marker date="1410025464546" expanded="true" signature="32676:32890" placeholder="Select l.Sta..ApplyLeave..." />
-                <marker date="1410025464546" expanded="true" signature="33575:33794" placeholder="Select l.Sta..ApplyLeave..." />
-                <marker date="1410025464546" expanded="true" signature="35354:35562" placeholder="UPDATE apply..." />
-                <marker date="1410025464546" expanded="true" signature="36252:36344" placeholder="UPDATE apply..." />
+                <marker date="1410027907749" expanded="true" signature="512:596" placeholder="Select userP..User..." />
+                <marker date="1410027907749" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
+                <marker date="1410027907749" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
+                <marker date="1410027907749" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
+                <marker date="1410027907749" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
+                <marker date="1410027907749" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
+                <marker date="1410027907749" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
+                <marker date="1410027907749" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
+                <marker date="1410027907749" expanded="true" signature="8066:8122" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="9673:9799" placeholder="Select Admis..." />
+                <marker date="1410027907749" expanded="true" signature="10494:10535" placeholder="SELECT * FRO..Student..." />
+                <marker date="1410027907749" expanded="true" signature="10716:10897" placeholder="UPDATE Stude..." />
+                <marker date="1410027907749" expanded="true" signature="11468:11571" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="11696:11799" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="12444:12561" placeholder="Select Grade..." />
+                <marker date="1410027907749" expanded="true" signature="12672:12780" placeholder="UPDATE Timet..." />
+                <marker date="1410027907749" expanded="true" signature="13404:13484" placeholder="Select userE..User..." />
+                <marker date="1410027907749" expanded="true" signature="13672:13789" placeholder="Select Grade..." />
+                <marker date="1410027907749" expanded="true" signature="14207:14322" placeholder="Select Admis..User..." />
+                <marker date="1410027907749" expanded="true" signature="14472:14552" placeholder="Select userE..User..." />
+                <marker date="1410027907749" expanded="true" signature="14925:15061" placeholder="Select Admis..User..." />
+                <marker date="1410027907749" expanded="true" signature="15194:15309" placeholder="Select Admis..User..." />
+                <marker date="1410027907749" expanded="true" signature="15763:15831" placeholder="SELECT Value..LabelLanguage..." />
+                <marker date="1410027907749" expanded="true" signature="15954:16090" placeholder="Select Admis..User..." />
+                <marker date="1410027907749" expanded="true" signature="16570:16631" placeholder="UPDATE User ..." />
+                <marker date="1410027907749" expanded="true" signature="16813:16881" placeholder="SELECT Value..LabelLanguage..." />
+                <marker date="1410027907749" expanded="true" signature="17396:17492" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="17629:17690" placeholder="UPDATE User ..." />
+                <marker date="1410027907749" expanded="true" signature="18145:18620" placeholder="UPDATE staff..." />
+                <marker date="1410027907749" expanded="true" signature="18804:18900" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="19772:19838" placeholder="Select * FRO..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="20470:20945" placeholder="UPDATE staff..." />
+                <marker date="1410027907749" expanded="true" signature="21748:21792" placeholder="UPDATE Staff..." />
+                <marker date="1410027907749" expanded="true" signature="21980:22046" placeholder="Select * FRO..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="21988:22045" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="22336:22388" placeholder="UPDATE Timet..." />
+                <marker date="1410027907749" expanded="true" signature="22741:22785" placeholder="UPDATE Staff..." />
+                <marker date="1410027907749" expanded="true" signature="22982:23039" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="23250:23302" placeholder="UPDATE Timet..." />
+                <marker date="1410027907749" expanded="true" signature="23346:23471" placeholder="Select Staff..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="24053:24109" placeholder="SELECT * FRO..ClassInformation..." />
+                <marker date="1410027907749" expanded="true" signature="24135:24260" placeholder="Select Staff..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="24399:24446" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="24750:24826" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="24950:25006" placeholder="SELECT * FRO..ClassInformation..." />
+                <marker date="1410027907749" expanded="true" signature="25267:25314" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="25796:25872" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="25916:26098" placeholder="Select ci.Gr..ClassInformation..." />
+                <marker date="1410027907749" expanded="true" signature="26666:26848" placeholder="Select ci.Gr..ClassInformation..." />
+                <marker date="1410027907749" expanded="true" signature="26891:26949" placeholder="SELECT MAX(C..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="27566:27624" placeholder="SELECT MAX(C..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="27725:27831" placeholder="Select Staff..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="28252:28333" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="28377:28483" placeholder="Select Staff..Staff..." />
+                <marker date="1410027907749" expanded="true" signature="29115:29158" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="29115:29196" placeholder="UPDATE Class..." />
+                <marker date="1410027907749" expanded="true" signature="29938:29981" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="30655:30714" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="30927:30975" placeholder="SELECT * FRO..LeaveData..." />
+                <marker date="1410027907749" expanded="true" signature="31317:31361" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="31426:31485" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="31870:31918" placeholder="SELECT * FRO..LeaveData..." />
+                <marker date="1410027907749" expanded="true" signature="32271:32315" placeholder="INSERT INTO ..." />
+                <marker date="1410027907749" expanded="true" signature="32559:32647" placeholder="SELECT Offic..LeaveData..." />
+                <marker date="1410027907749" expanded="true" signature="33051:33265" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410027907749" expanded="true" signature="33182:33263" placeholder="SELECT Offic..leavedata..." />
+                <marker date="1410027907749" expanded="true" signature="33723:33942" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410027907749" expanded="true" signature="33949:34163" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410027907749" expanded="true" signature="34824:35043" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410027907749" expanded="true" signature="36670:36878" placeholder="UPDATE apply..." />
+                <marker date="1410027907749" expanded="true" signature="37568:37660" placeholder="UPDATE apply..." />
               </folding>
             </state>
           </provider>
@@ -87,7 +115,7 @@
       <file leaf-file-name="ClassroomInformation.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staffManagement/ClassroomInformation.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3332">
+            <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="3.2692308" vertical-offset="748" max-vertical-offset="3247">
               <folding />
             </state>
           </provider>
@@ -116,7 +144,7 @@
       <file leaf-file-name="applyForLeave.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="4114">
+            <state line="40" column="0" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4165">
               <folding />
             </state>
           </provider>
@@ -134,7 +162,7 @@
       <file leaf-file-name="searchStaffDetails.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="54.5" vertical-offset="1689" max-vertical-offset="8721">
+            <state line="16" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="234.84616" vertical-offset="6378" max-vertical-offset="8721">
               <folding />
             </state>
           </provider>
@@ -143,8 +171,15 @@
       <file leaf-file-name="SearchStudent.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="124" column="0" selection-start="2928" selection-end="2928" vertical-scroll-proportion="0.0" vertical-offset="2108" max-vertical-offset="2975">
-              <folding />
+            <state line="120" column="30" selection-start="2472" selection-end="2472" vertical-scroll-proportion="-11.769231" vertical-offset="1734" max-vertical-offset="5712">
+              <folding>
+                <marker date="1410029646845" expanded="true" signature="7017:7077" placeholder="..." />
+                <marker date="1410029646845" expanded="true" signature="7181:7241" placeholder="..." />
+                <marker date="1410029646845" expanded="true" signature="7345:7407" placeholder="..." />
+                <marker date="1410029646845" expanded="true" signature="7511:7573" placeholder="..." />
+                <marker date="1410029646845" expanded="true" signature="7685:7715" placeholder="..." />
+                <marker date="1410029646845" expanded="true" signature="7857:7887" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -221,7 +256,6 @@
         <option value="$PROJECT_DIR$/staffManagement/template.php" />
         <option value="$PROJECT_DIR$/attendance/oldviewAttendance.php" />
         <option value="$PROJECT_DIR$/studentInformation/studentinformation.js" />
-        <option value="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
         <option value="$PROJECT_DIR$/administration/yearPlan.php" />
         <option value="$PROJECT_DIR$/attendance/calander.php" />
         <option value="$PROJECT_DIR$/attendance/studentwise.php" />
@@ -237,6 +271,7 @@
         <option value="$PROJECT_DIR$/studentInformation/parentDetailsForm.php" />
         <option value="$PROJECT_DIR$/studentInformation/studentRegistration.php" />
         <option value="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" />
+        <option value="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
       </list>
     </option>
@@ -304,20 +339,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="studentInformation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjectX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ProjectX" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="staffManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -672,13 +693,18 @@
       <created>1409992281705</created>
       <updated>1409992281705</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="DBAccess - UpdateStudent">
+      <created>1410025501827</created>
+      <updated>1410025501827</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1364" height="736" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -689,12 +715,11 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747602" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32730263" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32673267" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -712,7 +737,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="Added Approve Leave to Template&#10;" />
     <MESSAGE value="Minor changes to Template&#10;" />
     <MESSAGE value="Refactored Template to Master" />
     <MESSAGE value="Added proper Template.php" />
@@ -737,7 +761,8 @@
     <MESSAGE value="getTimeTable" />
     <MESSAGE value="getTimeTable&#10;time Table class changes" />
     <MESSAGE value="Student and Parent Insert and Link works&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Student and Parent Insert and Link works&#10;" />
+    <MESSAGE value="DBAccess - UpdateStudent" />
+    <option name="LAST_COMMIT_MESSAGE" value="DBAccess - UpdateStudent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -972,7 +997,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -986,7 +1011,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="0" selection-start="892" selection-end="892" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="4114">
+        <state line="40" column="0" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4165">
           <folding />
         </state>
       </provider>
@@ -1016,16 +1041,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
+    <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="2928" selection-end="2928" vertical-scroll-proportion="0.0" vertical-offset="2108" max-vertical-offset="2975">
+        <state line="16" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="234.84616" vertical-offset="6378" max-vertical-offset="8721">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/staffManagement/ClassroomInformation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3332">
+        <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="3.2692308" vertical-offset="748" max-vertical-offset="3247">
           <folding />
         </state>
       </provider>
@@ -1037,64 +1062,100 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
+    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="54.5" vertical-offset="1689" max-vertical-offset="8721">
-          <folding />
+        <state line="120" column="30" selection-start="2472" selection-end="2472" vertical-scroll-proportion="-11.769231" vertical-offset="1734" max-vertical-offset="5712">
+          <folding>
+            <marker date="1410029646845" expanded="true" signature="7017:7077" placeholder="..." />
+            <marker date="1410029646845" expanded="true" signature="7181:7241" placeholder="..." />
+            <marker date="1410029646845" expanded="true" signature="7345:7407" placeholder="..." />
+            <marker date="1410029646845" expanded="true" signature="7511:7573" placeholder="..." />
+            <marker date="1410029646845" expanded="true" signature="7685:7715" placeholder="..." />
+            <marker date="1410029646845" expanded="true" signature="7857:7887" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="326" column="0" selection-start="9507" selection-end="9507" vertical-scroll-proportion="0.1954023" vertical-offset="5355" max-vertical-offset="21369">
+        <state line="525" column="33" selection-start="15357" selection-end="15357" vertical-scroll-proportion="12.103239" vertical-offset="2861" max-vertical-offset="22100">
           <folding>
-            <marker date="1410025464546" expanded="true" signature="512:596" placeholder="Select userP..User..." />
-            <marker date="1410025464546" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
-            <marker date="1410025464546" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
-            <marker date="1410025464546" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
-            <marker date="1410025464546" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
-            <marker date="1410025464546" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
-            <marker date="1410025464546" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
-            <marker date="1410025464546" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
-            <marker date="1410025464546" expanded="true" signature="8066:8122" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="9673:9799" placeholder="Select Admis..." />
-            <marker date="1410025464546" expanded="true" signature="10494:10535" placeholder="SELECT * FRO..Student..." />
-            <marker date="1410025464546" expanded="true" signature="10716:10897" placeholder="UPDATE Stude..." />
-            <marker date="1410025464546" expanded="true" signature="11692:11795" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="12627:12744" placeholder="Select Grade..." />
-            <marker date="1410025464546" expanded="true" signature="13427:13507" placeholder="Select userE..User..." />
-            <marker date="1410025464546" expanded="true" signature="14149:14264" placeholder="Select Admis..User..." />
-            <marker date="1410025464546" expanded="true" signature="14909:15045" placeholder="Select Admis..User..." />
-            <marker date="1410025464546" expanded="true" signature="15768:15836" placeholder="SELECT Value..LabelLanguage..." />
-            <marker date="1410025464546" expanded="true" signature="16584:16645" placeholder="UPDATE User ..." />
-            <marker date="1410025464546" expanded="true" signature="17759:17855" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="19425:19900" placeholder="UPDATE staff..." />
-            <marker date="1410025464546" expanded="true" signature="20935:21001" placeholder="Select * FRO..Staff..." />
-            <marker date="1410025464546" expanded="true" signature="21696:21740" placeholder="UPDATE Staff..." />
-            <marker date="1410025464546" expanded="true" signature="21937:21994" placeholder="UPDATE Class..." />
-            <marker date="1410025464546" expanded="true" signature="22205:22257" placeholder="UPDATE Timet..." />
-            <marker date="1410025464546" expanded="true" signature="23091:23216" placeholder="Select Staff..Staff..." />
-            <marker date="1410025464546" expanded="true" signature="23906:23962" placeholder="SELECT * FRO..ClassInformation..." />
-            <marker date="1410025464546" expanded="true" signature="24223:24270" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="24752:24828" placeholder="UPDATE Class..." />
-            <marker date="1410025464546" expanded="true" signature="25622:25804" placeholder="Select ci.Gr..ClassInformation..." />
-            <marker date="1410025464546" expanded="true" signature="26522:26580" placeholder="SELECT MAX(C..Staff..." />
-            <marker date="1410025464546" expanded="true" signature="27333:27439" placeholder="Select Staff..Staff..." />
-            <marker date="1410025464546" expanded="true" signature="28070:28151" placeholder="UPDATE Class..." />
-            <marker date="1410025464546" expanded="true" signature="28893:28936" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="30381:30440" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="30825:30873" placeholder="SELECT * FRO..LeaveData..." />
-            <marker date="1410025464546" expanded="true" signature="31226:31270" placeholder="INSERT INTO ..." />
-            <marker date="1410025464546" expanded="true" signature="32118:32206" placeholder="SELECT Offic..LeaveData..." />
-            <marker date="1410025464546" expanded="true" signature="32676:32890" placeholder="Select l.Sta..ApplyLeave..." />
-            <marker date="1410025464546" expanded="true" signature="33575:33794" placeholder="Select l.Sta..ApplyLeave..." />
-            <marker date="1410025464546" expanded="true" signature="35354:35562" placeholder="UPDATE apply..." />
-            <marker date="1410025464546" expanded="true" signature="36252:36344" placeholder="UPDATE apply..." />
+            <marker date="1410027907749" expanded="true" signature="512:596" placeholder="Select userP..User..." />
+            <marker date="1410027907749" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
+            <marker date="1410027907749" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
+            <marker date="1410027907749" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
+            <marker date="1410027907749" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
+            <marker date="1410027907749" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
+            <marker date="1410027907749" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
+            <marker date="1410027907749" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
+            <marker date="1410027907749" expanded="true" signature="8066:8122" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="9673:9799" placeholder="Select Admis..." />
+            <marker date="1410027907749" expanded="true" signature="10494:10535" placeholder="SELECT * FRO..Student..." />
+            <marker date="1410027907749" expanded="true" signature="10716:10897" placeholder="UPDATE Stude..." />
+            <marker date="1410027907749" expanded="true" signature="11468:11571" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="11696:11799" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="12444:12561" placeholder="Select Grade..." />
+            <marker date="1410027907749" expanded="true" signature="12672:12780" placeholder="UPDATE Timet..." />
+            <marker date="1410027907749" expanded="true" signature="13404:13484" placeholder="Select userE..User..." />
+            <marker date="1410027907749" expanded="true" signature="13672:13789" placeholder="Select Grade..." />
+            <marker date="1410027907749" expanded="true" signature="14207:14322" placeholder="Select Admis..User..." />
+            <marker date="1410027907749" expanded="true" signature="14472:14552" placeholder="Select userE..User..." />
+            <marker date="1410027907749" expanded="true" signature="14925:15061" placeholder="Select Admis..User..." />
+            <marker date="1410027907749" expanded="true" signature="15194:15309" placeholder="Select Admis..User..." />
+            <marker date="1410027907749" expanded="true" signature="15763:15831" placeholder="SELECT Value..LabelLanguage..." />
+            <marker date="1410027907749" expanded="true" signature="15954:16090" placeholder="Select Admis..User..." />
+            <marker date="1410027907749" expanded="true" signature="16570:16631" placeholder="UPDATE User ..." />
+            <marker date="1410027907749" expanded="true" signature="16813:16881" placeholder="SELECT Value..LabelLanguage..." />
+            <marker date="1410027907749" expanded="true" signature="17396:17492" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="17629:17690" placeholder="UPDATE User ..." />
+            <marker date="1410027907749" expanded="true" signature="18145:18620" placeholder="UPDATE staff..." />
+            <marker date="1410027907749" expanded="true" signature="18804:18900" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="19772:19838" placeholder="Select * FRO..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="20470:20945" placeholder="UPDATE staff..." />
+            <marker date="1410027907749" expanded="true" signature="21748:21792" placeholder="UPDATE Staff..." />
+            <marker date="1410027907749" expanded="true" signature="21980:22046" placeholder="Select * FRO..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="21988:22045" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="22336:22388" placeholder="UPDATE Timet..." />
+            <marker date="1410027907749" expanded="true" signature="22741:22785" placeholder="UPDATE Staff..." />
+            <marker date="1410027907749" expanded="true" signature="22982:23039" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="23250:23302" placeholder="UPDATE Timet..." />
+            <marker date="1410027907749" expanded="true" signature="23346:23471" placeholder="Select Staff..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="24053:24109" placeholder="SELECT * FRO..ClassInformation..." />
+            <marker date="1410027907749" expanded="true" signature="24135:24260" placeholder="Select Staff..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="24399:24446" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="24750:24826" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="24950:25006" placeholder="SELECT * FRO..ClassInformation..." />
+            <marker date="1410027907749" expanded="true" signature="25267:25314" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="25796:25872" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="25916:26098" placeholder="Select ci.Gr..ClassInformation..." />
+            <marker date="1410027907749" expanded="true" signature="26666:26848" placeholder="Select ci.Gr..ClassInformation..." />
+            <marker date="1410027907749" expanded="true" signature="26891:26949" placeholder="SELECT MAX(C..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="27566:27624" placeholder="SELECT MAX(C..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="27725:27831" placeholder="Select Staff..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="28252:28333" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="28377:28483" placeholder="Select Staff..Staff..." />
+            <marker date="1410027907749" expanded="true" signature="29115:29158" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="29115:29196" placeholder="UPDATE Class..." />
+            <marker date="1410027907749" expanded="true" signature="29938:29981" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="30655:30714" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="30927:30975" placeholder="SELECT * FRO..LeaveData..." />
+            <marker date="1410027907749" expanded="true" signature="31317:31361" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="31426:31485" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="31870:31918" placeholder="SELECT * FRO..LeaveData..." />
+            <marker date="1410027907749" expanded="true" signature="32271:32315" placeholder="INSERT INTO ..." />
+            <marker date="1410027907749" expanded="true" signature="32559:32647" placeholder="SELECT Offic..LeaveData..." />
+            <marker date="1410027907749" expanded="true" signature="33051:33265" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410027907749" expanded="true" signature="33182:33263" placeholder="SELECT Offic..leavedata..." />
+            <marker date="1410027907749" expanded="true" signature="33723:33942" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410027907749" expanded="true" signature="33949:34163" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410027907749" expanded="true" signature="34824:35043" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410027907749" expanded="true" signature="36670:36878" placeholder="UPDATE apply..." />
+            <marker date="1410027907749" expanded="true" signature="37568:37660" placeholder="UPDATE apply..." />
           </folding>
         </state>
       </provider>
