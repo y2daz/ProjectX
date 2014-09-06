@@ -99,6 +99,7 @@ if (isFilled($_GET["getTimetable"]))
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
             $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80"); //14
 
+            $classColour = array();
 
 
             for($i = 0; $i < 8; $i++){
@@ -118,12 +119,21 @@ if (isFilled($_GET["getTimetable"]))
                         $number=($i + (8 * ($x - 1) ));
                         $thisCell = "";
 
+                        $subject = $myTime->slot[$number]->Subject;
+                        $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
+
                         $currColour = $colourArray[(rand(0,12))];
-                        $subject = "Business Studies";
+                        if ($classColour[$class] == ""){
+                            $classColour[$class] = $currColour;
+                        }
+                        else{
+                            $currColour = $classColour[$class];
+                        }
 
-                        $classDiv = "<div class='classroom'>12 B</div>";
 
-                        $thisCell .= "\t<td style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv . /*$myTime->slot[$number]->*/$subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
+                        $classDiv = "<div class='classroom'>$class</div>";
+
+                        $thisCell .= "\t<td style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv . $subject . "</td>"; //($i + (8 * ($x - 1) )) Array position
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
