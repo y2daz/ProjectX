@@ -26,13 +26,12 @@
 #   GRANT SELECT, FILE, CREATE TEMPORARY TABLES, CREATE VIEW, SHOW VIEW ON manaDB.* TO 'manaReporting'@'localhost' IDENTIFIED BY 'eveA0njJ7pYsFC1M' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 #
 #   FLUSH PRIVILEGES;
-
 -- phpMyAdmin SQL Dump
 -- version 4.1.14
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2014 at 07:10 AM
+-- Generation Time: Sep 07, 2014 at 08:19 AM
 -- Server version: 5.5.37
 -- PHP Version: 5.5.12
 
@@ -42,7 +41,9 @@
 --
 -- Database: `manadb`
 --
-CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS manaDB;
+
+  CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
   USE `manadb`;
 
 -- --------------------------------------------------------
@@ -54,6 +55,7 @@ CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `almarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
+    `Year` int(11) NOT NULL,
     `Subject` varchar(64) NOT NULL DEFAULT '0',
     `Grade` varchar(2) DEFAULT NULL,
     PRIMARY KEY (`IndexNo`,`Subject`),
@@ -810,6 +812,7 @@ CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `olmarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
+    `Year` int(11) NOT NULL,
     `Subject` varchar(64) NOT NULL DEFAULT '',
     `Grade` varchar(2) DEFAULT NULL,
     PRIMARY KEY (`IndexNo`,`Subject`),
@@ -1639,11 +1642,11 @@ CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `timetable` VALUES(NULL, NULL, 4, 6, NULL, '9', 0);
   INSERT INTO `timetable` VALUES(NULL, NULL, 4, 7, NULL, '9', 0);
 
--- --------------------------------------------------------
+  -- --------------------------------------------------------
 
---
--- Table structure for table `transaction`
---
+  --
+  -- Table structure for table `transaction`
+  --
 
   CREATE TABLE IF NOT EXISTS `transaction` (
     `EventID` int(11) NOT NULL DEFAULT '0',
@@ -1656,11 +1659,11 @@ CREATE DATABASE IF NOT EXISTS `manadb` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`EventID`,`TransactionID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  -- --------------------------------------------------------
+-- --------------------------------------------------------
 
-  --
-  -- Table structure for table `user`
-  --
+--
+-- Table structure for table `user`
+--
 
   CREATE TABLE IF NOT EXISTS `user` (
     `userEmail` varchar(50) NOT NULL,
@@ -1718,16 +1721,16 @@ ALTER TABLE `applyleave`
   ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `staff` (`StaffID`),
   ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `staff` (`StaffID`);
 
---
--- Constraints for table `attendance`
---
-ALTER TABLE `attendance`
+  --
+  -- Constraints for table `attendance`
+  --
+  ALTER TABLE `attendance`
   ADD CONSTRAINT `Attendance_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `blacklist`
-  --
-  ALTER TABLE `blacklist`
+--
+-- Constraints for table `blacklist`
+--
+ALTER TABLE `blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `staff` (`StaffID`);
 
 --
@@ -1782,10 +1785,10 @@ ALTER TABLE `languageoption`
   ADD CONSTRAINT `LanguageOption_ibfk_1` FOREIGN KEY (`GroupNo`) REFERENCES `languagegroup` (`GroupNo`),
   ADD CONSTRAINT `LanguageOption_ibfk_2` FOREIGN KEY (`Language`) REFERENCES `language` (`Language`);
 
---
--- Constraints for table `leavedata`
---
-ALTER TABLE `leavedata`
+  --
+  -- Constraints for table `leavedata`
+  --
+  ALTER TABLE `leavedata`
   ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `staff` (`StaffID`);
 
   --
