@@ -84,6 +84,9 @@
         $endDateVal = "";
         $leaveTypeVal = "";
         $otherReasonsVal = "";
+        $OfficialLeave = "";
+        $MaternityLeave = "";
+        $OtherLeave = "";
     }
 
     /*
