@@ -36,9 +36,16 @@
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
+-- phpMyAdmin SQL Dump
+-- version 4.0.10deb1
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Sep 07, 2014 at 01:10 AM
+-- Server version: 5.5.38-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.3
+
   SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-  SET AUTOCOMMIT = 0;
-  START TRANSACTION;
   SET time_zone = "+00:00";
 
 --
@@ -53,7 +60,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ALMarks`
 --
 
-  CREATE TABLE IF NOT EXISTS `ALMarks` (
+  CREATE TABLE `ALMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
     `Subject` varchar(64) NOT NULL DEFAULT '0',
@@ -68,7 +75,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ApplyLeave`
 --
 
-  CREATE TABLE IF NOT EXISTS `ApplyLeave` (
+  CREATE TABLE `ApplyLeave` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `RequestDate` date DEFAULT NULL,
     `StartDate` date NOT NULL DEFAULT '0000-00-00',
@@ -89,7 +96,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Attendance`
 --
 
-  CREATE TABLE IF NOT EXISTS `Attendance` (
+  CREATE TABLE `Attendance` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `Year` int(11) NOT NULL DEFAULT '0',
     `A0` bit(1) DEFAULT NULL,
@@ -362,12 +369,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Blacklist`
 --
 
-  CREATE TABLE IF NOT EXISTS `Blacklist` (
+  CREATE TABLE `Blacklist` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `EnterDate` date NOT NULL DEFAULT '0000-00-00',
     `Reason` varchar(255) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-    PRIMARY KEY (`StaffID`, `EnterDate`)
+    PRIMARY KEY (`StaffID`,`EnterDate`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -376,7 +383,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ClassInformation`
 --
 
-  CREATE TABLE IF NOT EXISTS `ClassInformation` (
+  CREATE TABLE `ClassInformation` (
     `StaffID` varchar(5) DEFAULT NULL,
     `Grade` int(11) NOT NULL DEFAULT '0',
     `Class` char(2) NOT NULL DEFAULT '',
@@ -391,7 +398,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Event`
 --
 
-  CREATE TABLE IF NOT EXISTS `Event` (
+  CREATE TABLE `Event` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `Name` varchar(50) DEFAULT NULL,
     `Description` varchar(200) DEFAULT NULL,
@@ -421,7 +428,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `EventManager`
 --
 
-  CREATE TABLE IF NOT EXISTS `EventManager` (
+  CREATE TABLE `EventManager` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `ManagerName` varchar(30) NOT NULL DEFAULT '',
@@ -437,7 +444,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Holiday`
 --
 
-  CREATE TABLE IF NOT EXISTS `Holiday` (
+  CREATE TABLE `Holiday` (
     `Year` int(11) NOT NULL DEFAULT '0',
     `Day` date NOT NULL,
     PRIMARY KEY (`Year`,`Day`),
@@ -519,7 +526,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Invitee`
 --
 
-  CREATE TABLE IF NOT EXISTS `Invitee` (
+  CREATE TABLE `Invitee` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `ParentName` varchar(50) NOT NULL DEFAULT '',
@@ -534,7 +541,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `IsSubstituted`
 --
 
-  CREATE TABLE IF NOT EXISTS `IsSubstituted` (
+  CREATE TABLE `IsSubstituted` (
     `StaffID` varchar(5) DEFAULT NULL,
     `Grade` int(11) DEFAULT NULL,
     `Class` char(2) DEFAULT NULL,
@@ -544,7 +551,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `SubsttitutedTeachedID` varchar(5) DEFAULT NULL,
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     KEY `fk015` (`StaffID`),
-    KEY `fk016` (`SubsttitutedTeachedID`,`Grade`,`Class`,`Day`,`Position`)
+    KEY `fk016` (`SubsttitutedTeachedID`,`Grade`,`Class`,`Day`,`Position`),
+    KEY `IsSubstituted_ibfk_2` (`SubsttitutedTeachedID`,`Day`,`Position`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -553,7 +561,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LabelLanguage`
 --
 
-  CREATE TABLE IF NOT EXISTS `LabelLanguage` (
+  CREATE TABLE `LabelLanguage` (
     `Label` varchar(50) NOT NULL DEFAULT '',
     `Language` int(11) NOT NULL DEFAULT '0',
     `Value` varchar(200) DEFAULT NULL,
@@ -715,6 +723,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('thursday', 1, 'බ්‍රහස්පතින්දා');
   INSERT INTO `LabelLanguage` VALUES('time', 0, 'Time');
   INSERT INTO `LabelLanguage` VALUES('time', 1, 'වේලාව');
+  INSERT INTO `LabelLanguage` VALUES('timetable', 0, 'Timetable');
+  INSERT INTO `LabelLanguage` VALUES('timetable', 1, 'කාලසටහන');
   INSERT INTO `LabelLanguage` VALUES('timetables', 0, 'Timetables');
   INSERT INTO `LabelLanguage` VALUES('timetables', 1, 'කාලසටහන');
   INSERT INTO `LabelLanguage` VALUES('tu', 0, 'T');
@@ -740,7 +750,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Language`
 --
 
-  CREATE TABLE IF NOT EXISTS `Language` (
+  CREATE TABLE `Language` (
     `Language` int(11) NOT NULL DEFAULT '0',
     `Value` varchar(20) DEFAULT NULL,
     PRIMARY KEY (`Language`)
@@ -759,7 +769,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LanguageGroup`
 --
 
-  CREATE TABLE IF NOT EXISTS `LanguageGroup` (
+  CREATE TABLE `LanguageGroup` (
     `GroupNo` int(11) NOT NULL DEFAULT '0',
     `GroupName` varchar(50) DEFAULT NULL,
     PRIMARY KEY (`GroupNo`),
@@ -778,12 +788,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LanguageOption`
 --
 
-  CREATE TABLE IF NOT EXISTS `LanguageOption` (
+  CREATE TABLE `LanguageOption` (
     `GroupNo` int(11) NOT NULL DEFAULT '0',
     `OptionNo` int(11) NOT NULL DEFAULT '0',
-    `Language` int(11) DEFAULT NULL,
+    `Language` int(11) NOT NULL DEFAULT '0',
     `Value` varchar(200) DEFAULT NULL,
-    PRIMARY KEY (`GroupNo`,`OptionNo`, `Language`),
+    PRIMARY KEY (`GroupNo`,`OptionNo`,`Language`),
     KEY `fk006` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -793,7 +803,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `LeaveData`
 --
 
-  CREATE TABLE IF NOT EXISTS `LeaveData` (
+  CREATE TABLE `LeaveData` (
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `OfficialLeave` int(11) DEFAULT NULL,
     `MaternityLeave` int(11) DEFAULT NULL,
@@ -808,7 +818,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `OLMarks`
 --
 
-  CREATE TABLE IF NOT EXISTS `OLMarks` (
+  CREATE TABLE `OLMarks` (
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
     `Subject` varchar(64) NOT NULL DEFAULT '',
@@ -823,7 +833,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `ParentsInformation`
 --
 
-  CREATE TABLE IF NOT EXISTS `ParentsInformation` (
+  CREATE TABLE `ParentsInformation` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `NamewithInitials` varchar(50) NOT NULL DEFAULT '',
     `Parent_Guardian` bit(1) DEFAULT NULL,
@@ -842,7 +852,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Staff`
 --
 
-  CREATE TABLE IF NOT EXISTS `Staff` (
+  CREATE TABLE `Staff` (
     `StaffID` varchar(5) NOT NULL,
     `NamewithInitials` varchar(60) DEFAULT NULL,
     `DateofBirth` date DEFAULT NULL,
@@ -874,18 +884,17 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `Staff`
 --
 
-
   INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789v', 'makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
   INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789v', 'makola', '0756489326', '2014-08-06', '2014-08-30', 3, NULL, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
   INSERT INTO `Staff` VALUES('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963', 'kolpity', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
-  INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 2);
-  INSERT INTO `Staff` VALUES('13', 'Mark All One', '1992-02-12', 1, 1, 2, 1, '123456789v', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 55, 2);
+  INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 0);
+  INSERT INTO `Staff` VALUES('13', 'Mark All One', '1992-02-12', 1, 1, 2, 1, '123456789v', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 55, 0);
   INSERT INTO `Staff` VALUES('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543v', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 6, 19, 6, 5, 13, 17000, 3, 18, 41, 0);
   INSERT INTO `Staff` VALUES('15', 'Sahan Malinga Tissera', '1993-02-02', NULL, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 17000, 3, 19, 18, 0);
   INSERT INTO `Staff` VALUES('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 1, 14, 3, 7, 4, 25000, 4, 1, 18, 0);
   INSERT INTO `Staff` VALUES('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
   INSERT INTO `Staff` VALUES('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '93625789', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
-  INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 2);
+  INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 0);
   INSERT INTO `Staff` VALUES('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
   INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '95896452', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
   INSERT INTO `Staff` VALUES('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
@@ -898,7 +907,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Student`
 --
 
-  CREATE TABLE IF NOT EXISTS `Student` (
+  CREATE TABLE `Student` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `NameWithInitials` varchar(50) DEFAULT NULL,
     `DateOfBirth` date NOT NULL,
@@ -919,6 +928,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 
   INSERT INTO `Student` VALUES('1', 'Madushan G.LN.A.M', '2014-08-05', 1, 1, 1, 'Negomobo', 11, 'A', 'Blue', 0);
   INSERT INTO `Student` VALUES('3', 'Isuru l.k', '2014-08-14', 1, 1, 2, 'negmbo', 11, 'A', 'Madura', 0);
+  INSERT INTO `Student` VALUES('3680', 'Alimudeen M.Y', '2011-11-22', 5, 5, 1, 'Here', 7, 'B', 'Blue', 0);
 
 -- --------------------------------------------------------
 
@@ -926,7 +936,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Student_Subject_Grade`
 --
 
-  CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
+  CREATE TABLE `Student_Subject_Grade` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `Subject` varchar(64) NOT NULL DEFAULT '0',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
@@ -939,7 +949,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Subject_Grade`
 --
 
-  CREATE TABLE IF NOT EXISTS `Subject_Grade` (
+  CREATE TABLE `Subject_Grade` (
     `SubjectID` int(11) NOT NULL DEFAULT '0',
     `Grade` int(11) DEFAULT NULL,
     `Subject` varchar(30) DEFAULT NULL,
@@ -953,7 +963,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `Teaches`
 --
 
-  CREATE TABLE IF NOT EXISTS `Teaches` (
+  CREATE TABLE `Teaches` (
     `Subject` varchar(64) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
@@ -967,7 +977,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `TermMarks`
 --
 
-  CREATE TABLE IF NOT EXISTS `TermMarks` (
+  CREATE TABLE `TermMarks` (
     `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
     `Subject` varchar(64) NOT NULL DEFAULT '0',
     `Term` int(11) NOT NULL DEFAULT '0',
@@ -995,48 +1005,50 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     KEY `fk011` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `Timetable`
+--
 
-
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '1', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'A', 0, 0, 'Science', '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'A', 0, 1, 'Science', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(2, NULL, 1, 0, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'B', 1, 5, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'B', 1, 6, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(4, NULL, 2, 0, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'E', 3, 2, 'Science', '1', 0);
+  INSERT INTO `Timetable` VALUES(1, 'E', 3, 3, 'Science', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '1', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '1', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '10', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '10', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '10', 0);
@@ -1157,46 +1169,46 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '12', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '12', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '12', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '13', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'B', 0, 0, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'B', 0, 1, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 0, 2, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 0, 3, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'C', 0, 6, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 0, 7, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(5, 'C', 1, 0, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'C', 1, 2, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 1, 3, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 1, 5, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 1, 6, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 2, 1, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'E', 2, 2, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'E', 2, 4, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'E', 2, 5, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'C', 2, 6, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'C', 2, 7, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 3, 0, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 3, 1, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'B', 3, 2, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'B', 3, 3, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 3, 6, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'A', 3, 7, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 4, 2, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'D', 4, 3, 'English Literature', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'E', 4, 5, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(4, 'E', 4, 6, 'English', '13', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '13', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '14', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '14', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '14', 0);
@@ -1317,46 +1329,46 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '16', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '16', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '16', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '2', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '2', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '2', 2);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '2', 2);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '3', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '3', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '3', 0);
@@ -1477,46 +1489,46 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '5', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '5', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '5', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '1', 0, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(1, 'A', 0, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '1', 0, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '1C', 0, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 0, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 0, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 0, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 0, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 1, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 2, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 3, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '', 4, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '1', 4, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, '1', 4, 7, '', '6', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '7', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '7', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '7', 0);
@@ -1638,17 +1650,13 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '9', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '9', 0);
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `Transaction`
+--
 
-
-
-  -- --------------------------------------------------------
-
-  --
-  -- Table structure for table `Transaction`
-  --
-
-  CREATE TABLE IF NOT EXISTS `Transaction` (
+  CREATE TABLE `Transaction` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `TransactionID` int(11) NOT NULL DEFAULT '0',
     `TransactionDate` date DEFAULT NULL,
@@ -1665,7 +1673,7 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Table structure for table `User`
 --
 
-  CREATE TABLE IF NOT EXISTS `User` (
+  CREATE TABLE `User` (
     `userEmail` varchar(50) NOT NULL,
     `userPassword` varchar(80) DEFAULT NULL,
     `accessLevel` int(11) DEFAULT '2',
@@ -1713,12 +1721,11 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 --
 ALTER TABLE `ALMarks`
   ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
-#   ADD CONSTRAINT `ALMarks_ibfk_2` FOREIGN KEY (`SubjectID`) REFERENCES `Subject_Grade` (`SubjectID`);
 
---
--- Constraints for table `ApplyLeave`
---
-ALTER TABLE `ApplyLeave`
+  --
+  -- Constraints for table `ApplyLeave`
+  --
+  ALTER TABLE `ApplyLeave`
   ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
 
@@ -1733,12 +1740,11 @@ ALTER TABLE `Attendance`
 --
 ALTER TABLE `Blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
-#   ADD CONSTRAINT `Blacklist_ibfk_2` FOREIGN KEY (`ListContributor`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `ClassInformation`
-  --
-  ALTER TABLE `ClassInformation`
+--
+-- Constraints for table `ClassInformation`
+--
+ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
@@ -1766,7 +1772,7 @@ ALTER TABLE `Invitee`
 --
 ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
-  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`,`Day`, `Position`);
+  ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`, `Day`, `Position`);
 
 --
 -- Constraints for table `LabelLanguage`
@@ -1780,25 +1786,24 @@ ALTER TABLE `LabelLanguage`
 ALTER TABLE `LanguageGroup`
   ADD CONSTRAINT `LanguageGroup_ibfk_1` FOREIGN KEY (`GroupName`) REFERENCES `LabelLanguage` (`Label`);
 
---
--- Constraints for table `LanguageOption`
---
-ALTER TABLE `LanguageOption`
+  --
+  -- Constraints for table `LanguageOption`
+  --
+  ALTER TABLE `LanguageOption`
   ADD CONSTRAINT `LanguageOption_ibfk_1` FOREIGN KEY (`GroupNo`) REFERENCES `LanguageGroup` (`GroupNo`),
   ADD CONSTRAINT `LanguageOption_ibfk_2` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
 
---
--- Constraints for table `LeaveData`
---
-ALTER TABLE `LeaveData`
+  --
+  -- Constraints for table `LeaveData`
+  --
+  ALTER TABLE `LeaveData`
   ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `OLMarks`
---
-ALTER TABLE `OLMarks`
+  --
+  -- Constraints for table `OLMarks`
+  --
+  ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
-#   ADD CONSTRAINT `OLMarks_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`Subject`);
 
   --
   -- Constraints for table `ParentsInformation`
@@ -1811,20 +1816,12 @@ ALTER TABLE `OLMarks`
   --
   ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
-#   ADD CONSTRAINT `Student_Subject_Grade_ibfk_2` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`SubjectID`);
 
   --
   -- Constraints for table `Teaches`
   --
   ALTER TABLE `Teaches`
-#   ADD CONSTRAINT `Teaches_ibfk_1` FOREIGN KEY (`Subject`) REFERENCES `Subject_Grade` (`SubjectID`),
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
-
-  --
-  -- Constraints for table `TermMarks`
-  --
-#   ALTER TABLE `TermMarks`
-#   ADD CONSTRAINT `TermMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`, `Subject`) REFERENCES `Student_Subject_Grade` (`AdmissionNo`, `SubjectID`);
 
   --
   -- Constraints for table `Timetable`
@@ -1837,4 +1834,3 @@ ALTER TABLE `OLMarks`
   --
   ALTER TABLE `Transaction`
   ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
-  COMMIT;

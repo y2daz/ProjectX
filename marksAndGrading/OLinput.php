@@ -10,7 +10,33 @@ include(THISROOT . "/dbAccess.php");
 ob_start();
 
 
+
+if($_COOKIE['language'] == 0)
+{
+    $indexno = "Index Number";
+    $admissionnumber = "Admission Number";
+    $year = "Year";
+    $subject="Subject";
+    $grade="Garde";
+    $gceolresultssheet="G.C.E O/L Results Sheet";
+    $submit="Submit";
+    $reset="Reset";
+
+}
+else
+{
+    $indexno = "විභාග අංකය";
+    $admissionnumber ="ඇතුලත්වීමේ අංකය";
+    $year = "වර්ෂය";
+    $subject="විෂය";
+    $grade="සාමාර්ථය";
+    $gceolresultssheet="අ.පො.ස. සාමාන්‍ය පෙළ විභාග ප්‍රතිඵල සටහන";
+    $submit="යොමු කරන්න";
+    $reset="නැවත පිහිටුවන්න";
+}
+
 ?>
+
 <html>
 <head>
     <style type=text/css>
@@ -42,29 +68,29 @@ ob_start();
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:50px;
-                top:20px;
+                left:200px;
+                top:40px;
             }
             input.button1 {
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:100px;
-                top:20px;
+                left:280px;
+                top:40px;
             }
         </style>
     </head>
 
     <body>
-        <h1>G.C.E O/L Results Sheet</h1>
+        <h1><?php echo $gceolresultssheet ?></h1>
         <table>
             <tr>
-                <td>Index Number</td>
-                <td><input type="text" value=""></td>
-                <td>Name</td>
-                <td><input type="text" value="" </td>
-                <td>Year</td>
-                <td><input type=text" value=""</td>
+                <td><?php echo $indexno ?></td>
+                <td><input type="text" value="" readonly></td>
+                <td><?php echo $admissionnumber ?></td>
+                <td><input type="text" value="" readonly></td>
+                <td><?php echo $year ?></td>
+                <td><input type=text" value=""readonly></td>
             </tr>
         </table>
 
@@ -72,11 +98,11 @@ ob_start();
 
         <table>
             <tr>
-                <th>Subject</th>
-                <th>Grade</th>
+                <th><?php echo $subject ?></th>
+                <th><?php echo $grade ?></th>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -88,7 +114,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -100,7 +126,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -112,7 +138,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -124,7 +150,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -136,7 +162,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -148,7 +174,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -160,7 +186,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -172,7 +198,7 @@ ob_start();
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""></td>
+                <td><input type="text" value=""readonly></td>
                 <td><select type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -187,13 +213,13 @@ ob_start();
 
         <br />
 
-        <table>
+
             <tr>
                 <td><!--Blank td aligns the below buttons to the middle --></td>
-                <td><input class="button" type="submit" value="Submit"></td>
-                <td><input class="button1" type="reset" value="Reset"></td>
+                <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
+                <td>  <input class="button1" type="reset"  value="<?php echo $reset ?>"></td>
             </tr>
-        </table>
+
 
     </body>
 </html>

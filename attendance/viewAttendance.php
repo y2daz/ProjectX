@@ -128,7 +128,7 @@ ob_start();
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 780;
+$fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "View Attendance";
 //Only change above

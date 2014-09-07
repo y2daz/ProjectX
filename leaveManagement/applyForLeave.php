@@ -12,33 +12,42 @@
 
     ob_start();
 
+
     if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
     {
-        $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
-
-
-        $success = "Leave Request Sent!";
-        $fail = "Request Failed!";
-
-        if($operation)
+        if(is_numeric($_POST["staffid"]))
         {
-           sendNotification($success);
+            $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
+
+
+            $success = "Leave Request Sent!";
+            $fail = "Request Failed!";
+
+            if($operation)
+            {
+                sendNotification($success);
+            }
+            else
+            {
+                sendNotification($fail);
+            }
         }
         else
         {
-           sendNotification($fail);
+            sendNotification("Invalid Staff ID Entered");
         }
-
-        //echo $operation;
     }
 
     if(isset($_POST["GetLeaveData"]))
     {
         $result = getLeaveData($_POST["staffid"]);
 
-        $OfficialLeave = $result[0];
-        $MaternityLeave = $result[1];
-        $OtherLeave = $result[2];
+        foreach($result as $row)
+        {
+            $OfficialLeave = $row[0];
+            $MaternityLeave = $row[1];
+            $OtherLeave = $row[2];
+        }
     }
     else
     {
