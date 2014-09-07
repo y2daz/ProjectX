@@ -119,11 +119,6 @@
                 padding:10px;
             }
 
-            .insert input{
-                font-weight:bold;
-                font-size:15px;
-            }
-
             .insert input.button{
                 position:relative;
                 font-weight:bold;
