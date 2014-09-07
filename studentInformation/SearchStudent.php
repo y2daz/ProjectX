@@ -20,12 +20,10 @@ $currentStudent="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
-    $operation = UpdateStudent($_POST["AdmissionNo"], strtoupper($_POST
-        ["NamewithInitials"]), $_POST["DateofBirth"], ($_POST["NationalityRace"]),
-        ($_POST["Religion"]), $_POST["Medium"], strtoupper($_POST["Address"]), $_POST
-        ["Grade"], $_POST["Class"], $_POST["House"]);
+    $operation = UpdateStudent($_POST["AdmissionNo"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["NationalityRace"],($_POST["Religion"]), $_POST["Medium"], $_POST["Address"],
+        $_POST["Grade"], $_POST["Class"], $_POST["House"]);
 
-    if ($operation == 1)
+    if ($operation == true)
     {
         sendNotification("Student Details successfully updated.");
     }
@@ -39,6 +37,10 @@ if( isset($_GET["AdmissionNo"]) )
     $admissionNo = $_GET["AdmissionNo"];
 
 }
+elseif(isset($_GET["Class"]))
+{
+    $Class = $_GET["Class"];
+}
 
 
 
@@ -50,15 +52,21 @@ if (isset($_GET["search"]))
 {
     $currentStudent = null;
 
-    if (isset($_GET["Choice"]))
+    if ($_GET["Choice"] == "AdmissionNo")
     {
         $currentStudent = searchStudent($_GET["value"]);
+    }
+    else if($_GET["Choice"] == "Class")
+    {
+        $currentStudent = SearchStudentbyclass($_GET["value"]);
+        //echo $_GET["value"];
     }
 
     $tableDetails= "none";
     $tableViewTable= "block";
 
 }
+
 $admissionNo = "";
 $NamewithInitials ="";
 $DateofBirth = "";
@@ -74,7 +82,7 @@ if (isset($_GET["expand"]))
 {
     $result = getStudent($_GET["expand"]);
 
-//    var_dump($result);
+    //echo var_dump($result);
 
     foreach($result as $row) //
     {
@@ -128,8 +136,8 @@ else
             .viewTable{
                 position: relative;
                 border-collapse: collapse;
-                left:50px;
-                max-width: 600px;
+                left:25px;
+                max-width: 750px;
                 display: <?php echo $tableViewTable ?>;
             }
             .viewTable th{
@@ -138,15 +146,14 @@ else
                 color:white;
                 background-color: #005e77;
             }
-            .viewtable tr{
-            }
             .viewTable tr.alt{
                 background-color: #bed9ff;
             }
             .viewTable td{
-                padding-left: 10px;
-                padding-right: 10px;
+                padding-left: 4px;
+                padding-right: 4px;
                 min-width: 60px;
+                text-align: center;
             }
             .details {
                 /*position: relative;*/
@@ -176,19 +183,17 @@ else
                 <td colspan="2"><span id="selection">Search by : </span>
                     <input type="text" class="text1" name="value" value="">
                 </td>
-                <td><input class="button" name="search" type="submit"
-                           value="Search"></td>
+                <td><input class="button" name="search" type="submit" value="Search"></td>
             </tr>
             <tr><td></td><td>&nbsp;</td></tr>
             <tr>
-                <td><input type="RADIO" name="Choice" value="AdmissionNumber"
-                           checked />Admission Number</td>
-                <td><input type="RADIO" name="Choice" value="Name"  />Name with
-                    Initials</td>
-                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>
-                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>
-                <td><input type="RADIO" name="Choice" value="Class"  />Class</td>
-                <td><input type="RADIO" name="Choice" value="House"  />House</td>
+                <td><input type="RADIO" name="Choice" value="AdmissionNo" checked />Admission Number</td>
+<!--                <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with-->
+<!--                    Initials</td> -->
+<!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
+<!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
+                <td><input type="RADIO" name="Choice" value="Class" />Class</td>
+<!--                <td><input type="RADIO" name="Choice" value="House"  />House</td>-->
             </tr>
 
         </table>
@@ -200,7 +205,8 @@ else
             <tr>
                 <th>Admisson Number</th>
                 <th>Name with Initials</th>
-                <th></th>
+                <th>Date of Birth</th>
+                <th>Grade and Class</th>
                 <th></th>
             </tr>
             <?php
@@ -208,12 +214,6 @@ else
             $res = $currentStudent;
 
             $i = 1;
-
-            if (!isFilled($res))
-            {
-                $res = getAllStudents();
-
-            }
 
             if (isFilled($res))
             {
@@ -231,6 +231,12 @@ else
                     echo "</td></tr>";
                 }
             }
+            else{
+                echo "<tr>";
+                echo "<td colspan='5'>There are no records to show</td>";
+                echo "</tr>";
+            }
+
             if (isset($_GET["search"]))
             {
                 $fullPageHeight = ( 600 + ($i * 18) );
@@ -242,11 +248,11 @@ else
     <br />
     <br />
 
-<form>
+<form method="post">
     <table class="details" align="center">
     <tr>
-        <td> Staff ID </td>
-        <td > <input type = "text" name="staffid"  value="<?php echo $admissionNo?>"/> </td>
+        <td> Admission Number </td>
+        <td > <input type = "text" name="AdmissionNo"  value="<?php echo $admissionNo?>"/> </td>
         <td></td>
     </tr>
     <tr>
@@ -260,7 +266,7 @@ else
         <td></td>
     </tr>
     <tr>
-        <td>Natinality/Race </td>
+        <td>Nationality/Race </td>
         <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/> </td>
         <td></td>
     </tr>
@@ -286,16 +292,6 @@ else
         </tr>
         <tr>
             <td>Class</td>
-            <td > <input type = "text" name="Class" value="<?php echo $Class?>"/> </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Grade</td>
-            <td > <input type = "text" name="Grade" value="<?php echo $Grade?>"/> </td>
-            <td></td>
-        </tr>
-        <tr>
-            <td> Class </td>
             <td > <input type = "text" name="Class" value="<?php echo $Class?>"/> </td>
             <td></td>
         </tr>
