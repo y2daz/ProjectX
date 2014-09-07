@@ -79,6 +79,31 @@
         return false;
     }
 
+     function insertTransaction( $eventid, $tid, $tdate,$type, $amount,$description)
+     {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+
+        if ($stmt = $mysqli->prepare("INSERT INTO Event values(?, ?, ?, ?, ?, ?, ?);"))
+        {
+        $stmt -> bind_param("iidbfsi",  $eventid, $tid, $tdate,$type, $amount,$description  $isDeleted);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
     function getAllEvents()
     {
         $dbObj = new dbConnect();
@@ -384,7 +409,6 @@ Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
             }
         }
     }
-
     $mysqli->close();
     return 0; //Failed Adding Classroom
 }
@@ -416,7 +440,7 @@ Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
             $stmt->close();
             $mysqli->close();
             return true;
-        }
+
         $mysqli->close();
         return false;
     }

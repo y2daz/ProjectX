@@ -52,6 +52,10 @@ ob_start();
             width:500px;
         }
 
+        #Manager #staffid{
+            width:500px;
+        }
+
         #Manager #button1{
            width:150px;
         }
@@ -117,6 +121,7 @@ $amount = getLanguage("amount ", $_COOKIE["language"]);
 $description = getLanguage("description ", $_COOKIE["language"]);
 $trecieved = getLanguage("trecieved ", $_COOKIE["language"]);
 $tspent = getLanguage("tspent ", $_COOKIE["language"]);
+$staffID = getLanguage("staffID ", $_COOKIE["language"]);
 
 ?>
 <body>
@@ -130,7 +135,8 @@ $tspent = getLanguage("tspent ", $_COOKIE["language"]);
         <h3><?php echo $managerList ?></h3>
         <table id="Manager">
             <tr>
-                <th id="id"><?php echo $eventid ?></th>
+
+                <th id="staffid"><?php echo $staffID ?></th>
                 <th id="name"><?php echo $managerName ?></th>
                 <th id="contact"><?php echo $contactNumber ?></th>
                 <th id="space"></th>
@@ -140,25 +146,26 @@ $tspent = getLanguage("tspent ", $_COOKIE["language"]);
             </tr>
 
             <tr>
-                <td>063</td>
-                <td>Chathuranga Liyanage</td>
-                <td>0777123456</td>
+                <td>10</td>
+                <td>Amritha</td>
+                <td>0756489326</td>
                 <td>
                     <input type="button" name=<?php echo $delete ?> id="button1" value=<?php echo $delete ?> />
                 </td>
             </tr>
+
             <tr>
-                <td>02</td>
-                <td>Madusha Mendis</td>
-                <td>0712345678</td>
+                <td>4</td>
+                <td>Madusha </td>
+                <td>0711701236</td>
                 <td>
                     <input type="button" name="button" id="button2" value=<?php echo $delete ?> />
                 </td>
             </tr>
             <tr>
-                <td>3</td>
-                <td>Dulip Rathnayake</td>
-                <td>0112789456</td>
+                <td>9</td>
+                <td>niruthi</td>
+                <td>0112968756</td>
                 <td>
                     <input type="button" name="button" id="button3" value=<?php echo $delete ?> />
                 </td>
@@ -235,18 +242,18 @@ $tspent = getLanguage("tspent ", $_COOKIE["language"]);
 
             </tr>
             <tr style="width:150px;height:30px" >
-                <td><center>
-                        <input type="submit" name="button" id="button" value="Add Transaction" />
-                    </center>
+
                 </td>
                 <td><input type="text" name="textbox1" value=""></td>
                 <td><input type="text" name="textbox2" value=""></td>
                 <td><input type="text" name="textbox3" value=""></td>
                 <td><input type="text" name="textbox4" value=""></td>
+                <td><input type="text" name="textbox1" value=""></td>
 
             </tr>
 
         </table>
+        <input type="submit" name="button" id="button" value="Add Transaction" />
     </div>
 
 

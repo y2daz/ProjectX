@@ -51,6 +51,8 @@ $pageTitle= "Template";
         #ListTable #address{
             width:200px;
         }
+
+
         #ListTable th{
             color:white;
             background-color: #005e77;
@@ -81,6 +83,7 @@ $address = getLanguage("address ", $_COOKIE["language"]);
         <th id="address"><?php echo $address ?></th>
 
 
+
         <!--<span class="table" style="width:570px;height:auto">-->
         </tr>
 
@@ -108,6 +111,13 @@ $address = getLanguage("address ", $_COOKIE["language"]);
             <td>Madhushan De Sliva</td>
             <td>0712278586</td>
             <td>Highway, Negombo</td>
+        </tr>
+
+        <tr>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
         </tr>
 
     </table>
