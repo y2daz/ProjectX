@@ -82,7 +82,7 @@ $pageTitle= "Template";
         <div class="" id="general" style="">
 
             <h1><?php echo $eventList ?></h1>
-            <form>
+            <form method="post" action="manageEvents.php">
             <table id="eventTable">
                 <tr>
                     <th><?php echo $eventName ?></th>
@@ -98,10 +98,10 @@ $pageTitle= "Template";
                 foreach($result as $row){
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
                     echo $top;
-                    echo "$row[1]";
+                    echo "$row[1]" . "<input name=eventID value=$row[0] hidden=hidden/>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"$manage" . "\" type=\"submit\" value=\"$manage\" formaction=\"manageEvents.php?manage=" . $row[1] . "\" /> </td> ";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\"  /> </td> "; //formaction=\"manageEvents.php?manage=" . $row[1] . "\"
                     echo "</td></tr>";
                 }
                 ?>
@@ -129,7 +129,7 @@ $pageTitle= "Template";
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td><span class="table" style="width:100px;height:auto">
-                    <input type="button" name="$addnewEvent" id="button" value=<?php echo $addnewEvent ?> onClick="window.location = 'addEvent.php';"/>
+                    <input type="button" name="$addnewEvent" id="button" value="<?php echo $addnewEvent ?>" onClick="window.location = 'addEvent.php';"/>
                 </span>
                     </td>
                 </tr>
@@ -164,6 +164,7 @@ $pageTitle= "Template";
                 <!--</td>-->
                 <!--</tr>-->
             </table>
+            </form>
 <!--            </form>-->
 
         </div>
