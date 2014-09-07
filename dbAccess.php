@@ -79,7 +79,7 @@
         return false;
     }
 
-     function insertTransaction( $eventid, $tid, $tdate,$type, $amount,$description)
+  /*   function insertTransaction( $eventid, $tid, $tdate,$type, $amount,$description)
      {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -90,9 +90,9 @@
 
         $isDeleted = 0;
 
-        if ($stmt = $mysqli->prepare("INSERT INTO Event values(?, ?, ?, ?, ?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("INSERT INTO Event values(?, ?, ?, ?, ?, ?,?);"))
         {
-        $stmt -> bind_param("iidbfsi",  $eventid, $tid, $tdate,$type, $amount,$description  $isDeleted);
+        $stmt -> bind_param("iidbfsi",  $eventid, $tid, $tdate,$type, $amount,$description, $isDeleted);
             if ($stmt->execute())
             {
                 $stmt->close();
@@ -102,7 +102,7 @@
     }
     $mysqli->close();
     return false;
-}
+}*/
 
     function getAllEvents()
     {
@@ -440,6 +440,7 @@ Address=?, Grade=?, Class=?, House=? isDeleted=? WHERE $AdmissionNo=? ;"))
             $stmt->close();
             $mysqli->close();
             return true;
+        }
 
         $mysqli->close();
         return false;
@@ -1320,4 +1321,4 @@ function insertAllTimetable()
     return false;
 }*/
 
-?>
+
