@@ -42,9 +42,12 @@
     {
         $result = getLeaveData($_POST["staffid"]);
 
-        $OfficialLeave = $result[0];
-        $MaternityLeave = $result[1];
-        $OtherLeave = $result[2];
+        foreach($result as $row)
+        {
+            $OfficialLeave = $row[0];
+            $MaternityLeave = $row[1];
+            $OtherLeave = $row[2];
+        }
     }
     else
     {
@@ -114,11 +117,6 @@
             .insert td
             {
                 padding:10px;
-            }
-
-            .insert input{
-                font-weight:bold;
-                font-size:15px;
             }
 
             .insert input.button{
