@@ -51,6 +51,8 @@ $pageTitle= "Template";
         #ListTable #address{
             width:200px;
         }
+
+
         #ListTable th{
             color:white;
             background-color: #005e77;
@@ -62,18 +64,24 @@ $pageTitle= "Template";
 
     </style>
 </head>
-
-
+<?php
+$inviteesList= getLanguage("inviteesList ", $_COOKIE["language"]);
+$sid = getLanguage("sid", $_COOKIE["language"]);
+$pname = getLanguage("pname ", $_COOKIE["language"]);
+$contactNumber = getLanguage("contactNumber ", $_COOKIE["language"]);
+$address = getLanguage("address ", $_COOKIE["language"]);
+?>
 <body>
 <div class="" id="general" style="">
 
-    <h1>Invitees List</h1>
+    <h1><?php echo $inviteesList ?></h1>
     <table id="ListTable">
         <tr>
-        <th id="Studentid">Student ID</th>
-        <th id="parentname">Parent Name</th>
-        <th id="contactno">Contact No</th>
-        <th id="address">Mailing Address</th>
+        <th id="Studentid"><?php echo $sid ?></th>
+        <th id="parentname"><?php echo $pname ?></th>
+        <th id="contactno"><?php echo $contactNumber ?></th>
+        <th id="address"><?php echo $address ?></th>
+
 
 
         <!--<span class="table" style="width:570px;height:auto">-->
@@ -103,6 +111,13 @@ $pageTitle= "Template";
             <td>Madhushan De Sliva</td>
             <td>0712278586</td>
             <td>Highway, Negombo</td>
+        </tr>
+
+        <tr>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
+            <td><input type="text" name="textbox1" value=""></td>
         </tr>
 
     </table>

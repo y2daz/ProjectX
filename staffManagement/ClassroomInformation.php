@@ -131,6 +131,7 @@ if( isset($_GET["grade"]) )
                 echo "\n<td>$row[3]</td>";
                 echo "\n<td><input name=\"Change" . "\" type=\"submit\" value=\"Change Teacher\" formaction=\"ClassroomInformation.php?grade=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
                 echo "\n<td><input name=\"Delete" . "\" type=\"submit\" value=\"Delete\" formaction=\"ClassroomInformation.php?delete=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
+                //yazdan remove query String
             }
         }
         if (isset($_GET["search"]))

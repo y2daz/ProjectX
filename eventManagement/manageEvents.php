@@ -8,7 +8,31 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
+
+$result = null;
+
+if (isFilled($_POST["manage"])){
+    $eventID = $_POST["eventID"];
+
+    if (isFilled($_POST["addManager"])){
+//       echo ($_POST["newManagerID"]);
+        $operation = insertManager($eventID, $_POST["newManagerID"]);
+
+        if ($operation == true){
+            sendNotification("Manager added");
+        }
+        else{
+            sendNotification("Error adding manager");
+        }
+
+    }
+
+}
+else{
+    header( 'Location: /eventManagement/eventList.php' ) ;
+}
 
 ?>
 <html>
@@ -29,13 +53,13 @@ ob_start();
             border:1px solid #005e77;
             border-collapse: collapse;
         }
-#transaction{
-    position: relative;
-    left:25px;
-    width:750px;
-    border:1px solid #005e77;
-    border-collapse: collapse;
-}
+        #transaction{
+            position: relative;
+            left:25px;
+            width:750px;
+            border:1px solid #005e77;
+            border-collapse: collapse;
+        }
         #Manager td{
             padding: 5px;
         }
@@ -43,17 +67,40 @@ ob_start();
             width:300px;
         }
         #Manager #name{
-            width:200px;
+            width:400px;
         }
         #Manager #contact{
             width:300px;
+        }
+        #Manager #space{
+            width:500px;
+        }
+
+        #Manager #staffid{
+            width:500px;
+        }
+
+        #Manager #button1{
+           width:150px;
+        }
+
+        #Manager #button2{
+           width:150px;
+        }
+
+        #Manager #button3{
+           width:150px;
+        }
+
+        #Manager #button4{
+           width:250px;
         }
 
         #transaction td{
             max-width:200px;
         }
         #transaction input{
-            max-width:10s0px;
+            max-width:200px;
         }
 
         #Manager th{
@@ -73,145 +120,219 @@ ob_start();
 
 
 
- </style>
+
+
+
+
+    </style>
 
 </head>
+<?php
+$manageEvents = getLanguage("manageEvents ", $_COOKIE["language"]);
+$managerList = getLanguage("managerList", $_COOKIE["language"]);
+$managerName = getLanguage("managerName ", $_COOKIE["language"]);
+$contactNumber = getLanguage("contactNumber ", $_COOKIE["language"]);
+$delete = getLanguage("delete ", $_COOKIE["language"]);
+$invitees = getLanguage("invitees ", $_COOKIE["language"]);
+$noofInvitees = getLanguage("noofInvitees ", $_COOKIE["language"]);
+$viewInvitees = getLanguage("viewInvitees ", $_COOKIE["language"]);
+$tlog = getLanguage("tlog ", $_COOKIE["language"]);
+$tid = getLanguage("tid ", $_COOKIE["language"]);
+$date = getLanguage("date ", $_COOKIE["language"]);
+$type = getLanguage("type ", $_COOKIE["language"]);
+$amount = getLanguage("amount ", $_COOKIE["language"]);
+$description = getLanguage("description ", $_COOKIE["language"]);
+$trecieved = getLanguage("trecieved ", $_COOKIE["language"]);
+$tspent = getLanguage("tspent ", $_COOKIE["language"]);
+$staffID = getLanguage("staffID ", $_COOKIE["language"]);
+$addManager = getLanguage("addManager ", $_COOKIE["language"]);
+$addTransaction = getLanguage("addTransaction ", $_COOKIE["language"]);
+$printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
+
+?>
 <body>
-<div  id="general" style="">
 
-    <h1>Manage Events</h1>
+    <div  id="general" style="">
 
-        <h3>Event Manager List</h3>
-    <table id="Manager">
-        <tr>
-            <th id="id">ID</th>
-            <th id="name">Name</th>
-            <th id="contact">Contact No</th>
-            <th></th>
+        <h1><?php echo $manageEvents ?></h1>
+
+        <h3><?php echo $managerList ?></h3>
+        <form method="post">
+            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+            <input name="manage" value="Manage" hidden="hidden" />
+        <table id="Manager">
+            <tr>
+
+                <th id="staffid"><?php echo $staffID ?></th>
+                <th id="name"><?php echo $managerName ?></th>
+                <th id="contact"><?php echo $contactNumber ?></th>
+                <th id="space"></th>
 
 
-            <!--<span class="table" style="width:570px;height:auto">-->
-        </tr>
+                <!--<span class="table" style="width:570px;height:auto">-->
+            </tr>
+            <?php
+            $result = getEventlManagers($_POST["eventID"]);
+            $i = 1;
 
-        <tr>
-            <td>063</td>
-            <td>Chathuranga Liyanage</td>
-            <td>0777123456</td>
-            <td>
-                <input type="button" name="delete" id="button1" value="Delete" />
-            </td>
-        </tr>
-        <tr>
-            <td>02</td>
-            <td>Madusha Mendis</td>
-            <td>0712345678</td>
-            <td>
-                <input type="button" name="button" id="button2" value="Delete" />
-            </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Dulip Rathnayake</td>
-            <td>0112789456</td>
-            <td>
-                <input type="button" name="button" id="button3" value="Delete" />
-            </td>
-        </tr>
-        <tr>
-            <td><input type="text" name="textbox" value=""></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            <td>
-                <input type="button" name="button" id="button4" value="Add New Manager" />
-            </td>
-        </tr>
+            if ($result == null)
+            {
+                echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
+            }
+            else
+            {
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                    echo $top;
+                    echo "$row[0]";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>$row[2]</td>";
+//                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                    echo "</tr>";
+
+                    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+                    //                            post(document.URL, params, "post");
+                }
+            }
+            ?>
+
+<!--
+            <tr>
+                <td>10</td>
+                <td>Amritha</td>
+                <td>0756489326</td>
+                <td>
+                    <input type="button" name=<?php /*echo $delete */?> id="button1" value="<?php /*echo $delete */?>" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Madusha </td>
+                <td>0711701236</td>
+                <td>
+                    <input type="button" name="button" id="button2" value="<?php /*echo $delete */?>" />
+                </td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>niruthi</td>
+                <td>0112968756</td>
+                <td>
+                    <input type="button" name="button" id="button3" value="<?php /*echo $delete */?>" />
+                </td>
+            </tr>-->
+            <tr>
+                <td><input type="text" name="newManagerID" value=""></td>
+                <td >
+                    <input type="submit" name="addManager" id="button4" value="<?php echo $addManager ?>" />
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+           </form>
+    </div>
+
+
+    <h3><?php echo $invitees ?></h3>
+
+    <span><?php echo $noofInvitees ?> </span><span id="invitees"> 0</span> <br />
+    <input type="button" name="button" width = "150px" id="button9" value="<?php echo $viewInvitees ?>"  onClick="window.location = 'newinviteeslist.php';"/>
+
+
+
+
+
+    <div  id="general" style="">
+
+
+
+        <h3><?php echo $tlog ?></h3>
+
+        <form method="post">
+            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+            <input name="manage" value="Manage" hidden="hidden" />
+            <?php echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+        <table id="transaction">
+            <tr>
+                <th id="id"><?php echo $tid ?></th>
+                <th id="date"><?php echo $date ?></th>
+                <th id="type"><?php echo $type ?></th>
+                <th id="amount"><?php echo $amount ?></th>
+                <th id="description"><?php echo $description ?></th>
+
+
+                <!--<span class="table" style="width:570px;height:auto">-->
+            </tr>
+
+            <tr>
+                <td>e1t1</td>
+                <td>22/7/2014</td>
+                <td>Income</td>
+                <td>12,000</td>
+                <td>From Students</td>
+
+            </tr>
+            <tr style="width:100px;height:30px">
+                <td>e1t2</td>
+                <td>24/7/2014</td>
+                <td>Income</td>
+                <td>11,000</td>
+                <td>From OBA</td>
+
+            </tr>
+            <tr style="width:100px;height:30px">
+                <td>e1t3</td>
+                <td>24/7/2014</td>
+                <td>Income</td>
+                <td>45</td>
+                <td>For Transports</td>
+
+            </tr>
+            <tr style="width:100px;height:30px">
+                <td>e1t4</td>
+                <td>27/7/2014</td>
+                <td>Expenditure</td>
+                <td>4000</td>
+                <td>For Decorations</td>
+
+            </tr>
+            <tr style="width:150px;height:30px" >
+
+                </td>
+                <td><input type="submit" name="button" id="button" value="<?php echo $addTransaction ?>" /></td>
+                <td><input type="text" name="date" value=""></td>
+                <td><select name="Type">
+
+                       <option value="0">Income</option>
+                        <option value="1">Expenditure</option>
+                </select></td>
+
+
+                <td><input type="text" name="Amount" value=""></td>
+                <td><input type="text" name="Description" value=""></td>
+
+            </tr>
+
         </table>
 
-        </div>
+    </div>
 
 
-    <h3>Invitees List</h3>
+    <br />
 
-    <span>No Of Invitees : </span><span id="invitees"> 0</span> <br />
-        <input type="button" name="button" id="button9" value="View Invitees List" onClick="window.location = 'newinviteeslist.php';"/>
+    <span><?php echo $trecieved ?> </span><span id="totalReceived"> 23045</span> <br />
+    <span><?php echo $tspent ?></span><span id="totalspent"> 4000</span>
 
-
-
-
-
-<div  id="general" style="">
+    <div>
+        <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style="position:relative; top:150px; left: 0px; width:250px;"/>
+    </div>
 
 
 
-    <h3>Transaction Log</h3>
-    <table id="transaction">
-        <tr>
-            <th id="id">ID</th>
-            <th id="date">Date</th>
-            <th id="type">Type</th>
-            <th id="amount">Amount</th>
-            <th id="description">Description</th>
 
-
-            <!--<span class="table" style="width:570px;height:auto">-->
-        </tr>
-
-        <tr>
-            <td>e1t1</td>
-            <td>22/7/2014</td>
-            <td>Income</td>
-            <td>12,000</td>
-            <td>From Students</td>
-
-        </tr>
-        <tr style="width:100px;height:30px">
-            <td>e1t2</td>
-            <td>24/7/2014</td>
-            <td>Income</td>
-            <td>11,000</td>
-            <td>From OBA</td>
-
-        </tr>
-        <tr style="width:100px;height:30px">
-            <td>e1t3</td>
-            <td>24/7/2014</td>
-            <td>Income</td>
-            <td>45</td>
-            <td>For Transports</td>
-
-        </tr>
-        <tr style="width:100px;height:30px">
-            <td>e1t4</td>
-            <td>27/7/2014</td>
-            <td>Expenditure</td>
-            <td>4000</td>
-            <td>For Decorations</td>
-
-        </tr>
-        <tr style="width:150px;height:30px" >
-            <td><center>
-                    <input type="submit" name="button" id="button" value="Add Transaction" />
-                </center>
-            </td>
-            <td><input type="text" name="textbox1" value=""></td>
-            <td><input type="text" name="textbox2" value=""></td>
-            <td><input type="text" name="textbox3" value=""></td>
-            <td><input type="text" name="textbox4" value=""></td>
-
-        </tr>
-
-    </table>
-</div>
-
-
-<br />
-
-<span>Total Recieved : </span><span id="totalReceived"> 23045</span> <br />
-<span>Total Spent : </span><span id="totalspent"> 4000</span>
-
-<div>
-    <input type="button" name="button" id="button8" value="Print Transaction Report" style="position:relative; top:150px; left: 0px"/>
-</div>
 
 
     </body>

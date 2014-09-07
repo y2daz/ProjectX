@@ -62,6 +62,41 @@
     echo $OtherLeave;
     */
 
+    if($_COOKIE["language"] == 1)
+    {
+        $staffid = "අනුක්‍රමික අංකය";
+        $startdate = "අරාම්භක දිනය";
+        $enddate ="අවසාන දිනය";
+        $leavetype ="නිවාඩු  වර්ගය";
+        $otherreasons="වෙනත් හේතු";
+        $officialleavecombo = "රාජකාරි  නිවාඩු";
+        $maternityleavecombo = "මාතෘ  නිවාඩු";
+        $otherleavecombo = "වෙනත් නිවාඩු";
+        $applyforleave = "නිවාඩු  ඉල්ලුම්කිරිම";
+        $reset = "නැවත  සකසන්න";
+        $getleavedata= "නිවාඩු  දත්ත ගැනීමට";
+        $enterdetails = "තොරතුරු  ඇතුලත් කරන්න";
+        $availableleavedays = "ඉතුරු  නිවාඩු  දින";
+    }
+    else
+    {
+        $staffid = "Staff ID";
+        $startdate = "Start Date";
+        $enddate ="End Date";
+        $leavetype ="Leave Type";
+        $otherreasons="Other Reasons";
+        $officialleavecombo = "Official Leave";
+        $maternityleavecombo = "Maternity Leave";
+        $otherleavecombo = "Other Leave";
+        $applyforleave = "Apply for Leave";
+        $reset ="Reset";
+        $getleavedata = "Get Leave Data";
+        $enterdetails = "Enter Details";
+        $availableleavedays ="Available Leave Days";
+
+    }
+
+
 ?>
 <html>
     <head>
@@ -119,11 +154,6 @@
                 padding:10px;
             }
 
-            .insert input{
-                font-weight:bold;
-                font-size:15px;
-            }
-
             .insert input.button{
                 position:relative;
                 font-weight:bold;
@@ -155,37 +185,37 @@
                 <table id="details">
 
 
-                    <tr><th>Enter Details<th></th></tr>
+                    <tr><th><?php echo $enterdetails ?><th></th></tr>
 
                     <tr>
-                        <td>Staff ID :</td>
+                        <td><?php echo $staffid ?></td>
                         <td><input type="text" id="StaffID" name="staffid" value="" required="true"/></td>
                     </tr>
 
 
                     <tr>
-                        <td>Start Date :</td>
+                        <td><?php echo $startdate ?></td>
                         <td><input type="date" name="startdate" required="true"/></td>
                     </tr>
 
 
                     <tr>
-                        <td>End Date :</td>
+                        <td><?php echo $enddate ?></td>
                         <td><input type="date" name="enddate" required="true"/></td>
                     </tr>
                     <tr>
-                        <td>Leave Type :</td>
+                        <td><?php echo $leavetype ?></td>
                         <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
-                                <option value="1">Offical Leave</option>
-                                <option value="2">Maternity Leave</option>
-                                <option value="3">Other Leave</option>
+                                <option value="1"><?php echo $officialleavecombo ?></option>
+                                <option value="2"><?php echo $maternityleavecombo ?></option>
+                                <option value="3"><?php echo $otherleavecombo ?></option>
                             </select>
                         </td>
                     </tr>
 
 
                     <tr>
-                        <td>Other Reason(s)</td>
+                        <td><?php echo $otherreasons ?></td>
                         <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
                     </tr>
 
@@ -193,20 +223,20 @@
 
                 <table class="insert2" id="output">
 
-                    <tr><th>Available Leave Days <th></th></tr>
+                    <tr><th><?php echo $availableleavedays ?> <th></th></tr>
 
                     <tr>
-                        <td>Official Leave</td>
+                        <td><?php echo $officialleavecombo ?></td>
                         <td> <?php echo $OfficialLeave ?> </td>
                     </tr>
 
                     <tr>
-                        <td>Maternity Leave</td>
+                        <td><?php echo $maternityleavecombo ?></td>
                         <td> <?php echo $MaternityLeave ?></td>
                     </tr>
 
                     <tr>
-                        <td>Other Leave</td>
+                        <td><?php echo $otherleavecombo ?></td>
                         <td> <?php echo $OtherLeave ?></td>
                     </tr>
 
@@ -215,9 +245,9 @@
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="Apply for Leave" id="submitme">
-                    <input type="reset" name="reset" value="Reset">
-                    <input type="submit" name="GetLeaveData" value="Get Leave Data">
+                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme">
+                    <input type="reset" name="reset" value="<?php echo $reset ?>">
+                    <input type="submit" name="GetLeaveData" value="<?php echo $getleavedata ?>">
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->

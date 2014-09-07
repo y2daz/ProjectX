@@ -58,19 +58,36 @@ $pageTitle= "Template";
                 height:30px;
                 padding:5px;
             }
+            input.button {
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                width: 500px;
+
+            }
 
         </style>
     </head>
+
+    <?php
+    $eventName = getLanguage("eventName ", $_COOKIE["language"]);
+    $date = getLanguage("date", $_COOKIE["language"]);
+    $description = getLanguage("description ", $_COOKIE["language"]);
+    $eventList = getLanguage("eventList ", $_COOKIE["language"]);
+    $manage = getLanguage("manage ", $_COOKIE["language"]);
+    $addnewEvent = getLanguage("addnewEvent ", $_COOKIE["language"]);
+     ?>
+
     <body>
         <div class="" id="general" style="">
 
-            <h1>Event List</h1>
-            <form>
+            <h1><?php echo $eventList ?></h1>
+            <form method="post" action="manageEvents.php">
             <table id="eventTable">
                 <tr>
-                    <th id="eventName">Event Name</th>
-                    <th>Date</th>
-                    <th id="description">Description</th>
+                    <th><?php echo $eventName ?></th>
+                    <th><?php echo $date ?></th>
+                    <th><?php echo $description ?></th>
                     <th></th>
                     <!--<span class="table" style="width:570px;height:auto">-->
                 </tr>
@@ -81,10 +98,10 @@ $pageTitle= "Template";
                 foreach($result as $row){
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
                     echo $top;
-                    echo "$row[1]";
+                    echo "$row[1]" . "<input name=eventID value=$row[0] hidden=hidden/>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\" formaction=\"manageEvents.php?manage=" . $row[1] . "\" /> </td> ";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\"  /> </td> "; //formaction=\"manageEvents.php?manage=" . $row[1] . "\"
                     echo "</td></tr>";
                 }
                 ?>
@@ -111,11 +128,14 @@ $pageTitle= "Template";
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
-                    <td><span class="table" style="width:570px;height:auto">
-                    <input type="button" name="button" id="button" value="Add New Event" onClick="window.location = 'addEvent.php';"/>
+                    <td><span class="table" style="width:100px;height:auto">
+                    <input type="button" name="$addnewEvent" id="button" value="<?php echo $addnewEvent ?>" onClick="window.location = 'addEvent.php';"/>
                 </span>
                     </td>
                 </tr>
+
+
+
                 <!--<tr style="width:150px;height:30px">-->
                 <!--<td>&nbsp;</td>-->
                 <!--<td>&nbsp;</td>-->
@@ -144,6 +164,7 @@ $pageTitle= "Template";
                 <!--</td>-->
                 <!--</tr>-->
             </table>
+            </form>
 <!--            </form>-->
 
         </div>
