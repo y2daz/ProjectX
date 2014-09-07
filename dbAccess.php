@@ -1320,6 +1320,71 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
 
         return false;
     }
+function insertOLMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO OLMarks (IndexNo, AdmissionNo,Year, Subject, Grade) VALUES(?, ?, ? ,?, ?)"))
+    {
+        $noRows = 0;
+        for($i=0;$i<9;$i++){
+            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i]);
+            $stmt->execute();
+            $noRows += $stmt->affected_rows;
+        }
+
+        $stmt->close();
+
+        if ($noRows != -9){
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
+
+function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO ALMarks (IndexNo, AdmissionNo,Year, Subject, Grade) VALUES(?, ?, ? ,?, ?)"))
+    {
+        $noRows = 0;
+        for($i=0;$i<3;$i++){
+            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i]);
+            $stmt->execute();
+            $noRows += $stmt->affected_rows;
+        }
+
+        $stmt->close();
+
+        if ($noRows != -3){
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
 
 /*insertAllTimetable();
 
