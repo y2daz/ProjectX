@@ -8,7 +8,36 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
+
+if (isFilled($_POST["submit"])) {
+//    sendNotification("submited");
+    $prefixSub="subject_";
+    $prefixGrade="grade_";
+
+    $indexNo=$_POST["indexNo"];
+    $admissionNo=$_POST["admissionNo"];
+    $Year=$_POST["year"];
+
+    $subjectArr=array();
+    $gradeArr=array();
+
+    for($i=1;$i<=3;$i++){
+        $subjectArr[$i-1] = $_POST[ ($prefixSub . $i )];
+        $gradeArr[$i-1] = $_POST[ ($prefixGrade . $i )];
+
+    }
+
+    $operation = insertALMarks($admissionNo,$indexNo,$Year,$subjectArr,$gradeArr);
+
+    if($operation==true){
+        sendNotification("Insert successful.");
+    }
+    else{
+        sendNotification("Error inserting marks.");
+    }
+}
 
 ?>
 <?php
@@ -23,7 +52,7 @@ ob_start();
     $generalenglish="General English";
     $commongeneraltest="Common General Test";
     $zscore="Z-Score";
-    $inlandrank="Island Rank";
+    $inlandrank="Inland Rank";
     $districrank="District Rank";
     $gcealresultssheet="G.C.E A/L Results Sheet";
     $submit="Submit";
@@ -94,17 +123,17 @@ ob_start();
     </head>
 <body>
 
-<form>
+<form method="post">
     <h1><?php echo $gcealresultssheet ?></h1>
 
     <table>
     <tr>
         <td><?php echo $indexno ?></td>
-        <td><input type="text" value="" readonly></td>
+        <td><input name="indexNo" type="text" value="" ></td>
         <td><?php echo $admissionnumber ?></td>
-        <td><input type="text" value="" readonly> </td>
+        <td><input name="admissionNo" type="text" value="" > </td>
         <td><?php echo $year ?></td>
-        <td><input type=text" value="" readonly></td>
+        <td><input name="year" type=text" value="" ></td>
     </tr>
     </table>
 
@@ -116,8 +145,8 @@ ob_start();
             <th><?php echo $grade ?></th>
         </tr>
         <tr>
-            <td><input type="text" value="" readonly></td>
-            <td><select type="text" value="">
+            <td><input name="subject_1"type="text" value="" ></td>
+            <td><select name="grade_1" type="text" value="">
                     <option>--</option>
                     <option>A</option>
                     <option>B</option>
@@ -128,8 +157,8 @@ ob_start();
             </td>
         </tr>
         <tr>
-            <td><input type="text" value="" readonly></td>
-            <td><select type="text" value="">
+            <td><input name="subject_2" type="text" value="" ></td>
+            <td><select name="grade_2"  type="text" value="">
                     <option>--</option>
                     <option>A</option>
                     <option>B</option>
@@ -140,8 +169,8 @@ ob_start();
             </td>
         </tr>
         <tr>
-            <td><input type="text" value="" readonly></td>
-            <td><select type="text" value="">
+            <td><input name="subject_3" type="text" value="" ></td>
+            <td><select name="grade_3" type="text" value="">
                     <option>--</option>
                     <option>A</option>
                     <option>B</option>
@@ -153,7 +182,7 @@ ob_start();
         </tr>
         <tr>
             <td><?php echo $generalenglish ?></td>
-            <td><select type="text" value="">
+            <td><select name="grade_4" type="text" value="">
 
                     <option>--</option>
                     <option>A</option>
@@ -166,7 +195,7 @@ ob_start();
         </tr>
         <tr>
             <td><?php echo $commongeneraltest?></td>
-            <td><input type="text" value="" maxlength="3" required="true">
+            <td><input name="cmngnrltest" type="text" value="" maxlength="3">
 
             </td>
         </tr>
@@ -177,17 +206,17 @@ ob_start();
         <table>
                 <tr>
                     <td><?php echo $zscore ?></td>
-                    <td><input type="text" value="" required="true">
+                    <td><input name="zScore" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
                     <td><?php echo $inlandrank ?></td>
-                    <td><input type="text" value="" required="true">
+                    <td><input name="InLandRank" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
                     <td><?php echo $districrank ?></td>
-                    <td><input type="text" value="" required="true">
+                    <td><input name="districRank" type="text" value="" >
                     </td>
                 </tr>
         </table>
@@ -195,7 +224,7 @@ ob_start();
 
 
 
-            <input class="button" type="submit" value="<?php echo $submit ?>">
+            <input name="submit" class="button" type="submit" value="<?php echo $submit ?>">
             <input class="button1" type="reset" value="<?php echo $reset ?>">
             </form>
 

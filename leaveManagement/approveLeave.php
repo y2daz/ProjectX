@@ -32,23 +32,40 @@
         }
     }
 
-    if(isset($_POST["approve"])) //Yazdaan, this is ugly, doesn't work and puts DB logic in the not-DB file. Fix fix.
+    if(isset($_POST["approve"]))
     {
-        $Principal = null;
-
-        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $Principal);
-
-        $success = "Leave Approved!";
-        $fail = "Approval Failed!";
-
-        if($operation)
+        if(! $_POST["staffid"] == "")
         {
-            sendNotification($success);
+            if(is_numeric($_POST["staffid"]))
+            {
+                $Principal = null;
+
+                $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $Principal);
+
+                $success = "Leave Approved!";
+                $fail = "Approval Failed!";
+
+                if($operation)
+                {
+                    sendNotification($success);
+                }
+                else
+                {
+                    sendNotification($fail);
+                }
+            }
+            else
+            {
+                sendNotification("Invalid Staff ID");
+            }
+
         }
         else
         {
-            sendNotification($fail);
+            sendNotification("Please enter Staff ID");
         }
+
+
     }
 
     $staffid = "";
@@ -76,6 +93,49 @@
                 $otherreasons = $row[7];
             }
         }
+    }
+
+    if($_COOKIE["language"] == 1)
+    {
+        $staffidlang = "අනුක්‍රමික අංකය";
+        $namelang = "නම";
+        $startdatelang = "අරාම්භක දිනය";
+        $enddatelang ="අවසාන දිනය";
+        $leavetypelang ="නිවාඩු  වර්ගය";
+        $otherreasonslang ="වෙනත් හේතු";
+        $officialleavecombo = "රාජකාරි  නිවාඩු";
+        $maternityleavecombo = "මාතෘ  නිවාඩු";
+        $otherleavecombo = "වෙනත් නිවාඩු";
+        $applyforleavelang = "නිවාඩු  ඉල්ලුම්කිරිම";
+        $resetlang = "නැවත  සකසන්න";
+        $getleavedatalang= "නිවාඩු  දත්ත ගැනීමට";
+        $enterdetailslang = "තොරතුරු  ඇතුලත් කරන්න";
+        $availableleavedayslang = "ඉතුරු  නිවාඩු  දින";
+        $requestdatelang = "දිනය ඉල්ලුම්කිරිම";
+        $statuslang = "නිවාඩු  තත්වය";
+        $approvelang = "අනුමත කරනවා";
+        $rejectlang ="ප්‍රතික්ෂේප කරනවා";
+    }
+    else
+    {
+        $staffidlang = "Staff ID";
+        $namelang = "Name";
+        $startdatelang = "Start Date";
+        $enddatelang ="End Date";
+        $leavetypelang ="Leave Type";
+        $otherreasonslang ="Other Reasons";
+        $officialleavecombolang = "Official Leave";
+        $maternityleavecombolang = "Maternity Leave";
+        $otherleavecombolang = "Other Leave";
+        $applyforleavelang = "Apply for Leave";
+        $resetlang ="Reset";
+        $getleavedatalang = "Get Leave Data";
+        $enterdetailslang = "Enter Details";
+        $availableleavedayslang ="Available Leave Days";
+        $requestdatelang="Requested Date";
+        $statuslang = "Leave Status";
+        $approvelang  = "Approve";
+        $rejectlang = "Reject";
     }
 
 ?>
@@ -106,11 +166,19 @@
             }
 
             td {
+                text-align: center;
                 padding:5px;
             }
             .leaveTable .alt{
                 background-color: #bed9ff;
             }
+
+            .details td
+            {
+                text-align: left;
+            }
+
+
 
         </style>
     </head>
@@ -122,11 +190,11 @@
         <form method="post">
             <table class="leaveTable" align="center">
                 <tr>
-                    <th>Staff ID</th>
-                    <th>Name</th>
-                    <th>Leave Type</th>
-                    <th>Request Date</th>
-                    <th>Status</th>
+                    <th><?php echo $staffidlang ?></th>
+                    <th><?php echo $namelang ?></th>
+                    <th><?php echo $leavetypelang ?></th>
+                    <th><?php echo $requestdatelang ?></th>
+                    <th><?php echo $statuslang ?></th>
                     <th></th>
                 </tr>
 
@@ -213,34 +281,34 @@
 
             <table class="details" align="center">
                 <tr>
-                    <td> Staff ID </td>
+                    <td><?php echo $staffidlang ?></td>
                     <td > <input type = "text" name="staffid" value=<?php echo $staffid ?>> </td>
                 </tr>
 
 
                 <tr>
-                    <td> Name </td>
+                    <td> <?php echo $namelang ?> </td>
                     <td > <input type = "text" name="name" value="<?php echo $name ?>"/> </td>
                 </tr>
 
                 <tr>
-                    <td> Start Date </td>
+                    <td><?php echo $startdatelang ?></td>
                     <td ><input type="date" name="startdate" value="<?php echo $startdate ?>"/></td>
                 </tr>
 
 
                 <tr>
-                    <td> End Date </td>
+                    <td><?php echo $enddatelang ?></td>
                     <td > <input type="date" name="enddate" value="<?php echo $enddate ?>" /> </td>
                 </tr>
 
                 <tr>
-                    <td> Leave Type  </td>
+                    <td> <?php echo $leavetypelang ?>  </td>
                     <td > <input type = "text" name="leavetype" value="<?php echo $leavetypeexpand ?>"/> </td>
                 </tr>
 
                 <tr>
-                    <td> Other Reasons(s) </td>
+                    <td><?php echo $otherreasonslang ?></td>
                     <td > <input type = "textarea" name="otherreasons" value="<?php echo $otherreasons ?>"/> </td>
                 </tr>
 
@@ -251,9 +319,9 @@
 
             <table align="center">
                 <tr>
-                    <td> <input type="submit" name="approve" value="Approve"> </td>
-                    <td> <input type="submit" name="reject"  value="Reject">  </td>
-                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>
+                    <td> <input type="submit" name="approve" style="width: 110px" value="<?php echo $approvelang ?>"> </td>
+                    <td> <input type="submit" name="reject"  style="width: 110px" value="<?php echo $rejectlang ?>">  </td>
+<!--                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>-->
                 </tr>
             </table>
 

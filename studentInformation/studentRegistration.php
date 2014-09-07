@@ -33,16 +33,10 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
         }
         else
         {
-            sendNotification("Error!");
+            echo "Error";
         }
+
     }
-    else
-    {
-        sendNotification("Admission ID is not a Number");
-    }
-
-
-
 
 }
 
@@ -179,7 +173,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
             <tr>
                 <td></td>
 
-                <td><input name="submit" class="button1" type="submit" value="Submit" onclick="window.location = 'parentDetailsForm.php'" required="true"></td>
+                <td><input name="submit" class="button1" type="submit" value="Submit" required="true"></td>
 
 
             </tr>
