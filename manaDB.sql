@@ -918,10 +918,29 @@ DROP DATABASE IF EXISTS manaDB;
 -- Dumping data for table `student`
 --
 
-  INSERT INTO `student` VALUES('1', 'Madushan G.LN.A.M', '2014-08-05', 1, 1, 1, 'Negomobo', 11, 'A', 'Blue', 0);
-  INSERT INTO `student` VALUES('3', 'Isuru l.k', '2014-08-14', 1, 1, 2, 'negmbo', 11, 'A', 'Madura', 0);
-  INSERT INTO `student` VALUES('3680', 'Alimudeen M.Y', '2011-11-22', 5, 5, 1, 'Here', 7, 'B', 'Blue', 0);
-
+  INSERT INTO `student` (`AdmissionNo`, `NameWithInitials`, `DateOfBirth`, `Nationality_Race`, `Religion`, `Medium`, `Address`, `Grade`, `Class`, `House`, `isDeleted`) VALUES
+    ('1', 'Madusha', '2000-12-12', 1, 1, 1, 'Here', 12, 'B', 'Blue', 0),
+    ('12325', 'B.T.M Mendia', '1993-12-01', 1, 1, 1, 'Moratuwa', 11, 'A', 'Shantha', 0),
+    ('12345', 'J.A.I Jayakody', '1993-12-31', 1, 1, 1, 'Colombo', 11, 'A', 'Surya', 0),
+    ('2', 'Peiris M.S.E', '1993-09-03', 1, 1, 1, 'kolpity', 11, 'C', 'Green', 0),
+    ('23247', 'Sanchayan Balayan', '1991-01-01', 1, 1, 1, 'Wellawattha', 11, 'B', 'Surya', 0),
+    ('23415', 'Upeka tisser', '1990-12-23', 1, 1, 1, 'Wadduwa', 11, 'B', 'Surya', 0),
+    ('24242', 'Yazdaan Mohamed', '1995-12-30', 4, 3, 1, 'Nugegoda', 11, 'B', 'Shantha', 0),
+    ('3', 'jaya', '1993-01-21', 1, 1, 1, 'kolpity', 11, 'A', 'Blue', 0),
+    ('32424', 'sahan tissera', '1991-12-02', 1, 1, 1, 'Angoda', 11, 'B', 'Shantha', 0),
+    ('43435', 'Venusha Ranaviraj', '1993-12-21', 1, 1, 1, 'Ganemulla', 11, 'A', 'veera', 0),
+    ('43536', 'Dulip Rathnayaka', '1991-12-31', 1, 1, 1, 'Kottawa', 11, 'A', 'Su', 0),
+    ('43568', 'M.C Liyanage', '1994-12-31', 1, 1, 1, 'Borella', 11, 'B', 'veera', 0),
+    ('45678', 'Janith Heshan', '1989-12-31', 1, 1, 1, 'Rajagiriya', 11, 'A', 'Surya', 0),
+    ('54645', 'Darsha Fonseka', '1989-12-31', 1, 1, 1, 'kolpity', 11, 'B', 'Methta', 0),
+    ('54646', 'Devni Indula', '1991-11-28', 1, 1, 1, 'Panadura', 11, 'B', 'Surya', 0),
+    ('64558', 'Niruthi Yogalingam', '1995-12-30', 1, 1, 1, 'negombo', 11, 'B', 'Shantha', 0),
+    ('65578', ' Sampath Jayasundara', '1991-12-01', 1, 1, 1, 'negombo', 11, 'A', 'Methta', 0),
+    ('65758', 'Ashan Asela', '2005-01-31', 1, 1, 1, 'Dehiwala', 11, 'B', 'Surya', 0),
+    ('65784', 'Mevanka Roshali', '1993-11-30', 1, 1, 1, 'Dehiwala', 11, 'A', 'veera', 0),
+    ('75638', 'Jane Arathy', '1993-11-29', 1, 1, 1, 'Kotahena', 11, 'B', 'Methta', 0),
+    ('75857', 'Gihan Jayawardena', '1988-12-31', 1, 1, 1, 'kolpity', 11, 'A', 'Methta', 0),
+    ('76954', 'Raneesha Peiries', '1994-12-31', 1, 1, 1, 'Wellawattha', 11, 'A', 'Shantha', 0);
 -- --------------------------------------------------------
 
 --
