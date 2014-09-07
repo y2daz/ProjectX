@@ -32,7 +32,7 @@
         }
     }
 
-    if(isset($_POST["approve"])) //Yazdaan, this is ugly, doesn't work and puts DB logic in the not-DB file. Fix fix.
+    if(isset($_POST["approve"]))
     {
         $Principal = null;
 
