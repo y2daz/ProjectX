@@ -847,7 +847,7 @@ function getEventTransactions($eventid)
         return false;
     }
 
-    function updateStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
+    function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
     {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -855,20 +855,35 @@ function getEventTransactions($eventid)
         if ($mysqli->connect_errno) {
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
-        if ($stmt = $mysqli->prepare("UPDATE staff SET staffID, NamewithInitials=?, DateofBirth=?, Gender=?, NationalityRace=?, Religion=?, $CivilStatus=?,$NICNumber=?, $MailDeliveryAddress=?, $ContactNumber=?, $DateAppointedasTeacherPrincipal=?, $DatejoinedthisSchool=?, $EmploymentStatus=?,$Medium=?, $PositioninSchool=?, $Section=?, $SubjectMostTaught=?, $SubjectSecondMostTaught=?, $ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE staffID;"))
+        if ($stmtCheck = $mysqli->prepare("SELECT * FROM staff WHERE $staffID=? ;"))
         {
-            $isdeleted = 0;
-            $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $isdeleted);
+            $stmtCheck -> bind_param("s", $AdmissionNo);
+            $stmtCheck -> execute();
+            $result = $stmtCheck->get_result();
 
-            if ($stmt->execute())
+            if ($result -> num_rows == 1)
             {
-                $stmt->close();
-                $mysqli->close();
-                return 2; //Updated old classroom
+
+                if ($stmt = $mysqli->prepare("UPDATE staff SET staffID, NamewithInitials=?, DateofBirth=?, Gender=?, NationalityRace=?, Religion=?, $CivilStatus=?,$NICNumber=?, $MailDeliveryAddress=?, $ContactNumber=?, $DateAppointedasTeacherPrincipal=?, $DatejoinedthisSchool=?, $EmploymentStatus=?,$Medium=?, $PositioninSchool=?, $Section=?, $SubjectMostTaught=?, $SubjectSecondMostTaught=?, $ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE staffID;"))
+                {
+                    $isdeleted = 0;
+                    $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $isdeleted);
+
+                    if ($stmt->execute())
+                    {
+                        $stmt->close();
+                        $mysqli->close();
+                        return true;
+                    }
+                    $stmt->close();
+                }
             }
+
+            $stmtCheck->close();
+
         }
-
-
+        $mysqli->close();
+        return false;
     }
 
     function getStaffMember($StaffID)

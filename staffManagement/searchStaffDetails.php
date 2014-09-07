@@ -16,102 +16,15 @@ require_once(THISROOT . "/common.php");
 
 
 ob_start();
+$currentStaffMembers="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
-    $operation = updateStaffMember($_POST["staffID"], strtoupper($_POST["NamewithInitials"]), $_POST["DateofBirth"], strtoupper($_POST["Gender"]), ($_POST["NationalityRace"]), ($_POST["Religion"]),($_POST["CivilStatus"]),strtoupper($_POST["NICNumber"]), strtoupper($_POST["MailDeliveryAddress"]), $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], strtoupper($_POST["EmploymentStatus"]),strtoupper($_POST["Medium"]), strtoupper($_POST["PositioninSchool"]), strtoupper($_POST["Section"]), strtoupper($_POST["SubjectMostTaught"]), $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
+    $operation = Updatestaff($_POST["staffID"], strtoupper($_POST["NamewithInitials"]), $_POST["DateofBirth"], strtoupper($_POST["Gender"]), ($_POST["NationalityRace"]), ($_POST["Religion"]),($_POST["CivilStatus"]),strtoupper($_POST["NICNumber"]), strtoupper($_POST["MailDeliveryAddress"]), $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], strtoupper($_POST["EmploymentStatus"]),strtoupper($_POST["Medium"]), strtoupper($_POST["PositioninSchool"]), strtoupper($_POST["Section"]), strtoupper($_POST["SubjectMostTaught"]), $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
 
-    if ($operation == 1)
+    if ($operation == true)
     {
-        sendNotification("Name with Initials successfully updated.");
-    }
-    elseif ($operation == 2)
-    {
-        sendNotification("Date of Birth successfully updated.");
-    }
-    elseif ($operation == 3)
-    {
-        sendNotification("Gender successfully updated.");
-    }
-    elseif ($operation == 4)
-    {
-        sendNotification("Nationality/Race successfully updated.");
-    }
-    elseif ($operation == 5)
-    {
-        sendNotification("Religion successfully updated.");
-    }
-    elseif ($operation == 6)
-    {
-        sendNotification("CivilStatus successfully updated.");
-    }
-    elseif ($operation == 7)
-    {
-        sendNotification("NIC number successfully updated.");
-    }
-    elseif ($operation == 8)
-    {
-        sendNotification("Mail Delivery Address successfully updated.");
-    }
-    elseif ($operation == 9)
-    {
-        sendNotification("Contact number successfully updated.");
-    }
-    elseif ($operation == 10)
-    {
-        sendNotification("Date Appointed as Teacher/principal successfully updated.");
-    }
-    elseif ($operation == 11 )
-    {
-        sendNotification("Date joined this School successfully updated.");
-    }
-    elseif ($operation == 12)
-    {
-        sendNotification("Employement Status successfully updated.");
-    }
-    elseif ($operation == 13)
-    {
-        sendNotification("Medium successfully updated.");
-    }
-    elseif ($operation == 14)
-    {
-        sendNotification("Position in school successfully updated.");
-    }
-    elseif ($operation == 15)
-    {
-        sendNotification("Section successfully updated.");
-    }
-    elseif ($operation == 16)
-    {
-        sendNotification("Subject Most taught successfully updated.");
-    }
-    elseif ($operation == 17)
-    {
-        sendNotification("Subject Second Most taught successfully updated.");
-    }
-    elseif ($operation == 18)
-    {
-        sendNotification("Service Grade successfully updated.");
-    }
-    elseif ($operation == 19)
-    {
-        sendNotification("Salary  successfully updated.");
-    }
-    elseif ($operation == 20)
-    {
-        sendNotification("Subject Most taught successfully updated.");
-    }
-    elseif ($operation == 21)
-    {
-        sendNotification("Highest Educational Qualification successfully updated.");
-    }
-    elseif ($operation == 22)
-    {
-        sendNotification("Highest Professional Qualification successfully updated.");
-    }
-    elseif ($operation == 23)
-    {
-        sendNotification("Course of Study successfully updated.");
+        sendNotification("Staff Details successfully updated.");
     }
     else
     {
