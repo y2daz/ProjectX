@@ -38,9 +38,32 @@
         }
     }
 
-    if(isset($_POST["GetLeaveData"]))
-    {
-        $result = getLeaveData($_POST["staffid"]);
+//    if(isset($_POST["GetLeaveData"]))
+//    {
+//        $result = getLeaveData($_POST["staffid"]);
+//
+//        foreach($result as $row)
+//        {
+//            $OfficialLeave = $row[0];
+//            $MaternityLeave = $row[1];
+//            $OtherLeave = $row[2];
+//        }
+//    }
+//    else
+//    {
+//        $OfficialLeave = "";
+//        $MaternityLeave = "";
+//        $OtherLeave = "";
+//    }
+
+    $OfficialLeave = "";
+    $MaternityLeave = "";
+    $OtherLeave = "";
+
+
+    if (isFilled($_POST["newStaffID"])){
+//        echo $_POST["newStaffID"];
+        $result = getLeaveData($_POST["newStaffID"]);
 
         foreach($result as $row)
         {
@@ -48,12 +71,19 @@
             $MaternityLeave = $row[1];
             $OtherLeave = $row[2];
         }
-    }
-    else
-    {
-        $OfficialLeave = "";
-        $MaternityLeave = "";
-        $OtherLeave = "";
+
+        $staffIdVal = $_POST["newStaffID"];
+        $startDateVal = $_POST["startDate"];
+        $endDateVal = $_POST["endDate"];
+        $leaveTypeVal = $_POST["leaveType"];
+        $otherReasonsVal = $_POST["otherReasons"];
+
+    }else{
+        $staffIdVal = "";
+        $startDateVal = "";
+        $endDateVal = "";
+        $leaveTypeVal = "";
+        $otherReasonsVal = "";
     }
 
     /*
@@ -137,6 +167,7 @@
                 height:30px;
                 padding:5px;
                 text-align: left;
+                min-width: 30px;
             }
 
             .insert th
@@ -165,13 +196,31 @@
 
         </style>
 
-        <script src="leave.js">
+        <script>
 
-            function selectedvalue(data)
-            {
+//            function selectedvalue(data)
+//            {
+//                document.getElementById("check").value = data.value;
+//            }
 
-                document.getElementById("check").value = data.value;
-            }
+
+            $(document).ready(function() {
+
+                $("#StaffID").on("blur", function(){
+//                   alert( $(this).val() );
+                    var staffId = $(this).val();
+                    var startDate = $( "[name='startdate']").val();
+                    var endDate = $( "[name='enddate']" ).val();
+                    var leaveType = $( "[name='leavetype']" ).val();
+                    var otherReasons = $( "[name='otherreasons']" ).val();
+
+//                    alert( staffId + "_" + startDate + "_" + endDate + "_" + leaveType + "_" + otherReasons);
+                    var params = {"newStaffID" : staffId, "startDate" : startDate, "endDate" : endDate, "leaveType" : leaveType, "otherReasons" : otherReasons};
+                    post(document.URL, params, "post");
+                });
+
+            });
+
 
         </script>
 
@@ -189,34 +238,28 @@
 
                     <tr>
                         <td><?php echo $staffid ?></td>
-                        <td><input type="text" id="StaffID" name="staffid" value="" required="true"/></td>
+                        <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true"/></td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input type="date" name="startdate" required="true"/></td>
+                        <td><input type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" /></td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input type="date" name="enddate" required="true"/></td>
+                        <td><input type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" /></td>
                     </tr>
                     <tr>
                         <td><?php echo $leavetype ?></td>
-                        <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
-                                <option value="1"><?php echo $officialleavecombo ?></option>
-                                <option value="2"><?php echo $maternityleavecombo ?></option>
-                                <option value="3"><?php echo $otherleavecombo ?></option>
+                        <td><select name="leavetype" required="true" >
+                                <option value="1" selected="<?php echo ($leaveTypeVal == 1? "selected": ""); ?>"><?php echo $officialleavecombo ?></option>
+                                <option value="2" selected="<?php echo ($leaveTypeVal == 2? "selected": ""); ?>"><?php echo $maternityleavecombo ?></option>
+                                <option value="3" selected="<?php echo ($leaveTypeVal == 3? "selected": ""); ?>"><?php echo $otherleavecombo ?></option>
                             </select>
                         </td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $otherreasons ?></td>
-                        <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
+                        <td><textarea name="otherreasons" rows="3" cols="25" draggable="false" style="resize:none"><?php echo $otherReasonsVal ?></textarea></td>
                     </tr>
 
                 </table>

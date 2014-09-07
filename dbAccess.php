@@ -837,6 +837,7 @@ function getEventTransactions($eventid)
                         $stmt->close();
                         $mysqli->close();
                         insertNewTimetable($staffID);
+                        insertNewLeaveData($staffID);
                         return true;
                     }
                 }
@@ -1255,6 +1256,33 @@ function getEventTransactions($eventid)
 
     }
 
+    function insertNewLeaveData($staffID){
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = NULL;
+
+        if($mysqli->connect_errno)
+        {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
+        }
+
+        $noOfficialLeave = 15;
+        $noMaternityLeave = 90;
+        $noOtherLeave = 15;
+
+        if($stmt = $mysqli->prepare("INSERT INTO LeaveData (StaffID, OfficialLeave, MaternityLeave, OtherLeave) VALUES ( ?, ?, ?, ? );"))
+        {
+            $stmt->bind_param("siii", $staffID, $noOfficialLeave, $noMaternityLeave, $noOtherLeave);
+            $stmt->execute();
+
+            $stmt->close();
+        }
+
+        $mysqli->close();
+    }
+
     function getLeaveData($StaffID)
     {
         $dbObj = new dbConnect();
@@ -1267,7 +1295,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
-        if($stmt = $mysqli->prepare("SELECT OfficialLeave, MaternityLeave, OtherLeave FROM leavedata WHERE StaffID = ?"))
+        if($stmt = $mysqli->prepare("SELECT OfficialLeave, MaternityLeave, OtherLeave FROM LeaveData WHERE StaffID = ?"))
         {
             $stmt->bind_param("s", $StaffID);
 
@@ -1397,7 +1425,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if($stmt = $mysqli->prepare("UPDATE applyleave l, leavedata a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+        if($stmt = $mysqli->prepare("UPDATE ApplyLeave l, leavedata a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
         {
             $ReviewedDate = date("Y-m-d");
 
@@ -1424,7 +1452,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
-        if($stmt = $mysqli->prepare("UPDATE applyleave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
+        if($stmt = $mysqli->prepare("UPDATE ApplyLeave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
         {
             $status = 2;
             $ReviewedDate = date("Y-m-d");
@@ -1544,6 +1572,33 @@ function insertAllTimetable()
     }
     $mysqli->close();
     return false;
-}*/
+}
 
+insertAllLeaveData();
 
+function insertAllLeaveData()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $noOfficialLeave = 15;
+    $noMaternityLeave = 90;
+    $noOtherLeave = 15;
+
+    if($stmt = $mysqli->prepare("INSERT INTO LeaveData (StaffID, OfficialLeave, MaternityLeave, OtherLeave) VALUES ( ?, ?, ?, ? );"))
+    {
+        for($staffID = 1; $staffID < 17; $staffID++){
+
+        $stmt->bind_param("siii", $staffID, $noOfficialLeave, $noMaternityLeave, $noOtherLeave);
+        $stmt->execute();
+
+        }
+    }
+    $stmt->close();
+    $mysqli->close();
+}
+*/
