@@ -7,8 +7,39 @@
  */
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
 
+if (isFilled($_POST["submit"])) {
+//    sendNotification("submited");
+    $prefixSub="subject_";
+    $prefixGrade="grade_";
+
+    $indexNo=$_POST["indexNo"];
+    $admissionNo=$_POST["admissionNo"];
+    $Year=$_POST["year"];
+
+    $subjectArr=array();
+    $gradeArr=array();
+
+    for($i=1;$i<=9;$i++){
+        $subjectArr[$i-1] = $_POST[ ($prefixSub . $i )];
+        $gradeArr[$i-1] = $_POST[ ($prefixGrade . $i )];
+
+    }
+
+    $operation = insertOLMarks($admissionNo,$indexNo,$Year,$subjectArr,$gradeArr);
+
+    if($operation==true){
+        sendNotification("Insert successful.");
+    }
+    else{
+        sendNotification("Error inserting marks.");
+    }
+
+
+
+}
 
 
 if($_COOKIE['language'] == 0)
@@ -17,7 +48,7 @@ if($_COOKIE['language'] == 0)
     $admissionnumber = "Admission Number";
     $year = "Year";
     $subject="Subject";
-    $grade="Garde";
+    $grade="Grade";
     $gceolresultssheet="G.C.E O/L Results Sheet";
     $submit="Submit";
     $reset="Reset";
@@ -68,14 +99,14 @@ else
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:200px;
+                left:250px;
                 top:40px;
             }
             input.button1 {
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:280px;
+                left:290px;
                 top:40px;
             }
         </style>
@@ -83,14 +114,16 @@ else
 
     <body>
         <h1><?php echo $gceolresultssheet ?></h1>
+
+        <form method="post">
         <table>
             <tr>
                 <td><?php echo $indexno ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input name="indexNo" type="text" value="" ></td>
                 <td><?php echo $admissionnumber ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input name="admissionNo" type="text" value="" ></td>
                 <td><?php echo $year ?></td>
-                <td><input type=text" value=""readonly></td>
+                <td><input name="year" type=text" value=""></td>
             </tr>
         </table>
 
@@ -98,12 +131,14 @@ else
 
         <table>
             <tr>
+                <th></th>
                 <th><?php echo $subject ?></th>
                 <th><?php echo $grade ?></th>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>1</td>
+                <td><input name="subject_1" type="text" value=""></td>
+                <td><select name="grade_1" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -114,8 +149,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>2</td>
+                <td><input name="subject_2" type="text" value=""></td>
+                <td><select name="grade_2" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -126,8 +162,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>3</td>
+                <td><input name="subject_3" type="text" value=""></td>
+                <td><select name="grade_3" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -138,8 +175,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>4</td>
+                <td><input name="subject_4" type="text" value=""></td>
+                <td><select name="grade_4" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -150,8 +188,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>5</td>
+                <td><input name="subject_5" type="text" value=""></td>
+                <td><select name="grade_5" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -162,8 +201,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>6</td>
+                <td><input name="subject_6" type="text" value=""></td>
+                <td><select name="grade_6" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -174,8 +214,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>7</td>
+                <td><input name="subject_7" type="text" value=""></td>
+                <td><select name="grade_7" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -186,8 +227,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>8</td>
+                <td><input name="subject_8" type="text" value=""></td>
+                <td><select name="grade_8" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -198,8 +240,9 @@ else
                 </td>
             </tr>
             <tr>
-                <td><input type="text" value=""readonly></td>
-                <td><select type="text" value="">
+                <td>9   </td>
+                <td><input name="subject_9" type="text" value="" ></td>
+                <td><select name="grade_9" type="text" value="">
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -216,9 +259,10 @@ else
 
             <tr>
                 <td><!--Blank td aligns the below buttons to the middle --></td>
-                <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
-                <td>  <input class="button1" type="reset"  value="<?php echo $reset ?>"></td>
+                <td><input name="submit" class="button" type="submit" value="<?php echo $submit ?>"></td>
+                <td> <input class="button1" type="reset"  value="<?php echo $reset ?>"></td>
             </tr>
+        </form>
 
 
     </body>

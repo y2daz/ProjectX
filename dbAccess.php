@@ -512,6 +512,132 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
         return false;
     }
 
+
+function insertManager( $eventId, $staffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("INSERT INTO EventManager values(?, ?, ?);"))
+    {
+
+
+        $stmt -> bind_param("isi",  $eventId, $staffID, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function insertTransaction($eventID, $tdate, $type, $amount, $description )
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("SELECT MAX(TransactionID)FROM Transaction where eventID = ?;" )){
+        $stmt -> bind_param("i", $eventID);
+        $stmt->execute();
+
+        $result = $stmt -> get_result();
+        $result = $result -> fetch_array();
+        $result = $result[0];
+        $result++;
+//            return "MANOJ LOOK HERE" . $result;
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Transaction (EventID, TransactionID, TransactionDate, TransactionType, Amount, Description, isDeleted) values(?, ?, ?, ?, ?)"))
+    {
+        $stmt -> bind_param("idifst",$eventID, $tdate, $amount, $description, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+
+function getEventlManagers($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select s.StaffID, s.NamewithInitials, s.ContactNumber  FROM Staff s RIGHT OUTER JOIN EventManager e on( e.StaffID = s.staffID) where e.eventid = ?"))
+    {
+        $stmt -> bind_param("s", $eventid);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getEventTransactions($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select TransactionID, TransactionDate, TransactionType, Amount, Description  FROM Transaction where eventId = ?"))
+    {
+        $stmt -> bind_param("s", $eventid);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+
     function getTimetable($staffId)
     {
         $dbObj = new dbConnect();
@@ -1320,6 +1446,71 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
 
         return false;
     }
+function insertOLMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO OLMarks (IndexNo, AdmissionNo,Year, Subject, Grade) VALUES(?, ?, ? ,?, ?)"))
+    {
+        $noRows = 0;
+        for($i=0;$i<9;$i++){
+            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i]);
+            $stmt->execute();
+            $noRows += $stmt->affected_rows;
+        }
+
+        $stmt->close();
+
+        if ($noRows != -9){
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
+
+function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO ALMarks (IndexNo, AdmissionNo,Year, Subject, Grade) VALUES(?, ?, ? ,?, ?)"))
+    {
+        $noRows = 0;
+        for($i=0;$i<3;$i++){
+            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i]);
+            $stmt->execute();
+            $noRows += $stmt->affected_rows;
+        }
+
+        $stmt->close();
+
+        if ($noRows != -3){
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
 
 /*insertAllTimetable();
 

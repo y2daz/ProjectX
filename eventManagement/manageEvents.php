@@ -8,7 +8,31 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
+
+$result = null;
+
+if (isFilled($_POST["manage"])){
+    $eventID = $_POST["eventID"];
+
+    if (isFilled($_POST["addManager"])){
+//       echo ($_POST["newManagerID"]);
+        $operation = insertManager($eventID, $_POST["newManagerID"]);
+
+        if ($operation == true){
+            sendNotification("Manager added");
+        }
+        else{
+            sendNotification("Error adding manager");
+        }
+
+    }
+
+}
+else{
+    header( 'Location: /eventManagement/eventList.php' ) ;
+}
 
 ?>
 <html>
@@ -29,13 +53,13 @@ ob_start();
             border:1px solid #005e77;
             border-collapse: collapse;
         }
-#transaction{
-    position: relative;
-    left:25px;
-    width:750px;
-    border:1px solid #005e77;
-    border-collapse: collapse;
-}
+        #transaction{
+            position: relative;
+            left:25px;
+            width:750px;
+            border:1px solid #005e77;
+            border-collapse: collapse;
+        }
         #Manager td{
             padding: 5px;
         }
@@ -69,7 +93,7 @@ ob_start();
         }
 
         #Manager #button4{
-           width:150px;
+           width:250px;
         }
 
         #transaction td{
@@ -106,7 +130,6 @@ ob_start();
 <?php
 $manageEvents = getLanguage("manageEvents ", $_COOKIE["language"]);
 $managerList = getLanguage("managerList", $_COOKIE["language"]);
-$eventid = getLanguage("eventid ", $_COOKIE["language"]);
 $managerName = getLanguage("managerName ", $_COOKIE["language"]);
 $contactNumber = getLanguage("contactNumber ", $_COOKIE["language"]);
 $delete = getLanguage("delete ", $_COOKIE["language"]);
@@ -122,17 +145,21 @@ $description = getLanguage("description ", $_COOKIE["language"]);
 $trecieved = getLanguage("trecieved ", $_COOKIE["language"]);
 $tspent = getLanguage("tspent ", $_COOKIE["language"]);
 $staffID = getLanguage("staffID ", $_COOKIE["language"]);
+$addManager = getLanguage("addManager ", $_COOKIE["language"]);
+$addTransaction = getLanguage("addTransaction ", $_COOKIE["language"]);
+$printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
 ?>
 <body>
-
-<form class="manage">
 
     <div  id="general" style="">
 
         <h1><?php echo $manageEvents ?></h1>
 
         <h3><?php echo $managerList ?></h3>
+        <form method="post">
+            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+            <input name="manage" value="Manage" hidden="hidden" />
         <table id="Manager">
             <tr>
 
@@ -144,13 +171,39 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
 
                 <!--<span class="table" style="width:570px;height:auto">-->
             </tr>
+            <?php
+            $result = getEventlManagers($_POST["eventID"]);
+            $i = 1;
 
+            if ($result == null)
+            {
+                echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
+            }
+            else
+            {
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                    echo $top;
+                    echo "$row[0]";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>$row[2]</td>";
+//                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                    echo "</tr>";
+
+                    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+                    //                            post(document.URL, params, "post");
+                }
+            }
+            ?>
+
+<!--
             <tr>
                 <td>10</td>
                 <td>Amritha</td>
                 <td>0756489326</td>
                 <td>
-                    <input type="button" name=<?php echo $delete ?> id="button1" value=<?php echo $delete ?> />
+                    <input type="button" name=<?php /*echo $delete */?> id="button1" value="<?php /*echo $delete */?>" />
                 </td>
             </tr>
 
@@ -159,7 +212,7 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
                 <td>Madusha </td>
                 <td>0711701236</td>
                 <td>
-                    <input type="button" name="button" id="button2" value=<?php echo $delete ?> />
+                    <input type="button" name="button" id="button2" value="<?php /*echo $delete */?>" />
                 </td>
             </tr>
             <tr>
@@ -167,26 +220,26 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
                 <td>niruthi</td>
                 <td>0112968756</td>
                 <td>
-                    <input type="button" name="button" id="button3" value=<?php echo $delete ?> />
+                    <input type="button" name="button" id="button3" value="<?php /*echo $delete */?>" />
                 </td>
-            </tr>
+            </tr>-->
             <tr>
-                <td><input type="text" name="textbox" value=""></td>
-                <td><input type="text" name="textbox" value=""></td>
-                <td><input type="text" name="textbox" value=""></td>
-                <td>
-                    <input type="button" name="button" id="button4" value="Add New Manager" />
+                <td><input type="text" name="newManagerID" value=""></td>
+                <td >
+                    <input type="submit" name="addManager" id="button4" value="<?php echo $addManager ?>" />
                 </td>
+                <td></td>
+                <td></td>
             </tr>
         </table>
-
+           </form>
     </div>
 
 
     <h3><?php echo $invitees ?></h3>
 
     <span><?php echo $noofInvitees ?> </span><span id="invitees"> 0</span> <br />
-    <input type="button" name="button" width = "150px" id="button9" value=<?php echo $viewInvitees ?>  onClick="window.location = 'newinviteeslist.php';"/>
+    <input type="button" name="button" width = "150px" id="button9" value="<?php echo $viewInvitees ?>"  onClick="window.location = 'newinviteeslist.php';"/>
 
 
 
@@ -197,6 +250,11 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
 
 
         <h3><?php echo $tlog ?></h3>
+
+        <form method="post">
+            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+            <input name="manage" value="Manage" hidden="hidden" />
+            <?php echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
         <table id="transaction">
             <tr>
                 <th id="id"><?php echo $tid ?></th>
@@ -244,16 +302,22 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
             <tr style="width:150px;height:30px" >
 
                 </td>
-                <td><input type="text" name="textbox1" value=""></td>
-                <td><input type="text" name="textbox2" value=""></td>
-                <td><input type="text" name="textbox3" value=""></td>
-                <td><input type="text" name="textbox4" value=""></td>
-                <td><input type="text" name="textbox1" value=""></td>
+                <td><input type="submit" name="button" id="button" value="<?php echo $addTransaction ?>" /></td>
+                <td><input type="text" name="date" value=""></td>
+                <td><select name="Type">
+
+                       <option value="0">Income</option>
+                        <option value="1">Expenditure</option>
+                </select></td>
+
+
+                <td><input type="text" name="Amount" value=""></td>
+                <td><input type="text" name="Description" value=""></td>
 
             </tr>
 
         </table>
-        <input type="submit" name="button" id="button" value="Add Transaction" />
+
     </div>
 
 
@@ -263,10 +327,10 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
     <span><?php echo $tspent ?></span><span id="totalspent"> 4000</span>
 
     <div>
-        <input type="button" name="button" id="button8" value="Print Transaction Report" style="position:relative; top:150px; left: 0px"/>
+        <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style="position:relative; top:150px; left: 0px; width:250px;"/>
     </div>
 
-</form>
+
 
 
 
