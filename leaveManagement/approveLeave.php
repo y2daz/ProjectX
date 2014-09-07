@@ -34,45 +34,9 @@
 
     if(isset($_POST["approve"])) //Yazdaan, this is ugly, doesn't work and puts DB logic in the not-DB file. Fix fix.
     {
-        $result = getLeaveData($_POST["staffid"]);
-
-        $startdate = $_POST["startdate"];
-        $enddate = $_POST["enddate"];
-
-        $now = strtotime($startdate); // or your date as well
-        $your_date = strtotime($enddate);
-        $datediff = $your_date - $now;
-
-        $datediff = floor($datediff/(60*60*24));
-
-        $datediff = abs($datediff);
-
-        if(isFilled($result))
-        {
-            $OfficialLeave = $result[0];
-            $MaternityLeave = $result[1];
-            $OtherLeave = $result[2];
-        }
-
-        $leavetype = $_POST["leavetype"];
-
-        if($leavetype == "Official Leave")
-        {
-            $OfficialLeave = $OfficialLeave - $datediff;
-        }
-        else if ($leavetype == "Maternity Leave")
-        {
-            $MaternityLeave = $MaternityLeave - $datediff;
-
-        }
-        else if ($leavetype == "Other Leave")
-        {
-            $OtherLeave = $OtherLeave - $datediff;
-        }
-
         $Principal = null;
 
-        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $Principal, $OfficialLeave, $MaternityLeave, $OtherLeave);
+        $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $Principal);
 
         $success = "Leave Approved!";
         $fail = "Approval Failed!";

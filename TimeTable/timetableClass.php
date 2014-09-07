@@ -35,19 +35,31 @@ class Timetable {
         }
     }
 
-    public function setTimetable( $array ){
-//Store html timetable to object
+//    public function setTimetable( $GradeArr, $ClassArr, $SubjectArr ){
+//
+//        for($i = 0; $i < 40; $i++){
+//            $this -> insertSLot($i, $GradeArr[$i], $ClassArr[$i], $SubjectArr[$i]);
+//            echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
+//        }
+//    }
 
+    public function updateTimetableToDB(){ //Store object in db
+        $subjectArr = null;
+        $gradeArr = null;
+        $classArr = null;
+
+        for($i = 0; $i < 40; $i++){
+            $subjectArr[$i] = $this->slot[$i]->Subject;
+            $gradeArr[$i] = $this->slot[$i]->Grade;
+            $classArr[$i] = $this->slot[$i]->Class;
+
+//            echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
+        }
+
+        return updateTimetable($this->staffId, $gradeArr, $classArr, $subjectArr);
     }
 
-    public function dbGet(){
-//STore timetable from db to object
-    }
-    public function dbSet(){
-//Store object in db
-    }
-
-    private function insertSLot($number, $grade, $class, $subject)
+    public function insertSLot($number, $grade, $class, $subject)
     {
         $this->slot[$number]->Grade = $grade;
         $this->slot[$number]->Class = $class;

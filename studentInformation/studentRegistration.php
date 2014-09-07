@@ -24,11 +24,10 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
     if(is_numeric($_POST["admissionID"]))
     {
-        $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"],$_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
+        $operation = insertStudent($_POST["admissionID"], $_POST["name"], $_POST["dateOfBirth"], $_POST["race"], $_POST["religion"], $_POST["medium"], $_POST["address"], $_POST["grade"], $_POST["class"], $_POST["house"] );
 
         if($operation)
         {
-            //sendNotification("Submitted Successfully!");
             header("Location: parentDetailsForm.php");
             die();
         }
@@ -57,44 +56,53 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
             <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
             <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-            #general{
-                /*width:50%;*/
-                height:auto;
+            h1{
                 text-align: center;
             }
 
-            .general th{
-                align:center;
-                color:white;
-                background-color: #005e77;
-                height:20px;
-                padding:5px;
-                min-width: 350px;
+            .insert
+            {
+                position:absolute;
+                left:40px;
+                top: 100px;
             }
 
-            .general td {
-                padding:7px;
+
+            .insert2 th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left;
             }
-            input.button1 {
+
+            .insert th
+            {
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+                text-align: left;
+            ;
+            }
+
+            .insert td
+            {
+                padding:10px;
+            }
+
+            .insert input{
+                font-weight:bold;
+                font-size:15px;
+            }
+
+            .insert input.button{
                 position:relative;
                 font-weight:bold;
                 font-size:15px;
-                left:50px;
-                top:10px;
-            }
-            input.button2 {
-                position:relative;
-                font-weight:bold;
-                font-size:20px;
-                right:20px;
-                top:10px;
-            }
-            input.button3 {
-                position:relative;
-                font-weight:bold;
-                font-size:20px;
-                left:20px;
-                top:10px;
+                Right:-335px;
+                top:20px;
             }
 
 
@@ -108,8 +116,8 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
         </div>
 
 
-        <form method="Post">
-        <table class="general" cellspacing="0">
+        <form method="Post" class="insert">
+        <table  cellspacing="0">
             <tr><th>General Information</th><th></th></tr>
             <tr>
                 <td>Admission ID</td>
@@ -186,7 +194,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 //Change these to what you want
 $fullPageHeight = 1000;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Student Registration";
 //Only change above
 
 $pageContent = ob_get_contents();

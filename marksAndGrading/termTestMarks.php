@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 /**
  * Created by PhpStorm.
  * User: DR1215
@@ -9,6 +9,36 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
+
+if($_COOKIE['language'] == 0)
+{
+$termtestresultsform = "Term Test Details Form";
+$grade="Garde";
+$class = "Class";
+$teachername = "Teacher's Name";
+$subject="Subject";
+$year="Year";
+$term="Term";
+$submit="Submit";
+$reset="Reset";
+$mid="Mid";
+$final="Final";
+}
+else
+{
+
+    $term="වාරය";
+    $year = "වර්ෂය";
+    $subject="විෂය";
+    $grade="ශ්‍රේණිය";
+    $class="පංතිය";
+    $teachername="ගුරුවරයාගේ නම";
+    $termtestresultsform="වාර විභාග ප්‍රතිඵල විස්තර සටහන";
+    $submit="යොමු කරන්න";
+    $reset="නැවත පිහිටුවන්න";
+    $mid="මධ්‍ය";
+    $final="අවසන්";
+}
 ?>
 
 
@@ -25,20 +55,24 @@ ob_start();
         text-align: center;
     }
 
-    .insert, th, td {
+    table, th, td {
         border: 0px solid black;
 
     }
-    .insert th{
-        /*width: 1000px;*/
+    th{
+        width: 1000px;
         text-align:left;
     }
 
-    .insert td {
-        /*width: 10px;*/
+    td {
+        width: 10px;
         text-align:left;
-        padding: 2px 5px 2px 5px;;
     }
+
+    tr{
+        height: 20px;
+    }
+
 
 
     input.button {
@@ -63,15 +97,15 @@ ob_start();
 
 
 <body>
+<form action="termtestresults.php" method="post">
 
-<form method="POST"  action="termTestMarks.php">
-    <h1>Term Test Details Form</h1>
+    <h1><?php echo $termtestresultsform ?></h1>
 
 
 
 <table class="insert" cellspacing="0">
 <tr>
-    <td>Grade</td>
+    <td><?php echo $grade ?></td>
     <td><select type="text" value="" >
 
             <option>--</option>
@@ -90,45 +124,51 @@ ob_start();
             <option>13</option>
         </select></td>
 </tr>
-<tr class="alt">
-    <td>Class</td>
-    <td><input name="class" type="text" value="" required="true"></td>
+<tr>
+    <td><?php echo $class ?></td>
+    <td><input type="text" value=""  maxlength="2" required="true"></td>
 </tr>
 <tr>
-    <td>Teacher's ID</td>
-    <td><input name="staffID" type="text" value="" required="true"></td>
+    <td><?php echo $teachername ?></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
-<tr class="alt">
 <tr>
-    <td>Subject</td>
-    <td><input name="subject" type="text" value="" required="true"></td>
-</tr>
-<tr class="alt">
 <tr>
-    <td>Year</td>
-    <td><input name="year" type="text" value="" required="true"></td>
+    <td><?php echo $subject ?></td>
+    <td><input type="text" value="" required="true"></td>
 </tr>
-<tr class="alt">
-    <td>Term</td>
+<tr>
+<tr>
+    <td><?php echo $year ?></td>
+    <td><input type="text" value="" maxlength="4" required="true"></td>
+</tr>
+<tr>
+    <td><?php echo $term ?></td>
     <td>
-        <input type="radio" name="Term" value="Mid">Final
-        <input type="radio" name="Term" value="Final">Mid
+        <input type="radio" name="Term" value="Mid"><?php echo $mid ?>
+        <input type="radio" name="Term" value="Final"><?php echo $final ?>
 
 
     </td>
 </tr>
 
-<br />
+
 
 </table>
 
-    <input class="button" type="submit" value="Submit">
 
-    <input class="button1" type="reset" value="Reset">
+
+    <input class="button" type="submit" value="<?php echo $submit ?>">
+
+    <input class="button1" type="reset" value="<?php echo $reset ?>">
 
 </form>
 
 
+
+
+
+</tr>
 
 </body>
 </html>
