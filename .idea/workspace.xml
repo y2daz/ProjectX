@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/studentInformation/SearchStudent.php" afterPath="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
+    <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="Finish approve leave">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -26,96 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <file leaf-file-name="OldsearchStaffDetails.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/staffManagement/OldsearchStaffDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="542" column="42" selection-start="15768" selection-end="15768" vertical-scroll-proportion="3.2692308" vertical-offset="9214" max-vertical-offset="22100">
-              <folding>
-                <marker date="1410031384349" expanded="true" signature="512:596" placeholder="Select userP..User..." />
-                <marker date="1410031384349" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
-                <marker date="1410031384349" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
-                <marker date="1410031384349" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
-                <marker date="1410031384349" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
-                <marker date="1410031384349" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
-                <marker date="1410031384349" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
-                <marker date="1410031384349" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
-                <marker date="1410031384349" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="9673:9802" placeholder="Select Admis..Student..." />
-                <marker date="1410031384349" expanded="true" signature="10495:10536" placeholder="SELECT * FRO..Student..." />
-                <marker date="1410031384349" expanded="true" signature="10717:10898" placeholder="UPDATE Stude..." />
-                <marker date="1410031384349" expanded="true" signature="11697:11800" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="12673:12781" placeholder="UPDATE Timet..." />
-                <marker date="1410031384349" expanded="true" signature="13673:13790" placeholder="Select Grade..." />
-                <marker date="1410031384349" expanded="true" signature="14473:14553" placeholder="Select userE..User..." />
-                <marker date="1410031384349" expanded="true" signature="15195:15310" placeholder="Select Admis..User..." />
-                <marker date="1410031384349" expanded="true" signature="15955:16016" placeholder="Select * FRO..Student..." />
-                <marker date="1410031384349" expanded="true" signature="16739:16807" placeholder="SELECT Value..LabelLanguage..." />
-                <marker date="1410031384349" expanded="true" signature="17555:17616" placeholder="UPDATE User ..." />
-                <marker date="1410031384349" expanded="true" signature="18730:18826" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="20396:20871" placeholder="UPDATE staff..." />
-                <marker date="1410031384349" expanded="true" signature="21906:21972" placeholder="Select * FRO..Staff..." />
-                <marker date="1410031384349" expanded="true" signature="22667:22711" placeholder="UPDATE Staff..." />
-                <marker date="1410031384349" expanded="true" signature="22908:22965" placeholder="UPDATE Class..." />
-                <marker date="1410031384349" expanded="true" signature="23176:23228" placeholder="UPDATE Timet..." />
-                <marker date="1410031384349" expanded="true" signature="24061:24186" placeholder="Select Staff..Staff..." />
-                <marker date="1410031384349" expanded="true" signature="24876:24932" placeholder="SELECT * FRO..ClassInformation..." />
-                <marker date="1410031384349" expanded="true" signature="25193:25240" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="25722:25798" placeholder="UPDATE Class..." />
-                <marker date="1410031384349" expanded="true" signature="26592:26774" placeholder="Select ci.Gr..ClassInformation..." />
-                <marker date="1410031384349" expanded="true" signature="27492:27550" placeholder="SELECT MAX(C..Staff..." />
-                <marker date="1410031384349" expanded="true" signature="28303:28409" placeholder="Select Staff..Staff..." />
-                <marker date="1410031384349" expanded="true" signature="29041:29122" placeholder="UPDATE Class..." />
-                <marker date="1410031384349" expanded="true" signature="29864:29907" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="31352:31411" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="31796:31844" placeholder="SELECT * FRO..LeaveData..." />
-                <marker date="1410031384349" expanded="true" signature="32197:32241" placeholder="INSERT INTO ..." />
-                <marker date="1410031384349" expanded="true" signature="33108:33189" placeholder="SELECT Offic..leavedata..." />
-                <marker date="1410031384349" expanded="true" signature="33875:34089" placeholder="Select l.Sta..ApplyLeave..." />
-                <marker date="1410031384349" expanded="true" signature="34750:34969" placeholder="Select l.Sta..ApplyLeave..." />
-                <marker date="1410031384349" expanded="true" signature="36596:36804" placeholder="UPDATE apply..." />
-                <marker date="1410031384349" expanded="true" signature="37494:37586" placeholder="UPDATE apply..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClassroomInformation.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/staffManagement/ClassroomInformation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3332">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parentDetailsForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentInformation/parentDetailsForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="21" selection-start="314" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2890">
-              <folding>
-                <marker date="1409988539070" expanded="true" signature="807:885" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="818:885" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="848:885" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="2377:2461" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="2681:2766" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="2844:2921" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="3003:3081" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="3293:3367" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="3446:3526" placeholder="..." />
-                <marker date="1409988539070" expanded="true" signature="3607:3664" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applyForLeave.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="0" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4165">
+            <state line="36" column="0" selection-start="657" selection-end="657" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="6817">
               <folding />
             </state>
           </provider>
@@ -124,54 +37,93 @@
       <file leaf-file-name="staffRegistration.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1047" column="0" selection-start="49941" selection-end="49941" vertical-scroll-proportion="0.0" vertical-offset="17799" max-vertical-offset="18870">
+            <state line="19" column="6" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="18870">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="searchStaffDetails.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="approveLeave.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="0" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="5389">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClassroomInformation.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/staffManagement/ClassroomInformation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="174" column="17" selection-start="4376" selection-end="4376" vertical-scroll-proportion="0.0" vertical-offset="2958" max-vertical-offset="3332">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="searchStaffDetails.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="8721">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchStudent.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="186" column="33" selection-start="4438" selection-end="4438" vertical-scroll-proportion="0.5689655" vertical-offset="2865" max-vertical-offset="5831">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="studentRegistration.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentInformation/studentRegistration.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="9" selection-start="898" selection-end="898" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="3536">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="eventList.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="115" column="23" selection-start="3852" selection-end="3852" vertical-scroll-proportion="0.0" vertical-offset="1955" max-vertical-offset="2839">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="manaDB.sql" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manaDB.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="26" selection-start="365" selection-end="366" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="31348">
+            <state line="119" column="1" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.94066316" vertical-offset="1484" max-vertical-offset="8721">
               <folding>
-                <marker date="1409976059571" expanded="true" signature="92288:92305" placeholder="ALTER TABLE `timetable`..." />
+                <marker date="1410011422816" expanded="true" signature="6101:7396" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="6108:7300" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="7307:7396" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="7402:8132" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="7438:7463" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="7467:7594" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="7750:7779" placeholder="..." />
+                <marker date="1410011422816" expanded="true" signature="8165:9534" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="520" column="4" selection-start="16932" selection-end="16932" vertical-scroll-proportion="-19.153847" vertical-offset="8257" max-vertical-offset="18360">
+              <folding>
+                <marker date="1410014652959" expanded="true" signature="512:596" placeholder="Select userP..User..." />
+                <marker date="1410014652959" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
+                <marker date="1410014652959" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
+                <marker date="1410014652959" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
+                <marker date="1410014652959" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
+                <marker date="1410014652959" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
+                <marker date="1410014652959" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
+                <marker date="1410014652959" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
+                <marker date="1410014652959" expanded="true" signature="8065:8124" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="8835:8938" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="9770:9887" placeholder="Select Grade..." />
+                <marker date="1410014652959" expanded="true" signature="10570:10650" placeholder="Select userE..User..." />
+                <marker date="1410014652959" expanded="true" signature="11292:11407" placeholder="Select Admis..User..." />
+                <marker date="1410014652959" expanded="true" signature="12076:12144" placeholder="SELECT Value..LabelLanguage..." />
+                <marker date="1410014652959" expanded="true" signature="12892:12953" placeholder="UPDATE User ..." />
+                <marker date="1410014652959" expanded="true" signature="14067:14163" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="15733:16208" placeholder="UPDATE staff..." />
+                <marker date="1410014652959" expanded="true" signature="17243:17309" placeholder="Select * FRO..Staff..." />
+                <marker date="1410014652959" expanded="true" signature="18019:18063" placeholder="UPDATE Staff..." />
+                <marker date="1410014652959" expanded="true" signature="18260:18321" placeholder="UPDATE Class..." />
+                <marker date="1410014652959" expanded="true" signature="19101:19226" placeholder="Select Staff..Staff..." />
+                <marker date="1410014652959" expanded="true" signature="19916:19972" placeholder="SELECT * FRO..ClassInformation..." />
+                <marker date="1410014652959" expanded="true" signature="20233:20280" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="20762:20838" placeholder="UPDATE Class..." />
+                <marker date="1410014652959" expanded="true" signature="21632:21814" placeholder="Select ci.Gr..ClassInformation..." />
+                <marker date="1410014652959" expanded="true" signature="22532:22590" placeholder="SELECT MAX(C..Staff..." />
+                <marker date="1410014652959" expanded="true" signature="23343:23449" placeholder="Select Staff..Staff..." />
+                <marker date="1410014652959" expanded="true" signature="24080:24161" placeholder="UPDATE Class..." />
+                <marker date="1410014652959" expanded="true" signature="24903:24946" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="26391:26450" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="26835:26883" placeholder="SELECT * FRO..LeaveData..." />
+                <marker date="1410014652959" expanded="true" signature="27236:27280" placeholder="INSERT INTO ..." />
+                <marker date="1410014652959" expanded="true" signature="28128:28216" placeholder="SELECT Offic..LeaveData..." />
+                <marker date="1410014652959" expanded="true" signature="28686:28900" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410014652959" expanded="true" signature="29585:29804" placeholder="Select l.Sta..ApplyLeave..." />
+                <marker date="1410014652959" expanded="true" signature="30548:30756" placeholder="UPDATE apply..." />
+                <marker date="1410014652959" expanded="true" signature="31446:31538" placeholder="UPDATE apply..." />
               </folding>
             </state>
           </provider>
@@ -210,42 +162,39 @@
         <option value="$PROJECT_DIR$/leaveManagement/ApplyForLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/newApplyForLeave.php" />
         <option value="$PROJECT_DIR$/leaveManagement/applyForLeave.php" />
-        <option value="$PROJECT_DIR$/leaveManagement/approveLeave.php" />
+        <option value="$PROJECT_DIR$/attendance/markAttendance.php" />
         <option value="$PROJECT_DIR$/leaveManagement/newApproveLeave.php" />
         <option value="$PROJECT_DIR$/Template.php" />
         <option value="$PROJECT_DIR$/login.php" />
         <option value="$PROJECT_DIR$/administration/manageUsers.php" />
         <option value="$PROJECT_DIR$/manoj.txt" />
         <option value="$PROJECT_DIR$/template.php" />
-        <option value="$PROJECT_DIR$/staffManagement/template.php" />
-        <option value="$PROJECT_DIR$/attendance/oldviewAttendance.php" />
-        <option value="$PROJECT_DIR$/studentInformation/studentinformation.js" />
-        <option value="$PROJECT_DIR$/administration/yearPlan.php" />
-        <option value="$PROJECT_DIR$/attendance/calander.php" />
-        <option value="$PROJECT_DIR$/attendance/studentwise.php" />
-        <option value="$PROJECT_DIR$/attendance/markAttendance.php" />
-        <option value="$PROJECT_DIR$/attendance/classwise.php" />
-        <option value="$PROJECT_DIR$/attendance/viewAttendance.php" />
-        <option value="$PROJECT_DIR$/TimeTable/timetable.css" />
-        <option value="$PROJECT_DIR$/manaDB.sql" />
         <option value="$PROJECT_DIR$/Master.php" />
-        <option value="$PROJECT_DIR$/TimeTable/timetable.php" />
-        <option value="$PROJECT_DIR$/TimeTable/timetableClass.php" />
+        <option value="$PROJECT_DIR$/attendance/classwise.php" />
+        <option value="$PROJECT_DIR$/staffManagement/template.php" />
+        <option value="$PROJECT_DIR$/enterData.sql" />
+        <option value="$PROJECT_DIR$/staffManagement/searchViewStaffDetailsnew.php" />
+        <option value="$PROJECT_DIR$/staffManagement/teacherAchievenment.php" />
+        <option value="$PROJECT_DIR$/staffManagement/searchViewStaffDetails.php" />
+        <option value="$PROJECT_DIR$/manaDB.sql" />
+        <option value="$PROJECT_DIR$/staffManagement/ClassInformation.php" />
+        <option value="$PROJECT_DIR$/staffManagement/blacklist.php" />
         <option value="$PROJECT_DIR$/staffManagement/staffRegistration.php" />
-        <option value="$PROJECT_DIR$/studentInformation/parentDetailsForm.php" />
-        <option value="$PROJECT_DIR$/studentInformation/studentRegistration.php" />
-        <option value="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" />
+        <option value="$PROJECT_DIR$/staffManagement/Classroomtable.php" />
+        <option value="$PROJECT_DIR$/leaveManagement/approveLeave.php" />
+        <option value="$PROJECT_DIR$/newdbAccess.php" />
+        <option value="$PROJECT_DIR$/staffManagement/newsearchStaffDetails.php" />
         <option value="$PROJECT_DIR$/dbAccess.php" />
-        <option value="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
+        <option value="$PROJECT_DIR$/staffManagement/searchStaffDetails.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1364" />
-    <option name="height" value="736" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -273,7 +222,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -302,12 +250,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="studentInformation" />
+              <option name="myItemId" value="staffManagement" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -325,8 +274,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\PHP\ProjectX\attendance" />
-      <recent name="C:\wamp\www\PHP\ProjectX\administration" />
+      <recent name="C:\wamp\www\PHP\ProjectX" />
       <recent name="C:\wamp\www\PHP\ProjectX\staffManagement" />
       <recent name="$PROJECT_DIR$/leaveManagement" />
       <recent name="$PROJECT_DIR$/attendance" />
@@ -597,97 +545,81 @@
       <created>1407905056671</created>
       <updated>1407905056671</updated>
     </task>
-    <task id="LOCAL-00052" summary="Year Plan">
-      <created>1408169023439</created>
-      <updated>1408169023439</updated>
+    <task id="LOCAL-00052" summary="Staff registration and language data">
+      <created>1408160868662</created>
+      <updated>1408160868663</updated>
     </task>
-    <task id="LOCAL-00053" summary="Added more language data">
-      <created>1408174408532</created>
-      <updated>1408174408532</updated>
+    <task id="LOCAL-00053" summary="check staff registration form  &#10;modified view and search staff &#10;delete user function for staff">
+      <created>1408184175097</created>
+      <updated>1408184175097</updated>
     </task>
-    <task id="LOCAL-00054" summary="check">
-      <created>1408178789653</created>
-      <updated>1408178789653</updated>
+    <task id="LOCAL-00054" summary="Staff management update.">
+      <created>1408262522674</created>
+      <updated>1408262522674</updated>
     </task>
-    <task id="LOCAL-00055" summary="modified attendance and year plan.">
-      <created>1408184654155</created>
-      <updated>1408184654155</updated>
+    <task id="LOCAL-00055" summary="updated staff information">
+      <created>1408266497050</created>
+      <updated>1408266497050</updated>
     </task>
-    <task id="LOCAL-00056" summary="check">
-      <created>1409877377043</created>
-      <updated>1409877377043</updated>
+    <task id="LOCAL-00056" summary="Search Staff Member">
+      <created>1408273370204</created>
+      <updated>1408273370204</updated>
     </task>
-    <task id="LOCAL-00057" summary="check&#10;">
-      <created>1409877635380</created>
-      <updated>1409877635380</updated>
+    <task id="LOCAL-00057" summary="New staff information in sql">
+      <created>1408276855067</created>
+      <updated>1408276855067</updated>
     </task>
-    <task id="LOCAL-00058" summary="minor changes">
-      <created>1409902554176</created>
-      <updated>1409902554177</updated>
+    <task id="LOCAL-00058" summary="modified new interfaces with insert,and search staff">
+      <created>1408281968165</created>
+      <updated>1408281968165</updated>
     </task>
-    <task id="LOCAL-00059" summary="remove class and display staff name">
-      <created>1409911108304</created>
-      <updated>1409911108305</updated>
+    <task id="LOCAL-00059" summary="probably fixed">
+      <created>1408282497960</created>
+      <updated>1408282497961</updated>
     </task>
-    <task id="LOCAL-00060" summary="Updated SQL">
-      <created>1409913602833</created>
-      <updated>1409913602833</updated>
+    <task id="LOCAL-00060" summary="new class room information(cllassroom table)&#10;">
+      <created>1409728290884</created>
+      <updated>1409728290885</updated>
     </task>
-    <task id="LOCAL-00061" summary="Added a line.">
-      <created>1409913694033</created>
-      <updated>1409913694033</updated>
+    <task id="LOCAL-00061" summary="changes to leave management &#10;&#10;change the getStaffToApproveLeave results">
+      <created>1409737383619</created>
+      <updated>1409737383619</updated>
     </task>
-    <task id="LOCAL-00062" summary="timeTableInsert">
-      <created>1409915091326</created>
-      <updated>1409915091326</updated>
+    <task id="LOCAL-00062" summary="Finish approve leave">
+      <created>1409737576753</created>
+      <updated>1409737576753</updated>
     </task>
-    <task id="LOCAL-00063" summary="getTimeTable">
-      <created>1409915512814</created>
-      <updated>1409915512814</updated>
+    <task id="LOCAL-00063" summary="create staff update function but still not working">
+      <created>1410014153978</created>
+      <updated>1410014153979</updated>
     </task>
-    <task id="LOCAL-00064" summary="getTimeTable&#10;time Table class changes">
-      <created>1409917244828</created>
-      <updated>1409917244828</updated>
+    <task id="LOCAL-00064" summary="create staff update function but not working">
+      <created>1410014701836</created>
+      <updated>1410014701836</updated>
     </task>
-    <task id="LOCAL-00065" summary="Student and Parent Insert and Link works&#10;">
-      <created>1409990596083</created>
-      <updated>1409990596083</updated>
-    </task>
-    <task id="LOCAL-00066" summary="Student and Parent Insert and Link works&#10;">
-      <created>1409992281705</created>
-      <updated>1409992281705</updated>
-    </task>
-    <task id="LOCAL-00067" summary="DBAccess - UpdateStudent">
-      <created>1410025501827</created>
-      <updated>1410025501827</updated>
-    </task>
-    <task id="LOCAL-00068" summary="Search Student">
-      <created>1410029797358</created>
-      <updated>1410029797358</updated>
-    </task>
-    <option name="localTasksCounter" value="69" />
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1364" height="736" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290735" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29758307" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29791668" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17075038" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2489019" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32747602" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3256579" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3291536" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852563" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3275862" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960325" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39979655" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -705,6 +637,7 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Minor changes to Template&#10;" />
     <MESSAGE value="Refactored Template to Master" />
     <MESSAGE value="Added proper Template.php" />
     <MESSAGE value="Fixed the reference path. Has to be individually edited" />
@@ -715,29 +648,111 @@
     <MESSAGE value="Working Manage Users. Retrieves user list from database." />
     <MESSAGE value="Minor fix" />
     <MESSAGE value="Test commit" />
-    <MESSAGE value="Year Plan" />
-    <MESSAGE value="Added more language data" />
-    <MESSAGE value="modified attendance and year plan." />
+    <MESSAGE value="Staff registration and language data" />
+    <MESSAGE value="check staff registration form  &#10;modified view and search staff &#10;delete user function for staff" />
+    <MESSAGE value="Staff management update." />
+    <MESSAGE value="updated staff information" />
+    <MESSAGE value="Search Staff Member" />
+    <MESSAGE value="New staff information in sql" />
     <MESSAGE value="check" />
-    <MESSAGE value="check&#10;" />
-    <MESSAGE value="minor changes" />
-    <MESSAGE value="remove class and display staff name" />
-    <MESSAGE value="Updated SQL" />
-    <MESSAGE value="Added a line." />
-    <MESSAGE value="timeTableInsert" />
-    <MESSAGE value="getTimeTable" />
-    <MESSAGE value="getTimeTable&#10;time Table class changes" />
-    <MESSAGE value="Student and Parent Insert and Link works&#10;" />
-    <MESSAGE value="DBAccess - UpdateStudent" />
-    <MESSAGE value="Search Student" />
-    <option name="LAST_COMMIT_MESSAGE" value="Search Student" />
+    <MESSAGE value="modified new interfaces with insert,and search staff" />
+    <MESSAGE value="probably fixed" />
+    <MESSAGE value="new class room information(cllassroom table)&#10;" />
+    <MESSAGE value="changes to leave management &#10;&#10;change the getStaffToApproveLeave results" />
+    <MESSAGE value="Finish approve leave" />
+    <MESSAGE value="create staff update function but still not working" />
+    <MESSAGE value="create staff update function but not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="create staff update function but not working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dbAccess.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="503" column="37" selection-start="15616" selection-end="15616" vertical-scroll-proportion="0.0" vertical-offset="8551" max-vertical-offset="18360">
+          <folding>
+            <marker date="1410014652959" expanded="true" signature="512:596" placeholder="Select userP..User..." />
+            <marker date="1410014652959" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
+            <marker date="1410014652959" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
+            <marker date="1410014652959" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
+            <marker date="1410014652959" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
+            <marker date="1410014652959" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
+            <marker date="1410014652959" expanded="true" signature="8065:8124" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="8835:8938" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="9770:9887" placeholder="Select Grade..." />
+            <marker date="1410014652959" expanded="true" signature="10570:10650" placeholder="Select userE..User..." />
+            <marker date="1410014652959" expanded="true" signature="11292:11407" placeholder="Select Admis..User..." />
+            <marker date="1410014652959" expanded="true" signature="12076:12144" placeholder="SELECT Value..LabelLanguage..." />
+            <marker date="1410014652959" expanded="true" signature="12892:12953" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="14067:14163" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="15733:16208" placeholder="UPDATE staff..." />
+            <marker date="1410014652959" expanded="true" signature="17243:17309" placeholder="Select * FRO..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="18019:18063" placeholder="UPDATE Staff..." />
+            <marker date="1410014652959" expanded="true" signature="18260:18321" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="19101:19226" placeholder="Select Staff..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="19916:19972" placeholder="SELECT * FRO..ClassInformation..." />
+            <marker date="1410014652959" expanded="true" signature="20233:20280" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="20762:20838" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="21632:21814" placeholder="Select ci.Gr..ClassInformation..." />
+            <marker date="1410014652959" expanded="true" signature="22532:22590" placeholder="SELECT MAX(C..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="23343:23449" placeholder="Select Staff..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="24080:24161" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="24903:24946" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="26391:26450" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="26835:26883" placeholder="SELECT * FRO..LeaveData..." />
+            <marker date="1410014652959" expanded="true" signature="27236:27280" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="28128:28216" placeholder="SELECT Offic..LeaveData..." />
+            <marker date="1410014652959" expanded="true" signature="28686:28900" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410014652959" expanded="true" signature="29585:29804" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410014652959" expanded="true" signature="30548:30756" placeholder="UPDATE apply..." />
+            <marker date="1410014652959" expanded="true" signature="31446:31538" placeholder="UPDATE apply..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manaDB.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="17" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="21539" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/viewAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="23" selection-start="33" selection-end="33" vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="5525" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Master.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3332" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="11" selection-start="1263" selection-end="1263" vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="1496" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="2" selection-start="825" selection-end="825" vertical-scroll-proportion="0.0" vertical-offset="179" max-vertical-offset="833" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Master.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="185" column="65" selection-start="7108" selection-end="7108" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3417" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="21" selection-start="694" selection-end="694" vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="833" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="76" column="35" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.0" vertical-offset="910" max-vertical-offset="1496" />
@@ -768,14 +783,9 @@
         <state line="77" column="20" selection-start="1862" selection-end="1862" vertical-scroll-proportion="0.0" vertical-offset="1309" max-vertical-offset="1496" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/blacklist.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="232" column="1" selection-start="6478" selection-end="6478" vertical-scroll-proportion="0.3736501" vertical-offset="3830" max-vertical-offset="6120" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/teacherAchievenment.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="39" selection-start="1252" selection-end="1252" vertical-scroll-proportion="0.23660715" vertical-offset="796" max-vertical-offset="6822" />
+        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.019438446" vertical-offset="0" max-vertical-offset="926" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/cancelLeave.php">
@@ -788,9 +798,39 @@
         <state line="27" column="23" selection-start="322" selection-end="322" vertical-scroll-proportion="0.52483803" vertical-offset="0" max-vertical-offset="4392" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="15" selection-start="780" selection-end="780" vertical-scroll-proportion="0.6911447" vertical-offset="116" max-vertical-offset="4140" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="12" selection-start="345" selection-end="345" vertical-scroll-proportion="0.027777778" vertical-offset="306" max-vertical-offset="2159" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/studentwise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="11" selection-start="1958" selection-end="1958" vertical-scroll-proportion="2.0307167" vertical-offset="0" max-vertical-offset="1496" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="0" selection-start="689" selection-end="731" vertical-scroll-proportion="0.9283276" vertical-offset="0" max-vertical-offset="2397" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/marksAndGrading/ALinput.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9384" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/viewAttendance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="9" selection-start="43" selection-end="43" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="5525" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="75" selection-start="1861" selection-end="1861" vertical-scroll-proportion="0.40753424" vertical-offset="884" max-vertical-offset="1496" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Template.php">
@@ -798,49 +838,9 @@
         <state line="49" column="19" selection-start="914" selection-end="914" vertical-scroll-proportion="0.7996575" vertical-offset="179" max-vertical-offset="833" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/formValidation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="43" selection-start="254" selection-end="254" vertical-scroll-proportion="-5.8846154" vertical-offset="0" max-vertical-offset="391" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/OldstaffRegistration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="855" column="31" selection-start="28018" selection-end="28018" vertical-scroll-proportion="0.56567425" vertical-offset="14212" max-vertical-offset="21777" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="1427" selection-end="1715" vertical-scroll-proportion="0.31658292" vertical-offset="321" max-vertical-offset="1785" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/oldviewAttendance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="217" column="17" selection-start="4611" selection-end="4611" vertical-scroll-proportion="48.153847" vertical-offset="4941" max-vertical-offset="5525" />
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="200" column="23" selection-start="4812" selection-end="4812" vertical-scroll-proportion="-3.372131" vertical-offset="5457" max-vertical-offset="8228" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="145" column="23" selection-start="4213" selection-end="4213" vertical-scroll-proportion="-13.5" vertical-offset="2114" max-vertical-offset="2737" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="561" selection-end="561" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/Oldtimetable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="0" selection-start="267" selection-end="267" vertical-scroll-proportion="0.37842464" vertical-offset="0" max-vertical-offset="2720" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/gradeSubject.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="3.9230769" vertical-offset="102" max-vertical-offset="765" />
+        <state line="82" column="0" selection-start="2405" selection-end="2405" vertical-scroll-proportion="0.0" vertical-offset="1118" max-vertical-offset="1785" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/enterData.sql">
@@ -848,86 +848,67 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9146" />
+        <state line="16" column="30" selection-start="569" selection-end="569" vertical-scroll-proportion="0.4633731" vertical-offset="0" max-vertical-offset="9146" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/studentinformation.js">
+    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="43" selection-start="120" selection-end="120" vertical-scroll-proportion="0.14091681" vertical-offset="19" max-vertical-offset="629" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/studentwise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="25" selection-start="661" selection-end="661" vertical-scroll-proportion="-1.5384616" vertical-offset="453" max-vertical-offset="1496" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/marksAndGrading/ALinput.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="174" column="2" selection-start="4391" selection-end="4391" vertical-scroll-proportion="-21.153847" vertical-offset="2323" max-vertical-offset="2975" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/marksAndGrading/termTestMarks.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="55" selection-start="1685" selection-end="1685" vertical-scroll-proportion="2.8527398" vertical-offset="0" max-vertical-offset="2737" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/yearPlan.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/yearPlan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="86" column="0" selection-start="1918" selection-end="1918" vertical-scroll-proportion="0.0" vertical-offset="1462" max-vertical-offset="4403">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="-0.65384614" vertical-offset="0" max-vertical-offset="153" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="15.615385" vertical-offset="406" max-vertical-offset="969" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/markAttendance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="139" column="3" selection-start="3715" selection-end="3741" vertical-scroll-proportion="-16.576923" vertical-offset="1932" max-vertical-offset="2516" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/viewAttendance.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="0" selection-start="1468" selection-end="1468" vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="2482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/attendance/classwise.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="21" selection-start="2012" selection-end="2012" vertical-scroll-proportion="1.3780488" vertical-offset="501" max-vertical-offset="1530" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="33" selection-start="996" selection-end="996" vertical-scroll-proportion="0.20034844" vertical-offset="752" max-vertical-offset="3978" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="18" selection-start="1676" selection-end="1676" vertical-scroll-proportion="0.0" vertical-offset="1372" max-vertical-offset="1972" />
+        <state line="54" column="13" selection-start="1282" selection-end="1283" vertical-scroll-proportion="0.0" vertical-offset="918" max-vertical-offset="3094" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbConnect.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="35" selection-start="232" selection-end="248" vertical-scroll-proportion="0.26748252" vertical-offset="0" max-vertical-offset="572" />
+        <state line="15" column="25" selection-start="276" selection-end="276" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="476" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/OldstaffRegistration.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="855" column="31" selection-start="28018" selection-end="28018" vertical-scroll-proportion="0.0" vertical-offset="14212" max-vertical-offset="21777" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaveManagement/leave.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="1" selection-start="315" selection-end="315" vertical-scroll-proportion="0.4722222" vertical-offset="0" max-vertical-offset="612" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="591" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/sports.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5780" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/teacherAchievenment.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="15" selection-start="4348" selection-end="4348" vertical-scroll-proportion="0.5767918" vertical-offset="2722" max-vertical-offset="3485" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TimeTable/language.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="28" selection-start="2745" selection-end="2745" vertical-scroll-proportion="0.13961606" vertical-offset="1790" max-vertical-offset="2516" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="5" selection-start="4219" selection-end="4219" vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="3434" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/blacklist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="16" selection-start="1668" selection-end="1668" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2125" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="24" selection-start="565" selection-end="565" vertical-scroll-proportion="0.45132744" vertical-offset="0" max-vertical-offset="731" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Master.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="179" column="21" selection-start="8599" selection-end="8599" vertical-scroll-proportion="0.5474061" vertical-offset="2737" max-vertical-offset="3723" />
+        <state line="199" column="139" selection-start="9307" selection-end="9307" vertical-scroll-proportion="0.0" vertical-offset="2727" max-vertical-offset="3536" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/manaDB.sql">
@@ -935,160 +916,125 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="26" selection-start="365" selection-end="366" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20366">
-          <folding>
-            <marker date="1409976059571" expanded="true" signature="92288:92305" placeholder="ALTER TABLE `timetable`..." />
-          </folding>
-        </state>
+        <state line="849" column="21" selection-start="34336" selection-end="34352" vertical-scroll-proportion="0.0" vertical-offset="14343" max-vertical-offset="20417" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.php">
+    <entry file="file://$PROJECT_DIR$/Styles/fonts.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="682" column="11" selection-start="37366" selection-end="37366" vertical-scroll-proportion="20.008945" vertical-offset="222" max-vertical-offset="11713">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/administration/manageUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="0" selection-start="4604" selection-end="4630" vertical-scroll-proportion="-0.1824687" vertical-offset="2737" max-vertical-offset="3723">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetableClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="5" selection-start="1056" selection-end="1056" vertical-scroll-proportion="1.277972" vertical-offset="0" max-vertical-offset="1105" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leaveManagement/leave.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="595">
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/eventManagement/eventList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="115" column="23" selection-start="3852" selection-end="3852" vertical-scroll-proportion="0.0" vertical-offset="1955" max-vertical-offset="2839">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/leaveManagement/applyForLeave.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="0" selection-start="909" selection-end="909" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="4165">
+        <state line="42" column="8" selection-start="956" selection-end="956" vertical-scroll-proportion="-8.423077" vertical-offset="410" max-vertical-offset="3927" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formValidation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="19" selection-start="280" selection-end="280" vertical-scroll-proportion="0.31911263" vertical-offset="0" max-vertical-offset="1530" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/_superglobals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="2457" selection-end="2457" vertical-scroll-proportion="2.3788395" vertical-offset="0" max-vertical-offset="3944" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staffManagement/OldClassInformation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.34615386" vertical-offset="9" max-vertical-offset="2278">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/parentDetailsForm.php">
+    <entry file="file://$PROJECT_DIR$/staffManagement/OldsearchStaffDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="21" selection-start="314" selection-end="322" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="2890">
-          <folding>
-            <marker date="1409988539070" expanded="true" signature="807:885" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="818:885" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="848:885" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="2377:2461" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="2681:2766" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="2844:2921" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="3003:3081" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="3293:3367" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="3446:3526" placeholder="..." />
-            <marker date="1409988539070" expanded="true" signature="3607:3664" placeholder="..." />
-          </folding>
+        <state line="36" column="0" selection-start="657" selection-end="657" vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="6817">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/staffManagement/staffRegistration.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1047" column="0" selection-start="49941" selection-end="49941" vertical-scroll-proportion="0.0" vertical-offset="17799" max-vertical-offset="18870">
+        <state line="19" column="6" selection-start="944" selection-end="944" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="18870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leaveManagement/approveLeave.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="0" selection-start="956" selection-end="956" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="5389">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/staffManagement/ClassroomInformation.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="14" selection-start="1044" selection-end="1044" vertical-scroll-proportion="0.0" vertical-offset="748" max-vertical-offset="3332">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/studentRegistration.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="9" selection-start="898" selection-end="898" vertical-scroll-proportion="0.0" vertical-offset="578" max-vertical-offset="3536">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="52" selection-end="52" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="8721">
+        <state line="174" column="17" selection-start="4376" selection-end="4376" vertical-scroll-proportion="0.0" vertical-offset="2958" max-vertical-offset="3332">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="542" column="42" selection-start="15768" selection-end="15768" vertical-scroll-proportion="3.2692308" vertical-offset="9214" max-vertical-offset="22100">
+        <state line="520" column="4" selection-start="16932" selection-end="16932" vertical-scroll-proportion="-19.153847" vertical-offset="8257" max-vertical-offset="18360">
           <folding>
-            <marker date="1410031384349" expanded="true" signature="512:596" placeholder="Select userP..User..." />
-            <marker date="1410031384349" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
-            <marker date="1410031384349" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
-            <marker date="1410031384349" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
-            <marker date="1410031384349" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
-            <marker date="1410031384349" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
-            <marker date="1410031384349" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
-            <marker date="1410031384349" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
-            <marker date="1410031384349" expanded="true" signature="8066:8125" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="8858:9046" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="9673:9802" placeholder="Select Admis..Student..." />
-            <marker date="1410031384349" expanded="true" signature="10495:10536" placeholder="SELECT * FRO..Student..." />
-            <marker date="1410031384349" expanded="true" signature="10717:10898" placeholder="UPDATE Stude..." />
-            <marker date="1410031384349" expanded="true" signature="11697:11800" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="12673:12781" placeholder="UPDATE Timet..." />
-            <marker date="1410031384349" expanded="true" signature="13673:13790" placeholder="Select Grade..." />
-            <marker date="1410031384349" expanded="true" signature="14473:14553" placeholder="Select userE..User..." />
-            <marker date="1410031384349" expanded="true" signature="15195:15310" placeholder="Select Admis..User..." />
-            <marker date="1410031384349" expanded="true" signature="15955:16016" placeholder="Select * FRO..Student..." />
-            <marker date="1410031384349" expanded="true" signature="16739:16807" placeholder="SELECT Value..LabelLanguage..." />
-            <marker date="1410031384349" expanded="true" signature="17555:17616" placeholder="UPDATE User ..." />
-            <marker date="1410031384349" expanded="true" signature="18730:18826" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="20396:20871" placeholder="UPDATE staff..." />
-            <marker date="1410031384349" expanded="true" signature="21906:21972" placeholder="Select * FRO..Staff..." />
-            <marker date="1410031384349" expanded="true" signature="22667:22711" placeholder="UPDATE Staff..." />
-            <marker date="1410031384349" expanded="true" signature="22908:22965" placeholder="UPDATE Class..." />
-            <marker date="1410031384349" expanded="true" signature="23176:23228" placeholder="UPDATE Timet..." />
-            <marker date="1410031384349" expanded="true" signature="24061:24186" placeholder="Select Staff..Staff..." />
-            <marker date="1410031384349" expanded="true" signature="24876:24932" placeholder="SELECT * FRO..ClassInformation..." />
-            <marker date="1410031384349" expanded="true" signature="25193:25240" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="25722:25798" placeholder="UPDATE Class..." />
-            <marker date="1410031384349" expanded="true" signature="26592:26774" placeholder="Select ci.Gr..ClassInformation..." />
-            <marker date="1410031384349" expanded="true" signature="27492:27550" placeholder="SELECT MAX(C..Staff..." />
-            <marker date="1410031384349" expanded="true" signature="28303:28409" placeholder="Select Staff..Staff..." />
-            <marker date="1410031384349" expanded="true" signature="29041:29122" placeholder="UPDATE Class..." />
-            <marker date="1410031384349" expanded="true" signature="29864:29907" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="31352:31411" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="31796:31844" placeholder="SELECT * FRO..LeaveData..." />
-            <marker date="1410031384349" expanded="true" signature="32197:32241" placeholder="INSERT INTO ..." />
-            <marker date="1410031384349" expanded="true" signature="33108:33189" placeholder="SELECT Offic..leavedata..." />
-            <marker date="1410031384349" expanded="true" signature="33875:34089" placeholder="Select l.Sta..ApplyLeave..." />
-            <marker date="1410031384349" expanded="true" signature="34750:34969" placeholder="Select l.Sta..ApplyLeave..." />
-            <marker date="1410031384349" expanded="true" signature="36596:36804" placeholder="UPDATE apply..." />
-            <marker date="1410031384349" expanded="true" signature="37494:37586" placeholder="UPDATE apply..." />
+            <marker date="1410014652959" expanded="true" signature="512:596" placeholder="Select userP..User..." />
+            <marker date="1410014652959" expanded="true" signature="1869:1923" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="2613:2707" placeholder="Select Event..Event..." />
+            <marker date="1410014652959" expanded="true" signature="3446:3509" placeholder="SELECT * FRO..User..." />
+            <marker date="1410014652959" expanded="true" signature="3778:3839" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="4326:4361" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="5247:5295" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="6099:6178" placeholder="Select (DATE..Holiday..." />
+            <marker date="1410014652959" expanded="true" signature="6992:7024" placeholder="DELETE FROM ..." />
+            <marker date="1410014652959" expanded="true" signature="7201:7268" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="7232:7265" placeholder="SELECT STR_T..." />
+            <marker date="1410014652959" expanded="true" signature="8065:8124" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="8835:8938" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="9770:9887" placeholder="Select Grade..." />
+            <marker date="1410014652959" expanded="true" signature="10570:10650" placeholder="Select userE..User..." />
+            <marker date="1410014652959" expanded="true" signature="11292:11407" placeholder="Select Admis..User..." />
+            <marker date="1410014652959" expanded="true" signature="12076:12144" placeholder="SELECT Value..LabelLanguage..." />
+            <marker date="1410014652959" expanded="true" signature="12892:12953" placeholder="UPDATE User ..." />
+            <marker date="1410014652959" expanded="true" signature="14067:14163" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="15733:16208" placeholder="UPDATE staff..." />
+            <marker date="1410014652959" expanded="true" signature="17243:17309" placeholder="Select * FRO..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="18019:18063" placeholder="UPDATE Staff..." />
+            <marker date="1410014652959" expanded="true" signature="18260:18321" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="19101:19226" placeholder="Select Staff..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="19916:19972" placeholder="SELECT * FRO..ClassInformation..." />
+            <marker date="1410014652959" expanded="true" signature="20233:20280" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="20762:20838" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="21632:21814" placeholder="Select ci.Gr..ClassInformation..." />
+            <marker date="1410014652959" expanded="true" signature="22532:22590" placeholder="SELECT MAX(C..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="23343:23449" placeholder="Select Staff..Staff..." />
+            <marker date="1410014652959" expanded="true" signature="24080:24161" placeholder="UPDATE Class..." />
+            <marker date="1410014652959" expanded="true" signature="24903:24946" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="26391:26450" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="26835:26883" placeholder="SELECT * FRO..LeaveData..." />
+            <marker date="1410014652959" expanded="true" signature="27236:27280" placeholder="INSERT INTO ..." />
+            <marker date="1410014652959" expanded="true" signature="28128:28216" placeholder="SELECT Offic..LeaveData..." />
+            <marker date="1410014652959" expanded="true" signature="28686:28900" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410014652959" expanded="true" signature="29585:29804" placeholder="Select l.Sta..ApplyLeave..." />
+            <marker date="1410014652959" expanded="true" signature="30548:30756" placeholder="UPDATE apply..." />
+            <marker date="1410014652959" expanded="true" signature="31446:31538" placeholder="UPDATE apply..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
+    <entry file="file://$PROJECT_DIR$/staffManagement/searchStaffDetails.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="186" column="33" selection-start="4438" selection-end="4438" vertical-scroll-proportion="0.5689655" vertical-offset="2865" max-vertical-offset="5831">
-          <folding />
+        <state line="119" column="1" selection-start="3812" selection-end="3812" vertical-scroll-proportion="0.94066316" vertical-offset="1484" max-vertical-offset="8721">
+          <folding>
+            <marker date="1410011422816" expanded="true" signature="6101:7396" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="6108:7300" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="7307:7396" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="7402:8132" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="7438:7463" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="7467:7594" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="7750:7779" placeholder="..." />
+            <marker date="1410011422816" expanded="true" signature="8165:9534" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
