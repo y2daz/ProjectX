@@ -44,12 +44,12 @@ function isNIC($value)
     }
 }
 
-function isNumber($value)
+function isNumber($salary)
 {
-    if(is_numeric($value))
+    if(is_numeric($salary))
         return true;
     else
-        return false;
+        echo "please enter valid amount";
 
 }
 
@@ -63,10 +63,20 @@ function isLetters($value) //Works for all string must change
 }
 
 //Find a function to check the string for pattern
-
-function isContactNumber($value)
+function Name($nameWithInitials)
 {
-    if((preg_match("/[^0-9]/", '', $value)) && strlen($value) == 10)
+    if (preg_match("/^[a-zA-Z ]+$/i", $nameWithInitials))
+    {
+        return true;
+    }
+    else
+    {
+        echo "Enter Alphabetical letters only ";
+    }
+}
+function isContactNumber($contactnumber)
+{
+    if((preg_match("/[^0-9]/", '', $contactnumber)) && strlen($contactnumber) == 10)
         return true;
     else
         return false;
