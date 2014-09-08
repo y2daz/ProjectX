@@ -37,7 +37,7 @@ li, ul {
     color: #0099d4;
 }
 #nav li ul {
-    display: none; // used to hide sub-menus
+    display: none; /* used to hide sub-menus*/
 }
 #nav li ul li a {
     padding: 10px 25px;

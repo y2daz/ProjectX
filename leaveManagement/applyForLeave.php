@@ -143,26 +143,22 @@
             #details{
                 border-collapse: collapse;
             }
-
             #output
             {
                 border-collapse: collapse;
             }
-
             .insert
             {
                 position:absolute;
                 left:40px;
                 top: 100px;
             }
-
             .insert2
             {
                 position: absolute;
                 left: 500px;
                 top: 100px;
             }
-
             .insert2 th
             {
                 color:white;
@@ -235,10 +231,7 @@
             <form class="insert" method="post">
 
                 <table id="details">
-
-
                     <tr><th><?php echo $enterdetails ?><th></th></tr>
-
                     <tr>
                         <td><?php echo $staffid ?></td>
                         <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true"/></td>
@@ -264,7 +257,6 @@
                         <td><?php echo $otherreasons ?></td>
                         <td><textarea name="otherreasons" rows="3" cols="25" draggable="false" style="resize:none"><?php echo $otherReasonsVal ?></textarea></td>
                     </tr>
-
                 </table>
 
                 <table class="insert2" id="output">
