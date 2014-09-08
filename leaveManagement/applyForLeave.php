@@ -12,6 +12,8 @@
 
     ob_start();
 
+    error_reporting(E_ERROR | E_PARSE);
+
     function insertLeaveFunc()
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);

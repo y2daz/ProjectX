@@ -1121,7 +1121,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 //Change these to what you want
 $fullPageHeight = 1400;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Staff Registration";
 //Only change above
 
 $pageContent = ob_get_contents();
