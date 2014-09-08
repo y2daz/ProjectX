@@ -12,24 +12,70 @@
 
     ob_start();
 
+    function insertLeaveFunc()
+    {
+        $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
+        $success = "Leave Request Sent!";
+        $fail = "Request Failed!";
+
+        if($operation)
+        {
+            sendNotification($success);
+        }
+        else
+        {
+            sendNotification($fail);
+        }
+    }
 
     if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
     {
-        if(is_numeric($_POST["staffid"]))
+
+        if(is_numeric($_POST["staffid"]) )
         {
-            $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
+            $result = getLeaveData($_POST["staffid"]);
 
-            $success = "Leave Request Sent!";
-            $fail = "Request Failed!";
-
-            if($operation)
+            foreach($result as $row)
             {
-                sendNotification($success);
+                $OfficialLeave = $row[0];
+                $MaternityLeave = $row[1];
+                $OtherLeave = $row[2];
             }
-            else
+
+            if($_POST["leavetype"] == 1)
             {
-                sendNotification($fail);
+                if($OfficialLeave < 1)
+                {
+                    sendNotification("You are out of Official Leave days!");
+                }
+                else
+                {
+                    insertLeaveFunc();
+                }
+            }
+            else if ($_POST["leavetype"] == 2)
+            {
+                if($MaternityLeave < 1)
+                {
+                    sendNotification("You are out of Maternity Leave days!");
+                }
+                else
+                {
+                    insertLeaveFunc();
+                }
+
+            }
+            else if ($_POST["leavetype"] == 3)
+            {
+                if($OtherLeave < 1)
+                {
+                    sendNotification("You are out of Other Leave days!");
+                }
+                else
+                {
+                    insertLeaveFunc();
+                }
             }
         }
         else
@@ -37,24 +83,6 @@
             sendNotification("Invalid Staff ID Entered");
         }
     }
-
-//    if(isset($_POST["GetLeaveData"]))
-//    {
-//        $result = getLeaveData($_POST["staffid"]);
-//
-//        foreach($result as $row)
-//        {
-//            $OfficialLeave = $row[0];
-//            $MaternityLeave = $row[1];
-//            $OtherLeave = $row[2];
-//        }
-//    }
-//    else
-//    {
-//        $OfficialLeave = "";
-//        $MaternityLeave = "";
-//        $OtherLeave = "";
-//    }
 
     $OfficialLeave = "";
     $MaternityLeave = "";
@@ -89,11 +117,13 @@
         $OtherLeave = "";
     }
 
-    /*
-    echo $OfficialLeave;
-    echo $MaternityLeave;
-    echo $OtherLeave;
-    */
+
+//    echo $OfficialLeave;
+//    echo "<br>";
+//    echo $MaternityLeave;
+//    echo "<br>";
+//    echo $OtherLeave;
+
 
     if($_COOKIE["language"] == 1)
     {
