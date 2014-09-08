@@ -856,20 +856,18 @@ function getEventTransactions($eventid)
         if ($mysqli->connect_errno) {
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
-        if ($stmtCheck = $mysqli->prepare("SELECT * FROM staff WHERE $staffID=? ;"))
+        if ($stmtCheck = $mysqli->prepare("SELECT * FROM Staff WHERE StaffID=? ;"))
         {
             $stmtCheck -> bind_param("s", $AdmissionNo);
             $stmtCheck -> execute();
             $result = $stmtCheck->get_result();
 
-            //Yazdaan look here
             if ($result -> num_rows == 1)
             {
 
-                if ($stmt = $mysqli->prepare("UPDATE staff SET staffID, NamewithInitials=?, DateofBirth=?, Gender=?, NationalityRace=?, Religion=?, $CivilStatus=?,$NICNumber=?, $MailDeliveryAddress=?, $ContactNumber=?, $DateAppointedasTeacherPrincipal=?, $DatejoinedthisSchool=?, $EmploymentStatus=?,$Medium=?, $PositioninSchool=?, $Section=?, $SubjectMostTaught=?, $SubjectSecondMostTaught=?, $ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE staffID;"))
+                if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?, NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?, EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?, ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
                 {
-                    $isdeleted = 0;
-                    $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $isdeleted);
+                    $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
 
                     if ($stmt->execute())
                     {

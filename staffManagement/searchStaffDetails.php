@@ -18,10 +18,10 @@ require_once(THISROOT . "/common.php");
 ob_start();
 $currentStaffMembers="";
 
-//yazdaan look here
-if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
+
+if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
 {
-    $operation = Updatestaff($_POST["staffID"], strtoupper($_POST["NamewithInitials"]), $_POST["DateofBirth"], strtoupper($_POST["Gender"]), ($_POST["NationalityRace"]), ($_POST["Religion"]),($_POST["CivilStatus"]),strtoupper($_POST["NICNumber"]), strtoupper($_POST["MailDeliveryAddress"]), $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], strtoupper($_POST["EmploymentStatus"]),strtoupper($_POST["Medium"]), strtoupper($_POST["PositioninSchool"]), strtoupper($_POST["Section"]), strtoupper($_POST["SubjectMostTaught"]), $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
+    $operation = Updatestaff($_POST["staffID"], strtoupper($_POST["NamewithInitials"]), $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
 
     if ($operation == true)
     {
@@ -260,11 +260,11 @@ else
     <br />
     <br />
 
-<form>
+<form method="post">
     <table class="details" align="center">
         <tr>
             <td> Staff ID </td>
-            <td > <input type = "text" name="staffid" readonly value="<?php echo $staffid?>"/> </td>
+            <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>"/> </td>
             <td></td>
         </tr>
         <tr>
@@ -284,8 +284,8 @@ else
         <tr>
             <td> Gender </td>
             <td>
-                <input type="radio" name="gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> />Male
-                <input type="radio" name="gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> />Female
+                <input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> />Male
+                <input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> />Female
             </td>
             <td></td>
         </tr>
@@ -324,17 +324,17 @@ else
         </tr>
         <tr>
             <td>Date Appointed as Teacher/principal</td>
-            <td > <input type = "text" name="$DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
+            <td > <input type ="text" name="DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
             <td></td>
         </tr>
         <tr>
             <td> Date joined this school  </td>
-            <td > <input type = "text" name="DateJoinedthisSchool " value="<?php echo $DateJoinedthisSchool?>"/> </td>
+            <td > <input type="text" name="DatejoinedthisSchool" value="<?php echo $DateJoinedthisSchool?>"/> </td>
             <td></td>
         </tr>
         <tr>
             <td> Employement status </td>
-            <td > <input type = "text" name="EmployementStatus" value="<?php echo $EmploymentStatus?>"/> </td>
+            <td > <input type = "text" name="EmploymentStatus" value="<?php echo $EmploymentStatus?>"/> </td>
             <td></td>
         </tr>
         <tr>
