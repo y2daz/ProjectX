@@ -1588,6 +1588,7 @@ function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
 }
 
 
+
 /*insertAllTimetable();
 
 function insertAllTimetable()

@@ -45,6 +45,7 @@ error_reporting(E_ERROR | E_PARSE);
                 $OtherLeave = $row[2];
             }
 
+
             if($_POST["leavetype"] == 1)
             {
                 if($OfficialLeave < 1)
@@ -190,6 +191,7 @@ error_reporting(E_ERROR | E_PARSE);
                 position: absolute;
                 left: 500px;
                 top: 100px;
+
             }
             .insert2 th
             {
@@ -316,8 +318,8 @@ error_reporting(E_ERROR | E_PARSE);
 
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme">
-                    <input type="reset" name="reset" value="<?php echo $reset ?>">
-                    <input type="submit" name="GetLeaveData" value="<?php echo $getleavedata ?>">
+<!--                    <input type="reset" name="reset" value="--><?php //echo $reset ?><!--">-->
+<!--                    <input type="submit" name="GetLeaveData" value="--><?php //echo $getleavedata ?><!--">-->
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
