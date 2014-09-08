@@ -21,7 +21,7 @@ $currentStaffMembers="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
 {
-    $operation = Updatestaff($_POST["staffID"], strtoupper($_POST["NamewithInitials"]), $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
+    $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
 
     if ($operation == true)
     {

@@ -856,32 +856,32 @@ function getEventTransactions($eventid)
         if ($mysqli->connect_errno) {
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
-        if ($stmtCheck = $mysqli->prepare("SELECT * FROM Staff WHERE StaffID=? ;"))
-        {
-            $stmtCheck -> bind_param("s", $AdmissionNo);
-            $stmtCheck -> execute();
-            $result = $stmtCheck->get_result();
+//        if ($stmtCheck = $mysqli->prepare("SELECT * FROM Staff WHERE StaffID=? ;"))
+//        {
+//            $stmtCheck -> bind_param("s", $AdmissionNo);
+//            $stmtCheck -> execute();
+//            $result = $stmtCheck->get_result();
 
-            if ($result -> num_rows == 1)
+//            if ($result -> num_rows == 1)
+//            {
+
+            if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?, NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?, EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?, ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
             {
+                $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
 
-                if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?, NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?, EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?, ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
+                if ($stmt->execute())
                 {
-                    $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
-
-                    if ($stmt->execute())
-                    {
-                        $stmt->close();
-                        $mysqli->close();
-                        return true;
-                    }
                     $stmt->close();
+                    $mysqli->close();
+                    return true;
                 }
+                $stmt->close();
             }
+//            }
 
-            $stmtCheck->close();
+        $stmtCheck->close();
 
-        }
+//        }
         $mysqli->close();
         return false;
     }
