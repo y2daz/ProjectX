@@ -1054,7 +1054,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                         </optgroup>
 
 
-                    <optgroup label="Fresh Teachers">
+                    <optgroup label="Newly appointed Teachers">
 
                     <option value="75"><?php echo "75 - " .$Maths?></option>
                     <option value="76"><?php echo "76 - " .$Science?></option>

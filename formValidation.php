@@ -22,15 +22,15 @@ function isFilled($value){
     }
 }
 
-function isNIC($value)
+function isNIC($nicNumber)
 {
-    if(strlen($value) == 10)
+    if(strlen($nicNumber) == 10)
     {
-        $checknumber = substr($value, 0, (strlen($value)-1));
+        $checknumber = substr($nicNumber, 0, (strlen($nicNumber)-1));
 
         if(is_numeric($checknumber))
         {
-           $checkifV = ucfirst(substr($value, strlen($value)-1, strlen($value)));
+           $checkifV = ucfirst(substr($nicNumber, strlen($nicNumber)-1, strlen($nicNumber)));
 
             if(strcmp($checkifV, "V"));
             {
