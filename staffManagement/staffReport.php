@@ -114,6 +114,9 @@ $column27Header3 = "උදා 583021007 V";
         .report .salary{
             text-align: right;
         }
+        .report .center{
+            text-align: center;
+        }
         .numbers td{
             text-align: center;
         }
@@ -125,11 +128,12 @@ $column27Header3 = "උදා 583021007 V";
             max-width: 25px;
 
             writing-mode: bt-rl;
-            text-indent: -7em;
+            text-indent: -7.5em;
             padding: 0px 0px 0px 0px;
             margin: 0px;
         }
         #col_0{
+            text-indent: -6.5em;
             max-width: 50px;
             min-width: 50px;
         }
@@ -234,7 +238,7 @@ $column27Header3 = "උදා 583021007 V";
             <td>24</td>
             <td>25</td>
             <td>26</td>
-            <td>27</td>
+            <td colspan="10">27</td>
         </tr>
 
         <?php
@@ -279,8 +283,19 @@ $column27Header3 = "උදා 583021007 V";
                 echo "<td>$row[0]</td>"; //Other Leave
                 echo "<td>$row[0]</td>"; //Offical Leave
                 echo "<td>$row[0]</td>"; //Maternity
-                echo "<td class='salary'>$row[19]</td>"; //Salary
-                echo "<td>$row[7]</td>";//NIC NUMBER
+                echo "<td class='salary'>" . number_format( $row[19], 2, ".", "," ). "</td>"; //Salary
+
+
+                echo "<td class='center'>" . substr($row[7], 0, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 1, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 2, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 3, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 4, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 5, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 6, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 7, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . substr($row[7], 8, 1) . "</td>";//NIC NUMBER
+                echo "<td class='center'>" . strtoupper( substr($row[7], 9, 1) ) . "</td>";//NIC NUMBER
                 echo "</tr>\n";
             }
         }
