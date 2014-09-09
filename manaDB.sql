@@ -7,12 +7,6 @@
   -- Server version: 5.5.38-0ubuntu0.14.04.1
   -- PHP Version: 5.5.9-1ubuntu4.3
 
-  SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-  SET time_zone = "+00:00";
-
-  --
-  -- Database: `manaDB`
-  --
   DROP DATABASE IF EXISTS `manaDB`;
 
 #   CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
@@ -32,7 +26,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 07, 2014 at 10:10 PM
+-- Generation Time: Sep 09, 2014 at 11:06 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -567,12 +561,86 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `LabelLanguage`
 --
 
+  INSERT INTO `LabelLanguage` VALUES('actingAssistantPrincipal', 0, 'Acting Assistant Principal');
+  INSERT INTO `LabelLanguage` VALUES('actingAssistantPrincipal', 1, 'වැඩබලන සහකාර විදුහල්පති');
+  INSERT INTO `LabelLanguage` VALUES('actingDeputyPrincipal', 0, 'Acting Deputy Principal');
+  INSERT INTO `LabelLanguage` VALUES('actingDeputyPrincipal', 1, 'වැඩබලන නියෝජ්‍ය විදුහල්පති');
+  INSERT INTO `LabelLanguage` VALUES('actingPrincipal', 0, 'Acting Principal');
+  INSERT INTO `LabelLanguage` VALUES('actingPrincipal', 1, 'වැඩබලන විදුහල්පති');
   INSERT INTO `LabelLanguage` VALUES('addManager', 0, 'Add Event Managers ');
   INSERT INTO `LabelLanguage` VALUES('addManager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ');
+  INSERT INTO `LabelLanguage` VALUES('agriculture', 0, 'Agriculture');
+  INSERT INTO `LabelLanguage` VALUES('agriculture', 1, 'කෘෂිකර්මය');
+  INSERT INTO `LabelLanguage` VALUES('ALevel', 0, ' A Level');
+  INSERT INTO `LabelLanguage` VALUES('ALevel', 1, '"අ.පො.ස(උ.පෙ)/හෝ සමාන(A/L)');
+  INSERT INTO `LabelLanguage` VALUES('ALevelArtsCommerce', 0, ' A Level Arts Commerce');
+  INSERT INTO `LabelLanguage` VALUES('ALevelArtsCommerce', 1, 'උ.පෙළ (12-13) කල/වාණිජ  ප්‍රදාන විෂයයන්');
+  INSERT INTO `LabelLanguage` VALUES('ALevelOptional', 0, ' A Level Optional');
+  INSERT INTO `LabelLanguage` VALUES('ALevelOptional', 1, 'උ.පෙළ (12-13) අතිරේක විෂයයන්');
+  INSERT INTO `LabelLanguage` VALUES('ALevelScienceMain', 0, ' A Level Science Main');
+  INSERT INTO `LabelLanguage` VALUES('ALevelScienceMain', 1, 'උ.පෙළ (12-13) විද්‍යා ප්‍රදාන විෂයයන් ');
+  INSERT INTO `LabelLanguage` VALUES('ALevelSupervisor', 0, 'A Level Supervisor');
+  INSERT INTO `LabelLanguage` VALUES('ALevelSupervisor', 1, 'උ.පෙළ (12-13) අධීක්ෂණ ගුරු');
+  INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 0, ' A Level Technology');
+  INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 1, 'උ.පෙළ (12-13) තාක්ෂණික ප්‍රදාන විෂයයන්');
   INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave');
   INSERT INTO `LabelLanguage` VALUES('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම');
   INSERT INTO `LabelLanguage` VALUES('approveLeave', 0, 'Approve Leave');
   INSERT INTO `LabelLanguage` VALUES('approveLeave', 1, 'නිවාඩු අනුමතකිරීම');
+  INSERT INTO `LabelLanguage` VALUES('arabic', 0, 'Arabic');
+  INSERT INTO `LabelLanguage` VALUES('arabic', 1, 'අරාබි');
+  INSERT INTO `LabelLanguage` VALUES('art', 0, 'Art');
+  INSERT INTO `LabelLanguage` VALUES('art', 1, 'චිත්‍ර');
+  INSERT INTO `LabelLanguage` VALUES('arts', 0, 'Arts');
+  INSERT INTO `LabelLanguage` VALUES('arts', 1, 'කලා ශිල්ප');
+  INSERT INTO `LabelLanguage` VALUES('artsAgain', 0, 'Arts Again');
+  INSERT INTO `LabelLanguage` VALUES('artsAgain', 1, 'චිත්‍ර');
+  INSERT INTO `LabelLanguage` VALUES('assistantPrincipal', 0, 'Assistant Principal');
+  INSERT INTO `LabelLanguage` VALUES('assistantPrincipal', 1, 'සහකාර විදුහල්පති');
+  INSERT INTO `LabelLanguage` VALUES('BABScBEd', 0, ' B A B Sc B Ed');
+  INSERT INTO `LabelLanguage` VALUES('BABScBEd', 1, 'උපාධි හා ඊට සමාන');
+  INSERT INTO `LabelLanguage` VALUES('bADegreesorequivalent', 0, 'BA Degrees or equivalent');
+  INSERT INTO `LabelLanguage` VALUES('bADegreesorequivalent', 1, 'කල උපාධි හා සමාන උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bAinaForeignLanguageexcludingEnglish', 0, 'BA in a Foreign Language excluding English');
+  INSERT INTO `LabelLanguage` VALUES('bAinaForeignLanguageexcludingEnglish', 1, 'විදේශ භාෂා  (ඉංග්‍රීසි හැර)උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bAinArts', 0, 'BA in Arts');
+  INSERT INTO `LabelLanguage` VALUES('bAinArts', 1, 'චිත්‍ර කලා උපාධි හා සමාන  ඩිප්ලෝමා');
+  INSERT INTO `LabelLanguage` VALUES('bAinDancingorequivalentDip', 0, 'BA in Dancing or equivalent Dip');
+  INSERT INTO `LabelLanguage` VALUES('bAinDancingorequivalentDip', 1, 'නැටුම් උපාධි හා සමාන ඩිප්ලෝමා');
+  INSERT INTO `LabelLanguage` VALUES('bAinEasternMusicorequivalentDip', 0, 'BA in Eastern Music or equivalent Dip');
+  INSERT INTO `LabelLanguage` VALUES('bAinEasternMusicorequivalentDip', 1, 'පෙරදිග සංගීත උපාධි හා සමාන ඩිප්ලෝමා');
+  INSERT INTO `LabelLanguage` VALUES('bAinEnglishorequivalent', 0, 'BA in English or equivalent');
+  INSERT INTO `LabelLanguage` VALUES('bAinEnglishorequivalent', 1, 'ඉංග්‍රීසි/ඉංග්‍රීසි  විෂයක් ලෙස සමත් උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('belowOLevel', 0, 'Below O Level');
+  INSERT INTO `LabelLanguage` VALUES('belowOLevel', 1, 'අ.පො.ස(සා.පෙ) ට අඩු');
+  INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 0, 'B N I E B Ed');
+  INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 1, 'හෝ විශ්ව.වි අද්යපනවේදී උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 0, 'Bsc in Agriculture');
+  INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 1, 'කෘෂි විද්‍යා උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinBiology', 0, 'Bsc in Biology');
+  INSERT INTO `LabelLanguage` VALUES('bscinBiology', 1, 'ජීව විද්‍යා උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinCombinedMathematics', 0, 'Bsc in Combined Mathematics');
+  INSERT INTO `LabelLanguage` VALUES('bscinCombinedMathematics', 1, 'සංයුක්ත ගණිතය');
+  INSERT INTO `LabelLanguage` VALUES('bscinCommerceBusinessMgmtAccountingorequivalentDip', 0, 'Bsc in Commerce Business Mgmt Accounting or equivalent Dip');
+  INSERT INTO `LabelLanguage` VALUES('bscinCommerceBusinessMgmtAccountingorequivalentDip', 1, 'වානිජ්‍ය/ව්‍යාපාර පරිපාලනය/ගණකාධිකරණය උපාධි හා සමාන උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinEducation', 0, 'Bsc in Education');
+  INSERT INTO `LabelLanguage` VALUES('bscinEducation', 1, 'අධ්‍යාපනවේදී උපාධි(විශ්ව විද්‍යාලයිය)');
+  INSERT INTO `LabelLanguage` VALUES('bscinHomeScience', 0, 'Bsc in Home Science');
+  INSERT INTO `LabelLanguage` VALUES('bscinHomeScience', 1, 'ගෘහ විද්‍යා උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinIT', 0, 'Bsc in IT');
+  INSERT INTO `LabelLanguage` VALUES('bscinIT', 1, 'තොරතුරු තාක්ෂණය');
+  INSERT INTO `LabelLanguage` VALUES('bscinPhysics', 0, 'Bsc in Physics');
+  INSERT INTO `LabelLanguage` VALUES('bscinPhysics', 1, 'භාව්තීය විද්‍යා උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 0, 'Bs cin Social Science');
+  INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 1, 'සමාජ විද්‍යා උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 0, 'BSc Specialisation in Mathematics');
+  INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 1, 'විශේෂ ගණිත උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('bTecConstruction', 0, 'B Tec Construction');
+  INSERT INTO `LabelLanguage` VALUES('bTecConstruction', 1, 'ඉදිකිරීම් තාක්ෂණය');
+  INSERT INTO `LabelLanguage` VALUES('bTecElectronicandElectrical', 0, 'B Tec Electronic and Electrical');
+  INSERT INTO `LabelLanguage` VALUES('bTecElectronicandElectrical', 1, 'විදුලිය හා ඉලෙක්ට්‍රොනික තාක්ෂණය');
+  INSERT INTO `LabelLanguage` VALUES('bTecMechanical', 0, 'B Tec Mechanical');
+  INSERT INTO `LabelLanguage` VALUES('bTecMechanical', 1, 'යාන්ත්‍රික තාක්ෂණය');
   INSERT INTO `LabelLanguage` VALUES('buddhism', 0, 'Buddhism');
   INSERT INTO `LabelLanguage` VALUES('buddhism', 1, 'බෞද්ධ');
   INSERT INTO `LabelLanguage` VALUES('byClass', 0, 'by Class');
@@ -581,20 +649,40 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('byTeacher', 1, 'ගුරුවරයාගේ නමින්');
   INSERT INTO `LabelLanguage` VALUES('catholic', 0, 'Catholic');
   INSERT INTO `LabelLanguage` VALUES('catholic', 1, 'කතෝලික');
+  INSERT INTO `LabelLanguage` VALUES('certinLibrary', 0, 'Certin Library');
+  INSERT INTO `LabelLanguage` VALUES('certinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති සහතිකපත්‍ර   පාඨමාලාව');
+  INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingAway', 0, 'Certin Teacher Training Away');
+  INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingAway', 1, 'ගුරු පුහුණු සහතිකය-දුරස්ථ');
+  INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingInstitute', 0, 'Certin Teacher Training Institute');
+  INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingInstitute', 1, 'ගුරු පුහුණු සහතිකය-ආයතනික');
   INSERT INTO `LabelLanguage` VALUES('chooseOption', 0, 'Choose Option');
   INSERT INTO `LabelLanguage` VALUES('chooseOption', 1, 'විකල්පය තෝරගන්න');
   INSERT INTO `LabelLanguage` VALUES('christianity', 0, 'Christianity');
   INSERT INTO `LabelLanguage` VALUES('christianity', 1, 'ක්‍රිස්තියානි');
+  INSERT INTO `LabelLanguage` VALUES('civilStatus', 0, 'Civil Status');
+  INSERT INTO `LabelLanguage` VALUES('civilStatus', 1, 'විවාහක /අවිවාහක බව');
   INSERT INTO `LabelLanguage` VALUES('class', 0, 'Class');
   INSERT INTO `LabelLanguage` VALUES('class', 1, 'පන්තිය');
+  INSERT INTO `LabelLanguage` VALUES('commerce', 0, 'Commerce');
+  INSERT INTO `LabelLanguage` VALUES('commerce', 1, 'වාණිජ්‍ය');
   INSERT INTO `LabelLanguage` VALUES('contactNumber', 0, 'Contact Number');
   INSERT INTO `LabelLanguage` VALUES('contactNumber', 1, 'දුරකථන අංකය');
+  INSERT INTO `LabelLanguage` VALUES('contactNumberForEmergency', 0, 'Contact Number for Emergency');
+  INSERT INTO `LabelLanguage` VALUES('contactNumberForEmergency', 1, 'හදිසි අවස්ථාවකදී ඇමතිය යුතු දුරකථන අංකය');
+  INSERT INTO `LabelLanguage` VALUES('contactPersonForEmergency', 0, 'Contact Person for Emergency');
+  INSERT INTO `LabelLanguage` VALUES('contactPersonForEmergency', 1, 'හදිසි අවස්ථාවකදී  සමබන්ද කරගත යුතු පුදගලයාගේ නම');
+  INSERT INTO `LabelLanguage` VALUES('contractBasedandOther', 0, 'Contract Based and Other');
+  INSERT INTO `LabelLanguage` VALUES('contractBasedandOther', 1, 'කොන්ත්‍රාත් පදනම හා වෙනත් මාර්ග වලින් දීමන ලබන ගුරුවරු');
+  INSERT INTO `LabelLanguage` VALUES('counselling', 0, 'Counselling');
+  INSERT INTO `LabelLanguage` VALUES('counselling', 1, 'උපදේශනය');
   INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 0, 'Course of Study');
   INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 1, 'වර්ගමාන පත්වීමේ වර්ගීකරණය');
   INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 0, 'Create Timetable by Class');
   INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම');
   INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 0, 'Create Timetable by Teacher');
   INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 1, 'ගුරුවරයා විසින් කාලසටහන සැකසුම');
+  INSERT INTO `LabelLanguage` VALUES('dancing', 0, 'Dancing');
+  INSERT INTO `LabelLanguage` VALUES('dancing', 1, 'නැටුම්');
   INSERT INTO `LabelLanguage` VALUES('date', 0, 'Date');
   INSERT INTO `LabelLanguage` VALUES('date', 1, 'දිනය');
   INSERT INTO `LabelLanguage` VALUES('dateAppointedAsTeacher', 0, 'Date Appointed as Teacher/Principal');
@@ -603,8 +691,20 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 1, 'මෙම විදුහලේ පත්වීම භාරගත් වර්ෂය හා මාසය');
   INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 0, 'Date of Birth');
   INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 1, 'උපන් දිනය');
+  INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 0, 'Deputy Principal');
+  INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 1, 'නියෝජ්‍ය විදුහල්පති');
   INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description');
   INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය');
+  INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 0, 'Dipin Agriculture');
+  INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 1, 'කෘෂි අද්‍යාපනය පිළිබද ඩිප්ලෝමාව');
+  INSERT INTO `LabelLanguage` VALUES('dipinEASL', 0, 'Dip in E A S L');
+  INSERT INTO `LabelLanguage` VALUES('dipinEASL', 1, 'දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ ඩිප්ලෝමා');
+  INSERT INTO `LabelLanguage` VALUES('dipinEd', 0, 'Dipin Ed');
+  INSERT INTO `LabelLanguage` VALUES('dipinEd', 1, 'පශ්චාත් උපාධි අධ්‍යාපන ඩිප්ලෝමාව');
+  INSERT INTO `LabelLanguage` VALUES('dipinLibrary', 0, 'Dipin Library');
+  INSERT INTO `LabelLanguage` VALUES('dipinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති ඩිප්ලෝමා පාඨමාලාව');
+  INSERT INTO `LabelLanguage` VALUES('easternMusic', 0, 'Eastern Music');
+  INSERT INTO `LabelLanguage` VALUES('easternMusic', 1, 'සංගීතය-අපරදිග');
   INSERT INTO `LabelLanguage` VALUES('educationInformation', 0, 'Education Information');
   INSERT INTO `LabelLanguage` VALUES('educationInformation', 1, 'අධ්‍යාපනික තොරතුරු');
   INSERT INTO `LabelLanguage` VALUES('emergencyContact', 0, 'Emergency Contact''s Name');
@@ -617,6 +717,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('employmentStatus', 1, 'පාසලට පතවීමේ ස්වභාවය');
   INSERT INTO `LabelLanguage` VALUES('endTime', 0, 'End Time');
   INSERT INTO `LabelLanguage` VALUES('endTime', 1, 'අවසන් වන වෙලාව');
+  INSERT INTO `LabelLanguage` VALUES('english', 0, 'English');
+  INSERT INTO `LabelLanguage` VALUES('english', 1, 'ඉංග්‍රීසි 2001 ට පසු');
   INSERT INTO `LabelLanguage` VALUES('eventCreator', 0, 'Event Creator');
   INSERT INTO `LabelLanguage` VALUES('eventCreator', 1, 'සිදුවීම් නිර්මාණකරු');
   INSERT INTO `LabelLanguage` VALUES('eventId', 0, 'Event ID');
@@ -625,74 +727,236 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('eventManagement', 1, 'උත්සවය කළමනාකරණය');
   INSERT INTO `LabelLanguage` VALUES('eventType', 0, 'Event Type');
   INSERT INTO `LabelLanguage` VALUES('eventType', 1, 'සිදුවීම් වර්ගය');
+  INSERT INTO `LabelLanguage` VALUES('female', 0, 'Female');
+  INSERT INTO `LabelLanguage` VALUES('female', 1, 'ගැහැණු');
+  INSERT INTO `LabelLanguage` VALUES('foreignLanguageExcludingEnglish', 0, 'Foreign Language Excluding English');
+  INSERT INTO `LabelLanguage` VALUES('foreignLanguageExcludingEnglish', 1, 'විදේශ භාෂා (ඉංගිසි හැර)');
   INSERT INTO `LabelLanguage` VALUES('fr', 0, 'F');
   INSERT INTO `LabelLanguage` VALUES('fr', 1, 'සි');
   INSERT INTO `LabelLanguage` VALUES('friday', 0, 'Friday');
   INSERT INTO `LabelLanguage` VALUES('friday', 1, 'සිකුරාදා');
+  INSERT INTO `LabelLanguage` VALUES('fullTime', 0, 'Full Time');
+  INSERT INTO `LabelLanguage` VALUES('fullTime', 1, 'මෙම පාසලින් වැටුප් ලබනහ පාසලේ පුර්ණ කාලීනව සේවය කරන');
+  INSERT INTO `LabelLanguage` VALUES('fullTime_BroughtFromOtherSchool', 0, 'Full Time (Brought from other School)');
+  INSERT INTO `LabelLanguage` VALUES('fullTime_BroughtFromOtherSchool', 1, 'වෙනත් පාසලකින් වැටුප් ලබා මෙම පාසලේ පුර්නකලිනවා සේවය කරන ');
+  INSERT INTO `LabelLanguage` VALUES('fullTime_ReleasedToOtherSchool', 0, 'Full Time (Released to other School)');
+  INSERT INTO `LabelLanguage` VALUES('fullTime_ReleasedToOtherSchool', 1, 'මෙම පාසලින් වැටුප් ලබන හා පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට පුර්නකලිනව නිදහස් කර ඇති');
   INSERT INTO `LabelLanguage` VALUES('gender', 0, 'Gender');
   INSERT INTO `LabelLanguage` VALUES('gender', 1, 'ස්ත්‍රී/පුරුෂ භාවය');
   INSERT INTO `LabelLanguage` VALUES('generalInformation', 0, 'General Information');
   INSERT INTO `LabelLanguage` VALUES('generalInformation', 1, 'සාමාන්‍ය තොරතුරු');
   INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade');
   INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර');
+  INSERT INTO `LabelLanguage` VALUES('graduates', 0, 'Graduates');
+  INSERT INTO `LabelLanguage` VALUES('graduates', 1, 'උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('healthAndPE', 0, 'Health and P.E.');
+  INSERT INTO `LabelLanguage` VALUES('healthAndPE', 1, 'ශාරීරික අද්‍යාපනය');
+  INSERT INTO `LabelLanguage` VALUES('healthandPhysicalEducation', 0, 'Health and Physical Education');
+  INSERT INTO `LabelLanguage` VALUES('healthandPhysicalEducation', 1, 'ශාරීරික අද්‍යාපනය');
   INSERT INTO `LabelLanguage` VALUES('highestEducationalQualification', 0, 'Highest Educational Qualification');
   INSERT INTO `LabelLanguage` VALUES('highestEducationalQualification', 1, 'ඉහලම අධ්‍යාපන සුදුසුකම');
   INSERT INTO `LabelLanguage` VALUES('highestProfessionalQualification', 0, 'Highest Professional Qualification');
   INSERT INTO `LabelLanguage` VALUES('highestProfessionalQualification', 1, 'ඉහලම වෘත්තීය සුදුසුකම');
+  INSERT INTO `LabelLanguage` VALUES('hinduism', 0, 'Hinduism');
+  INSERT INTO `LabelLanguage` VALUES('hinduism', 1, 'හින්දු');
+  INSERT INTO `LabelLanguage` VALUES('homeScience', 0, 'Home Science');
+  INSERT INTO `LabelLanguage` VALUES('homeScience', 1, 'ගෘහ විද්‍යාව');
   INSERT INTO `LabelLanguage` VALUES('indianTamil', 0, 'Indian Tamil');
   INSERT INTO `LabelLanguage` VALUES('indianTamil', 1, 'ඉන්දියානු  දෙමළ');
+  INSERT INTO `LabelLanguage` VALUES('informationTechnology', 0, 'Information Technology');
+  INSERT INTO `LabelLanguage` VALUES('informationTechnology', 1, 'තොරතරු තාක්ෂනය');
   INSERT INTO `LabelLanguage` VALUES('interval', 0, 'INTERVAL');
   INSERT INTO `LabelLanguage` VALUES('interval', 1, 'විවේක කාලය');
   INSERT INTO `LabelLanguage` VALUES('islam', 0, 'Islam');
   INSERT INTO `LabelLanguage` VALUES('islam', 1, 'ඉස්ලාම්');
+  INSERT INTO `LabelLanguage` VALUES('iT', 0, 'IT');
+  INSERT INTO `LabelLanguage` VALUES('iT', 1, 'තොරතුරු තාක්ෂණය');
   INSERT INTO `LabelLanguage` VALUES('keepAttendance', 0, 'Keep Attendance');
   INSERT INTO `LabelLanguage` VALUES('keepAttendance', 1, 'පැමිණීමේ වාර්තාව ');
   INSERT INTO `LabelLanguage` VALUES('leaveManagement', 0, 'Leave Management');
   INSERT INTO `LabelLanguage` VALUES('leaveManagement', 1, 'නිවාඩුව කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('library', 0, 'Library');
+  INSERT INTO `LabelLanguage` VALUES('library', 1, 'පුස්තකාල');
+  INSERT INTO `LabelLanguage` VALUES('libraryandInformationScience', 0, 'Library and Information Science');
+  INSERT INTO `LabelLanguage` VALUES('libraryandInformationScience', 1, 'පුස්තකාල හා තොරතරු විද්‍යාව');
   INSERT INTO `LabelLanguage` VALUES('location', 0, 'Location');
   INSERT INTO `LabelLanguage` VALUES('location', 1, 'ස්ථානය');
   INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 0, 'Mail Delivery Address');
   INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 1, 'ලිපිනය');
+  INSERT INTO `LabelLanguage` VALUES('mAinEd', 0, 'M Ain Ed');
+  INSERT INTO `LabelLanguage` VALUES('mAinEd', 1, 'අධ්‍යාපනය පිළිබද ශ්‍රාස්ත්‍රපති උපාධිය');
+  INSERT INTO `LabelLanguage` VALUES('malay', 0, 'Malay');
+  INSERT INTO `LabelLanguage` VALUES('malay', 1, 'මෞලවි');
+  INSERT INTO `LabelLanguage` VALUES('male', 0, 'Male');
+  INSERT INTO `LabelLanguage` VALUES('male', 1, 'පිරිමි');
+  INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 0, ' M A M Sc M Ed');
+  INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 1, 'ශාස්ත්‍රපති හා ඊට සමාන්තර');
+  INSERT INTO `LabelLanguage` VALUES('management', 0, 'Management');
+  INSERT INTO `LabelLanguage` VALUES('management', 1, 'පරිපාලනය');
   INSERT INTO `LabelLanguage` VALUES('married', 0, 'Married');
   INSERT INTO `LabelLanguage` VALUES('married', 1, 'විවාහක');
+  INSERT INTO `LabelLanguage` VALUES('maths', 0, 'Maths');
+  INSERT INTO `LabelLanguage` VALUES('maths', 1, 'ගණිතය');
+  INSERT INTO `LabelLanguage` VALUES('mEd', 0, 'M Ed');
+  INSERT INTO `LabelLanguage` VALUES('mEd', 1, 'අධ්‍යාපනපති උපාධි');
   INSERT INTO `LabelLanguage` VALUES('medium', 0, 'Medium');
   INSERT INTO `LabelLanguage` VALUES('medium', 1, 'පත්වීම ලද මාධ්‍යය');
   INSERT INTO `LabelLanguage` VALUES('mo', 0, 'M');
   INSERT INTO `LabelLanguage` VALUES('mo', 1, 'ස');
   INSERT INTO `LabelLanguage` VALUES('monday', 0, 'Monday');
   INSERT INTO `LabelLanguage` VALUES('monday', 1, 'සදුදා');
+  INSERT INTO `LabelLanguage` VALUES('MPhil', 0, ' M Phil');
+  INSERT INTO `LabelLanguage` VALUES('MPhil', 1, 'දර්ශනපති හා ඊට සමාන්තර');
+  INSERT INTO `LabelLanguage` VALUES('mPhilEd', 0, 'M Phil Ed');
+  INSERT INTO `LabelLanguage` VALUES('mPhilEd', 1, 'දර්ශනපති -අධ්‍යාපනය පිළිබද');
+  INSERT INTO `LabelLanguage` VALUES('mScinEdMgmt', 0, 'M Scin Ed Mgmt');
+  INSERT INTO `LabelLanguage` VALUES('mScinEdMgmt', 1, 'අධ්‍යාපන කළමනාකරණය පිළිබද විද්‍යාපති');
+  INSERT INTO `LabelLanguage` VALUES('mScinLibrary', 0, 'M Scin Library');
+  INSERT INTO `LabelLanguage` VALUES('mScinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති විද්‍යාපති උපාධිය');
   INSERT INTO `LabelLanguage` VALUES('name', 0, 'Name');
   INSERT INTO `LabelLanguage` VALUES('name', 1, 'සිදුවීම');
   INSERT INTO `LabelLanguage` VALUES('nameInFull', 0, 'Name in Full');
   INSERT INTO `LabelLanguage` VALUES('nameInFull', 1, 'සම්පුර්ණ නම');
   INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 0, 'Name with Initials');
   INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 1, 'නම් මුලකුරු සමඟ');
+  INSERT INTO `LabelLanguage` VALUES('natDipinTeaching', 0, 'Nat Dipin Teaching');
+  INSERT INTO `LabelLanguage` VALUES('natDipinTeaching', 1, 'ජාතික ශික්ෂණ විද්‍යා ඩිප්ලෝමාව');
   INSERT INTO `LabelLanguage` VALUES('nationalityRace', 0, 'Nationality Race');
   INSERT INTO `LabelLanguage` VALUES('nationalityRace', 1, 'ජනවර්ගය');
+  INSERT INTO `LabelLanguage` VALUES('nicNumber', 0, 'NIC Number');
+  INSERT INTO `LabelLanguage` VALUES('nicNumber', 1, 'ජාතික හැඳුනුම් පත් අංකය');
+  INSERT INTO `LabelLanguage` VALUES('none', 0, 'None');
+  INSERT INTO `LabelLanguage` VALUES('none', 1, 'ව්හුර්තීය සුදුසුකම් ලබා නොමැති');
+  INSERT INTO `LabelLanguage` VALUES('nonRomanCatholicism', 0, 'Non Roman Catholicism');
+  INSERT INTO `LabelLanguage` VALUES('nonRomanCatholicism', 1, 'රෝමානු කතෝලික නොවන ක්‍රිස්තියානි');
+  INSERT INTO `LabelLanguage` VALUES('OLevel', 0, ' O Level');
+  INSERT INTO `LabelLanguage` VALUES('OLevel', 1, 'අ.පො.ස(සා.පෙ)/හෝ සමාන(O/L)');
+  INSERT INTO `LabelLanguage` VALUES('OLevelandOther', 0, ' O Level and Other');
+  INSERT INTO `LabelLanguage` VALUES('OLevelandOther', 1, 'අ.පො.ස (ස.පෙ)/වෙනත්');
+  INSERT INTO `LabelLanguage` VALUES('onContract_Government', 0, 'On Contract (Government)');
+  INSERT INTO `LabelLanguage` VALUES('onContract_Government', 1, 'රජයෙන් වැටුප් ලබන කොන්ත්‍රාත් පදනම මත සේවයට බදවාගත් ');
+  INSERT INTO `LabelLanguage` VALUES('onPaidLeave', 0, 'On Paid Leave');
+  INSERT INTO `LabelLanguage` VALUES('onPaidLeave', 1, 'වැටුප් සහිත පුර්නකාලින අද්යන නිවාඩු');
+  INSERT INTO `LabelLanguage` VALUES('optional', 0, 'Optional');
+  INSERT INTO `LabelLanguage` VALUES('optional', 1, 'අතිරේක');
   INSERT INTO `LabelLanguage` VALUES('other', 0, 'Other');
   INSERT INTO `LabelLanguage` VALUES('other', 1, 'වෙනත්');
+  INSERT INTO `LabelLanguage` VALUES('otherGovernmentDepartment', 0, 'Other Government Department');
+  INSERT INTO `LabelLanguage` VALUES('otherGovernmentDepartment', 1, 'වෙනත් රාජ්‍ය ආයතන වලින් පත්කළ(පොලිස් උපසේවය සමුර්ද්දී,මහවැලි හා දක්ෂිණ ලංකා සංවර්දන අදිකාරී වැනි');
+  INSERT INTO `LabelLanguage` VALUES('paidFromSchoolFees', 0, 'Paid from School Fees');
+  INSERT INTO `LabelLanguage` VALUES('paidFromSchoolFees', 1, 'පහසුකම් ගාස්තු/ වෙනත් මාර්ග වලින් දීමනා ලබන');
+  INSERT INTO `LabelLanguage` VALUES('partTime', 0, 'Part Time');
+  INSERT INTO `LabelLanguage` VALUES('partTime', 1, 'මෙම පාසලින් වැටුප් ලබන පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට අර්ධකලිනවා නිදහස් කර ඇති');
+  INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 0, 'Passed Maths without a degree in science');
+  INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 1, 'ගණිතය විෂයක් ලෙස සමත් වු විද්‍යා නොවන උපාධි');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 0, 'PGDip in E A S L	');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 1, 'දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ පශ්චාත් උපාධිඩිප්ලෝමාව');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinEdMgmt', 0, 'P G Dipin Ed Mgmt');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinEdMgmt', 1, 'අධ්‍යාපන කළමනාකරණය පිළිබද පශ්චාත් උපාධිඩිප්ලෝමාව');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinLibraryScience', 0, 'P G Dipin Library Science');
+  INSERT INTO `LabelLanguage` VALUES('pGDipinLibraryScience', 1, 'ගුරු පුස්තකාල විද්‍යා පශ්චාත් උපාධි ඩිප්ලෝමා පාඨමාලාව');
+  INSERT INTO `LabelLanguage` VALUES('PhD', 0, ' Ph D');
+  INSERT INTO `LabelLanguage` VALUES('PhD', 1, 'දර්ශනශුරී උපාධිහා ඊට සමාන්තර');
+  INSERT INTO `LabelLanguage` VALUES('phDEd', 0, 'Ph D Ed');
+  INSERT INTO `LabelLanguage` VALUES('phDEd', 1, 'දර්ශනශුරි - අධ්‍යාපනය පිළිබදව');
   INSERT INTO `LabelLanguage` VALUES('positionInSchool', 0, 'Position in School');
   INSERT INTO `LabelLanguage` VALUES('positionInSchool', 1, 'පාසලේ දරන තනතුර');
+  INSERT INTO `LabelLanguage` VALUES('primary', 0, 'Primary');
+  INSERT INTO `LabelLanguage` VALUES('primary', 1, 'ප්‍රාථමික');
+  INSERT INTO `LabelLanguage` VALUES('primaryEnglish', 0, 'Primary English');
+  INSERT INTO `LabelLanguage` VALUES('primaryEnglish', 1, 'ප්‍රාථමික ඉංග්‍රීසි');
+  INSERT INTO `LabelLanguage` VALUES('primaryGeneral', 0, 'Primary General');
+  INSERT INTO `LabelLanguage` VALUES('primaryGeneral', 1, 'ප්‍රාථමික/සාමාන්‍ය');
+  INSERT INTO `LabelLanguage` VALUES('primaryMultiple', 0, 'Primary Multiple');
+  INSERT INTO `LabelLanguage` VALUES('primaryMultiple', 1, 'ප්‍රාථමික පොදු');
+  INSERT INTO `LabelLanguage` VALUES('primarySecondLanguage', 0, 'Primary Second Language');
+  INSERT INTO `LabelLanguage` VALUES('primarySecondLanguage', 1, 'ප්‍රාථමික දෙවන බස');
+  INSERT INTO `LabelLanguage` VALUES('primarySupervisor', 0, 'Primary Supervisor');
+  INSERT INTO `LabelLanguage` VALUES('primarySupervisor', 1, 'ප්‍රාථමික (1-5) අධීක්ෂණ ගුරු');
+  INSERT INTO `LabelLanguage` VALUES('principal', 0, 'Principal');
+  INSERT INTO `LabelLanguage` VALUES('principal', 1, 'විදුහල්පති');
   INSERT INTO `LabelLanguage` VALUES('prizeGiving', 0, 'Prize Giving Ceremony');
   INSERT INTO `LabelLanguage` VALUES('prizeGiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය');
   INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member');
   INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න');
+  INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 0, 'Released To Other Institute/Office/Service');
+  INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 1, 'වෙනත් ආයතනයකට/කාර්යාලයකට/සේවයකට');
+  INSERT INTO `LabelLanguage` VALUES('releasedToOtherSchool', 0, 'Released To Other School');
+  INSERT INTO `LabelLanguage` VALUES('releasedToOtherSchool', 1, 'වෙනත් පාසලකට නිදහස් කල');
+  INSERT INTO `LabelLanguage` VALUES('religion', 0, 'Religion');
+  INSERT INTO `LabelLanguage` VALUES('religion', 1, 'ආගම');
+  INSERT INTO `LabelLanguage` VALUES('romanCatholicism', 0, 'Roman Catholicism');
+  INSERT INTO `LabelLanguage` VALUES('romanCatholicism', 1, 'රෝමානු කතෝලික');
   INSERT INTO `LabelLanguage` VALUES('salary', 0, 'Salary');
   INSERT INTO `LabelLanguage` VALUES('salary', 1, 'මුළු වැටුප');
   INSERT INTO `LabelLanguage` VALUES('saveEvent', 0, 'Save Event');
   INSERT INTO `LabelLanguage` VALUES('saveEvent', 1, 'සිදුවීම සුරකින්න');
+  INSERT INTO `LabelLanguage` VALUES('science', 0, 'Science');
+  INSERT INTO `LabelLanguage` VALUES('science', 1, 'විද්‍යාව');
+  INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 0, 'Science And Maths');
+  INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 1, 'විද්‍යා -ගණිත');
   INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search Staff Member');
   INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම');
+  INSERT INTO `LabelLanguage` VALUES('secondaryArts', 0, 'Secondary Arts');
+  INSERT INTO `LabelLanguage` VALUES('secondaryArts', 1, 'ද්විතීයික (6-11) සෞන්දර්ය');
+  INSERT INTO `LabelLanguage` VALUES('secondaryEnglish', 0, 'Secondary English');
+  INSERT INTO `LabelLanguage` VALUES('secondaryEnglish', 1, 'ද්විතීයික (6-11) ඉංග්‍රීසි');
+  INSERT INTO `LabelLanguage` VALUES('secondaryMultiple', 0, 'Secondary Multiple');
+  INSERT INTO `LabelLanguage` VALUES('secondaryMultiple', 1, 'ද්විතීයික (6-11) පොදු');
+  INSERT INTO `LabelLanguage` VALUES('secondaryScienceMaths', 0, 'Secondary Science Maths');
+  INSERT INTO `LabelLanguage` VALUES('secondaryScienceMaths', 1, 'ද්විතීයික (6-11) විද්‍යා/ගණිත');
+  INSERT INTO `LabelLanguage` VALUES('secondarySecondLanguage', 0, 'Secondary Second Language');
+  INSERT INTO `LabelLanguage` VALUES('secondarySecondLanguage', 1, 'ද්විතීයික (6-11) දෙවන බස');
+  INSERT INTO `LabelLanguage` VALUES('secondarySupervisor', 0, 'Secondary Supervisor');
+  INSERT INTO `LabelLanguage` VALUES('secondarySupervisor', 1, 'ද්විතීයික (6-11) අධීක්ෂණ ගුරු');
+  INSERT INTO `LabelLanguage` VALUES('secondaryTechnology', 0, 'Secondary Technology');
+  INSERT INTO `LabelLanguage` VALUES('secondaryTechnology', 1, 'ද්විතීයික (6-11)තාක්ෂණික');
   INSERT INTO `LabelLanguage` VALUES('section', 0, 'Section');
   INSERT INTO `LabelLanguage` VALUES('section', 1, 'නිරතවන කාර්යය');
   INSERT INTO `LabelLanguage` VALUES('serviceGrade', 0, 'Service Grade');
   INSERT INTO `LabelLanguage` VALUES('serviceGrade', 1, 'අදාල සේවය/ශ්‍රේණිය');
+  INSERT INTO `LabelLanguage` VALUES('sinhala', 0, 'Sinhala');
+  INSERT INTO `LabelLanguage` VALUES('sinhala', 1, 'සිංහල');
+  INSERT INTO `LabelLanguage` VALUES('socialStudies', 0, 'Social Studies');
+  INSERT INTO `LabelLanguage` VALUES('socialStudies', 1, 'සමාජ අධ්‍යනය');
+  INSERT INTO `LabelLanguage` VALUES('specialEducation', 0, 'Special Education');
+  INSERT INTO `LabelLanguage` VALUES('specialEducation', 1, 'විශේෂ අධ්‍යාපනය');
   INSERT INTO `LabelLanguage` VALUES('sportMeet', 0, 'Sports Meet');
   INSERT INTO `LabelLanguage` VALUES('sportMeet', 1, 'ක්‍රීඩා උත්සවය');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaEducationAdministrativeServiceI', 0, 'Sri Lanka Education Administrative Service I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaEducationAdministrativeServiceI', 1, 'ශ්‍රී ලංකා අධ්‍යා. ප. සේ I(SLEAS I)');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaEducationAdministrativeServiceII', 0, 'Sri Lanka Education Administrative Service I I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaEducationAdministrativeServiceII', 1, 'ශ්‍රී ලංකා අධ්‍යා. ප. සේ II(SLEAS II)');
+  INSERT INTO `LabelLanguage` VALUES('SriLankaEducationAdministrativeServiceIII', 0, ' Sri Lanka Education Administrative Service I I I');
+  INSERT INTO `LabelLanguage` VALUES('SriLankaEducationAdministrativeServiceIII', 1, 'ශ්‍රී ලංකා අධ්‍යා. ප. සේ III(SLEAS III)');
   INSERT INTO `LabelLanguage` VALUES('srilankanMuslim', 0, 'Sri Lankan Muslim');
   INSERT INTO `LabelLanguage` VALUES('srilankanMuslim', 1, 'ශ්‍රී ලාංකික මුස්ලිම්');
   INSERT INTO `LabelLanguage` VALUES('srilankanTamil', 0, 'Sri Lankan Tamil');
   INSERT INTO `LabelLanguage` VALUES('srilankanTamil', 1, 'ශ්‍රී ලාංකික දෙමළ');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService2I', 0, 'Sri Lanka Principal Service 2 I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService2I', 1, 'ශ්‍රී ලංකා විහාල්පති සේ. 2-I(SLPS 2-I)');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService2II', 0, 'Sri Lanka Principal Service 2 I I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService2II', 1, 'ශ්‍රී ලංකා විහාල්පති සේ. 2-II(SLPS 2-II)');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService3', 0, 'Sri Lanka Principal Service 3');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalService3', 1, 'ශ්‍රී ලංකා විහාල්පති සේ.3(SLPS 3)');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalServiceI', 0, 'Sri Lanka Principal Service I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaPrincipalServiceI', 1, 'ශ්‍රී ලංකා විහාල්පති සේ. I(SLPS I)');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService2I', 0, 'Sri Lanka Teacher Service 2 I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService2I', 1, 'ශ්‍රී ලංකා ගුරු සේ  2-I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService2II', 0, 'Sri Lanka Teacher Service 2 I I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService2II', 1, 'ශ්‍රී ලංකා ගුරු සේ 2-II');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService3I', 0, 'Sri Lanka Teacher Service 3 I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService3I', 1, 'ශ්‍රී ලංකා ගුරු සේ  3-I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService3II', 0, 'Sri Lanka Teacher Service 3 I I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherService3II', 1, 'ශ්‍රී ලංකා ගුරු සේ 3-II');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherServiceI', 0, 'Sri Lanka Teacher Service I');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherServiceI', 1, 'ශ්‍රී ලංකා ගුරු සේ I ');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherServicePending', 0, 'Sri Lanka Teacher Service Pending');
+  INSERT INTO `LabelLanguage` VALUES('sriLankaTeacherServicePending', 1, 'ශ්‍රී ලංකා ගුරු සේවයට අන්තර්ග්‍රහණය කර නොමැත');
+  INSERT INTO `LabelLanguage` VALUES('staffAdvisorFullTime', 0, 'Staff Advisor (Full-Time)');
+  INSERT INTO `LabelLanguage` VALUES('staffAdvisorFullTime', 1, 'ගුරු උපදේශක (පුර්නකාලින)');
+  INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 0, 'Staff Advisor (Part-Time)');
+  INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 1, 'ගුරු උපදේශක (අර්ධකාලින)');
   INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
   INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
   INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Management');
@@ -707,12 +971,20 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('subjectSecondMostTaught', 1, 'දෙවනුව වැඩි කාලයක් උගන්වන විෂයය');
   INSERT INTO `LabelLanguage` VALUES('submit', 0, 'Submit');
   INSERT INTO `LabelLanguage` VALUES('submit', 1, 'තහවුරු කරන්න');
+  INSERT INTO `LabelLanguage` VALUES('tamil', 0, 'Tamil');
+  INSERT INTO `LabelLanguage` VALUES('tamil', 1, 'දෙමළ');
+  INSERT INTO `LabelLanguage` VALUES('teacher', 0, 'Teacher');
+  INSERT INTO `LabelLanguage` VALUES('teacher', 1, 'ගුරුවරයා');
   INSERT INTO `LabelLanguage` VALUES('teacherDay', 0, 'Teacher''s Day');
   INSERT INTO `LabelLanguage` VALUES('teacherDay', 1, 'ගුරු දිනය');
   INSERT INTO `LabelLanguage` VALUES('teachersName', 0, 'Teacher''s Name');
   INSERT INTO `LabelLanguage` VALUES('teachersName', 1, 'ගුරුවරයාගේ නම');
+  INSERT INTO `LabelLanguage` VALUES('technology', 0, 'Technology');
+  INSERT INTO `LabelLanguage` VALUES('technology', 1, 'තාක්ෂණය');
   INSERT INTO `LabelLanguage` VALUES('th', 0, 'T');
   INSERT INTO `LabelLanguage` VALUES('th', 1, '');
+  INSERT INTO `LabelLanguage` VALUES('theatreandDrama', 0, 'Theatre and Drama');
+  INSERT INTO `LabelLanguage` VALUES('theatreandDrama', 1, 'නාට්‍ය හා රංග කලාව');
   INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'Thursday');
   INSERT INTO `LabelLanguage` VALUES('thursday', 1, 'බ්‍රහස්පතින්දා');
   INSERT INTO `LabelLanguage` VALUES('time', 0, 'Time');
@@ -733,6 +1005,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('wednesday', 1, 'බදාදා');
   INSERT INTO `LabelLanguage` VALUES('week', 0, ' Week');
   INSERT INTO `LabelLanguage` VALUES('week', 1, 'සතිය');
+  INSERT INTO `LabelLanguage` VALUES('westernMusic', 0, 'Western Music');
+  INSERT INTO `LabelLanguage` VALUES('westernMusic', 1, 'සංගීතය-පෙරදිග');
   INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
   INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
 
@@ -788,6 +1062,13 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`GroupNo`,`OptionNo`,`Language`),
     KEY `fk006` (`Language`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `LanguageOption`
+--
+
+  INSERT INTO `LanguageOption` VALUES(0, 0, 0, 'Sinhala');
+  INSERT INTO `LanguageOption` VALUES(0, 0, 1, 'සිංහල');
 
 -- --------------------------------------------------------
 
@@ -898,21 +1179,21 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
 -- Dumping data for table `Staff`
 --
 
-  INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789v', 'makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
-  INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789v', 'makola', '0756489326', '2014-08-06', '2014-08-30', 3, NULL, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
-  INSERT INTO `Staff` VALUES('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963', 'kolpity', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
-  INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 2, 3, 3, '81456239', 'negambo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 0);
+  INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789V', 'Makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
+  INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789V', 'Makola', '0756489326', '2014-08-06', '2014-08-30', 3, 1, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
+  INSERT INTO `Staff` VALUES('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963V', 'Kollupitiya', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
+  INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 2, 3, 3, '814562395V', 'Negombo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 0);
   INSERT INTO `Staff` VALUES('13', 'Mark All One', '1992-02-12', 1, 1, 2, 1, '123456789v', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 55, 0);
   INSERT INTO `Staff` VALUES('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543v', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 6, 19, 6, 5, 13, 17000, 3, 18, 41, 0);
   INSERT INTO `Staff` VALUES('15', 'Sahan Malinga Tissera', '1993-02-02', NULL, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 17000, 3, 19, 18, 0);
   INSERT INTO `Staff` VALUES('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 1, 14, 3, 7, 4, 25000, 4, 1, 18, 0);
   INSERT INTO `Staff` VALUES('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
-  INSERT INTO `Staff` VALUES('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '93625789', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
+  INSERT INTO `Staff` VALUES('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '936257891V', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
   INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 0);
   INSERT INTO `Staff` VALUES('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
   INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '95896452', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
   INSERT INTO `Staff` VALUES('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
-  INSERT INTO `Staff` VALUES('8', 'Yazdaan M.Y.', '2014-08-20', 1, 3, 1, 1, '923570039v', 'dehiwala', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
+  INSERT INTO `Staff` VALUES('8', 'Yazdaan M.A.', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
   INSERT INTO `Staff` VALUES('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '4563218', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
 
 -- --------------------------------------------------------
@@ -1522,46 +1803,46 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '5', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '5', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '5', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '1', 0, 0, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(1, 'A', 0, 1, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '1', 0, 2, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '1C', 0, 3, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 0, 4, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 0, 5, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 0, 6, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 0, 7, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 0, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 1, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 2, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 3, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 4, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 5, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 6, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 1, 7, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 0, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 1, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 2, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 3, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 4, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 5, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 6, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 2, 7, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 0, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 1, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 2, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 3, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 4, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 5, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 6, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 3, 7, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 0, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 1, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 2, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 3, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 4, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '', 4, 5, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '1', 4, 6, '', '6', 0);
-  INSERT INTO `Timetable` VALUES(NULL, '1', 4, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '6', 0);
+  INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '6', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '7', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '7', 0);
   INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '7', 0);
@@ -1714,9 +1995,9 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`userEmail`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `User`
---
+  --
+  -- Dumping data for table `User`
+  --
 
   INSERT INTO `User` VALUES('1', '$2y$10$bEOYHN38SCG2xjwgLBXude39avl5ohE/NeMl4UkmnK7/hCdpQS.l.', 1, 2);
   INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
@@ -1774,10 +2055,10 @@ ALTER TABLE `Attendance`
 ALTER TABLE `Blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `ClassInformation`
---
-ALTER TABLE `ClassInformation`
+  --
+  -- Constraints for table `ClassInformation`
+  --
+  ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
@@ -1786,10 +2067,10 @@ ALTER TABLE `ClassInformation`
 ALTER TABLE `Event`
   ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `EventManager`
-  --
-  ALTER TABLE `EventManager`
+--
+-- Constraints for table `EventManager`
+--
+ALTER TABLE `EventManager`
   ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
@@ -1838,16 +2119,16 @@ ALTER TABLE `LeaveData`
 ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
---
--- Constraints for table `ParentsInformation`
---
-ALTER TABLE `ParentsInformation`
+  --
+  -- Constraints for table `ParentsInformation`
+  --
+  ALTER TABLE `ParentsInformation`
   ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
---
--- Constraints for table `Student_Subject_Grade`
---
-ALTER TABLE `Student_Subject_Grade`
+  --
+  -- Constraints for table `Student_Subject_Grade`
+  --
+  ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
   --
