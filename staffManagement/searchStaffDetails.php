@@ -414,7 +414,7 @@ $footerTop = $fullPageHeight + 100;
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-$pageTitle= "newsearchStaffdetails";
+$pageTitle= "Search Staff Details";
 //Apply the template
 include("../Master.php");
 ?>
