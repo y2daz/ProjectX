@@ -95,7 +95,6 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
     <table id="labelList">
         <tr>
             <th>Group Label</th>
-            <th>Option Label</th>
             <th>English</th>
             <th>Sinhala</th>
             <th></th>
