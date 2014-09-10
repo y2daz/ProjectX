@@ -115,28 +115,6 @@ function sendMessage(text){
     $.prompt(text);
 }
 
-//function askConfirmation(question)
-//{
-//    var states = {
-//        state0: {
-//            title: "Confirmation",
-//            html:'<p>' + question + '</p>',
-//            buttons: { Okay: 1, Cancel: -1 },
-//            focus: "input[name='jTxtPassword']",
-//
-//            submit:function(e,v,m,f){
-//                e.preventDefault();
-//
-//                $.prompt.close();
-//
-//                return v;
-//            }
-//        }
-//    }
-//    $.prompt(states);
-//}
-
-
 function resetPassword(user){
     var states = {
         state0: {

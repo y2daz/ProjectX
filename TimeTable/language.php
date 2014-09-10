@@ -9,6 +9,7 @@
 define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 require_once("../dbAccess.php");
+require_once("../common.php");
 
 ?>
 <!DOCTYPE html>
@@ -18,26 +19,126 @@ require_once("../dbAccess.php");
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/scripts/jquery-impromptu.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
     <script>
+        $(document).ready(function() {
+
+            function UCFirst(string)
+            {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+            function LCFirst(string)
+            {
+                return string.charAt(0).toLowerCase() + string.slice(1);
+            }
+
+            $("#pasteZoneLab").on("input propertychange paste", function(){
+                var enteredText = $(this).val().split("\n");
+                var NoofLines = $(this).val().split("\n").length;
+
+                if (NoofLines <= 10){
+                    var i = 0;
+
+                    for(i = 0; i < NoofLines; i++){
+                        var currentLine = enteredText[i].split("=");
+                        var currentLineE = currentLine[0];
+                        var currentLineS = currentLine[1];
+
+                        currentLineE = currentLineE.replace("$","");
+                        currentLineE = currentLineE.replace('"',"");
+                        currentLineE = currentLineE.replace('"',"");
+                        currentLineE = currentLineE.replace('"',"");
+                        currentLineE = currentLineE.trim();
+
+                        currentLineS = currentLineS.replace("$","");
+                        currentLineS = currentLineS.replace('"',"");
+                        currentLineS = currentLineS.replace('"',"");
+                        currentLineS = currentLineS.replace('"',"");
+                        currentLineS = currentLineS.replace(';',"");
+                        currentLineS = currentLineS.trim();
+
+
+                        $("#label_" + i).val( LCFirst(currentLineE) );
+                        $("#sinhalavalue_" + i).val( currentLineS );
+                    }
+                }
+                else{
+                    alert("Too many lines.");
+                }
+            });
+
+            $("#translate").on("click", function(){
+                var enteredText = $("#pasteZoneFun").val().split("\n");
+                var NoofLines = $("#pasteZoneFun").val().split("\n").length;
+
+                var i = 0;
+
+                var complete = "";
+
+                for(i = 0; i < NoofLines; i++){
+                    var currentLine = enteredText[i].split("=");
+                    var currentLine1 = currentLine[0];
+                    var currentLine2 = "";
+
+                    currentLine1 = currentLine1.trim();
+
+                    currentLine2 = currentLine1;
+//                    alert(currentLine2);
+                    currentLine2 = currentLine2 + " = ";
+//                    alert(currentLine2);
+                    currentLine2 = currentLine2 + " getLanguage('";
+//                    alert(currentLine2);
+                    currentLine1 = currentLine1.replace("$","");
+                    currentLine2 = currentLine2 + currentLine1 + "', $language);";
+
+                    complete = complete + currentLine2 + "\n";
+
+                    $("#pasteZoneFun").val( complete );
+                }
+            });
+
+            $(".label").on("blur input propertychange paste", function(){
+                var myValue = $(this).val();
+                var i=0;
+                var ch='';
+                while (i < myValue.length){
+                    ch = myValue.charAt(i);
+                    if (ch == ch.toUpperCase()) {
+                        myValue = myValue.substr(0, i) + " " + myValue.substr(i, myValue.length - i);
+                        i += 2;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+
+                var idArr = $(this).attr("id").split("_");
+                var id = idArr[1];
+
+//                alert(id);
+                $("#englishvalue_" + id + "").val( UCFirst(myValue) );
+
+            });
+        });
 
         function searchEmail(element){
-//                 alert(element.value)
+            //                 alert(element.value)
             var text = $(element).val();
 
             if (text.length >= 1)
             {
-//                alert(text);
+                //                alert(text);
                 $("td.searchLanguage").closest('tr').addClass("hide");
-                $("td.searchLanguage").filter(function(){ return($.text([this]).indexOf(text) > -1); }).closest('tr').removeClass("hide");
+                $("td.searchLanguage").filter(function(){ return($.text([this]).toLowerCase().indexOf( text.toLowerCase() ) > -1); }).closest('tr').removeClass("hide");
             }
             else
             {
                 $("td.searchLanguage").closest('tr').removeClass("hide");
             }
-        }
-
-
+        };
     </script>
     <style>
         *{
@@ -59,17 +160,24 @@ require_once("../dbAccess.php");
         .LanguageList .noAlt{
             background-color: #ffffff;
         }
-        .LanguageList .search{
+        .search{
             background-color: #D8FFBD;
         }
         .hide{
             display: none;
         }
-        td{
+        .languagelist td{
             padding: 2px 6px 2px 6px;
         }
-        th {
+        .languagelist th {
             font-weight: 600;
+        }
+        .label{
+            width:350px;
+        }
+        .pasteZone{
+            height:200px;
+            width:500px;
         }
 
     </style>
@@ -81,7 +189,20 @@ require_once("../dbAccess.php");
 <body>
     <h1>Assign Label Language Data</h1>
     <h2>This is for labels and button text and stuff. <a href="optionLanguage.php">Click here for entering values for drop-down lists and such.</a></h2>
-    <form method="POST">
+    <form method="post">
+
+        <table>
+            <tr>
+                <td>Paste area for PHP language code</td>
+<!--                <td>Paste area for english</td>-->
+<!--                <td>Paste area for sinhala</td>-->
+            </tr>
+            <tr>
+                <td><textarea id="pasteZoneLab" class="pasteZone"></textarea></td>
+<!--                <td><textarea id="pasteZoneEng" class="pasteZone"></textarea></td>-->
+<!--                <td><textarea id="pasteZoneSin" class="pasteZone"></textarea></td>-->
+            </tr>
+        </table>
 
     <table id="labelList">
         <tr>
@@ -90,15 +211,26 @@ require_once("../dbAccess.php");
             <th>Sinhala</th>
             <th></th>
         </tr>
+        <?php
+            for($i=0; $i<10; $i++)
+            {
+        ?>
         <tr>
-            <td><input type='text'class="text1" name="label" required="true" onkeyup="searchEmail(this)"/></td>
-            <td><input type='text' class='text1' name='english' required="true"></td>
-            <td><input type='text' class='text1' name='sinhala' required="true"></td>
-            <td><input name="Submit" type="Submit" value="Submit" /></td>
-        </tr>
+            <td><input id="label<?php echo "_$i" ?>" type='text'class="label text1" name="label<?php echo "_$i" ?>" onkeyup="searchEmail(this)" /></td>
+            <td><input id="englishvalue<?php echo "_$i" ?>" type="text" class='englishvalue text1' name='english<?php echo "_$i" ?>' ></td>
+            <td><input id="sinhalavalue<?php echo "_$i" ?>" type='text' class='text1' name='sinhala<?php echo "_$i" ?>'></td>
+
+
+        <?php
+                if($i != 9){
+                    echo "</tr>";
+                }
+                else{
+                    echo '<td><input name="Submit" type="Submit" value="Submit" /></td></tr>';
+                }
+            }
+        ?>
     </table>
-
-
 
     </form>
 
@@ -127,34 +259,39 @@ require_once("../dbAccess.php");
         </table>
 
 
-    <!-- Start of Reportico Report -->
-    <?php
-/*
-    set_include_path('../reportico/');
-    require('reportico.php');
-    $a = new reportico();
-    $a->initial_project = "test";
-//    $a->initial_project_password = "password";
-    $a->report = "TestRep.xml";
-    $a->execute_mode= "EXECUTE";
-    $a->target_format = "PDF";
-    $a->target_style= "table";
-//    $a->initial_output_format = "HTML";
-    $a->access_mode = "REPORTOUTPUT";
-    $a->embedded_report = false;
-    $a->execute();
+    <br />
 
-//    $a->forward_url_get_parameters = "x1=y1&x2=y2";
-    */?>
+    <table>
+        <tr>
+            <td>Paste area for PHP language code for generating getLanguage Functions</td>
+            <!--                <td>Paste area for english</td>-->
+            <!--                <td>Paste area for sinhala</td>-->
+        </tr>
+        <tr>
+            <td><textarea id="pasteZoneFun" class="pasteZone"></textarea><input type="button" id="translate" value="translate"/></td>
+            <!--                <td><textarea id="pasteZoneEng" class="pasteZone"></textarea></td>-->
+            <!--                <td><textarea id="pasteZoneSin" class="pasteZone"></textarea></td>-->
+        </tr>
+    </table>
+
 
 <?php
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
-    if ( $operation = insertLanguage($_POST["label"], $_POST["english"], $_POST["sinhala"]))
-    {
-
+    $true = 0;
+    for ($i = 0; $i < 10; $i++){
+        if ( isFilled($_POST["label" . "_" . $i]))
+        {
+            $operation = insertLanguage($_POST["label" . "_" . $i], $_POST["english" . "_" . $i], $_POST["sinhala" . "_" . $i]);
+            if ($operation == true){
+                $true++;
+            }
+        }
     }
+
+    echo $true . " values inserted";
+    sendNotification($true . " values inserted");
 }
 
 function insertLanguage($label, $english, $sinhala)
@@ -170,6 +307,13 @@ function insertLanguage($label, $english, $sinhala)
 
     $noE = 0;
     $noS = 1;
+
+    if ($stmt = $mysqli->prepare("DELETE FROM LabelLanguage WHERE Label=?;"))
+    {
+        $stmt -> bind_param("s", $label);
+        $stmt -> execute();
+    }
+
 
     if ($stmt = $mysqli->prepare("INSERT INTO LabelLanguage values(?, ?, ?);"))
     {

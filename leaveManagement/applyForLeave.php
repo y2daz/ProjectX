@@ -12,25 +12,84 @@
 
     ob_start();
 
+    error_reporting(E_ERROR | E_PARSE);
+
+    function insertLeaveFunc()
+    {
+        $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
+        $success = "Leave Request Sent!";
+        $fail = "Request Failed!";
+
+        if($operation)
+        {
+            sendNotification($success);
+        }
+        else
+        {
+            sendNotification($fail);
+        }
+    }
 
     if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
     {
-        if(is_numeric($_POST["staffid"]))
+
+        $checkStaffMember = checkStaffMember($_POST["staffid"]);
+
+        if(is_numeric($_POST["staffid"]) )
         {
-            $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
 
-
-            $success = "Leave Request Sent!";
-            $fail = "Request Failed!";
-
-            if($operation)
+            if($checkStaffMember)
             {
-                sendNotification($success);
+                $result = getLeaveData($_POST["staffid"]);
+
+                foreach($result as $row)
+                {
+                    $OfficialLeave = $row[0];
+                    $MaternityLeave = $row[1];
+                    $OtherLeave = $row[2];
+                }
+
+
+                if($_POST["leavetype"] == 1)
+                {
+                    if($OfficialLeave < 1)
+                    {
+                        sendNotification("You are out of Official Leave days!");
+                    }
+                    else
+                    {
+                        insertLeaveFunc();
+                    }
+                }
+                else if ($_POST["leavetype"] == 2)
+                {
+                    if($MaternityLeave < 1)
+                    {
+                        sendNotification("You are out of Maternity Leave days!");
+                    }
+                    else
+                    {
+                        insertLeaveFunc();
+                    }
+
+                }
+                else if ($_POST["leavetype"] == 3)
+                {
+                    if($OtherLeave < 1)
+                    {
+                        sendNotification("You are out of Other Leave days!");
+                    }
+                    else
+                    {
+                        insertLeaveFunc();
+                    }
+                }
             }
             else
             {
-                sendNotification($fail);
+                sendNotification("Staff Member Does Not Exist!");
             }
+
         }
         else
         {
@@ -38,9 +97,14 @@
         }
     }
 
-    if(isset($_POST["GetLeaveData"]))
-    {
-        $result = getLeaveData($_POST["staffid"]);
+    $OfficialLeave = "";
+    $MaternityLeave = "";
+    $OtherLeave = "";
+
+
+    if (isFilled($_POST["newStaffID"])){
+//        echo $_POST["newStaffID"];
+        $result = getLeaveData($_POST["newStaffID"]);
 
         foreach($result as $row)
         {
@@ -48,19 +112,37 @@
             $MaternityLeave = $row[1];
             $OtherLeave = $row[2];
         }
-    }
-    else
-    {
+
+        if($OfficialLeave < 0)
+        {
+            $OfficialLeave = 0;
+        }
+        else if ($MaternityLeave < 0)
+        {
+            $MaternityLeave = 0;
+        }
+        else if ($OtherLeave < 0)
+        {
+            $OtherLeave = 0;
+        }
+
+
+        $staffIdVal = $_POST["newStaffID"];
+        $startDateVal = $_POST["startDate"];
+        $endDateVal = $_POST["endDate"];
+        $leaveTypeVal = $_POST["leaveType"];
+        $otherReasonsVal = $_POST["otherReasons"];
+
+    }else{
+        $staffIdVal = "";
+        $startDateVal = "";
+        $endDateVal = "";
+        $leaveTypeVal = "";
+        $otherReasonsVal = "";
         $OfficialLeave = "";
         $MaternityLeave = "";
         $OtherLeave = "";
     }
-
-    /*
-    echo $OfficialLeave;
-    echo $MaternityLeave;
-    echo $OtherLeave;
-    */
 
     if($_COOKIE["language"] == 1)
     {
@@ -110,26 +192,23 @@
             #details{
                 border-collapse: collapse;
             }
-
             #output
             {
                 border-collapse: collapse;
             }
-
             .insert
             {
                 position:absolute;
                 left:40px;
                 top: 100px;
             }
-
             .insert2
             {
                 position: absolute;
                 left: 500px;
                 top: 100px;
-            }
 
+            }
             .insert2 th
             {
                 color:white;
@@ -137,6 +216,7 @@
                 height:30px;
                 padding:5px;
                 text-align: left;
+                min-width: 30px;
             }
 
             .insert th
@@ -165,13 +245,31 @@
 
         </style>
 
-        <script src="leave.js">
+        <script>
 
-            function selectedvalue(data)
-            {
+//            function selectedvalue(data)
+//            {
+//                document.getElementById("check").value = data.value;
+//            }
 
-                document.getElementById("check").value = data.value;
-            }
+
+            $(document).ready(function() {
+
+                $("#StaffID").on("blur", function(){
+//                   alert( $(this).val() );
+                    var staffId = $(this).val();
+                    var startDate = $( "[name='startdate']").val();
+                    var endDate = $( "[name='enddate']" ).val();
+                    var leaveType = $( "[name='leavetype']" ).val();
+                    var otherReasons = $( "[name='otherreasons']" ).val();
+
+//                    alert( staffId + "_" + startDate + "_" + endDate + "_" + leaveType + "_" + otherReasons);
+                    var params = {"newStaffID" : staffId, "startDate" : startDate, "endDate" : endDate, "leaveType" : leaveType, "otherReasons" : otherReasons};
+                    post(document.URL, params, "post");
+                });
+
+            });
+
 
         </script>
 
@@ -183,42 +281,32 @@
             <form class="insert" method="post">
 
                 <table id="details">
-
-
                     <tr><th><?php echo $enterdetails ?><th></th></tr>
-
                     <tr>
                         <td><?php echo $staffid ?></td>
-                        <td><input type="text" id="StaffID" name="staffid" value="" required="true"/></td>
+                        <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true"/></td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input type="date" name="startdate" required="true"/></td>
+                        <td><input type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" /></td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input type="date" name="enddate" required="true"/></td>
+                        <td><input type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" /></td>
                     </tr>
                     <tr>
                         <td><?php echo $leavetype ?></td>
-                        <td><select name="leavetype" onchange="selectedvalue(this)" required="true">
-                                <option value="1"><?php echo $officialleavecombo ?></option>
-                                <option value="2"><?php echo $maternityleavecombo ?></option>
-                                <option value="3"><?php echo $otherleavecombo ?></option>
+                        <td><select name="leavetype" required="true" >
+                                <option value="1" selected="<?php echo ($leaveTypeVal == 1? "selected": ""); ?>"><?php echo $officialleavecombo ?></option>
+                                <option value="2" selected="<?php echo ($leaveTypeVal == 2? "selected": ""); ?>"><?php echo $maternityleavecombo ?></option>
+                                <option value="3" selected="<?php echo ($leaveTypeVal == 3? "selected": ""); ?>"><?php echo $otherleavecombo ?></option>
                             </select>
                         </td>
                     </tr>
-
-
                     <tr>
                         <td><?php echo $otherreasons ?></td>
-                        <td><textarea name="otherreasons" rows="3"; cols="25"; name="LeaveReasons"; draggable="false"; style="resize:none"></textarea></td>
+                        <td><textarea name="otherreasons" rows="3" cols="25" draggable="false" style="resize:none"><?php echo $otherReasonsVal ?></textarea></td>
                     </tr>
-
                 </table>
 
                 <table class="insert2" id="output">
@@ -246,8 +334,8 @@
 
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme">
-                    <input type="reset" name="reset" value="<?php echo $reset ?>">
-                    <input type="submit" name="GetLeaveData" value="<?php echo $getleavedata ?>">
+<!--                    <input type="reset" name="reset" value="--><?php //echo $reset ?><!--">-->
+<!--                    <input type="submit" name="GetLeaveData" value="--><?php //echo $getleavedata ?><!--">-->
                 </p>
 
 <!--                <input name="leavetype" id="check" value="OfficialLeave" >-->

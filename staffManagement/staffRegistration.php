@@ -9,13 +9,32 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+
+
+
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
+
 ob_start();
 
 if (isset($_POST["newStaff"])) //User has clicked the submit button to add a user
 {
         $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nationalityRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"], $_POST["highestEducationalQualification"], $_POST["highestProfessionalQualification"], $_POST["courseOfStudy"]);
         echo $operation;
+
+    if ($operation == 1)
+    {
+        sendNotification("Staff Member successfully added.");
+    }
+    else
+    {
+        sendNotification("Error inserting Staff Member information.");
+    }
 }
+
+
+
 ?>
 <html>
     <head>
@@ -23,41 +42,28 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             h1{
                 text-align:center;
             }
-        table {
+        table .general{
             border-spacing:0px 5px;
         }
         .general {
             position:absolute;
             left:10px;
             top:80px;
+            max-width: 800px;
         }
-        th{
+        .general th{
             align:center;
             color:white;
             background-color: #005e77;
             height:25px;
             padding:5px;
-            min-width: 200px;
         }
-        td {
+        .general td {
             padding:5px;
         }
-        .staffimage{
-            position:absolute;
-            height:160px;
-            width:150px;
-            top:130px;
-            left:560px;
-            background-color: #005e77;
-            z-index:0;
-        }
-        .staffimage img
-        {
-            position:absolute;
-            top:4px;
-            left:4px;
-            width:142px;
-            height:150px;
+        .labelCol{
+            max-width: 100px;
+            min-width: 100px;
         }
         input.button {
             position:relative;
@@ -95,542 +101,254 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
     </head>
     <?php //Get language and make changes
+        $language = $_COOKIE['language'];
+        $generalInformation = getLanguage("generalInformation", $language);
+        $employmentInformation =  getLanguage('employmentInformation', $language);
+        $educationInformation =  getLanguage('educationInformation', $language);
+        $staffID =  getLanguage('staffID', $language);
+        $nameWithInitials =  getLanguage('nameWithInitials', $language);
+        $dateOfBirth =  getLanguage('dateOfBirth', $language);
 
-    if($_COOKIE['language'] == 0)
-    {
-        $generalInformation = "General Information";
-        $employmentInformation = "Employment Information";
-        $educationInformation = "Education Information";
+        $staffID =  getLanguage('staffID', $language);
+        $nameWithInitials =  getLanguage('nameWithInitials', $language);
+        $nameinfull =  getLanguage('nameinfull', $language);
+        $dateOfBirth =  getLanguage('dateOfBirth', $language);
+        $gender =  getLanguage('gender', $language);
+        $nationalityRace =  getLanguage('nationalityRace', $language);
+        $religion =  getLanguage('religion', $language);
+        $civilStatus =  getLanguage('civilStatus', $language);
+        $nicNumber =  getLanguage('nicNumber', $language);
 
-        $staffID = "Staff ID";
-        $nameWithInitials = "Name with Initials";
-        $dateOfBirth = "Date of Birth";
+        $male =  getLanguage('male', $language);
+        $female =  getLanguage('female', $language);
+        $sinhala =  getLanguage('sinhala', $language);
+        $srilankantamil =  getLanguage('srilankantamil', $language);
+        $indiantamil =  getLanguage('indiantamil', $language);
+        $srilankanmuslim =  getLanguage('srilankanmuslim', $language);
+        $other =  getLanguage('other', $language);
 
-        $staffID = "Staff ID";
-        $nameWithInitials = "Name with Initials";
-        $nameinfull="Name in Full";
-        $dateOfBirth = "Date of Birth";
-        $gender = "Gender";
-        $nationalityRace = "Nationality/Race";
-        $religion = "Religion";
-        $civilStatus = "Civil Status";
-        $nicNumber = "NIC Number";
+        $buddhism =  getLanguage('buddhism', $language);
+        $hindusm =  getLanguage('hindusm', $language);
+        $islam =  getLanguage('islam', $language);
+        $catholic =  getLanguage('catholic', $language);
+        $christianity =  getLanguage('christianity', $language);
+        $other =  getLanguage('other', $language);
+        $married =  getLanguage('married', $language);
+        $unmarried =  getLanguage('unmarried', $language);
+        $widow =  getLanguage('widow', $language);
+        $other =  getLanguage('other', $language);
 
-        $male = "Male";
-        $female = "Female";
+        $maildeliveryaddress =  getLanguage('maildeliveryaddress', $language);
+        $contactnumber =  getLanguage('contactnumber', $language);
+        $contactpersonforemergency =  getLanguage('contactpersonforemergency', $language);
+        $contactnumberforemergency =  getLanguage('contactnumberforemergency', $language);
+        $dateAppointedAsTeacher =  getLanguage('dateAppointedAsTeacher', $language);
+        $dateJoinedSchool =  getLanguage('dateJoinedSchool', $language);
+        $employmentStatus =  getLanguage('employmentStatus', $language);
+        $medium =  getLanguage('medium', $language);
+        $positionInSchool =  getLanguage('positionInSchool', $language);
+        $section =  getLanguage('section', $language);
+        $subjectMostTaught =  getLanguage('subjectMostTaught', $language);
+        $subjectSecondMostTaught =  getLanguage('subjectSecondMostTaught', $language);
+        $serviceGrade =  getLanguage('serviceGrade', $language);
+        $salary =  getLanguage('salary', $language);
 
-        $sinhala = "Sinhala";
-        $srilankantamil ="Sri Lankan Tamil";
-        $indiantamil = "Indian Tamil";
-        $srilankanmuslim = "Sri Lankan Muslim";
-        $other = "Other";
+        $fulltime =  getLanguage('fulltime', $language);
+        $parttime =  getLanguage('parttime', $language);
+        $fulltime_Releasedtootherschool =  getLanguage('fulltime_Releasedtootherschool', $language);
+        $fulltime_Broughtfromotherschool =  getLanguage('fulltime_Broughtfromotherschool', $language);
+        $oncontract_Government =  getLanguage('oncontract_Government', $language);
+        $paidfromschoolfees =  getLanguage('paidfromschoolfees', $language);
+        $othergovernmentdepartment =  getLanguage('othergovernmentdepartment', $language);
+        $sinhala =  getLanguage('sinhala', $language);
+        $tamil =  getLanguage('tamil', $language);
+        $english =  getLanguage('english', $language);
 
-        $buddhism="Buddhism";
-        $hindusm="Hindusm";
-        $islam="Islam";
-        $catholic="Catholic";
-        $christianity="Christianity";
-        $other = "Other";
+        $principal =  getLanguage('principal', $language);
+        $actingprincipal =  getLanguage('actingprincipal', $language);
+        $deputyprincipal =  getLanguage('deputyprincipal', $language);
+        $actingdeputyprincipal =  getLanguage('actingdeputyprincipal', $language);
+        $assistantprincipal =  getLanguage('assistantprincipal', $language);
+        $actingassistantprincipal =  getLanguage('actingassistantprincipal', $language);
+        $teacher =  getLanguage('teacher', $language);
 
-        $married="Married";
-        $unmarried="Not Married";
-        $widow="Widow";
-        $other="Other";
+        $PrimaryMultiple =  getLanguage('PrimaryMultiple', $language);
+        $PrimaryEnglish =  getLanguage('PrimaryEnglish', $language);
+        $PrimarySecondLanguage =  getLanguage('PrimarySecondLanguage', $language);
+        $SecondaryScienceMaths =  getLanguage('SecondaryScienceMaths', $language);
+        $SecondaryEnglish =  getLanguage('SecondaryEnglish', $language);
+        $SecondaryArts =  getLanguage('SecondaryArts', $language);
+        $SecondaryTechnology =  getLanguage('SecondaryTechnology', $language);
+        $SecondarySecondLanguage =  getLanguage('SecondarySecondLanguage', $language);
+        $SecondaryMultiple =  getLanguage('SecondaryMultiple', $language);
+        $ALevelScienceMain =  getLanguage('ALevelScienceMain', $language);
+        $ALevelArtsCommerce =  getLanguage('ALevelArtsCommerce', $language);
+        $ALevelTechnology =  getLanguage('ALevelTechnology', $language);
+        $ALevelOptional =  getLanguage('ALevelOptional', $language);
+        $SpecialEducation =  getLanguage('SpecialEducation', $language);
+        $InformationTechnology =  getLanguage('InformationTechnology', $language);
+        $PrimarySupervisor =  getLanguage('PrimarySupervisor', $language);
+        $SecondarySupervisor =  getLanguage('SecondarySupervisor', $language);
+        $ALevelSupervisor =  getLanguage('ALevelSupervisor', $language);
+        $Counselling =  getLanguage('Counselling', $language);
+        $Library =  getLanguage('Library', $language);
+        $HealthandPE =  getLanguage('healthAndPE', $language);
+        $Optional =  getLanguage('Optional', $language);
+        $Management =  getLanguage('Management', $language);
+        $StaffAdvisorParttime =  getLanguage('StaffAdvisorParttime', $language);
+        $StaffAdvisorFulltime =  getLanguage('StaffAdvisorFulltime', $language);
+        $ReleasedtoOtherSchool =  getLanguage('ReleasedtoOtherSchool', $language);
+        $Releasedtootherinstituteofficeservice =  getLanguage('Releasedtootherinstituteofficeservice', $language);
+        $Onpaidleave =  getLanguage('Onpaidleave', $language);
 
-        $maildeliveryaddress="Mail Delivery Address";
-        $contactnumber="Contact Number";
-        $contactpersonforemergency ="Conatct Person for Emergency";
-        $contactnumberforemergency ="Conatct Number for Emergency";
+        $SriLankaEducationAdministrativeServiceI =  getLanguage('SriLankaEducationAdministrativeServiceI', $language);
+        $SriLankaEducationAdministrativeServiceII =  getLanguage('SriLankaEducationAdministrativeServiceII', $language);
+        $SriLankaEducationAdministrativeServiceIII =  getLanguage('SriLankaEducationAdministrativeServiceIII', $language);
+        $SriLankaPrincipalServiceI =  getLanguage('SriLankaPrincipalServiceI', $language);
+        $SriLankaPrincipalService2I =  getLanguage('SriLankaPrincipalService2I', $language);
+        $SriLankaPrincipalService2II =  getLanguage('SriLankaPrincipalService2II', $language);
+        $SriLankaPrincipalService3 =  getLanguage('SriLankaPrincipalService3', $language);
+        $SriLankaTeacherServiceI =  getLanguage('SriLankaTeacherServiceI', $language);
+        $SriLankaTeacherService2I =  getLanguage('SriLankaTeacherService2I', $language);
+        $SriLankaTeacherService2II =  getLanguage('SriLankaTeacherService2II', $language);
+        $SriLankaTeacherService3I =  getLanguage('SriLankaTeacherService3I', $language);
+        $SriLankaTeacherService3II =  getLanguage('SriLankaTeacherService3II', $language);
+        $SriLankaTeacherServicePending =  getLanguage('SriLankaTeacherServicePending', $language);
 
-        $dateAppointedAsTeacher = "Date Appointed as Teacher/Principal";
-        $dateJoinedSchool = "Date Joined this School";
-        $employmentStatus = "Employment Status";
-        $medium = "Medium";
-        $positionInSchool = "Position in School";
-        $section = "Section";
-        $subjectMostTaught = "Subject Most Taught";
-        $subjectSecondMostTaught = "Subject Second Most Taught";
-        $serviceGrade = "Service Grade";
-        $salary = "Salary";
+        $highestEducationalQualification =  getLanguage('highestEducationalQualification', $language);
+        $BelowOLevel =  getLanguage('belowOLevel', $language);
+        $OLevel =  getLanguage('OLevel', $language);
+        $ALevel =  getLanguage('ALevel', $language);
+        $BABScBEd =  getLanguage('BABScBEd', $language);
+        $MAMScMEd =  getLanguage('MAMScMEd', $language);
+        $MPhil =  getLanguage('MPhil', $language);
+        $PhD =  getLanguage('PhD', $language);
 
-        $fulltime="Full Time";
-        $parttime="Part Time";
-        $fulltime_Releasedtootherschool="Full Time (Released to other School)";
-        $fulltime_Broughtfromotherschool="Full Time (Brought from other School)";
-        $oncontract_Government="On Contract (Government)";
-        $paidfromschoolfees="Paid from School Fees";
-        $othergovernmentdepartment="Other government department";
+        $highestProfessionalQualification =  getLanguage('highestProfessionalQualification', $language);
+        $PhDEd =  getLanguage('phDEd', $language);
+        $MPhilEd =  getLanguage('mPhilEd', $language);
+        $MEd =  getLanguage('mEd', $language);
+        $MAinEd =  getLanguage('mAinEd', $language);
+        $DipinEd =  getLanguage('dipinEd', $language);
+        $MScinEdMgmt =  getLanguage('mScinEdMgmt', $language);
+        $PGDipinEdMgmt =  getLanguage('pGDipinEdMgmt', $language);
+        $PGDipinEASL =  getLanguage('pGDipinEASL', $language);
+        $BNIEBEd =  getLanguage('bNIEBEd', $language);
+        $DipinEASL =  getLanguage('dipinEASL', $language);
+        $DipinLibrary =  getLanguage('dipinLibrary', $language);
+        $CertinLibrary =  getLanguage('certinLibrary', $language);
+        $PGDipinLibraryScience =  getLanguage('pGDipinLibraryScience', $language);
+        $MScinLibrary =  getLanguage('mScinLibrary', $language);
+        $DipinAgriculture =  getLanguage('dipinAgriculture', $language);
+        $CertinTeacherTrainingInstitute =  getLanguage('certinTeacherTrainingInstitute', $language);
+        $CertinTeacherTrainingAway =  getLanguage('certinTeacherTrainingAway', $language);
+        $NatDipinTeaching =  getLanguage('natDipinTeaching', $language);
+        $None =  getLanguage('None', $language);
 
-        $sinhala="Sinhala";
-        $tamil="Tamil";
-        $english="English after 2001";
+        $courseOfStudy =  getLanguage('courseOfStudy', $language);
+        $BscinEducation =  getLanguage('BscinEducation', $language);
+        $BscinPhysics =  getLanguage('BscinPhysics', $language);
+        $BscinBiology =  getLanguage('BscinBiology', $language);
+        $BscinCombinedMathematics =  getLanguage('BscinCombinedMathematics', $language);
+        $BScspecialisationinMathematics =  getLanguage('BScspecialisationinMathematics', $language);
+        $PassedMathswithoutadegreeinscience =  getLanguage('PassedMathswithoutadegreeinscience', $language);
+        $BscinAgriculture =  getLanguage('BscinAgriculture', $language);
+        $BscinHomeScience =  getLanguage('BscinHomeScience', $language);
+        $BscinIT =  getLanguage('BscinIT', $language);
+        $BscinCommerceBusinessMgmtAccountingoequivalentDip =  getLanguage('bscinCommerceBusinessMgmtAccountingorequivalentDip', $language);
+        $BscinSocialScience =  getLanguage('BscinSocialScience', $language);
+        $BAinEasternMusicorequivalentDip =  getLanguage('BAinEasternMusicorequivalentDip', $language);
+        $BAinArts =  getLanguage('BAinArts', $language);
+        $BAinDancingorequivalentDip =  getLanguage('BAinDancingorequivalentDip', $language);
+        $BADegreesorequivalent =  getLanguage('BADegreesorequivalent', $language);
+        $BAinEnglishorequivalent =  getLanguage('BAinEnglishorequivalent', $language);
+        $BAinaForeignLanguageexcludingEnglish =  getLanguage('BAinaForeignLanguageexcludingEnglish', $language);
 
+        $IT =  getLanguage('IT', $language);
+        $English =  getLanguage('English', $language);
+        $Maths =  getLanguage('Maths', $language);
+        $Science =  getLanguage('Science', $language);
+        $ScienceandMaths =  getLanguage('ScienceandMaths', $language);
+        $SocialStudies =  getLanguage('SocialStudies', $language);
+        $Commerce =  getLanguage('Commerce', $language);
+        $HomeScience =  getLanguage('HomeScience', $language);
+        $BTecConstruction =  getLanguage('BTecConstruction', $language);
+        $BTecMechanical =  getLanguage('BTecMechanical', $language);
+        $BTecElectronicandElectrical =  getLanguage('BTecElectronicandElectrical', $language);
+        $Arts =  getLanguage('Arts', $language);
+        $Agriculture =  getLanguage('Agriculture', $language);
+        $WesternMusic =  getLanguage('WesternMusic', $language);
+        $EasternMusic =  getLanguage('EasternMusic', $language);
+        $ArtsAgain =  getLanguage('ArtsAgain', $language);
+        $Dancing =  getLanguage('Dancing', $language);
+        $HealthandPhysicalEducation =  getLanguage('healthandPhysicalEducation', $language);
+        $Buddhism =  getLanguage('Buddhism', $language);
+        $hinduism =  getLanguage('hinduism', $language);
+        $Islam =  getLanguage('Islam', $language);
+        $RomanCatholicism =  getLanguage('RomanCatholicism', $language);
+        $NonRomanCatholicism =  getLanguage('NonRomanCatholicism', $language);
+        $SpecialEducation =  getLanguage('SpecialEducation', $language);
+        $Sinhala =  getLanguage('Sinhala', $language);
+        $Tamil =  getLanguage('Tamil', $language);
+        $Arabic =  getLanguage('Arabic', $language);
+        $PrimaryGeneral =  getLanguage('PrimaryGeneral', $language);
+        $LibraryandInformationScience =  getLanguage('LibraryandInformationScience', $language);
+        $TheatreandDrama =  getLanguage('TheatreandDrama', $language);
+        $Other =  getLanguage('Other', $language);
 
-        $principal="Principal";
-        $actingprincipal="Acting Principal";
-        $deputyprincipal="Deputy Principal";
-        $actingdeputyprincipal="Acting Deputy Principal";
-        $assistantprincipal="Assistant Principal";
-        $actingassistantprincipal="Acting Assistant Principal";
-        $teacher="Teacher";
-
-        $PrimaryMultiple="Primary Multiple";
-        $PrimaryEnglish="Primary English";
-        $PrimarySecondLanguage="Primary Second Language";
-        $SecondaryScienceMaths="Secondary Science/Maths";
-        $SecondaryEnglish="Secondary English";
-        $SecondaryArts="Secondary Arts";
-        $SecondaryTechnology="Secondary Technology";
-        $SecondarySecondLanguage="Secondary Second Language";
-        $SecondaryMultiple="Secondary Multiple";
-        $ALevelScienceMain="A/Level Science Main";
-        $ALevelArtsCommerce="A/Level Arts/Commerce";
-        $ALevelTechnology="A/Level Technology";
-        $ALevelOptional="A/Level Optional";
-        $SpecialEducation="Special Education";
-        $InformationTechnology="Information Technology";
-        $PrimarySupervisor="Primary Supervisor";
-        $SecondarySupervisor="Secondary Supervisor";
-        $ALevelSupervisor="A/Level Supervisor";
-        $Counselling="Counselling";
-        $Library="Library";
-        $HeathandPE="HeathandP.E.";
-        $Optional="Optional";
-        $Management="Management";
-        $StaffAdvisorParttime="staffAdvisor(Part-Time)";
-        $StaffAdvisorFulltime="StaffAdvisor(Full-Time)";
-        $ReleasedtoOtherSchool="Released to OtherSchool";
-        $Releasedtootherinstituteofficeservice="Released to other institute/office/service";
-        $Onpaidleave="On paid leave";
-
-        $SriLankaEducationAdministrativeServiceI="Sri Lanka Education Administrative Service I";
-        $SriLankaEducationAdministrativeServiceII="Sri Lanka Education Administrative Service II";
-        $SriLankaEducationAdministrativeServiceIII="Sri Lanka Education Administrative Service III";
-        $SriLankaPrincipalServiceI="Sri Lanka Principal Service I";
-        $SriLankaPrincipalService2I="Sri Lanka Principal Service 2-I";
-        $SriLankaPrincipalService2II="Sri Lanka Principal Service 2-II";
-        $SriLankaPrincipalService3="Sri Lanka Principal Service 3";
-        $SriLankaTeacherServiceI="Sri Lanka Teacher Service I";
-        $SriLankaTeacherService2I="Sri Lanka Teacher Service 2-I";
-        $SriLankaTeacherService2II="Sri Lanka Teacher Service 2-II";
-        $SriLankaTeacherService3I="Sri Lanka Teacher Service 3-I";
-        $SriLankaTeacherService3II="Sri Lanka Teacher Service 3-II";
-        $SriLankaTeacherServicePending="Sri Lanka Teacher Service (Pending)";
-
-        $highestEducationalQualification = "Highest Educational Qualification";
-
-        $BelowOLevel= "Below O/Level";
-        $OLevel = "O/Level";
-        $ALevel= "A/Level";
-        $BABScBEd= "BA/BSc/BEd";
-        $MAMScMEd = "MA/MSc/MEd";
-        $MPhil= "MPhil";
-        $PhD = "Ph.D";
-
-
-
-        $highestProfessionalQualification = "Highest Professional Qualification";
-
-        $PhDEd= "Ph.D.Ed";
-        $MPhilEd= "MPhil.Ed";
-        $MEd = "M.Ed";
-        $MAinEd= "MA in Ed";
-        $DipinEd  = "Dip. in Ed";
-        $MScinEdMgmt  = "MSc. in Ed.Mgmt";
-        $PGDipinEdMgmt  = "PGDip in Ed.Mgmt";
-        $PGDipinEASL  = "PGDip in EASL";
-        $BNIEBEd = "B.NIE/B.Ed";
-        $DipinEASL  = "Dip. in EASL";
-        $DipinLibrary  = "Dip. in Library";
-        $CertinLibrary  = "Cert. in Library";
-        $PGDipinLibraryScience  = "PGDip in Library Science";
-        $MScinLibrary  = "MSc. in Library";
-        $DipinAgriculture  = "Dip. in Agriculture";
-        $CertinTeacherTrainingInstitute   = "Cert. in Teacher Training (Institute)";
-        $CertinTeacherTrainingAway  = "Cert. in Teacher Training (Away)";
-        $NatDipinTeaching  = "Nat.Dip. in Teaching";
-        $None = "None";
-
-
-
-
-
-        $courseOfStudy = "Course of Study";
-
-
-        $BscinEducation = "Bsc. in Education";
-        $BscinPhysics="Bsc. in Physics";
-        $BscinBiology="Bsc. in Biology";
-        $BscinCombinedMathematics="Bsc.in Combined Mathematics";
-        $BScspecialisationinMathematics = "BSc. specialisation in Mathematics";
-        $PassedMathswithoutadegreeinscience = "Passed Maths without a degree in science";
-        $BscinAgriculture= "Bsc. in Agriculture";
-        $BscinHomeScience = "Bsc. in Home Science";
-        $BscinIT = "Bsc. in IT";
-        $BscinCommerceBusinessMgmtAccountingoequivalentDip = "Bsc. in Commerce/Business Mgmt./Accounting (or equivalent Dip.)";
-        $BscinSocialScience = "Bsc. in Social Science";
-        $BAinEasternMusicorequivalentDip = "BA in Eastern Music (or equivalent Dip.)";
-        $BAinArts = "BA in Arts";
-        $BAinDancingorequivalentDip = "BA in Dancing (or equivalent Dip.)";
-        $BADegreesorequivalent= "BA Degrees or equivalent";
-        $BAinEnglishorequivalent = "BA in English (or equivalent)";
-        $BAinaForeignLanguageexcludingEnglish = "BA in a Foreign Language (excluding English)";
-
-        /* $myarr[17] = ""; */
-
-        $IT = "IT";
-        $English = "English";
-        $Maths= "Maths";
-        $Science = "Science";
-        $ScienceandMaths = "Science and Maths";
-        $SocialStudies = "Social Studies";
-        $Commerce= "Commerce";
-        $HomeScience = "Home Science";
-        $BTecConstruction  = "BTec. Construction";
-        $BTecMechanical  = "BTec. Mechanical";
-        $BTecElectronicandElectrical = "BTec. Electronic and Electrical";
-        $Arts  = "Arts";
-        $Agriculture  = "Agriculture";
-        $WesternMusic = "Western Music";
-        $EasternMusic = "Eastern Music";
-        $ArtsAgain = "Arts Again"	;
-        $Dancing = "Dancing";
-        $HealthandPhysicalEducation = "Health and Physical Education";
-        $Buddhism = "Buddhism";
-        $Hinduism= "Hinduism";
-        $Islam = "Islam";
-        $RomanCatholicism  = "Roman Catholicism";
-        $NonRomanCatholicism  = "Non-Roman Catholicism";
-        $SpecialEducation  = "Special Education";
-        $Sinhala  = "Sinhala";
-        $Tamil  = "Tamil";
-        $Arabic  = "Arabic";
-        $PrimaryGeneral = "Primary/General";
-        $LibraryandInformationScience  = "Library and Information Science";
-        $TheatreandDrama = "Theatre and Drama";
-        $Other = "Other";
-
-        /*$myarr[18] = "" */
-
-        $myarr[49] = "";
-
-        $Maths = "Maths";
-        $Science = "Science";
-        $ScienceandMaths = "Science and Maths";
-        $English = "English";
-        $Primary = "Primary";
-        $Religion = "Religion";
-        $SocialStudies = "Social Studies";
-        $Commerce = "Commerce";
-        $Technology = "Technology";
-        $HomeScience = "Home Science";
-        $Agriculture = "Agriculture";
-        $Sinhala = "Sinhala";
-        $Tamil = "Tamil";
-        $WesternMusic = "Western Music";
-        $EasternMusic = "Eastern Music";
-        $Dancing = "Dancing";
-        $Art = "Art";
-        $ForeignLanguageExcludingEnglish = "Foreign Language (Excluding English)";
-        $Malay = "Malay";
-        $Other = "Other";
+        $Maths =  getLanguage('Maths', $language);
+        $Science =  getLanguage('Science', $language);
+        $ScienceandMaths =  getLanguage('ScienceandMaths', $language);
+        $English =  getLanguage('English', $language);
+        $Primary =  getLanguage('Primary', $language);
+        $Religion =  getLanguage('Religion', $language);
+        $SocialStudies =  getLanguage('SocialStudies', $language);
+        $Commerce =  getLanguage('Commerce', $language);
+        $Technology =  getLanguage('Technology', $language);
+        $HomeScience =  getLanguage('HomeScience', $language);
+        $Agriculture =  getLanguage('Agriculture', $language);
+        $Sinhala =  getLanguage('Sinhala', $language);
+        $Tamil =  getLanguage('Tamil', $language);
+        $WesternMusic =  getLanguage('WesternMusic', $language);
+        $EasternMusic =  getLanguage('EasternMusic', $language);
+        $Dancing =  getLanguage('Dancing', $language);
+        $Art =  getLanguage('Art', $language);
+        $ForeignLanguageExcludingEnglish =  getLanguage('ForeignLanguageExcludingEnglish', $language);
+        $Malay =  getLanguage('Malay', $language);
+        $Other =  getLanguage('Other', $language);
 
         $Untrainedsomethingelse = "!Untrained something else";
 
-        $Maths = "Maths";
-        $Science = "Science";
-        $ScienceandMaths = "Science and Maths";
-        $English = "English";
-        $Primary = "Primary";
-        $Religion = "Religion";
-        $SocialStudies = "Social Studies";
-        $Commerce = "Commerce";
-        $Technology = "Technology";
-        $HomeScience = "Home Science";
-        $Agriculture = "Agriculture";
-        $Sinhala = "Sinhala";
-        $Tamil = "Tamil";
-        $WesternMusic = "Western Music";
-        $EasternMusic = "Eastern Music";
-        $Dancing = "Dancing";
-        $Art = "Art";
-        $ForeignLanguageExcludingEnglish = "Foreign Language (Excluding English)";
-        $Malay = "Malay";
-        $Other = "Other";
-
-
-
-        $Contractbaseandother= "Contract based and other";
-
-        $Graduates= "Graduates";
-        $ALevel = "A/Level";
-        $OLevelandOther = "O/Level and Other";
-        $submit="submit";
-    }
-    else
-    {
-        $generalInformation = "සාමාන්‍ය තොරතුරු";
-        $employmentInformation = "සේවයේ තොරතුරු";
-        $educationInformation = "අධ්‍යාපනික තොරතුරු";
-        $leaveInformation = "නිවාඩු තොරතුරු (Not Sure)";
-
-        $staffID = "අනුක්‍රමික අංකය";
-        $nameWithInitials = "නම් මුලකුරු සමඟ";
-        $nameinfull="සම්පුර්ණ නම";
-        $dateOfBirth = "උපන් දිනය";
-        $gender = "ස්ත්‍රී/පුරුෂ භාවය";
-        $nationalityRace = "ජනවර්ගය";
-        $religion = "ආගම";
-        $civilStatus = "විවාහක /අවිවාහක බව";
-        $nicNumber = "ජාතික හැඳුනුම් පත් අංකය";
-
-        $male = "පිරිමි";
-        $female = "ගැහැණු";
-
-        $sinhala = "සිංහල";
-        $srilankantamil ="ශ්‍රී ලාංකික දෙමළ";
-        $indiantamil = "ඉන්දියානු  දෙමළ";
-        $srilankanmuslim = "ශ්‍රී ලාංකික මුස්ලිම්";
-        $other = "වෙනත්";
-
-        $buddhism="බෞද්ධ";
-        $hindusm="හින්දු";
-        $islam="ඉස්ලාම්";
-        $catholic="කතෝලික";
-        $christianity="ක්‍රිස්තියානි";
-        $other = "වෙනත්";
-
-        $married="විවාහක";
-        $unmarried="අවිවාහක";
-        $widow="වැන්දබු";
-        $other="වෙනත්";
-
-        $maildeliveryaddress="ලිපිනය";
-        $contactnumber="දුරකථන අංකය";
-        $contactpersonforemergency ="හදිසි අවස්ථාවකදී  සමබන්ද කරගත යුතු පුදගලයාගේ නම";
-        $contactnumberforemergency ="හදිසි අවස්ථාවකදී ඇමතිය යුතු දුරකථන අංකය";
-
-        $dateAppointedAsTeacher = "සේවයට පත්වූ වර්ෂය හා මාසය";
-        $dateJoinedSchool = "මෙම විදුහලේ පත්වීම භාරගත් වර්ෂය හා මාසය";
-        $employmentStatus = "පාසලට පතවීමේ ස්වභාවය";
-        $medium = "පත්වීම ලද මාධ්‍යය";
-        $positionInSchool = "පාසලේ දරන තනතුර";
-        $section = "නිරතවන කාර්යය";
-        $subjectMostTaught = "වැඩිම කාලයක් උගන්වන විෂයය";
-        $subjectSecondMostTaught = "දෙවනුව වැඩි කාලයක් උගන්වන විෂයය";
-        $serviceGrade = "අදාල සේවය/ශ්‍රේණිය";
-        $salary = "මුළු වැටුප";
-
-        $fulltime="මෙම පාසලින් වැටුප් ලබනහ පාසලේ පුර්ණ කාලීනව සේවය කරන";
-        $parttime="මෙම පාසලින් වැටුප් ලබන පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට අර්ධකලිනවා නිදහස් කර ඇති";
-        $fulltime_Releasedtootherschool="මෙම පාසලින් වැටුප් ලබන හා පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට පුර්නකලිනව නිදහස් කර ඇති";
-        $fulltime_Broughtfromotherschool="වෙනත් පාසලකින් වැටුප් ලබා මෙම පාසලේ පුර්නකලිනවා සේවය කරන ";
-        $oncontract_Government="රජයෙන් වැටුප් ලබන කොන්ත්‍රාත් පදනම මත සේවයට බදවාගත් ";
-        $paidfromschoolfees="පහසුකම් ගාස්තු/ වෙනත් මාර්ග වලින් දීමනා ලබන";
-        $othergovernmentdepartment="වෙනත් රාජ්‍ය ආයතන වලින් පත්කළ(පොලිස් උපසේවය සමුර්ද්දී,මහවැලි හා දක්ෂිණ ලංකා සංවර්දන අදිකාරී වැනි";
-
-        $sinhala="සිංහල";
-        $tamil="දෙමළ";
-        $english="ඉංග්‍රීසි 2001 ට පසු";
-
-        $principal="විදුහල්පති";
-        $actingprincipal="වැඩබලන විදුහල්පති";
-        $deputyprincipal="නියෝජ්‍ය විදුහල්පති";
-        $actingdeputyprincipal="වැඩබලන නියෝජ්‍ය විදුහල්පති";
-        $assistantprincipal="සහකාර විදුහල්පති";
-        $actingassistantprincipal="වැඩබලන සහකාර විදුහල්පති";
-        $teacher="ගුරුවරයා";
-
-        $PrimaryMultiple="ප්‍රාථමික පොදු";
-        $PrimaryEnglish="ප්‍රාථමික ඉංග්‍රීසි";
-        $PrimarySecondLanguage="ප්‍රාථමික දෙවන බස";
-        $SecondaryScienceMaths="ද්විතීයික (6-11) විද්‍යා/ගණිත";
-        $SecondaryEnglish="ද්විතීයික (6-11) ඉංග්‍රීසි";
-        $SecondaryArts="ද්විතීයික (6-11) සෞන්දර්ය";
-        $SecondaryTechnology="ද්විතීයික (6-11)තාක්ෂණික";
-        $SecondarySecondLanguage="ද්විතීයික (6-11)දෙවන බස";
-        $SecondaryMultiple="ද්විතීයික (6-11)පොදු";
-        $ALevelScienceMain="උ.පෙළ (12-13)විද්‍යා ප්‍රදාන විෂයයන් ";
-        $ALevelArtsCommerce="උ.පෙළ (12-13)කල/වාණිජ  ප්‍රදාන විෂයයන්";
-        $ALevelTechnology="උ.පෙළ (12-13)තාක්ෂණික ප්‍රදාන විෂයයන්";
-        $ALevelOptional="උ.පෙළ (12-13)අතිරේක විෂයයන්";
-        $SpecialEducation="විශේෂ අධ්‍යාපනය";
-        $InformationTechnology="තොරතරු තාක්ෂනය";
-        $PrimarySupervisor="ප්‍රාථමික (1-5) අධීක්ෂණ ගුරු";
-        $SecondarySupervisor="ද්විතීයික (6-11)අධීක්ෂණ ගුරු";
-        $ALevelSupervisor ="උ.පෙළ (12-13)අධීක්ෂණ ගුරු";
-        $Counselling="උපදේශනය";
-        $Library="පුස්තකාල";
-        $HeathandPE="ශාරීරික අද්‍යාපනය";
-        $Optional="අතිරේක";
-        $Management="පරිපාලනය";
-        $StaffAdvisorParttime="ගුරු උපදේශක(අර්ධකාලින)";
-        $StaffAdvisorFulltime="ගුරු උපදේශක(පුර්නකාලින)";
-        $ReleasedtoOtherSchool="වෙනත් පාසලකට නිදහස් කල";
-        $Releasedtootherinstituteofficeservice="වෙනත් ආයතනයකට/කාර්යාලයකට/සේවයකට";
-        $Onpaidleave="වැටුප් සහිත පුර්නකාලින අද්යන නිවාඩු";
-
-        $SriLankaEducationAdministrativeServiceI="ශ්‍රී ලංකා අධ්‍යා. ප. සේ I(SLEAS I)";
-        $SriLankaEducationAdministrativeServiceII="ශ්‍රී ලංකා අධ්‍යා. ප. සේ II(SLEAS II)";
-        $SriLankaEducationAdministrativeServiceIII="ශ්‍රී ලංකා අධ්‍යා. ප. සේ III(SLEAS III)";
-        $SriLankaPrincipalServiceI="ශ්‍රී ලංකා විහාල්පති සේ. I(SLPS I)";
-        $SriLankaPrincipalService2I="ශ්‍රී ලංකා විහාල්පති සේ. 2-I(SLPS 2-I)";
-        $SriLankaPrincipalService2II="ශ්‍රී ලංකා විහාල්පති සේ. 2-II(SLPS 2-II)";
-        $SriLankaPrincipalService3="ශ්‍රී ලංකා විහාල්පති සේ.3(SLPS 3)";
-        $SriLankaTeacherServiceI="ශ්‍රී ලංකා ගුරු සේ I ";
-        $SriLankaTeacherService2I="ශ්‍රී ලංකා ගුරු සේ  2-I";
-        $SriLankaTeacherService2II="ශ්‍රී ලංකා ගුරු සේ 2-II";
-        $SriLankaTeacherService3I="ශ්‍රී ලංකා ගුරු සේ  3-I";
-        $SriLankaTeacherService3II="ශ්‍රී ලංකා ගුරු සේ 3-II";
-        $SriLankaTeacherServicePending="ශ්‍රී ලංකා ගුරු සේවයට අන්තර්ග්‍රහණය කර නොමැත";
-
-        $BelowOLevel= "අ.පො.ස(සා.පෙ) ට අඩු";
-        $OLevel = "අ.පො.ස(සා.පෙ)/හෝ සමාන(o/l)";
-        $ALevel= "අ.පො.ස(උ.පෙ)/හෝ සමාන(a/l)";
-        $BABScBEd= "උපාධි හා ඊට සමාන";
-        $MAMScMEd = "ශාස්ත්‍රපති හා ඊට සමාන්තර";
-        $MPhil= "දර්ශනපති හා ඊට සමාන්තර";
-        $PhD = "දර්ශනශුරී උපාධිහා ඊට සමාන්තර";
-
-
-
-
-        $PhDEd= "දර්ශනශුරි - අධ්‍යාපනය පිළිබදව ";
-        $MPhilEd= "දර්ශනපති -අධ්‍යාපනය පිළිබද";
-        $MEd = "අධ්‍යාපනපති උපාධි";
-        $MAinEd= "අධ්‍යාපනය පිළිබද ශ්‍රාස්ත්‍රපති උපාධිය";
-        $DipinEd  = "පශ්චාත් උපාධි අධ්‍යාපන ඩිප්ලෝමාව";
-        $MScinEdMgmt  = "අධ්‍යාපන කළමනාකරණය පිළිබද විද්‍යාපති";
-        $PGDipinEdMgmt  = "අධ්‍යාපන කළමනාකරණය පිළිබද පශ්චාත් උපාධිඩිප්ලෝමාව";
-        $PGDipinEASL  = "දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ පශ්චාත් උපාධිඩිප්ලෝමාව";
-        $BNIEBEd = "හෝ විශ්ව.වි අද්යපනවේදී උපාධි";
-        $DipinEASL  = "දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ ඩිප්ලෝමා";
-        $DipinLibrary  = "ගුරු පුස්තකාලයාලධිපති ඩිප්ලෝමා පාඨමාලාව";
-        $CertinLibrary  = "ගුරු පුස්තකාලයාලධිපති සහතිකපත්‍ර   පාඨමාලාව";
-        $PGDipinLibraryScience  = "ගුරු පුස්තකාල විද්‍යා පශ්චාත් උපාධි ඩිප්ලෝමා පාඨමාලාව";
-        $MScinLibrary  = "ගුරු පුස්තකාලයාලධිපති විද්‍යාපති උපාධිය";
-        $DipinAgriculture  = "කෘෂි අද්‍යාපනය පිළිබද ඩිප්ලෝමාව";
-        $CertinTeacherTrainingInstitute = "ගුරු පුහුණු සහතිකය-ආයතනික";
-        $CertinTeacherTrainingAway  = "ගුරු පුහුණු සහතිකය-දුරස්ථ";
-        $NatDipinTeaching  = "ජාතික ශික්ෂණ විද්‍යා ඩිප්ලෝමාව";
-        $None = "ව්හුර්තීය සුදුසුකම් ලබා නොමැති";
-
-
-
-
-        $BscinEducation = "අධ්‍යාපනවේදී උපාධි(විශ්ව විද්‍යාලයිය)";
-        $BscinPhysics="භාව්තීය විද්‍යා උපාධි";
-        $BscinBiology="ජීව විද්‍යා උපාධි";
-        $BscinCombinedMathematics= "සංයුක්ත ගණිතය";
-        $BScspecialisationinMathematics = "විශේෂ ගණිත උපාධි";
-        $PassedMathswithoutadegreeinscience = "ගණිතය විෂයක් ලෙස සමත් වු විද්‍යා නොවන උපාධි";
-        $BscinAgriculture= "කෘෂි විද්‍යා උපාධි";
-        $BscinHomeScience = "ගෘහ විද්‍යා උපාධි";
-        $BscinIT = "තොරතුරු තාක්ෂණය";
-        $BscinCommerceBusinessMgmtAccountingoequivalentDip= "වානිජ්‍ය/ව්‍යාපාර පරිපාලනය/ගණකාධිකරණය උපාධි හා සමාන උපාධි";
-        $BscinSocialScience = "සමාජ විද්‍යා උපාධි";
-        $BAinEasternMusicorequivalentDip = "පෙරදිග සංගීත උපාධි හා සමාන ඩිප්ලෝමා";
-        $BAinArts = "චිත්‍ර කලා උපාධි හා සමාන  ඩිප්ලෝමා";
-        $BAinDancingorequivalentDip = "නැටුම් උපාධි හා සමාන ඩිප්ලෝමා";
-        $BADegreesorequivalent= "කල උපාධි හා සමාන උපාධි";
-        $BAinEnglishorequivalent = "ඉංග්‍රීසි/ඉංග්‍රීසි  විෂයක් ලෙස සමත් උපාධි";
-        $BAinaForeignLanguageexcludingEnglish = "විදේශ භාෂා  (ඉංග්‍රීසි හැර)උපාධි";
-
-        /* $myarr[17] = ""; */
-
-        $IT = "තොරතුරු තාක්ෂණය";
-        $English = "ඉංග්‍රීසි";
-        $Maths= "ගණිතය";
-        $Science = "විද්‍යාව";
-        $ScienceandMaths = "විද්‍යා -ගණිත";
-        $SocialStudies = "සමාජ අධ්‍යනය";
-        $Commerce= "වාණිජ්‍ය";
-        $HomeScience = "ගෘහ විද්‍යාව";
-        $BTecConstruction  = "ඉදිකිරීම් තාක්ෂණය";
-        $BTecMechanical  = "යාන්ත්‍රික තාක්ෂණය";
-        $BTecElectronicandElectrical = "විදුලිය හා ඉලෙක්ට්‍රොනික තාක්ෂණය";
-        $Arts  = "කලා ශිල්ප";
-        $Agriculture  = "කෘෂිකර්මය";
-        $WesternMusic = "සංගීතය-පෙරදිග";
-        $EasternMusic = "සංගීතය-අපරදිග";
-        $ArtsAgain = "චිත්‍ර"	;
-        $Dancing = "නැටුම්";
-        $HealthandPhysicalEducation = "ශාරීරික අද්‍යාපනය";
-        $Buddhism = "බුද්ධාගම";
-        $Hinduism= "හින්දු ධර්මය";
-        $Islam = "ඉස්ලාම් ධර්මය";
-        $RomanCatholicism  = "රෝමානු කතෝලික";
-        $NonRomanCatholicism  = "රෝමානු කතෝලික නොවන ක්‍රිස්තියානි";
-        $SpecialEducation  = "විශේෂ අද්‍යාපනය";
-        $Sinhala  = "සිංහල";
-        $Tamil  = "දෙමළ";
-        $Arabic  = "අරාබි";
-        $PrimaryGeneral = "ප්‍රාථමික/සාමාන්‍ය";
-        $LibraryandInformationScience  = "පුස්තකාල හා තොරතරු විද්‍යාව";
-        $TheatreandDrama = "නාට්‍ය හා රංග කලාව";
-        $Other = "වෙනත් පුහුණු";
-
-        /*$myarr[18] = "" */
-
-        $myarr[49] = "";
-
-        $Maths = "ගණිත";
-        $Science = "විද්‍යා";
-        $ScienceandMaths = "විද්‍යා හා ගණිත";
-        $English = "ඉංග්‍රීසි";
-        $Primary = "ප්‍රාථමික";
-        $Religion = "ආගම";
-        $SocialStudies ="සමාජ අධ්‍යනය";
-        $Commerce = "වාණිජ්‍ය";
-        $Technology = "තාක්ෂණය";
-        $HomeScience = "ගෘහ විද්‍යාව";
-        $Agriculture = "කෘෂිකර්මය";
-        $Sinhala = "සිංහල";
-        $Tamil = "දෙමළ";
-        $WesternMusic = "සංගීතය-පෙරදිග";
-        $EasternMusic = "සංගීතය-අපරදිග";
-        $Dancing = "නැටුම්";
-        $Art = "චිත්‍ර";
-        $ForeignLanguageExcludingEnglish = "විදේශ භාෂා(ඉංගිසි හැර)";
-        $Malay = "මෞලවි";
-        $Other = "වෙනත් නුපුහුනු(සදහන් කරන්න)";
-
-        $Untrainedsomethingelse = "!Untrained something else";
-
-        $Maths = "ගණිත";
-        $Science = "විද්‍යා";
-        $ScienceandMaths = "විද්‍යා හා ගණිත";
-        $English = "ඉංග්‍රීසි";
-        $Primary = "ප්‍රාථමික";
-        $Religion = "ආගම";
-        $SocialStudies ="සමාජ අධ්‍යනය";
-        $Commerce = "වාණිජ්‍ය";
-        $Technology = "තාක්ෂණය";
-        $HomeScience = "ගෘහ විද්‍යාව";
-        $Agriculture = "කෘෂිකර්මය";
-        $Sinhala = "සිංහල";
-        $Tamil = "දෙමළ";
-        $WesternMusic = "සංගීතය-පෙරදිග";
-        $EasternMusic = "සංගීතය-අපරදිග";
-        $Dancing = "නැටුම්";
-        $Art = "චිත්‍ර";
-        $ForeignLanguageExcludingEnglish = "විදේශ භාෂා(ඉංගිසි හැර)";
-        $Malay = "මෞලවි";
-        $Other = "වෙනත් නුපුහුනු(සදහන් කරන්න)";
-
-        $Contractbaseandother= "කොන්ත්‍රාත් පදනම හා වෙනත් මාර්ග වලින් දීමන ලබන ගුරුවරු";
-
-        $Graduates= "උපාධි";
-        $ALevel = "අ.පො.ස (උ.පෙ)";
-        $OLevelandOther = "අ.පො.ස (ස.පෙ)/වෙනත්";
-
-
-
-        $highestEducationalQualification = "ඉහලම අධ්‍යාපන සුදුසුකම";
-        $highestProfessionalQualification = "ඉහලම වෘත්තීය සුදුසුකම";
-        $courseOfStudy = "වර්ගමාන පත්වීමේ වර්ගීකරණය";
-        $submit="තහවුරු කරන්න";
-    }
+        $Maths =  getLanguage('Maths', $language);
+        $Science =  getLanguage('Science', $language);
+        $ScienceandMaths =  getLanguage('ScienceandMaths', $language);
+        $English =  getLanguage('English', $language);
+        $Primary =  getLanguage('Primary', $language);
+        $Religion =  getLanguage('Religion', $language);
+        $SocialStudies =  getLanguage('SocialStudies', $language);
+        $Commerce =  getLanguage('Commerce', $language);
+        $Technology =  getLanguage('Technology', $language);
+        $HomeScience =  getLanguage('HomeScience', $language);
+        $Agriculture =  getLanguage('Agriculture', $language);
+        $Sinhala =  getLanguage('Sinhala', $language);
+        $Tamil =  getLanguage('Tamil', $language);
+        $WesternMusic =  getLanguage('WesternMusic', $language);
+        $EasternMusic =  getLanguage('EasternMusic', $language);
+        $Dancing =  getLanguage('Dancing', $language);
+        $Art =  getLanguage('Art', $language);
+        $ForeignLanguageExcludingEnglish =  getLanguage('ForeignLanguageExcludingEnglish', $language);
+        $Malay =  getLanguage('Malay', $language);
+        $Other =  getLanguage('Other', $language);
+        $graduateteacher =  getLanguage('graduateteacher', $language);
+        $trainedteacher =  getLanguage('trainedteacher', $language);
+        $untrainedteacher =  getLanguage('untrainedteacher', $language);
+        $beginnerslevelteacher =  getLanguage('beginnerslevelteacher', $language);
+        $Contractbaseandother =  getLanguage('ContractBasedandOther', $language);
+        $Graduates =  getLanguage('Graduates', $language);
+        $Graduates =  getLanguage('Graduates', $language);
+        $ALevel =  getLanguage('ALevel', $language);
+        $OLevelandOther =  getLanguage('OLevelandOther', $language);
+        $submit =  getLanguage('submit', $language);
     ?>
     <body>
 
@@ -644,7 +362,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 <!--    </div>-->
 
     <table class="general" cellspacing="0">
-        <tr><th><?php echo $generalInformation?></th>
+        <tr><th class="labelCol" ><?php echo $generalInformation?></th>
             <th></th>
         </tr>
         <tr>
@@ -659,7 +377,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr>
             <td><?php echo $dateOfBirth?></td>
-            <td><input name="dateOfBirth" type="date" value=""required="true"></td>
+            <td><input name="dateOfBirth" type="date" value="" required="true"></td>
             <td></td>
         </tr>
         <tr >
@@ -689,7 +407,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 <select id="Cb2" name="" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$buddhism?></option>
-                    <option value="2"><?php echo "2 - " .$hindusm?></option>
+                    <option value="2"><?php echo "2 - " .$hinduism?></option>
                     <option value="3"><?php echo "3 - " .$islam?></option>
                     <option value="4"><?php echo "4 - " .$catholic?></option>
                     <option value="5"><?php echo "5 - " .$christianity?></option>
@@ -837,7 +555,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 </select>
             </td>
         </tr>
-        <tr >
+        <tr>
             <td><?php echo $subjectSecondMostTaught?></td>
             <td><input id="NumberCb9" type="text" name="$subjectSecondMostTaugh" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb9"name="subjectSecondMostTaught" type="text" value="" onchange="changeTextbox(this)">
@@ -852,7 +570,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                 </select>
             </td>
         </tr>
-        <tr class ="alt">
+        <tr>
             <td><?php echo $serviceGrade?></td>
             <td><input id="NumberCb10" type="text" name="$serviceGrade" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb10" name="serviceGrade" type="text" value="" onchange="changeTextbox(this)">
@@ -895,17 +613,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     <option value="6"><?php echo "6 - " .$MPhil?></option>
                     <option value="7"><?php echo "7 - " .$PhD?></option>
 
-
-                    <?php
-                    $c = 0;
-
-
-
-                    for($c = 0; $c < 7; $c++)
-                    {
-                    echo "<option value=\"$c\"></option>";
-                    }
-                    ?>
                 </select>
             </td>
         </tr>
@@ -935,15 +642,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     <option value="18"><?php echo "18 - " .$NatDipinTeaching?></option>
                     <option value="19"><?php echo "19 - " .$None?></option>
 
-
-
-                    <?php
-                    for($c = 0; $c < 19; $c++)
-                    {
-                    echo "\t<option value=\"$c\"></option>\n";
-                    }
-                    ?>
-                    </select>
+                </select>
             </td>
         </tr>
         <tr>
@@ -951,138 +650,110 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><input id="NumberCb13" type="text" name="$courseOfStudy" maxlength="2" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb13" name="courseOfStudy" type="text" value="" onchange="changeTextbox(this)">
 
-
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$BscinEducation?></option>
-                    <option value="2"><?php echo "2 - " .$BscinPhysics?></option>
-                    <option value="3"><?php echo "3 - " .$BscinBiology?></option>
-                    <option value="4"><?php echo "4 - " .$BscinCombinedMathematics?></option>
-                    <option value="5"><?php echo "5 - " .$BScspecialisationinMathematics?></option>
-                    <option value="6"><?php echo "6 - " .$PassedMathswithoutadegreeinscience?></option>
-                    <option value="7"><?php echo "7 - " .$BscinAgriculture?></option>
-                    <option value="8"><?php echo "8 - " .$BscinHomeScience?></option>
-                    <option value="9"><?php echo "9 - " .$BscinIT?></option>
-                    <option value="10"><?php echo "10 - " .$BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
-                    <option value="11"><?php echo "11 - " .$BscinSocialScience?></option>
-                    <option value="12"><?php echo "12 - " .$BAinEasternMusicorequivalentDip?></option>
-                    <option value="13"><?php echo "13 - " .$BAinArts?></option>
-                    <option value="14"><?php echo "14 - " .$BAinDancingorequivalentDip?></option>
-                    <option value="15"><?php echo "15 - " .$BADegreesorequivalent?></option>
-                    <option value="16"><?php echo "16 - " .$BAinEnglishorequivalent?></option>
-                    <option value="17"><?php echo "17 - " .$BAinaForeignLanguageexcludingEnglish?></option>
-
-
-
-                    <option value="18"><?php echo "18 - " .$IT?></option>
-                    <option value="19"><?php echo "19 - " .$English?></option>
-                    <option value="20"><?php echo "20 - " .$Maths?></option>
-                    <option value="21"><?php echo "21 - " .$Science?></option>
-                    <option value="22"><?php echo "22 - " .$ScienceandMaths?></option>
-                    <option value="23"><?php echo "23 - " .$SocialStudies?></option>
-                    <option value="24"><?php echo "24 - " .$Commerce?></option>
-                    <option value="25"><?php echo "25 - " .$HomeScience?></option>
-                    <option value="26"><?php echo "26 - " .$BTecConstruction?></option>
-                    <option value="27"><?php echo "27 - " .$BTecMechanical?></option>
-                    <option value="28"><?php echo "28 - " .$BTecElectronicandElectrical?></option>
-                    <option value="29"><?php echo "29 - " .$Arts?></option>
-                    <option value="30"><?php echo "30 - " .$Agriculture?></option>
-                    <option value="31"><?php echo "31 - " .$WesternMusic?></option>
-                    <option value="32"><?php echo "32 - " .$EasternMusic?></option>
-                    <option value="33"><?php echo "33 - " .$ArtsAgain?></option>
-                    <option value="34"><?php echo "34 - " .$Dancing?></option>
-                    <option value="35"><?php echo "35 - " .$HealthandPhysicalEducation?></option>
-                    <option value="36"><?php echo "36 - " .$Buddhism?></option>
-                    <option value="37"><?php echo "37 - " .$Hinduism?></option>
-                    <option value="38"><?php echo "38 - " .$Islam?></option>
-                    <option value="39"><?php echo "39 - " .$RomanCatholicism?></option>
-                    <option value="40"><?php echo "40 - " .$NonRomanCatholicism?></option>
-                    <option value="41"><?php echo "41 - " .$SpecialEducation?></option>
-                    <option value="42"><?php echo "42 - " .$Sinhala?></option>
-                    <option value="43"><?php echo "43 - " .$Tamil?></option>
-                    <option value="44"><?php echo "44 - " .$Arabic?></option>
-                    <option value="45"><?php echo "45 - " .$PrimaryGeneral?></option>
-                    <option value="46"><?php echo "46 - " .$LibraryandInformationScience?></option>
-                    <option value="47"><?php echo "47 - " .$TheatreandDrama?></option>
-                    <option value="48"><?php echo "48 - " .$Other?></option>
-
-
-
-                    <option value="49"><?php echo "49 - " .$Maths?></option>
-                    <option value="50"><?php echo "50 - " .$Science?></option>
-                    <option value="51"><?php echo "51 - " .$ScienceandMaths?></option>
-                    <option value="52"><?php echo "52 - " .$English?></option>
-                    <option value="53"><?php echo "53 - " .$Primary?></option>
-                    <option value="54"><?php echo "54 - " .$Religion?></option>
-                    <option value="55"><?php echo "55 - " .$SocialStudies?></option>
-                    <option value="56"><?php echo "56 - " .$Commerce?></option>
-                    <option value="57"><?php echo "57 - " .$Technology?></option>
-                    <option value="58"><?php echo "58 - " .$HomeScience?></option>
-                    <option value="59"><?php echo "59 - " .$Agriculture ?></option>
-                    <option value="60"><?php echo "60 - " .$Sinhala?></option>
-                    <option value="61"><?php echo "61 - " .$Tamil?></option>
-                    <option value="62"><?php echo "62 - " .$WesternMusic?></option>
-                    <option value="63"><?php echo "63 - " .$EasternMusic?></option>
-                    <option value="64"><?php echo "64 - " .$Dancing?></option>
-                    <option value="65"><?php echo "65 - " .$Art?></option>
-                    <option value="66"><?php echo "66 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value="67"><?php echo "67 - " .$Malay?></option>
-                    <option value="68"><?php echo "68 - " .$Other?></option>
-
-
-
-
-                    <option value=""><?php echo "72 - " .$Maths?></option>
-                    <option value=""><?php echo "73 - " .$Science?></option>
-                    <option value=""><?php echo "74 - " .$ScienceandMaths?></option>
-                    <option value=""><?php echo "75 - " .$English?></option>
-                    <option value=""><?php echo "76 - " .$Primary?></option>
-                    <option value=""><?php echo "77 - " .$Religion?></option>
-                    <option value=""><?php echo "78 - " .$SocialStudies?></option>
-                    <option value=""><?php echo "79 - " .$Commerce?></option>
-                    <option value=""><?php echo "80 - " .$Technology?></option>
-                    <option value=""><?php echo "81 - " .$HomeScience?></option>
-                    <option value=""><?php echo "82 - " .$Agriculture ?></option>
-                    <option value=""><?php echo "83 - " .$Sinhala?></option>
-                    <option value=""><?php echo "84 - " .$Tamil?></option>
-                    <option value=""><?php echo "85 - " .$WesternMusic?></option>
-                    <option value=""><?php echo "86 - " .$EasternMusic?></option>
-                    <option value=""><?php echo "87 - " .$Dancing?></option>
-                    <option value=""><?php echo "88 - " .$Art?></option>
-                    <option value=""><?php echo "89 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value=""><?php echo "90 - " .$Malay?></option>
-                    <option value=""><?php echo "60 - " .$Other?></option>
+                    <optgroup label="Graduate Teachers">
+                        <option value=""><?php echo "--"?></option>
+                        <option value="1"><?php echo "1 - " .$BscinEducation?></option>
+                        <option value="2"><?php echo "2 - " .$BscinPhysics?></option>
+                        <option value="3"><?php echo "3 - " .$BscinBiology?></option>
+                        <option value="4"><?php echo "4 - " .$BscinCombinedMathematics?></option>
+                        <option value="5"><?php echo "5 - " .$BScspecialisationinMathematics?></option>
+                        <option value="6"><?php echo "6 - " .$PassedMathswithoutadegreeinscience?></option>
+                        <option value="7"><?php echo "7 - " .$BscinAgriculture?></option>
+                        <option value="8"><?php echo "8 - " .$BscinHomeScience?></option>
+                        <option value="9"><?php echo "9 - " .$BscinIT?></option>
+                        <option value="10"><?php echo "10 - " .$BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
+                        <option value="11"><?php echo "11 - " .$BscinSocialScience?></option>
+                        <option value="12"><?php echo "12 - " .$BAinEasternMusicorequivalentDip?></option>
+                        <option value="13"><?php echo "13 - " .$BAinArts?></option>
+                        <option value="14"><?php echo "14 - " .$BAinDancingorequivalentDip?></option>
+                        <option value="15"><?php echo "15 - " .$BADegreesorequivalent?></option>
+                        <option value="16"><?php echo "16 - " .$BAinEnglishorequivalent?></option>
+                        <option value="17"><?php echo "17 - " .$BAinaForeignLanguageexcludingEnglish?></option>
+                    </optgroup>
+                    <optgroup label="Trained Teachers">
+                        <option value="19"><?php echo "19 - " .$IT?></option>
+                        <option value="20"><?php echo "20 - " .$English?></option>
+                        <option value="21"><?php echo "21 - " .$Maths?></option>
+                        <option value="22"><?php echo "22 - " .$Science?></option>
+                        <option value="23"><?php echo "23 - " .$ScienceandMaths?></option>
+                        <option value="24"><?php echo "24 - " .$SocialStudies?></option>
+                        <option value="25"><?php echo "25 - " .$Commerce?></option>
+                        <option value="26"><?php echo "26 - " .$HomeScience?></option>
+                        <option value="27"><?php echo "27 - " .$BTecConstruction?></option>
+                        <option value="28"><?php echo "28 - " .$BTecMechanical?></option>
+                        <option value="29"><?php echo "29 - " .$BTecElectronicandElectrical?></option>
+                        <option value="30"><?php echo "30 - " .$Arts?></option>
+                        <option value="31"><?php echo "31 - " .$Agriculture?></option>
+                        <option value="32"><?php echo "32 - " .$WesternMusic?></option>
+                        <option value="33"><?php echo "33 - " .$EasternMusic?></option>
+                        <option value="34"><?php echo "34 - " .$ArtsAgain?></option>
+                        <option value="35"><?php echo "35 - " .$Dancing?></option>
+                        <option value="36"><?php echo "36 - " .$HealthandPhysicalEducation?></option>
+                        <option value="37"><?php echo "37 - " .$Buddhism?></option>
+                        <option value="38"><?php echo "38 - " .$hinduism?></option>
+                        <option value="39"><?php echo "39 - " .$Islam?></option>
+                        <option value="40"><?php echo "40 - " .$RomanCatholicism?></option>
+                        <option value="41"><?php echo "41 - " .$NonRomanCatholicism?></option>
+                        <option value="42"><?php echo "42 - " .$SpecialEducation?></option>
+                        <option value="43"><?php echo "43 - " .$Sinhala?></option>
+                        <option value="44"><?php echo "44 - " .$Tamil?></option>
+                        <option value="45"><?php echo "45 - " .$Arabic?></option>
+                        <option value="46"><?php echo "46 - " .$PrimaryGeneral?></option>
+                        <option value="47"><?php echo "47 - " .$LibraryandInformationScience?></option>
+                        <option value="48"><?php echo "48 - " .$TheatreandDrama?></option>
+                        <option value="49"><?php echo "49 - " .$Other?></option>
+                    </optgroup>
+                    <optgroup label="Untrained Teachers">
+                        <option value="50"><?php echo "50 - " .$Maths?></option>
+                        <option value="51"><?php echo "51 - " .$Science?></option>
+                        <option value="52"><?php echo "52 - " .$ScienceandMaths?></option>
+                        <option value="53"><?php echo "53 - " .$English?></option>
+                        <option value="54"><?php echo "54 - " .$Primary?></option>
+                        <option value="55"><?php echo "55 - " .$Religion?></option>
+                        <option value="56"><?php echo "56 - " .$SocialStudies?></option>
+                        <option value="57"><?php echo "57 - " .$Commerce?></option>
+                        <option value="58"><?php echo "58 - " .$Technology?></option>
+                        <option value="59"><?php echo "59 - " .$HomeScience?></option>
+                        <option value="60"><?php echo "59 - " .$Agriculture ?></option>
+                        <option value="61"><?php echo "61 - " .$Sinhala?></option>
+                        <option value="62"><?php echo "62 - " .$Tamil?></option>
+                        <option value="63"><?php echo "63 - " .$WesternMusic?></option>
+                        <option value="64"><?php echo "64 - " .$EasternMusic?></option>
+                        <option value="65"><?php echo "65 - " .$Dancing?></option>
+                        <option value="66"><?php echo "66 - " .$Art?></option>
+                        <option value="67"><?php echo "67 - " .$ForeignLanguageExcludingEnglish?></option>
+                        <option value="68"><?php echo "68 - " .$Malay?></option>
+                        <option value="69"><?php echo "69 - " .$Other?></option>
+                    </optgroup>
+                    <optgroup label="Newly appointed Teachers">
+                        <option value="75"><?php echo "75 - " .$Maths?></option>
+                        <option value="76"><?php echo "76 - " .$Science?></option>
+                        <option value="77"><?php echo "77 - " .$ScienceandMaths?></option>
+                        <option value="78"><?php echo "78 - " .$English?></option>
+                        <option value="79"><?php echo "79 - " .$Primary?></option>
+                        <option value="80"><?php echo "80 - " .$Religion?></option>
+                        <option value="81"><?php echo "81 - " .$SocialStudies?></option>
+                        <option value="82"><?php echo "82 - " .$Commerce?></option>
+                        <option value="83"><?php echo "83 - " .$Technology?></option>
+                        <option value="84"><?php echo "84 - " .$HomeScience?></option>
+                        <option value="85"><?php echo "85 - " .$Agriculture ?></option>
+                        <option value="86"><?php echo "86 - " .$Sinhala?></option>
+                        <option value="87"><?php echo "87 - " .$Tamil?></option>
+                        <option value="88"><?php echo "88 - " .$WesternMusic?></option>
+                        <option value="89"><?php echo "89 - " .$EasternMusic?></option>
+                        <option value="90"><?php echo "90 - " .$Dancing?></option>
+                        <option value="91"><?php echo "91 - " .$Art?></option>
+                        <option value="92"><?php echo "92 - " .$ForeignLanguageExcludingEnglish?></option>
+                        <option value="93"><?php echo "93 - " .$Malay?></option>
+                        <option value="94"><?php echo "94 - " .$Other?></option>
 
 
-                    <option value=""><?php echo "60 - " .$Graduates?></option>
-                    <option value=""><?php echo "60 - " .$ALevel?></option>
-                    <option value=""><?php echo "60 - " .$OLevelandOther?></option>
-
-
-                    <?php
-                    /*for($c = 1; $c < 95; $c++)
-                    {
-                        if ($c == 17)
-                        { 	echo "</optgroup>\n<optgroup label=\"Trained Teachers (Nat.Dip. in Teaching)\"";
-                        } elseif ($c == 49) {
-                        echo "</optgroup>\n<optgroup label=\"Untrained Teachers (Sri Lanka Teaching Service)\"";
-                        } elseif ($c == 70) {
-                        echo "</optgroup>\n<optgroup label=\"!Untrained something else\"";
-                        } elseif ($c == 90) {
-                        echo "</optgroup>\n<optgroup label=\"Contract-based and Other\"";
-                        } else {
-                        echo "\t<option value=\"$c\">" . $myarr[$c] . "</option>\n";
-                        }
-                    }*/
-
-                    echo "</optgroup>";
-
-                    ?>
+                        <option value="97"><?php echo "97- " .$Graduates?></option>
+                        <option value="98"><?php echo "98 - " .$ALevel?></option>
+                        <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
+                    </optgroup>
                 </select>
-
             </td>
-
-
-
             <td><input class="button" name="newStaff" type="submit" value="Submit"></td>
         </tr>
     </table>
@@ -1096,7 +767,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 //Change these to what you want
 $fullPageHeight = 1400;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Staff Registration";
 //Only change above
 
 $pageContent = ob_get_contents();

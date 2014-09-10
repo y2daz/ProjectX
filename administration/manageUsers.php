@@ -154,7 +154,7 @@ if (isset($_POST["delete"])) //User has clicked a delete button
 
                         if ($result == null)
                         {
-                            echo "<tr><td colspan='4'>THere are no records to show.</td></tr>";
+                            echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
                         }
                         else
                         {

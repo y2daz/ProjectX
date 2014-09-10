@@ -16,9 +16,9 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-if (isset($_POST["blacklist"])) //User has clicked the submit button to add a user
+if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
-    $operation = insertblacklist($_POST["staffID"], $_POST["listcontributor"], $_POST["enterdate"], $_POST["reason"]);
+    $operation = insertBlackListMember($_POST["staffID"], $_POST["listcontributor"], $_POST["enterdate"], $_POST["reason"]);
     echo $operation;
 }
 ?>
