@@ -49,7 +49,7 @@ $column6Header = "ජනවර්ගය";
 $column7Header = "ආගම";
 $column8Header = "විවාහක / අවිවාහක බව";
 
-$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු වශයෙන් සේවයට පනවූ වර්ෂය ( අවසන් අංක දෙක ) හා මාසය ";
+$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු වශයෙන් සේවයට\n පනවූ වර්ෂය ( අවසන් අංක දෙක ) හා මාසය ";
 $column9Header = "අවු";
 $column10Header = "මාස";
 
@@ -93,6 +93,14 @@ $column27Header3 = "උදා 583021007 V";
     <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
     <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
+    <script>
+        function printPage(){
+            console.log("printing");
+            window.print();
+            console.log("printing");
+        }
+    </script>
+
     <style>
         *{
             font-family: 'Open Sans', sans-serif;
@@ -120,6 +128,11 @@ $column27Header3 = "උදා 583021007 V";
         .numbers td{
             text-align: center;
         }
+        .secret td{
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 1px solid white;
+        }
         .numberCol{
             text-align: left;
             white-space: nowrap;
@@ -131,6 +144,48 @@ $column27Header3 = "උදා 583021007 V";
             text-indent: -7.5em;
             padding: 0px 0px 0px 0px;
             margin: 0px;
+        }
+        .upcol{
+            position: relative;
+            text-align: left;
+            white-space: nowrap;
+            top: 40px;
+            text-overflow: ellipsis;
+            min-width: 25px;
+            max-width: 25px;
+            /*display: block;*/
+            /*background-color: white;*/
+            /*border-bottom: 1px solid black;*/
+
+            writing-mode: bt-rl;
+            /*text-indent: -7.5em;*/
+            padding: 0px 0px 0px 0px;
+            margin: 0px;
+        }
+        .whiteBox{
+            display: block;
+            position: relative;
+            z-index: 3;
+            background-color: #ffffff;
+            left:1px;
+            top:15px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            width: 74px;
+            border-bottom: 1px solid #000000;
+        }
+        .whiteBoxR{
+            display: block;
+            position: relative;
+            z-index: 3;
+            background-color: #ffffff;
+            text-indent: -12em;
+            left:0px;
+            top:15px;
+            padding-top: 10px;
+            padding-bottom: 20px;
+            width: 74px;
+            /*border-bottom: 1px solid #000000;*/
         }
         #col_0{
             text-indent: -6.5em;
@@ -171,6 +226,12 @@ $column27Header3 = "උදා 583021007 V";
 
             /*vertical-align: top;*/
         }
+        #PrintButton{
+            position: absolute;
+            top: 40px;
+            left :40px;
+            font-size: 1.5em;
+        }
     </style>
 </head>
 
@@ -180,6 +241,38 @@ $column27Header3 = "උදා 583021007 V";
     <h3><?php echo $line2 ?></h3>
 
     <table class="report">
+        <tr class="secret">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td  class="upcol"><div class="whiteBox"><?php echo $column234Header ?></div></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+<!--            <td  class="upcol rotate"><div class="whiteBoxR">--><?php //echo $column910Header ?><!--</div></td>-->
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td colspan="10"></td>
+        </tr>
+        <tr></tr>
         <tr class="headerRow">
             <td id="col_0" class="rotate numberCol"><?php echo $column0Header ?></td>
             <td id="col_1"><?php echo "<p>$column1Header1</p><p>$column1Header2</p>" ?></td>
@@ -305,6 +398,8 @@ $column27Header3 = "උදා 583021007 V";
 
 
     </table>
+
+    <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 
     <br />
 
