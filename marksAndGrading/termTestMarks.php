@@ -115,7 +115,7 @@ else
 
 
 <body>
-<form action="termtestresults.php" method="post" class="insert">
+<form action="termtestresults.php" method="get" class="insert">
 
 <table class="insert" cellspacing="0">
 <tr>
@@ -143,17 +143,17 @@ else
 </tr>
 <tr>
     <td><?php echo $teachername ?></td>
-    <td><input type="text" value="" class="TeacherName" required="true"></td>
+    <td><input type="text" value="" name="TeacherName" required="true"></td>
 </tr>
 <tr>
 <tr>
     <td><?php echo $subject ?></td>
-    <td><input type="text" value="" class="Subject" required="true"></td>
+    <td><input type="text" value="" name="Subject" required="true"></td>
 </tr>
 <tr>
 <tr>
     <td><?php echo $year ?></td>
-    <td><input type="text" value="" class="Year" maxlength="4" required="true"></td>
+    <td><input type="text" value="" name="Year" maxlength="4" required="true"></td>
 </tr>
 <tr>
     <td><?php echo $term ?></td>
