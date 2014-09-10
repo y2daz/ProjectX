@@ -11,31 +11,25 @@ include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
 
-if (isFilled($_POST["submit"])) {
-
-    $prefixSub="subject_";
-    $prefixGrade="grade_";
+if (isset($_POST["submit"]))
+{
 
     $indexNo=$_POST["indexNo"];
     $admissionNo=$_POST["admissionNo"];
     $Year=$_POST["year"];
-    $GeneralEnglish=$_POST["grade_4"];
-    $CommonGenaralTest=$_POST["cmngnrltest"];
+    $Subject1 = $_POST["subject_1"];
+    $Grade1 = $_POST["grade_1"];
+    $Subject2 = $_POST["subject_2"];
+    $Grade2 = $_POST["grade_2"];
+    $Subject3 = $_POST["subject_3"];
+    $Grade3 = $_POST["grade_3"];
+    $GeneralEnglish=$_POST["generalEnglish"];
+    $CommonGenaralTest=$_POST["commongeneraltest"];
     $ZScore=$_POST["zScore"];
     $DistrictRank=$_POST["districRank"];
     $IslandRank=$_POST["IsLandRank"];
-    $
 
-    $subjectArr=array();
-    $gradeArr=array();
-
-    for($i=1;$i<=3;$i++){
-        $subjectArr[$i-1] = $_POST[ ($prefixSub . $i )];
-        $gradeArr[$i-1] = $_POST[ ($prefixGrade . $i )];
-
-    }
-
-    $operation = insertALMarks($admissionNo,$indexNo,$Year,$subjectArr,$gradeArr,$GeneralEnglish,$CommonGenaralTest,$ZScore,$DistrictRank,$IslandRank);
+    $operation = insertALMarks($admissionNo, $indexNo, $Year, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank);
 
     if($operation==true){
         sendNotification("Insert successful.");
@@ -188,7 +182,7 @@ if (isFilled($_POST["submit"])) {
         </tr>
         <tr>
             <td><?php echo $generalenglish ?></td>
-            <td><select name="grade_4" type="text" value="">
+            <td><select name="generalEnglish" type="text" value="">
 
                     <option>--</option>
                     <option>A</option>
@@ -201,7 +195,7 @@ if (isFilled($_POST["submit"])) {
         </tr>
         <tr>
             <td><?php echo $commongeneraltest?></td>
-            <td><input name="cmngnrltest" type="text" value="" maxlength="3">
+            <td><input name="commongeneraltest" type="text" value="" maxlength="3">
 
             </td>
         </tr>
@@ -240,7 +234,7 @@ if (isFilled($_POST["submit"])) {
 //Change these to what you want
 $fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "A Level Marks Input";
 //Only change above
 
 $pageContent = ob_get_contents();

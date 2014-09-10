@@ -53,9 +53,7 @@
     </head>
 
     <body>
-        <?php
-            $class = "10A";
-        ?>
+
         <h1>Keep Attendance</h1>
         <table id="classDate">
             <tr>
@@ -63,7 +61,7 @@
                     Grade
                 </td>
                 <td>
-                    <?php echo $class; ?>
+                    <input type="text" name="Grade" value="">
                 </td>
             </tr>
             <tr>

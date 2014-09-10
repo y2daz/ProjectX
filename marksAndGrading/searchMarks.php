@@ -7,9 +7,14 @@
  */
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+//require_once(THISROOT . "/common.php");
 ob_start();
 
 ?>
+
+
+
+
 <html>
 <head>
 <style type=text/css>
@@ -63,64 +68,80 @@ ob_start();
 <body>
 
     <h1>Search Results</h1>
-<form>
+    <form method="GET">
 
 <table class="insert" cellspacing="0">
 <tr>
     <tr class="alt">
+    <ol>
     <tr>
-        <td>Term Test Marks</td>
+
         <td>
             <input type="radio" name="exam" value="term">
         </td>
+        <td>Term Test Marks</td>
+        <td></td>
+
 
 
 
         <td>Addmission Number</td>
-        <td><input type="text" value=""></td>
+        <td><input name="admissionNo" type="text" value=""></td>
         <td>Grade</td>
-        <td><input type="text" value=""></td>
+        <td><input name="grade" type="text" value=""></td>
         <td>Term</td>
-        <td><select type="text" value="">
+        <td><select name="term" type="text" value="">
                 <option>Mid</option>
                 <option>Final</option>
 
+
+
     </tr>
+        </ol>
 
 
     <tr class="alt">
 
+    <ol>
+
+
 
     <tr>
+        <td>
+            <input dirname="gceOLResult" type="radio" name="exam" value="ol">
+        </td>
+
         <td>G.C.E O/L Results</td>
-        <td>
-            <input type="radio" name="exam" value="ol">
-        </td>
+        <td></td>
 
 
 
         <td>Index Number</td>
-        <td><input type="text" value=""></td>
+        <td><input name="indexNo" type="text" value=""></td>
         <td>Year</td>
-        <td><input type="text" value=""></td>
+        <td><input name="year" type="text" value=""></td>
     </tr>
+        </ol>
 
     <tr class="alt">
-
+    <ol>
     <tr>
-        <td>G.C.E A/L Results</td>
         <td>
-            <input type="radio" name="exam" value="al">
+            <input dirname="gceALResults" type="radio" name="exam" value="al">
         </td>
+        <td>G.C.E A/L Results</td>
+        <td></td>
+
 
 
 
 
         <td>Index Number</td>
-        <td><input type="text" value=""></td>
+        <td><input name="indexNo" type="text" value=""></td>
         <td>Year</td>
-        <td><input type="text" value=""></td>
+        <td><input name="year" type="text" value=""></td>
     </tr>
+        </ol>
 
 
 
@@ -129,7 +150,7 @@ ob_start();
 
         </form>
 
-    <input class="button" type="submit" value="Submit">
+    <td><input class="button" name="search" type="submit" value="Search"></td>
 
 
 

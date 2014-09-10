@@ -11,7 +11,7 @@ include(THISROOT . "/common.php");
 ob_start();
 
 if (isFilled($_POST["submit"])) {
-//    sendNotification("submited");
+
     $prefixSub="subject_";
     $prefixGrade="grade_";
 
