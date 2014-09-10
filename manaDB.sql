@@ -26,7 +26,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 10, 2014 at 10:36 PM
+-- Generation Time: Sep 10, 2014 at 10:49 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -439,12 +439,16 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   CREATE TABLE IF NOT EXISTS `EventManager` (
     `EventID` int(11) NOT NULL DEFAULT '0',
     `StaffID` varchar(5) NOT NULL DEFAULT '',
-    `ManagerName` varchar(30) NOT NULL DEFAULT '',
-    `ContactNo` int(10) NOT NULL DEFAULT '0',
     `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
     PRIMARY KEY (`EventID`,`StaffID`),
     KEY `fk022` (`StaffID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `EventManager`
+--
+
+  INSERT INTO `EventManager` VALUES(4, '2', 0);
 
 -- --------------------------------------------------------
 
@@ -2043,6 +2047,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`EventID`,`TransactionID`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `Transaction`
+--
+
+  INSERT INTO `Transaction` VALUES(4, 1, '0000-00-00', b'0', 10000, 'mhh', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -2129,10 +2139,10 @@ ALTER TABLE `ClassInformation`
 ALTER TABLE `Event`
   ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `EventManager`
---
-ALTER TABLE `EventManager`
+  --
+  -- Constraints for table `EventManager`
+  --
+  ALTER TABLE `EventManager`
   ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
@@ -2143,10 +2153,10 @@ ALTER TABLE `Invitee`
   ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
 
-  --
-  -- Constraints for table `IsSubstituted`
-  --
-  ALTER TABLE `IsSubstituted`
+--
+-- Constraints for table `IsSubstituted`
+--
+ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`, `Day`, `Position`);
 
@@ -2193,16 +2203,16 @@ ALTER TABLE `ParentsInformation`
 ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
---
--- Constraints for table `Teaches`
---
-ALTER TABLE `Teaches`
+  --
+  -- Constraints for table `Teaches`
+  --
+  ALTER TABLE `Teaches`
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
---
--- Constraints for table `Timetable`
---
-ALTER TABLE `Timetable`
+  --
+  -- Constraints for table `Timetable`
+  --
+  ALTER TABLE `Timetable`
   ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
   --

@@ -21,8 +21,6 @@ if (isset($_POST["addevent"]))
     $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
 }
 
-
-
 ?>
     <html>
     <head>

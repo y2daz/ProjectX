@@ -101,7 +101,7 @@ if (isset($_GET["expand"]))
         $CourseofStudy = $row[$i++];
     }
 
-    $fullPageHeight = 1200;
+    $fullPageHeight = 1500;
 
     $tableDetails= "block";
     $tableViewTable= "none";
@@ -172,12 +172,14 @@ else
             min-width: 60px;
         }
         .details {
-            /*position: relative;*/
+            position: relative;
             /*top:50px;*/
-            width:500px;
+            left: 40px;
+            max-width:800px;
             height:150px;
             display: <?php echo $tableDetails ?>
         }
+
         input.button1 {
             position:relative;
             font-weight:bold;
@@ -511,7 +513,7 @@ else
     <br />
 
 <form method="post">
-    <table class="details" align="center">
+    <table class="details" >
         <tr>
             <td> Staff ID </td>
             <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>"/> </td>
