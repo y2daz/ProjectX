@@ -13,10 +13,10 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/rtdbAccess.php");
+include(THISROOT . "/dbAccess.php");
 ob_start();
 
-if (isset($_POST["addevent"])) //user has clicked the button to apply leave
+if (isset($_POST["addevent"]))
 {
     $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
 }
@@ -49,11 +49,12 @@ if (isset($_POST["addevent"])) //user has clicked the button to apply leave
     $starttime = getLanguage("starttime", $_COOKIE["language"]);
     $endtime = getLanguage("endtime", $_COOKIE["language"]);
     $addevent = getLanguage("saveevent", $_COOKIE["language"]);
+    $addnewEvent = getLanguage("addnewEvent", $_COOKIE["language"]);
     ?>
 
     <body>
 
-    <h1 align="center">Add Event</h1>
+    <h1 align="center"><?php echo $addnewEvent ?></h1>
 
     <br>
     <br>

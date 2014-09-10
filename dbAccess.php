@@ -374,7 +374,7 @@ function SearchStudent($key)
     return $set;
 }
 
-function SearchStudentbyclass( $key)
+function SearchStudentbyclass($key)
 {
 
     $dbObj = new dbConnect();
