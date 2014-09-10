@@ -102,24 +102,6 @@ ob_start();
                 }
                 ?>
 
-<!--                <r>-->
-<!--                    <td>Prize Giving</td>-->
-<!--                    <td>07/07/2015</td>-->
-<!--                    <td>Prize giving ceremony for primary grades</td>-->
-<!--                    <td><span class="table" style="width:570px;height:auto">-->
-<!--                    <input type="button" name="manage1" id="manage1" value="Manage" />-->
-<!--                    </span>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td>Sports Meet</td>-->
-<!--                    <td>07/09/2014</td>-->
-<!--                    <td>Inter house secondary grades sports meet</td>-->
-<!--                    <td><span class="table" style="width:570px;height:auto">-->
-<!--                    <center><input type="button" name="manage2" id="manage2" value="Manage" /></center>-->
-<!--                    </span>-->
-<!--                    </td>-->
-<!--                </tr>-->
                 <tr>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>
@@ -129,8 +111,6 @@ ob_start();
                 </span>
                     </td>
                 </tr>
-
-
 
                 <!--<tr style="width:150px;height:30px">-->
                 <!--<td>&nbsp;</td>-->

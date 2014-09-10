@@ -13,40 +13,40 @@ ob_start();
 
 $result = null;
 
-if (isset($_POST["manage"])){
+$eventID = $_REQUEST["eventID"];
 
-    $eventID = $_POST["eventID"];
+if(isset($_POST["delete"]))
+{
+    $StaffIDtoDelete = $_POST["delete"];
 
-    if (isset($_POST["addManager"])){
-
-        echo ($_POST["newManagerID"]);
-
-        $operation = insertManager($eventID, $_POST["newManagerID"]);
-
-        if ($operation == true){
-            sendNotification("Manager added");
-        }
-        else{
-            sendNotification("Error adding manager");
-        }
-    }
-
-    if (isset($_POST["addTransaction"])){
-       echo ($_POST["newManagerID"]);
-        $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
-
-        if ($operation == true){
-            sendNotification("Transaction added");
-        }
-        else{
-            sendNotification("Error adding transaction");
-        }
-
-    }
-
+    echo $StaffIDtoDelete;
 }
-else{
-    header( 'Location: /eventManagement/eventList.php' ) ;
+
+if (isset($_POST["addManager"])){
+
+    echo ($_POST["newManagerID"]);
+
+    $operation = insertManager($eventID, $_POST["newManagerID"]);
+
+    if ($operation == true){
+        sendNotification("Manager added");
+    }
+    else{
+        sendNotification("Error adding manager");
+    }
+}
+
+if (isset($_POST["addTransaction"])){
+
+    $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
+
+    if ($operation == true){
+        sendNotification("Transaction added");
+    }
+    else{
+        sendNotification("Error adding transaction");
+    }
+
 }
 
 ?>
@@ -166,9 +166,12 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
         <h1><?php echo $manageEvents ?></h1>
 
         <h3><?php echo $managerList ?></h3>
+
         <form method="post">
+
             <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
             <input name="manage" value="Manage" hidden="hidden" />
+
         <table id="Manager">
             <tr>
 
@@ -181,7 +184,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
                 <!--<span class="table" style="width:570px;height:auto">-->
             </tr>
             <?php
-            $result = getEventManagers($_POST["eventID"]);
+            $result = getEventManagers($eventID);
             $i = 1;
 
             if ($result == null)
@@ -206,32 +209,6 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
             }
             ?>
 
-<!--
-            <tr>
-                <td>10</td>
-                <td>Amritha</td>
-                <td>0756489326</td>
-                <td>
-                    <input type="button" name=<?php /*echo $delete */?> id="button1" value="<?php /*echo $delete */?>" />
-                </td>
-            </tr>
-
-            <tr>
-                <td>4</td>
-                <td>Madusha </td>
-                <td>0711701236</td>
-                <td>
-                    <input type="button" name="button" id="button2" value="<?php /*echo $delete */?>" />
-                </td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>niruthi</td>
-                <td>0112968756</td>
-                <td>
-                    <input type="button" name="button" id="button3" value="<?php /*echo $delete */?>" />
-                </td>
-            </tr>-->
             <tr>
                 <td><input type="text" name="newManagerID" value=""></td>
                 <td >
@@ -276,7 +253,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
                 <!--<span class="table" style="width:570px;height:auto">-->
             </tr>
             <?php
-            $result = getEventTransactions($_POST["eventID"]);
+            $result = getEventTransactions($eventID);
             $i = 1;
 
             if ($result == null)
@@ -303,38 +280,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
             }
             ?>
 
-<!--            <tr>-->
-<!--                <td>e1t1</td>-->
-<!--                <td>22/7/2014</td>-->
-<!--                <td>Income</td>-->
-<!--                <td>12,000</td>-->
-<!--                <td>From Students</td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr style="width:100px;height:30px">-->
-<!--                <td>e1t2</td>-->
-<!--                <td>24/7/2014</td>-->
-<!--                <td>Income</td>-->
-<!--                <td>11,000</td>-->
-<!--                <td>From OBA</td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr style="width:100px;height:30px">-->
-<!--                <td>e1t3</td>-->
-<!--                <td>24/7/2014</td>-->
-<!--                <td>Income</td>-->
-<!--                <td>45</td>-->
-<!--                <td>For Transports</td>-->
-<!---->
-<!--            </tr>-->
-<!--            <tr style="width:100px;height:30px">-->
-<!--                <td>e1t4</td>-->
-<!--                <td>27/7/2014</td>-->
-<!--                <td>Expenditure</td>-->
-<!--                <td>4000</td>-->
-<!--                <td>For Decorations</td>-->
-<!---->
-<!--            </tr>-->
+
             <tr style="width:150px;height:30px" >
         <form method="post">
             <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />

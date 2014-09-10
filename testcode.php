@@ -25,18 +25,13 @@
 
 <body>
 
-<?php
+<form method="get" action="testcode2.php">
 
-$now = strtotime("2014-01-01"); // or your date as well
-$your_date = strtotime("2014-01-20");
-$datediff = $now - $your_date;
-$datediff =  floor($datediff/(60*60*24));
+    <input type="text" name="Code" value="">
 
+    <input type="submit" name="Submit">
 
-echo abs($datediff);
-
-
-?>
+</form>
 
 </body>
 
