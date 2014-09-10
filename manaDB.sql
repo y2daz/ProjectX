@@ -26,7 +26,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 09, 2014 at 11:06 PM
+-- Generation Time: Sep 10, 2014 at 10:36 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.3
 
@@ -51,11 +51,31 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     `IndexNo` int(11) NOT NULL DEFAULT '0',
     `AdmissionNo` varchar(5) DEFAULT NULL,
     `Year` int(11) NOT NULL,
-    `Subject` varchar(64) NOT NULL DEFAULT '0',
-    `Grade` varchar(2) DEFAULT NULL,
-    PRIMARY KEY (`IndexNo`,`Subject`),
+    `Subject_1` varchar(63) NOT NULL DEFAULT '0',
+    `Subject_2` varchar(63) DEFAULT NULL,
+    `Subject_3` varchar(63) DEFAULT NULL,
+    `Grade_1` varchar(3) DEFAULT NULL,
+    `Grade_2` varchar(3) DEFAULT NULL,
+    `Grade_3` varchar(3) DEFAULT NULL,
+    `Gen_Eng_Grade` varchar(3) DEFAULT NULL,
+    `Cmn_Gen_Mark` int(3) DEFAULT NULL,
+    `Z_Score` float DEFAULT NULL,
+    `Inland_Rank` int(20) DEFAULT NULL,
+    `District_Rank` int(20) DEFAULT NULL,
+    PRIMARY KEY (`IndexNo`,`Subject_1`),
     KEY `AdmissionNo` (`AdmissionNo`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ALMarks`
+--
+
+  INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Chemistry', NULL, NULL, 'B', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Combined Mathematics', NULL, NULL, 'C', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Physics', NULL, NULL, 'B', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Economics', NULL, NULL, 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Science', NULL, NULL, 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+  INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Sinhala', NULL, NULL, 'F', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -569,6 +589,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('actingPrincipal', 1, 'වැඩබලන විදුහල්පති');
   INSERT INTO `LabelLanguage` VALUES('addManager', 0, 'Add Event Managers ');
   INSERT INTO `LabelLanguage` VALUES('addManager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ');
+  INSERT INTO `LabelLanguage` VALUES('addnewEvent', 0, 'Add New Event');
+  INSERT INTO `LabelLanguage` VALUES('addnewEvent', 1, 'නව සිදුවීමක් එකතු කරන්න');
+  INSERT INTO `LabelLanguage` VALUES('addTransaction', 0, 'Add Transaction');
+  INSERT INTO `LabelLanguage` VALUES('addTransaction', 1, 'ගනුදෙනුව එකතු කරන්න');
   INSERT INTO `LabelLanguage` VALUES('agriculture', 0, 'Agriculture');
   INSERT INTO `LabelLanguage` VALUES('agriculture', 1, 'කෘෂිකර්මය');
   INSERT INTO `LabelLanguage` VALUES('ALevel', 0, ' A Level');
@@ -583,6 +607,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('ALevelSupervisor', 1, 'උ.පෙළ (12-13) අධීක්ෂණ ගුරු');
   INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 0, ' A Level Technology');
   INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 1, 'උ.පෙළ (12-13) තාක්ෂණික ප්‍රදාන විෂයයන්');
+  INSERT INTO `LabelLanguage` VALUES('amount', 0, 'Amount');
+  INSERT INTO `LabelLanguage` VALUES('amount', 1, 'මුදල');
   INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave');
   INSERT INTO `LabelLanguage` VALUES('applyForLeave', 1, 'නිවාඩු ඉල්ලීම්කිරීම');
   INSERT INTO `LabelLanguage` VALUES('approveLeave', 0, 'Approve Leave');
@@ -723,8 +749,12 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('eventCreator', 1, 'සිදුවීම් නිර්මාණකරු');
   INSERT INTO `LabelLanguage` VALUES('eventId', 0, 'Event ID');
   INSERT INTO `LabelLanguage` VALUES('eventId', 1, 'සිදුවීම් අංකය');
+  INSERT INTO `LabelLanguage` VALUES('eventList', 0, 'Event List');
+  INSERT INTO `LabelLanguage` VALUES('eventList', 1, 'සිදුවීම් ලැයිස්තුව');
   INSERT INTO `LabelLanguage` VALUES('eventManagement', 0, 'Event Management');
   INSERT INTO `LabelLanguage` VALUES('eventManagement', 1, 'උත්සවය කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('eventName', 0, 'EventName');
+  INSERT INTO `LabelLanguage` VALUES('eventName', 1, 'සිදුවීම');
   INSERT INTO `LabelLanguage` VALUES('eventType', 0, 'Event Type');
   INSERT INTO `LabelLanguage` VALUES('eventType', 1, 'සිදුවීම් වර්ගය');
   INSERT INTO `LabelLanguage` VALUES('female', 0, 'Female');
@@ -767,6 +797,10 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('informationTechnology', 1, 'තොරතරු තාක්ෂනය');
   INSERT INTO `LabelLanguage` VALUES('interval', 0, 'INTERVAL');
   INSERT INTO `LabelLanguage` VALUES('interval', 1, 'විවේක කාලය');
+  INSERT INTO `LabelLanguage` VALUES('invitees', 0, 'Invitees');
+  INSERT INTO `LabelLanguage` VALUES('invitees', 1, 'ආරාධිතයින්');
+  INSERT INTO `LabelLanguage` VALUES('inviteesList', 0, 'Invitees List');
+  INSERT INTO `LabelLanguage` VALUES('inviteesList', 1, 'ආරාධිත ලැයිස්තුව');
   INSERT INTO `LabelLanguage` VALUES('islam', 0, 'Islam');
   INSERT INTO `LabelLanguage` VALUES('islam', 1, 'ඉස්ලාම්');
   INSERT INTO `LabelLanguage` VALUES('iT', 0, 'IT');
@@ -791,8 +825,16 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('male', 1, 'පිරිමි');
   INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 0, ' M A M Sc M Ed');
   INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 1, 'ශාස්ත්‍රපති හා ඊට සමාන්තර');
+  INSERT INTO `LabelLanguage` VALUES('manage', 0, 'Manage');
+  INSERT INTO `LabelLanguage` VALUES('manage', 1, 'කළමනාකරණය');
+  INSERT INTO `LabelLanguage` VALUES('manageEvents', 0, 'Manage Events');
+  INSERT INTO `LabelLanguage` VALUES('manageEvents', 1, 'සිදුවීම් කළමනාකරණය');
   INSERT INTO `LabelLanguage` VALUES('management', 0, 'Management');
   INSERT INTO `LabelLanguage` VALUES('management', 1, 'පරිපාලනය');
+  INSERT INTO `LabelLanguage` VALUES('managerList', 0, 'Event Manager List');
+  INSERT INTO `LabelLanguage` VALUES('managerList', 1, 'සිදුවීම් කළමනාකරුවන් ලැයිස්තුව');
+  INSERT INTO `LabelLanguage` VALUES('managerName', 0, 'Manager Name');
+  INSERT INTO `LabelLanguage` VALUES('managerName', 1, 'කළමනාකරුගේ නම');
   INSERT INTO `LabelLanguage` VALUES('married', 0, 'Married');
   INSERT INTO `LabelLanguage` VALUES('married', 1, 'විවාහක');
   INSERT INTO `LabelLanguage` VALUES('maths', 0, 'Maths');
@@ -829,6 +871,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('none', 1, 'ව්හුර්තීය සුදුසුකම් ලබා නොමැති');
   INSERT INTO `LabelLanguage` VALUES('nonRomanCatholicism', 0, 'Non Roman Catholicism');
   INSERT INTO `LabelLanguage` VALUES('nonRomanCatholicism', 1, 'රෝමානු කතෝලික නොවන ක්‍රිස්තියානි');
+  INSERT INTO `LabelLanguage` VALUES('noofinvitees', 0, 'No Of Invitees');
+  INSERT INTO `LabelLanguage` VALUES('noofinvitees', 1, 'ආරාධිතයින් ගණන');
   INSERT INTO `LabelLanguage` VALUES('OLevel', 0, ' O Level');
   INSERT INTO `LabelLanguage` VALUES('OLevel', 1, 'අ.පො.ස(සා.පෙ)/හෝ සමාන(O/L)');
   INSERT INTO `LabelLanguage` VALUES('OLevelandOther', 0, ' O Level and Other');
@@ -859,6 +903,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('PhD', 1, 'දර්ශනශුරී උපාධිහා ඊට සමාන්තර');
   INSERT INTO `LabelLanguage` VALUES('phDEd', 0, 'Ph D Ed');
   INSERT INTO `LabelLanguage` VALUES('phDEd', 1, 'දර්ශනශුරි - අධ්‍යාපනය පිළිබදව');
+  INSERT INTO `LabelLanguage` VALUES('pname', 0, 'Parent Name');
+  INSERT INTO `LabelLanguage` VALUES('pname', 1, 'මව/පියා  ගේ නම');
   INSERT INTO `LabelLanguage` VALUES('positionInSchool', 0, 'Position in School');
   INSERT INTO `LabelLanguage` VALUES('positionInSchool', 1, 'පාසලේ දරන තනතුර');
   INSERT INTO `LabelLanguage` VALUES('primary', 0, 'Primary');
@@ -875,6 +921,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('primarySupervisor', 1, 'ප්‍රාථමික (1-5) අධීක්ෂණ ගුරු');
   INSERT INTO `LabelLanguage` VALUES('principal', 0, 'Principal');
   INSERT INTO `LabelLanguage` VALUES('principal', 1, 'විදුහල්පති');
+  INSERT INTO `LabelLanguage` VALUES('printTransction', 0, 'Print Transaction Report');
+  INSERT INTO `LabelLanguage` VALUES('printTransction', 1, 'ගනුදෙනු වාර්තාව මුද්‍රණය කරන්න');
   INSERT INTO `LabelLanguage` VALUES('prizeGiving', 0, 'Prize Giving Ceremony');
   INSERT INTO `LabelLanguage` VALUES('prizeGiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය');
   INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member');
@@ -915,6 +963,8 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('section', 1, 'නිරතවන කාර්යය');
   INSERT INTO `LabelLanguage` VALUES('serviceGrade', 0, 'Service Grade');
   INSERT INTO `LabelLanguage` VALUES('serviceGrade', 1, 'අදාල සේවය/ශ්‍රේණිය');
+  INSERT INTO `LabelLanguage` VALUES('sid', 0, 'Admission No');
+  INSERT INTO `LabelLanguage` VALUES('sid', 1, 'ඇතුලත්වීමේ අංකය');
   INSERT INTO `LabelLanguage` VALUES('sinhala', 0, 'Sinhala');
   INSERT INTO `LabelLanguage` VALUES('sinhala', 1, 'සිංහල');
   INSERT INTO `LabelLanguage` VALUES('socialStudies', 0, 'Social Studies');
@@ -987,16 +1037,28 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
   INSERT INTO `LabelLanguage` VALUES('theatreandDrama', 1, 'නාට්‍ය හා රංග කලාව');
   INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'Thursday');
   INSERT INTO `LabelLanguage` VALUES('thursday', 1, 'බ්‍රහස්පතින්දා');
+  INSERT INTO `LabelLanguage` VALUES('tid', 0, 'Transaction ID');
+  INSERT INTO `LabelLanguage` VALUES('tid', 1, 'ගනුදෙනු අංකය');
   INSERT INTO `LabelLanguage` VALUES('time', 0, 'Time');
   INSERT INTO `LabelLanguage` VALUES('time', 1, 'වේලාව');
   INSERT INTO `LabelLanguage` VALUES('Timetables', 0, 'Timetables');
   INSERT INTO `LabelLanguage` VALUES('Timetables', 1, 'කාලසටහන');
+  INSERT INTO `LabelLanguage` VALUES('tlog', 0, 'Transaction Log');
+  INSERT INTO `LabelLanguage` VALUES('tlog', 1, 'ගනුදෙනු සටහන');
+  INSERT INTO `LabelLanguage` VALUES('trecieved', 0, 'Total Recieved');
+  INSERT INTO `LabelLanguage` VALUES('trecieved', 1, 'ලබාගත් මුළු මුදල');
+  INSERT INTO `LabelLanguage` VALUES('tspent', 0, 'Total Spent');
+  INSERT INTO `LabelLanguage` VALUES('tspent', 1, 'වියදම් කල මුළු මුදල');
   INSERT INTO `LabelLanguage` VALUES('tu', 0, 'T');
   INSERT INTO `LabelLanguage` VALUES('tu', 1, 'අ');
   INSERT INTO `LabelLanguage` VALUES('tuesday', 0, 'Tuesday');
   INSERT INTO `LabelLanguage` VALUES('tuesday', 1, 'අගහරුවදා');
+  INSERT INTO `LabelLanguage` VALUES('type', 0, 'Type');
+  INSERT INTO `LabelLanguage` VALUES('type', 1, 'වර්ගය');
   INSERT INTO `LabelLanguage` VALUES('unmarried', 0, 'Not Married');
   INSERT INTO `LabelLanguage` VALUES('unmarried', 1, 'අවිවාහක');
+  INSERT INTO `LabelLanguage` VALUES('viewInvitees', 0, 'View Invitees List');
+  INSERT INTO `LabelLanguage` VALUES('viewInvitees', 1, 'ආරාධිත ලැයිස්තුව බලන්න');
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History');
   INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 1, 'ඉකුත් වූ නිවාඩු');
   INSERT INTO `LabelLanguage` VALUES('we', 0, 'W');
@@ -1995,9 +2057,9 @@ CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_g
     PRIMARY KEY (`userEmail`)
   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-  --
-  -- Dumping data for table `User`
-  --
+--
+-- Dumping data for table `User`
+--
 
   INSERT INTO `User` VALUES('1', '$2y$10$bEOYHN38SCG2xjwgLBXude39avl5ohE/NeMl4UkmnK7/hCdpQS.l.', 1, 2);
   INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
@@ -2055,10 +2117,10 @@ ALTER TABLE `Attendance`
 ALTER TABLE `Blacklist`
   ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `ClassInformation`
-  --
-  ALTER TABLE `ClassInformation`
+--
+-- Constraints for table `ClassInformation`
+--
+ALTER TABLE `ClassInformation`
   ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
@@ -2081,10 +2143,10 @@ ALTER TABLE `Invitee`
   ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
   ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
 
---
--- Constraints for table `IsSubstituted`
---
-ALTER TABLE `IsSubstituted`
+  --
+  -- Constraints for table `IsSubstituted`
+  --
+  ALTER TABLE `IsSubstituted`
   ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
   ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`, `Day`, `Position`);
 
@@ -2119,28 +2181,28 @@ ALTER TABLE `LeaveData`
 ALTER TABLE `OLMarks`
   ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `ParentsInformation`
-  --
-  ALTER TABLE `ParentsInformation`
+--
+-- Constraints for table `ParentsInformation`
+--
+ALTER TABLE `ParentsInformation`
   ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `Student_Subject_Grade`
-  --
-  ALTER TABLE `Student_Subject_Grade`
+--
+-- Constraints for table `Student_Subject_Grade`
+--
+ALTER TABLE `Student_Subject_Grade`
   ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
-  --
-  -- Constraints for table `Teaches`
-  --
-  ALTER TABLE `Teaches`
+--
+-- Constraints for table `Teaches`
+--
+ALTER TABLE `Teaches`
   ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
-  --
-  -- Constraints for table `Timetable`
-  --
-  ALTER TABLE `Timetable`
+--
+-- Constraints for table `Timetable`
+--
+ALTER TABLE `Timetable`
   ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
   --
