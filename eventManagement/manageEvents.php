@@ -17,7 +17,7 @@ if (isFilled($_POST["manage"])){
     $eventID = $_POST["eventID"];
 
     if (isFilled($_POST["addManager"])){
-//       echo ($_POST["newManagerID"]);
+           echo ($_POST["newManagerID"]);
         $operation = insertManager($eventID, $_POST["newManagerID"]);
 
         if ($operation == true){
@@ -25,6 +25,18 @@ if (isFilled($_POST["manage"])){
         }
         else{
             sendNotification("Error adding manager");
+        }
+    }
+
+    if (isFilled($_POST["addTransaction"])){
+       echo ($_POST["newManagerID"]);
+        $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
+
+        if ($operation == true){
+            sendNotification("Transaction added");
+        }
+        else{
+            sendNotification("Error adding transaction");
         }
 
     }
@@ -172,7 +184,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
                 <!--<span class="table" style="width:570px;height:auto">-->
             </tr>
             <?php
-            $result = getEventlManagers($_POST["eventID"]);
+            $result = getEventManagers($_POST["eventID"]);
             $i = 1;
 
             if ($result == null)
@@ -236,10 +248,10 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
     </div>
 
 
-    <h3><?php echo $invitees ?></h3>
-
-    <span><?php echo $noofInvitees ?> </span><span id="invitees"> 0</span> <br />
-    <input type="button" name="button" width = "150px" id="button9" value="<?php echo $viewInvitees ?>"  onClick="window.location = 'newinviteeslist.php';"/>
+<!--    <h3>--><?php //echo $invitees ?><!--</h3>-->
+<!---->
+<!--    <span>--><?php //echo $noofInvitees ?><!-- </span><span id="invitees"> 0</span> <br />-->
+<!--    <input type="button" name="button" width = "150px" id="button9" value="--><?php //echo $viewInvitees ?><!--"  onClick="window.location = 'newinviteeslist.php';"/>-->
 
 
 
@@ -248,13 +260,13 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
     <div  id="general" style="">
 
 
-
+        <br>
+        <br>
         <h3><?php echo $tlog ?></h3>
 
-        <form method="post">
-            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
-            <input name="manage" value="Manage" hidden="hidden" />
-            <?php echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+
+<!--            --><?php //echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+
         <table id="transaction">
             <tr>
                 <th id="id"><?php echo $tid ?></th>
@@ -266,54 +278,79 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
                 <!--<span class="table" style="width:570px;height:auto">-->
             </tr>
+            <?php
+            $result = getEventTransactions($_POST["eventID"]);
+            $i = 1;
 
-            <tr>
-                <td>e1t1</td>
-                <td>22/7/2014</td>
-                <td>Income</td>
-                <td>12,000</td>
-                <td>From Students</td>
+            if ($result == null)
+            {
+                echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
+            }
+            else
+            {
+                foreach($result as $row){
+                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+                    echo $top;
+                    echo "$row[0]";
+                    echo "<td>$row[1]</td>";
+                    echo "<td>" . ( $row[2] == 0? "Income": "Expenditure") . "</td>";
+                    echo "<td>$row[3]</td>";
+                    echo "<td>$row[4]</td>";
+//                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+//                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+                    echo "</tr>";
 
-            </tr>
-            <tr style="width:100px;height:30px">
-                <td>e1t2</td>
-                <td>24/7/2014</td>
-                <td>Income</td>
-                <td>11,000</td>
-                <td>From OBA</td>
+                    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+                    //                            post(document.URL, params, "post");
+                }
+            }
+            ?>
 
-            </tr>
-            <tr style="width:100px;height:30px">
-                <td>e1t3</td>
-                <td>24/7/2014</td>
-                <td>Income</td>
-                <td>45</td>
-                <td>For Transports</td>
-
-            </tr>
-            <tr style="width:100px;height:30px">
-                <td>e1t4</td>
-                <td>27/7/2014</td>
-                <td>Expenditure</td>
-                <td>4000</td>
-                <td>For Decorations</td>
-
-            </tr>
+<!--            <tr>-->
+<!--                <td>e1t1</td>-->
+<!--                <td>22/7/2014</td>-->
+<!--                <td>Income</td>-->
+<!--                <td>12,000</td>-->
+<!--                <td>From Students</td>-->
+<!---->
+<!--            </tr>-->
+<!--            <tr style="width:100px;height:30px">-->
+<!--                <td>e1t2</td>-->
+<!--                <td>24/7/2014</td>-->
+<!--                <td>Income</td>-->
+<!--                <td>11,000</td>-->
+<!--                <td>From OBA</td>-->
+<!---->
+<!--            </tr>-->
+<!--            <tr style="width:100px;height:30px">-->
+<!--                <td>e1t3</td>-->
+<!--                <td>24/7/2014</td>-->
+<!--                <td>Income</td>-->
+<!--                <td>45</td>-->
+<!--                <td>For Transports</td>-->
+<!---->
+<!--            </tr>-->
+<!--            <tr style="width:100px;height:30px">-->
+<!--                <td>e1t4</td>-->
+<!--                <td>27/7/2014</td>-->
+<!--                <td>Expenditure</td>-->
+<!--                <td>4000</td>-->
+<!--                <td>For Decorations</td>-->
+<!---->
+<!--            </tr>-->
             <tr style="width:150px;height:30px" >
-
-                </td>
-                <td><input type="submit" name="button" id="button" value="<?php echo $addTransaction ?>" /></td>
-                <td><input type="text" name="date" value=""></td>
-                <td><select name="Type">
-
+        <form method="post">
+            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+            <input name="manage" value="Manage" hidden="hidden" />
+                <td><input type="submit" name="addTransaction" id="button" value="<?php echo $addTransaction ?>" /></td>
+                <td><input type="Date" name="tDate" value=""></td>
+                <td><select name="tType">
                        <option value="0">Income</option>
                         <option value="1">Expenditure</option>
                 </select></td>
-
-
-                <td><input type="text" name="Amount" value=""></td>
-                <td><input type="text" name="Description" value=""></td>
-
+                <td><input type="text" name="tAmount" value="" required="true"></td>
+                <td><input type="text" name="tDescription" value=""></td>
+            </form>
             </tr>
 
         </table>
@@ -323,11 +360,11 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
     <br />
 
-    <span><?php echo $trecieved ?> </span><span id="totalReceived"> 23045</span> <br />
-    <span><?php echo $tspent ?></span><span id="totalspent"> 4000</span>
+    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getExpenditure($eventID)?></span> <br />
+    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getIncome($eventID)?></span>
 
     <div>
-        <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style="position:relative; top:150px; left: 0px; width:250px;"/>
+        <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style=position:relative; top :100px; left: 0px; width:150"/>
     </div>
 
 

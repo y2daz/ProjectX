@@ -82,7 +82,6 @@ $pageTitle= "Template";
         <div class="" id="general" style="">
 
             <h1><?php echo $eventList ?></h1>
-            <form method="post" action="manageEvents.php">
             <table id="eventTable">
                 <tr>
                     <th><?php echo $eventName ?></th>
@@ -96,13 +95,14 @@ $pageTitle= "Template";
                 $i = 1;
 
                 foreach($result as $row){
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
+                    $top = "<form method='post' action='manageEvents.php'>";
+                    $top .= ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"\">" : "<tr><td class=\"\">";
                     echo $top;
                     echo "$row[1]" . "<input name=eventID value=$row[0] hidden=hidden/>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\"  /> </td> "; //formaction=\"manageEvents.php?manage=" . $row[1] . "\"
-                    echo "</td></tr>";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\"  /> </td> ";
+                    echo "</td></tr></form>";
                 }
                 ?>
 
