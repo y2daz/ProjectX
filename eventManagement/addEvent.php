@@ -13,7 +13,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/rtdbAccess.php");
+include(THISROOT . "/dbAccess.php");
 ob_start();
 
 if (isset($_POST["addevent"])) //user has clicked the button to apply leave
