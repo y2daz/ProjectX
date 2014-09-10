@@ -9,6 +9,67 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
+if(isset($_GET["Grade"]))
+{
+    $Grade = $_GET["Grade"];
+}
+else
+{
+    $Grade = "";
+}
+
+if(isset($_GET["Class"]))
+{
+    $Class = $_GET["Class"];
+}
+else
+{
+    $Class = "";
+}
+
+if(isset($_GET["TeacherName"]))
+{
+    $TeacherName = $_GET["TeacherName"];;
+}
+else
+{
+    $TeacherName = "";
+}
+
+if(isset($_GET["Subject"]))
+{
+    $Subject = $_GET["Subject"];
+}
+else
+{
+    $Subject = "";
+}
+
+if(isset($_GET["Year"]))
+{
+
+    $Year = $_GET["Year"];
+}
+else
+{
+    $Year = "";
+}
+
+if(isset($_GET["Term"]))
+{
+    $Term = $_GET["Term"];
+}
+else
+{
+    $Term = "";
+}
+
+//echo $Grade;
+//echo $Class;
+//echo $TeacherName;
+//echo $Subject;
+//echo  $Year;
+//echo $Term;
 
 if($_COOKIE['language'] == 0)
 {
@@ -110,39 +171,39 @@ else
     </head>
     <body>
 
-    <form>
+    <form method="post">
         <h1><?php echo $termtestresults ?></h1>
 
         <table id="details" class="insert" cellspacing="0">
 
             <tr>
                 <td class="title"><?php echo $grade ?></td>
-                <td><input type="text" id="grade" name="grade" value=""readonly></td>
+                <td><input type="text" id="grade" name="grade" value="<?php echo $Grade ?>" readonly></td>
 
 
 
             </tr>
             <tr>
                 <td class="title"><?php echo $class ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input type="text" value="<?php echo $Class ?>" readonly></td>
             </tr>
             <tr>
                 <td class="title"><?php echo $teachername ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input type="text" value="<?php echo $TeacherName ?>" readonly></td>
             </tr>
 
             <tr>
                 <td class="title"><?php echo $subject ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input type="text" value="<?php echo $Subject ?> " readonly></td>
             </tr>
 
             <tr>
                 <td class="title"><?php echo $year ?></td>
-                <td><input type="text" value="" readonly></td>
+                <td><input type="text" value="<?php echo $Year ?>" readonly></td>
             </tr>
             <tr>
                 <td class="title"><?php echo $term ?></td>
-                <td><input type="text" value=""readonly></td>
+                <td><input type="text" value="<?php echo $Term ?>" readonly></td>
             </tr>
             </table>
         </form>
@@ -153,146 +214,56 @@ else
     <table id="marks">
         <tr id="tHeader">
 
-                <tr>
-                    <th><?php echo $admissionnumber ?></th>
-                    <th><?php echo $name ?></th>
-                    <th><?php echo $marks ?></th>
-                    <th><?php echo $remarks ?></th>
+        <tr>
+            <th><?php echo $admissionnumber ?></th>
+            <th><?php echo $name ?></th>
+            <th><?php echo $marks ?></th>
+            <th><?php echo $remarks ?></th>
+        </tr>
 
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
+        <?php
+        $result = SearchStudentbyclass($Grade. " " . $Class);
+        $i = 1;
 
 
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
+        if (!isFilled($result))
+        {
+            echo "<tr><td colspan='6'>There are no records to show.</td></tr>";
+        }
+        else
+        {
+            foreach($result as $row){
+                $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
+                echo $top;
+                echo "<td>$row[0]</td>";
+                echo "<td>$row[1]</td>";
+                echo "<td><input type='text' name='marks' value=''></td>";
+                echo "<td><input type='text' name='remarks' value=''></td>";
+                echo "</tr>";
+            }
+        }
+        ?>
 
 
+    </table>
 
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
+    <table>
+        <tr>
+            <td></td>
+            <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
+<!--            <td><input class="button1" type="reset" value="--><?php //echo $reset ?><!--"></td>-->
+        </tr>
+    </table>
 
-
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-                <tr>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                    <td ></td>
-                </tr>
-
-            </table>
-
-<table>
-            <tr>
-                <td></td>
-
-                <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
-
-                <td><input class="button1" type="reset" value="<?php echo $reset ?>"></td>
-            </tr>
-</table>
     </body>
 </html>
 
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 1000;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Term Test Results";
 //Only change above
 
 $pageContent = ob_get_contents();
