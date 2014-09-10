@@ -360,8 +360,8 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
     <br />
 
-    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getExpenditure($eventID)?></span> <br />
-    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getIncome($eventID)?></span>
+    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getExpenditures($eventID)?></span> <br />
+    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getIncomes($eventID)?></span>
 
     <div>
         <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style=position:relative; top :100px; left: 0px; width:150"/>
@@ -369,7 +369,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
 
 
-//podi aulak giya
+
 
 
     </body>
