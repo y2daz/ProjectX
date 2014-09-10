@@ -12,13 +12,19 @@ include(THISROOT . "/common.php");
 ob_start();
 
 if (isFilled($_POST["submit"])) {
-//    sendNotification("submited");
+
     $prefixSub="subject_";
     $prefixGrade="grade_";
 
     $indexNo=$_POST["indexNo"];
     $admissionNo=$_POST["admissionNo"];
     $Year=$_POST["year"];
+    $GeneralEnglish=$_POST["grade_4"];
+    $CommonGenaralTest=$_POST["cmngnrltest"];
+    $ZScore=$_POST["zScore"];
+    $DistrictRank=$_POST["districRank"];
+    $IslandRank=$_POST["IsLandRank"];
+    $
 
     $subjectArr=array();
     $gradeArr=array();
@@ -29,7 +35,7 @@ if (isFilled($_POST["submit"])) {
 
     }
 
-    $operation = insertALMarks($admissionNo,$indexNo,$Year,$subjectArr,$gradeArr);
+    $operation = insertALMarks($admissionNo,$indexNo,$Year,$subjectArr,$gradeArr,$GeneralEnglish,$CommonGenaralTest,$ZScore,$DistrictRank,$IslandRank);
 
     if($operation==true){
         sendNotification("Insert successful.");
@@ -52,7 +58,7 @@ if (isFilled($_POST["submit"])) {
     $generalenglish="General English";
     $commongeneraltest="Common General Test";
     $zscore="Z-Score";
-    $inlandrank="Inland Rank";
+    $islandrank="Inland Rank";
     $districrank="District Rank";
     $gcealresultssheet="G.C.E A/L Results Sheet";
     $submit="Submit";
@@ -71,7 +77,7 @@ if (isFilled($_POST["submit"])) {
     $generalenglish="සාමාන්‍ය ඉංග්‍රීසි";
     $commongeneraltest="සාමාන්‍ය පොදු පරීක්ෂණය";
     $zscore="Z ලකුණ";
-    $inlandrank="දිවයින් ස්ථානය";
+    $islandrank="දිවයින් ස්ථානය";
     $districrank="දිස්ත්‍රික් ස්ථානය";
     $gcealresultssheet="අ.පො.ස. උසස් පෙළ විභාග ප්‍රතිඵල  සටහන";
     $submit="යොමු කරන්න";
@@ -210,8 +216,8 @@ if (isFilled($_POST["submit"])) {
                     </td>
                 </tr>
                 <tr>
-                    <td><?php echo $inlandrank ?></td>
-                    <td><input name="InLandRank" type="text" value="" >
+                    <td><?php echo $islandrank ?></td>
+                    <td><input name="IsLandRank" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
