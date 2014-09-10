@@ -16,10 +16,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
-
 
 ?>
 <html>
@@ -171,10 +167,11 @@ $pageTitle= "Template";
     </body>
 </html>
 <?php
+
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Event List";
 //Only change above
 
 $pageContent = ob_get_contents();
