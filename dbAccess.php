@@ -639,7 +639,7 @@ function getEventTransactions($eventid)
     return $set;
 }
 
-    function getIncome($eventid)
+    function getIncomes($eventid)
     {
 
         $dbObj = new dbConnect();
@@ -666,7 +666,7 @@ function getEventTransactions($eventid)
         return $result;
     }
 
-    function getExpenditure($eventid)
+    function getExpenditures($eventid)
     {
 
         $dbObj = new dbConnect();
