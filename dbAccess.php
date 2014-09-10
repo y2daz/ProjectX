@@ -1189,7 +1189,9 @@ function getEventTransactions($eventid)
     }
 
 
-    /*function insertBlackListMember($staffID,$listcontributor, $enterdate, $reason)
+
+
+    function insertBlackListMember($staffID,$listcontributor, $enterdate, $reason)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -1243,7 +1245,7 @@ function getEventTransactions($eventid)
         }
         $mysqli->close();
         return false;
-    }*/
+    }
 
     function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
     {
