@@ -53,17 +53,19 @@ function isNumber($salary)
 
 }
 
-function isLetters($value) //Works for all string must change
+function isLetters($nameWithInitials) //Works for all string must change
 {
-    if(is_string($value))
+    if(is_string($nameWithInitials))
         return true;
     else
-        return false;
+    {
+        echo "Enter Alphabetical letters only ";
+    }
 
 }
 
 //Find a function to check the string for pattern
-function Name($nameWithInitials)
+/*function Name($nameWithInitials)
 {
     if (preg_match("/^[a-zA-Z ]+$/i", $nameWithInitials))
     {
@@ -73,7 +75,7 @@ function Name($nameWithInitials)
     {
         echo "Enter Alphabetical letters only ";
     }
-}
+}*/
 function isContactNumber($contactnumber)
 {
     if((preg_match("/[^0-9]/", '', $contactnumber)) && strlen($contactnumber) == 10)

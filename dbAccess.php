@@ -540,7 +540,7 @@ function insertManager( $eventId, $staffID)
     return false;
 }
 
-function insertTransaction($eventID, $tdate, $type, $amount, $description )
+function insertTransaction($eventID, $tDate, $tType, $amount, $description )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -559,12 +559,14 @@ function insertTransaction($eventID, $tdate, $type, $amount, $description )
         $result = $result -> fetch_array();
         $result = $result[0];
         $result++;
-//            return "MANOJ LOOK HERE" . $result;
+
+//        return "MANOJ LOOK HERE" . $result;
+
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO Transaction (EventID, TransactionID, TransactionDate, TransactionType, Amount, Description, isDeleted) values(?, ?, ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO Transaction (EventID, TransactionID, TransactionDate, TransactionType, Amount, Description, isDeleted) values(?, ?, ?, ?, ?, ?, ?)"))
     {
-        $stmt -> bind_param("idifst",$eventID, $tdate, $amount, $description, $isDeleted);
+        $stmt -> bind_param("iisissi",$eventID, $result, $tDate, $tType, $amount, $description, $isDeleted);
         if ($stmt->execute())
         {
             $stmt->close();
@@ -577,7 +579,7 @@ function insertTransaction($eventID, $tdate, $type, $amount, $description )
 }
 
 
-function getEventlManagers($eventid)
+function getEventManagers($eventid)
 {
 
     $dbObj = new dbConnect();
@@ -591,7 +593,7 @@ function getEventlManagers($eventid)
 
     if ($stmt = $mysqli->prepare("Select s.StaffID, s.NamewithInitials, s.ContactNumber  FROM Staff s RIGHT OUTER JOIN EventManager e on( e.StaffID = s.staffID) where e.eventid = ?"))
     {
-        $stmt -> bind_param("s", $eventid);
+        $stmt -> bind_param("i", $eventid);
 
         if ($stmt->execute())
         {
@@ -599,7 +601,7 @@ function getEventlManagers($eventid)
             $i = 0;
             while($row = $result->fetch_array())
             {
-                $set[$i++ ]=$row;
+                $set[$i++ ] = $row;
             }
         }
     }
@@ -636,6 +638,61 @@ function getEventTransactions($eventid)
     $mysqli->close();
     return $set;
 }
+
+    function getIncomes($eventid)
+    {
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $result = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 0"))
+        {
+            $stmt -> bind_param("s", $eventid);
+
+            $stmt->execute();
+
+            $result = $stmt -> get_result();
+            $result = $result -> fetch_array();
+            $result = $result[0];
+        }
+        $stmt->close();
+        $mysqli->close();
+        return $result;
+    }
+
+    function getExpenditures($eventid)
+    {
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $result = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 1"))
+        {
+            $stmt -> bind_param("s", $eventid);
+
+            if ($stmt->execute())
+                $stmt->execute();
+
+            $result = $stmt -> get_result();
+            $result = $result -> fetch_array();
+            $result = $result[0];
+        }
+        $stmt->close();
+        $mysqli->close();
+        return $result;
+    }
 
 
     function getTimetable($staffId)
@@ -1189,7 +1246,9 @@ function getEventTransactions($eventid)
     }
 
 
-    /*function insertBlackListMember($staffID,$listcontributor, $enterdate, $reason)
+
+
+    function insertBlackListMember($staffID,$listcontributor, $enterdate, $reason)
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -1243,7 +1302,7 @@ function getEventTransactions($eventid)
         }
         $mysqli->close();
         return false;
-    }*/
+    }
 
     function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
     {
