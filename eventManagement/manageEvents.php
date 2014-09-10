@@ -13,11 +13,14 @@ ob_start();
 
 $result = null;
 
-if (isFilled($_POST["manage"])){
+if (isset($_POST["manage"])){
+
     $eventID = $_POST["eventID"];
 
-    if (isFilled($_POST["addManager"])){
-           echo ($_POST["newManagerID"]);
+    if (isset($_POST["addManager"])){
+
+        echo ($_POST["newManagerID"]);
+
         $operation = insertManager($eventID, $_POST["newManagerID"]);
 
         if ($operation == true){
@@ -28,7 +31,7 @@ if (isFilled($_POST["manage"])){
         }
     }
 
-    if (isFilled($_POST["addTransaction"])){
+    if (isset($_POST["addTransaction"])){
        echo ($_POST["newManagerID"]);
         $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
 
@@ -47,6 +50,7 @@ else{
 }
 
 ?>
+
 <html>
 <head>
     <style type=text/css>
@@ -371,7 +375,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 //Change these to what you want
 $fullPageHeight = 1000;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Manage Events";
 //Only change above
 
 $pageContent = ob_get_contents();
