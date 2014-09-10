@@ -12,17 +12,17 @@ ob_start();
 
 if($_COOKIE['language'] == 0)
 {
-$termtestresultsform = "Term Test Details Form";
-$grade="Garde";
-$class = "Class";
-$teachername = "Teacher's Name";
-$subject="Subject";
-$year="Year";
-$term="Term";
-$submit="Submit";
-$reset="Reset";
-$mid="Mid";
-$final="Final";
+    $termtestresultsform = "Term Test Details Form";
+    $grade="Grade";
+    $class = "Class";
+    $teachername = "Teacher's Name";
+    $subject="Subject";
+    $year="Year";
+    $term="Term";
+    $submit="Submit";
+    $reset="Reset";
+    $mid="Mid";
+    $final="Final";
 }
 else
 {
@@ -57,8 +57,8 @@ else
 
     table, th, td {
         border: 0px solid black;
-
     }
+
     th{
         width: 1000px;
         text-align:left;
@@ -67,15 +67,31 @@ else
     td {
         width: 10px;
         text-align:left;
+
     }
 
     tr{
         height: 20px;
+
+    }
+
+    .insert
+    {
+        position:absolute;
+        left:135px;
+        top: 65px;
+    }
+
+    .insert2
+    {
+        position:absolute;
+        left:135px;
+        top: 350px;
     }
 
 
 
-    input.button {
+    .insert input.button {
         position:relative;
         font-weight:bold;
         font-size:20px;
@@ -93,21 +109,18 @@ else
 
 
 </style>
-    </head>
+</head>
+
+<h1><?php echo $termtestresultsform ?></h1>
 
 
 <body>
-<form action="termtestresults.php" method="post">
-
-    <h1><?php echo $termtestresultsform ?></h1>
-
-
+<form action="termtestresults.php" method="post" class="insert">
 
 <table class="insert" cellspacing="0">
 <tr>
     <td><?php echo $grade ?></td>
-    <td><select type="text" value="" >
-
+    <td><select name="Grade" type="text" value="" >
             <option>--</option>
             <option>1</option>
             <option>2</option>
@@ -126,41 +139,45 @@ else
 </tr>
 <tr>
     <td><?php echo $class ?></td>
-    <td><input type="text" value=""  maxlength="2" required="true"></td>
+    <td><input type="text" value="" name="Class"  maxlength="2" required="true"></td>
 </tr>
 <tr>
     <td><?php echo $teachername ?></td>
-    <td><input type="text" value="" required="true"></td>
+    <td><input type="text" value="" class="TeacherName" required="true"></td>
 </tr>
 <tr>
 <tr>
     <td><?php echo $subject ?></td>
-    <td><input type="text" value="" required="true"></td>
+    <td><input type="text" value="" class="Subject" required="true"></td>
 </tr>
 <tr>
 <tr>
     <td><?php echo $year ?></td>
-    <td><input type="text" value="" maxlength="4" required="true"></td>
+    <td><input type="text" value="" class="Year" maxlength="4" required="true"></td>
 </tr>
 <tr>
     <td><?php echo $term ?></td>
     <td>
         <input type="radio" name="Term" value="Mid"><?php echo $mid ?>
         <input type="radio" name="Term" value="Final"><?php echo $final ?>
-
-
     </td>
 </tr>
 
 
-
 </table>
 
+    <table class="insert2">
+        <tr>
+            <td>
+                <input class="button" type="submit" name="submit" value="<?php echo $submit ?>">
+            </td>
 
+            <td>
+                <input class="button" type="reset" name="reset" value="<?php echo $reset ?>">
+            </td>
+        </tr>
 
-    <input class="button" type="submit" value="<?php echo $submit ?>">
-
-    <input class="button1" type="reset" value="<?php echo $reset ?>">
+    </table>
 
 </form>
 
@@ -177,7 +194,7 @@ else
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Term Test Marks Input";
 //Only change above
 
 $pageContent = ob_get_contents();

@@ -1554,7 +1554,7 @@ function insertOLMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
 
 }
 
-function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr,$GeneralEnglish,$CommonGenaralTest,$ZScore,$DistrictRank,$IslandRank)
+function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subject3,$Grade1, $Grade2, $Grade3, $GeneralEnglish,$CommonGenaralTest,$ZScore,$IslandRank,$DistrictRank)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1565,25 +1565,26 @@ function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr,$Genera
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO ALMarks (IndexNo, AdmissionNo,Year, Subject_1,Subject_2,Subject_3,Grade_1,Grade_2, Grade_3,Gen_Eng_Grade,Cmn_Gen_Mark,Z_Score,Inland_Rank,District_Rank) VALUES(?, ?, ? ,?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO ALMarks VALUES(?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
     {
-        $noRows = 0;
-        for($i=0;$i<3;$i++){
-            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i],$GeneralEnglish,$CommonGenaralTest,$ZScore,$DistrictRank,$IslandRank);
-            $stmt->execute();
-            $noRows += $stmt->affected_rows;
-        }
 
-        $stmt->close();
+        $stmt->bind_param("isisssssssidii", $indexNo, $admissionNo, $year, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank);
 
-        if ($noRows != -3){
-            $mysqli->close();
+        if($stmt->execute())
+        {
+            $stmt->close();
             return true;
         }
+
     }
 
     $mysqli->close();
     return false;
+
+}
+
+function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Mark, $Remarks)
+{
 
 }
 

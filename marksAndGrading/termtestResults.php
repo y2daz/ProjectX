@@ -14,7 +14,7 @@ if($_COOKIE['language'] == 0)
 {
     $termtestresults= "Term Test Results";
     $admissionnumber = "Admission Number";
-    $grade="Garde";
+    $grade="Grade";
     $class = "Class";
     $teachername = "Teacher's Name";
     $subject="Subject";
