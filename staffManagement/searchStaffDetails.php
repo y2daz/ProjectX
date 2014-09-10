@@ -897,6 +897,7 @@ else
                     <option value="97"><?php echo "97- " .$Graduates?></option>
                     <option value="98"><?php echo "98 - " .$ALevel?></option>
                     <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
+                    <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
                     </select>
             </td>
             <td></td>
