@@ -106,7 +106,7 @@ $pageTitle= "Template";
                 }
                 ?>
 
-<!--                <tr>-->
+<!--                <r>-->
 <!--                    <td>Prize Giving</td>-->
 <!--                    <td>07/07/2015</td>-->
 <!--                    <td>Prize giving ceremony for primary grades</td>-->
