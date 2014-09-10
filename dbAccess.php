@@ -1510,9 +1510,9 @@ function getEventTransactions($eventid)
             {
                 if ($stmt -> affected_rows > 0)
                 {
-                $stmt->close();
-                $mysqli->close();
-                return true;
+                    $stmt->close();
+                    $mysqli->close();
+                    return true;
                 }
             }
             $stmt->close();
@@ -1580,6 +1580,44 @@ function insertALMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
             $mysqli->close();
             return true;
         }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
+
+function checkStaffMember($StaffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if($stmt = $mysqli->prepare("SELECT StaffID from staff WHERE StaffID = ?"))
+    {
+        $stmt->bind_param("s", $StaffID);
+
+        if($stmt->execute())
+        {
+            $rowcount = mysqli_num_rows($stmt->get_result());
+
+            if($rowcount>0)
+            {
+                $stmt->close();
+                return true;
+            }
+            else
+            {
+                $stmt->close();
+                return false;
+            }
+        }
+
     }
 
     $mysqli->close();
