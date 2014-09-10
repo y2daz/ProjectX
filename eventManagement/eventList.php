@@ -101,7 +101,7 @@ $pageTitle= "Template";
                     echo "$row[1]" . "<input name=eventID value=$row[0] hidden=hidden/>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\"Manage\"  /> </td> ";
+                    echo "<td><input name=\"manage" . "\" type=\"submit\" value=\" $manage \"  /> </td> ";
                     echo "</td></tr></form>";
                 }
                 ?>
