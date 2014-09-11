@@ -13,7 +13,8 @@ require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
 
 
-
+//hehe
+//hhee
 
 ob_start();
 $currentStaffMembers="";
@@ -37,6 +38,10 @@ if( isset($_GET["staffID"]) )
     $staffID = $_GET["staffID"];
 
 }
+if( isset($_GET["NamewithInitials"]))
+{
+    $nameWithInitials = $_GET["NamewithInitials"];
+}
 
 if (isset($_GET["delete"]))
 {
@@ -52,17 +57,28 @@ if (isset($_GET["search"]))
 {
     $currentStaffMembers = null;
 
-    if (isset($_GET["Choice"]))
+    if ($_GET["Choice"] == "Staffid")
     {
         $currentStaffMembers = searchStaff($_GET["query"]);
     }
+    elseif($_GET["Choice"] == "Name")
+    {
+         $currentStaffMembers = searchstaffbyname($_GET["query"]);
+    }
+    elseif($_GET["Choice"] == "nicnumber")
+    {
+        $currentStaffMembers = searchstaffbynic($_GET["query"]);
+    }
+    elseif($_GET["Choice"] == "contactnumber")
+    {
+        $currentStaffMembers = searchstaffbycontactnumber($_GET["query"]);
+    }
     else
     {
-        $currentStaffMembers = getAllStaff();
+        $currentStaffMembers = getAllStaff();    }
+        $tableDetails= "none";
+        $tableViewTable= "block";
     }
-    $tableDetails= "none";
-    $tableViewTable= "block";
-}
 else
 {
     $currentStaffMembers = getAllStaff();
@@ -904,7 +920,15 @@ else
             </td>
             <td></td>
         </tr>
+        </table>
 
+        <br />
+        <br />
+        <br />
+
+
+
+    <table align =center>
         <tr>
             <td> <input type="Submit" value="Update" name="Submit" /> </td>
 
@@ -913,6 +937,7 @@ else
 
     <br />
     <br />
+    </form>
 
     <!--<table align="center">
         <tr>
