@@ -16,6 +16,9 @@
 
     ob_start();
 
+    $displaytable = "none";
+    $displaygrid = "block";
+
     if(isset($_POST["reject"]))
     {
         $Principal = null;
@@ -38,6 +41,7 @@
         {
             if(is_numeric($_POST["staffid"]))
             {
+
                 $Principal = null;
 
                 $operation = approveLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $Principal);
@@ -77,11 +81,14 @@
     $OfficialLeave = "";
     $MaternityLeave = "";
     $OtherLeave = "";
+    $ContactNumber = "";
 
     if (isset($_GET["expand"]))
     {
         if (isset($_GET["sdate"]))
         {
+            $displaytable = "block";
+
             $result = getStaffLeavetoApprove($_GET["expand"], $_GET["sdate"]);
 
             if (isFilled($result))
@@ -97,6 +104,7 @@
                 $OfficialLeave = $row[8];
                 $MaternityLeave = $row[9];
                 $OtherLeave = $row[10];
+                $ContactNumber = $row[11];
             }
         }
     }
@@ -121,6 +129,7 @@
         $statuslang = "නිවාඩු  තත්වය";
         $approvelang = "අනුමත කරනවා";
         $rejectlang ="ප්‍රතික්ෂේප කරනවා";
+        $contactnumberlang = "දුරකථන අංකය";
     }
     else
     {
@@ -142,6 +151,7 @@
         $statuslang = "Leave Status";
         $approvelang  = "Approve";
         $rejectlang = "Reject";
+        $contactnumberlang = "Contact Number";
     }
 
 ?>
@@ -184,6 +194,17 @@
                 text-align: left;
             }
 
+            .viewTable
+            {
+                display: <?php echo $displaytable ?>
+            }
+
+            .viewGrid
+            {
+                display: <?php echo $displaygrid ?>
+            }
+
+
 
 
         </style>
@@ -193,7 +214,7 @@
         <br />
 
 
-        <form method="post">
+        <form method="post" class="viewGrid">
             <table class="leaveTable" align="center">
                 <tr>
                     <th><?php echo $staffidlang ?></th>
@@ -201,6 +222,7 @@
                     <th><?php echo $leavetypelang ?></th>
                     <th><?php echo $requestdatelang ?></th>
                     <th><?php echo $statuslang ?></th>
+                    <th><?php echo $contactnumberlang ?></th>
                     <th></th>
                 </tr>
 
@@ -211,7 +233,9 @@
 
                 if (!isFilled($result))
                 {
-                    echo "<tr><td colspan='6'>There are no records to show.</td></tr>";
+                    echo "<style> .viewTable{display: none} </style>";
+                    echo "<tr><td colspan='6'>There are no Leave Requests.</td></tr>";
+                    //sendNotification("There are no records to show.");
                 }
                 else
                 {
@@ -252,6 +276,7 @@
                         }
 
                         echo "<td>$leaveStatus</td>";
+                        echo "<td>$row[6]</td>";
                         echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand Details\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
 
 
@@ -265,7 +290,7 @@
             <br />
             <br />
 
-        <form method="post">
+        <form method="post" class="viewTable">
 
             <?php
 
@@ -291,10 +316,9 @@
                     <td > <input type = "text" name="staffid" value="<?php echo $staffid ?>"/ readonly> </td>
                 </tr>
 
-
                 <tr>
                     <td> <?php echo $namelang ?> </td>
-                    <td > <input type = "text" name="name" value="<?php echo $name ?>"/ readonly> </td>
+                    <td> <input type = "text" name="name" value="<?php echo $name ?>"/ readonly> </td>
                 </tr>
 
                 <tr>
@@ -331,6 +355,11 @@
                 <tr>
                     <td><?php echo $otherleavecombo ?></td>
                     <td > <input type="text" name="otherleave" value="<?php echo $OtherLeave . " Days" ?>" </td>
+                </tr>
+
+                <tr>
+                    <td><?php echo $contactnumberlang ?></td>
+                    <td > <input type="text" name="contactnumber" value="<?php echo $ContactNumber ?>" </td>
                 </tr>
 
             </table>

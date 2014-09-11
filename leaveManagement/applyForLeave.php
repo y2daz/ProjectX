@@ -14,6 +14,7 @@
 
     error_reporting(E_ERROR | E_PARSE);
 
+
     if(isset($_GET["StaffID"]))
     {
         $_POST["newStaffID"] = $_GET["StaffID"];
@@ -137,7 +138,7 @@
 //        echo $OtherLeave;
 //        echo $StaffName;
 
-
+        $StaffColour = "tb1GREEN";
         $staffIdVal = $_POST["newStaffID"];
         $startDateVal = $_POST["startDate"];
         $endDateVal = $_POST["endDate"];
@@ -145,6 +146,8 @@
         $otherReasonsVal = $_POST["otherReasons"];
 
     }else{
+
+        $StaffColour = "tb1WHITE";
         $staffIdVal = "";
         $startDateVal = "";
         $endDateVal = "";
@@ -189,6 +192,8 @@
         $enterdetails = "Enter Details";
         $availableleavedays ="Available Leave Days";
         $staffname = "Name";
+        $searchstaffid = "Search Staff ID";
+
 
     }
 
@@ -254,7 +259,25 @@
                 font-size:15px;
                 Right:-335px;
                 top:20px;
+
             }
+
+            .tb1GREEN{
+                background-color : #BCED91;
+                border: 1px solid #008000;
+                text-align: center;
+                font-weight: 600;
+
+            }
+
+            .tb1WHITE{
+                background-color : #ffffff;
+                text-align: center;
+                font-weight: 600;
+            }
+
+
+
 
 
         </style>
@@ -294,11 +317,11 @@
                     <tr>
                         <td><?php echo $staffid ?></td>
                         <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true" tabindex="1"/></td>
-                        <td><input type="button" name="searchstaffid" value="Search Staff ID" onclick="location.href='../leaveManagement/searchStaffID.php'"></td>
+                        <td><input type="button" name="searchstaffid" value="<?php echo $searchstaffid ?>" onclick="location.href='../leaveManagement/searchStaffID.php'"></td>
                     </tr>
                     <tr>
                         <td><?php echo $staffname ?></td>
-                        <td><input type="text" name="staffname" value="<?php echo $StaffName ?>" required="true" readonly>
+                        <td><input class="<?php echo $StaffColour ?>" type="text" name="staffname" value="<?php echo $StaffName ?>" required="true" readonly>
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
@@ -329,17 +352,17 @@
 
                     <tr>
                         <td><?php echo $officialleavecombo ?></td>
-                        <td> <?php echo $OfficialLeave ?> </td>
+                        <td class="<?php echo $StaffColour ?>"> <?php echo $OfficialLeave ?> </td>
                     </tr>
 
                     <tr>
                         <td><?php echo $maternityleavecombo ?></td>
-                        <td> <?php echo $MaternityLeave ?></td>
+                        <td class="<?php echo $StaffColour ?>"> <?php echo $MaternityLeave ?></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $otherleavecombo ?></td>
-                        <td> <?php echo $OtherLeave ?></td>
+                        <td class="<?php echo $StaffColour ?>"> <?php echo $OtherLeave ?></td>
                     </tr>
 
                 </table>
@@ -348,7 +371,7 @@
 
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
-                    <input type="button" name="Reset" value="Reset" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'">
+                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'">
                 </p>
 
             </form>

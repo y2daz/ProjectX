@@ -33,7 +33,7 @@ else
             .insert
             {
                 position:absolute;
-                left:250px;
+                left:245px;
                 top: 100px;
             }
 
