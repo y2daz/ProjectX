@@ -111,6 +111,7 @@
             $OfficialLeave = $row[0];
             $MaternityLeave = $row[1];
             $OtherLeave = $row[2];
+            $StaffName = $row[3];
         }
 
         if($OfficialLeave < 0)
@@ -125,6 +126,11 @@
         {
             $OtherLeave = 0;
         }
+
+//        echo $OfficialLeave;
+//        echo $MaternityLeave;
+//        echo $OtherLeave;
+//        echo $StaffName;
 
 
         $staffIdVal = $_POST["newStaffID"];
@@ -142,6 +148,7 @@
         $OfficialLeave = "";
         $MaternityLeave = "";
         $OtherLeave = "";
+        $StaffName = "";
     }
 
     if($_COOKIE["language"] == 1)
@@ -159,6 +166,7 @@
         $getleavedata= "නිවාඩු  දත්ත ගැනීමට";
         $enterdetails = "තොරතුරු  ඇතුලත් කරන්න";
         $availableleavedays = "ඉතුරු  නිවාඩු  දින";
+        $staffname = "නම";
     }
     else
     {
@@ -175,6 +183,7 @@
         $getleavedata = "Get Leave Data";
         $enterdetails = "Enter Details";
         $availableleavedays ="Available Leave Days";
+        $staffname = "Name";
 
     }
 
@@ -285,6 +294,10 @@
                     <tr>
                         <td><?php echo $staffid ?></td>
                         <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $staffname ?></td>
+                        <td><input type="text" name="staffname" value="<?php echo $StaffName ?>" required="true" readonly>
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
