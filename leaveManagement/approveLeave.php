@@ -74,6 +74,9 @@
     $enddate = "";
     $leavetypeexpand = "";
     $otherreasons = "";
+    $OfficialLeave = "";
+    $MaternityLeave = "";
+    $OtherLeave = "";
 
     if (isset($_GET["expand"]))
     {
@@ -91,6 +94,9 @@
                 $enddate = $row[6];
                 $leavetypeexpand = $row[2];
                 $otherreasons = $row[7];
+                $OfficialLeave = $row[8];
+                $MaternityLeave = $row[9];
+                $OtherLeave = $row[10];
             }
         }
     }
@@ -124,9 +130,9 @@
         $enddatelang ="End Date";
         $leavetypelang ="Leave Type";
         $otherreasonslang ="Other Reasons";
-        $officialleavecombolang = "Official Leave";
-        $maternityleavecombolang = "Maternity Leave";
-        $otherleavecombolang = "Other Leave";
+        $officialleavecombo = "Official Leave";
+        $maternityleavecombo = "Maternity Leave";
+        $otherleavecombo = "Other Leave";
         $applyforleavelang = "Apply for Leave";
         $resetlang ="Reset";
         $getleavedatalang = "Get Leave Data";
@@ -310,6 +316,21 @@
                 <tr>
                     <td><?php echo $otherreasonslang ?></td>
                     <td > <input type = "textarea" name="otherreasons" value="<?php echo $otherreasons ?>"/ readonly> </td>
+                </tr>
+
+                <tr>
+                    <td><?php echo $officialleavecombo ?></td>
+                    <td > <input type="text" name="officialleave" value="<?php echo $OfficialLeave . " Days" ?>" </td>
+                </tr>
+
+                <tr>
+                    <td><?php echo $maternityleavecombo ?></td>
+                    <td > <input type="text" name="maternityleave" value="<?php echo $MaternityLeave . " Days" ?>" </td>
+                </tr>
+
+                <tr>
+                    <td><?php echo $otherleavecombo ?></td>
+                    <td > <input type="text" name="otherleave" value="<?php echo $OtherLeave . " Days" ?>" </td>
                 </tr>
 
             </table>
