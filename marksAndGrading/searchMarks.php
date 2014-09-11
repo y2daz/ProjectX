@@ -10,6 +10,41 @@ include(THISROOT . "/dbAccess.php");
 //require_once(THISROOT . "/common.php");
 ob_start();
 
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/common.php");
+
+
+$olmarks="";
+if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
+{
+    $operation = searchOLMarks($_POST["IndexNo"], $_POST["AdmissionNo"], $_POST["Year"], $_POST["Subject"], $_POST[" Grade"]);
+
+  /*  if ($operation == true)
+    {
+        sendNotification("Staff Details successfully updated.");
+    }
+    else
+    {
+        sendNotification("Error updating information.");
+    }*/
+}
+
+if( isset($_GET["IndexNo"]) )
+{
+    $IndexNo = $_GET["IndexNo"];
+
+}
+
+if (isset($_GET["search"]))
+{
+    $olmarks = null;
+
+    if ($_GET["Choice"] == "")
+    {
+        $olmarks = searcholmarks($_GET["query"]);
+    }
+}
 ?>
 
 
