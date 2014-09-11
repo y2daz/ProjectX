@@ -170,6 +170,7 @@ else
                 top:100px;
             }
         </style>
+        <script src="studentinformation.js"></script>
     </head>
 <body>
     <h1> Search and View Student Details </h1>
@@ -180,19 +181,18 @@ else
 
         <table id="info">
             <tr>
-                <td colspan="2"><span id="selection">Search by : </span>
-                    <input type="text" class="text1" name="value" value="">
+                <td colspan="1"><span id="selection">Search : </span>
+                    <input type="text" class="text1" name="value" id="value" value=""/>
                 </td>
-                <td><input class="button" name="search" type="submit" value="Search"></td>
+                <td ><input class="button" name="search" type="submit" value="Search"></td>
             </tr>
             <tr><td></td><td>&nbsp;</td></tr>
             <tr>
-                <td><input type="RADIO" name="Choice" value="AdmissionNo" checked />Admission Number</td>
-<!--                <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with-->
-<!--                    Initials</td> -->
+                <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
+                <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with Initials</td>
 <!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
 <!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
-                <td><input type="RADIO" name="Choice" value="Class" />Class</td>
+                <td><input type="RADIO" name="Choice" value="Class" />By Class</td>
 <!--                <td><input type="RADIO" name="Choice" value="House"  />House</td>-->
             </tr>
 
