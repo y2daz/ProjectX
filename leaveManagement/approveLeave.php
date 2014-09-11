@@ -282,34 +282,34 @@
             <table class="details" align="center">
                 <tr>
                     <td><?php echo $staffidlang ?></td>
-                    <td > <input type = "text" name="staffid" value=<?php echo $staffid ?>> </td>
+                    <td > <input type = "text" name="staffid" value="<?php echo $staffid ?>"/ readonly> </td>
                 </tr>
 
 
                 <tr>
                     <td> <?php echo $namelang ?> </td>
-                    <td > <input type = "text" name="name" value="<?php echo $name ?>"/> </td>
+                    <td > <input type = "text" name="name" value="<?php echo $name ?>"/ readonly> </td>
                 </tr>
 
                 <tr>
                     <td><?php echo $startdatelang ?></td>
-                    <td ><input type="date" name="startdate" value="<?php echo $startdate ?>"/></td>
+                    <td ><input type="date" name="startdate" value="<?php echo $startdate ?>"/ readonly></td>
                 </tr>
 
 
                 <tr>
                     <td><?php echo $enddatelang ?></td>
-                    <td > <input type="date" name="enddate" value="<?php echo $enddate ?>" /> </td>
+                    <td > <input type="date" name="enddate" value="<?php echo $enddate ?>" / readonly> </td>
                 </tr>
 
                 <tr>
                     <td> <?php echo $leavetypelang ?>  </td>
-                    <td > <input type = "text" name="leavetype" value="<?php echo $leavetypeexpand ?>"/> </td>
+                    <td > <input type = "text" name="leavetype" value="<?php echo $leavetypeexpand ?>"/ readonly> </td>
                 </tr>
 
                 <tr>
                     <td><?php echo $otherreasonslang ?></td>
-                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $otherreasons ?>"/> </td>
+                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $otherreasons ?>"/ readonly> </td>
                 </tr>
 
             </table>
