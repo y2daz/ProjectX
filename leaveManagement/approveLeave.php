@@ -18,7 +18,7 @@
 
     if(isset($_POST["reject"]))
     {
-        $Principal = "12345";
+        $Principal = null;
 
         $operation = rejectLeave($_POST["staffid"], $_POST["startdate"], null);
 
@@ -351,7 +351,7 @@
 </html>
 <?php
     //Assign all Page Specific variables
-    $fullPageHeight = 800;
+    $fullPageHeight = 1100;
     $footerTop = $fullPageHeight + 100;
     $pageTitle= "Approve Leave";
 
