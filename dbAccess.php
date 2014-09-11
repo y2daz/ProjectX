@@ -1878,3 +1878,34 @@ function searchOLMarks($id)
     $mysqli->close();
     return $set;
 }
+
+function Viewattendancebyclass($id)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select admissionNo, studentName  FROM student WHERE admissionNo LIKE ? AND isDeleted = 0 ORDER BY admissionNo;"))
+    {
+        $id = "%" . $id . "%";
+        $stmt -> bind_param("s", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}

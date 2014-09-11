@@ -93,7 +93,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
                     changeId = changeId.substr(6, changeId.length-6);
 
-                    var toChange = document.getElementById(changeId);
+                    toChange = document.getElementById(changeId);
                     toChange.value = element.value;
                 }
             }
