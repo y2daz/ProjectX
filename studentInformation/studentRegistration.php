@@ -28,7 +28,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
         if($operation)
         {
-            header("Location: parentDetailsForm.php");
+            header("Location: parentDetailsForm.php?admissionNo=" . $_POST["admissionID"]);
             die();
         }
         else
@@ -39,10 +39,6 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
     }
 
 }
-
-
-
-
 ?>
     <html>
     <head>

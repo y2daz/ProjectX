@@ -18,13 +18,32 @@ require_once(THISROOT . "/common.php");
 
 ob_start();
 
+$admissionNo = "";
+$NamewithInitials = "";
+
+if (isFilled( $_GET["admissionNo"] )){
+    $admissionNo = $_GET["admissionNo"];
+    $result = getStudent($admissionNo);
+    if (!isFilled($result)){
+        header("Location: studentRegistration.php");
+        die();
+    }
+    else{
+        $row = $result[0];
+        $NamewithInitials = $row[1];
+    }
+}
+else{
+    header("Location: studentRegistration.php");
+    die();
+}
 
 
 
 if (isset($_POST["submit"])) //User has clicked the submit button to add a student
 {
 
-    $operation = insertParent($_POST["admin_no"],$_POST["name"], $_POST["par_gur"], $_POST["p_name"],$_POST["occupation"], $_POST["p_number"], $_POST["m_number"], $_POST["address"], $_POST["o_address"] );
+    $operation = insertParent($_POST["admin_no"], $_POST["par_gur"], $_POST["p_name"],$_POST["occupation"], $_POST["p_number"], $_POST["m_number"], $_POST["address"], $_POST["o_address"] );
 
     if($operation)
     {
@@ -34,7 +53,6 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
     {
         sendNotification("Error!");
     }
-
 }
 
 ?>
@@ -51,12 +69,10 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
             .insert
             {
-                position:absolute;
+                position:relative;
                 left:40px;
-                top: 80px;
+                top: 0px;
             }
-
-
             .insert th
             {
                 color:white;
@@ -73,16 +89,20 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
             }
 
             .insert input{
-                font-weight:bold;
-                font-size:15px;
+                /*font-weight:bold;*/
+                /*font-size:15px;*/
             }
 
             .insert input.button{
                 position:relative;
-                font-weight:bold;
-                font-size:15px;
+                /*font-weight:bold;*/
+                /*font-size:15px;*/
                 Right:-335px;
                 top:20px;
+            }
+            #btnNewStudent{
+                position: relative;
+                left: 40px;
             }
 
 
@@ -95,18 +115,22 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
         <h1>Parent Details Form</h1>
 
+        <input id="btnNewStudent" type="button" name="newStudent" value="Insert Another Student" onclick="window.location.replace('studentRegistration.php')"/>
+
+        <br />
+        <br />
+
         <form method="post">
             <table class="insert" cellspacing="0">
 
                 <tr class="alt">
                     <td>Admission Number</td>
-                    <td><input name="admin_no" type="text" value=""></td>
+                    <td><input name="admin_no" value="<?php echo $admissionNo ?>"  readonly/> </td>
 
                 </tr>
-
                 <tr class="alt">
-                    <td>Name of The Student</td>
-                    <td><input name="name" type="text" value=""></td>
+                    <td>Student Name</td>
+                    <td><input name="name" type="text" value="<?php echo $NamewithInitials ?>" readonly/></td>
 
                 </tr>
                 <tr>
@@ -129,7 +153,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
                     <td>Phone(Land)</td>
                     <td><input name="p_number" type="text" value=""></td>
                 </tr>
-
+                <tr>
                 <td>Phone(Mobile)</td>
                 <td><input name="m_number" type="text" value=""></td>
                 </tr>
@@ -154,7 +178,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Parent Details";
 //Only change above

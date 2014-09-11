@@ -313,7 +313,7 @@
         return false;
     }
 
-function insertParent($admin_no, $name, $par_gur, $p_name,$occupation, $p_number, $m_number, $address, $o_address )
+function insertParent($admin_no, $par_gur, $p_name,$occupation, $p_number, $m_number, $address, $o_address )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -328,7 +328,7 @@ function insertParent($admin_no, $name, $par_gur, $p_name,$occupation, $p_number
     {
         $isDeleted = 0;
 
-        $stmt -> bind_param("ssisssssi", $admin_no, $name, $par_gur, $occupation, $p_number, $m_number, $address, $o_address , $isDeleted);
+        $stmt -> bind_param("ssisssssi", $admin_no, $p_name, $par_gur, $occupation, $p_number, $m_number, $address, $o_address , $isDeleted);
 
 
         if ($stmt->execute())
