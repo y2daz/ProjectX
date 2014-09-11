@@ -54,7 +54,7 @@ if (isset($_POST["submit"]))
     $zscore="Z-Score";
     $islandrank="Inland Rank";
     $districrank="District Rank";
-    $gcealresultssheet="G.C.E A/L Results Sheet";
+    $gcealresultssheet="G.C.E A/L Results Input Form";
     $submit="Submit";
     $reset="Reset";
 
@@ -87,14 +87,20 @@ if (isset($_POST["submit"]))
 
             h1{
                 text-align: center;
+                background-color: #005e77;
+                color: #ffffff;
             }
             table, th, td {
                 border: 0px solid black;
 
+
             }
             th{
-                width: 1000px;
-                text-align:left;
+                width: 150px;
+                text-align: center;
+                background-color: #005e77;
+                color: #ffffff;
+
             }
 
             td {
@@ -104,6 +110,7 @@ if (isset($_POST["submit"]))
 
             tr{
                 height: 20px;
+                text-align: center;
             }
             input.button {
                 position:relative;
@@ -128,12 +135,12 @@ if (isset($_POST["submit"]))
 
     <table>
     <tr>
-        <td><?php echo $indexno ?></td>
-        <td><input name="indexNo" type="text" value="" ></td>
-        <td><?php echo $admissionnumber ?></td>
-        <td><input name="admissionNo" type="text" value="" > </td>
-        <td><?php echo $year ?></td>
-        <td><input name="year" type=text" value="" ></td>
+        <td><td><?php echo $indexno ?></td></td>
+        <td><td><input name="indexNo" type="text" value="" ></td></td>
+        <td><td><?php echo $admissionnumber ?></td></td>
+        <td><td><input name="admissionNo" type="text" value="" ></td></td>
+        <td><td><?php echo $year ?></td></td>
+        <td><td><input name="year" type=text" value=""></td></td>
     </tr>
     </table>
 
@@ -195,7 +202,7 @@ if (isset($_POST["submit"]))
         </tr>
         <tr>
             <td><?php echo $commongeneraltest?></td>
-            <td><input name="commongeneraltest" type="text" value="" maxlength="3">
+            <td><input name="commongeneraltest" type="text" value="" maxlength="3" size="3">
 
             </td>
         </tr>
@@ -206,11 +213,13 @@ if (isset($_POST["submit"]))
         <table>
                 <tr>
                     <td><?php echo $zscore ?></td>
+                    <td></td>
                     <td><input name="zScore" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
                     <td><?php echo $islandrank ?></td>
+                    <td></td>
                     <td><input name="IsLandRank" type="text" value="" >
                     </td>
                 </tr>
