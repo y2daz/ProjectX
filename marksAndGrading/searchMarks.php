@@ -60,6 +60,8 @@ if (isset($_GET["search"]))
 
     h1{
         text-align: center;
+        background-color: #005e77;
+        color: #ffffff;
     }
 
 

@@ -178,7 +178,7 @@
                     <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/OLinput.php">Enter O/L Results</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/ALinput.php">Enter A/L Results</a><hr /></li>
                     <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/termTestMarks.php">Enter Term Marks</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/searchMarks.php">Search Grading Information</a></li>
+                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/searchnew.php">Search Grading Information</a></li>
                 </ul>
             </li>
             <li><a>Administrative Tasks</a>

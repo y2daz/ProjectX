@@ -118,6 +118,8 @@ else
 
         h1{
             text-align: center;
+            background-color: #005e77;
+            color: #ffffff;
         }
         #details .title{
             background-color: #005e77;
@@ -131,7 +133,7 @@ else
             top:0px;
             left:30px;
             border-collapse: collapse;
-            min-width:600px;
+            min-width:750px;
         }
         #marks th{
             font-weight: 600;

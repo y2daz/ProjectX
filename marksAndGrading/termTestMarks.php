@@ -53,6 +53,8 @@ else
 
     h1{
         text-align: center;
+        background-color: #005e77;
+        color: #ffffff;
     }
 
     table, th, td {
@@ -65,7 +67,7 @@ else
     }
 
     td {
-        width: 10px;
+        width: 50px;
         text-align:left;
 
     }

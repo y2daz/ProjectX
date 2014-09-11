@@ -9,6 +9,8 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
+error_reporting(E_ERROR | E_PARSE);
+
 
 if (isFilled($_POST["submit"])) {
 
@@ -78,21 +80,26 @@ else
 
                h1{
                    text-align: center;
+                   background-color: #005e77;
+                   color: #ffffff;
                }
-            table, th, td {
+            #results {
                 border: 0px solid black;
+                max-width: 250;
 
             }
-            th{
-                width: 1300px;
-                text-align: center;
-            }
-
-            td {
+            #results th{
                 width: 150px;
                 text-align: center;
+                background-color: #005e77;
+                color: #ffffff;
             }
-            tr{
+
+            #results td {
+                width: 20px;
+                text-align: center;
+            }
+            #results tr{
                 height: 10px;
                     }
             input.button {
@@ -117,27 +124,29 @@ else
 
         <form method="post">
         <table>
-            <tr>
-                <td><?php echo $indexno ?></td>
-                <td><input name="indexNo" type="text" value="" ></td>
-                <td><?php echo $admissionnumber ?></td>
-                <td><input name="admissionNo" type="text" value="" ></td>
-                <td><?php echo $year ?></td>
-                <td><input name="year" type=text" value=""></td>
+            <tr class = "alt">
+                <td><td><?php echo $indexno ?></td></td>
+                <td><td><input name="indexNo" type="text" value="" ></td></td>
+                <td><td><?php echo $admissionnumber ?></td></td>
+                <td><td><input name="admissionNo" type="text" value="" ></td></td>
+                <td><td><?php echo $year ?></td></td>
+                <td><td><input name="year" type=text" value=""></td></td>
             </tr>
         </table>
 
         <br />
 
-        <table>
+        <table id="results">
+
             <tr>
-                <th></th>
+
+                <th>Subject Number</th>
                 <th><?php echo $subject ?></th>
                 <th><?php echo $grade ?></th>
             </tr>
             <tr>
                 <td>1</td>
-                <td><input name="subject_1" type="text" value=""></td>
+                <td><input name="subject_1" type="text" value="Mathematics" readonly></td>
                 <td><select name="grade_1" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -150,7 +159,7 @@ else
             </tr>
             <tr>
                 <td>2</td>
-                <td><input name="subject_2" type="text" value=""></td>
+                <td><input name="subject_2" type="text" value="Science and Technology" readonly></td>
                 <td><select name="grade_2" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -163,7 +172,7 @@ else
             </tr>
             <tr>
                 <td>3</td>
-                <td><input name="subject_3" type="text" value=""></td>
+                <td><input name="subject_3" type="text" value="English Language" readonly></td>
                 <td><select name="grade_3" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -176,7 +185,7 @@ else
             </tr>
             <tr>
                 <td>4</td>
-                <td><input name="subject_4" type="text" value=""></td>
+                <td><input name="subject_4" type="text" value="Sinhala Language" readonly></td>
                 <td><select name="grade_4" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -189,7 +198,7 @@ else
             </tr>
             <tr>
                 <td>5</td>
-                <td><input name="subject_5" type="text" value=""></td>
+                <td><input name="subject_5" type="text" value="Religion" readonly></td>
                 <td><select name="grade_5" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -202,7 +211,7 @@ else
             </tr>
             <tr>
                 <td>6</td>
-                <td><input name="subject_6" type="text" value=""></td>
+                <td><input name="subject_6" type="text" value="History" readonly></td>
                 <td><select name="grade_6" type="text" value="">
                         <option>--</option>
                         <option>A</option>
