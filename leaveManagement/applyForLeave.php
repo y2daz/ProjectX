@@ -309,7 +309,7 @@
     <body>
             <h1>Apply For Leave</h1>
 
-            <form class="insert" method="post">
+            <form class="insert" method="post" action="applyForLeave.php">
 
                 <table id="details">
                     <tr><th><?php echo $enterdetails ?><th></th> <th></th> </tr>
