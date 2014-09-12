@@ -123,20 +123,144 @@
         if($OfficialLeave < 0)
         {
             $OfficialLeave = 0;
+
+            if($MaternityLeave < 0 && $OtherLeave < 0)
+            {
+
+                $MaternityLeave = 0;
+                $OtherLeave = 0;
+
+            }else if($MaternityLeave < 0)
+            {
+                $MaternityLeave = 0;
+
+            }else if($OtherLeave < 0)
+            {
+                $OtherLeave = 0;
+            }
+
         }
         else if ($MaternityLeave < 0)
         {
             $MaternityLeave = 0;
+
+            if($OfficialLeave < 0 && $OtherLeave < 0)
+            {
+
+                $OfficialLeave = 0;
+                $OtherLeave = 0;
+
+            }else if($OfficialLeave < 0)
+            {
+                $OfficialLeave = 0;
+
+            }else if($OtherLeave < 0)
+            {
+                $OtherLeave = 0;
+            }
+
         }
         else if ($OtherLeave < 0)
         {
             $OtherLeave = 0;
+
+            if($OfficialLeave < 0 && $MaternityLeave < 0)
+            {
+
+                $OfficialLeave = 0;
+                $MaternityLeave = 0;
+
+            }else if($OfficialLeave < 0)
+            {
+                $OfficialLeave = 0;
+
+            }else if($MaternityLeave < 0)
+            {
+                $MaternityLeave = 0;
+            }
         }
 
 //        echo $OfficialLeave;
 //        echo $MaternityLeave;
 //        echo $OtherLeave;
 //        echo $StaffName;
+
+        if($OfficialLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1RED";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1GREEN";
+
+            if($MaternityLeave == 0 && $OtherLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($MaternityLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1GREEN";
+            }else if($OtherLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1GREEN";
+                $OtherLeaveColour = "tb1RED";
+            }
+        }
+        else if($MaternityLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1RED";
+            $OtherLeaveColour = "tb1GREEN";
+
+            if($OfficialLeave == 0 && $OtherLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($OfficialLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1GREEN";
+            }else if($OtherLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1GREEN";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }
+
+        }
+        else if($OtherLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1RED";
+
+            if($OfficialLeave == 0 && $MaternityLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($OfficialLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1GREEN";
+                $OtherLeaveColour = "tb1RED";
+            }else if($MaternityLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1GREEN";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }
+        }
+        else
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1GREEN";
+        }
 
         $StaffColour = "tb1GREEN";
         $staffIdVal = $_POST["newStaffID"];
@@ -148,6 +272,9 @@
     }else{
 
         $StaffColour = "tb1WHITE";
+        $OfficialLeaveColour = "tb1WHITE";
+        $MaternityLeaveColour = "tb1WHITE";
+        $OtherLeaveColour = "tb1WHITE";
         $staffIdVal = "";
         $startDateVal = "";
         $endDateVal = "";
@@ -264,7 +391,7 @@
 
             .tb1GREEN{
                 background-color : #BCED91;
-                border: 1px solid #008000;
+                border: 0px solid #008000;
                 text-align: center;
                 font-weight: 600;
 
@@ -272,6 +399,13 @@
 
             .tb1WHITE{
                 background-color : #ffffff;
+                text-align: center;
+                font-weight: 600;
+            }
+
+            .tb1RED{
+                background-color : red;
+                border: 0px solid crimson;
                 text-align: center;
                 font-weight: 600;
             }
@@ -351,18 +485,18 @@
                     <tr><th><?php echo $availableleavedays ?> <th></th></tr>
 
                     <tr>
-                        <td><?php echo $officialleavecombo ?></td>
-                        <td class="<?php echo $StaffColour ?>"> <?php echo $OfficialLeave ?> </td>
+                        <td ><?php echo $officialleavecombo ?></td>
+                        <td class="<?php echo $OfficialLeaveColour ?>"> <?php echo $OfficialLeave ?> </td>
                     </tr>
 
                     <tr>
                         <td><?php echo $maternityleavecombo ?></td>
-                        <td class="<?php echo $StaffColour ?>"> <?php echo $MaternityLeave ?></td>
+                        <td class="<?php echo $MaternityLeaveColour ?>"> <?php echo $MaternityLeave ?></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $otherleavecombo ?></td>
-                        <td class="<?php echo $StaffColour ?>"> <?php echo $OtherLeave ?></td>
+                        <td class="<?php echo $OtherLeaveColour ?>"> <?php echo $OtherLeave ?></td>
                     </tr>
 
                 </table>
