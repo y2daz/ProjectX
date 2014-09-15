@@ -25,57 +25,50 @@ else
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
 
-            h1
-            {
+            h1{
                 text-align: center;
             }
-
-            .insert
-            {
+            .insert{
                 position:absolute;
                 left:245px;
                 top: 100px;
             }
-
-            .viewTable
-            {
+            .viewTable{
                 position:absolute;
                 left: 210px;
                 top: 250px;
                 display: <?php echo $displaytable ?>;
             }
-
-            .viewTable th
-            {
+            .viewTable, .viewTable th, .viewTable td{
+                border-collapse: collapse;
+            }
+            .viewTable th{
                 width: 100px;
                 color:white;
-                background-color: #005e77;
+                /*background-color: #005e77;*/
                 height:30px;
                 padding:5px;
                 text-align: left;
             }
-
-            .viewTable td
-            {
+            .viewTable td{
                 padding:10px;
             }
-
-            .viewTable input.button
-            {
+            .viewTable input.button{
                 position:relative;
                 font-weight:bold;
                 font-size:15px;
                 Right:-335px;
                 top:20px;
             }
-
-            .insert th
-            {
-                color:white;
-                background-color: #005e77;
+            .insert th{
+                color:white;/
+                /*background-color: #005e77;*/
                 height:30px;
                 padding:5px;
                 text-align: left;
+            }
+            .header{
+                background-color: #005e77;
             }
 
             .insert td
@@ -99,11 +92,11 @@ else
 
         <h1>Search Staff ID</h1>
 
-        <form method="post" class="insert">
+        <form method="post" >
 
-            <table>
+            <table class="insert">
 
-                <tr>
+                <tr >
                     <td>Staff Name: </td>
                     <td><input type="text" name="staffname" value=""></td>
                 </tr>
@@ -118,9 +111,9 @@ else
 
         </form>
 
-        <form class="viewTable" method="get">
-            <table>
-                <tr>
+        <form method="get">
+            <table class="viewTable">
+                <tr class="header">
                     <th>Staff ID</th>
                     <th>Name</th>
                     <th></th>

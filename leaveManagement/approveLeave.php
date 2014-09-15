@@ -388,6 +388,6 @@
     ob_end_clean();
 
     //Apply the template
-    include("../Master.php");
+    require_once(THISROOT . "/Master.php");
 ?>
 
