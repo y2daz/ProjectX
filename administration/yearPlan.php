@@ -44,6 +44,7 @@ if (isset($_POST["0"]))
 }
 
 $holidaysArr = getHolidays($dYear);
+
 function printArrJs($Arr){
     $output = "[";
 
@@ -117,15 +118,36 @@ function printArrJs($Arr){
             .selected {
                 background-color: #bed9ff;
             }
-
-
+            .poya {
+                background-color: #ffa726;
+            }
+            .publicHoliday {
+                background-color: #2baf2b;
+            }
 
             h1 {
                 text-align:center;
             }
-
             .button{
                 left:100px;
+            }
+            #legend{
+                position: relative;
+                left: 10%;
+                min-width: 200px;
+                display: none;
+            }
+            #legend th{
+                background-color: #005e77;
+                color: white;
+            }
+            #legend .colourCol{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #005e77;
+            }
+            #legend .type{
+                padding-left: 20px;
             }
             #sbtTable{
                 min-width: 800px;
@@ -138,8 +160,25 @@ function printArrJs($Arr){
   <body>
   <h1>Year Plan</h1>
 
-  <br />
-  <br />
+
+  <table id="legend">
+      <tr><th colspan="2">Legend</th></tr>
+      <tr></tr>
+      <tr>
+          <td class="colourCol selected"></td>
+          <td class="type">School Holiday</td>
+      </tr>
+      <tr>
+          <td class="colourCol poya"></td>
+          <td class="type">Poya Day</td>
+      </tr>
+      <tr>
+          <td class="colourCol publicHoliday"></td>
+          <td class="type">Public Holiday</td>
+      </tr>
+  </table>
+
+
   <br />
 
     <table id="calendar" border="1">
@@ -259,7 +298,7 @@ function printArrJs($Arr){
 
 <?php
 //Change these to what you want
-$fullPageHeight = 800;
+$fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above

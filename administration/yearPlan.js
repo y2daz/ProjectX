@@ -20,16 +20,8 @@ function submitYearPlan()
 
 function fillYearPlan(holidays){
     var i;
-//    alert ("Bla" + " yellow");
-
-//    alert('[name="' + '1/1/2014' + '"]');
-//    $('[name="' + '1/1/2014' + '"]').addClass("selected");
-
     for ( i = 0; i < $(holidays).length; i++)
     {
-//        alert('[name="' + holidays[i] + '"]');
-
         $('[name="' + holidays[i] + '"]').addClass("selected");
-//        $( ).addClass("selected");
     }
 }
