@@ -22,11 +22,27 @@
 
     ob_start();
 
-    $Value = $_GET["value"];
-    $Choice = $_GET["Choice"];
+    $Value = "";
+    $Choice = "";
 
-//    echo $Value;
-//    echo $Choice;
+    $IndexNo = "";
+    $AdmissionNo = "";
+    $Year = "";
+
+
+
+
+    if(isFilled($_GET["value"]))
+    {
+        $Value = $_GET["value"];
+    }
+
+    if(isFilled($_GET["Choice"]))
+    {
+        $Choice = $_GET["Choice"];
+    }
+
+
 
 ?>
     <html>
@@ -42,7 +58,14 @@
             .insert
             {
                 position:absolute;
-                left:110px;
+                left:275px;
+                top: 250px;
+            }
+
+            .insert2
+            {
+                position: absolute;
+                left: 65px;
                 top: 100px;
             }
 
@@ -80,18 +103,18 @@
 
         <h1> O Level Search Results </h1>
 
-        <form metho="post" class="insert">
+        <form method="post">
 
-            <table>
+            <table class="insert">
 
-                <th>Index Number</th>
-                <th>Admission Number</th>
-                <th>Year</th>
                 <th>Subject</th>
                 <th>Grade</th>
 
                 <?php
 
+
+                if(is_numeric($Value))
+                {
                     if($Choice == "IndexNo")
                     {
                         $result = searchOLMarks($Value);
@@ -103,11 +126,11 @@
                             foreach($result as $row){
                                 $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
+                                $IndexNo = $row[0];
+                                $AdmissionNo = $row[1];
+                                $Year = $row[2];
 
                                 echo $top;
-                                echo "<td>$row[0]</td>";
-                                echo "<td>$row[1]</td>";
-                                echo "<td>$row[2]</td>";
                                 echo "<td>$row[3]</td>";
                                 echo "<td>$row[4]</td>";
 
@@ -116,18 +139,9 @@
                         }
                         else
                         {
-                            echo "<tr><td colspan='5' style='text-align: center'> No records found. </td></tr>";
+                            echo "<style> .insert{display: none} </style>";
 
-                            echo "<style>
-
-                            .insert
-                            {
-                                position: absolute;
-                                left: 160px;
-                                top: 100px;
-                            }
-
-                            </style>";
+                            sendNotification("No records found.");
                         }
                     }
                     else if($Choice == "AdmissionNo")
@@ -141,11 +155,11 @@
                             foreach($result as $row){
                                 $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
+                                $IndexNo = $row[0];
+                                $AdmissionNo = $row[1];
+                                $Year = $row[2];
 
                                 echo $top;
-                                echo "<td>$row[0]</td>";
-                                echo "<td>$row[1]</td>";
-                                echo "<td>$row[2]</td>";
                                 echo "<td>$row[3]</td>";
                                 echo "<td>$row[4]</td>";
 
@@ -154,23 +168,43 @@
                         }
                         else
                         {
-                            echo "<tr><td colspan='5' style='text-align: center'> No records found. </td></tr>";
+                            echo "<style> .insert{display: none} </style>";
 
-                            echo "<style>
-
-                            .insert
-                            {
-                                position: absolute;
-                                left: 160px;
-                                top: 100px;
-                            }
-
-                            </style>";
-
+                            sendNotification("No records found");
                         }
 
                     }
+
+                }
+                else
+                {
+                    echo "<style> .insert{display: none} </style>";
+
+                    sendNotification("Invalid search parameter entered");
+                }
+
+
+
                 ?>
+
+            </table>
+
+            <table class="insert2">
+
+                <tr>
+                    <td>Index Number</td>
+                    <td><input type="text" name="IndexNo" value="<?php echo $IndexNo ?>" </td>
+                </tr>
+
+                <tr>
+                    <td>Admission Number</td>
+                    <td><input type="text" name="AdmissionNo"  value="<?php echo $AdmissionNo ?>" </td>
+                </tr>
+
+                <tr>
+                    <td>Year</td>
+                    <td><input type="text" name="Year" value="<?php echo $Year ?>" </td>
+                </tr>
 
             </table>
 
@@ -182,7 +216,7 @@
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "O'Level Search Results";
 //Only change above

@@ -143,7 +143,7 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
                     <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
                 </tr>
 
