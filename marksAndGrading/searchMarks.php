@@ -132,7 +132,7 @@ if (isset($_GET["search"]))
 
     <h2>Search G.C.E.O/L Results</h2>
 
-    <form action="olsearch.php" method="get" class="insert">
+    <form action="OLevelSearch.php" method="get" class="insert">
 
             <table id="OL">
                 <tr>
@@ -143,7 +143,7 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
                     <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
                 </tr>
 
@@ -179,6 +179,7 @@ if (isset($_GET["search"]))
 
 
     <h2>Search Term Test Marks</h2>
+
     <form>
     <table id="term">
 

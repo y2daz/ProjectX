@@ -78,11 +78,11 @@ else
 
 
 
-               h1{
-                   text-align: center;
-                   background-color: #005e77;
-                   color: #ffffff;
-               }
+           h1{
+               text-align: center;
+               background-color: #005e77;
+               color: #ffffff;
+           }
             #results {
                 border: 0px solid black;
                 max-width: 250;
@@ -280,7 +280,7 @@ else
 //Change these to what you want
 $fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Insert O'Level Grades";
 //Only change above
 
 $pageContent = ob_get_contents();

@@ -1941,10 +1941,9 @@ function searchOLMarks($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE IndexNo ? AND isDeleted = 0;"))
+    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE IndexNo=?;"))
     {
-        $id = "%" . $id . "%";
-        $stmt -> bind_param("s", $id );
+        $stmt -> bind_param("i", $id );
 
         if ($stmt->execute())
         {
@@ -1971,9 +1970,8 @@ function searchOLbyAdmission($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE AdmissionNo ? AND isDeleted = 0;"))
+    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE AdmissionNo=?;"))
     {
-        $id = "%" . $id . "%";
         $stmt -> bind_param("s", $id );
 
         if ($stmt->execute())
@@ -2021,58 +2019,4 @@ function Viewattendancebyclass($id)
     }
     $mysqli->close();
     return $set;
-}
-
-function getOL($IndexNo)
-{
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    $set = null;
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    if ($stmt = $mysqli->prepare("Select admissioNo,indexNo,year FROM olmarks WHERE isDeleted = 0 AND IndexNo = ?;"))
-    {
-        $stmt->bind_param("s", $IndexNo);
-
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
-            $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++]=$row;
-            }
-        }
-    }
-}
-
-function getOLadmission($AdmissionNo)
-{
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    $set = null;
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    if ($stmt = $mysqli->prepare("Select admissioNo,indexNo,year FROM olmarks WHERE isDeleted = 0 AND AdmissionNo = ?;"))
-    {
-        $stmt->bind_param("s", $AdmissionNo);
-
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
-            $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++]=$row;
-            }
-        }
-    }
 }
