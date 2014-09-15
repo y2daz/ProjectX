@@ -203,7 +203,7 @@ if (isset($_POST["delete"])) //User has clicked a delete button
                                 </tr>
                             </table>
                         </td>
-                        <td class="column"><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
+                        <td class="column"><input type="text"  name="txtAccessLevel" value="1" maxlength="1" class="txtAccessLevel"/></td>
                         <td class="column"><input type="Submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>

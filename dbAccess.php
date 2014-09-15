@@ -871,9 +871,35 @@ function getEventTransactions($eventid)
         $mysqli->close();
     }
 
-    function checkPrivelege() //Checking yo privelege
+    function checkPrivilege( $username ) //Checking yo privilege
     {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
 
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("SELECT accessLevel FROM User WHERE userEmail = ? LIMIT 1;"))
+        {
+            $stmt -> bind_param("s", $username);
+            if ($stmt->execute())
+            {
+                $OUTvalue = "% NO Staff ID %";
+                $stmt->bind_result($OUTvalue);
+                $stmt->fetch();
+
+                if (!isFilled($OUTvalue))
+                {
+                    return -1;
+                }
+
+                $stmt->close();
+                $mysqli->close();
+                return $OUTvalue;
+            }
+        }
+        $mysqli->close();
     }
 
     function deleteUser($email){
