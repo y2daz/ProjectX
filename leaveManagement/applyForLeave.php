@@ -393,21 +393,21 @@
                 background-color : #BCED91;
                 border: 0px solid #008000;
                 text-align: center;
-                font-weight: 600;
+                font-weight: 400;
 
             }
 
             .tb1WHITE{
                 background-color : #ffffff;
                 text-align: center;
-                font-weight: 600;
+                font-weight: 400;
             }
 
             .tb1RED{
                 background-color : red;
                 border: 0px solid crimson;
                 text-align: center;
-                font-weight: 600;
+                font-weight: 400;
             }
 
 
