@@ -38,7 +38,7 @@
     if(isset($_GET["logout"]))
     {
         $_SESSION["user"] = NULL;
-        header("Location: " . PATHFRONT . "/login.php");
+        header("Location: " . PATHFRONT . "/Menu.php");
     }
 
 
