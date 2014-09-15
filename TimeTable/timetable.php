@@ -20,14 +20,14 @@ ob_start();
 
 $lang = $_COOKIE["language"];
 
-$_GET["getTimetable"] = $_GET["getTimetable"] | "";
+//$_GET["getTimetable"] = $_GET["getTimetable"] | "";
 
 $currentStaffId = "";
 $currentStaffName = "";
 
 error_reporting(0);//Temporarily turn of all errors
 
-if (isFilled($_POST["Submit"]))
+if (isset($_POST["Submit"]))
 {
     $myTime = new Timetable();
     $myTime -> staffId = $_POST["staffId"];
@@ -41,33 +41,41 @@ if (isFilled($_POST["Submit"]))
         $gradeArr = array();
 
         $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
-        $tempClassroom = trim($_POST[ ($prefixClassroom . $i) ]);
+        $arrClassroom = getGradeAndClass( $_POST[ ($prefixClassroom . $i) ] ) ;
 
-        $tempClassroom = explode(" ", $tempClassroom);
-        $tempGrade = $tempClassroom[0];
-        $tempClass = $tempClassroom[1];
+//        $arrClassroom = explode(" ", $arrClassroom);
+        if( (isFilled($arrClassroom[0])) && (isFilled($arrClassroom[1])) ){
+            $tempGrade = $arrClassroom[0];
+            $tempClass = $arrClassroom[1];
 
-        $gradeArr[$i] = $tempGrade;
-        $classArr[$i] = $tempClass;
+            $gradeArr[$i] = $tempGrade;
+            $classArr[$i] = $tempClass;
 
-        $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
-//        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
+            $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
+    //        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
+        }
+        else{
+            break;
+        }
     }
 
-
+    if(!$i == 39 ){
+        sendNotification("Error: Invalid class entered");
+    }
+    else{
         $operation = $myTime ->updateTimetableToDB();
 
-//        echo  $operation;
+        //        echo  $operation;
         if ($operation == true){
             sendNotification("Timetable updated.");
         }else{
             sendNotification("Error updating timetable.");
         }
-
+    }
 //        var_dump($myTime);
 }
 
-if (isFilled($_GET["getTimetable"]))
+if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
@@ -165,7 +173,7 @@ if (isFilled($_GET["getTimetable"]))
             <tr>
                 <td><label><?php echo getLanguage("staffId",$lang)?></td>
                     <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
-                    <td><input type="submit" class="text1" name="getTimetable" value="Submit" /></td>
+                    <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
             </tr>
             <tr><td></td>
                 <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
