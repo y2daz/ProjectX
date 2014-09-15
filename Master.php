@@ -166,6 +166,7 @@
         </div>
 
         <div id="header">
+            <img id="dsLogo" src="<?php echo PATHFRONT ?>/images/logo.jpg" height="90px" />
         </div>
 
         <div id="divMenu">
@@ -173,6 +174,7 @@
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
+<!--                    <td></td>-->
                 </tr>
             </table>
         </div>
@@ -187,5 +189,8 @@
         <div id="language">
             <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
         </div>
+
+<!--        <div id="dsLogo">-->
+<!--        </div>-->
     </body>
 </html>
