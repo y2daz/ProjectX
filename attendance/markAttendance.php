@@ -8,6 +8,7 @@
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
+
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
     include(THISROOT . "/dbAccess.php");
     require_once(THISROOT . "/common.php");
@@ -51,14 +52,24 @@
                 top:0px;
                 left:30px;
                 border-collapse: collapse;
-                min-width: 600px;
+                min-width: 750px;
                 display: <?php echo $attendanceDisplay?>;
             }
-            #tHeader{
+            #attendance #tHeader{
                 font-weight: 600;
                 color:white;
                 background-color: #005e77;
                 padding: 2px 5px 2px 5px;
+                /* Safari */
+                /*-webkit-transform: rotate(-45deg);*/
+                /* Firefox */
+                /*-moz-transform: rotate(-45deg);*/
+                /* IE */
+                /*-ms-transform: rotate(-45deg);*/
+                /* Opera */
+                /*-o-transform: rotate(-45deg);*/
+                /* Internet Explorer */
+                /*filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);*/
             }
             #attendance td{
                 padding: 4px 10px 4px 10px;
@@ -85,35 +96,13 @@
 
         <form method="get">
             <table id="classDate">
-                <tr>
-                    <td>
-                        Grade and class
-                    </td>
-                    <td>
-                        <input type="text" name="Grade" value="">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <br/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Week
-                    </td>
-                    <td>
-                        <input name="week" type="date"/>
-                    </td>
-                </tr>
+                <tr><td>Grade and class</td>
+                    <td><input type="text" name="Grade" value=""></td></tr>
+                <tr><td><br/></td></tr>
+                <tr><td>Week</td>
+                    <td><input name="week" type="date"/></td></tr>
                 <tr><td colspan="2">&nbsp;</td> </tr>
-                <tr>
-                    <td>
-                    </td>
-                    <td>
-                        <input type="submit" name="sbtGetStudent" value="Mark Attendance"/>
-                    </td>
-                </tr>
+                <tr><td></td><td><input type="submit" name="sbtGetStudent" value="Mark Attendance"/></td></tr>
             </table>
         </form>
         <br />
