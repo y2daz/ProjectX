@@ -164,7 +164,7 @@ if (isset($_GET["search"]))
                     <td colspan="1"><span id="selection">Search : </span>
                         <input type="text" class="text1" name="value" id="value" value=""/>
                     </td>
-                    <td ><input class="buttonAL" name="search" type="submit" value="Search"></td>
+                    <td ><input class="buttonAL" name="search1" type="submit" value="Search"></td>
                 </tr>
 
                 <tr>
@@ -195,7 +195,7 @@ if (isset($_GET["search"]))
                 <option>Final</option>
             </select></td>
 
-        <td><input class="buttonterm" name="search" type="submit" value="Search"></td>
+        <td><input class="buttonterm" name="search2" type="submit" value="Search"></td>
 
 
         </tr>
