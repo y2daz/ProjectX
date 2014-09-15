@@ -44,9 +44,9 @@ function isNIC($nicNumber)
     }
 }
 
-function isNumber($salary)
+function isNumber($value)
 {
-    if(is_numeric($salary))
+    if(is_numeric($value))
         return true;
     else
         echo "please enter valid amount";
@@ -59,9 +59,8 @@ function isLetters($nameWithInitials) //Works for all string must change
         return true;
     else
     {
-        echo "Enter Alphabetical letters only ";
+        return false;
     }
-
 }
 
 //Find a function to check the string for pattern
@@ -92,9 +91,9 @@ function hasSpaces($value)
         $curr = substr($value, $i, 1);
 
         if(strcmp($curr, " ") == 0)
-            return 1;
+            return true;
     }
-    return 0;
+    return false;
 }
 
 
