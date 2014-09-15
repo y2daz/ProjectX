@@ -5,7 +5,9 @@
  * Date: 19/07/14
  * Time: 17:04
  */
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once("dbAccess.php");
     require_once("common.php");
 
