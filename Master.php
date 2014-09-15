@@ -27,11 +27,6 @@
         $_SESSION["user"] = NULL;
         header("Location: " . PATHFRONT . "/login.php");
     }
-    /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
-//    $fullPageHeight = 700;
-//
-//    $footerTop = $fullPageHeight + 50;
-
 
 ?>
 <!DOCTYPE html>
@@ -112,25 +107,18 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"--><span></span></a>
+        <a id="menuButton" class="hidden" <span></span></a>
 
 
         <span id="messagingSystem"></span>
 
         <div id="nav">
-<!--            <li id="Red"><a id="blue">Notices</a>-->
-<!--                <ul>-->
-<!--                    <li><a href="#">View Notices</a><hr /></li>-->
-<!--                    <li><a href="#">Create Notice</a></li>-->
-<!--                </ul>-->
-<!--            </li>-->
             <li><a><?php echo $staffManagement; ?></a>
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassroomInformation.php">Class Information</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/searchStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
-                    <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/teacherAchievenment.php">Staff Achievements</a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffReport.php" target="_blank">Staff Report</a></li>
                 </ul>
@@ -139,21 +127,11 @@
                 <ul>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
                     <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a></li>
-                    <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
-<!--                    <li><a href="--><?php //echo PATHFRONT ?><!--/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>-->
                 </ul>
             </li>
             <li><a  href="<?php echo PATHFRONT ?>/TimeTable/timetable.php"><?php echo $timetables; ?></a>
-                <!--                <ul>-->
-                <!--                    <li><a  href="#">Create Timetable by Teacher</a><hr /></li>-->
-                <!--                    <li><a  href="#">Create Timetable by Class</a></li>-->
-                <!--                </ul>-->
             </li>
             <li><a href="<?php echo PATHFRONT ?>/TimeTable/substitute.php">Substitute Teacher</a>
-                <!--                <ul>-->
-                <!--                    <li><a  href="#">Substitute Period by Teacher</a><hr /></li>-->
-                <!--                    <li><a  href="#">Substitute Period by Class</a></li>-->
-                <!--                </ul>-->
             </li>
             <li><a>Student Information</a>
                 <ul>
@@ -162,10 +140,6 @@
                 </ul>
             </li>
             <li><a href="<?php echo PATHFRONT ?>/eventManagement/eventList.php"><?php echo $eventManagement; ?></a>
-<!--                <ul>-->
-<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/eventList.php">View Event List</a><hr /></li>-->
-<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/manageEvents.php">Manage Events</a></li>-->
-<!--                </ul>-->
             </li>
             <li><a>Attendance</a>
                 <ul>
@@ -198,7 +172,6 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
-<!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
                 </tr>
             </table>
