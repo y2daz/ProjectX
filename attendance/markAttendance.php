@@ -5,7 +5,9 @@
  * Date: 7/26/14
  * Time: 3:24 PM
  */
-//    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
     include(THISROOT . "/dbAccess.php");
     require_once(THISROOT . "/common.php");

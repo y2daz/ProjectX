@@ -15,6 +15,9 @@
 
 /*Calendar was created with reference to
 http://www.opal-creations.co.uk/blog/free-scripts-and-code/php-linear-year-view-calendar*/
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 require_once(THISROOT . "/dbAccess.php");

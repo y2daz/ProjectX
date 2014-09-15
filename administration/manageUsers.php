@@ -7,6 +7,10 @@
  *
  */
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
