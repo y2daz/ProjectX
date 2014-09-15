@@ -20,9 +20,15 @@
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
 
+    if(isset($_POST["username"])) {
+        login($_POST["username"],$_POST["password"]);
+    }
+
     if(!isset($_SESSION["user"])){
-//        header("Location: " . PATHFRONT . "/login.php");
         $logging = "Log In";
+        if( strcmp( $_SERVER['PHP_SELF'], "/Menu.php") !== 0){
+            header("Location: " . PATHFRONT . "/Menu.php");
+        }
     }
     else{
         $privilege = checkPrivilege($_SESSION["user"]);
@@ -87,6 +93,11 @@
                         $('#nav li a').removeClass('active');
                     }
                 });
+
+                $("#logInLink").on("click", function(e){
+                    logIn();
+                });
+
             });
 
         </script>
@@ -222,7 +233,7 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
-                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1"><?php echo $logging ?></a></td>
+                    <td><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></td>
 <!--                    <td></td>-->
                 </tr>
             </table>

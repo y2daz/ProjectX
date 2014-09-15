@@ -17,6 +17,7 @@ include(THISROOT . "/dbAccess.php");
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 ob_start();
 
+
 ?>
 <html>
     <head>
