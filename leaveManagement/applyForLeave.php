@@ -372,7 +372,7 @@
                 height:30px;
                 padding:5px;
                 text-align: left;
-            ;
+
             }
 
             .insert td
