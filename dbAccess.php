@@ -803,11 +803,40 @@ function getEventTransactions($eventid)
                     $set[$i++]=$row;
                 }
             }
+            $stmt -> close();
         }
 
         $mysqli->close();
         return $set;
+    }
 
+    function getClassOfStudents($grade, $class){
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials FROM Student WHERE isDeleted = 0 AND Class = ? AND Grade = ?;"))
+        {
+            $stmt->bind_param("si", $class, $grade);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+            $stmt -> close();
+        }
+        $mysqli->close();
+        return $set;
     }
 
 
