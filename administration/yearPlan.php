@@ -33,7 +33,7 @@ $dYear = date("Y");
 
 //var_dump($_POST);
 
-if (isFilled($_POST[0]))
+if (isset($_POST["0"]))
 {
     $operation = insertHolidays($dYear, $_POST);
 
@@ -78,60 +78,69 @@ function printArrJs($Arr){
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-    #calendar {
-        border-collapse:collapse;
-        border:1px #005e77 solid;
-    }
-    #calendar th{
-        background-color: #005e77;
-        color: white;
-    }
-    #calendar td {
-        padding-top:10px;
-        padding-bottom:10px;
-        padding-left:2px;
-        padding-right:2px;
-        vertical-align:top;
-        text-align:center;
-        min-width:15px;
-        opacity: 1;
-    }
+            #calendar {
+                border-collapse:collapse;
+                border:1px #005e77 solid;
+            }
+            #calendar th{
+                background-color: #005e77;
+                color: white;
+            }
+            #calendar td {
+                padding-top:10px;
+                padding-bottom:10px;
+                padding-left:2px;
+                padding-right:2px;
+                vertical-align:top;
+                text-align:center;
+                min-width:15px;
+                opacity: 1;
+            }
 
-    .days:hover {
-        background:#9F0;
-        border-color:#000;
-    }
-    .day6 {
-        background:#ECECEC;
-    }
-    .day7 {
-        background:#ECECEC;
-    }
-    .monthName {
-        text-align:left;
-        vertical-align:middle;
-    }
-    .monthName div {
-        padding-left:10px;
-    }
-    .selected {
-        background-color: #bed9ff;
-    }
+            .days:hover {
+                background:#9F0;
+                border-color:#000;
+            }
+            .day6 {
+                background:#ECECEC;
+            }
+            .day7 {
+                background:#ECECEC;
+            }
+            .monthName {
+                text-align:left;
+                vertical-align:middle;
+            }
+            .monthName div {
+                padding-left:10px;
+            }
+            .selected {
+                background-color: #bed9ff;
+            }
 
 
 
-    h1 {
-        text-align:center;
-    }
+            h1 {
+                text-align:center;
+            }
 
-    .button{
-        left:100px;
-    }
+            .button{
+                left:100px;
+            }
+            #sbtTable{
+                min-width: 800px;
+                align-content: center;
+                text-align: center;
+            }
 
         </style>
     </head>
   <body>
   <h1>Year Plan</h1>
+
+  <br />
+  <br />
+  <br />
 
     <table id="calendar" border="1">
         <tr>
@@ -242,7 +251,11 @@ function printArrJs($Arr){
         </html>
 
     <br />
-    <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
+    <table id="sbtTable">
+        <tr><td>
+            <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
+        </td></tr>
+    </table>
 
 <?php
 //Change these to what you want
