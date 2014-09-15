@@ -5,40 +5,40 @@
  * Date: 19/07/14
  * Time: 17:04
  */
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-require_once("dbAccess.php");
-require_once("formValidation.php");
+//if (session_status() == PHP_SESSION_NONE) {
+//    session_start();
+//}
+//require_once("dbAccess.php");
+//require_once("formValidation.php");
 
 //Setting Language
-if(!isset($_COOKIE['language']))
-{
-    setcookie('language', '0'); //where 0 is English and 1 is Sinhala
-}
-if (isFilled($_SESSION["user"])) //User is already logged in
-{
-    header("Location: Menu.php");
-}
-header("Location: Menu.php");
-if (isset($_POST["submit"])) //User has clicked the submit button
-{
-    //validate username and password
-
-    if ((isFilled($_POST["email"])) && (isFilled($_POST["password"])))
-    {
-        if (login($_POST["email"],$_POST["password"]))
-        {
-            header("Location: Menu.php");
-            die();
-        }
-    }
-    else
-    {
-
-    }
-
-}
+//if(!isset($_COOKIE['language']))
+//{
+//    setcookie('language', '0'); //where 0 is English and 1 is Sinhala
+//}
+//if (isFilled($_SESSION["user"])) //User is already logged in
+//{
+//    header("Location: Menu.php");
+//}
+//header("Location: Menu.php");
+//if (isset($_POST["submit"])) //User has clicked the submit button
+//{
+//    //validate username and password
+//
+//    if ((isFilled($_POST["email"])) && (isFilled($_POST["password"])))
+//    {
+//        if (login($_POST["email"],$_POST["password"]))
+//        {
+//            header("Location: Menu.php");
+//            die();
+//        }
+//    }
+//    else
+//    {
+//
+//    }
+//
+//}
 
 /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
 $fullPageHeight = 450;
@@ -160,12 +160,12 @@ $footerTop = $fullPageHeight + 50;
 </head>
 <?php //Get language and make changes
 
-if($_COOKIE["language"] == "0")
-{
-}
-else
-{
-}
+//if($_COOKIE["language"] == "0")
+//{
+//}
+//else
+//{
+//}
 ?>
 <body>
 
