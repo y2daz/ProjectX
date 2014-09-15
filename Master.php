@@ -21,10 +21,12 @@
     }
 
     if(!isset($_SESSION["user"])){
-        header("Location: " . PATHFRONT . "/login.php");
+//        header("Location: " . PATHFRONT . "/login.php");
+        $logging = "Log In";
     }
     else{
         $privilege = checkPrivilege($_SESSION["user"]);
+        $logging = "Log Out";
     }
 
     if(isset($_GET["logout"]))
@@ -149,7 +151,7 @@
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
-            else{
+            elseif($privilege >= 0) {
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
@@ -201,6 +203,9 @@
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
+            else{
+                $navMenu = "";
+            }
 
             echo $navMenu;
 
@@ -217,7 +222,7 @@
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
-                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
+                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1"><?php echo $logging ?></a></td>
 <!--                    <td></td>-->
                 </tr>
             </table>

@@ -20,7 +20,7 @@ if (isFilled($_SESSION["user"])) //User is already logged in
 {
     header("Location: Menu.php");
 }
-
+header("Location: Menu.php");
 if (isset($_POST["submit"])) //User has clicked the submit button
 {
     //validate username and password
