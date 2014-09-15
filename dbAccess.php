@@ -385,10 +385,12 @@ function SearchStudentbyclass($key)
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
+    $arrGradeAndClass = array();
+    $arrGradeAndClass = getGradeAndClass($key);
 
-    if ($stmt = $mysqli->prepare("Select s1.AdmissionNo, s1.NameWithInitials, s1.DateOfBirth, CONCAT(s1.Grade, ' ', s1.Class) FROM Student s1 WHERE ? IN (SELECT CONCAT(Grade, ' ', Class) FROM Student s2 WHERE s1.AdmissionNo = s2.AdmissionNo);"))
+    if ($stmt = $mysqli->prepare("Select s1.AdmissionNo, s1.NameWithInitials, s1.DateOfBirth, CONCAT(s1.Grade, ' ', s1.Class) FROM Student s1 WHERE Grade = ? AND Class = ?;"))
     {
-        $stmt -> bind_param("s", $key);
+        $stmt -> bind_param("is", $arrGradeAndClass[0], $arrGradeAndClass[1]);
 
         if ($stmt->execute())
         {

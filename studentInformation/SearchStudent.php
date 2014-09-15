@@ -42,8 +42,6 @@ elseif(isset($_GET["Class"]))
     $Class = $_GET["Class"];
 }
 
-
-
 $tableDetails = "none";
 $tableViewTable = "none";
 $fullPageHeight = 600;
