@@ -225,7 +225,7 @@ if (isset($_GET["search"]))
 $fullPageHeight = 800;
 
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Search Grading Information";
 //Only change above
 
 $pageContent = ob_get_contents();
