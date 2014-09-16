@@ -117,7 +117,7 @@ else
 
 
 <body>
-<form action="termtestresults.php" method="get" class="insert">
+<form action="termtestResults.php" method="get" class="insert">
 
 <table class="insert" cellspacing="0">
 <tr>
