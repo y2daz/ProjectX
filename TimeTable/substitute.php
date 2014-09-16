@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Yazdaan
+ * User: Tharindu
  * Date: 6/8/14
  *
  * THIS IS THE NEW TEMPLATE
@@ -66,7 +66,7 @@ $lang = $_COOKIE["language"];
 
         <tr>
             <td >07.50-08.30</td>
-            <td ></td>
+            <td onclick="<?php echo("yakow")?>" ></td>
             <td ></td>
             <td ></td>
             <td ></td>
