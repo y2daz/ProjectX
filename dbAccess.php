@@ -1971,7 +1971,7 @@ function searchOLMarks($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE IndexNo=?;"))
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o, student s WHERE o.IndexNo=? AND o.AdmissionNo=s.AdmissionNo"))
     {
         $stmt -> bind_param("i", $id );
 
@@ -2000,7 +2000,137 @@ function searchOLbyAdmission($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject, Grade From olmarks WHERE AdmissionNo=?;"))
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o , student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo"))
+    {
+        $stmt -> bind_param("s", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getOlResults($AdmissionNo)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o , student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo;"))
+    {
+        $stmt->bind_param("s", $AdmissionNo);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function UpdateOLResults($IndexNo,$AdmissionNo, $Year, $Subject, $Grade)
+
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmtCheck = $mysqli->prepare("SELECT * FROM olmarks WHERE AdmissionNo=? ;"))
+    {
+        $stmtCheck -> bind_param("s", $AdmissionNo);
+        $stmtCheck -> execute();
+        $result = $stmtCheck->get_result();
+
+
+        if ($result -> num_rows == 1)
+        {
+            if ($stmt = $mysqli->prepare("UPDATE olmarks SET IndexNo=?, AdmissionNo=?, Year=?,Subject=?,Grade=? WHERE AdmissionNo=?"))
+            {
+                $isDeleted = 0;
+                $stmt -> bind_param("isiss",$IndexNo,$AdmissionNo, $Year, $Subject, $Grade);
+
+                if ($stmt->execute())
+                {
+                    $stmt->close();
+                    $mysqli->close();
+                    return true;
+                }
+                $stmt->close();
+            }
+        }
+
+        $stmtCheck->close();
+
+    }
+    $mysqli->close();
+    return false;
+}
+
+function searchALMarks($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject_1,Subject_2,Subject_3, Grade_1,Grade_2,Grade_3,Gen_Eng_Grade,Cmn_Gen_Mark,Z_Score,Inland_Rank,District_Rank From almarks WHERE IndexNo=?;"))
+    {
+        $stmt -> bind_param("i", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function searchALbyAdmission($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select IndexNo, AdmissionNo, Year, Subject_1,Subject_2,Subject_3, Grade_1,Grade_2,Grade_3,Gen_Eng_Grade,Cmn_Gen_Mark,Z_Score,Inland_Rank,District_Rank From almarks WHERE AdmissionNo=?;"))
     {
         $stmt -> bind_param("s", $id );
 
