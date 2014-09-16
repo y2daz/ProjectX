@@ -726,7 +726,7 @@ function getEventTransactions($eventid)
 
     }
 
-function substitute($staffId)
+function substitute($subject)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -737,9 +737,9 @@ function substitute($staffId)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select Grade, Class, Day, Position, Subject  FROM Timetable WHERE isDeleted = 0 AND StaffId = ? ORDER BY Day,position ;"))
+    if ($stmt = $mysqli->prepare("Select StaffId Grade FROM Timetable WHERE isDeleted = 0 AND Subject = ? ;"))
     {
-        $stmt->bind_param("s", $staffId);
+        $stmt->bind_param("s", $subject);
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
