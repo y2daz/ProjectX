@@ -40,6 +40,8 @@ if (isset($_POST["Submit"]))
         $classArr = array();
         $gradeArr = array();
 
+        $arrClassroom = array();
+
         $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
         $arrClassroom = getGradeAndClass( $_POST[ ($prefixClassroom . $i) ] ) ;
 
@@ -48,14 +50,14 @@ if (isset($_POST["Submit"]))
             $tempGrade = $arrClassroom[0];
             $tempClass = $arrClassroom[1];
 
+            echo $tempGrade;
+            echo $tempClass . "<br />";
+
             $gradeArr[$i] = $tempGrade;
             $classArr[$i] = $tempClass;
 
             $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
     //        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
-        }
-        else{
-            break;
         }
     }
 
