@@ -15,7 +15,7 @@
 
     $privilege = -1;
 
-    if(!isFilled($_COOKIE['language']))
+    if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }

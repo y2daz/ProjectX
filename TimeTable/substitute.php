@@ -14,141 +14,266 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
+include("timetableClass.php");
 ob_start();
 
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
 $lang = $_COOKIE["language"];
 
+$_GET["getTimetable"] = $_GET["getTimetable"] | "";
+
+$currentStaffId = "";
+$currentStaffName = "";
+
+error_reporting(0);//Temporarily turn of all errors
+
+if (isFilled($_POST["Submit"]))
+{
+    $myTime = new Timetable();
+    $myTime -> staffId = $_POST["staffId"];
+
+    $prefixSubject = "subject_";
+    $prefixClassroom = "classroom_";
+
+    for($i = 0; $i < 40; $i++){
+        $subjectArr = array();
+        $classArr = array();
+        $gradeArr = array();
+
+        $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
+        $tempClassroom = trim($_POST[ ($prefixClassroom . $i) ]);
+
+        $tempClassroom = explode(" ", $tempClassroom);
+        $tempGrade = $tempClassroom[0];
+        $tempClass = $tempClassroom[1];
+
+        $gradeArr[$i] = $tempGrade;
+        $classArr[$i] = $tempClass;
+
+        $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
+//        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
+    }
+
+
+    $operation = $myTime ->updateTimetableToDB();
+
+//        echo  $operation;
+    if ($operation == true){
+        sendNotification("Timetable updated.");
+    }else{
+        sendNotification("Error updating timetable.");
+    }
+
+//        var_dump($myTime);
+}
+
+if (isFilled($_GET["getTimetable"]))
+{
+    $currentStaffId = $_GET["staffID"];
+    $result = getStaffMember($_GET["staffID"]);
+
+    $row = $result[0];
+    $currentStaffName = $row[1];
+
+    $myTime = new Timetable();
+
+    $myTime->staffId = "$currentStaffId";
+    $myTime->getTimetableFromDB();
+}
+
 ?>
-<html>
+    <html>
     <head>
-        <link rel="stylesheet" href="substitute.css">
-        <style type=text/css>
-<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
+        <link rel="stylesheet" href="timetable.css">
+        <script src="timetable.js"></script>
 
-            /*
-            ADD YOUR CSS HERE
-            */
+        <script>
+            $(document).ready(function() {
 
-        </style>
+                var i = 0;
+
+                setInterval(function(){
+//                    alert("try");
+                    $("#" + i).toggleClass("animated", 600);
+                    i++;
+                    if(i >= 40)
+                        i=0;
+                }, 12);
+
+                var editable = false;
+
+                $('#btnMakeEditable').on('click', function(e){
+                    if (editable == false){
+                        $('.classroom input').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", false)
+                                .closest("div")
+                                .css("opacity",".7");
+                        });
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", false)
+                                .css("color", "#101010");
+                        });
+                        editable = true;
+                    }
+                    else{
+                        $('.classroom input').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", true)
+                                .closest("div")
+                                .css("opacity",".5");
+                        });
+                        $('.subject textarea').each( function(i, obj){
+                            $(obj)
+                                .attr("readonly", true)
+                                .css("color", "#444444");
+                        });
+                        editable = false;
+                    }
+                });
+
+                function doNothing(){
+                    classValidation();
+                    doNothingElse();
+                }
+                function doNothingElse(){
+                    doNothing();
+                }
+
+
+                function classValidation(){
+//                    $('.classroom input').each( function(i, obj){
+////                        var value = $(obj).val().trim();
+////                        if (( i == 1 ) ))
+////                            alert(( value.indexOf(" ") );
+//                    });
+                    return false;
+                }
+
+
+            });
+        </script>
     </head>
     <body>
 
-    <h1><?php echo getLanguage("substituteTeacherForm", $lang) ?></h1>
+    <h1><?php echo getLanguage("timetable", $lang) ?></h1>
 
-    <h2><?php echo getLanguage("chooseOption", $lang) ?></h2>
+    <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
+    <form method="get">
+        <table id="info">
+            <tr>
+                <td><label><?php echo getLanguage("staffId",$lang)?></td>
+                <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
+                <td><input type="submit" class="text1" name="getTimetable" value="Submit" /></td>
+            </tr>
+            <tr><td></td>
+                <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
+            </tr>
+        </table>
+    </form>
 
-    <table id="info">
-        <tr>
-            <td><input type="RADIO" name="Choice" value="Teacher" checked="1" onclick="document.getElementById('selection').innerHTML='Teacher : ';"/><?php echo getLanguage("byTeacher",$lang)?></td>
-            <td><input type="RADIO" name="Choice" value="Class" onclick="document.getElementById('selection').innerHTML='Class : ';  " /> <?php echo getLanguage("byClass",$lang)?></td>
-        </tr>
-        <tr>
-            <td colspan="2"><span id="selection"><?php echo getLanguage("teachersName",$lang)?> : </span><input type="text" class="text1" name="class" value=""></td>
-        </tr>
-    </table>
+
+    <form name="frmTimetable" onsubmit="return classValidation()" method="post">
+        <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
 
+<!--        <table id="edit">-->
+<!--            <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td></tr>-->
+<!--        </table>-->
+        <table class="timetable" >
+            <tr>
+                <th class="time"><?php echo getLanguage("time",$lang)?></th>
+                <th><?php echo getLanguage("monday",$lang)?></th>
+                <th><?php echo getLanguage("tuesday",$lang)?></th>
+                <th><?php echo getLanguage("wednesday",$lang)?></th>
+                <th><?php echo getLanguage("thursday",$lang)?></th>
+                <th><?php echo getLanguage("friday",$lang)?></th>
+            </tr>
+
+            <?php
+            $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
+
+            $classColour = array();
 
 
-    <table id="timetable" >
-        <tr>
-            <th class="time"><?php echo getLanguage("time",$lang)?></th>
-            <th><?php echo getLanguage("monday",$lang)?></th>
-            <th><?php echo getLanguage("tuesday",$lang)?></th>
-            <th><?php echo getLanguage("wednesday",$lang)?></th>
-            <th><?php echo getLanguage("thursday",$lang)?></th>
-            <th><?php echo getLanguage("friday",$lang)?></th>
-        </tr>
+            for($i = 0; $i < 8; $i++){
 
-        <tr>
-            <td >07.50-08.30</td>
-            <td onclick="<?php echo("yakow")?>" ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                if(($i == 4)){ //INTERVAL
+                    $intervalRow = "\t<tr class=interval>\t<td>10.30-10.50</td> \t<td colspan=\"5\" >" . "INTERVAL" . "</td>\t</tr>\n";
+                    echo $intervalRow;
+                }
 
-        <tr>
-            <td >08.30-09.10</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                for($x = 0; $x < 6; $x++){
+                    $thisCell = "";
+                    if($x == 0){
+                        $thisCell = "\t<tr>\t ";
+                        $thisCell .= "<td class='time'>".$timeArray[ $i ] ."</td>";
+                    }
+                    else{ //Normal rows are here.
+                        $number=($i + (8 * ($x - 1) ));
+                        $thisCell = "";
 
-        <tr>
-            <td >09.10-09.50</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                        $subject = $myTime->slot[$number]->Subject;
+                        $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
-        <tr>
-            <td >09.50-10.30</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
-        <tr>
-            <td  >10.30-10.50</td>
-            <td  colspan="5" align="center"><?php echo getLanguage("interval",$lang)?></td>
-        </tr>
+                        $currColour = $colourArray[(rand(0,14))];
+                        while ( in_array($currColour, $classColour) )
+                        {
+                            $currColour = $colourArray[(rand(0,14))];
+                        }
 
-        <tr>
-            <td >10.50-11.30</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                        if( trim($class) == ""){
+                            $classColour[$class] = "#dedede";
+                        }
+                        if ($classColour[$class] == ""){
+                            $classColour[$class] = $currColour;
+                        }
+                        else{
+                            $currColour = $classColour[$class];
+                        }
+                        if($class !=" ")
+                        {
+                        $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 
-        <tr>
-            <td >11.30-12.10</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                        $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
+                        $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>
+                        <form><input type = button style='background-color:$currColour; border-color:$currColour' value='substitute' onclick=alert(1)></form></td>";
+                        }
+                        else
+                        {
+                            $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 
-        <tr>
-            <td >12.10-12.50</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+                            $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
+                            $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>";
+                        }
+                        if ($x % 5 == 0)
+                            $thisCell .= "\t</tr>\n";
+                    }
+                    echo $thisCell;
+                }
+            }
+            ?>
+        </table>
 
-        <tr>
-            <td >12.50-01.30</td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-            <td ></td>
-        </tr>
+        <br/>
+        <br/>
+<!--        <table id="submit">-->
+<!--            <tr>-->
+<!--                <td><input type="submit" name="Submit" value="Save Changes"></td>-->
+<!--            </tr>-->
+<!--        </table>-->
 
-    </table>
+    </form>
 
     </body>
-</html>
+    </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 1200;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Timetable";
 //Only change above
 
 $pageContent = ob_get_contents();
