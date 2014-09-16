@@ -42,7 +42,7 @@
         {
             $curr = substr($workingVal, $x, 1);
             if( preg_match("/[a-z]/i", $curr ) ){
-                $arrGradeClass[1] .= $curr;
+                $arrGradeClass[1] .= strtoupper( $curr );
             }
 
         }
