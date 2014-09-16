@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: User
+ * User: vimukthi
  * Date: 9/11/14
  * Time: 4:45 PM
  */
@@ -34,7 +34,8 @@ $result = getAllStaff();
 /*LANGUAGE
  *
  * */
-$line1 = "Class Information Report";
+$line1 = "Class Teachers Report";
+$line2 = "D.S Senanayake College Colombo 7";
 
 $column0Header = "Grade";
 $column1Header = "Class";
@@ -71,7 +72,7 @@ $column3Header = "Teachers'Name";
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
-        h1, h2, h3{
+        h1,h3{
             text-align: center;
         }
         .report{
@@ -87,7 +88,7 @@ $column3Header = "Teachers'Name";
         .report .headerRow{
             height:50px;
         }
-        .report .{
+        .report.{
             text-align: center;
         }
         .report .center{
@@ -204,7 +205,8 @@ $column3Header = "Teachers'Name";
 
 <body>
 
-<h2><?php echo $line1 ?></h2>
+<h1><?php echo $line1 ?></h1>
+<h3><?php echo $line2 ?></h3>
 
 
 <table class="report">
