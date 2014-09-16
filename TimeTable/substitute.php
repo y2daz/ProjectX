@@ -141,8 +141,8 @@ if (isset($_GET["getTimetable"]))
 
             <?php
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
-            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572",
-                                "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5",
+                "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
             $classColour = array();
 

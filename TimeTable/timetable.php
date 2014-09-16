@@ -101,12 +101,11 @@ if (isset($_GET["getTimetable"]))
                 var i = 0;
 
 //                setInterval(function(){
-////                    alert("try");
-//                    $("#" + i).toggleClass("animated", 600);
+//                    $("#" + i).toggleClass("animated");
 //                    i++;
 //                    if(i >= 40)
 //                        i=0;
-//                }, 12);
+//                }, 100);
 
                 var editable = false;
 
@@ -163,7 +162,7 @@ if (isset($_GET["getTimetable"]))
     </form>
 
 
-    <form name="frmTimetable" onsubmit="return classValidation()" method="post">
+    <form name="frmTimetable" method="post">
         <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
 
@@ -182,7 +181,8 @@ if (isset($_GET["getTimetable"]))
 
             <?php
                 $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
-                $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
+                $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5",
+                                    "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
                 $classColour = array();
 
@@ -207,10 +207,10 @@ if (isset($_GET["getTimetable"]))
                             $subject = $myTime->slot[$number]->Subject;
                             $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
-                            $currColour = $colourArray[(rand(0,14))];
+                            $currColour = $colourArray[ (rand(0,14)) ];
                             while ( in_array($currColour, $classColour) )
                             {
-                                $currColour = $colourArray[(rand(0,14))];
+                                $currColour = $colourArray[  (rand(0,14)) ];
                             }
 
                             if( trim($class) == ""){
@@ -227,8 +227,9 @@ if (isset($_GET["getTimetable"]))
 
                             $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
                             $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea></td>";
-                            if ($x % 5 == 0)
+                            if ($x % 5 == 0){
                                 $thisCell .= "\t</tr>\n";
+                            }
                         }
                         echo $thisCell;
                     }
