@@ -50,8 +50,8 @@ if (isset($_POST["Submit"]))
             $tempGrade = $arrClassroom[0];
             $tempClass = $arrClassroom[1];
 
-            echo $tempGrade;
-            echo $tempClass . "<br />";
+//            echo $tempGrade;
+//            echo $tempClass . "<br />";
 
             $gradeArr[$i] = $tempGrade;
             $classArr[$i] = $tempClass;
