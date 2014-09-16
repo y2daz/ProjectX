@@ -7,7 +7,11 @@
  */
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 ob_start();
+error_reporting(E_ERROR | E_PARSE);
+
+
 
 if(isset($_GET["Grade"]))
 {
@@ -118,6 +122,8 @@ else
 
         h1{
             text-align: center;
+            background-color: #005e77;
+            color: #ffffff;
         }
         #details .title{
             background-color: #005e77;
@@ -131,7 +137,7 @@ else
             top:0px;
             left:30px;
             border-collapse: collapse;
-            min-width:600px;
+            min-width:750px;
         }
         #marks th{
             font-weight: 600;
@@ -242,28 +248,51 @@ else
                 echo "<td><input type='text' name='remarks' value=''></td>";
                 echo "</tr>";
             }
+
+            if (isset($_POST["Submit"]))
+            {
+
+
+                $admissionNo=$_POST["Admission Number"];
+                $Subject = $_POST["Subject"];
+                $Year=$_POST["Year"];
+                $Term=$_POST["Term"];
+
+                $Marks=$_POST["Marks"];
+                $Remarks=$_POST["Remarks"];
+
+
+                $operation =  insertTermTestMarks($admissionNo, $Subject, $Year,$Term, $Mark, $Remarks);
+
+                if($operation==true){
+                    sendNotification("Insert successful.");
+                }
+                else{
+                    sendNotification("Error inserting marks.");
+                }
+            }
+
         }
         ?>
 
 
     </table>
 
-    <table>
-        <tr>
-            <td></td>
-            <td><input class="button" type="submit" value="<?php echo $submit ?>"></td>
+
+
+
+            <input name="Submit" class="button" type="submit" value="<?php echo $submit ?>">
 <!--            <td><input class="button1" type="reset" value="--><?php //echo $reset ?><!--"></td>-->
-        </tr>
-    </table>
+      
 
     </body>
 </html>
 
 <?php
 //Change these to what you want
-$fullPageHeight = 1000;
+$fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Term Test Results";
+$pageTitle= "Template";
 //Only change above
 
 $pageContent = ob_get_contents();

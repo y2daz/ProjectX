@@ -14,6 +14,12 @@
 
     error_reporting(E_ERROR | E_PARSE);
 
+
+    if(isset($_GET["StaffID"]))
+    {
+        $_POST["newStaffID"] = $_GET["StaffID"];
+    }
+
     function insertLeaveFunc()
     {
         $operation = insertLeave($_POST["staffid"], $_POST["startdate"], $_POST["enddate"], $_POST["leavetype"], $_POST["otherreasons"]);
@@ -103,7 +109,7 @@
 
 
     if (isFilled($_POST["newStaffID"])){
-//        echo $_POST["newStaffID"];
+
         $result = getLeaveData($_POST["newStaffID"]);
 
         foreach($result as $row)
@@ -117,14 +123,61 @@
         if($OfficialLeave < 0)
         {
             $OfficialLeave = 0;
+
+            if($MaternityLeave < 0 && $OtherLeave < 0)
+            {
+
+                $MaternityLeave = 0;
+                $OtherLeave = 0;
+
+            }else if($MaternityLeave < 0)
+            {
+                $MaternityLeave = 0;
+
+            }else if($OtherLeave < 0)
+            {
+                $OtherLeave = 0;
+            }
+
         }
         else if ($MaternityLeave < 0)
         {
             $MaternityLeave = 0;
+
+            if($OfficialLeave < 0 && $OtherLeave < 0)
+            {
+
+                $OfficialLeave = 0;
+                $OtherLeave = 0;
+
+            }else if($OfficialLeave < 0)
+            {
+                $OfficialLeave = 0;
+
+            }else if($OtherLeave < 0)
+            {
+                $OtherLeave = 0;
+            }
+
         }
         else if ($OtherLeave < 0)
         {
             $OtherLeave = 0;
+
+            if($OfficialLeave < 0 && $MaternityLeave < 0)
+            {
+
+                $OfficialLeave = 0;
+                $MaternityLeave = 0;
+
+            }else if($OfficialLeave < 0)
+            {
+                $OfficialLeave = 0;
+
+            }else if($MaternityLeave < 0)
+            {
+                $MaternityLeave = 0;
+            }
         }
 
 //        echo $OfficialLeave;
@@ -132,7 +185,84 @@
 //        echo $OtherLeave;
 //        echo $StaffName;
 
+        if($OfficialLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1RED";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1GREEN";
 
+            if($MaternityLeave == 0 && $OtherLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($MaternityLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1GREEN";
+            }else if($OtherLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1GREEN";
+                $OtherLeaveColour = "tb1RED";
+            }
+        }
+        else if($MaternityLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1RED";
+            $OtherLeaveColour = "tb1GREEN";
+
+            if($OfficialLeave == 0 && $OtherLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($OfficialLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1GREEN";
+            }else if($OtherLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1GREEN";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }
+
+        }
+        else if($OtherLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1RED";
+
+            if($OfficialLeave == 0 && $MaternityLeave==0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }else if($OfficialLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1RED";
+                $MaternityLeaveColour = "tb1GREEN";
+                $OtherLeaveColour = "tb1RED";
+            }else if($MaternityLeave == 0)
+            {
+                $OfficialLeaveColour = "tb1GREEN";
+                $MaternityLeaveColour = "tb1RED";
+                $OtherLeaveColour = "tb1RED";
+            }
+        }
+        else
+        {
+            $OfficialLeaveColour = "tb1GREEN";
+            $MaternityLeaveColour = "tb1GREEN";
+            $OtherLeaveColour = "tb1GREEN";
+        }
+
+        $StaffColour = "tb1GREEN";
         $staffIdVal = $_POST["newStaffID"];
         $startDateVal = $_POST["startDate"];
         $endDateVal = $_POST["endDate"];
@@ -140,6 +270,11 @@
         $otherReasonsVal = $_POST["otherReasons"];
 
     }else{
+
+        $StaffColour = "tb1WHITE";
+        $OfficialLeaveColour = "tb1WHITE";
+        $MaternityLeaveColour = "tb1WHITE";
+        $OtherLeaveColour = "tb1WHITE";
         $staffIdVal = "";
         $startDateVal = "";
         $endDateVal = "";
@@ -184,6 +319,8 @@
         $enterdetails = "Enter Details";
         $availableleavedays ="Available Leave Days";
         $staffname = "Name";
+        $searchstaffid = "Search Staff ID";
+
 
     }
 
@@ -214,8 +351,8 @@
             .insert2
             {
                 position: absolute;
-                left: 500px;
-                top: 100px;
+                left: 535px;
+                top: 150px;
 
             }
             .insert2 th
@@ -235,7 +372,7 @@
                 height:30px;
                 padding:5px;
                 text-align: left;
-            ;
+
             }
 
             .insert td
@@ -249,17 +386,37 @@
                 font-size:15px;
                 Right:-335px;
                 top:20px;
+
             }
+
+            .tb1GREEN{
+                background-color : #BCED91;
+                border: 0px solid #008000;
+                text-align: center;
+                font-weight: 400;
+
+            }
+
+            .tb1WHITE{
+                background-color : #ffffff;
+                text-align: center;
+                font-weight: 400;
+            }
+
+            .tb1RED{
+                background-color : red;
+                border: 0px solid crimson;
+                text-align: center;
+                font-weight: 400;
+            }
+
+
+
 
 
         </style>
 
         <script>
-
-//            function selectedvalue(data)
-//            {
-//                document.getElementById("check").value = data.value;
-//            }
 
 
             $(document).ready(function() {
@@ -279,7 +436,6 @@
 
             });
 
-
         </script>
 
 
@@ -287,29 +443,31 @@
     <body>
             <h1>Apply For Leave</h1>
 
-            <form class="insert" method="post">
+            <form class="insert" method="post" action="applyForLeave.php">
 
                 <table id="details">
-                    <tr><th><?php echo $enterdetails ?><th></th></tr>
+                    <tr><th><?php echo $enterdetails ?><th></th> <th></th> </tr>
+
                     <tr>
                         <td><?php echo $staffid ?></td>
-                        <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true"/></td>
+                        <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true" tabindex="1"/></td>
+                        <td><input type="button" name="searchstaffid" value="<?php echo $searchstaffid ?>" onclick="location.href='../leaveManagement/searchStaffID.php'"></td>
                     </tr>
                     <tr>
                         <td><?php echo $staffname ?></td>
-                        <td><input type="text" name="staffname" value="<?php echo $StaffName ?>" required="true" readonly>
+                        <td><input class="<?php echo $StaffColour ?>" type="text" name="staffname" value="<?php echo $StaffName ?>" required="true" readonly>
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" /></td>
+                        <td><input type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" /></td>
+                        <td><input type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $leavetype ?></td>
-                        <td><select name="leavetype" required="true" >
+                        <td><select name="leavetype" required="true" tabindex="4">
                                 <option value="1" selected="<?php echo ($leaveTypeVal == 1? "selected": ""); ?>"><?php echo $officialleavecombo ?></option>
                                 <option value="2" selected="<?php echo ($leaveTypeVal == 2? "selected": ""); ?>"><?php echo $maternityleavecombo ?></option>
                                 <option value="3" selected="<?php echo ($leaveTypeVal == 3? "selected": ""); ?>"><?php echo $otherleavecombo ?></option>
@@ -318,7 +476,7 @@
                     </tr>
                     <tr>
                         <td><?php echo $otherreasons ?></td>
-                        <td><textarea name="otherreasons" rows="3" cols="25" draggable="false" style="resize:none"><?php echo $otherReasonsVal ?></textarea></td>
+                        <td><textarea name="otherreasons" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
                     </tr>
                 </table>
 
@@ -327,18 +485,18 @@
                     <tr><th><?php echo $availableleavedays ?> <th></th></tr>
 
                     <tr>
-                        <td><?php echo $officialleavecombo ?></td>
-                        <td> <?php echo $OfficialLeave ?> </td>
+                        <td ><?php echo $officialleavecombo ?></td>
+                        <td class="<?php echo $OfficialLeaveColour ?>"> <?php echo $OfficialLeave ?> </td>
                     </tr>
 
                     <tr>
                         <td><?php echo $maternityleavecombo ?></td>
-                        <td> <?php echo $MaternityLeave ?></td>
+                        <td class="<?php echo $MaternityLeaveColour ?>"> <?php echo $MaternityLeave ?></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $otherleavecombo ?></td>
-                        <td> <?php echo $OtherLeave ?></td>
+                        <td class="<?php echo $OtherLeaveColour ?>"> <?php echo $OtherLeave ?></td>
                     </tr>
 
                 </table>
@@ -346,12 +504,10 @@
                 <br />
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme">
-<!--                    <input type="reset" name="reset" value="--><?php //echo $reset ?><!--">-->
-<!--                    <input type="submit" name="GetLeaveData" value="--><?php //echo $getleavedata ?><!--">-->
+                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
+                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'">
                 </p>
 
-<!--                <input name="leavetype" id="check" value="OfficialLeave" >-->
             </form>
     </body>
 </html>

@@ -13,7 +13,8 @@ require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
 
 
-
+//hehe
+//hhee
 
 ob_start();
 $currentStaffMembers="";
@@ -37,6 +38,10 @@ if( isset($_GET["staffID"]) )
     $staffID = $_GET["staffID"];
 
 }
+if( isset($_GET["NamewithInitials"]))
+{
+    $nameWithInitials = $_GET["NamewithInitials"];
+}
 
 if (isset($_GET["delete"]))
 {
@@ -52,17 +57,28 @@ if (isset($_GET["search"]))
 {
     $currentStaffMembers = null;
 
-    if (isset($_GET["Choice"]))
+    if ($_GET["Choice"] == "Staffid")
     {
         $currentStaffMembers = searchStaff($_GET["query"]);
     }
+    elseif($_GET["Choice"] == "Name")
+    {
+         $currentStaffMembers = searchstaffbyname($_GET["query"]);
+    }
+    elseif($_GET["Choice"] == "nicnumber")
+    {
+        $currentStaffMembers = searchstaffbynic($_GET["query"]);
+    }
+    elseif($_GET["Choice"] == "contactnumber")
+    {
+        $currentStaffMembers = searchstaffbycontactnumber($_GET["query"]);
+    }
     else
     {
-        $currentStaffMembers = getAllStaff();
+        $currentStaffMembers = getAllStaff();    }
+        $tableDetails= "none";
+        $tableViewTable= "block";
     }
-    $tableDetails= "none";
-    $tableViewTable= "block";
-}
 else
 {
     $currentStaffMembers = getAllStaff();
@@ -81,7 +97,7 @@ if (isset($_GET["expand"]))
         $DateofBirth = $row[$i++];
         $Gender = $row[$i++];
         $NationalityRace = $row[$i++];
-        $Religion = $row[$i++];
+        $staffReligion = $row[$i++];
         $CivilStatus = $row[$i++];
         $NICNumber = $row[$i++];
         $MailDeliveryAddress = $row[$i++];
@@ -113,7 +129,7 @@ else
     $DateofBirth = "";
     $Gender = "";
     $NationalityRace = "";
-    $Religion ="";
+    $staffReligion ="";
     $CivilStatus = "";
     $NICNumber = "";
     $MailDeliveryAddress ="";
@@ -179,6 +195,9 @@ else
             height:150px;
             display: <?php echo $tableDetails ?>
         }
+        .details .number{
+            max-width: 40px;
+        }
 
         input.button1 {
             position:relative;
@@ -188,6 +207,33 @@ else
             top:100px;
         }
     </style>
+    <script>
+        $(document).ready( function(){
+            $(".number").change();
+        });
+
+    function changeTextbox(element){
+        var elementTag = element.tagName.toLowerCase();
+        var changeId;
+
+        if (elementTag == "select"){
+            changeId = "Number" + ($(element).attr('id'));
+
+            var toChange = document.getElementById(changeId);
+            toChange.value = element.value;
+        }
+        else
+        {
+            changeId =  ( $(element).attr('id'));
+
+            changeId = changeId.substr(6, changeId.length-6);
+
+            toChange = document.getElementById(changeId);
+            toChange.value = element.value;
+        }
+    }
+    </script>
+
 </head>
 <?php
     $language = $_COOKIE['language'];
@@ -516,7 +562,7 @@ else
     <table class="details" >
         <tr>
             <td> Staff ID </td>
-            <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>"/> </td>
+            <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
             <td></td>
         </tr>
         <tr>
@@ -544,8 +590,8 @@ else
 
         <tr>
             <td>Natinality/Race </td>
-            <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/>
-                <select id="Cb1" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb1" type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>" onchange="changeTextbox(this)"/>
+                <select id="Cb1" name="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " . $sinhala?></option>
                     <option value="2"><?php echo "2 - " . $srilankantamil?></option>
@@ -560,8 +606,8 @@ else
 
         <tr>
             <td> Religion </td>
-            <td > <input type = "text" name="Religion" value="<?php echo $Religion?>"/>
-                <select id="Cb2" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td ><input class="number" id="NumberCb2" type = "text" name="Religion" value="<?php echo $staffReligion?>" onchange="changeTextbox(this)"/>
+                <select id="Cb2" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$buddhism?></option>
                 <option value="2"><?php echo "2 - " .$hinduism?></option>
@@ -575,8 +621,8 @@ else
         </tr>
         <tr>
             <td> Civil Status  </td>
-            <td > <input type = "text" name="CivilStatus" value="<?php echo $CivilStatus?>"/>
-                <select id="Cb3" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb3" type = "text" name="CivilStatus" value="<?php echo $CivilStatus?>" onchange="changeTextbox(this)"/>
+                <select id="Cb3" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$married?></option>
                 <option value="2"><?php echo "2 - " .$unmarried?></option>
@@ -613,8 +659,8 @@ else
         </tr>
         <tr>
             <td> Employement status </td>
-            <td > <input type = "text" name="EmploymentStatus" value="<?php echo $EmploymentStatus?>"/>
-                <select id="Cb4" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb4" type = "text" name="EmploymentStatus" value="<?php echo $EmploymentStatus?>" onchange="changeTextbox(this)"/>
+                <select id="Cb4" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$fulltime?></option>
                 <option value="2"><?php echo "2 - " .$parttime?></option>
@@ -629,8 +675,8 @@ else
         </tr>
         <tr>
             <td> Medium </td>
-            <td > <input type = "text" name="Medium" value="<?php echo $Medium?>"/>
-                <select id="Cb5" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb5" type = "text" name="Medium" value="<?php echo $Medium?>" onchange="changeTextbox(this)"/>
+                <select id="Cb5" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$sinhala?></option>
                 <option value="2"><?php echo "2 - " .$tamil?></option>
@@ -641,8 +687,8 @@ else
         </tr>
         <tr>
             <td> Position in school  </td>
-            <td > <input type = "text" name="PositioninSchool" value="<?php echo $PositioninSchool?>"/>
-                <select id="Cb6" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb6" type = "text" name="PositioninSchool" value="<?php echo $PositioninSchool?>" onchange="changeTextbox(this)"/>
+                <select id="Cb6" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$principal?></option>
                 <option value="2"><?php echo "2 - " .$actingprincipal?></option>
@@ -657,8 +703,8 @@ else
         </tr>
         <tr>
             <td> Section  </td>
-            <td > <input type = "text" name="Section" value="<?php echo $Section?>"/>
-                <select id="Cb7" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb7" type = "text" name="Section" value="<?php echo $Section?>" onchange="changeTextbox(this)"/>
+                <select id="Cb7" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$PrimaryMultiple?></option>
                 <option value="2"><?php echo "2 - " .$PrimaryEnglish?></option>
@@ -697,8 +743,8 @@ else
         </tr>
         <tr>
             <td> Subject Most taught  </td>
-            <td > <input type = "text" name="SubjectMostTaught" value="<?php echo $SubjectMostTaught?>"/>
-                <select id="Cb8" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb8" type = "text" name="SubjectMostTaught" value="<?php echo $SubjectMostTaught?>" onchange="changeTextbox(this)"/>
+                <select id="Cb8" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1">Maths</option>
                 <option value="2">Science</option>
@@ -713,8 +759,8 @@ else
         </tr>
         <tr>
             <td>  Subject Second Most taught </td>
-            <td > <input type = "text" name="SubjectSecondMostTaught" value="<?php echo $SubjectSecondMostTaught?>"/>
-                <select id="Cb9" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb9" type = "text" name="SubjectSecondMostTaught" value="<?php echo $SubjectSecondMostTaught?>"onchange="changeTextbox(this)"/>
+                <select id="Cb9" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1">Maths</option>
                 <option value="2">Science</option>
@@ -729,8 +775,8 @@ else
         </tr>
         <tr>
             <td>  Service Grade  </td>
-            <td > <input type = "text" name="ServiceGrade" value="<?php echo $ServiceGrade?>" />
-                <select id="Cb10" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb10" type = "text" name="ServiceGrade" value="<?php echo $ServiceGrade?>" onchange="changeTextbox(this)"/>
+                <select id="Cb10" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$SriLankaEducationAdministrativeServiceI?></option>
                 <option value="2"><?php echo "2 - " .$SriLankaEducationAdministrativeServiceII?></option>
@@ -756,8 +802,8 @@ else
         </tr>
         <tr>
             <td> Highest Educational Qualification  </td>
-            <td > <input type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"/>
-                <select id="Cb11" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb11" type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"onchange="changeTextbox(this)"/>
+                <select id="Cb11" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$BelowOLevel?></option>
                 <option value="2"><?php echo "2 - " .$OLevel?></option>
@@ -772,8 +818,8 @@ else
         </tr>
         <tr>
             <td> Highest Professional Qualification  </td>
-            <td > <input type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>"/>
-                <select id="Cb12" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb12" type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>"onchange="changeTextbox(this)"/>
+                <select id="Cb12" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$PhDEd?></option>
                 <option value="2"><?php echo "2 - " .$MPhilEd?></option>
@@ -800,8 +846,8 @@ else
         </tr>
         <tr>
             <td> Course of Study </td>
-            <td > <input type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>"/>
-                <select id="Cb13" name="" type="text" value="" onchange="changeTextbox(this)">
+            <td > <input class="number" id="NumberCb13" type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>"onchange="changeTextbox(this)"/>
+                <select id="Cb13" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$BscinEducation?></option>
                 <option value="2"><?php echo "2 - " .$BscinPhysics?></option>
@@ -904,7 +950,15 @@ else
             </td>
             <td></td>
         </tr>
+        </table>
 
+        <br />
+        <br />
+        <br />
+
+
+
+    <table align=center>
         <tr>
             <td> <input type="Submit" value="Update" name="Submit" /> </td>
 
@@ -913,6 +967,7 @@ else
 
     <br />
     <br />
+    </form>
 
     <!--<table align="center">
         <tr>

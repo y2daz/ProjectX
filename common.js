@@ -12,7 +12,6 @@ $(document).ready(function() {
 
     moveNav();
 
-
     /*
      Copyright (c) 2014 by Pramod Kumar (http://codepen.io/Pro/pen/hwfen)
 
@@ -176,6 +175,35 @@ function resetPassword(user){
     }
     $.prompt(states);
 }
+
+function logIn(){
+    var states = {
+        state0: {
+            title: "Log In to Mana",
+            html:'<table><tr><td><label>Email </td><td><input type="text" name="jTxtUsername" value=""></label></td></tr>'+
+                '<tr><td><label>Password </td><td><input type="password" name="jTxtPassword" value=""></label></td></tr></table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtUsername']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                var username = f["jTxtUsername"];
+                var password = f["jTxtPassword"];
+
+                if( v == 1){
+//                    if (password === confPassword){
+//                    if (password !== ""){
+                    var params = {"username" : username, "password" : password};
+                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    }
+    $.prompt(states);
+}
+
 
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.

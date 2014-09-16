@@ -5,30 +5,42 @@
  * Date: 19/07/14
  * Time: 17:04
  */
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once("dbAccess.php");
     require_once("common.php");
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+    $privilege = -1;
 
-    if(!isFilled($_COOKIE['language']))
+    if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
-    if(!isFilled($_SESSION["user"]))
-    {
-        header("Location: " . PATHFRONT . "/login.php");
+
+    if(isset($_POST["username"])) {
+        login($_POST["username"],$_POST["password"]);
     }
+
+    if(!isset($_SESSION["user"])){
+        $logging = "Log In";
+        if( strcmp( $_SERVER['PHP_SELF'], "/Menu.php") !== 0){
+            header("Location: " . PATHFRONT . "/Menu.php");
+        }
+    }
+    else{
+        $privilege = checkPrivilege($_SESSION["user"]);
+        $logging = "Log Out";
+    }
+
     if(isset($_GET["logout"]))
     {
         $_SESSION["user"] = NULL;
-        header("Location: " . PATHFRONT . "/login.php");
+        header("Location: " . PATHFRONT . "/Menu.php");
     }
-    /*CHANGE THIS ACCORDING TO WHAT HEIGHT YOU WANT*/
-//    $fullPageHeight = 700;
-//
-//    $footerTop = $fullPageHeight + 50;
+
 
 
 ?>
@@ -81,6 +93,11 @@
                         $('#nav li a').removeClass('active');
                     }
                 });
+
+                $("#logInLink").on("click", function(e){
+                    logIn();
+                });
+
             });
 
         </script>
@@ -110,94 +127,114 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <a id="menuButton" class="hidden" <!--onclick="menuClicked(this);"--><span></span></a>
+        <a id="menuButton" class="hidden" <span></span></a>
 
 
         <span id="messagingSystem"></span>
 
         <div id="nav">
-<!--            <li id="Red"><a id="blue">Notices</a>-->
-<!--                <ul>-->
-<!--                    <li><a href="#">View Notices</a><hr /></li>-->
-<!--                    <li><a href="#">Create Notice</a></li>-->
-<!--                </ul>-->
-<!--            </li>-->
-            <li><a><?php echo $staffManagement; ?></a>
-                <ul>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffRegistration.php"><?php echo $registerStaffMember; ?></a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/blacklist.php">Manage Blacklist</a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/ClassroomInformation.php">Class Information</a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/searchStaffDetails.php"><?php echo $searchStaffMember; ?></a><hr /></li>
-                    <!--                    <li><a href="/staffManagement/sports.php">Sports</a><hr /></li>-->
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/teacherAchievenment.php">Staff Achievements</a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/staffManagement/staffReport.php" target="_blank">Staff Report</a></li>
-                </ul>
-            </li>
-            <li><a><?php echo $leaveManagement; ?></a>
-                <ul>
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/applyForLeave.php"><?php echo $applyForLeave; ?></a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/leaveManagement/approveLeave.php"><?php echo $approveLeave; ?></a></li>
-                    <!--                    <li><a href="./leaveManagement/cancelLeave.php">--><?php //echo $viewLeaveHistory; ?><!--</a><hr /></li>-->
-<!--                    <li><a href="--><?php //echo PATHFRONT ?><!--/leaveManagement/previousLeaveHistory.php">Generate Leave Report</a></li>-->
-                </ul>
-            </li>
-            <li><a  href="<?php echo PATHFRONT ?>/TimeTable/timetable.php"><?php echo $timetables; ?></a>
-                <!--                <ul>-->
-                <!--                    <li><a  href="#">Create Timetable by Teacher</a><hr /></li>-->
-                <!--                    <li><a  href="#">Create Timetable by Class</a></li>-->
-                <!--                </ul>-->
-            </li>
-            <li><a href="<?php echo PATHFRONT ?>/TimeTable/substitute.php">Substitute Teacher</a>
-                <!--                <ul>-->
-                <!--                    <li><a  href="#">Substitute Period by Teacher</a><hr /></li>-->
-                <!--                    <li><a  href="#">Substitute Period by Class</a></li>-->
-                <!--                </ul>-->
-            </li>
-            <li><a>Student Information</a>
-                <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/studentRegistration.php">Register Student</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/studentInformation/SearchStudent.php">Search Student</a></li>
-                </ul>
-            </li>
-            <li><a href="<?php echo PATHFRONT ?>/eventManagement/eventList.php"><?php echo $eventManagement; ?></a>
-<!--                <ul>-->
-<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/eventList.php">View Event List</a><hr /></li>-->
-<!--                    <li><a  href="--><?php //echo PATHFRONT ?><!--/eventManagement/manageEvents.php">Manage Events</a></li>-->
-<!--                </ul>-->
-            </li>
-            <li><a>Attendance</a>
-                <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/attendance/markAttendance.php">Mark Attendance</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/attendance/classwise.php">Class-wise Report</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/attendance/studentwise.php">Student-wise Report</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/attendance/viewAttendance.php">View Attendance</a></li>
-                </ul>
-            </li>
-            <li><a>Marks and Grading</a>
-                <ul>
-                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/OLinput.php">Enter O/L Results</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/ALinput.php">Enter A/L Results</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/termTestMarks.php">Enter Term Marks</a><hr /></li>
-                    <li><a  href="<?php echo PATHFRONT ?>/marksAndGrading/searchMarks.php">Search Grading Information</a></li>
-                </ul>
-            </li>
-            <li><a>Administrative Tasks</a>
-                <ul>
-                    <li><a href="<?php echo PATHFRONT ?>/administration/yearPlan.php">Manage Year Plan</a><hr /></li>
-                    <li><a href="<?php echo PATHFRONT ?>/administration/manageUsers.php">Manage Users</a></li>
-                </ul>
-            </li>
+
+            <?php
+
+            if($privilege == 2){ // Change to 1 later.
+                $navMenu = "<li><a> $staffManagement</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $timetables . "</a>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Administrative Tasks</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Manage Year Plan" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+            }
+            elseif($privilege >= 0) {
+                $navMenu = "<li><a> $staffManagement</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/blacklist.php\">" . "Manage Blacklist" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/teacherAchievenment.php\">" . "Staff Achievements" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $timetables . "</a>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Student Information</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/studentInformation/studentRegistration.php\">" . "Register Student" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/studentInformation/SearchStudent.php\">" . "Search Student" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/eventManagement/eventList.php\">" . $eventManagement . "</a>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Attendance</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/markAttendance.php\">" . "Mark Attendance" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/classwise.php\">" . "Class-wise Report" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/studentwise.php\">" . "Student-wise Report" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/viewAttendance.php\">" . "View Attendance" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Marks and Grading</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/OLinput.php\">" . "Enter O/L Results" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/ALinput.php\">" . "Enter A/L Results" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/termTestMarks.php\">" . "Enter Term Marks" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/searchMarks.php\">" . "Search Grading Information" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Administrative Tasks</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Manage Year Plan" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+            }
+            else{
+                $navMenu = "";
+            }
+
+            echo $navMenu;
+
+
+            ?>
+
         </div>
 
         <div id="header">
+            <img id="dsLogo" src="<?php echo PATHFRONT ?>/images/logo.jpg" height="90px" />
         </div>
 
         <div id="divMenu">
             <table id="topMenu">
                 <tr>
                     <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
-<!--                    <td><a href="--><?php //echo PATHFRONT ?><!--/template.php">Your account</a></td>-->
-                    <td><a href="<?php echo PATHFRONT ?>/Menu.php?logout=1">Log out</a></td>
+                    <td><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></td>
+<!--                    <td></td>-->
                 </tr>
             </table>
         </div>
@@ -212,5 +249,8 @@
         <div id="language">
             <ul><a href="#" onClick="setCookie('language','1')">සිංහල</a> | <a href="#" onClick="setCookie('language','0')">English</a></ul>
         </div>
+
+<!--        <div id="dsLogo">-->
+<!--        </div>-->
     </body>
 </html>

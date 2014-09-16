@@ -7,8 +7,24 @@
  */
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
-//require_once(THISROOT . "/common.php");
+error_reporting(E_ERROR | E_PARSE);
 ob_start();
+
+if (isset($_GET["search"]))
+{
+    $currentresult = null;
+
+    if ($_GET["Choice"] == "AdmissionNo")
+    {
+        $currentresult =getOL($_GET["indexNo"]) ;
+    }
+
+    else if($_GET["Choice"] == "IndexNo")
+    {
+        $currentStudent = getOLadmission($_GET["admissinNo"]);
+        //echo $_GET["value"];
+    }
+}
 
 ?>
 
@@ -23,40 +39,85 @@ ob_start();
 
     h1{
         text-align: center;
+
+    }
+
+    h2{
+        text-align: center;
+        background-color: #005e77;
+        color: #ffffff;
     }
 
 
-    table, th, td {
+    #term, th, td {
         border: 0px solid black;
 
     }
-    th{
-        text-align:left;
+
+
+    #term td {
+        text-align:center;
+        height: 80px;
     }
 
-    td {
-        text-align:left;
+    #term tr{
+        height: 20px;
+        width: 0px;
+
     }
 
-    tr{
+    #OL, th, td {
+        border: 0px solid black;
+
+    }
+
+
+    #OL td {
+        text-align:center;
+        height: 80px;
+    }
+
+    #OL tr{
         height: 20px;
     }
 
+    #AL, th, td {
+        border: 0px solid black;
 
-
-    input.button {
-        position:relative;
-        font-weight:bold;
-        font-size:20px;
-        left:30px;
-        top:20px;
     }
-    input.button1 {
+
+
+    #AL td {
+        text-align:center;
+        height: 80px;
+
+    }
+
+    #AL tr{
+        height: 50px;
+    }
+
+
+    input.buttonterm {
         position:relative;
         font-weight:bold;
         font-size:20px;
-        left:50px;
-        top:20px;
+
+    }
+
+
+    input.buttonOL {
+           position:relative;
+           font-weight:bold;
+           font-size:20px;
+
+       }
+
+    input.buttonAL {
+        position:relative;
+        font-weight:bold;
+        font-size:20px;
+
     }
 
 
@@ -68,94 +129,88 @@ ob_start();
 <body>
 
     <h1>Search Results</h1>
-    <form method="GET">
 
-<table class="insert" cellspacing="0">
-<tr>
-    <tr class="alt">
-    <ol>
-    <tr>
+    <h2>Search G.C.E.O/L Results</h2>
 
-        <td>
-            <input type="radio" name="exam" value="term">
-        </td>
-        <td>Term Test Marks</td>
-        <td></td>
+    <form action="OLevelSearch.php" method="get" class="insert">
 
+            <table id="OL">
+                <tr>
+                    <td colspan="1"><span id="selection">Search : </span>
+                        <input type="text" class="text1" name="value" id="value" value=""/>
+                    </td>
+                    <td ><input class="buttonOL" name="search" type="submit" value="Search"></td>
+                </tr>
 
+                <tr>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
+                </tr>
 
-
-        <td>Addmission Number</td>
-        <td><input name="admissionNo" type="text" value=""></td>
-        <td>Grade</td>
-        <td><input name="grade" type="text" value=""></td>
-        <td>Term</td>
-        <td><select name="term" type="text" value="">
-                <option>Mid</option>
-                <option>Final</option>
-
-
-
-    </tr>
-        </ol>
-
-
-    <tr class="alt">
-
-    <ol>
-
-
-
-    <tr>
-        <td>
-            <input dirname="gceOLResult" type="radio" name="exam" value="ol">
-        </td>
-
-        <td>G.C.E O/L Results</td>
-        <td></td>
-
-
-
-        <td>Index Number</td>
-        <td><input name="indexNo" type="text" value=""></td>
-        <td>Year</td>
-        <td><input name="year" type="text" value=""></td>
-    </tr>
-        </ol>
-
-    <tr class="alt">
-    <ol>
-    <tr>
-        <td>
-            <input dirname="gceALResults" type="radio" name="exam" value="al">
-        </td>
-        <td>G.C.E A/L Results</td>
-        <td></td>
-
-
-
-
-
-        <td>Index Number</td>
-        <td><input name="indexNo" type="text" value=""></td>
-        <td>Year</td>
-        <td><input name="year" type="text" value=""></td>
-    </tr>
-        </ol>
-
-
-
-</table>
-
-
+            </table>
         </form>
 
-    <td><input class="button" name="search" type="submit" value="Search"></td>
+
+
+
+    <h2>Search G.C.E. A/L Results</h2>
+
+    <table id="AL">
+
+        <form method="GET">
+
+            <table id="OL">
+                <tr>
+                    <td colspan="1"><span id="selection">Search : </span>
+                        <input type="text" class="text1" name="value" id="value" value=""/>
+                    </td>
+                    <td ><input class="buttonAL" name="search1" type="submit" value="Search"></td>
+                </tr>
+
+                <tr>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
+                </tr>
+
+            </table>
+        </form>
 
 
 
 
-<input class="button1" type="reset" value="Reset">
+    <h2>Search Term Test Marks</h2>
+
+    <form>
+    <table id="term">
+
+    <tr>
+
+        <td>Admission Number</td>
+        <td><input name="admissionNo" type="text" value=""></td>
+        <td>Year</td>
+        <td><input name="year" type="text" value=""></td>
+        <td>Term</td>
+        <td><select name="Term" type="text" value="" >
+
+                <option>Mid</option>
+                <option>Final</option>
+            </select></td>
+
+        <td><input class="buttonterm" name="search2" type="submit" value="Search"></td>
+
+
+        </tr>
+        </table>
+        </form>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -168,9 +223,10 @@ ob_start();
 
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 800;
+
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Search Grading Information";
 //Only change above
 
 $pageContent = ob_get_contents();

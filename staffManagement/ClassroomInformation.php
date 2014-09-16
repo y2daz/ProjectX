@@ -79,7 +79,7 @@ if( isset($_GET["grade"]) )
                 top:20px;
             }
 
-            th{
+            .ClassroomTable th, .details th{
                 align:center;
                 color:white;
                 background-color:#005e77;
@@ -87,7 +87,7 @@ if( isset($_GET["grade"]) )
                 padding:5px;
             }
 
-            td {
+            .ClassroomTable td, .details td{
                 padding:5px;
             }
             .ClassroomTable .alt{

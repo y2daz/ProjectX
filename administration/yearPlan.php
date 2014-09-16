@@ -15,6 +15,9 @@
 
 /*Calendar was created with reference to
 http://www.opal-creations.co.uk/blog/free-scripts-and-code/php-linear-year-view-calendar*/
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 require_once(THISROOT . "/dbAccess.php");
@@ -30,7 +33,7 @@ $dYear = date("Y");
 
 //var_dump($_POST);
 
-if (isFilled($_POST[0]))
+if (isset($_POST["0"]))
 {
     $operation = insertHolidays($dYear, $_POST);
 
@@ -41,6 +44,7 @@ if (isFilled($_POST[0]))
 }
 
 $holidaysArr = getHolidays($dYear);
+
 function printArrJs($Arr){
     $output = "[";
 
@@ -75,60 +79,107 @@ function printArrJs($Arr){
 <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
 <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-    #calendar {
-        border-collapse:collapse;
-        border:1px #005e77 solid;
-    }
-    #calendar th{
-        background-color: #005e77;
-        color: white;
-    }
-    #calendar td {
-        padding-top:10px;
-        padding-bottom:10px;
-        padding-left:2px;
-        padding-right:2px;
-        vertical-align:top;
-        text-align:center;
-        min-width:15px;
-        opacity: 1;
-    }
+            #calendar {
+                border-collapse:collapse;
+                border:1px #005e77 solid;
+            }
+            #calendar th{
+                background-color: #005e77;
+                color: white;
+            }
+            #calendar td {
+                padding-top:10px;
+                padding-bottom:10px;
+                padding-left:2px;
+                padding-right:2px;
+                vertical-align:top;
+                text-align:center;
+                min-width:15px;
+                opacity: 1;
+            }
 
-    .days:hover {
-        background:#9F0;
-        border-color:#000;
-    }
-    .day6 {
-        background:#ECECEC;
-    }
-    .day7 {
-        background:#ECECEC;
-    }
-    .monthName {
-        text-align:left;
-        vertical-align:middle;
-    }
-    .monthName div {
-        padding-left:10px;
-    }
-    .selected {
-        background-color: #bed9ff;
-    }
+            .days:hover {
+                background:#9F0;
+                border-color:#000;
+            }
+            .day6 {
+                background:#ECECEC;
+            }
+            .day7 {
+                background:#ECECEC;
+            }
+            .monthName {
+                text-align:left;
+                vertical-align:middle;
+            }
+            .monthName div {
+                padding-left:10px;
+            }
+            .selected {
+                background-color: #bed9ff;
+            }
+            .poya {
+                background-color: #ffa726;
+            }
+            .publicHoliday {
+                background-color: #2baf2b;
+            }
 
-
-
-    h1 {
-        text-align:center;
-    }
-
-    .button{
-        left:100px;
-    }
+            h1 {
+                text-align:center;
+            }
+            .button{
+                left:100px;
+            }
+            #legend{
+                position: relative;
+                left: 10%;
+                min-width: 200px;
+                display: none;
+            }
+            #legend th{
+                background-color: #005e77;
+                color: white;
+            }
+            #legend .colourCol{
+                width: 20px;
+                height: 20px;
+                border: 1px solid #005e77;
+            }
+            #legend .type{
+                padding-left: 20px;
+            }
+            #sbtTable{
+                min-width: 800px;
+                align-content: center;
+                text-align: center;
+            }
 
         </style>
     </head>
   <body>
   <h1>Year Plan</h1>
+
+
+  <table id="legend">
+      <tr><th colspan="2">Legend</th></tr>
+      <tr></tr>
+      <tr>
+          <td class="colourCol selected"></td>
+          <td class="type">School Holiday</td>
+      </tr>
+      <tr>
+          <td class="colourCol poya"></td>
+          <td class="type">Poya Day</td>
+      </tr>
+      <tr>
+          <td class="colourCol publicHoliday"></td>
+          <td class="type">Public Holiday</td>
+      </tr>
+  </table>
+
+
+  <br />
 
     <table id="calendar" border="1">
         <tr>
@@ -239,11 +290,15 @@ function printArrJs($Arr){
         </html>
 
     <br />
-    <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
+    <table id="sbtTable">
+        <tr><td>
+            <input type="button" class="button" name="Update" value="Update" onclick="submitYearPlan();">
+        </td></tr>
+    </table>
 
 <?php
 //Change these to what you want
-$fullPageHeight = 800;
+$fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Template";
 //Only change above

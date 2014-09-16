@@ -7,6 +7,10 @@
  *
  */
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
@@ -199,7 +203,7 @@ if (isset($_POST["delete"])) //User has clicked a delete button
                                 </tr>
                             </table>
                         </td>
-                        <td class="column"><input type="text"  name="txtAccessLevel" value="" maxlength="1" class="txtAccessLevel"/></td>
+                        <td class="column"><input type="text"  name="txtAccessLevel" value="1" maxlength="1" class="txtAccessLevel"/></td>
                         <td class="column"><input type="Submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
@@ -208,11 +212,9 @@ if (isset($_POST["delete"])) //User has clicked a delete button
     </body>
     </html>
 <?php
-
     $fullPageHeight = 560  + ($i * 35);
     $footerTop = $fullPageHeight + 100;
     $pageTitle= "Manage Users";
-
 
     $pageContent = ob_get_contents();
     ob_end_clean();

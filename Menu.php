@@ -17,6 +17,7 @@ include(THISROOT . "/dbAccess.php");
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 ob_start();
 
+
 ?>
 <html>
     <head>
@@ -27,14 +28,19 @@ ob_start();
 
             #flag {
                 position: relative;
-                top: 50px;
-                left: 90px;
+                top: 10px;
+                left: 95px;
+                border: 5px solid black;
             }
-            #content {
+            .content {
                 position: relative;
-                top: 50px;
+                top: 0px;
                 width: 80%;
                 left: 10%;
+                text-align: justify;
+            }
+            h1{
+                text-align: center;
             }
 
         </style>
@@ -42,17 +48,23 @@ ob_start();
     <body>
 
 
+    <h1>Mana Staff Management System</h1>
+
     <img id="flag" src="<?php echo THISPATHFRONT . "/images/DsFlag.jpg" ?>" />
 
-    <p id="content"> D.S. Senanyake College is a public school in Sri Lanka, named after the first Prime Minister
+    <br />
+    <br />
+    <p class="content"> D.S. Senanyake College is a public school in Sri Lanka, named after the first Prime Minister
         of Independent Sri Lanka, Rt.Hon. D.S. Senanayake. It was established on February 10, 1967 under the
-        stewardship of R.I.T. Alles.</p>
+        stewardship of R.I.T. Alles. </p>
+    <p class="content" > The Mana System was developed for D.S. Senanayake College Colombo to manage school information
+        by Students at SLIIT.</p>
 
     </body>
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Menu";
 //Only change above
