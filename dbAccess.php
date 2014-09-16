@@ -755,6 +755,35 @@ function substitute($subject)
 
 }
 
+function deleteTimetable($staffId)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE timetable SET isDeleted=? WHERE StaffID=? AND isDeleted=0;"))
+    {
+        $deletetimetable = 2 ;
+        $stmt->bind_param("is", $deletetimetable , $staffId);
+        if ($stmt->execute())
+        {
+            if ($stmt->affected_rows > 0)
+            {
+                $stmt->close();
+                $mysqli->close();
+                return TRUE;
+            }
+        }
+    }
+    $mysqli->close();
+    return false;
+
+}
 
     function getAllUsers()
     {
@@ -1096,9 +1125,11 @@ function substitute($subject)
                 }
             }
             $stmt->close();
+            deleteTimetable($staffID);
             $mysqli->close();
             return TRUE;
         }
+
         $mysqli->close();
         return false;
     }
