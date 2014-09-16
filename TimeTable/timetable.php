@@ -100,13 +100,13 @@ if (isset($_GET["getTimetable"]))
 
                 var i = 0;
 
-                setInterval(function(){
-//                    alert("try");
-                    $("#" + i).toggleClass("animated", 600);
-                    i++;
-                    if(i >= 40)
-                        i=0;
-                }, 12);
+//                setInterval(function(){
+////                    alert("try");
+//                    $("#" + i).toggleClass("animated", 600);
+//                    i++;
+//                    if(i >= 40)
+//                        i=0;
+//                }, 12);
 
                 var editable = false;
 
@@ -140,25 +140,6 @@ if (isset($_GET["getTimetable"]))
                         editable = false;
                     }
                 });
-
-                function doNothing(){
-                    classValidation();
-                    doNothingElse();
-                }
-                function doNothingElse(){
-                    doNothing();
-                }
-
-
-                function classValidation(){
-//                    $('.classroom input').each( function(i, obj){
-////                        var value = $(obj).val().trim();
-////                        if (( i == 1 ) ))
-////                            alert(( value.indexOf(" ") );
-//                    });
-                    return false;
-                }
-
 
             });
         </script>

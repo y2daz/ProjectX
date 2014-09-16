@@ -20,14 +20,17 @@ ob_start();
 
 $lang = $_COOKIE["language"];
 
-$_GET["getTimetable"] = $_GET["getTimetable"] | "";
+//if( isset($_GET["getTimetable"]) ){
+//
+//}
+//$_GET["getTimetable"] = $_GET["getTimetable"] | "";
 
 $currentStaffId = "";
 $currentStaffName = "";
 
 error_reporting(0);//Temporarily turn of all errors
 
-if (isFilled($_POST["Submit"]))
+if (isset($_POST["Submit"]))
 {
     $myTime = new Timetable();
     $myTime -> staffId = $_POST["staffId"];
@@ -67,7 +70,7 @@ if (isFilled($_POST["Submit"]))
 //        var_dump($myTime);
 }
 
-if (isFilled($_GET["getTimetable"]))
+if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
@@ -92,65 +95,10 @@ if (isFilled($_GET["getTimetable"]))
 
                 var i = 0;
 
-                setInterval(function(){
-//                    alert("try");
-                    $("#" + i).toggleClass("animated", 600);
-                    i++;
-                    if(i >= 40)
-                        i=0;
-                }, 12);
-
-                var editable = false;
-
-                $('#btnMakeEditable').on('click', function(e){
-                    if (editable == false){
-                        $('.classroom input').each( function(i, obj){
-                            $(obj)
-                                .attr("readonly", false)
-                                .closest("div")
-                                .css("opacity",".7");
-                        });
-                        $('.subject textarea').each( function(i, obj){
-                            $(obj)
-                                .attr("readonly", false)
-                                .css("color", "#101010");
-                        });
-                        editable = true;
-                    }
-                    else{
-                        $('.classroom input').each( function(i, obj){
-                            $(obj)
-                                .attr("readonly", true)
-                                .closest("div")
-                                .css("opacity",".5");
-                        });
-                        $('.subject textarea').each( function(i, obj){
-                            $(obj)
-                                .attr("readonly", true)
-                                .css("color", "#444444");
-                        });
-                        editable = false;
-                    }
+                $(".subject").on("click", function(e){ //Write substitute code
+                   var position = $(this).attr("id");
+                    alert(position);
                 });
-
-                function doNothing(){
-                    classValidation();
-                    doNothingElse();
-                }
-                function doNothingElse(){
-                    doNothing();
-                }
-
-
-                function classValidation(){
-//                    $('.classroom input').each( function(i, obj){
-////                        var value = $(obj).val().trim();
-////                        if (( i == 1 ) ))
-////                            alert(( value.indexOf(" ") );
-//                    });
-                    return false;
-                }
-
 
             });
         </script>
@@ -193,7 +141,8 @@ if (isFilled($_GET["getTimetable"]))
 
             <?php
             $timeArray = array("07.50-08.30", "08.30-09.10", "09.10-09.50", "09.50-10.30", "10.50-11.30", "11.30-12.10", "12.10-12.50", "12.50-01.30" );
-            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
+            $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572",
+                                "#c5e1a5", "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
             $classColour = array();
 
@@ -235,11 +184,11 @@ if (isFilled($_GET["getTimetable"]))
                         }
                         if($class !=" ")
                         {
-                        $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
+                            $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 
-                        $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
-                        $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>
-                        <form><input type = button style='background-color:$currColour; border-color:$currColour' value='substitute' onclick=alert(1)></form></td>";
+                            $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
+                            $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>";
+                            $thisCell .= "<form><input type='button' style='background-color:$currColour; border-color:$currColour' value='substitute' onclick=alert(1)></form></td>";
                         }
                         else
                         {
