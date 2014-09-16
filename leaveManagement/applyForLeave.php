@@ -391,7 +391,7 @@
 
             .tb1GREEN{
                 background-color : #BCED91;
-                border: 0px solid #008000;
+                border: 1px solid #008000;
                 text-align: center;
                 font-weight: 400;
 
@@ -404,8 +404,8 @@
             }
 
             .tb1RED{
-                background-color : red;
-                border: 0px solid crimson;
+                background-color : #ed91bc;
+                border: 1px solid crimson;
                 text-align: center;
                 font-weight: 400;
             }
