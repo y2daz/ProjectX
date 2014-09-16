@@ -27,7 +27,10 @@
 
     $IndexNo = "";
     $AdmissionNo = "";
+    $name="";
     $Year = "";
+    $Subject="Subject";
+    $Grade="Grade";
 
 
 
@@ -43,8 +46,41 @@
     }
 
 
+if (isset($_GET["expand"]))
+{
+    $result = getOlResults($_GET["expand"]);
+
+
+
+    foreach($result as $row) //
+    {
+
+
+        $IndexNo = $row[0];
+        $AdmissionNo = $row[1];
+
+        $Year = $row[3];
+        $Subject=$row[4];
+        $Grade=$row[5];
+
+    }
+
+}
+else
+{  $IndexNo = "";
+    $AdmissionNo="";
+
+    $Year = "";
+    $Subject="";
+    $Grade="";
+
+}
 
 ?>
+
+
+
+
     <html>
     <head>
         <style type=text/css>
@@ -81,19 +117,22 @@
             .insert td
             {
                 padding:10px;
+
             }
 
             .insert, .insert th, .insert td
             {
                 border-collapse: collapse;
+
             }
 
-            .insert input.button{
+             input.button{
                 position:relative;
                 font-weight:bold;
                 font-size:15px;
-                Right:-335px;
-                top:20px;
+                Right:50px;
+                top: 420px;
+
 
             }
 
@@ -128,11 +167,12 @@
 
                                 $IndexNo = $row[0];
                                 $AdmissionNo = $row[1];
-                                $Year = $row[2];
+                                $name=$row[2];
+                                $Year = $row[3];
 
                                 echo $top;
-                                echo "<td>$row[3]</td>";
                                 echo "<td>$row[4]</td>";
+                                echo "<td>$row[5]</td>";
 
                                 echo "</tr>";
                             }
@@ -157,13 +197,15 @@
 
                                 $IndexNo = $row[0];
                                 $AdmissionNo = $row[1];
-                                $Year = $row[2];
+                                $name=$row[2];
+                                $Year = $row[3];
 
                                 echo $top;
-                                echo "<td>$row[3]</td>";
                                 echo "<td>$row[4]</td>";
+                                echo "<td>$row[5]</td>";
 
                                 echo "</tr>";
+                                //echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
                             }
                         }
                         else
@@ -200,13 +242,26 @@
                     <td>Admission Number</td>
                     <td><input type="text" name="AdmissionNo"  value="<?php echo $AdmissionNo ?>" </td>
                 </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="Name"  value="<?php echo $name ?>" </td>
+                </tr>
+
+
 
                 <tr>
                     <td>Year</td>
                     <td><input type="text" name="Year" value="<?php echo $Year ?>" </td>
                 </tr>
+                <tr>
+                    <td> <input class="button" name="expand" type="Submit" value="Expand Details"  /> </td>
+
+                </tr>
+
 
             </table>
+
+
 
         </form>
 
