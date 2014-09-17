@@ -1628,7 +1628,7 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("INSERT INTO blacklist values(?, ?, ?, ?, ?);"))
+        if ($stmt = $mysqli->prepare("INSERT INTO Blacklist values(?, ?, ?, ?, ?);"))
                 {
                     $isdeleted = 0;
                     $stmt -> bind_param("ssdsi",$staffID, $listcontributor, $enterdate, $reason, $isdeleted);
@@ -1657,7 +1657,7 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("UPDATE blacklist SET isDeleted=? WHERE staffID=?"))
+        if ($stmt = $mysqli->prepare("UPDATE Blacklist SET isDeleted=? WHERE staffID=?"))
 
         {
             $deleteNo = 2;
@@ -1902,7 +1902,7 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if($stmt = $mysqli->prepare("UPDATE ApplyLeave l, leavedata a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+        if($stmt = $mysqli->prepare("UPDATE  ApplyLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
         {
             $ReviewedDate = date("Y-m-d");
 
@@ -2027,7 +2027,7 @@ function insertTermTestMarks($admissionNo, $Subject, $Term, $Mark, $Remarks)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? , ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO TermMarks VALUES(?, ?, ? , ?, ?, ?)"))
     {
 
         $stmt->bind_param("ssiis", $admissionNo,$Subject,$Year, $Term, $Mark, $Remarks);
@@ -2056,7 +2056,7 @@ function checkStaffMember($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if($stmt = $mysqli->prepare("SELECT StaffID from staff WHERE StaffID = ?"))
+    if($stmt = $mysqli->prepare("SELECT StaffID from Staff WHERE StaffID = ?"))
     {
         $stmt->bind_param("s", $StaffID);
 
@@ -2158,7 +2158,7 @@ function searchOLMarks($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o, student s WHERE o.IndexNo=? AND o.AdmissionNo=s.AdmissionNo"))
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o, Student s WHERE o.IndexNo=? AND o.AdmissionNo=s.AdmissionNo"))
     {
         $stmt -> bind_param("i", $id );
 
@@ -2187,7 +2187,7 @@ function searchOLbyAdmission($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o , student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo"))
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo"))
     {
         $stmt -> bind_param("s", $id );
 
@@ -2216,7 +2216,7 @@ function getOlResults($AdmissionNo)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From olmarks o , student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo;"))
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo;"))
     {
         $stmt->bind_param("s", $AdmissionNo);
 
@@ -2276,7 +2276,7 @@ function searchALMarks($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From almarks a, student s WHERE a.IndexNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From ALMarks a, Student s WHERE a.IndexNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
     {
         $stmt -> bind_param("i", $id );
 
@@ -2305,7 +2305,7 @@ function searchALByAdmission($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From almarks a, student s WHERE a.AdmissionNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From ALMarks a, Student s WHERE a.AdmissionNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
     {
         $stmt -> bind_param("i", $id );
 
