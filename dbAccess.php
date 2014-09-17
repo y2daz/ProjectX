@@ -2276,7 +2276,7 @@ function searchALMarks($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From ALMarks a, Student s WHERE a.IndexNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Island_Rank,a.District_Rank From ALMarks a, Student s WHERE a.IndexNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
     {
         $stmt -> bind_param("i", $id );
 
@@ -2305,7 +2305,7 @@ function searchALByAdmission($id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Inland_Rank,a.District_Rank From ALMarks a, Student s WHERE a.AdmissionNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Island_Rank,a.District_Rank From ALMarks a, Student s WHERE a.AdmissionNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
     {
         $stmt -> bind_param("i", $id );
 
@@ -2322,7 +2322,7 @@ function searchALByAdmission($id)
     $mysqli->close();
     return $set;
 }
-function updateALResults($IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank)
+function updateALResults($IndexNo, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank)
 
 {
     $dbObj = new dbConnect();
@@ -2332,10 +2332,9 @@ function updateALResults($IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Gr
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("UPDATE ALMarks SET Grade=? WHERE IndexNo=? AND Subject=?"))
+    if ($stmt = $mysqli->prepare("UPDATE ALMarks SET Grade_1=?, Grade_2=?, Grade_3=?, Gen_Eng_Grade=?, Cmn_Gen_Mark=?, Z_Score=?, Island_Rank=?, District_Rank=? WHERE IndexNo=?"))
     {
-
-        $stmt -> bind_param("sis",$IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank);
+        $stmt -> bind_param("sssissiii", $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank, $IndexNo);
 
         if ($stmt->execute())
         {
@@ -2346,13 +2345,9 @@ function updateALResults($IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Gr
         $stmt->close();
     }
 
-
     $mysqli->close();
     return false;
 }
-
-
-
 
 
 /*function Viewattendancebyclass($id)

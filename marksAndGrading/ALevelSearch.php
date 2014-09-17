@@ -43,6 +43,21 @@ $DistrictRank="";
 $IslandRank="";
 
 
+if( isset( $_POST["IndexNo"]) ){
+    $_GET["value"] = $_POST["IndexNo"];
+    $_GET["Choice"] = "IndexNo";
+
+    $operation = updateALResults($_POST["IndexNo"], $_POST["S1Grade"], $_POST["S2Grade"], $_POST["S3Grade"], $_POST["GenGrade"], $_POST["CommonGeneralTest"],
+                            $_POST["Zscore"], $_POST["IslandRank"], $_POST["DistrictRank"]);
+
+    if($operation == 1){
+        sendNotification("Updating grade successful.");
+    }
+    else{
+        sendNotification("Error updating grade.");
+    }
+}
+
 
 
 
@@ -57,41 +72,41 @@ $IslandRank="";
     }
 
 
-if (isset($_GET["expand"]))
-{
-    $result = getAlResults($_GET["expand"]);
-
-
-
-    foreach($result as $row) //
-    {
-
-
-        $IndexNo = $row[0];
-        $AdmissionNo = $row[1];
-        $name=$row[2];
-        $Year = $row[3];
-        $Subject=$row[4];
-        $Grade=$row[5];
-        $GeneralEnglish=$row[6];
-        $CommonGenaralTest=$row[7];
-        $ZScore=$row[8];
-        $IslandRank=$row[9];
-        $DistrictRank=$row[10];
-
-
-    }
-
-}
-else
-{  $IndexNo = "";
-    $AdmissionNo="";
-   
-    $Year = "";
-    $Subject="";
-    $Grade="";
-
-}
+//if (isset($_GET["expand"]))
+//{
+//    $result = getAlResults($_GET["expand"]);
+//
+//
+//
+//    foreach($result as $row) //
+//    {
+//
+//
+//        $IndexNo = $row[0];
+//        $AdmissionNo = $row[1];
+//        $name=$row[2];
+//        $Year = $row[3];
+//        $Subject=$row[4];
+//        $Grade=$row[5];
+//        $GeneralEnglish=$row[6];
+//        $CommonGenaralTest=$row[7];
+//        $ZScore=$row[8];
+//        $IslandRank=$row[9];
+//        $DistrictRank=$row[10];
+//
+//
+//    }
+//
+//}
+//else
+//{  $IndexNo = "";
+//    $AdmissionNo="";
+//
+//    $Year = "";
+//    $Subject="";
+//    $Grade="";
+//
+//}
 
 ?>
 
@@ -199,31 +214,28 @@ else
 
             if(is_numeric($Value))
             {
+                $result = null;
+
                 if( strcmp($Choice, "IndexNo") == 0)
                 {
-
                     $result = searchALMarks($Value);
                 }
                 elseif( strcmp($Choice, "AdmissionNo") == 0 )
                 {
-
                     $result =searchALByAdmission($Value);
                 }
 
-                if(isset($result))
+                if(isFilled($result))
                 {
                     $i = 1;
 
                     foreach($result as $row){
 //                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
-
                         $IndexNo = $row[0];
                         $AdmissionNo = $row[1];
                         $name=$row[2];
                         $Year = $row[3];
                        // echo "<td><input class='edit' type='button' name='$row[15]' value='Edit' /></td>";
-
-
 
                         echo "<tr>";
                         echo "<td id='Subject1'> $row[4]</td>";
@@ -255,17 +267,12 @@ else
 
                         echo "<td><input id='btnEdit' name='Edit' class='edit' type='button'  value='Edit' /></td>";
 
-
-
-
-
                         echo "</tr>";
                     }
                 }
                 else
                 {
                     echo "<style> .insert{display: none} </style>";
-
                     sendNotification("No records found");
                 }
 
@@ -273,18 +280,12 @@ else
             else
             {
                 echo "<style> .insert{display: none} </style>";
-
                 sendNotification("Invalid search parameter entered");
             }
-
-
-
             ?>
-
         </table>
 
         <table class="insert2">
-
             <tr>
                 <td>Index Number</td>
                 <td><input type="text" id="IndexNo" name="IndexNo" value="<?php echo $IndexNo ?>" readonly /></td>
@@ -298,33 +299,15 @@ else
                 <td>Name</td>
                 <td><input type="text" name="Name"  value="<?php echo $name ?>" readonly/> </td>
             </tr>
-
-
-
             <tr>
                 <td>Year</td>
                 <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
             </tr>
-
-
-
-
-
-
         </table>
-
-
-
-
-
-
-
-        </form>
-
-
+    </form>
 
     </body>
-    </html>
+</html>
 <?php
 //Change these to what you want
 $fullPageHeight = 700;
