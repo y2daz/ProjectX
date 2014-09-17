@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `ALMarks` (
   `Gen_Eng_Grade` varchar(3) DEFAULT NULL,
   `Cmn_Gen_Mark` int(3) DEFAULT NULL,
   `Z_Score` float DEFAULT NULL,
-  `Inland_Rank` int(20) DEFAULT NULL,
+  `Island_Rank` int(20) DEFAULT NULL,
   `District_Rank` int(20) DEFAULT NULL,
   PRIMARY KEY (`IndexNo`,`Subject_1`),
   KEY `AdmissionNo` (`AdmissionNo`)
