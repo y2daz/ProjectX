@@ -205,7 +205,7 @@ if (isset($_POST["NewGrade"])){
 
                     var indexNo = $("#IndexNo").val();
 
-                    editGrade(indexNo, subject);
+                    editOLGrade(indexNo, subject);
                 });
 
             });
@@ -306,13 +306,11 @@ if (isset($_POST["NewGrade"])){
 
 
             </table>
-            <input id="update" type="Submit" value="Update" name="Update">
 
 
 
         </form>
 
-        <input class="editButton" id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit ">
 
 
 
