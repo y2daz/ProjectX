@@ -23,18 +23,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nationalityRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"], $_POST["highestEducationalQualification"], $_POST["highestProfessionalQualification"], $_POST["courseOfStudy"]);
         echo $operation;
 
-    if ($operation == 1)
-    {
-        sendNotification("Staff Member successfully added.");
-    }
-    else
-    {
-        sendNotification("Error inserting Staff Member information.");
-    }
+        if ($operation == 1)
+        {
+            sendNotification("Staff Member successfully added.");
+        }
+        else
+        {
+            sendNotification("Error inserting Staff Member information.");
+        }
+
+
 }
-
-
-
 ?>
 <html>
     <head>
@@ -390,7 +389,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $nationalityRace?></td>
-            <td><input id="NumberCb1" type="text" name="nationalityRace" maxlength="1"  value=""  required="true" class="number" onchange="changeTextbox(this)" />
+            <td><input id="NumberCb1" type="text" name="nationalityRace" maxlength="1" value=""  required="true" class="number" onchange="changeTextbox(this)" />
                             <select id="Cb1" name="" type="text" value="" onchange="changeTextbox(this)">
                                     <option value=""><?php echo "--"?></option>
                                     <option value="1"><?php echo "1 - " . $sinhala?></option>
@@ -417,7 +416,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $civilStatus?></td>
-            <td><input id="NumberCb3" type="text" name="civilStatus" maxlength="1" value="" required="true" class="number" onchange="changeTextbox(this)"/>
+            <td><input id="NumberCb3" type="text" name="civilStatus" maxlength="1" onclick="isNumeric()" value="" required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb3"name="civilStatus" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$married?></option>
@@ -458,7 +457,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr>
             <td><?php echo $employmentStatus?></td>
-            <td><input id="NumberCb4" type="text" name="$employmentStatus" maxlength="1" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
+            <td><input id="NumberCb4" type="text" name="$employmentStatus"   maxlength="1" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
                 <select id="Cb4"name="employmentStatus" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$fulltime?></option>
@@ -475,7 +474,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr>
             <td><?php echo $medium?></td>
-            <td><input id="NumberCb5" type="text" name="nationalityRace" maxlength="1" value=""  required="true" class="number" onchange="changeTextbox(this)"/>
+            <td><input id="NumberCb5" type="text" name="nationalityRace" maxlength="1" value=""  required="true" class="number" onchange="changeTextbox(this) "/>
                 <select id="Cb5" name="medium" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$sinhala?></option>

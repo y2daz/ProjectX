@@ -2322,6 +2322,36 @@ function searchALByAdmission($id)
     $mysqli->close();
     return $set;
 }
+function updateALResults($IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank)
+
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE ALMarks SET Grade=? WHERE IndexNo=? AND Subject=?"))
+    {
+
+        $stmt -> bind_param("sis",$IndexNo, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $stmt->close();
+    }
+
+
+    $mysqli->close();
+    return false;
+}
+
+
 
 
 

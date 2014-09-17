@@ -204,7 +204,7 @@ function logIn(){
     $.prompt(states);
 }
 
-function editGrade(indexNo, subject){
+function editOLGrade(indexNo, subject){
 //    indexNo += subject;
     var states = {
         state0: {
@@ -228,17 +228,43 @@ function editGrade(indexNo, subject){
     $.prompt(states);
 }
 
-function getTeachersForSubstition(staffID, absPosition){
-    var relPosition = absPosition % 8;
-    var day = parseInt( absPosition / 8);
+function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,GenGrade,CommonGeneralTest,Zscore,IslandRank,DistrictRank){
+//    indexNo += subject;
+    var states = {
+        state0: {
+            title: "Enter new grades for Index Number" + indexNo,
+            html:'<table><tr><td><label>' + Subject1 + '</td><td><input type="text" name="jTxtS1Grade" value="' + S1Grade + '"></label></td></tr>' +
+                '<tr><td><label>' + Subject2 + '</td><td><input type="text" name="jTxtS2Grade" value="' + S2Grade + '"></label></td></tr>' +
+                '<tr><td><label>' + Subject3 + '</td><td><input type="text" name="jTxtS3Grade" value="' + S3Grade + '"></label></td></tr>' +
+                '<tr><td><label>General English</td><td><input type="text" name="jTxtGenGrade" value="' + GenGrade + '"></label></td></tr>' +
+                '<tr><td><label>Common General Test</td><td><input type="text" name="jTxtCommonGeneralTest" value="' + CommonGeneralTest + '"></label></td></tr>' +
+                '<tr><td><label>Z-Score</td><td><input type="text" name="jTxtZScore" value="' + Zscore + '"></label></td></tr>' +
+                '<tr><td><label>Island Rank</td><td><input type="text" name="jTxtIslandRank" value="' + IslandRank + '"></label></td></tr>' +
+                '<tr><td><label>District Rank</td><td><input type="text" name="jTxtDistrictRank" value="'+ DistrictRank +'"></label></td></tr>' +
+                '</table>',
+            buttons: { Okay: 1, Cancel: -1 },
+//            focus: "input[name='jTxtGrade']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                S1Grade = f["jTxtS1Grade"];
+                S2Grade = f["jTxtS2Grade"];
+                S3Grade = f["jTxtS3Grade"];
+                GenGrade = f["jTxtGenGrade"];
+                CommonGeneralTest = f["jTxtCommonGeneralTest"];
+                Zscore = f["jTxtZscore"];
+                IslandRank = f["jTxtIslandRank"];
+                DistrictRank = f["jTxtDistrictRank"];
 
-    var params = {"getSubstitute" : "getSubstitute", "StaffID" : staffID, "Position" : relPosition, "Day" : day};
-    post(document.URL, params, "post");
-}
-
-function getParameterByName(name) {
-    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+                if( v == 1){
+//                    var params = {"IndexNo" : indexNo, "Subject" : subject, "Grade" : grade, "NewGrade" : "NewGrade"};
+//                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    }
+    $.prompt(states);
 }
 
 
@@ -261,4 +287,19 @@ function post(path, params, method) { //Allows us to set POST variables with jav
     }
     document.body.appendChild(form);
     form.submit();
+}
+
+function validate($courseOfStudy)
+    {
+        var combo1 = document.getElementById("courseofstudy")
+
+        if(combo1.value == null || combo1.value == "18" || combo1.value == "70" || combo1.value == "71" || combo1.value == "72" || combo1.value == "73" || combo1.value == "74" || combo1.value == "95" ||combo1.value == "96")
+        {
+            alert("Please select Course of study");
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
 }

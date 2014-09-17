@@ -34,16 +34,20 @@ function isNIC($nicNumber)
     }
 }
 
-function isNumeric($nationalityRace)
+function isNumeric($courseOfStudy)
 {
-    if(preg_match("/^[0-9]{1}$/", $nationalityRace))
-    {
-        return 1;
-    }
+     if(preg_match("/^[0-9]$/", $courseOfStudy))
+     {
+         return 1;
+     }
     else
-    {
-       return 0;
-    }
+     {
+         return 0;
+
+     }
+
+
+
 }
 
 //Find a function to check the string for pattern
