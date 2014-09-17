@@ -2016,7 +2016,7 @@ function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subje
 
 }
 
-function insertTermTestMarks($admissionNo, $Subject,$Year, $Term, $Mark, $Remarks)
+function insertTermTestMarks($admissionNo, $Subject, $Term, $Mark, $Remarks)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2030,7 +2030,7 @@ function insertTermTestMarks($admissionNo, $Subject,$Year, $Term, $Mark, $Remark
     if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? , ?, ?, ?)"))
     {
 
-        $stmt->bind_param("ssisis", $admissionNo,$Subject,$Year, $Term, $Mark, $Remarks);
+        $stmt->bind_param("ssiis", $admissionNo,$Subject,$Year, $Term, $Mark, $Remarks);
 
         if($stmt->execute())
         {

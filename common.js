@@ -303,3 +303,17 @@ function validate($courseOfStudy)
             return 1;
         }
 }
+
+
+function getTeachersForSubstition(staffID, absPosition){
+    var relPosition = absPosition % 8;
+    var day = parseInt( absPosition / 8);
+
+    var params = {"getSubstitute" : "getSubstitute", "StaffID" : staffID, "Position" : relPosition, "Day" : day};
+    post(document.URL, params, "post");
+}
+
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
