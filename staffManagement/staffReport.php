@@ -49,11 +49,11 @@ $column6Header = "ජනවර්ගය";
 $column7Header = "ආගම";
 $column8Header = "විවාහක / අවිවාහක බව";
 
-$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු වශයෙන් සේවයට\n පනවූ වර්ෂය ( අවසන් අංක දෙක ) හා මාසය ";
+$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු<br /> වශයෙන් සේවයට පනවූ වර්ෂය(අවසන් අංක දෙක)හා මාසය ";
 $column9Header = "අවු";
 $column10Header = "මාස";
 
-$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත් වර්ෂය හා මාසය ( අවසන් අංක දෙක )";
+$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත් වර්ෂය<br />හා මාසය(අවසන් අංක දෙක)";
 $column11Header = $column9Header;
 $column12Header = $column10Header;
 $column13Header = "පාසලට පනවීමේ සවභාවය"; //Employment Status
@@ -149,7 +149,7 @@ $column27Header3 = "උදා 583021007 V";
             position: relative;
             text-align: left;
             white-space: nowrap;
-            top: 40px;
+            top: 50px;
             text-overflow: ellipsis;
             min-width: 25px;
             max-width: 25px;
@@ -161,7 +161,27 @@ $column27Header3 = "උදා 583021007 V";
             /*text-indent: -7.5em;*/
             padding: 0px 0px 0px 0px;
             margin: 0px;
+
         }
+        .upcol1{
+            position: relative;
+            text-align: left;
+            white-space: nowrap;
+            top: 250px;
+            text-overflow: ellipsis;
+            min-width: 25px;
+            max-width: 25px;
+            /*display: block;*/
+            /*background-color: white;*/
+            /*border-bottom: 1px solid black;*/
+
+            writing-mode: bt-rl;
+            /*text-indent: -7.5em;*/
+            padding: 0px 0px 0px 0px;
+            margin: 0px;
+
+        }
+
         .whiteBox{
             display: block;
             position: relative;
@@ -174,18 +194,20 @@ $column27Header3 = "උදා 583021007 V";
             width: 74px;
             border-bottom: 1px solid #000000;
         }
-        .whiteBoxR{
+
+        .whiteBox1{
             display: block;
             position: relative;
-            z-index: 3;
+            z-index: 1;
             background-color: #ffffff;
-            text-indent: -12em;
-            left:0px;
-            top:15px;
+            text-indent:1em;
+            left:1px;
+            top:9px;
+
             padding-top: 10px;
-            padding-bottom: 20px;
-            width: 74px;
-            /*border-bottom: 1px solid #000000;*/
+            padding-bottom: 10px;
+            width: 230px;
+            /*border-up: 1px solid #000000;*/
         }
         #col_0{
             text-indent: -6.5em;
@@ -244,17 +266,16 @@ $column27Header3 = "උදා 583021007 V";
         <tr class="secret">
             <td></td>
             <td></td>
-            <td></td>
-            <td  class="upcol"><div class="whiteBox"><?php echo $column234Header ?></div></td>
-            <td></td>
+            <td class="upcol"><div class="whiteBox"><?php echo $column234Header ?></div></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-<!--            <td  class="upcol rotate"><div class="whiteBoxR">--><?php //echo $column910Header ?><!--</div></td>-->
             <td></td>
+            <td class="upcol1 rotate"><div class="whiteBox1"><?php echo $column910Header ?></div></td>
             <td></td>
+            <td class="upcol1 rotate"><div class="whiteBox1"><?php echo $column1112Header ?></div></td>
             <td></td>
             <td></td>
             <td></td>

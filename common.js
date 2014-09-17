@@ -288,3 +288,18 @@ function post(path, params, method) { //Allows us to set POST variables with jav
     document.body.appendChild(form);
     form.submit();
 }
+
+function validate($courseOfStudy)
+    {
+        var combo1 = document.getElementById("courseofstudy")
+
+        if(combo1.value == null || combo1.value == "18" || combo1.value == "70" || combo1.value == "71" || combo1.value == "72" || combo1.value == "73" || combo1.value == "74" || combo1.value == "95" ||combo1.value == "96")
+        {
+            alert("Please select Course of study");
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+}
