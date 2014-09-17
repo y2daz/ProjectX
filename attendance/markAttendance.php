@@ -13,25 +13,114 @@
     include(THISROOT . "/dbAccess.php");
     require_once(THISROOT . "/common.php");
     require_once(THISROOT . "/formValidation.php");
+    error_reporting(E_ERROR | E_PARSE);
     ob_start();
 
-    $arrGradeAndClass = array();
-    $arrGradeAndClass[0] = "";
-    $arrGradeAndClass[1] = "";
-    $attendanceDisplay = "none";
-    $classDateDisplay = "block";
+    if($_COOKIE["language"] == 1)
+    {
+        $gradeandclass = "පන්තිය සහ වසර";
+        $week = "සතිය";
+        $markAttendance ="පැමිණීම සටහන් කිරීම";
 
-    if (isset($_GET["Grade"])){
-        $arrGradeAndClass = getGradeAndClass($_GET["Grade"]);
 
-        if (isFilled($arrGradeAndClass[0]) && isFilled($arrGradeAndClass[1]) ){  //Insert proper check class logic
-            $attendanceDisplay = "block";
-            $classDateDisplay = "none";
+    }
+    else{
+        $gradeandclass = "Grade and Class";
+        $week = "Week";
+        $markAttendance ="Mark Attendance";
+    }
+
+$arrGradeAndClass = array();
+$arrGradeAndClass[0] = "";
+$arrGradeAndClass[1] = "";
+$attendanceDisplay = "none";
+$classDateDisplay = "block";
+
+    if (isset($_POST["submit"])) //User has clicked the submit button to add a user
+    {
+        $workingWeekArr = explode("-W", $_GET["week"]);
+        $workingWeek = $workingWeekArr[1];
+
+        $thisYear = date('Y');
+
+        $monday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-1"));
+        $tuesday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-2"));
+        $wednesday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-3"));
+        $thursday= date('Y-m-d', strtotime("$thisYear-W$workingWeek-4"));
+        $friday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-5"));
+
+        $classArr =  getGradeAndClass( $_POST["classroom"] );
+
+        $result = getClassOfStudents( $classArr[0], $classArr[1] );
+
+        $admissionNoArr = array();
+        $dateArr = array();
+        $presentArr = array();
+
+        $i = 0;
+
+        foreach($result as $row){
+            for($x = 0; $x < 5; $x++){
+                $admissionNoArr[$i] = $row[0];
+                $dateArr[$i] = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursday : $friday ))));
+
+                if( isset($_POST[ $row[0] ][$monday] )){
+                    $presentArr[$i] = '1';
+                }
+                else{
+                    $presentArr[$i] = '0';
+                }
+                $i++;
+            }
         }
-        else{
-            sendNotification("There are no students in that class");
+        print_r($dateArr);
+
+        $operation = markAttendance( $admissionNoArr, $dateArr, $presentArr);
+        echo $operation;
+
+        if ($operation == true)
+        {
+            sendNotification("Successfully added.");
+        }
+        else
+        {
+            sendNotification( "Error adding attendance details." );
+//            print_r($_POST["box"]);
         }
     }
+
+if (isset($_GET["Grade"])){
+
+    $arrGradeAndClass = getGradeAndClass($_GET["Grade"]);
+
+    if (isFilled($arrGradeAndClass[0]) && isFilled($arrGradeAndClass[1]) ){  //Insert proper check class logic
+        $attendanceDisplay = "block";
+        $classDateDisplay = "none";
+//        sendNotification("There are students in that class");
+
+        $workingWeekArr = explode("-W", $_GET["week"]);
+        $workingWeek = $workingWeekArr[1];
+
+        $thisYear = date('Y');
+//            $weekNum = 40;
+//
+        $monday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-1"));
+        $tuesday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-2"));
+        $wednesday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-3"));
+        $thursday= date('Y-m-d', strtotime("$thisYear-W$workingWeek-4"));
+        $friday = date('Y-m-d', strtotime("$thisYear-W$workingWeek-5"));
+
+        $class = $arrGradeAndClass[0] . " " .$arrGradeAndClass[1];
+
+//            echo $workingWeek;
+    }
+    else{
+        sendNotification("There are no students in that class");
+    }
+}
+
+
+
 ?>
 <html>
     <head>
@@ -45,7 +134,7 @@
             #classDate{
                 position:relative;
                 left:30px;
-                display: <?php echo $classDateDisplay?>;
+<!--                display: --><?php //echo $classDateDisplay?><!--;-->
             }
             #attendance{
                 position: relative;
@@ -87,7 +176,7 @@
                 Right: -450px;
                 left: 300px;
                 display: <?php echo $attendanceDisplay?>;
-            }
+                }
         </style>
     </head>
     <body>
@@ -100,13 +189,16 @@
                     <td><input type="text" name="Grade" value=""></td></tr>
                 <tr><td><br/></td></tr>
                 <tr><td>Week</td>
-                    <td><input name="week" type="date"/></td></tr>
+                    <td><input name="week" type="week"/></td></tr>
                 <tr><td colspan="2">&nbsp;</td> </tr>
                 <tr><td></td><td><input type="submit" name="sbtGetStudent" value="Mark Attendance"/></td></tr>
             </table>
         </form>
         <br />
         <br />
+        <form method="post">
+            <input type="text" name="classroom" value="<?php echo $class ?>" hidden="hidden" />
+            <input type="text" name="week" value="<?php echo $workingWeek ?>" hidden="hidden" />
         <table id="attendance">
             <tr id="tHeader">
                 <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
@@ -135,13 +227,15 @@
 
                         for($x = 0; $x < 5; $x++)
                         {
+                            $dayDate = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursdayh : $friday ))));
+
                             if ($x == 3) //Insert holiday logic
                             {
                                 $cBox = "<td class=\"disabled\"></td>";
                             }
                             else
                             {
-                                $cBox = "<td><input type=\"checkbox\" name=\"box" . $i . $x . "\" checked /></td>";
+                                $cBox = "<td><input type=\"checkbox\" name=\"box[$admissionNo][$dayDate]\" checked />";
                             }
                             echo $cBox;
                         }
@@ -153,7 +247,6 @@
 
         </table>
         <br />
-        <form method="post">
         <table>
             <tr>
                 <td></td>

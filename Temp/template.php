@@ -40,7 +40,7 @@ $pageTitle= "Template";
 <!--        ADD YOUR WEBPAGE HERE-->
 
     </body>
-</html>
+    </html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;

@@ -204,6 +204,30 @@ function logIn(){
     $.prompt(states);
 }
 
+function editGrade(indexNo, subject){
+//    indexNo += subject;
+    var states = {
+        state0: {
+            title: "Enter new grade",
+            html:'<table><tr><td><label>Grade</td><td><input type="text" name="jTxtGrade" value=""></label></td></tr></table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtGrade']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                var grade = f["jTxtGrade"];
+
+                if( v == 1){
+                    var params = {"IndexNo" : indexNo, "Subject" : subject, "Grade" : grade, "NewGrade" : "NewGrade"};
+                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    }
+    $.prompt(states);
+}
+
 
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.

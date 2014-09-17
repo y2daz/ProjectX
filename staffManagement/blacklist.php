@@ -20,6 +20,15 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
     $operation = insertBlackListMember($_POST["staffID"], $_POST["listcontributor"], $_POST["enterdate"], $_POST["reason"]);
     echo $operation;
+
+    if ($operation == 1)
+    {
+        sendNotification("Staff Member Blacklist successfully .");
+    }
+    else
+    {
+        sendNotification("Error inserting Staff Member to Blacklist.");
+    }
 }
 ?>
 <html>

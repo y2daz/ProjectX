@@ -157,7 +157,7 @@ if (isset($_GET["search"]))
 
     <table id="AL">
 
-        <form method="GET">
+        <form action="ALevelSearch.php" method="get" class="insert">
 
             <table id="OL">
                 <tr>

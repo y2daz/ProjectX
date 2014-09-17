@@ -24,64 +24,50 @@ function isFilled($value){
 
 function isNIC($nicNumber)
 {
-    if(strlen($nicNumber) == 10)
+    if (preg_match("/^[0-9]{9}[v|x]$/i", $nicNumber))
     {
-        $checknumber = substr($nicNumber, 0, (strlen($nicNumber)-1));
-
-        if(is_numeric($checknumber))
-        {
-           $checkifV = ucfirst(substr($nicNumber, strlen($nicNumber)-1, strlen($nicNumber)));
-
-            if(strcmp($checkifV, "V"));
-            {
-                return true;
-            }
-
-        }
+        return 1;
     }
+    else
     {
-        return false;
+        return 0;
     }
 }
 
-function isNumber($value)
+function isNumeric($nationalityRace)
 {
-    if(is_numeric($value))
-        return true;
-    else
-        echo "please enter valid amount";
-
-}
-
-function isLetters($nameWithInitials) //Works for all string must change
-{
-    if(is_string($nameWithInitials))
-        return true;
+    if(preg_match("/^[0-9]{1}$/", $nationalityRace))
+    {
+        return 1;
+    }
     else
     {
-        return false;
+       return 0;
     }
 }
 
 //Find a function to check the string for pattern
-/*function Name($nameWithInitials)
+function isAlphabetic($nameWithInitials)
 {
-    if (preg_match("/^[a-zA-Z ]+$/i", $nameWithInitials))
+    if (preg_match("/^([A-Z]|\.|\s)*$/i", $nameWithInitials))
     {
-        return true;
+        return 1;
     }
     else
     {
-        echo "Enter Alphabetical letters only ";
+        return 0;
     }
-}*/
+}
+
+
 function isContactNumber($contactnumber)
 {
-    if((preg_match("/[^0-9]/", '', $contactnumber)) && strlen($contactnumber) == 10)
-        return true;
-    else
-        return false;
-
+    if(preg_match("/^[0-9]{10}$/", $contactnumber)){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 function hasSpaces($value)
