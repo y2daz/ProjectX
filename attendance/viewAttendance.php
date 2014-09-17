@@ -61,7 +61,7 @@ if (isset($_GET["search"]))
 
 }
 $admissionNo="";
-$Year = "";
+$Date = "";
 
 ?>
     <html>
@@ -156,8 +156,8 @@ $Year = "";
             <form method="post">
                 <table class="viewTable">
                     <tr>
-                        <th>Admisson Number</th>
-                        <th>Year</th>
+                        <th>AdmissionNo</th>
+                        <th>Date</th>
                         <!--<th>Date of Birth</th>-->
                         <!--<th>Grade and Class</th>*/
                         <th></th>

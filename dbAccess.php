@@ -2243,7 +2243,7 @@ function searchALbyAdmission($id)
 
 
 
-function Viewattendancebyclass($id)
+/*function Viewattendancebyclass($id)
 {
 
     $dbObj = new dbConnect();
@@ -2272,4 +2272,29 @@ function Viewattendancebyclass($id)
     }
     $mysqli->close();
     return $set;
+}**/
+
+function markAttendance($AdmissionNoArr, $DateArr, $isPresentArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Attendance values(?, ?, ?);"))
+    {
+        $i = 0;
+        foreach($AdmissionNoArr as $AdmissionNo){
+            $stmt -> bind_param("isi",  $AdmissionNo, $DateArr[$i], $isPresentArr[$i]);
+            $stmt->execute();
+            $i++;
+        }
+        $stmt -> close();
+        $mysqli->close();
+        return true;
+    }
+    $mysqli->close();
+    return false;
 }
