@@ -133,6 +133,12 @@ if (isset($_POST["addTransaction"])){
             padding:5px;
 
         }
+
+        input.#button8{
+            position:absolute;
+            left:100px;
+            top:1400px;
+        }
     </style>
 
 </head>
@@ -303,12 +309,19 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
     <br />
 
-    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getExpenditures($eventID)?></span> <br />
-    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getIncomes($eventID)?></span>
-
+    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getIncomes($eventID)?></span> <br />
+    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getExpenses($eventID)?></span>
+        <br>
+    <br>
     <div>
-        <input type="button" name="button" id="button8" value="<?php echo $printTransction ?>" style=position:relative; top :100px; left: 0px; width:150"/>
+        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+        <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
+        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+        <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
+
     </div>
+
+
 
 
 
