@@ -71,15 +71,11 @@ if (isset($_POST["Submit"]))
     }
 //        var_dump($myTime);
 }
-if(isset($_GET["staffID"]))
+if(!isFilled($_GET["staffID"]))
 {
-   $staffID = $_GET["staffID"];
+    header("Location: " . PATHFRONT . "/TimeTable/timetable.php");
 }
-    $res = getStaffMember($staffID);
-    $teacher = $res[0][1];
-
-if (isset($_GET["getTimetable"]))
-{
+else{
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
     if($result == null)
@@ -87,19 +83,24 @@ if (isset($_GET["getTimetable"]))
         sendNotification("Staff Member does not exist");
     }
     $row = $result[0];
-    $currentStaffName = $row[1];
+    $teacher = $row[1];
 
     $myTime = new Timetable();
 
     $myTime->staffId = "$currentStaffId";
     $myTime->getTimetableFromDB();
-
 }
-
 
 ?>
 <html>
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+
     <link rel="stylesheet" href="TimetableReport.css">
 <!--    <script src="timetable.js"></script>-->
 
@@ -123,7 +124,7 @@ if (isset($_GET["getTimetable"]))
                         $(obj)
                             .attr("readonly", false)
                             .closest("div")
-                            .css("opacity",".7");
+                                .css("opacity",".7");
                     });
                     $('.subject textarea').each( function(i, obj){
                         $(obj)
@@ -160,7 +161,7 @@ if (isset($_GET["getTimetable"]))
     <table id="info">
         <tr>
             <td><label><?php echo getLanguage("staffId",$lang)?></td>
-            <td><label><?php echo $staffID?></label></td>
+            <td><label><?php echo $currentStaffId?></label></td>
 <!--            <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>-->
         </tr>
         <tr>
@@ -216,21 +217,21 @@ if (isset($_GET["getTimetable"]))
                     $subject = $myTime->slot[$number]->Subject;
                     $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
-                    $currColour = $colourArray[ (rand(0,14)) ];
-                    while ( in_array($currColour, $classColour) )
-                    {
-                        $currColour = $colourArray[  (rand(0,14)) ];
-                    }
+//                    $currColour = $colourArray[ (rand(0,14)) ];
+//                    while ( in_array($currColour, $classColour) )
+//                    {
+//                        $currColour = $colourArray[  (rand(0,14)) ];
+//                    }
 
-                    if( trim($class) == ""){
+//                    if( trim($class) == ""){
                         $classColour[$class] = "#ffffff";
-                    }
-                    if ($classColour[$class] == ""){
-                        $classColour[$class] = $currColour;
-                    }
-                    else{
-                        $currColour = $classColour[$class];
-                    }
+//                    }
+//                    if ($classColour[$class] == ""){
+//                        $classColour[$class] = $currColour;
+//                    }
+//                    else{
+//                        $currColour = $classColour[$class];
+//                    }
 
                     $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 

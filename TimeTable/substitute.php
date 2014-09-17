@@ -73,8 +73,12 @@ if (isset($_POST["Submit"]))
 if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
-    $result = getStaffMember($_GET["staffID"]);
 
+    $result = getStaffMember($_GET["staffID"]);
+    if($result == null)
+    {
+        sendNotification("Staff Member does not exist");
+    }
     $row = $result[0];
     $currentStaffName = $row[1];
 

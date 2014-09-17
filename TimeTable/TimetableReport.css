@@ -1,3 +1,8 @@
+
+*{
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
 h1{
     text-align:center;
 }
@@ -21,13 +26,16 @@ h2{
 .timetable{
     position: relative;
     /*border-collapse: collapse;*/
-    border: none;
+    /*border: none;*/
     top: 25px;
     left: 15px;
     max-width: 775px;
     min-width: 775px;
     border: 2px solid #000000;
 
+}
+.timetable, .timetable td, .timetable th{
+    border-collapse: collapse;
 }
 .timetable td{
     border: 2px solid;
@@ -38,24 +46,12 @@ h2{
 }
 .subject textarea{
     width:100px;
-    height:44px;
+    height:48px;
     resize: none;
-    /*border: 1px #000000;*/
+    border: none;
     outline: 0;
     font-size: 1em;
     text-align: center;
-    /*color: #444444;*/
-}
-
-.subject textarea{
-    width:100px;
-    height:44px;
-    resize: none;
-    border: 0px solid;
-    outline: 0;
-    font-size: 1em;
-    text-align: center;
-    background-color: #ffffff;
     /*color: #444444;*/
 }
 
@@ -78,7 +74,7 @@ h2{
     display: block;
     width: 40px;
     height: 18px;
-    opacity: .5;
+    opacity: .9;
     top: -10px;
     left: -4px;
 }
@@ -86,12 +82,15 @@ h2{
     /*background-color: #151612;*/
     /*color: white;*/
     width: 40px;
-    height: 18px;
+    height: 20px;
     text-align: center;
     vertical-align: middle;
     font-weight: 600;
     font-size: 1.0em;
-    border: 1px solid;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    border-top: none;
+    border-left: none;
     outline: 0;
 }
 #edit{
