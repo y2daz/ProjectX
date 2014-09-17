@@ -6,6 +6,25 @@
  * Time: 3:24 PM
  */
 ob_start();
+
+    if($_COOKIE["language"] == 1)
+    {
+        $addmissionNumber="ඇතුලත්විමෙ අංකය";
+        $studentName="ශිෂ්‍යාගේ නම";
+        $dateFrom="දින සිට";
+        $dateTo="දින දක්වා";
+        $Submit="තහවුරු  කරන්න";
+    }
+    else
+    {
+        $addmissionNumber="Addmission Number";
+        $studentName="Student Name ";
+        $dateFrom="Date From";
+        $dateTo="Date To";
+        $Submit="Submit";
+
+    }
+
 ?>
 <html>
     <head>

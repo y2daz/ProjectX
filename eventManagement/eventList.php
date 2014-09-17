@@ -48,19 +48,7 @@ ob_start();
             #eventTable #description{
                 width:300px;
             }
-            #eventTable th{
-                color:white;
-                background-color: #005e77;
-                height:30px;
-                padding:5px;
-            }
-            input.button {
-                position:relative;
-                font-weight:bold;
-                font-size:15px;
-                width: 500px;
 
-            }
 
         </style>
     </head>
