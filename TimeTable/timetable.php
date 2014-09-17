@@ -13,6 +13,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 include("timetableClass.php");
@@ -81,7 +82,10 @@ if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
     $result = getStaffMember($_GET["staffID"]);
-
+    if($result == null)
+    {
+        sendNotification("Staff Member does not exist");
+    }
     $row = $result[0];
     $currentStaffName = $row[1];
 
@@ -156,8 +160,10 @@ if (isset($_GET["getTimetable"]))
                 <td><label><?php echo getLanguage("staffId",$lang)?></td>
                     <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
                     <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
+
             </tr>
-            <tr><td></td>
+            <tr>
+                <td>Teacher's Name</td>
                 <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
             </tr>
         </table>
@@ -169,7 +175,8 @@ if (isset($_GET["getTimetable"]))
 
 
         <table id="edit">
-            <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td></tr>
+            <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td>
+            <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReport.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
         </table>
         <table class="timetable" >
             <tr>

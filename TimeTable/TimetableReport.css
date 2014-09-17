@@ -20,17 +20,18 @@ h2{
 }
 .timetable{
     position: relative;
-    border-collapse: collapse;
-    /*border: none;*/
+    /*border-collapse: collapse;*/
+    border: none;
     top: 25px;
     left: 15px;
     max-width: 775px;
     min-width: 775px;
-    border: 2px solid #005e77;
+    border: 2px solid #000000;
+
 }
 .timetable td{
-    border: 5px solid white;
-    border-collapse: collapse;
+    border: 2px solid;
+    /*border-collapse: collapse;*/
     text-align: center;
     vertical-align: top;
     padding: 10px 5px 10px 5px;
@@ -39,11 +40,11 @@ h2{
     width:100px;
     height:44px;
     resize: none;
-    border: 0px solid;
+    /*border: 1px #000000;*/
     outline: 0;
     font-size: 1em;
     text-align: center;
-    color: #444444;
+    /*color: #444444;*/
 }
 
 .subject textarea{
@@ -54,17 +55,18 @@ h2{
     outline: 0;
     font-size: 1em;
     text-align: center;
-    color: #444444;
+    background-color: #ffffff;
+    /*color: #444444;*/
 }
 
 .timetable .interval{
-    background-color: #005e77;
-    color: white;
+    background-color: #ffffff;
+
 }
 .timetable  th{
     width: 120px;
-    background-color: #005e77;
-    color: white;
+    background-color: #ffffff;
+    /*color: white;*/
     padding: 5px;
 }
 .timetable .time{
@@ -81,15 +83,15 @@ h2{
     left: -4px;
 }
 .classroom input{
-    background-color: #151612;
-    color: white;
+    /*background-color: #151612;*/
+    /*color: white;*/
     width: 40px;
     height: 18px;
     text-align: center;
     vertical-align: middle;
     font-weight: 600;
     font-size: 1.0em;
-    border: 0px solid;
+    border: 1px solid;
     outline: 0;
 }
 #edit{
@@ -111,8 +113,4 @@ h2{
 #submit  tr{
     width: 390px;
     text-align: center;
-}
-.animated{
-    background-color: white;
-    color: red;
 }
