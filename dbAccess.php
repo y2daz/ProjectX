@@ -313,6 +313,37 @@
         return false;
     }
 
+function getParent($key)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select NamewithInitials, Occupation, PhoneLand, PhoneMobile, HomeAddress, OfficeAddress FROM parentsinformation WHERE isDeleted = 0 AND AdmissionNo = ?;"))
+    {
+        $stmt->bind_param("s", $key);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
 function insertParent($admin_no, $par_gur, $p_name,$occupation, $p_number, $m_number, $address, $o_address )
 {
     $dbObj = new dbConnect();
@@ -341,6 +372,39 @@ function insertParent($admin_no, $par_gur, $p_name,$occupation, $p_number, $m_nu
 
     $mysqli->close();
     return false;
+}
+
+function SearchStudentByName($key)
+{
+    {
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, CONCAT(Grade, ' ', Class) FROM Student WHERE NamewithInitials LIKE ? AND isDeleted = 0 ORDER BY AdmissionNo;"))
+        {
+            $id = "%" . $key . "%";
+            $stmt -> bind_param("s", $id );
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++ ]=$row;
+                }
+            }
+        }
+        $mysqli->close();
+        return $set;
+    }
 }
 
 
