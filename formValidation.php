@@ -34,22 +34,15 @@ function isNIC($nicNumber)
     }
 }
 
-function isNumber($value)
+function isNumeric($nationalityRace)
 {
-    if(is_numeric($value))
-        return true;
-    else
-       return false;
-
-}
-
-function isLetters($nameWithInitials) //Works for all string must change
-{
-    if(is_string($nameWithInitials))
-        return true;
+    if(preg_match("/^[0-9]{1}$/", $nationalityRace))
+    {
+        return 1;
+    }
     else
     {
-        return false;
+       return 0;
     }
 }
 
@@ -65,6 +58,7 @@ function isAlphabetic($nameWithInitials)
         return 0;
     }
 }
+
 
 function isContactNumber($contactnumber)
 {
