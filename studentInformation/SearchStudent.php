@@ -59,6 +59,10 @@ if (isset($_GET["search"]))
         $currentStudent = SearchStudentbyclass($_GET["value"]);
         //echo $_GET["value"];
     }
+    else if($_GET["Choice"] == "NamewithInitials")
+    {
+        $currentStudent = SearchStudentByName($_GET["value"]);
+    }
 
     $tableDetails= "none";
     $tableViewTable= "block";
@@ -186,7 +190,7 @@ else
             </tr>
             <tr><td></td><td>&nbsp;</td></tr>
             <tr>
-                <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
+                <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
                 <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with Initials</td>
 <!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
 <!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
@@ -206,6 +210,7 @@ else
                 <th>Date of Birth</th>
                 <th>Grade and Class</th>
                 <th></th>
+                <th></th>
             </tr>
             <?php
 
@@ -224,6 +229,7 @@ else
                     echo "<td>$row[1]</td>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
+                    echo "<td><input name=\"getParentsDetails" . "\" type=\"submit\" value=\"Get Parent Details\" formaction=\"SearchParentsDetailsForm.php?id=" . $row[0] . "\" /> </td> ";
                     echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"SearchStudent.php?expand=" . $row[0] . "\" /> </td> ";
 
                     echo "</td></tr>";

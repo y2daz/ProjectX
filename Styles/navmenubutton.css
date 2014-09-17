@@ -16,7 +16,7 @@ all copies or substantial portions of the Software.
 */
 
 #menuButton {
-    z-index: 0;
+    z-index: 20;
     position: absolute;
     left: 20px;
     top: 180px;
@@ -27,6 +27,7 @@ all copies or substantial portions of the Software.
     display: none;
 }
 #menuButton span, #menuButton span:before, #menuButton span:after {
+    z-index: 20;
     cursor: pointer; cursor: hand;
     border-radius: 1px;
     height: 5px;

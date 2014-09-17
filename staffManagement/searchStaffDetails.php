@@ -195,6 +195,9 @@ else
             height:150px;
             display: <?php echo $tableDetails ?>
         }
+        .details .number{
+            max-width: 40px;
+        }
 
         input.button1 {
             position:relative;

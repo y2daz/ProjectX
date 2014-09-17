@@ -127,7 +127,7 @@
 
 
         <!-- DO NOT EDIT FOLLOWING -->
-        <a id="menuButton" class="hidden" <span></span></a>
+        <a id="menuButton" class="hidden"><span></span></a>
 
 
         <span id="messagingSystem"></span>
