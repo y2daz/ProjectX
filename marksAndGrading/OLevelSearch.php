@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Yazdaan
+ * User: DR1215
  * Date: 6/8/14
  *
  * THIS IS THE NEW TEMPLATE
@@ -90,6 +90,18 @@ else
 
 }
 
+if (isset($_POST["NewGrade"])){
+
+    $operation = updateOLResults($_POST["IndexNo"], $_POST["Subject"], $_POST["Grade"] );
+
+    if($operation==1){
+        sendNotification("Update successful");
+    }
+    else{
+        sendNotification("Error updating grade.");
+    }
+}
+
 ?>
 
 
@@ -173,21 +185,30 @@ else
         <script>
             $(document).ready(function(){
 
-                    var editable = false;
+                var editable = false;
 
-                    $("#btnMakeEditable").on("click", function(e){
-                        if (editable == true){
-                            $(".grade").addClass("notEditable");
-                            $(".grade").attr("readonly", true);
-                            editable = false;
-                        }
-                        else{
-                            $(".grade").removeClass("notEditable");
-                            $(".grade").attr("readonly", false);
-                            editable = true;
-                        }
-                    });
+                $("#btnMakeEditable").on("click", function(e){
+                    if (editable == true){
+                        $(".grade").addClass("notEditable");
+                        $(".grade").attr("readonly", true);
+                        editable = false;
+                    }
+                    else{
+                        $(".grade").removeClass("notEditable");
+                        $(".grade").attr("readonly", false);
+                        editable = true;
+                    }
                 });
+
+                $(".edit").on("click", function(e){
+                    var subject =  $(this).attr("name");
+
+                    var indexNo = $("#IndexNo").val();
+
+                    editGrade(indexNo, subject);
+                });
+
+            });
         </script>
     </head>
     <body>
@@ -199,7 +220,7 @@ else
             <table class="insert">
 
                 <th>Subject</th>
-                <th>Grade</th>
+                <th colspan="2">Grade</th>
 
                 <?php
 
@@ -209,64 +230,37 @@ else
                     if($Choice == "IndexNo")
                     {
                         $result = searchOLMarks($Value);
-
-                        if(isFilled($result))
-                        {
-                            $i = 1;
-
-                            foreach($result as $row){
-                                $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
-
-                                $IndexNo = $row[0];
-                                $AdmissionNo = $row[1];
-                                $name=$row[2];
-                                $Year = $row[3];
-
-                                echo $top;
-                                echo "<td>$row[4]</td>";
-                                echo "<td>$row[5]</td>";
-
-                                echo "</tr>";
-                            }
-                        }
-                        else
-                        {
-                            echo "<style> .insert{display: none} </style>";
-
-                            sendNotification("No records found.");
-                        }
                     }
                     else if($Choice == "AdmissionNo")
                     {
                         $result = searchOLbyAdmission($Value);
+                    }
+                    if(isFilled($result))
+                    {
+                        $i = 1;
 
-                        if(isFilled($result))
-                        {
-                            $i = 1;
+                        foreach($result as $row){
+                            $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                            foreach($result as $row){
-                                $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+                            $IndexNo = $row[0];
+                            $AdmissionNo = $row[1];
+                            $name=$row[2];
+                            $Year = $row[3];
 
-                                $IndexNo = $row[0];
-                                $AdmissionNo = $row[1];
-                                $name=$row[2];
-                                $Year = $row[3];
+                            echo $top;
+                            echo "<td>$row[4]</td>";
+                            echo "<td><input class='grade notEditable' name='txt$row[4]' value='$row[5]' readonly/></td>";
+                            echo "<td><input class='edit' type='button' name='$row[4]' value='Edit' /></td>";
 
-                                echo $top;
-                                echo "<td>$row[4]</td>";
-                                echo "<td><input class='grade notEditable' name='$row[4]' value='$row[5]' readonly/></td>";
-
-                                echo "</tr>";
-                                //echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
-                            }
+                            echo "</tr>";
+//                                echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
                         }
-                        else
-                        {
-                            echo "<style> .insert{display: none} </style>";
+                    }
+                    else
+                    {
+                        echo "<style> .insert{display: none} </style>";
 
-                            sendNotification("No records found");
-                        }
-
+                        sendNotification("No records found");
                     }
 
                 }
@@ -287,23 +281,23 @@ else
 
                 <tr>
                     <td>Index Number</td>
-                    <td><input type="text" name="IndexNo" value="<?php echo $IndexNo ?>" </td>
+                    <td><input type="text" id="IndexNo" name="IndexNo" value="<?php echo $IndexNo ?>" readonly /></td>
                 </tr>
 
                 <tr>
                     <td>Admission Number</td>
-                    <td><input type="text" name="AdmissionNo"  value="<?php echo $AdmissionNo ?>" </td>
+                    <td><input type="text" name="AdmissionNo"  value="<?php echo $AdmissionNo ?>" readonly/> </td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td><input type="text" name="Name"  value="<?php echo $name ?>" </td>
+                    <td><input type="text" name="Name"  value="<?php echo $name ?>" readonly/> </td>
                 </tr>
 
 
 
                 <tr>
                     <td>Year</td>
-                    <td><input type="text" name="Year" value="<?php echo $Year ?>" /> </td>
+                    <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
                 </tr>
 
 
@@ -330,7 +324,7 @@ else
 //Change these to what you want
 $fullPageHeight = 790;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "O'Level Search Results";
+$pageTitle= "O/Level Search Results";
 //Only change above
 
 $pageContent = ob_get_contents();

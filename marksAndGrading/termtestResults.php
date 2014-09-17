@@ -275,13 +275,15 @@ else
         }
         ?>
 
+        <input name="Submit" class="button" type="submit" value="<?php echo $submit ?>">
+
 
     </table>
 
 
 
 
-            <input name="Submit" class="button" type="submit" value="<?php echo $submit ?>">
+
 <!--            <td><input class="button1" type="reset" value="--><?php //echo $reset ?><!--"></td>-->
       
 
