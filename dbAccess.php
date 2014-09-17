@@ -2049,7 +2049,7 @@ function getOlResults($AdmissionNo)
     return $set;
 }
 
-function UpdateOLResults($IndexNo,$AdmissionNo, $Year, $Subject, $Grade)
+function UpdateOLResults($Grade)
 
 {
     $dbObj = new dbConnect();
@@ -2059,19 +2059,11 @@ function UpdateOLResults($IndexNo,$AdmissionNo, $Year, $Subject, $Grade)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmtCheck = $mysqli->prepare("SELECT * FROM olmarks WHERE AdmissionNo=? ;"))
-    {
-        $stmtCheck -> bind_param("s", $AdmissionNo);
-        $stmtCheck -> execute();
-        $result = $stmtCheck->get_result();
 
-
-        if ($result -> num_rows == 1)
-        {
-            if ($stmt = $mysqli->prepare("UPDATE olmarks SET IndexNo=?, AdmissionNo=?, Year=?,Subject=?,Grade=? WHERE AdmissionNo=?"))
+            if ($stmt = $mysqli->prepare("UPDATE OLMraks SET Grade=? WHERE IndexNo=? AND Subject=?"))
             {
-                $isDeleted = 0;
-                $stmt -> bind_param("isiss",$IndexNo,$AdmissionNo, $Year, $Subject, $Grade);
+
+                $stmt -> bind_param("s",$Grade);
 
                 if ($stmt->execute())
                 {
@@ -2081,11 +2073,8 @@ function UpdateOLResults($IndexNo,$AdmissionNo, $Year, $Subject, $Grade)
                 }
                 $stmt->close();
             }
-        }
 
-        $stmtCheck->close();
 
-    }
     $mysqli->close();
     return false;
 }

@@ -45,6 +45,20 @@
         $Choice = $_GET["Choice"];
     }
 
+if (isset($_POST["Update"])) //User has clicked the submit button to add a user
+{
+    $operation = UpdateOLResults($_POST["Grade"]);
+
+    if ($operation == true)
+    {
+        sendNotification("Results Updated Successfully");
+    }
+    else
+    {
+        sendNotification("Error updating Results.");
+    }
+}
+
 
 if (isset($_GET["expand"]))
 {
@@ -116,8 +130,10 @@ else
 
             .insert td
             {
-                padding:10px;
-
+                padding:5px 10px 5px 10px;
+                /*height: 24px;*/
+                /*max-height: 24px;*/
+                min-height: 100px;
             }
 
             .insert, .insert th, .insert td
@@ -132,17 +148,53 @@ else
                 font-size:15px;
                 Right:50px;
                 top: 420px;
-
-
+            }
+            .grade{
+                max-width: 40px;
+                text-align: center;
+            }
+            .notEditable{
+                border-color: white;
+                border-style: solid ;
+            }
+            .editButton{
+                position:absolute;
+                left:470px;
+                top:670px;
+            }
+            #update{
+                position:absolute;
+                left:400px;
+                top:720px;
             }
 
         </style>
+
+        <script>
+            $(document).ready(function(){
+
+                    var editable = false;
+
+                    $("#btnMakeEditable").on("click", function(e){
+                        if (editable == true){
+                            $(".grade").addClass("notEditable");
+                            $(".grade").attr("readonly", true);
+                            editable = false;
+                        }
+                        else{
+                            $(".grade").removeClass("notEditable");
+                            $(".grade").attr("readonly", false);
+                            editable = true;
+                        }
+                    });
+                });
+        </script>
     </head>
     <body>
 
         <h1> O Level Search Results </h1>
 
-        <form method="post">
+        <form method="get">
 
             <table class="insert">
 
@@ -202,7 +254,7 @@ else
 
                                 echo $top;
                                 echo "<td>$row[4]</td>";
-                                echo "<td>$row[5]</td>";
+                                echo "<td><input class='grade notEditable' name='$row[4]' value='$row[5]' readonly/></td>";
 
                                 echo "</tr>";
                                 //echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
@@ -251,19 +303,24 @@ else
 
                 <tr>
                     <td>Year</td>
-                    <td><input type="text" name="Year" value="<?php echo $Year ?>" </td>
+                    <td><input type="text" name="Year" value="<?php echo $Year ?>" /> </td>
                 </tr>
-                <tr>
-                    <td> <input class="button" name="expand" type="Submit" value="Expand Details"  /> </td>
 
-                </tr>
+
+
+
 
 
             </table>
+            <input id="update" type="Submit" value="Update" name="Update">
 
 
 
         </form>
+
+        <input class="editButton" id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit ">
+
+
 
 
 
@@ -271,7 +328,7 @@ else
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 700;
+$fullPageHeight = 790;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "O'Level Search Results";
 //Only change above
