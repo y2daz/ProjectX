@@ -88,8 +88,11 @@ $column3Header = "Teachers'Name";
         .report .headerRow{
             height:50px;
         }
-        .report.{
-            text-align: center;
+        .report{
+            /*text-align: center;*/
+            position: relative;
+            margin: 0 auto;
+            clear: both;
         }
         .report .center{
             text-align: center;
@@ -208,7 +211,6 @@ $column3Header = "Teachers'Name";
 <h1><?php echo $line1 ?></h1>
 <h3><?php echo $line2 ?></h3>
 
-
 <table class="report">
     <tr class="secret">
 
@@ -248,7 +250,6 @@ $column3Header = "Teachers'Name";
 
 
 </table>
-
 <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 
 <br />
