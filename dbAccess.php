@@ -134,6 +134,37 @@
 
     }
 
+    function getEventdetails($EventID)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+
+        if ($stmt = $mysqli->prepare("Select e.Name, e.Description,e.EventDate, e.Location, e.StartTime, e.EndTime, s.NameWithInitials FROM Event e , EventManager m, Staff s WHERE e.EventID=? AND e.EventID = m.EventID AND m.StaffID = s.StaffID"))
+        {
+            $stmt->bind_param('i', $EventID);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+        }
+        $mysqli->close();
+
+        return $set;
+
+    }
     function insertUser($email, $password, $accessLevel)
     {
         $dbObj = new dbConnect();
@@ -625,7 +656,7 @@ function getEventTransactions($eventid)
 
     if ($stmt = $mysqli->prepare("Select TransactionID, TransactionDate, TransactionType, Amount, Description  FROM Transaction where eventId = ?"))
     {
-        $stmt -> bind_param("s", $eventid);
+        $stmt -> bind_param("i", $eventid);
 
         if ($stmt->execute())
         {
@@ -641,7 +672,38 @@ function getEventTransactions($eventid)
     return $set;
 }
 
-    function getIncomes($eventid)
+    function getTransactionReport($eventid)
+    {
+
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select  TransactionDate, TransactionType, Amount, Description  FROM Transaction where EventID = ?"))
+        {
+            $stmt -> bind_param("i", $eventid);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++ ]=$row;
+                }
+            }
+        }
+        $mysqli->close();
+        return $set;
+    }
+
+
+    function getExpenses($eventid)
     {
 
         $dbObj = new dbConnect();
@@ -653,7 +715,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 0"))
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 1"))
         {
             $stmt -> bind_param("s", $eventid);
 
@@ -668,7 +730,7 @@ function getEventTransactions($eventid)
         return $result;
     }
 
-    function getExpenditures($eventid)
+    function getIncomes($eventid)
     {
 
         $dbObj = new dbConnect();
@@ -680,7 +742,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 1"))
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 0"))
         {
             $stmt -> bind_param("s", $eventid);
 
