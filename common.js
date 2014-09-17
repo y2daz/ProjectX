@@ -228,6 +228,19 @@ function editGrade(indexNo, subject){
     $.prompt(states);
 }
 
+function getTeachersForSubstition(staffID, absPosition){
+    var relPosition = absPosition % 8;
+    var day = parseInt( absPosition / 8);
+
+    var params = {"getSubstitute" : "getSubstitute", "StaffID" : staffID, "Position" : relPosition, "Day" : day};
+    post(document.URL, params, "post");
+}
+
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+
 
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.

@@ -139,11 +139,13 @@ else
                 position: relative;
                 border-collapse: collapse;
                 left:25px;
-                max-width: 750px;
+                /*min-width: 100px;*/
+                min-width: 400px;
+                /*max-width: 750px;*/
                 display: <?php echo $tableViewTable ?>;
             }
             .viewTable th{
-                width: 300px;
+                min-width: 100px;
                 font-weight: 600;
                 color:white;
                 background-color: #005e77;

@@ -32,33 +32,6 @@ error_reporting(0);//Temporarily turn of all errors
 
 if (isset($_POST["Submit"]))
 {
-    $myTime = new Timetable();
-    $myTime -> staffId = $_POST["staffId"];
-
-    $prefixSubject = "subject_";
-    $prefixClassroom = "classroom_";
-
-    for($i = 0; $i < 40; $i++){
-        $subjectArr = array();
-        $classArr = array();
-        $gradeArr = array();
-
-        $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
-        $tempClassroom = trim($_POST[ ($prefixClassroom . $i) ]);
-
-        $tempClassroom = explode(" ", $tempClassroom);
-        $tempGrade = $tempClassroom[0];
-        $tempClass = $tempClassroom[1];
-
-        $gradeArr[$i] = $tempGrade;
-        $classArr[$i] = $tempClass;
-
-        $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
-//        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
-    }
-
-
-    $operation = $myTime ->updateTimetableToDB();
 
 //        echo  $operation;
     if ($operation == true){
@@ -68,6 +41,24 @@ if (isset($_POST["Submit"]))
     }
 
 //        var_dump($myTime);
+}
+$freeTeachersSet = null;
+
+if(isset($_POST["getSubstitute"]))
+{
+    $_GET["getTimetable"] = $_POST["StaffID"];
+    $_GET["staffID"] = $_POST["StaffID"];
+
+    $currentStaffId = $_POST["StaffID"];
+
+//    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["staffID"] );
+    $freeTeachersSet = getFreeTeachers( 1, 2, 10 );
+    if($freeTeachersSet == null)
+    {
+        sendNotification("No free teachers.");
+    }
+    $row = $freeTeachersSet[0];
+    $currentStaffName = $row[0];
 }
 
 if (isset($_GET["getTimetable"]))
@@ -88,10 +79,38 @@ if (isset($_GET["getTimetable"]))
     $myTime->getTimetableFromDB();
 }
 
+
 ?>
     <html>
     <head>
         <link rel="stylesheet" href="timetable.css">
+        <style>
+            .viewTable{
+                position: relative;
+                border-collapse: collapse;
+                left:25px;
+                max-width: 750px;
+                display: <?php echo $tableViewTable ?>;
+            }
+            .viewTable th{
+                width: 300px;
+                font-weight: 600;
+                color:white;
+                background-color: #005e77;
+            }
+            .viewTable tr.alt{
+                background-color: #bed9ff;
+            }
+            .viewTable td{
+                padding-left: 4px;
+                padding-right: 4px;
+                min-width: 60px;
+                text-align: center;
+            }
+        </style>
+        <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
+        <script src="<?php echo PATHFRONT ?>/common.js"></script>
         <script src="timetable.js"></script>
 
         <script>
@@ -101,11 +120,16 @@ if (isset($_GET["getTimetable"]))
 
                 $(".subject").on("click", function(e){ //Write substitute code
                    var position = $(this).attr("id");
-                    alert(position);
+//                    alert(position);
+                    var staffID = getParameterByName('staffID');
+//                    alert(staffID);
+
+                    getTeachersForSubstition( staffID, position);
                 });
 
             });
         </script>
+
     </head>
     <body>
 
@@ -186,21 +210,12 @@ if (isset($_GET["getTimetable"]))
                         else{
                             $currColour = $classColour[$class];
                         }
-                        if($class !=" ")
-                        {
-                            $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 
-                            $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
-                            $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>";
-                            $thisCell .= "<form><input type='button' style='background-color:$currColour; border-color:$currColour' value='substitute' onclick=alert(1)></form></td>";
-                        }
-                        else
-                        {
-                            $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
+                        $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
 
-                            $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
-                            $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>";
-                        }
+                        $thisCell .= "\t<td class='subject' style='background-color:$currColour;'  id=\"" . $number . "\">" . $classDiv;
+                        $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$currColour;'>" . $subject . "</textarea>";
+
                         if ($x % 5 == 0)
                             $thisCell .= "\t</tr>\n";
                     }
@@ -217,6 +232,34 @@ if (isset($_GET["getTimetable"]))
 <!--                <td><input type="submit" name="Submit" value="Save Changes"></td>-->
 <!--            </tr>-->
 <!--        </table>-->
+        <form method="post">
+            <table class="viewTable">
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Teacher's Name</th>
+                    <th>Contact Number</th>
+                </tr>
+                <?php
+                    $rowcount = 0;
+                    if (isFilled($freeTeachersSet)){
+
+                        foreach($freeTeachersSet as $row){
+                            echo "<tr>";
+                            echo "<td>" . $row[0] . "</td>";
+                            echo "<td>" . $row[1] . "</td>";
+                            echo "<td>" . $row[2] . "</td>";
+                            echo "</tr>";
+                            $rowcount++;
+                        }
+
+
+
+                    }
+                ?>
+                </table>
+            </form>
+            </table>
+        </form>
 
     </form>
 
@@ -224,7 +267,7 @@ if (isset($_GET["getTimetable"]))
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1200;
+$fullPageHeight = 1200 + ($rowcount * 10);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
 //Only change above
