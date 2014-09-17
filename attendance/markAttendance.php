@@ -178,6 +178,21 @@ if (isset($_GET["Grade"])){
                 display: <?php echo $attendanceDisplay?>;
                 }
         </style>
+        <script>
+
+            $(document).ready( function(){
+
+                Date.prototype.getWeek = function () { return $.datepicker.iso8601Week(this); }
+
+                var today = new Date();
+
+//                $("#week").val( today.getWeek() );
+                $("#week").val( today.getFullYear() + "-W" + today.getWeek() );
+
+
+            });
+
+        </script>
     </head>
     <body>
 
@@ -186,10 +201,10 @@ if (isset($_GET["Grade"])){
         <form method="get">
             <table id="classDate">
                 <tr><td>Grade and class</td>
-                    <td><input type="text" name="Grade" value=""></td></tr>
+                    <td><input type="text" name="Grade" value="" required></td></tr>
                 <tr><td><br/></td></tr>
                 <tr><td>Week</td>
-                    <td><input name="week" type="week"/></td></tr>
+                    <td><input id="week" name="week" type="week" required/></td></tr>
                 <tr><td colspan="2">&nbsp;</td> </tr>
                 <tr><td></td><td><input type="submit" name="sbtGetStudent" value="Mark Attendance"/></td></tr>
             </table>
@@ -211,6 +226,18 @@ if (isset($_GET["Grade"])){
 
                 $result = getClassOfStudents( $arrGradeAndClass[0] , $arrGradeAndClass[1]);
 
+                //Finding holidays
+                $holidayArr = array();
+
+            $holidayArr[0] = isHoliday($monday);
+            $holidayArr[1] = isHoliday($tuesday);
+            $holidayArr[2] = isHoliday($wednesday);
+            $holidayArr[3] = isHoliday($thursday);
+            $holidayArr[4] = isHoliday($friday);
+
+                //Finding holidays
+
+
                 if (isFilled($result)){
                     foreach ($result as $row)
                     {
@@ -229,7 +256,7 @@ if (isset($_GET["Grade"])){
                         {
                             $dayDate = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursdayh : $friday ))));
 
-                            if ($x == 3) //Insert holiday logic
+                            if ( $holidayArr[$x] ) //Insert holiday logic
                             {
                                 $cBox = "<td class=\"disabled\"></td>";
                             }

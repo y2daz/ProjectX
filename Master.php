@@ -56,6 +56,7 @@
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
+        <script src="<?php echo PATHFRONT ?>/sandbox/jquery-ui.min.js"></script>
 
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
