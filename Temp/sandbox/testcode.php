@@ -15,11 +15,11 @@
 
 <head>
 
-    <script type="text/javascript" src="common.js"></script>
-    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="scripts/jquery-impromptu.min.js"></script>
+    <script type="text/javascript" src="../common.js"></script>
+    <script type="text/javascript" src="../jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../scripts/jquery-impromptu.min.js"></script>
 
-    <link rel="stylesheet" href="scripts/jquery-impromptu.min.css"
+    <link rel="stylesheet" href="../scripts/jquery-impromptu.min.css"
 
 </head>
 

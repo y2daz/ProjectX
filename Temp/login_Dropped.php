@@ -52,7 +52,7 @@ $footerTop = $fullPageHeight + 50;
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-    <script src="common.js"></script>
+    <script src="../common.js"></script>
 
     <style type=text/css>
 
