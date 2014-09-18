@@ -51,12 +51,17 @@ if(isset($_POST["getSubstitute"]))
 
     $currentStaffId = $_POST["StaffID"];
 
-//    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["staffID"] );
-    $freeTeachersSet = getFreeTeachers( 1, 2, 10 );
+    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+//    $freeTeachersSet = getFreeTeachers( 1, 2, 10 );
+
     if($freeTeachersSet == null)
     {
         sendNotification("No free teachers.");
     }
+    else{
+        sendNotification("Teachers available for substitution obtained.");
+    }
+//    sendNotification($_POST["Position"] . "," . $_POST["Day"]. "," .  $_POST["StaffID"]);
     $row = $freeTeachersSet[0];
     $currentStaffName = $row[0];
 }
@@ -102,10 +107,14 @@ if (isset($_GET["getTimetable"]))
                 background-color: #bed9ff;
             }
             .viewTable td{
-                padding-left: 4px;
-                padding-right: 4px;
+                padding: 4px;
+                /*padding-left: 4px;*/
+                /*padding-right: 4px;*/
                 min-width: 60px;
                 text-align: center;
+            }
+            .viewTable .alt{
+                background-color: #bed9ff;
             }
         </style>
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
@@ -244,7 +253,8 @@ if (isset($_GET["getTimetable"]))
                     if (isFilled($freeTeachersSet)){
 
                         foreach($freeTeachersSet as $row){
-                            echo "<tr>";
+                            echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
+//                            echo "<tr>";
                             echo "<td>" . $row[0] . "</td>";
                             echo "<td>" . $row[1] . "</td>";
                             echo "<td>" . $row[2] . "</td>";
@@ -267,7 +277,7 @@ if (isset($_GET["getTimetable"]))
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1200 + ($rowcount * 10);
+$fullPageHeight = 1200 + ($rowcount * 18);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
 //Only change above
