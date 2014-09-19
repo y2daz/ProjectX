@@ -246,14 +246,16 @@ function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,
 //            focus: "input[name='jTxtGrade']",
             submit:function( e, v, m, f){
                 e.preventDefault();
+                console.log(Zscore);
                 S1Grade = f["jTxtS1Grade"];
                 S2Grade = f["jTxtS2Grade"];
                 S3Grade = f["jTxtS3Grade"];
                 GenGrade = f["jTxtGenGrade"];
                 CommonGeneralTest = f["jTxtCommonGeneralTest"];
-                Zscore = f["jTxtZscore"];
+                Zscore = f["jTxtZScore"];
                 IslandRank = f["jTxtIslandRank"];
                 DistrictRank = f["jTxtDistrictRank"];
+                console.log(Zscore);
 
                 if( v == 1){
                     var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest,
