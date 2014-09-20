@@ -166,11 +166,10 @@
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/blacklist.php\">" . "Manage Blacklist" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/teacherAchievenment.php\">" . "Staff Achievements" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a><hr /></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
