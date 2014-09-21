@@ -105,7 +105,7 @@ if (isset($_POST["submit"]))
 
             td {
                 width: 10px;
-                text-align:left;
+                text-align:center;
             }
 
             tr{
@@ -116,14 +116,14 @@ if (isset($_POST["submit"]))
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:200px;
+                left:290px;
                 top:40px;
             }
             input.button1 {
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:280px;
+                left:340px;
                 top:40px;
             }
         </style>
@@ -146,14 +146,14 @@ if (isset($_POST["submit"]))
 
     <br />
 
-    <table>
+    <table align="center">
         <tr>
             <th><?php echo $subject ?></th>
             <th><?php echo $grade ?></th>
         </tr>
         <tr>
             <td><input name="subject_1"type="text" value="" ></td>
-            <td><select name="grade_1" type="text" value="">
+            <td text><select name="grade_1" type="text" value="">
                     <option>--</option>
                     <option>A</option>
                     <option>B</option>
@@ -188,7 +188,8 @@ if (isset($_POST["submit"]))
             </td>
         </tr>
         <tr>
-            <td><?php echo $generalenglish ?></td>
+
+            <td><input name=<?php echo $generalenglish ?>type="text" value=" General English"  readonly></td>
             <td><select name="generalEnglish" type="text" value="">
 
                     <option>--</option>
@@ -201,7 +202,8 @@ if (isset($_POST["submit"]))
             </td>
         </tr>
         <tr>
-            <td><?php echo $commongeneraltest?></td>
+
+            <td><input name=<?php echo $commongeneraltest?>type="text" value="Common General Test"  readonly></td>
             <td><input name="commongeneraltest" type="text" value="" maxlength="3" size="3">
 
             </td>
@@ -210,21 +212,21 @@ if (isset($_POST["submit"]))
 
         <br />
 
-        <table>
+        <table align="center">
                 <tr>
-                    <td><?php echo $zscore ?></td>
-                    <td></td>
+                    <td  colspan="1"><?php echo $zscore ?></td>
+
                     <td><input name="zScore" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
-                    <td><?php echo $islandrank ?></td>
-                    <td></td>
+                    <td colspan="1"><?php echo $islandrank ?></td>
+
                     <td><input name="IsLandRank" type="text" value="" >
                     </td>
                 </tr>
                 <tr>
-                    <td><?php echo $districrank ?></td>
+                    <td colspan="1"><?php echo $districrank ?></td>
                     <td><input name="districRank" type="text" value="" >
                     </td>
                 </tr>
