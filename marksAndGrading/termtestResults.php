@@ -9,7 +9,43 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
+
+
+
+if (isset($_POST["submit"]))
+{
+
+
+    $AdmissionNoVar =$_POST["AdmissionNumber"];
+    $SubjectVar = $_GET["Subject"];
+    $YearVar = $_GET["Year"];
+    $GradeVar = $_GET["Grade"];
+    $TermVar = $_GET["Term"];
+    $MarkVar = $_POST["marks"];
+    $RemarksVar = $_POST["remarks"];
+
+
+    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $YearVar, $GradeVar, $TermVar, $MarkVar, $RemarksVar);
+
+
+    echo $AdmissionNoVar . "<br />";
+    echo $SubjectVar. "<br />";
+    echo $YearVar . "<br />";
+    echo $GradeVar . "<br />";
+    echo $TermVar . "<br />";
+    echo $MarkVar . "<br />";
+    echo $RemarksVar . "<br />";
+
+
+
+    if($operation){
+        sendNotification("Insert successful.");
+    }
+    else{
+        sendNotification("Error inserting marks.");
+    }
+}
 
 
 if(isset($_GET["Grade"]))
@@ -66,39 +102,7 @@ else
 {
     $Term = "";
 }
-if (isset($_POST["submit"]))
-{
 
-
-    $AdmissionNo=$_POST["Admission Number"];
-    $Subject = $_POST["Subject"];
-    $Year=$_POST["Year"];
-    $Grade=$_POST["Grade"];
-    $Term=$_POST["Term"];
-    $Mark=$_POST["Marks"];
-    $Remarks=$_POST["Remarks"];
-
-
-    $operation =  insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, $Remarks);
-
-
-    echo $_POST["Admission Number"]. "<br />";
-   echo $_POST["Subject"]. "<br />";
-     echo $_POST["Year"]. "<br />";
-    echo $_POST["Grade"]."<br />";
-     echo $_POST["Term"]. "<br />";
-    echo $_POST["Marks"] . "<br />";
-      echo $_POST["Remarks"]. "<br />";
-
-
-
-    if($operation==true){
-        sendNotification("Insert successful.");
-    }
-    else{
-        sendNotification("Error inserting marks.");
-    }
-}
 
 //echo $Grade;
 //echo $Class;
@@ -210,9 +214,6 @@ else
             <tr>
                 <td class="title"><?php echo $grade ?></td>
                 <td><input type="text" id="grade" name="grade" value="<?php echo $Grade ?>" readonly></td>
-
-
-
             </tr>
             <tr>
                 <td class="title"><?php echo $class ?></td>
@@ -270,7 +271,8 @@ else
                 echo "<td>$row[0]</td>";
                 echo "<td>$row[1]</td>";
                 echo "<td><input type='text' name='marks' value=''></td>";
-                echo "<td><input type='text' name='remarks' value=''></td>";
+                echo "<td><input type='text' name='remarks' value=''/> ";
+                echo "<input hidden=hidden type='text' name='AdmissionNumber' value='" . $row[0] . "' /></td>";
                 echo "</tr>";
             }
 
@@ -286,12 +288,6 @@ else
     <input name="submit" class="button" type="submit" value="<?php echo $submit ?>">
     </form>
 
-
-
-
-
-<!--            <td><input class="button1" type="reset" value="--><?php //echo $reset ?><!--"></td>-->
-      
 
     </body>
 </html>

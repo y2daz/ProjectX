@@ -118,11 +118,11 @@ if (isset($_POST["NewGrade"])){
            }
 
             .insert
-            {
-                position:absolute;
-                left:275px;
-                top: 250px;
-            }
+             {
+                 position:absolute;
+                 left:275px;
+                 top: 250px;
+             }
 
             .insert2
             {
@@ -213,7 +213,7 @@ if (isset($_POST["NewGrade"])){
     </head>
     <body>
 
-        <h1> O Level Search Results </h1>
+        <h1> G.C.E O/L Search Results </h1>
 
         <form method="get">
 
@@ -235,6 +235,10 @@ if (isset($_POST["NewGrade"])){
                     {
                         $result = searchOLbyAdmission($Value);
                     }
+                    else if($Choice == "Year")
+                    {
+                        $result = searchOLbyYear($Value);
+                    }
                     if(isFilled($result))
                     {
                         $i = 1;
@@ -251,6 +255,7 @@ if (isset($_POST["NewGrade"])){
                             echo "<td>$row[4]</td>";
                             echo "<td><input class='grade notEditable' name='txt$row[4]' value='$row[5]' readonly/></td>";
                             echo "<td><input class='edit' type='button' name='$row[4]' value='Edit' /></td>";
+
 
                             echo "</tr>";
 //                                echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
@@ -299,6 +304,7 @@ if (isset($_POST["NewGrade"])){
                     <td>Year</td>
                     <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
                 </tr>
+
 
 
 
