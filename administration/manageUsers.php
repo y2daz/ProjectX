@@ -38,8 +38,7 @@ if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
             sendNotification("Error adding user.");
     }
 }
-
-if (isset($_POST["reset"])) //User has clicked a reset password button
+elseif (isset($_POST["reset"])) //User has clicked a reset password button
 {
     $operation = changePassword($_POST["user"], $_POST["newPassword"]);
     if ($operation == 1)
@@ -47,32 +46,26 @@ if (isset($_POST["reset"])) //User has clicked a reset password button
     else
         sendNotification("Error changing password.");
 }
+else{
+    if (isset($_GET["valueName"]) && isset($_GET["valueMember"])) //User has clicked a delete button
+    {
+        if(strcmp($_GET["valueName"], "delete") == 0){
 
-if (isset($_GET["valueName"]) && isset($_GET["valueMember"])) //User has clicked a delete button
-//if (isset($_POST["delete"])) //User has clicked a delete button
-{
-    if(strcmp($_GET["valueName"], "delete") == 0){
+            $deletedEmail = $_GET["valueMember"];
+            $operation = deleteUser($deletedEmail);
 
-    $deletedEmail = $_GET["valueMember"];
-    $operation = deleteUser($deletedEmail);
-
-    if ($operation == 1)
-        sendNotification("User deleted successfully.");
-    else
-        sendNotification("Error deleting user.");
+            if ($operation == 1)
+                sendNotification("User deleted successfully.");
+            else
+                sendNotification("Error deleting user.");
+        }
     }
 }
-if (isset($_POST["delete"])) //User has clicked a delete button
-{
 
-    $deletedEmail = $_POST["valueMember"];
-    $operation = deleteUser($deletedEmail);
 
-    if ($operation == 1)
-        sendNotification("User deleted successfully.");
-    else
-        sendNotification("Error deleting user.");
-}
+
+
+
 
 ?>
     <html>
