@@ -490,7 +490,7 @@ else
     $update =  getLanguage('update', $language);
 ?>
 <body>
-<h1> Search and View Staff Details </h1>
+<h1> <?php echo getLanguage('searchStaffMember', $language) ?></h1>
 <br />
 <!--<h3>Search by</h3>-->
 

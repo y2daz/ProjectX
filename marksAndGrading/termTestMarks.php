@@ -15,7 +15,7 @@ if($_COOKIE['language'] == 0)
     $termtestresultsform = "Term Test Details Form";
     $grade="Grade";
     $class = "Class";
-    $teachername = "Teacher's Name";
+    $staffId= getLanguage("staffID",$_COOKIE['language'] );
     $subject="Subject";
     $year="Year";
     $term="Term";
@@ -26,7 +26,7 @@ if($_COOKIE['language'] == 0)
 }
 else
 {
-
+    $staffId= getLanguage("staffID",$_COOKIE['language'] );
     $term="වාරය";
     $year = "වර්ෂය";
     $subject="විෂය";
@@ -40,11 +40,6 @@ else
     $final="අවසන්";
 }
 ?>
-
-
-
-
-
 <html>
 <head>
 <style type=text/css>
@@ -56,43 +51,31 @@ else
         background-color: #005e77;
         color: #ffffff;
     }
-
-    table, th, td {
+    .insert table, .insert th, .insert td {
         border: 0px solid black;
     }
-
-    th{
-        width: 1000px;
+    .insert th{
+        max-width: 300px;
         text-align:left;
     }
-
-    td {
-        width: 50px;
+    .insert td {
+        min-width: 150px;
+        width: 100px;
         text-align:left;
 
     }
-
-    tr{
-        height: 20px;
-
-    }
-
     .insert
     {
         position:absolute;
-        left:135px;
+        left:110px;
         top: 65px;
     }
-
     .insert2
     {
         position:absolute;
         left:135px;
         top: 350px;
     }
-
-
-
     .insert input.button {
         position:relative;
         font-weight:bold;
@@ -120,52 +103,35 @@ else
 <form action="termtestResults.php" method="get" class="insert">
 
 <table class="insert" cellspacing="0">
-<tr>
-    <td><?php echo $grade ?></td>
-    <td><select name="Grade" type="text" value="" >
-            <option>--</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>11</option>
-            <option>12</option>
-            <option>13</option>
-        </select></td>
-</tr>
-<tr>
-    <td><?php echo $class ?></td>
-    <td><input type="text" value="" name="Class"  maxlength="2" required="true"></td>
-</tr>
-<tr>
-    <td><?php echo $teachername ?></td>
-    <td><input type="text" value="" name="TeacherName" required="true"></td>
-</tr>
-<tr>
-<tr>
-    <td><?php echo $subject ?></td>
-    <td><input type="text" value="" name="Subject" required="true"></td>
-</tr>
-<tr>
-<tr>
-    <td><?php echo $year ?></td>
-    <td><input type="text" value="" name="Year" maxlength="4" required="true"></td>
-</tr>
-<tr>
-    <td><?php echo $term ?></td>
-    <td>
-        <input type="radio" name="Term" value="Mid"><?php echo $mid ?>
-        <input type="radio" name="Term" value="Final"><?php echo $final ?>
-    </td>
-</tr>
-
-
+    <tr>
+        <td><?php echo $grade . " and " . $class ?></td>
+        <td><input name="gradeAndClass" type="text" value="" /></td>
+    </tr>
+<!--    <tr>-->
+<!--        <td>--><?php //echo $class ?><!--</td>-->
+<!--        <td><input type="text" value="" name="Class"  maxlength="2" required="true"></td>-->
+<!--    </tr>-->
+    <tr>
+        <td><?php echo $staffId ?></td>
+        <td><input type="text" value="" name="staffId" required="true"></td>
+    </tr>
+    <tr>
+    <tr>
+        <td><?php echo $subject ?></td>
+        <td><input type="text" value="" name="Subject" required="true"></td>
+    </tr>
+    <tr>
+    <tr>
+        <td><?php echo $year ?></td>
+        <td><input type="text" value="" name="Year" maxlength="4" required="true"></td>
+    </tr>
+    <tr>
+        <td><?php echo $term ?></td>
+        <td>
+            <input type="radio" name="Term" value="Mid"><?php echo $mid ?>
+            <input type="radio" name="Term" value="Final"><?php echo $final ?>
+        </td>
+    </tr>
 </table>
 
     <table class="insert2">

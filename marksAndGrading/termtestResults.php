@@ -48,32 +48,20 @@ if (isset($_POST["submit"]))
 }
 
 
-if(isset($_GET["Grade"]))
+if(isset($_GET["gradeAndClass"]))
 {
-    $Grade = $_GET["Grade"];
+    $arrGradeAndClass = getGradeAndClass($_GET["gradeAndClass"]);
+    $Grade = $arrGradeAndClass[0];
+    $Class = $arrGradeAndClass[1];
 }
 else
 {
     $Grade = "";
-}
-
-if(isset($_GET["Class"]))
-{
-    $Class = $_GET["Class"];
-}
-else
-{
     $Class = "";
 }
 
-if(isset($_GET["TeacherName"]))
-{
-    $TeacherName = $_GET["TeacherName"];;
-}
-else
-{
-    $TeacherName = "";
-}
+    $TeacherName = getStaffMember( $_GET["staffId"] );
+    $TeacherName = $TeacherName[0][1];
 
 if(isset($_GET["Subject"]))
 {
