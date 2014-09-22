@@ -120,7 +120,11 @@
             $StaffName = $row[3];
         }
 
-        if($OfficialLeave < 0)
+        $OfficialLeave = ($OfficialLeave < 0 ? 0 : $OfficialLeave);
+        $MaternityLeave = ($MaternityLeave < 0 ? 0 : $MaternityLeave);
+        $OtherLeave = ($OtherLeave < 0 ? 0 : $OtherLeave);
+
+/*        if($OfficialLeave < 0)
         {
             $OfficialLeave = 0;
 
@@ -178,7 +182,7 @@
             {
                 $MaternityLeave = 0;
             }
-        }
+        }*/
 
         if($OfficialLeave == "" && $MaternityLeave == "" && $OtherLeave == "" && $StaffName == "")
         {
