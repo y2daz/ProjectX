@@ -43,10 +43,14 @@ if( isset($_GET["NamewithInitials"]))
     $nameWithInitials = $_GET["NamewithInitials"];
 }
 
-if (isset($_GET["delete"]))
+if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
 {
-    $operation = deleteStaff($_GET["delete"]);
-    sendNotification($operation);
+//    $operation = true;
+    $operation = deleteStaff($_GET["otherVar"]);
+
+    if ($operation == true){
+        sendNotification("Staff member deleted.");
+    }
 }
 
 $tableDetails = "none";
@@ -542,7 +546,8 @@ else
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
                     echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                    echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                            . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                     echo "</td></tr>";
                 }
             }
@@ -950,20 +955,16 @@ else
             </td>
             <td></td>
         </tr>
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td colspan="3" style="text-align: center"><input type="Submit" value="Update" name="Submit" /> </td>
+        </tr>
         </table>
 
         <br />
         <br />
         <br />
 
-
-
-    <table align=center>
-        <tr>
-            <td> <input type="Submit" value="Update" name="Submit" /> </td>
-
-        </tr>
-    </table>
 
     <br />
     <br />

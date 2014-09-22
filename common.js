@@ -110,8 +110,29 @@ function moveNav()
     }
 }
 
-function sendMessage(text){
-    $.prompt(text);
+function sendMessage(message){
+    $.prompt(message);
+}
+
+function requestConfirmation(message, title, valueName, valueMember){
+    var states = {
+        state0: {
+            title: title,
+            html:'<p>' + message + '</p>',
+            buttons: { Yes: 1, No: -1 },
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                if( v == 1){
+                    var params = {"confirm" : 1, "valueName" : valueName, "valueMember" : valueMember};
+                    post(document.URL, params, "get");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
 }
 
 function resetPassword(user){

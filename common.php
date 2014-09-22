@@ -11,9 +11,8 @@
 //    require_once(THISROOT . "/common.php");
     require_once("formValidation.php");
 
-    function sendNotification($text){
-        echo "<script> sendMessage(\"$text\"); </script>";
-
+    function sendNotification($message){
+        echo "<script> sendMessage(\"$message\"); </script>";
     }
 
     function getGradeAndClass($text){
