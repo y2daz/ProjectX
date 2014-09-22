@@ -10,7 +10,21 @@ $(document).ready(function() {
         window.ontouchstart = function(){};
     }
 
-    moveNav();
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (w <= 1280)
+    {
+        moveNav();
+    }
+    $( document ).keypress(function(e) {
+        if (w <= 1280){
+            console.log( "Handler for .keypress() called." );
+            console.log( parseInt(e.which) );
+            if( parseInt(e.which) == 43){
+                $("#menuButton").click();
+            }
+        }
+    });
+
 
     /*
      Copyright (c) 2014 by Pramod Kumar (http://codepen.io/Pro/pen/hwfen)

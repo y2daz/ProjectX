@@ -460,7 +460,7 @@
 
     </head>
     <body>
-            <h1>Apply For Leave</h1>
+            <h1><?php echo $applyforleave ?></h1>
 
             <form class="insert" method="post" action="applyForLeave.php">
 
