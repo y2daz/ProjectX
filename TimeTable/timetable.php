@@ -162,13 +162,14 @@ if (isset($_GET["getTimetable"]))
                     <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
 
             </tr>
-            <tr>
-                <td>Teacher's Name</td>
+            <tr <?php echo (!isFilled($currentStaffName))? "style='display:none'" : ""; ?> >
+                <td >Teacher's Name</td>
                 <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
             </tr>
         </table>
     </form>
 
+    <br />
 
     <form name="frmTimetable" method="post">
         <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
