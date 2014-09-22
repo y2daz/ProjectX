@@ -46,7 +46,7 @@ if( isset($_GET["NamewithInitials"]))
 if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
 {
 //    $operation = true;
-    $operation = deleteStaff($_GET["otherVar"]);
+    $operation = deleteStaff($_GET["valueMember"]);
 
     if ($operation == true){
         sendNotification("Staff member deleted.");
