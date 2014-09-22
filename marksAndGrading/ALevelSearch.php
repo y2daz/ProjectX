@@ -50,6 +50,16 @@ if( isset( $_POST["IndexNo"]) ){
     $operation = updateALResults($_POST["IndexNo"], $_POST["S1Grade"], $_POST["S2Grade"], $_POST["S3Grade"], $_POST["GenGrade"], $_POST["CommonGeneralTest"],
                             $_POST["Zscore"], $_POST["IslandRank"], $_POST["DistrictRank"]);
 
+  //  echo $_POST["IndexNo"] . "<br />";
+   // echo $_POST["S1Grade"]. "<br />";
+   // echo $_POST["S2Grade"]. "<br />";
+   // echo $_POST["S3Grade"]. "<br />";
+   // echo $_POST["GenGrade"]. "<br />";
+   // echo $_POST["CommonGeneralTest"] . "<br />";
+  //  echo $_POST["Zscore"]. "<br />";
+  //  echo $_POST["IslandRank"]. "<br />";
+  //  echo $_POST["DistrictRank"] . "<br />";
+
     if($operation == 1){
         sendNotification("Updating grade successful.");
     }
@@ -126,7 +136,7 @@ if( isset( $_POST["IndexNo"]) ){
             .insert
             {
                 position:absolute;
-                left:275px;
+                left:265px;
                 top: 250px;
             }
 
@@ -142,7 +152,7 @@ if( isset( $_POST["IndexNo"]) ){
                 color:white;
                 background-color: #005e77;
                 height:30px;
-                padding:5px;
+                padding:2px;
                 text-align: left;
             }
 
@@ -158,12 +168,12 @@ if( isset( $_POST["IndexNo"]) ){
 
             }
 
-             input.button{
+             input.edit{
                 position:relative;
                 font-weight:bold;
                 font-size:15px;
-                Right:50px;
-                top: 420px;
+                Right:170px;
+                top: 50px;
 
 
             }
@@ -200,7 +210,7 @@ if( isset( $_POST["IndexNo"]) ){
     </head>
     <body>
 
-    <h1> A Level Search Results </h1>
+    <h1>G.C.E A/L Search Results </h1>
 
     <form method="get">
 

@@ -258,8 +258,7 @@ function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,
                 console.log(Zscore);
 
                 if( v == 1){
-                    var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest,
-                                        "Zscore" : Zscore, "IslandRank" : IslandRank, "DistrictRank" : DistrictRank};
+                    var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest, "Zscore" : Zscore, "IslandRank" : IslandRank, "DistrictRank" : DistrictRank};
                     post(document.URL, params, "post");
                 }
                 else

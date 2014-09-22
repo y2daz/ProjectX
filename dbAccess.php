@@ -2029,8 +2029,8 @@ function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, 
 
     if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?, ?)"))
     {
-
-        $stmt->bind_param("ssissis", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks);
+        $isDeleted = 0;
+        $stmt->bind_param("ssissisi", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks, $isDeleted);
 
         if($stmt->execute())
         {
@@ -2040,10 +2040,9 @@ function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, 
 
     }
 
+    $mysqli->close();
+    return false;
 
-
-$mysqli->close();
-return false;
 }
 
 
