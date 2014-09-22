@@ -25,10 +25,10 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
-  -- Host: localhost
-  -- Generation Time: Sep 10, 2014 at 10:49 PM
-  -- Server version: 5.5.38-0ubuntu0.14.04.1
-  -- PHP Version: 5.5.9-1ubuntu4.3
+-- Host: localhost
+-- Generation Time: Sep 22, 2014 at 02:36 PM
+-- Server version: 5.5.38-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,16 +36,16 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
-  -- Database: `manaDB`
-  --
-  CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+-- Database: `manaDB`
+--
+CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `manaDB`;
 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `ALMarks`
-  --
+-- Table structure for table `ALMarks`
+--
 
 CREATE TABLE IF NOT EXISTS `ALMarks` (
   `IndexNo` int(11) NOT NULL DEFAULT '0',
@@ -67,21 +67,16 @@ CREATE TABLE IF NOT EXISTS `ALMarks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `ALMarks`
-  --
+-- Dumping data for table `ALMarks`
+--
 
-INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Chemistry', NULL, NULL, 'B', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Combined Mathematics', NULL, NULL, 'C', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `ALMarks` VALUES(1, '3', 2014, 'Physics', NULL, NULL, 'B', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Economics', NULL, NULL, 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Science', NULL, NULL, 'A', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `ALMarks` VALUES(33, '3', 2014, 'Sinhala', NULL, NULL, 'F', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `ALMarks` VALUES(2, '12345', 2012, 'Mathematics', 'Arts', 'Physics', 'B', 'A', 'C', 'B', 70, 2.22, 7650, 1210);
 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `ApplyLeave`
-  --
+-- Table structure for table `ApplyLeave`
+--
 
 CREATE TABLE IF NOT EXISTS `ApplyLeave` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -101,21 +96,21 @@ CREATE TABLE IF NOT EXISTS `ApplyLeave` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Attendance`
-  --
+-- Table structure for table `Attendance`
+--
 
 CREATE TABLE IF NOT EXISTS `Attendance` (
   `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
-  `Date` DATE DEFAULT NULL,
-  `isPresent` BIT DEFAULT 0,
+  `Date` date NOT NULL DEFAULT '0000-00-00',
+  `isPresent` bit(1) DEFAULT b'0',
   PRIMARY KEY (`AdmissionNo`,`Date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Blacklist`
-  --
+-- Table structure for table `Blacklist`
+--
 
 CREATE TABLE IF NOT EXISTS `Blacklist` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -128,8 +123,8 @@ CREATE TABLE IF NOT EXISTS `Blacklist` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `ClassInformation`
-  --
+-- Table structure for table `ClassInformation`
+--
 
 CREATE TABLE IF NOT EXISTS `ClassInformation` (
   `StaffID` varchar(5) DEFAULT NULL,
@@ -140,11 +135,18 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
   KEY `fk001` (`StaffID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ClassInformation`
+--
+
+INSERT INTO `ClassInformation` VALUES('13', 11, 'A', 0);
+INSERT INTO `ClassInformation` VALUES('14', 11, 'B', 0);
+
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Event`
-  --
+-- Table structure for table `Event`
+--
 
 CREATE TABLE IF NOT EXISTS `Event` (
   `EventID` int(11) NOT NULL DEFAULT '0',
@@ -162,8 +164,8 @@ CREATE TABLE IF NOT EXISTS `Event` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Event`
-  --
+-- Dumping data for table `Event`
+--
 
 INSERT INTO `Event` VALUES(1, 'Prize Giving', 'For O/Level examinations', 'Main Auditorium', 0, '2014-08-14', '2', '15:20:00', '17:50:00', 0);
 INSERT INTO `Event` VALUES(2, 'Sports Meet', 'Inter House sports meet', 'Sugathadasa Stadium', 0, '2014-08-13', '1', '15:00:00', '20:00:00', 0);
@@ -173,8 +175,8 @@ INSERT INTO `Event` VALUES(4, 'Founder''s Day', 'Walk around the school', 'Schoo
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `EventManager`
-  --
+-- Table structure for table `EventManager`
+--
 
 CREATE TABLE IF NOT EXISTS `EventManager` (
   `EventID` int(11) NOT NULL DEFAULT '0',
@@ -185,16 +187,16 @@ CREATE TABLE IF NOT EXISTS `EventManager` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `EventManager`
-  --
+-- Dumping data for table `EventManager`
+--
 
 INSERT INTO `EventManager` VALUES(4, '2', 0);
 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Holiday`
-  --
+-- Table structure for table `Holiday`
+--
 
 CREATE TABLE IF NOT EXISTS `Holiday` (
   `Year` int(11) NOT NULL DEFAULT '0',
@@ -204,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `Holiday` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Holiday`
-  --
+-- Dumping data for table `Holiday`
+--
 
 INSERT INTO `Holiday` VALUES(2014, '2014-01-01');
 INSERT INTO `Holiday` VALUES(2014, '2014-01-02');
@@ -217,7 +219,6 @@ INSERT INTO `Holiday` VALUES(2014, '2014-04-11');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-14');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-15');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-16');
-INSERT INTO `Holiday` VALUES(2014, '2014-04-17');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-18');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-21');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-22');
@@ -228,8 +229,6 @@ INSERT INTO `Holiday` VALUES(2014, '2014-04-28');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-29');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-30');
 INSERT INTO `Holiday` VALUES(2014, '2014-05-01');
-INSERT INTO `Holiday` VALUES(2014, '2014-05-14');
-INSERT INTO `Holiday` VALUES(2014, '2014-05-15');
 INSERT INTO `Holiday` VALUES(2014, '2014-06-12');
 INSERT INTO `Holiday` VALUES(2014, '2014-07-29');
 INSERT INTO `Holiday` VALUES(2014, '2014-08-08');
@@ -250,6 +249,7 @@ INSERT INTO `Holiday` VALUES(2014, '2014-08-28');
 INSERT INTO `Holiday` VALUES(2014, '2014-08-29');
 INSERT INTO `Holiday` VALUES(2014, '2014-09-01');
 INSERT INTO `Holiday` VALUES(2014, '2014-09-02');
+INSERT INTO `Holiday` VALUES(2014, '2014-09-04');
 INSERT INTO `Holiday` VALUES(2014, '2014-09-22');
 INSERT INTO `Holiday` VALUES(2014, '2014-09-23');
 INSERT INTO `Holiday` VALUES(2014, '2014-10-08');
@@ -275,8 +275,8 @@ INSERT INTO `Holiday` VALUES(2014, '2014-12-31');
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Invitee`
-  --
+-- Table structure for table `Invitee`
+--
 
 CREATE TABLE IF NOT EXISTS `Invitee` (
   `EventID` int(11) NOT NULL DEFAULT '0',
@@ -290,8 +290,8 @@ CREATE TABLE IF NOT EXISTS `Invitee` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `IsSubstituted`
-  --
+-- Table structure for table `IsSubstituted`
+--
 
 CREATE TABLE IF NOT EXISTS `IsSubstituted` (
   `StaffID` varchar(5) DEFAULT NULL,
@@ -310,8 +310,8 @@ CREATE TABLE IF NOT EXISTS `IsSubstituted` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `LabelLanguage`
-  --
+-- Table structure for table `LabelLanguage`
+--
 
 CREATE TABLE IF NOT EXISTS `LabelLanguage` (
   `Label` varchar(50) NOT NULL DEFAULT '',
@@ -322,8 +322,8 @@ CREATE TABLE IF NOT EXISTS `LabelLanguage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `LabelLanguage`
-  --
+-- Dumping data for table `LabelLanguage`
+--
 
 INSERT INTO `LabelLanguage` VALUES('actingAssistantPrincipal', 0, 'Acting Assistant Principal');
 INSERT INTO `LabelLanguage` VALUES('actingAssistantPrincipal', 1, 'වැඩබලන සහකාර විදුහල්පති');
@@ -367,7 +367,7 @@ INSERT INTO `LabelLanguage` VALUES('artsAgain', 0, 'Arts Again');
 INSERT INTO `LabelLanguage` VALUES('artsAgain', 1, 'චිත්‍ර');
 INSERT INTO `LabelLanguage` VALUES('assistantPrincipal', 0, 'Assistant Principal');
 INSERT INTO `LabelLanguage` VALUES('assistantPrincipal', 1, 'සහකාර විදුහල්පති');
-INSERT INTO `LabelLanguage` VALUES('BABScBEd', 0, ' B A B Sc B Ed');
+INSERT INTO `LabelLanguage` VALUES('BABScBEd', 0, ' BA, BSc, BEd');
 INSERT INTO `LabelLanguage` VALUES('BABScBEd', 1, 'උපාධි හා ඊට සමාන');
 INSERT INTO `LabelLanguage` VALUES('bADegreesorequivalent', 0, 'BA Degrees or equivalent');
 INSERT INTO `LabelLanguage` VALUES('bADegreesorequivalent', 1, 'කල උපාධි හා සමාන උපාධි');
@@ -383,7 +383,7 @@ INSERT INTO `LabelLanguage` VALUES('bAinEnglishorequivalent', 0, 'BA in English 
 INSERT INTO `LabelLanguage` VALUES('bAinEnglishorequivalent', 1, 'ඉංග්‍රීසි/ඉංග්‍රීසි  විෂයක් ලෙස සමත් උපාධි');
 INSERT INTO `LabelLanguage` VALUES('belowOLevel', 0, 'Below O Level');
 INSERT INTO `LabelLanguage` VALUES('belowOLevel', 1, 'අ.පො.ස(සා.පෙ) ට අඩු');
-INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 0, 'B N I E B Ed');
+INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 0, 'BNIE, BEd');
 INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 1, 'හෝ විශ්ව.වි අද්යපනවේදී උපාධි');
 INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 0, 'Bsc in Agriculture');
 INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 1, 'කෘෂි විද්‍යා උපාධි');
@@ -405,11 +405,11 @@ INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 0, 'Bs cin Social Scien
 INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 1, 'සමාජ විද්‍යා උපාධි');
 INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 0, 'BSc Specialisation in Mathematics');
 INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 1, 'විශේෂ ගණිත උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bTecConstruction', 0, 'B Tec Construction');
+INSERT INTO `LabelLanguage` VALUES('bTecConstruction', 0, 'BTec Construction');
 INSERT INTO `LabelLanguage` VALUES('bTecConstruction', 1, 'ඉදිකිරීම් තාක්ෂණය');
-INSERT INTO `LabelLanguage` VALUES('bTecElectronicandElectrical', 0, 'B Tec Electronic and Electrical');
+INSERT INTO `LabelLanguage` VALUES('bTecElectronicandElectrical', 0, 'BTec Electronic and Electrical');
 INSERT INTO `LabelLanguage` VALUES('bTecElectronicandElectrical', 1, 'විදුලිය හා ඉලෙක්ට්‍රොනික තාක්ෂණය');
-INSERT INTO `LabelLanguage` VALUES('bTecMechanical', 0, 'B Tec Mechanical');
+INSERT INTO `LabelLanguage` VALUES('bTecMechanical', 0, 'BTec Mechanical');
 INSERT INTO `LabelLanguage` VALUES('bTecMechanical', 1, 'යාන්ත්‍රික තාක්ෂණය');
 INSERT INTO `LabelLanguage` VALUES('buddhism', 0, 'Buddhism');
 INSERT INTO `LabelLanguage` VALUES('buddhism', 1, 'බෞද්ධ');
@@ -417,13 +417,13 @@ INSERT INTO `LabelLanguage` VALUES('byClass', 0, 'by Class');
 INSERT INTO `LabelLanguage` VALUES('byClass', 1, 'පන්ති මට්ටමින්');
 INSERT INTO `LabelLanguage` VALUES('byTeacher', 0, 'by Teacher');
 INSERT INTO `LabelLanguage` VALUES('byTeacher', 1, 'ගුරුවරයාගේ නමින්');
-INSERT INTO `LabelLanguage` VALUES('catholic', 0, 'Catholic');
+INSERT INTO `LabelLanguage` VALUES('catholic', 0, 'Catholicism');
 INSERT INTO `LabelLanguage` VALUES('catholic', 1, 'කතෝලික');
-INSERT INTO `LabelLanguage` VALUES('certinLibrary', 0, 'Certin Library');
-INSERT INTO `LabelLanguage` VALUES('certinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති සහතිකපත්‍ර   පාඨමාලාව');
-INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingAway', 0, 'Certin Teacher Training Away');
+INSERT INTO `LabelLanguage` VALUES('certinLibrary', 0, 'Cert. in Library');
+INSERT INTO `LabelLanguage` VALUES('certinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති සහතිකපත්‍ර පාඨමාලාව');
+INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingAway', 0, 'Cert. in Teacher Training (Away)');
 INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingAway', 1, 'ගුරු පුහුණු සහතිකය-දුරස්ථ');
-INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingInstitute', 0, 'Certin Teacher Training Institute');
+INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingInstitute', 0, 'Cert. in Teacher Training (Institute)');
 INSERT INTO `LabelLanguage` VALUES('certinTeacherTrainingInstitute', 1, 'ගුරු පුහුණු සහතිකය-ආයතනික');
 INSERT INTO `LabelLanguage` VALUES('chooseOption', 0, 'Choose Option');
 INSERT INTO `LabelLanguage` VALUES('chooseOption', 1, 'විකල්පය තෝරගන්න');
@@ -465,13 +465,13 @@ INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 0, 'Deputy Principal');
 INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 1, 'නියෝජ්‍ය විදුහල්පති');
 INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description');
 INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය');
-INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 0, 'Dipin Agriculture');
+INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 0, 'Dip in Agriculture');
 INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 1, 'කෘෂි අද්‍යාපනය පිළිබද ඩිප්ලෝමාව');
-INSERT INTO `LabelLanguage` VALUES('dipinEASL', 0, 'Dip in E A S L');
+INSERT INTO `LabelLanguage` VALUES('dipinEASL', 0, 'Dip in EASL');
 INSERT INTO `LabelLanguage` VALUES('dipinEASL', 1, 'දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ ඩිප්ලෝමා');
-INSERT INTO `LabelLanguage` VALUES('dipinEd', 0, 'Dipin Ed');
+INSERT INTO `LabelLanguage` VALUES('dipinEd', 0, 'Dip in Ed');
 INSERT INTO `LabelLanguage` VALUES('dipinEd', 1, 'පශ්චාත් උපාධි අධ්‍යාපන ඩිප්ලෝමාව');
-INSERT INTO `LabelLanguage` VALUES('dipinLibrary', 0, 'Dipin Library');
+INSERT INTO `LabelLanguage` VALUES('dipinLibrary', 0, 'Dip in Library');
 INSERT INTO `LabelLanguage` VALUES('dipinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති ඩිප්ලෝමා පාඨමාලාව');
 INSERT INTO `LabelLanguage` VALUES('easternMusic', 0, 'Eastern Music');
 INSERT INTO `LabelLanguage` VALUES('easternMusic', 1, 'සංගීතය-අපරදිග');
@@ -559,15 +559,15 @@ INSERT INTO `LabelLanguage` VALUES('libraryandInformationScience', 0, 'Library a
 INSERT INTO `LabelLanguage` VALUES('libraryandInformationScience', 1, 'පුස්තකාල හා තොරතරු විද්‍යාව');
 INSERT INTO `LabelLanguage` VALUES('location', 0, 'Location');
 INSERT INTO `LabelLanguage` VALUES('location', 1, 'ස්ථානය');
-INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 0, 'Mail Delivery Address');
+INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 0, 'Postal Address');
 INSERT INTO `LabelLanguage` VALUES('mailDeliveryAddress', 1, 'ලිපිනය');
-INSERT INTO `LabelLanguage` VALUES('mAinEd', 0, 'M Ain Ed');
+INSERT INTO `LabelLanguage` VALUES('mAinEd', 0, 'MA in Ed');
 INSERT INTO `LabelLanguage` VALUES('mAinEd', 1, 'අධ්‍යාපනය පිළිබද ශ්‍රාස්ත්‍රපති උපාධිය');
 INSERT INTO `LabelLanguage` VALUES('malay', 0, 'Malay');
 INSERT INTO `LabelLanguage` VALUES('malay', 1, 'මෞලවි');
 INSERT INTO `LabelLanguage` VALUES('male', 0, 'Male');
 INSERT INTO `LabelLanguage` VALUES('male', 1, 'පිරිමි');
-INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 0, ' M A M Sc M Ed');
+INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 0, ' MA, MSc, MEd');
 INSERT INTO `LabelLanguage` VALUES('MAMScMEd', 1, 'ශාස්ත්‍රපති හා ඊට සමාන්තර');
 INSERT INTO `LabelLanguage` VALUES('manage', 0, 'Manage');
 INSERT INTO `LabelLanguage` VALUES('manage', 1, 'කළමනාකරණය');
@@ -591,13 +591,13 @@ INSERT INTO `LabelLanguage` VALUES('mo', 0, 'M');
 INSERT INTO `LabelLanguage` VALUES('mo', 1, 'ස');
 INSERT INTO `LabelLanguage` VALUES('monday', 0, 'Monday');
 INSERT INTO `LabelLanguage` VALUES('monday', 1, 'සදුදා');
-INSERT INTO `LabelLanguage` VALUES('MPhil', 0, ' M Phil');
+INSERT INTO `LabelLanguage` VALUES('MPhil', 0, 'MPhil');
 INSERT INTO `LabelLanguage` VALUES('MPhil', 1, 'දර්ශනපති හා ඊට සමාන්තර');
-INSERT INTO `LabelLanguage` VALUES('mPhilEd', 0, 'M Phil Ed');
+INSERT INTO `LabelLanguage` VALUES('mPhilEd', 0, 'MPhil Ed');
 INSERT INTO `LabelLanguage` VALUES('mPhilEd', 1, 'දර්ශනපති -අධ්‍යාපනය පිළිබද');
-INSERT INTO `LabelLanguage` VALUES('mScinEdMgmt', 0, 'M Scin Ed Mgmt');
+INSERT INTO `LabelLanguage` VALUES('mScinEdMgmt', 0, 'MSc in Ed Mgmt');
 INSERT INTO `LabelLanguage` VALUES('mScinEdMgmt', 1, 'අධ්‍යාපන කළමනාකරණය පිළිබද විද්‍යාපති');
-INSERT INTO `LabelLanguage` VALUES('mScinLibrary', 0, 'M Scin Library');
+INSERT INTO `LabelLanguage` VALUES('mScinLibrary', 0, 'MSc in Library');
 INSERT INTO `LabelLanguage` VALUES('mScinLibrary', 1, 'ගුරු පුස්තකාලයාලධිපති විද්‍යාපති උපාධිය');
 INSERT INTO `LabelLanguage` VALUES('name', 0, 'Name');
 INSERT INTO `LabelLanguage` VALUES('name', 1, 'සිදුවීම');
@@ -605,9 +605,9 @@ INSERT INTO `LabelLanguage` VALUES('nameInFull', 0, 'Name in Full');
 INSERT INTO `LabelLanguage` VALUES('nameInFull', 1, 'සම්පුර්ණ නම');
 INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 0, 'Name with Initials');
 INSERT INTO `LabelLanguage` VALUES('nameWithInitials', 1, 'නම් මුලකුරු සමඟ');
-INSERT INTO `LabelLanguage` VALUES('natDipinTeaching', 0, 'Nat Dipin Teaching');
+INSERT INTO `LabelLanguage` VALUES('natDipinTeaching', 0, 'Nat Dip in Teaching');
 INSERT INTO `LabelLanguage` VALUES('natDipinTeaching', 1, 'ජාතික ශික්ෂණ විද්‍යා ඩිප්ලෝමාව');
-INSERT INTO `LabelLanguage` VALUES('nationalityRace', 0, 'Nationality Race');
+INSERT INTO `LabelLanguage` VALUES('nationalityRace', 0, 'Race');
 INSERT INTO `LabelLanguage` VALUES('nationalityRace', 1, 'ජනවර්ගය');
 INSERT INTO `LabelLanguage` VALUES('nicNumber', 0, 'NIC Number');
 INSERT INTO `LabelLanguage` VALUES('nicNumber', 1, 'ජාතික හැඳුනුම් පත් අංකය');
@@ -637,15 +637,15 @@ INSERT INTO `LabelLanguage` VALUES('partTime', 0, 'Part Time');
 INSERT INTO `LabelLanguage` VALUES('partTime', 1, 'මෙම පාසලින් වැටුප් ලබන පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට අර්ධකලිනවා නිදහස් කර ඇති');
 INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 0, 'Passed Maths without a degree in science');
 INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 1, 'ගණිතය විෂයක් ලෙස සමත් වු විද්‍යා නොවන උපාධි');
-INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 0, 'PGDip in E A S L	');
+INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 0, 'PG Dip in EASL');
 INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 1, 'දෙවන භාෂාවක් ලෙස ඉංග්‍රීසි ඉගැන්වීමේ පශ්චාත් උපාධිඩිප්ලෝමාව');
-INSERT INTO `LabelLanguage` VALUES('pGDipinEdMgmt', 0, 'P G Dipin Ed Mgmt');
+INSERT INTO `LabelLanguage` VALUES('pGDipinEdMgmt', 0, 'PG Dip in Ed Mgmt');
 INSERT INTO `LabelLanguage` VALUES('pGDipinEdMgmt', 1, 'අධ්‍යාපන කළමනාකරණය පිළිබද පශ්චාත් උපාධිඩිප්ලෝමාව');
-INSERT INTO `LabelLanguage` VALUES('pGDipinLibraryScience', 0, 'P G Dipin Library Science');
+INSERT INTO `LabelLanguage` VALUES('pGDipinLibraryScience', 0, 'PG Dip in Library Science');
 INSERT INTO `LabelLanguage` VALUES('pGDipinLibraryScience', 1, 'ගුරු පුස්තකාල විද්‍යා පශ්චාත් උපාධි ඩිප්ලෝමා පාඨමාලාව');
-INSERT INTO `LabelLanguage` VALUES('PhD', 0, ' Ph D');
-INSERT INTO `LabelLanguage` VALUES('PhD', 1, 'දර්ශනශුරී උපාධිහා ඊට සමාන්තර');
-INSERT INTO `LabelLanguage` VALUES('phDEd', 0, 'Ph D Ed');
+INSERT INTO `LabelLanguage` VALUES('phd', 0, 'PhD');
+INSERT INTO `LabelLanguage` VALUES('phd', 1, 'දර්ශනශුරී උපාධිහා ඊට සමාන්තර');
+INSERT INTO `LabelLanguage` VALUES('phDEd', 0, 'PhD Ed');
 INSERT INTO `LabelLanguage` VALUES('phDEd', 1, 'දර්ශනශුරි - අධ්‍යාපනය පිළිබදව');
 INSERT INTO `LabelLanguage` VALUES('pname', 0, 'Parent Name');
 INSERT INTO `LabelLanguage` VALUES('pname', 1, 'මව/පියා  ගේ නම');
@@ -687,8 +687,8 @@ INSERT INTO `LabelLanguage` VALUES('science', 0, 'Science');
 INSERT INTO `LabelLanguage` VALUES('science', 1, 'විද්‍යාව');
 INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 0, 'Science And Maths');
 INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 1, 'විද්‍යා -ගණිත');
-INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search Staff Member');
-INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'කාර්යමණ්ඩලය සෙවීම');
+INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search and Update Details');
+INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'තොරතුරු සෙවීම හා යාවත්කාලීන කිරීම');
 INSERT INTO `LabelLanguage` VALUES('secondaryArts', 0, 'Secondary Arts');
 INSERT INTO `LabelLanguage` VALUES('secondaryArts', 1, 'ද්විතීයික (6-11) සෞන්දර්ය');
 INSERT INTO `LabelLanguage` VALUES('secondaryEnglish', 0, 'Secondary English');
@@ -753,8 +753,10 @@ INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 0, 'Staff Advisor (Pa
 INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 1, 'ගුරු උපදේශක (අර්ධකාලින)');
 INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
 INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
-INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Management');
-INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩලය කළමනාකරණය');
+INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Details');
+INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩල තොරතුරු');
+INSERT INTO `LabelLanguage` VALUES('staffTimetable', 0, 'Staff Timetable');
+INSERT INTO `LabelLanguage` VALUES('staffTimetable', 1, 'කාර්යමණ්ඩල කාලසටහන');
 INSERT INTO `LabelLanguage` VALUES('startTime', 0, 'Start Time ');
 INSERT INTO `LabelLanguage` VALUES('startTime', 1, 'ආරම්භක වෙලාව ');
 INSERT INTO `LabelLanguage` VALUES('status', 0, 'Status');
@@ -819,8 +821,8 @@ INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Language`
-  --
+-- Table structure for table `Language`
+--
 
 CREATE TABLE IF NOT EXISTS `Language` (
   `Language` int(11) NOT NULL DEFAULT '0',
@@ -829,8 +831,8 @@ CREATE TABLE IF NOT EXISTS `Language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Language`
-  --
+-- Dumping data for table `Language`
+--
 
 INSERT INTO `Language` VALUES(0, 'English');
 INSERT INTO `Language` VALUES(1, 'Sinhala');
@@ -838,8 +840,8 @@ INSERT INTO `Language` VALUES(1, 'Sinhala');
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `LanguageGroup`
-  --
+-- Table structure for table `LanguageGroup`
+--
 
 CREATE TABLE IF NOT EXISTS `LanguageGroup` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
@@ -848,17 +850,11 @@ CREATE TABLE IF NOT EXISTS `LanguageGroup` (
   KEY `fk005` (`GroupName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
-  -- Dumping data for table `LanguageGroup`
-  --
-
-INSERT INTO `LanguageGroup` VALUES(0, 'nationalityRace');
-
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `LanguageOption`
-  --
+-- Table structure for table `LanguageOption`
+--
 
 CREATE TABLE IF NOT EXISTS `LanguageOption` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
@@ -869,18 +865,11 @@ CREATE TABLE IF NOT EXISTS `LanguageOption` (
   KEY `fk006` (`Language`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
-  -- Dumping data for table `LanguageOption`
-  --
-
-INSERT INTO `LanguageOption` VALUES(0, 0, 0, 'Sinhala');
-INSERT INTO `LanguageOption` VALUES(0, 0, 1, 'සිංහල');
-
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `LeaveData`
-  --
+-- Table structure for table `LeaveData`
+--
 
 CREATE TABLE IF NOT EXISTS `LeaveData` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -892,8 +881,8 @@ CREATE TABLE IF NOT EXISTS `LeaveData` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `LeaveData`
-  --
+-- Dumping data for table `LeaveData`
+--
 
 INSERT INTO `LeaveData` VALUES('1', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('10', 15, 90, 15, 0);
@@ -915,8 +904,8 @@ INSERT INTO `LeaveData` VALUES('9', 15, 90, 15, 0);
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `OLMarks`
-  --
+-- Table structure for table `OLMarks`
+--
 
 CREATE TABLE IF NOT EXISTS `OLMarks` (
   `IndexNo` int(11) NOT NULL DEFAULT '0',
@@ -931,8 +920,8 @@ CREATE TABLE IF NOT EXISTS `OLMarks` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `ParentsInformation`
-  --
+-- Table structure for table `ParentsInformation`
+--
 
 CREATE TABLE IF NOT EXISTS `ParentsInformation` (
   `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
@@ -950,8 +939,8 @@ CREATE TABLE IF NOT EXISTS `ParentsInformation` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Staff`
-  --
+-- Table structure for table `Staff`
+--
 
 CREATE TABLE IF NOT EXISTS `Staff` (
   `StaffID` varchar(5) NOT NULL,
@@ -982,8 +971,8 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Staff`
-  --
+-- Dumping data for table `Staff`
+--
 
 INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789V', 'Makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
 INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789V', 'Makola', '0756489326', '2014-08-06', '2014-08-30', 3, 1, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
@@ -1005,8 +994,8 @@ INSERT INTO `Staff` VALUES('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Student`
-  --
+-- Table structure for table `Student`
+--
 
 CREATE TABLE IF NOT EXISTS `Student` (
   `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
@@ -1024,8 +1013,8 @@ CREATE TABLE IF NOT EXISTS `Student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Student`
-  --
+-- Dumping data for table `Student`
+--
 
 INSERT INTO `Student` VALUES('1', 'Madusha', '2000-12-12', 1, 1, 1, 'Here', 12, 'B', 'Blue', 0);
 INSERT INTO `Student` VALUES('12325', 'B.T.M Mendia', '1993-12-01', 1, 1, 1, 'Moratuwa', 11, 'A', 'Shantha', 0);
@@ -1034,7 +1023,7 @@ INSERT INTO `Student` VALUES('2', 'Peiris M.S.E', '1993-09-03', 1, 1, 1, 'kolpit
 INSERT INTO `Student` VALUES('23247', 'Sanchayan Balayan', '1991-01-01', 1, 1, 1, 'Wellawattha', 11, 'B', 'Surya', 0);
 INSERT INTO `Student` VALUES('23415', 'Upeka tisser', '1990-12-23', 1, 1, 1, 'Wadduwa', 11, 'B', 'Surya', 0);
 INSERT INTO `Student` VALUES('24242', 'Yazdaan Mohamed', '1995-12-30', 4, 3, 1, 'Nugegoda', 11, 'B', 'Shantha', 0);
-INSERT INTO `Student` VALUES('3', 'jaya', '1993-01-21', 1, 1, 1, 'kolpity', 11, 'A', 'Blue', 0);
+INSERT INTO `Student` VALUES('3', 'Isuru Jayakody', '1993-01-21', 1, 1, 1, 'Kollupitiya', 11, 'A', 'Blue', 0);
 INSERT INTO `Student` VALUES('32424', 'sahan tissera', '1991-12-02', 1, 1, 1, 'Angoda', 11, 'B', 'Shantha', 0);
 INSERT INTO `Student` VALUES('43435', 'Venusha Ranaviraj', '1993-12-21', 1, 1, 1, 'Ganemulla', 11, 'A', 'veera', 0);
 INSERT INTO `Student` VALUES('43536', 'Dulip Rathnayaka', '1991-12-31', 1, 1, 1, 'Kottawa', 11, 'A', 'Su', 0);
@@ -1053,8 +1042,8 @@ INSERT INTO `Student` VALUES('76954', 'Raneesha Peiries', '1994-12-31', 1, 1, 1,
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Student_Subject_Grade`
-  --
+-- Table structure for table `Student_Subject_Grade`
+--
 
 CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
   `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
@@ -1066,8 +1055,8 @@ CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Subject_Grade`
-  --
+-- Table structure for table `Subject_Grade`
+--
 
 CREATE TABLE IF NOT EXISTS `Subject_Grade` (
   `SubjectID` int(11) NOT NULL DEFAULT '0',
@@ -1080,8 +1069,8 @@ CREATE TABLE IF NOT EXISTS `Subject_Grade` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Teaches`
-  --
+-- Table structure for table `Teaches`
+--
 
 CREATE TABLE IF NOT EXISTS `Teaches` (
   `Subject` varchar(64) NOT NULL DEFAULT '0',
@@ -1094,8 +1083,8 @@ CREATE TABLE IF NOT EXISTS `Teaches` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `TermMarks`
-  --
+-- Table structure for table `TermMarks`
+--
 
 CREATE TABLE IF NOT EXISTS `TermMarks` (
   `AdmissionNo` varchar(5) NOT NULL DEFAULT '',
@@ -1110,8 +1099,8 @@ CREATE TABLE IF NOT EXISTS `TermMarks` (
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Timetable`
-  --
+-- Table structure for table `Timetable`
+--
 
 CREATE TABLE IF NOT EXISTS `Timetable` (
   `Grade` int(11) DEFAULT NULL,
@@ -1126,49 +1115,49 @@ CREATE TABLE IF NOT EXISTS `Timetable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Timetable`
-  --
+-- Dumping data for table `Timetable`
+--
 
 INSERT INTO `Timetable` VALUES(1, 'A', 0, 0, 'Science', '1', 0);
 INSERT INTO `Timetable` VALUES(1, 'A', 0, 1, 'Science', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '1', 0);
-INSERT INTO `Timetable` VALUES(2, NULL, 1, 0, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '1', 0);
-INSERT INTO `Timetable` VALUES(1, 'B', 1, 5, '', '1', 0);
-INSERT INTO `Timetable` VALUES(1, 'B', 1, 6, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '1', 0);
-INSERT INTO `Timetable` VALUES(4, NULL, 2, 0, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '1', 0);
-INSERT INTO `Timetable` VALUES(1, 'E', 3, 2, 'Science', '1', 0);
-INSERT INTO `Timetable` VALUES(1, 'E', 3, 3, 'Science', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '1', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '1', 0);
+INSERT INTO `Timetable` VALUES(1, 'B', 0, 2, 'English', '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '1', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '1', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '10', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '10', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '10', 0);
@@ -1289,80 +1278,80 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '12', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '12', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '12', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '12', 0);
-INSERT INTO `Timetable` VALUES(4, 'B', 0, 0, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'B', 0, 1, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 0, 2, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 0, 3, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'C', 0, 6, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 0, 7, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(5, 'C', 1, 0, 'Science', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'C', 1, 2, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 1, 3, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 1, 5, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 1, 6, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 2, 1, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'E', 2, 2, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'E', 2, 4, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'E', 2, 5, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'C', 2, 6, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'C', 2, 7, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 3, 0, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 3, 1, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'B', 3, 2, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'B', 3, 3, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 3, 6, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'A', 3, 7, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 4, 2, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'D', 4, 3, 'English Literature', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'E', 4, 5, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(4, 'E', 4, 6, 'English', '13', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 0, 0, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 0, 1, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 0, 2, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 0, 3, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 0, 4, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 0, 5, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 1, 0, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 1, 5, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 1, 6, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 1, 7, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 2, 2, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 2, 3, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 3, 3, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 3, 4, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 3, 5, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 4, 1, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 4, 2, 'Mechanics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 4, 4, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '13', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 0, 2, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 0, 3, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 0, 4, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 0, 5, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 1, 1, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 1, 2, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 1, 6, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 1, 7, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 2, 0, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 2, 1, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 2, 4, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 2, 5, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 3, 0, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'B', 3, 1, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 3, 2, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 3, 3, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '14', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 4, 0, 'Chemistry', '14', 0);
+INSERT INTO `Timetable` VALUES(11, 'C', 4, 1, 'Chemistry', '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '14', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '14', 0);
@@ -1773,8 +1762,8 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '9', 0);
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `Transaction`
-  --
+-- Table structure for table `Transaction`
+--
 
 CREATE TABLE IF NOT EXISTS `Transaction` (
   `EventID` int(11) NOT NULL DEFAULT '0',
@@ -1788,16 +1777,16 @@ CREATE TABLE IF NOT EXISTS `Transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `Transaction`
-  --
+-- Dumping data for table `Transaction`
+--
 
 INSERT INTO `Transaction` VALUES(4, 1, '0000-00-00', b'0', 10000, 'mhh', 0);
 
 -- --------------------------------------------------------
 
 --
-  -- Table structure for table `User`
-  --
+-- Table structure for table `User`
+--
 
 CREATE TABLE IF NOT EXISTS `User` (
   `userEmail` varchar(50) NOT NULL,
@@ -1808,8 +1797,8 @@ CREATE TABLE IF NOT EXISTS `User` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
-  -- Dumping data for table `User`
-  --
+-- Dumping data for table `User`
+--
 
 INSERT INTO `User` VALUES('1', '$2y$10$bEOYHN38SCG2xjwgLBXude39avl5ohE/NeMl4UkmnK7/hCdpQS.l.', 1, 2);
 INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
@@ -1819,6 +1808,7 @@ INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEO
 INSERT INTO `User` VALUES('apple', '$2y$10$X67s43KjvUygW5GVeoStCOFVylBbXsUeyD2e6EKCMMUEjxqcEsIFa', 1, 2);
 INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$hVONYOoTGLmmG.dfVBJm1.DuPsUTlhJhIqvsYSkQC3KNr0JzDb5bO', 1, 0);
 INSERT INTO `User` VALUES('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 2);
+INSERT INTO `User` VALUES('b', '$2y$10$ujaPveBM11/hXY6caye3f.nQYKlnVcdrQGZWksMm9lVk5oYlj4RmO', 2, 0);
 INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0);
 INSERT INTO `User` VALUES('blue', '$2y$10$FV/zw6c6WkCfHgALLROEmOnjDaiE9ARHAqcHdoQkll3lzPCVqeck.', 1, 0);
 INSERT INTO `User` VALUES('blue table', '$2y$10$nACqSmTdjU/VZp4Oae3d2.pzSw1MxI1hEcOpG79WxbtId5uj9GPmq', 1, 0);
@@ -1832,132 +1822,132 @@ INSERT INTO `User` VALUES('isuru@sliit.lk', '$2y$10$7kD7JsAbPk5fSgIVfnqyguoDlFJM
 INSERT INTO `User` VALUES('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0);
 INSERT INTO `User` VALUES('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0);
 INSERT INTO `User` VALUES('sh', '$2y$10$k6WWAhhSBD7UkvbcHDQVj.l6zLYTBpwuyCrO8a2o10qhTR.6gJBKe', 1, 2);
-INSERT INTO `User` VALUES('shavin47', '$2y$10$QmPP8f1zzx0qW6b3v.h.X.Fox.FyA3mLwy7LrlzkJHdhF8D3srp5.', 1, 0);
+INSERT INTO `User` VALUES('shavin47', '$2y$10$QmPP8f1zzx0qW6b3v.h.X.Fox.FyA3mLwy7LrlzkJHdhF8D3srp5.', 1, 2);
 INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0);
-INSERT INTO `User` VALUES('viim@ubuntu.org', '$2y$10$UFAPQ5ujD/CMvgVBHSxOBeWtGScNAFajP1NG2yvxx/qtMz1SqUfUS', 2, 0);
+INSERT INTO `User` VALUES('viim@ubuntu.org', '$2y$10$voK79P1GEwkSeEnvPwcSr.kvBMfyDHnL9ErDVDP9CkoyWHWZSgMru', 2, 0);
 INSERT INTO `User` VALUES('y', '$2y$10$VKCBn2MD5Q4hifDqhlbPWO.J7hYmW.VNU2oi7lWwoPmH76mSr/Z3e', 1, 2);
 INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$PbyD11uQUq0dQMLbidQAr.R3N/HY.Kg..GEkk3QXBvlL2mQ1tDXr6', 1, 0);
 
 --
-  -- Constraints for dumped tables
-  --
+-- Constraints for dumped tables
+--
 
-  --
-  -- Constraints for table `ALMarks`
-  --
-  ALTER TABLE `ALMarks`
+--
+-- Constraints for table `ALMarks`
+--
+ALTER TABLE `ALMarks`
 ADD CONSTRAINT `ALMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
 --
-  -- Constraints for table `ApplyLeave`
-  --
-  ALTER TABLE `ApplyLeave`
+-- Constraints for table `ApplyLeave`
+--
+ALTER TABLE `ApplyLeave`
 ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
 ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
 
 --
-  -- Constraints for table `Attendance`
-  --
-  ALTER TABLE `Attendance`
+-- Constraints for table `Attendance`
+--
+ALTER TABLE `Attendance`
 ADD CONSTRAINT `Attendance_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
 --
-  -- Constraints for table `Blacklist`
-  --
-  ALTER TABLE `Blacklist`
+-- Constraints for table `Blacklist`
+--
+ALTER TABLE `Blacklist`
 ADD CONSTRAINT `Blacklist_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-  -- Constraints for table `ClassInformation`
-  --
-  ALTER TABLE `ClassInformation`
+-- Constraints for table `ClassInformation`
+--
+ALTER TABLE `ClassInformation`
 ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-  -- Constraints for table `Event`
-  --
-  ALTER TABLE `Event`
+-- Constraints for table `Event`
+--
+ALTER TABLE `Event`
 ADD CONSTRAINT `Event_ibfk_1` FOREIGN KEY (`EventCreator`) REFERENCES `Staff` (`StaffID`);
 
 --
-    -- Constraints for table `EventManager`
-    --
-    ALTER TABLE `EventManager`
+-- Constraints for table `EventManager`
+--
+ALTER TABLE `EventManager`
 ADD CONSTRAINT `EventManager_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
 ADD CONSTRAINT `EventManager_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-  -- Constraints for table `Invitee`
-  --
-  ALTER TABLE `Invitee`
+-- Constraints for table `Invitee`
+--
+ALTER TABLE `Invitee`
 ADD CONSTRAINT `Invitee_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`),
 ADD CONSTRAINT `Invitee_ibfk_2` FOREIGN KEY (`AdmissionNo`, `ParentName`) REFERENCES `ParentsInformation` (`AdmissionNo`, `NamewithInitials`);
 
 --
-  -- Constraints for table `IsSubstituted`
-  --
-  ALTER TABLE `IsSubstituted`
+-- Constraints for table `IsSubstituted`
+--
+ALTER TABLE `IsSubstituted`
 ADD CONSTRAINT `IsSubstituted_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
 ADD CONSTRAINT `IsSubstituted_ibfk_2` FOREIGN KEY (`SubsttitutedTeachedID`, `Day`, `Position`) REFERENCES `Timetable` (`StaffID`, `Day`, `Position`);
 
 --
-  -- Constraints for table `LabelLanguage`
-  --
-  ALTER TABLE `LabelLanguage`
+-- Constraints for table `LabelLanguage`
+--
+ALTER TABLE `LabelLanguage`
 ADD CONSTRAINT `LabelLanguage_ibfk_1` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
 
 --
-  -- Constraints for table `LanguageGroup`
-  --
-  ALTER TABLE `LanguageGroup`
+-- Constraints for table `LanguageGroup`
+--
+ALTER TABLE `LanguageGroup`
 ADD CONSTRAINT `LanguageGroup_ibfk_1` FOREIGN KEY (`GroupName`) REFERENCES `LabelLanguage` (`Label`);
 
 --
-  -- Constraints for table `LanguageOption`
-  --
-  ALTER TABLE `LanguageOption`
+-- Constraints for table `LanguageOption`
+--
+ALTER TABLE `LanguageOption`
 ADD CONSTRAINT `LanguageOption_ibfk_1` FOREIGN KEY (`GroupNo`) REFERENCES `LanguageGroup` (`GroupNo`),
 ADD CONSTRAINT `LanguageOption_ibfk_2` FOREIGN KEY (`Language`) REFERENCES `Language` (`Language`);
 
 --
-  -- Constraints for table `LeaveData`
-  --
-  ALTER TABLE `LeaveData`
+-- Constraints for table `LeaveData`
+--
+ALTER TABLE `LeaveData`
 ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-  -- Constraints for table `OLMarks`
-  --
-  ALTER TABLE `OLMarks`
+-- Constraints for table `OLMarks`
+--
+ALTER TABLE `OLMarks`
 ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
 --
-  -- Constraints for table `ParentsInformation`
-  --
-  ALTER TABLE `ParentsInformation`
+-- Constraints for table `ParentsInformation`
+--
+ALTER TABLE `ParentsInformation`
 ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
 --
-  -- Constraints for table `Student_Subject_Grade`
-  --
-  ALTER TABLE `Student_Subject_Grade`
+-- Constraints for table `Student_Subject_Grade`
+--
+ALTER TABLE `Student_Subject_Grade`
 ADD CONSTRAINT `Student_Subject_Grade_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
 
 --
-    -- Constraints for table `Teaches`
-    --
-    ALTER TABLE `Teaches`
+-- Constraints for table `Teaches`
+--
+ALTER TABLE `Teaches`
 ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-    -- Constraints for table `Timetable`
-    --
-    ALTER TABLE `Timetable`
+-- Constraints for table `Timetable`
+--
+ALTER TABLE `Timetable`
 ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
-    -- Constraints for table `Transaction`
-    --
-    ALTER TABLE `Transaction`
+-- Constraints for table `Transaction`
+--
+ALTER TABLE `Transaction`
 ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
 COMMIT;
