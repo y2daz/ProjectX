@@ -18,7 +18,7 @@
     if(isset($_GET["StaffID"]))
     {
         $_POST["newStaffID"] = $_GET["StaffID"];
-    }   
+    }
 
     function insertLeaveFunc()
     {
