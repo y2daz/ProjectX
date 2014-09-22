@@ -17,9 +17,7 @@ $(document).ready(function() {
     }
     $( document ).keypress(function(e) {
         if (w <= 1280){
-            console.log( "Handler for .keypress() called." );
-            console.log( parseInt(e.which) );
-            if( parseInt(e.which) == 43){
+            if( parseInt(e.which) == 62 || parseInt(e.which) == 60 ){
                 $("#menuButton").click();
             }
         }
