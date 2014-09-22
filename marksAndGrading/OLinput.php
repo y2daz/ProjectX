@@ -106,15 +106,17 @@ else
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:250px;
+                left:300px;
                 top:40px;
+
             }
             input.button1 {
                 position:relative;
                 font-weight:bold;
                 font-size:20px;
-                left:290px;
+                left:330px;
                 top:40px;
+
             }
         </style>
     </head>
@@ -136,7 +138,7 @@ else
 
         <br />
 
-        <table id="results">
+        <table id="results" align="center">
 
             <tr>
 
@@ -268,8 +270,8 @@ else
 
             <tr>
                 <td><!--Blank td aligns the below buttons to the middle --></td>
-                <td><input name="submit" class="button" type="submit" value="<?php echo $submit ?>"></td>
-                <td> <input class="button1" type="reset"  value="<?php echo $reset ?>"></td>
+                <td><input name="submit" class="button" type="submit" value="<?php echo $submit ?>" ></td>
+                <td> <input class="button1" type="reset"  value="<?php echo $reset ?>" ></td>
             </tr>
         </form>
 

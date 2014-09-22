@@ -104,60 +104,7 @@ $column3Header = "Teachers'Name";
             border-left: 1px solid white;
             border-right: 1px solid white;
         }
-        .numberCol{
-            text-align: left;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            min-width: 25px;
-            max-width: 25px;
 
-            writing-mode: bt-rl;
-            text-indent: -7.5em;
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-        }
-        .upcol{
-            position: relative;
-            text-align: center;
-            white-space: nowrap;
-            top: 40px;
-            text-overflow: ellipsis;
-            min-width: 25px;
-            max-width: 25px;
-            /*display: block;*/
-            /*background-color: white;*/
-            /*border-bottom: 1px solid black;*/
-
-            writing-mode: bt-rl;
-            /*text-indent: -7.5em;*/
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-        }
-        .whiteBox{
-            display: block;
-            position: relative;
-            z-index: 3;
-            background-color: #ffffff;
-            left:1px;
-            top:15px;
-            padding-top: 10px;
-            padding-bottom: 20px;
-            width: 74px;
-            border-bottom: 1px solid #000000;
-        }
-        .whiteBoxR{
-            display: block;
-            position: relative;
-            z-index: 3;
-            background-color: #ffffff;
-            text-indent: -12em;
-            left:0px;
-            top:15px;
-            padding-top: 10px;
-            padding-bottom: 20px;
-            width: 74px;
-            /*border-bottom: 1px solid #000000;*/
-        }
         #col_0{
             max-width: 50px;
             min-width: 50px;

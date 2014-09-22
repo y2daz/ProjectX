@@ -12,7 +12,6 @@ ob_start();
 error_reporting(E_ERROR | E_PARSE);
 
 
-
 if(isset($_GET["Grade"]))
 {
     $Grade = $_GET["Grade"];
@@ -66,6 +65,39 @@ if(isset($_GET["Term"]))
 else
 {
     $Term = "";
+}
+if (isset($_POST["submit"]))
+{
+
+
+    $AdmissionNo=$_POST["Admission Number"];
+    $Subject = $_POST["Subject"];
+    $Year=$_POST["Year"];
+    $Grade=$_POST["Grade"];
+    $Term=$_POST["Term"];
+    $Mark=$_POST["Marks"];
+    $Remarks=$_POST["Remarks"];
+
+
+    $operation =  insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, $Remarks);
+
+
+    echo $_POST["Admission Number"]. "<br />";
+   echo $_POST["Subject"]. "<br />";
+     echo $_POST["Year"]. "<br />";
+    echo $_POST["Grade"]."<br />";
+     echo $_POST["Term"]. "<br />";
+    echo $_POST["Marks"] . "<br />";
+      echo $_POST["Remarks"]. "<br />";
+
+
+
+    if($operation==true){
+        sendNotification("Insert successful.");
+    }
+    else{
+        sendNotification("Error inserting marks.");
+    }
 }
 
 //echo $Grade;
@@ -163,14 +195,7 @@ else
             font-weight:bold;
             font-size:20px;
             left:200px;
-            top:40px;
-        }
-        input.button1 {
-            position:relative;
-            font-weight:bold;
-            font-size:20px;
-            left:280px;
-            top:40px;
+            bottom:20;
         }
 
         </style>
@@ -212,7 +237,7 @@ else
                 <td><input type="text" value="<?php echo $Term ?>" readonly></td>
             </tr>
             </table>
-        </form>
+
 
             <h1></h1>
             <h1></h1>
@@ -249,36 +274,17 @@ else
                 echo "</tr>";
             }
 
-            if (isset($_POST["Submit"]))
-            {
 
-
-                $admissionNo=$_POST["Admission Number"];
-                $Subject = $_POST["Subject"];
-                $Year=$_POST["Year"];
-                $Term=$_POST["Term"];
-
-                $Marks=$_POST["Marks"];
-                $Remarks=$_POST["Remarks"];
-
-
-                $operation =  insertTermTestMarks($admissionNo, $Subject, $Year,$Term, $Mark, $Remarks);
-
-                if($operation==true){
-                    sendNotification("Insert successful.");
-                }
-                else{
-                    sendNotification("Error inserting marks.");
-                }
-            }
 
         }
         ?>
 
-        <input name="Submit" class="button" type="submit" value="<?php echo $submit ?>">
+
 
 
     </table>
+    <input name="submit" class="button" type="submit" value="<?php echo $submit ?>">
+    </form>
 
 
 

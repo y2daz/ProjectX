@@ -18,7 +18,7 @@
     if(isset($_GET["StaffID"]))
     {
         $_POST["newStaffID"] = $_GET["StaffID"];
-    }
+    }   
 
     function insertLeaveFunc()
     {
@@ -180,29 +180,42 @@
             }
         }
 
-//        echo $OfficialLeave;
-//        echo $MaternityLeave;
-//        echo $OtherLeave;
-//        echo $StaffName;
-
-        if($OfficialLeave == 0)
+        if($OfficialLeave == "" && $MaternityLeave == "" && $OtherLeave == "" && $StaffName == "")
         {
+            $OfficialLeaveColour = "tb1WHITE";
+            $MaternityLeaveColour = "tb1WHITE";
+            $OtherLeaveColour = "tb1WHITE";
+            $StaffColour = "tb1WHITE";
+        }
+        else if($OfficialLeave == 0 && $MaternityLeave == 0 && $OtherLeave == 0)
+        {
+            $OfficialLeaveColour = "tb1RED";
+            $MaternityLeaveColour = "tb1RED";
+            $OtherLeaveColour = "tb1RED";
+            $StaffColour = "tb1GREEN";
+        }
+        else if($OfficialLeave == 0)
+        {
+            $StaffColour = "tb1GREEN";
             $OfficialLeaveColour = "tb1RED";
             $MaternityLeaveColour = "tb1GREEN";
             $OtherLeaveColour = "tb1GREEN";
 
             if($MaternityLeave == 0 && $OtherLeave==0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1RED";
             }else if($MaternityLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1GREEN";
             }else if($OtherLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1GREEN";
                 $OtherLeaveColour = "tb1RED";
@@ -210,22 +223,26 @@
         }
         else if($MaternityLeave == 0)
         {
+            $StaffColour = "tb1GREEN";
             $OfficialLeaveColour = "tb1GREEN";
             $MaternityLeaveColour = "tb1RED";
             $OtherLeaveColour = "tb1GREEN";
 
             if($OfficialLeave == 0 && $OtherLeave==0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1RED";
             }else if($OfficialLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1GREEN";
             }else if($OtherLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1GREEN";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1RED";
@@ -234,22 +251,26 @@
         }
         else if($OtherLeave == 0)
         {
+            $StaffColour = "tb1GREEN";
             $OfficialLeaveColour = "tb1GREEN";
             $MaternityLeaveColour = "tb1GREEN";
             $OtherLeaveColour = "tb1RED";
 
             if($OfficialLeave == 0 && $MaternityLeave==0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1RED";
             }else if($OfficialLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1RED";
                 $MaternityLeaveColour = "tb1GREEN";
                 $OtherLeaveColour = "tb1RED";
             }else if($MaternityLeave == 0)
             {
+                $StaffColour = "tb1GREEN";
                 $OfficialLeaveColour = "tb1GREEN";
                 $MaternityLeaveColour = "tb1RED";
                 $OtherLeaveColour = "tb1RED";
@@ -260,9 +281,9 @@
             $OfficialLeaveColour = "tb1GREEN";
             $MaternityLeaveColour = "tb1GREEN";
             $OtherLeaveColour = "tb1GREEN";
+            $StaffColour = "tb1GREEN";
         }
 
-        $StaffColour = "tb1GREEN";
         $staffIdVal = $_POST["newStaffID"];
         $startDateVal = $_POST["startDate"];
         $endDateVal = $_POST["endDate"];
@@ -284,6 +305,7 @@
         $MaternityLeave = "";
         $OtherLeave = "";
         $StaffName = "";
+
     }
 
     if($_COOKIE["language"] == 1)
@@ -320,12 +342,9 @@
         $availableleavedays ="Available Leave Days";
         $staffname = "Name";
         $searchstaffid = "Search Staff ID";
-
-
     }
-
-
 ?>
+
 <html>
     <head>
         <style type=text/css>
@@ -390,8 +409,8 @@
             }
 
             .tb1GREEN{
-                background-color : #BCED91;
-                border: 1px solid #008000;
+                background-color : #99CC00;
+                border: 1px solid #99CC00;
                 text-align: center;
                 font-weight: 400;
 
@@ -404,8 +423,8 @@
             }
 
             .tb1RED{
-                background-color : #ed91bc;
-                border: 1px solid crimson;
+                background-color : #FF4444;
+                border: 1px solid #CC0000;
                 text-align: center;
                 font-weight: 400;
             }

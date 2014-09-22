@@ -2016,7 +2016,7 @@ function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subje
 
 }
 
-function insertTermTestMarks($admissionNo, $Subject, $Term, $Mark, $Remarks)
+function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, $Remarks)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2027,10 +2027,10 @@ function insertTermTestMarks($admissionNo, $Subject, $Term, $Mark, $Remarks)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO TermMarks VALUES(?, ?, ? , ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?, ?)"))
     {
 
-        $stmt->bind_param("ssiis", $admissionNo,$Subject,$Year, $Term, $Mark, $Remarks);
+        $stmt->bind_param("ssissis", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks);
 
         if($stmt->execute())
         {
@@ -2041,7 +2041,11 @@ function insertTermTestMarks($admissionNo, $Subject, $Term, $Mark, $Remarks)
     }
 
 
+
+$mysqli->close();
+return false;
 }
+
 
 
 
@@ -2190,6 +2194,34 @@ function searchOLbyAdmission($id)
     if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo"))
     {
         $stmt -> bind_param("s", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+function searchOLbyYear($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.Year=? AND o.AdmissionNo=s.AdmissionNo"))
+    {
+        $stmt -> bind_param("i", $id );
 
         if ($stmt->execute())
         {
