@@ -111,15 +111,10 @@ function remGrayText(element, text)
 
 function moveNav()
 {
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-
-    if (w <= 1280)
-    {
-        var menuBut = document.getElementById('menuButton');
-        $(menuBut).removeClass('hidden');
-        var element = document.getElementById('nav');
-        element.style.left = -230 + "px";
-    }
+    var menuBut = document.getElementById('menuButton');
+    $(menuBut).removeClass('hidden');
+    var element = document.getElementById('nav');
+    element.style.left = -230 + "px";
 }
 
 function sendMessage(message){
