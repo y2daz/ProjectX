@@ -192,6 +192,26 @@ else
             min-width: 60px;
         }
         .details {
+            position:absolute;
+            left:10px;
+            top:80px;
+            max-width: 800px;
+        }
+        .details th{
+            align:center;
+            color:white;
+            background-color: #005e77;
+            height:25px;
+            padding:5px;
+        }
+        .details td {
+            padding:5px;
+        }
+        .labelCol{
+            max-width: 100px;
+            min-width: 100px;
+        }
+        .details {
             position: relative;
             /*top:50px;*/
             left: 40px;
@@ -200,7 +220,7 @@ else
             display: <?php echo $tableDetails ?>
         }
         .details .number{
-            max-width: 40px;
+            max-width: 20px;
         }
 
         input.button1 {
@@ -565,6 +585,8 @@ else
 
 <form method="post">
     <table class="details" >
+        <tr><th><?php echo $generalInformation?></th><th></th></tr>
+
         <tr>
             <td> Staff ID </td>
             <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
@@ -652,6 +674,8 @@ else
             <td > <input type = "text" name="ContactNumber" value="<?php echo $ContactNumber?>"/> </td>
             <td></td>
         </tr>
+
+        <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
             <td>Date Appointed as Teacher/principal</td>
             <td > <input type ="text" name="DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
@@ -805,6 +829,8 @@ else
             <td > <input type = "text" name="Salary" value="<?php echo $Salary?>"/> </td>
             <td></td>
         </tr>
+
+        <tr><th><?php echo $educationInformation?></th><th></th></tr>
         <tr>
             <td> Highest Educational Qualification  </td>
             <td > <input class="number" id="NumberCb11" type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"onchange="changeTextbox(this)"/>
@@ -961,6 +987,9 @@ else
         </tr>
         </table>
 
+        <br />
+        <br />
+        <br />
         <br />
         <br />
         <br />
