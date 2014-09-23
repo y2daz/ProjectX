@@ -722,7 +722,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                         <option value="66"><?php echo "66 - " .$Art?></option>
                         <option value="67"><?php echo "67 - " .$ForeignLanguageExcludingEnglish?></option>
                         <option value="68"><?php echo "68 - " .$Malay?></option>
-                        <option value="69"><?php echo "69 - " .$Other?></option>
+                        <option value="69"><?php echo "69 - " .$other?></option>
                     </optgroup>
                     <optgroup label="Newly appointed Teachers">
                         <option value="75"><?php echo "75 - " .$Maths?></option>
