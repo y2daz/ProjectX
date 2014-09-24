@@ -43,10 +43,14 @@ if( isset($_GET["NamewithInitials"]))
     $nameWithInitials = $_GET["NamewithInitials"];
 }
 
-if (isset($_GET["delete"]))
+if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
 {
-    $operation = deleteStaff($_GET["delete"]);
-    sendNotification($operation);
+//    $operation = true;
+    $operation = deleteStaff($_GET["valueMember"]);
+
+    if ($operation == true){
+        sendNotification("Staff member deleted.");
+    }
 }
 
 $tableDetails = "none";
@@ -188,6 +192,26 @@ else
             min-width: 60px;
         }
         .details {
+            position:absolute;
+            left:10px;
+            top:80px;
+            max-width: 800px;
+        }
+        .details th{
+            align:center;
+            color:white;
+            background-color: #005e77;
+            height:25px;
+            padding:5px;
+        }
+        .details td {
+            padding:5px;
+        }
+        .labelCol{
+            max-width: 100px;
+            min-width: 100px;
+        }
+        .details {
             position: relative;
             /*top:50px;*/
             left: 40px;
@@ -196,7 +220,7 @@ else
             display: <?php echo $tableDetails ?>
         }
         .details .number{
-            max-width: 40px;
+            max-width: 20px;
         }
 
         input.button1 {
@@ -486,7 +510,7 @@ else
     $update =  getLanguage('update', $language);
 ?>
 <body>
-<h1> Search and View Staff Details </h1>
+<h1> <?php echo getLanguage('searchStaffMember', $language) ?></h1>
 <br />
 <!--<h3>Search by</h3>-->
 
@@ -542,7 +566,8 @@ else
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
                     echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                    echo "<td><input name=\"Delete"  . "\" type=\"submit\" value=\"Delete\" formaction=\"searchStaffDetails.php?delete=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                            . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                     echo "</td></tr>";
                 }
             }
@@ -560,6 +585,8 @@ else
 
 <form method="post">
     <table class="details" >
+        <tr><th><?php echo $generalInformation?></th><th></th></tr>
+
         <tr>
             <td> Staff ID </td>
             <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
@@ -647,6 +674,8 @@ else
             <td > <input type = "text" name="ContactNumber" value="<?php echo $ContactNumber?>"/> </td>
             <td></td>
         </tr>
+
+        <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
             <td>Date Appointed as Teacher/principal</td>
             <td > <input type ="text" name="DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
@@ -800,6 +829,8 @@ else
             <td > <input type = "text" name="Salary" value="<?php echo $Salary?>"/> </td>
             <td></td>
         </tr>
+
+        <tr><th><?php echo $educationInformation?></th><th></th></tr>
         <tr>
             <td> Highest Educational Qualification  </td>
             <td > <input class="number" id="NumberCb11" type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>"onchange="changeTextbox(this)"/>
@@ -950,20 +981,19 @@ else
             </td>
             <td></td>
         </tr>
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td colspan="3" style="text-align: center"><input type="Submit" value="Update" name="Submit" /> </td>
+        </tr>
         </table>
 
         <br />
         <br />
         <br />
+        <br />
+        <br />
+        <br />
 
-
-
-    <table align=center>
-        <tr>
-            <td> <input type="Submit" value="Update" name="Submit" /> </td>
-
-        </tr>
-    </table>
 
     <br />
     <br />

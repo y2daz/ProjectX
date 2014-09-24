@@ -17,7 +17,12 @@ ob_start();
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a classroom
 {
-    $operation = insertClassroom($_POST["staffId"], $_POST["grade"], strtoupper($_POST["className"]));
+    $arrGradeClass = getGradeAndClass( $_POST["gradeAndClass"] );
+
+    $thisGrade = $arrGradeClass[0];
+    $thisClass = $arrGradeClass[1];
+
+    $operation = insertClassroom($_POST["staffId"], $thisGrade, $thisClass);
 
     if ($operation == 1)
     {
@@ -32,9 +37,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a class
         sendNotification("Error inserting class information.");
     }
 }
-
-if( isset($_GET["delete"]) )
-{
+elseif( isset($_GET["delete"]) ){
     if( isset($_GET["className"]) )
     {
         $delClassName = $_GET["className"];
@@ -149,16 +152,13 @@ if( isset($_GET["grade"]) )
     <form method="post">
         <table class="details" align="center">
             <tr>
-                <td> Grade </td>
-                <td><input type = "text" name="grade" value="<?php echo $grade ?>"/> </td>
+                <td> Grade and Class</td>
+                <td><input type = "text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
             </tr>
-
-
-            <tr>
-                <td> Class Name </td>
-                <td><input type = "text" name="className" value="<?php echo $className ?>" /> </td>
-            </tr>
-
+<!--            <tr>-->
+<!--                <td> Class Name </td>-->
+<!--                <td><input type = "text" name="className" value="--><?php //echo $className ?><!--" /> </td>-->
+<!--            </tr>-->
             <tr>
                 <td> Staff ID </td>
                 <td><input type=text name="staffId"  /> </td>
@@ -182,7 +182,7 @@ if( isset($_GET["grade"]) )
 //Assign all Page Specific variables
 $fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Classroom table";
+$pageTitle= "Classroom Information";
 
 $pageContent = ob_get_contents();
 ob_end_clean();

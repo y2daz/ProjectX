@@ -10,7 +10,19 @@ $(document).ready(function() {
         window.ontouchstart = function(){};
     }
 
-    moveNav();
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    if (w <= 1280)
+    {
+        moveNav();
+    }
+    $( document ).keypress(function(e) {
+        if (w <= 1280){
+            if( parseInt(e.which) == 62 || parseInt(e.which) == 60 ){
+                $("#menuButton").click();
+            }
+        }
+    });
+
 
     /*
      Copyright (c) 2014 by Pramod Kumar (http://codepen.io/Pro/pen/hwfen)
@@ -99,19 +111,35 @@ function remGrayText(element, text)
 
 function moveNav()
 {
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
-
-    if (w <= 1280)
-    {
-        var menuBut = document.getElementById('menuButton');
-        $(menuBut).removeClass('hidden');
-        var element = document.getElementById('nav');
-        element.style.left = -230 + "px";
-    }
+    var menuBut = document.getElementById('menuButton');
+    $(menuBut).removeClass('hidden');
+    var element = document.getElementById('nav');
+    element.style.left = -230 + "px";
 }
 
-function sendMessage(text){
-    $.prompt(text);
+function sendMessage(message){
+    $.prompt(message);
+}
+
+function requestConfirmation(message, title, valueName, valueMember){
+    var states = {
+        state0: {
+            title: title,
+            html:'<p>' + message + '</p>',
+            buttons: { Yes: 1, No: -1 },
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                if( v == 1){
+                    var params = {"confirm" : 1, "valueName" : valueName, "valueMember" : valueMember};
+                    post(document.URL, params, "get");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
 }
 
 function resetPassword(user){
@@ -246,18 +274,19 @@ function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,
 //            focus: "input[name='jTxtGrade']",
             submit:function( e, v, m, f){
                 e.preventDefault();
+                console.log(Zscore);
                 S1Grade = f["jTxtS1Grade"];
                 S2Grade = f["jTxtS2Grade"];
                 S3Grade = f["jTxtS3Grade"];
                 GenGrade = f["jTxtGenGrade"];
                 CommonGeneralTest = f["jTxtCommonGeneralTest"];
-                Zscore = f["jTxtZscore"];
+                Zscore = f["jTxtZScore"];
                 IslandRank = f["jTxtIslandRank"];
                 DistrictRank = f["jTxtDistrictRank"];
+                console.log(Zscore);
 
                 if( v == 1){
-                    var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest,
-                                        "Zscore" : Zscore, "IslandRank" : IslandRank, "DistrictRank" : DistrictRank};
+                    var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest, "Zscore" : Zscore, "IslandRank" : IslandRank, "DistrictRank" : DistrictRank};
                     post(document.URL, params, "post");
                 }
                 else

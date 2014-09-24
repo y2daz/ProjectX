@@ -108,6 +108,8 @@
         $leaveManagement = getLanguage("leaveManagement ", $_COOKIE["language"]);
         $eventManagement = getLanguage("eventManagement ", $_COOKIE["language"]);
         $timetables = getLanguage("timetables ", $_COOKIE["language"]);
+        $staffTimetable = getLanguage("staffTimetable", $_COOKIE["language"]);
+
         $registerStaffMember = getLanguage("registerStaffMember ", $_COOKIE["language"]);
         $searchStaffMember = getLanguage("searchStaffMember ", $_COOKIE["language"]);
         $applyForLeave = getLanguage("applyForLeave ", $_COOKIE["language"]);
@@ -140,9 +142,7 @@
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
@@ -151,14 +151,23 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
-                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $timetables . "</a>\n";
-                $navMenu .= "</li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a>\n";
+                $navMenu .= "<li><a>" . $timetables . "</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $staffTimetable . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . "Class Timetable" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Staff Class Allocation" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>Administrative Tasks</a>\n";
                 $navMenu .= "<ul>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Manage Year Plan" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Reports</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
@@ -167,9 +176,7 @@
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class Information" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
@@ -178,9 +185,13 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
-                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $timetables . "</a>\n";
-                $navMenu .= "</li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a>\n";
+                $navMenu .= "<li><a>" . $timetables . "</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $staffTimetable . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . "Class Timetable" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Staff Class Allocation" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>Student Information</a>\n";
                 $navMenu .= "<ul>\n";
@@ -208,8 +219,13 @@
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>Administrative Tasks</a>\n";
                 $navMenu .= "<ul>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Manage Year Plan" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "</ul>\n";
+                $navMenu .= "</li>\n";
+                $navMenu .= "<li><a>Reports</a>\n";
+                $navMenu .= "<ul>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }

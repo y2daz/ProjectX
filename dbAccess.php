@@ -2045,8 +2045,8 @@ function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, 
 
     if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?, ?)"))
     {
-
-        $stmt->bind_param("ssissis", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks);
+        $isDeleted = 0;
+        $stmt->bind_param("ssissisi", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks, $isDeleted);
 
         if($stmt->execute())
         {
@@ -2056,10 +2056,9 @@ function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, 
 
     }
 
+    $mysqli->close();
+    return false;
 
-
-$mysqli->close();
-return false;
 }
 
 
@@ -2382,7 +2381,7 @@ function updateALResults($IndexNo, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $
 
     if ($stmt = $mysqli->prepare("UPDATE ALMarks SET Grade_1=?, Grade_2=?, Grade_3=?, Gen_Eng_Grade=?, Cmn_Gen_Mark=?, Z_Score=?, Island_Rank=?, District_Rank=? WHERE IndexNo=?"))
     {
-        $stmt -> bind_param("sssissiii", $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank, $IndexNo);
+        $stmt -> bind_param("sssssdiii", $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank, $IndexNo);
 
         if ($stmt->execute())
         {

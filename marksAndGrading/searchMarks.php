@@ -24,6 +24,11 @@ if (isset($_GET["search"]))
         $currentStudent = getOLadmission($_GET["admissinNo"]);
         //echo $_GET["value"];
     }
+    else if($_GET["Choice"] == "Year")
+    {
+        $currentStudent = getOLyear($_GET["year"]);
+        //echo $_GET["value"];
+    }
 }
 
 ?>
@@ -145,6 +150,7 @@ if (isset($_GET["search"]))
                 <tr>
                     <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
                     <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
+                    <td><input type="RADIO" name="Choice" value="Year"  />Year</td>
                 </tr>
 
             </table>
