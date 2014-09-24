@@ -254,10 +254,12 @@ if (isset($_GET["getTimetable"]))
 
                         foreach($freeTeachersSet as $row){
                             echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
-//                            echo "<tr>";
+                            echo "<tr>";
                             echo "<td>" . $row[0] . "</td>";
                             echo "<td>" . $row[1] . "</td>";
                             echo "<td>" . $row[2] . "</td>";
+                            $date = date("y/m/d");
+                            echo "<td><input type = button value='Confirm' name='Confirm' onclick='confirmSubstitution( $currentStaffId , $Grade , $Class , $Day , $Position , $date  , $row[0] )' > <td>";
                             echo "</tr>";
                             $rowcount++;
                         }

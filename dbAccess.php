@@ -577,6 +577,7 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
         return false;
     }
 
+
     function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
     {
         $dbObj = new dbConnect();
@@ -878,6 +879,21 @@ function substitute($subject)
     }
     $mysqli->close();
     return $set;
+
+}
+
+function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID )
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+
 
 }
 
