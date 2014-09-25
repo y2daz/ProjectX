@@ -743,7 +743,7 @@ else
         </tr>
         <tr>
             <td> Section  </td>
-            <td > <input class="number" id="NumberCb7" type = "text" name="Section" value="<?php echo $Section?>" onkeyup="changeTextbox(this)"/>
+            <td ><input class="number" id="NumberCb7" type="text" name="Section" value="<?php echo $Section?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb7" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$PrimaryMultiple?></option>
@@ -782,34 +782,31 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Subject Most taught  </td>
-            <td > <input class="number" id="NumberCb8" type = "text" name="SubjectMostTaught" value="<?php echo $SubjectMostTaught?>" onkeyup="changeTextbox(this)"/>
-                <select id="Cb8" name="" onchange="changeTextbox(this)">
-                <option value=""><?php echo "--"?></option>
-                <option value="1">Maths</option>
-                <option value="2">Science</option>
-                <option value="3">English</option>
-                <option value="4">Information Technology</option>
-                <option value="5">History</option>
-                <option value="6">Sinhala</option>
-                <option value="7">Tamil</option>
-                    </select>
-             </td>
+            <td><?php echo $subjectMostTaught?></td>
+            <td><input id="NumberCb8" type="text" name="SubjectMostTaught" maxlength="2" value="<?php echo $SubjectMostTaught ?>"  required="true" class="number" onkeyup="changeTextbox(this)"/>
+                <select id="Cb8"name="subjectMostTaught" type="text" value="" onchange="changeTextbox(this)">
+                    <?php
+                    echo "<option value=''>--</option>";
+                    $allSubjects = getAllSubjects();
+                    foreach($allSubjects as $singleSubject){
+                        echo "<option value='" . $singleSubject[0] . "'>$singleSubject[0] - $singleSubject[1] </option>\n";
+                    }
+                    ?>
+                </select>
+            </td>
             <td></td>
         </tr>
         <tr>
-            <td>  Subject Second Most taught </td>
-            <td > <input class="number" id="NumberCb9" type = "text" name="SubjectSecondMostTaught" value="<?php echo $SubjectSecondMostTaught?>" onkeyup="changeTextbox(this)"/>
-                <select id="Cb9" name="" onchange="changeTextbox(this)">
-                <option value=""><?php echo "--"?></option>
-                <option value="1">Maths</option>
-                <option value="2">Science</option>
-                <option value="3">English</option>
-                <option value="4">Information Technology</option>
-                <option value="5">History</option>
-                <option value="6">Sinhala</option>
-                <option value="7">Tamil</option>
-                    </select>
+            <td><?php echo $subjectSecondMostTaught?></td>
+            <td><input id="NumberCb9" type="text" name="SubjectSecondMostTaught" maxlength="2" value="<?php echo $SubjectSecondMostTaught?>"  required="true" class="number" onkeyup="changeTextbox(this)"/>
+                <select id="Cb9"name="subjectSecondMostTaught" type="text" value="" onchange="changeTextbox(this)">
+                    <?php
+                    echo "<option value=''>--</option>";
+                    foreach($allSubjects as $singleSubject){
+                        echo "<option value='" . $singleSubject[0] . "'>$singleSubject[0] - $singleSubject[1] </option>\n";
+                    }
+                    ?>
+                </select>
             </td>
             <td></td>
         </tr>
