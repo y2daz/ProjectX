@@ -84,17 +84,16 @@ function makeGrayText(element, text)
 {
     var curText = element.value;
 
-
-//    alert(curText);
-
     if ((curText == text) || (curText == ""))
     {
         $(element).addClass('grayText');
         $(element).val(text);
+        $(element).attr("type", "text");
     }
     else
     {
         $(element).removeClass('grayText');
+        $(element).attr("type", "password");
     }
 }
 
@@ -106,6 +105,7 @@ function remGrayText(element, text)
     {
         $(element).removeClass('grayText');
         $(element).val("");
+        $(element).attr("type", "password");
     }
 }
 

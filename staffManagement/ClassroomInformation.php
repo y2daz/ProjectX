@@ -73,7 +73,6 @@ if( isset($_GET["grade"]) )
                 border-spacing:0px 5px;
                 min-width: 600px;
             }
-
             #searchCriteria{
                 position:relative;
                 left:20px;

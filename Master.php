@@ -148,7 +148,8 @@
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/checkStatus.php\">" . "Check Leave Status" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>" . $timetables . "</a>\n";
@@ -182,7 +183,8 @@
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/checkStatus.php\">" . "Check Leave Status" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>" . $timetables . "</a>\n";

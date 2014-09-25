@@ -193,7 +193,7 @@ else{
             <form method="post">
                 <table id="newUser">
                     <tr>
-                        <th class="emailCol">Email</th>
+                        <th class="emailCol">Email / Username</th>
                         <th>Password</th>
                         <th>Access Level</th>
                         <th></th>
