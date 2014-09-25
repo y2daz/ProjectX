@@ -118,7 +118,7 @@ function moveNav()
 }
 
 function sendMessage(message, relocatePath){
-    if( relocatePath == null){
+    if( relocatePath == null || relocatePath == ""){
         $.prompt(message);
     }
     else{
