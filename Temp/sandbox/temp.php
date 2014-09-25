@@ -8,7 +8,7 @@
 
     $navArray = array();
 
-    $navArray[0] = "<li>\n"
+    $navArray[0] = "<li>\n";
     $navArray[4] = "<a> $staffManagement</a>\n";
     $navArray[1] = "<ul>\n";
     $navArray[5] = "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";

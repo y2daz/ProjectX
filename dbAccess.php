@@ -1797,6 +1797,41 @@ function insertClassroom($staffID, $grade, $class)
 
     }
 
+
+    function checkLeaveStatus($StaffID)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = NULL;
+
+        if($mysqli->connect_errno)
+        {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
+        }
+
+        $set = NULL;
+
+        if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, LeaveType, OtherInformation FROM applyleave WHERE StaffID = ? ORDER BY RequestDate"))
+        {
+            $stmt->bind_param("s", $StaffID);
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++ ]=$row;
+                }
+            }
+        }
+
+        $mysqli->close();
+        return $set;
+
+    }
+
     function insertNewLeaveData($staffID){
 
         $dbObj = new dbConnect();
