@@ -552,19 +552,21 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        $isDeleted = 0;
+        $row = 0;
 
-        if ($stmt = $mysqli->prepare('SELECT CivilStatus FROM staff WHERE StaffID = ? AND isDeleted = 0'))
+        if ($stmt = $mysqli->prepare('SELECT CivilStatus FROM Staff WHERE StaffID = ? AND isDeleted = 0'))
         {
             $stmt -> bind_param("s",$staffID );
-        }
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
+
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $row = $result->fetch_array();
+            }
         }
 
-    $mysqli->close();
-    return $result[0];
+        $mysqli->close();
+        return $row[0];
     }
 
 function getGender($staffID)
@@ -577,19 +579,21 @@ function getGender($staffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-//    $isDeleted = 0;
+    $row = 0;
 
-    if ($stmt = $mysqli->prepare('SELECT Gender FROM staff WHERE StaffID = ?'))
+    if ($stmt = $mysqli->prepare('SELECT Gender FROM Staff WHERE StaffID = ?'))
     {
         $stmt -> bind_param("s",$staffID );
-    }
-    if ($stmt->execute())
-    {
-        $result = $stmt->get_result();
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $row = $result->fetch_array();
+        }
     }
 
     $mysqli->close();
-    return $result[0];
+    return $row[0];
 }
 
 
@@ -855,7 +859,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 0"))
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from `Transaction` where eventID = ? and transactiontype = 0"))
         {
             $stmt -> bind_param("s", $eventid);
 
@@ -912,7 +916,7 @@ function substitute($subject)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select StaffId Grade FROM Timetable WHERE isDeleted = 0 AND Subject = ? ;"))
+    if ($stmt = $mysqli->prepare("Select StaffId, Grade FROM Timetable WHERE isDeleted = 0 AND Subject = ? ;"))
     {
         $stmt->bind_param("s", $subject);
         if ($stmt->execute())

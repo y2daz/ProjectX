@@ -22,55 +22,7 @@ $currentStaffName = "";
 
 error_reporting(0);//Temporarily turn of all errors
 
-if (isset($_POST["Submit"]))
-{
-    $myTime = new Timetable();
-    $myTime -> staffId = $_POST["staffId"];
 
-    $prefixSubject = "subject_";
-    $prefixClassroom = "classroom_";
-
-    for($i = 0; $i < 40; $i++){
-        $subjectArr = array();
-        $classArr = array();
-        $gradeArr = array();
-
-        $arrClassroom = array();
-
-        $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
-        $arrClassroom = getGradeAndClass( $_POST[ ($prefixClassroom . $i) ] ) ;
-
-//        $arrClassroom = explode(" ", $arrClassroom);
-        if( (isFilled($arrClassroom[0])) && (isFilled($arrClassroom[1])) ){
-            $tempGrade = $arrClassroom[0];
-            $tempClass = $arrClassroom[1];
-
-//            echo $tempGrade;
-//            echo $tempClass . "<br />";
-
-            $gradeArr[$i] = $tempGrade;
-            $classArr[$i] = $tempClass;
-
-            $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
-            //        echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
-        }
-    }
-
-    if(!$i == 39 ){
-        sendNotification("Error: Invalid class entered");
-    }
-    else{
-        $operation = $myTime ->updateTimetableToDB();
-
-        //        echo  $operation;
-        if ($operation == true){
-            sendNotification("Timetable updated.");
-        }else{
-            sendNotification("Error updating timetable.");
-        }
-    }
-//        var_dump($myTime);
-}
 if(!isFilled($_GET["staffID"]))
 {
     header("Location: " . PATHFRONT . "/TimeTable/timetable.php");
@@ -95,16 +47,17 @@ $gender = getGender($_GET["staffID"]);
 $status = " ";
 if ($gender == 1)
 {
-    $status = "Mr . " ;
+    $status = "Mr. " ;
 }
 elseif($civil == 2)
-    {
-        $status = "Miss . ";
-    }
-    else
-    {
-        $status = "Mrs . ";
-    }
+{
+    $status = "Miss ";
+}
+else
+{
+    $status = "Mrs. ";
+}
+
     //$status = " mama";
 
 ?>

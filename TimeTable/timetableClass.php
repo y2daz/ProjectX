@@ -75,8 +75,8 @@ class SlotDetail {
     public $Subject;
 
     function __construct(){
-        $this->Class="";
-        $this->Grade="";
-        $this->Subject="";
+        $this->Class = "";
+        $this->Grade = "";
+        $this->Subject = "";
     }
 }
