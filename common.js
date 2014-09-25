@@ -117,8 +117,19 @@ function moveNav()
     element.style.left = -230 + "px";
 }
 
-function sendMessage(message){
-    $.prompt(message);
+function sendMessage(message, relocatePath){
+    if( relocatePath == null){
+        $.prompt(message);
+    }
+    else{
+        $.prompt(message, {
+            submit: function(e,v,m,f){
+                // use e.preventDefault() to prevent closing when needed or return false.
+//                e.preventDefault();
+                window.location.assign(relocatePath);
+            }
+        });
+    }
 }
 
 function requestConfirmation(message, title, valueName, valueMember){

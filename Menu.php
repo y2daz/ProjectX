@@ -48,7 +48,7 @@ ob_start();
     <body>
 
 
-    <h1>Mana Staff Management System</h1>
+    <h1>Staff Management System</h1>
 
     <img id="flag" src="<?php echo THISPATHFRONT . "/images/DsFlag.jpg" ?>" />
 

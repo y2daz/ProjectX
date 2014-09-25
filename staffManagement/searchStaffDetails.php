@@ -5,8 +5,13 @@
  * Date: 19/07/14
  * Time: 17:04
  */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+define('FULLPATH', 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+
 
 require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/dbAccess.php");
@@ -19,14 +24,13 @@ require_once(THISROOT . "/common.php");
 ob_start();
 $currentStaffMembers="";
 
-
 if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
 {
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
 
     if ($operation == true)
     {
-        sendNotification("Staff Details successfully updated.");
+        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
     }
     else
     {
@@ -53,12 +57,17 @@ if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
     }
 }
 
+if (!isset($_SESSION["queryString"])){
+    $_SESSION["queryString"] = null;
+}
 $tableDetails = "none";
 $tableViewTable = "none";
 $fullPageHeight = 600;
 
 if (isset($_GET["search"]))
 {
+    $_SESSION["queryString"] = $_SERVER['QUERY_STRING'];
+//    echo $_SERVER['QUERY_STRING'];
     $currentStaffMembers = null;
 
     if ($_GET["Choice"] == "Staffid")
@@ -79,10 +88,12 @@ if (isset($_GET["search"]))
     }
     else
     {
-        $currentStaffMembers = getAllStaff();    }
-        $tableDetails= "none";
-        $tableViewTable= "block";
+        $currentStaffMembers = getAllStaff();
     }
+
+    $tableDetails= "none";
+    $tableViewTable= "block";
+}
 else
 {
     $currentStaffMembers = getAllStaff();
@@ -90,6 +101,7 @@ else
 
 if (isset($_GET["expand"]))
 {
+
     $result = getStaffMember($_GET["expand"]);
 
     $i = 0;
@@ -188,7 +200,7 @@ else
         }
         .viewTable td{
             padding-left: 10px;
-            padding-right: 10px;
+            padding-right: 12px;
             min-width: 60px;
         }
         .details {
@@ -213,10 +225,11 @@ else
         }
         .details {
             position: relative;
-            /*top:50px;*/
+            top:0px;
             left: 40px;
             max-width:800px;
             height:150px;
+            border-collapse: collapse;
             display: <?php echo $tableDetails ?>
         }
         .details .number{
@@ -540,7 +553,7 @@ else
         <tr>
             <th>Staff ID</th>
             <th>Name</th>
-            <th>Nic Number</th>
+            <th>NIC Number</th>
             <th>Contact Number</th>
             <th></th>
             <th></th>
@@ -565,7 +578,7 @@ else
                     echo "<td>$row[1]</td>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
                     echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                             . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                     echo "</td></tr>";
@@ -580,8 +593,6 @@ else
         ?>
     </table>
 </form>
-    <br />
-    <br />
 
 <form method="post">
     <table class="details" >
@@ -979,7 +990,7 @@ else
                     <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
                     </select>
             </td>
-            <td></td>
+            <td><input name="queryString" type="text" value="<?php echo $entireQueryString?>" hidden="hidden"/></td>
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr>
