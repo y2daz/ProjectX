@@ -69,8 +69,6 @@ if( isset($_GET["grade"]) )
         <style type=text/css>
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
-
-
             table.ClassroomTable {
                 border-spacing:0px 5px;
                 min-width: 600px;
@@ -81,7 +79,13 @@ if( isset($_GET["grade"]) )
                 left:20px;
                 top:20px;
             }
-
+            #suggestion{
+                color: #696969;
+            }
+            .details{
+                position: relative;
+                left: 100px;
+            }
             .ClassroomTable th, .details th{
                 align:center;
                 color:white;
@@ -96,8 +100,20 @@ if( isset($_GET["grade"]) )
             .ClassroomTable .alt{
                 background-color: #bed9ff;
             }
-
         </style>
+        <script>
+            $(document).ready(function() {
+                $("#gradeAndClass")
+                    .on("focus", function(){
+                        $("#suggestion").html(" e.g. 11A, 11 A, 11-A");
+                        console.log("Got focus");
+                    })
+                    .on("blur", function(){
+                        $("#suggestion").html("");
+                        console.log("Lost focus");
+                    })
+            });
+        </script>
     </head>
     <body>
     <h1 align="center"> Class-teacher Allocation</h1>
@@ -150,10 +166,11 @@ if( isset($_GET["grade"]) )
     <br />
 
     <form method="post">
-        <table class="details" align="center">
+        <table class="details" >
             <tr>
                 <td> Grade and Class</td>
-                <td><input type = "text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
+                <td><input id="gradeAndClass" type="text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
+                <td id="suggestion"></td>
             </tr>
 <!--            <tr>-->
 <!--                <td> Class Name </td>-->
@@ -161,7 +178,7 @@ if( isset($_GET["grade"]) )
 <!--            </tr>-->
             <tr>
                 <td> Staff ID </td>
-                <td><input type=text name="staffId"  /> </td>
+                <td colspan="2"><input type=text name="staffId"  /> </td>
             </tr>
 
 
