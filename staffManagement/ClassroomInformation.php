@@ -100,7 +100,7 @@ if( isset($_GET["grade"]) )
         </style>
     </head>
     <body>
-    <h1 align="center"> Classroom Information </h1>
+    <h1 align="center"> Class-teacher Allocation</h1>
     <br />
 
 
