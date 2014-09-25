@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="73f9d988-3f3d-4424-b51a-3020341b38fb" name="Default" comment="updated substitute teacher&#10;">
+    <list default="true" id="73f9d988-3f3d-4424-b51a-3020341b38fb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/dslogo.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TimeTable/TimetableReport.php" afterPath="$PROJECT_DIR$/TimeTable/TimetableReport.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ProjectX.iws" />
@@ -25,11 +28,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="dbAccess.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbAccess.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="758" column="1" selection-start="21269" selection-end="21269" vertical-scroll-proportion="0.0" vertical-offset="12886" max-vertical-offset="42636">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="timetable.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TimeTable/timetable.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="46" column="40" selection-start="1044" selection-end="1060" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="4709">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="timetableClass.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TimeTable/timetableClass.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="21" selection-start="399" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1479">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TimetableReport.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TimeTable/TimetableReport.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="0" selection-start="2782" selection-end="2782" vertical-scroll-proportion="-2.1914132" vertical-offset="2874" max-vertical-offset="4386">
-              <folding />
+            <state line="95" column="12" selection-start="2500" selection-end="2500" vertical-scroll-proportion="-0.15151516" vertical-offset="1615" max-vertical-offset="4675">
+              <folding>
+                <marker date="1411577915792" expanded="true" signature="2678:2707" placeholder="..." />
+                <marker date="1411577915792" expanded="true" signature="2678:2820" placeholder="..." />
+                <marker date="1411577915792" expanded="true" signature="2685:2707" placeholder="..." />
+                <marker date="1411577915792" expanded="true" signature="3176:3510" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -52,21 +87,20 @@
         <option value="$PROJECT_DIR$/Master.php" />
         <option value="$PROJECT_DIR$/TimeTable/timetable.css" />
         <option value="$PROJECT_DIR$/TimeTable/timetable.php" />
-        <option value="$PROJECT_DIR$/TimeTable/TimetableReport.php" />
         <option value="$PROJECT_DIR$/TimeTable/TimetableReport.css" />
         <option value="$PROJECT_DIR$/studentInformation/SearchStudent.php" />
         <option value="$PROJECT_DIR$/marksAndGrading/termTestMarks.php" />
         <option value="$PROJECT_DIR$/marksAndGrading/termtestResults.php" />
         <option value="$PROJECT_DIR$/common.js" />
-        <option value="$PROJECT_DIR$/dbAccess.php" />
         <option value="$PROJECT_DIR$/TimeTable/substitute.php" />
+        <option value="$PROJECT_DIR$/TimeTable/TimetableReport.php" />
+        <option value="$PROJECT_DIR$/dbAccess.php" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="y" value="-8" />
     <option name="width" value="1378" />
     <option name="height" value="754" />
   </component>
@@ -256,32 +290,36 @@
       <created>1411544853226</created>
       <updated>1411544853226</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="test">
+      <created>1411571306595</created>
+      <updated>1411571306595</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="754" extended-state="0" />
+    <frame x="-8" y="0" width="1378" height="754" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2128788" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2159091" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3253205" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32838285" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -307,7 +345,9 @@
     <MESSAGE value="document evaluvation&#10;" />
     <MESSAGE value="Full documentation" />
     <MESSAGE value="Minor fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor fix" />
+    <MESSAGE value="&#10;" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -522,11 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="211" column="0" selection-start="7056" selection-end="7056" vertical-scroll-proportion="0.12164579" vertical-offset="3332" max-vertical-offset="4505" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studentInformation/SearchStudent.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="157" column="22" selection-start="3490" selection-end="3490" vertical-scroll-proportion="0.0" vertical-offset="2669" max-vertical-offset="5865" />
@@ -566,13 +601,6 @@
         <state line="12" column="82" selection-start="292" selection-end="297" vertical-scroll-proportion="-7.1923075" vertical-offset="17" max-vertical-offset="1479" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TimeTable/timetableClass.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="50" selection-start="728" selection-end="730" vertical-scroll-proportion="0.33211678" vertical-offset="362" max-vertical-offset="1394">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/common.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="30" column="15" selection-start="1478" selection-end="1480" vertical-scroll-proportion="0.33333334" vertical-offset="323" max-vertical-offset="5525" />
@@ -592,17 +620,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TimeTable/timetable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="46" column="40" selection-start="1044" selection-end="1060" vertical-scroll-proportion="0.0" vertical-offset="782" max-vertical-offset="4709">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TimeTable/timetableClass.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="21" selection-start="399" selection-end="400" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1479">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dbAccess.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="884" column="109" selection-start="24523" selection-end="24623" vertical-scroll-proportion="-0.15151516" vertical-offset="15028" max-vertical-offset="41735">
+        <state line="758" column="1" selection-start="21269" selection-end="21269" vertical-scroll-proportion="0.0" vertical-offset="12886" max-vertical-offset="42636">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/TimeTable/TimetableReport.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="0" selection-start="2782" selection-end="2782" vertical-scroll-proportion="-2.1914132" vertical-offset="2874" max-vertical-offset="4386">
-          <folding />
+        <state line="95" column="12" selection-start="2500" selection-end="2500" vertical-scroll-proportion="-0.15151516" vertical-offset="1615" max-vertical-offset="4675">
+          <folding>
+            <marker date="1411577915792" expanded="true" signature="2678:2707" placeholder="..." />
+            <marker date="1411577915792" expanded="true" signature="2678:2820" placeholder="..." />
+            <marker date="1411577915792" expanded="true" signature="2685:2707" placeholder="..." />
+            <marker date="1411577915792" expanded="true" signature="3176:3510" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

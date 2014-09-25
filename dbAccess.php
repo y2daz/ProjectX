@@ -543,6 +543,54 @@ function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
     $mysqli->close();
     return false;
 }
+    function getCivilStatus($staffID)
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+        $result = null;
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        $isDeleted = 0;
+
+        if ($stmt = $mysqli->prepare('SELECT CivilStatus FROM staff WHERE StaffID = ? AND isDeleted = 0'))
+        {
+            $stmt -> bind_param("s",$staffID );
+        }
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+        }
+
+    $mysqli->close();
+    return $result[0];
+    }
+
+function getGender($staffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+    $result = null ;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+//    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare('SELECT Gender FROM staff WHERE StaffID = ?'))
+    {
+        $stmt -> bind_param("s",$staffID );
+    }
+    if ($stmt->execute())
+    {
+        $result = $stmt->get_result();
+    }
+
+    $mysqli->close();
+    return $result[0];
+}
 
 
     function insertNewTimetable($staffId)

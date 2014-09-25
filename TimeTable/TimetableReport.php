@@ -90,6 +90,22 @@ else{
     $myTime->staffId = "$currentStaffId";
     $myTime->getTimetableFromDB();
 }
+$civil = getCivilStatus($_GET["staffID"]);
+$gender = getGender($_GET["staffID"]);
+$status = " ";
+if ($gender == 1)
+{
+    $status = "Mr . " ;
+}
+elseif($civil == 2)
+    {
+        $status = "Miss . ";
+    }
+    else
+    {
+        $status = "Mrs . ";
+    }
+    //$status = " mama";
 
 ?>
 <html>
@@ -164,8 +180,9 @@ else{
             <td><label><?php echo $currentStaffId?></label></td>
 <!--            <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>-->
         </tr>
+
         <tr>
-            <td>Teacher's Name : </td>
+            <td><label class="text1"><?php echo $status;?></label> </td>
             <td><label class="text1"><?php echo $teacher;?></label></td>
         </tr>
     </table>
