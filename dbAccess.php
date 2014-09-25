@@ -622,6 +622,7 @@ function getGender($staffID)
             }
             $stmt->close();
             $mysqli->close();
+            regenerateSubjectTable();
             return true;
         }
 
@@ -656,6 +657,7 @@ function getGender($staffID)
             }
             $stmt->close();
             $mysqli->close();
+            regenerateSubjectTable();
             return true;
         }
         $mysqli->close();
@@ -1006,7 +1008,35 @@ function deleteTimetable($staffId)
         return $set;
     }
 
-    function getAllStudents()
+    function getAllSubjects()
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        $set = null;
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("Select Number, Name FROM Subject ORDER BY Number;"))
+        {
+            if ($stmt->execute())
+            {
+                $result = $stmt->get_result();
+                $i = 0;
+                while($row = $result->fetch_array())
+                {
+                    $set[$i++]=$row;
+                }
+            }
+        }
+        $mysqli->close();
+        return $set;
+    }
+
+
+function getAllStudents()
     {
 
         $dbObj = new dbConnect();
@@ -1327,8 +1357,7 @@ function deleteTimetable($staffId)
         $mysqli->close();
         return false;
     }
-//hehe
-//hehe
+
     function searchStaff($id)
     {
         $dbObj = new dbConnect();
@@ -2541,5 +2570,19 @@ function markAttendance($AdmissionNoArr, $DateArr, $isPresentArr)
 }
 
 function regenerateSubjectTable(){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+    $query = "TRUNCATE TABLE Subject;";
+    $query .= " INSERT INTO Subject (Name) SELECT DISTINCT Subject FROM Timetable WHERE Subject IS NOT NULL AND Subject <> '' ORDER BY Subject;";
+
+    if ( $stmt = $mysqli->prepare($query) ){
+        $stmt -> execute();
+    }
+
+    $mysqli->close();
+    return false;
 }
