@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 22, 2014 at 02:36 PM
+-- Generation Time: Sep 25, 2014 at 10:49 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -93,6 +93,12 @@ CREATE TABLE IF NOT EXISTS `ApplyLeave` (
   KEY `fk013` (`ReviewedBy`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ApplyLeave`
+--
+
+INSERT INTO `ApplyLeave` VALUES('13', '2014-09-22', '2014-09-26', '2014-09-26', 1, '', 0, NULL, NULL, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -139,8 +145,13 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
 -- Dumping data for table `ClassInformation`
 --
 
+INSERT INTO `ClassInformation` VALUES('6', 0, 'B', 2);
+INSERT INTO `ClassInformation` VALUES('5', 10, 'A', 0);
+INSERT INTO `ClassInformation` VALUES('8', 10, 'C', 0);
 INSERT INTO `ClassInformation` VALUES('13', 11, 'A', 0);
 INSERT INTO `ClassInformation` VALUES('14', 11, 'B', 0);
+INSERT INTO `ClassInformation` VALUES('12', 11, 'C', 0);
+INSERT INTO `ClassInformation` VALUES('3', 11, 'D', 0);
 
 -- --------------------------------------------------------
 
@@ -229,8 +240,10 @@ INSERT INTO `Holiday` VALUES(2014, '2014-04-28');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-29');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-30');
 INSERT INTO `Holiday` VALUES(2014, '2014-05-01');
+INSERT INTO `Holiday` VALUES(2014, '2014-05-06');
 INSERT INTO `Holiday` VALUES(2014, '2014-06-12');
 INSERT INTO `Holiday` VALUES(2014, '2014-07-29');
+INSERT INTO `Holiday` VALUES(2014, '2014-08-07');
 INSERT INTO `Holiday` VALUES(2014, '2014-08-08');
 INSERT INTO `Holiday` VALUES(2014, '2014-08-11');
 INSERT INTO `Holiday` VALUES(2014, '2014-08-12');
@@ -385,23 +398,23 @@ INSERT INTO `LabelLanguage` VALUES('belowOLevel', 0, 'Below O Level');
 INSERT INTO `LabelLanguage` VALUES('belowOLevel', 1, 'අ.පො.ස(සා.පෙ) ට අඩු');
 INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 0, 'BNIE, BEd');
 INSERT INTO `LabelLanguage` VALUES('bNIEBEd', 1, 'හෝ විශ්ව.වි අද්යපනවේදී උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 0, 'Bsc in Agriculture');
+INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 0, 'BSc in Agriculture');
 INSERT INTO `LabelLanguage` VALUES('bscinAgriculture', 1, 'කෘෂි විද්‍යා උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinBiology', 0, 'Bsc in Biology');
+INSERT INTO `LabelLanguage` VALUES('bscinBiology', 0, 'BSc in Biology');
 INSERT INTO `LabelLanguage` VALUES('bscinBiology', 1, 'ජීව විද්‍යා උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinCombinedMathematics', 0, 'Bsc in Combined Mathematics');
+INSERT INTO `LabelLanguage` VALUES('bscinCombinedMathematics', 0, 'BSc in Combined Mathematics');
 INSERT INTO `LabelLanguage` VALUES('bscinCombinedMathematics', 1, 'සංයුක්ත ගණිතය');
-INSERT INTO `LabelLanguage` VALUES('bscinCommerceBusinessMgmtAccountingorequivalentDip', 0, 'Bsc in Commerce Business Mgmt Accounting or equivalent Dip');
+INSERT INTO `LabelLanguage` VALUES('bscinCommerceBusinessMgmtAccountingorequivalentDip', 0, 'BSc in Commerce Business Mgmt Accounting or equivalent Dip');
 INSERT INTO `LabelLanguage` VALUES('bscinCommerceBusinessMgmtAccountingorequivalentDip', 1, 'වානිජ්‍ය/ව්‍යාපාර පරිපාලනය/ගණකාධිකරණය උපාධි හා සමාන උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinEducation', 0, 'Bsc in Education');
+INSERT INTO `LabelLanguage` VALUES('bscinEducation', 0, 'BSc in Education');
 INSERT INTO `LabelLanguage` VALUES('bscinEducation', 1, 'අධ්‍යාපනවේදී උපාධි(විශ්ව විද්‍යාලයිය)');
-INSERT INTO `LabelLanguage` VALUES('bscinHomeScience', 0, 'Bsc in Home Science');
+INSERT INTO `LabelLanguage` VALUES('bscinHomeScience', 0, 'BSc in Home Science');
 INSERT INTO `LabelLanguage` VALUES('bscinHomeScience', 1, 'ගෘහ විද්‍යා උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinIT', 0, 'Bsc in IT');
+INSERT INTO `LabelLanguage` VALUES('bscinIT', 0, 'BSc in IT');
 INSERT INTO `LabelLanguage` VALUES('bscinIT', 1, 'තොරතුරු තාක්ෂණය');
-INSERT INTO `LabelLanguage` VALUES('bscinPhysics', 0, 'Bsc in Physics');
+INSERT INTO `LabelLanguage` VALUES('bscinPhysics', 0, 'BSc in Physics');
 INSERT INTO `LabelLanguage` VALUES('bscinPhysics', 1, 'භාව්තීය විද්‍යා උපාධි');
-INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 0, 'Bs cin Social Science');
+INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 0, 'Bscin Social Science');
 INSERT INTO `LabelLanguage` VALUES('bscinSocialScience', 1, 'සමාජ විද්‍යා උපාධි');
 INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 0, 'BSc Specialisation in Mathematics');
 INSERT INTO `LabelLanguage` VALUES('bScspecialisationinMathematics', 1, 'විශේෂ ගණිත උපාධි');
@@ -755,8 +768,8 @@ INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
 INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
 INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Details');
 INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩල තොරතුරු');
-INSERT INTO `LabelLanguage` VALUES('staffTimetable', 0, 'Staff Timetable');
-INSERT INTO `LabelLanguage` VALUES('staffTimetable', 1, 'කාර්යමණ්ඩල කාලසටහන');
+INSERT INTO `LabelLanguage` VALUES('staffTimetable', 0, 'Teacher''s Timetable');
+INSERT INTO `LabelLanguage` VALUES('staffTimetable', 1, 'ගුරුවරුන්ගේ කාලසටහන');
 INSERT INTO `LabelLanguage` VALUES('startTime', 0, 'Start Time ');
 INSERT INTO `LabelLanguage` VALUES('startTime', 1, 'ආරම්භක වෙලාව ');
 INSERT INTO `LabelLanguage` VALUES('status', 0, 'Status');
@@ -778,7 +791,7 @@ INSERT INTO `LabelLanguage` VALUES('teachersName', 1, 'ගුරුවරයා�
 INSERT INTO `LabelLanguage` VALUES('technology', 0, 'Technology');
 INSERT INTO `LabelLanguage` VALUES('technology', 1, 'තාක්ෂණය');
 INSERT INTO `LabelLanguage` VALUES('th', 0, 'T');
-INSERT INTO `LabelLanguage` VALUES('th', 1, '');
+INSERT INTO `LabelLanguage` VALUES('th', 1, 'බ්‍ර');
 INSERT INTO `LabelLanguage` VALUES('theatreandDrama', 0, 'Theatre and Drama');
 INSERT INTO `LabelLanguage` VALUES('theatreandDrama', 1, 'නාට්‍ය හා රංග කලාව');
 INSERT INTO `LabelLanguage` VALUES('thursday', 0, 'Thursday');
@@ -884,8 +897,8 @@ CREATE TABLE IF NOT EXISTS `LeaveData` (
 -- Dumping data for table `LeaveData`
 --
 
-INSERT INTO `LeaveData` VALUES('1', 15, 90, 15, 0);
-INSERT INTO `LeaveData` VALUES('10', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('1', 0, 0, 0, 0);
+INSERT INTO `LeaveData` VALUES('10', -1, -1, -15, 0);
 INSERT INTO `LeaveData` VALUES('11', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('12', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('13', 15, 90, 15, 0);
@@ -974,22 +987,22 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 -- Dumping data for table `Staff`
 --
 
-INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789V', 'Makola', '071456923', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 0, 10000, 1, 1, 1, 0);
+INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789V', 'Makola', '0714569232', '2014-08-18', '2014-08-19', 2, 3, 1, 1, 1, 1, 1, 10000, 1, 1, 1, 0);
 INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789V', 'Makola', '0756489326', '2014-08-06', '2014-08-30', 3, 1, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
 INSERT INTO `Staff` VALUES('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963V', 'Kollupitiya', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
-INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 2, 3, 3, '814562395V', 'Negombo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 64, 0);
-INSERT INTO `Staff` VALUES('13', 'Mark All One', '1992-02-12', 1, 1, 2, 1, '123456789v', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 1, 1, 12, 55, 0);
-INSERT INTO `Staff` VALUES('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543v', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 6, 19, 6, 5, 13, 17000, 3, 18, 41, 0);
-INSERT INTO `Staff` VALUES('15', 'Sahan Malinga Tissera', '1993-02-02', NULL, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 17000, 3, 19, 18, 0);
-INSERT INTO `Staff` VALUES('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 1, 14, 3, 7, 4, 25000, 4, 1, 18, 0);
-INSERT INTO `Staff` VALUES('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '9125876923', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 2, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
+INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 1, 3, 3, '814562395V', 'Negombo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 51, 0);
+INSERT INTO `Staff` VALUES('13', 'Anthony Ashan', '1987-01-21', 1, 1, 2, 1, '123456789V', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 123, 1, 12, 55, 0);
+INSERT INTO `Staff` VALUES('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543V', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 6, 19, 2, 3, 13, 17000, 3, 18, 41, 0);
+INSERT INTO `Staff` VALUES('15', 'Sahan Malinga Tissera', '1993-02-02', 1, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 17000, 3, 19, 17, 0);
+INSERT INTO `Staff` VALUES('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 1, 14, 3, 7, 4, 25000, 4, 1, 19, 0);
+INSERT INTO `Staff` VALUES('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '912587692V', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 1, 2, 2, 2, 2, 2, 0, 30000, 1, 2, 2, 0);
 INSERT INTO `Staff` VALUES('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '936257891V', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
-INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 0);
-INSERT INTO `Staff` VALUES('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
-INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '95896452', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
-INSERT INTO `Staff` VALUES('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
+INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278V', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 0);
+INSERT INTO `Staff` VALUES('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879V', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
+INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '958964525V', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
+INSERT INTO `Staff` VALUES('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745V', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
 INSERT INTO `Staff` VALUES('8', 'Yazdaan M.A.', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
-INSERT INTO `Staff` VALUES('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '4563218', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
+INSERT INTO `Staff` VALUES('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '456321845V', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -1051,6 +1064,28 @@ CREATE TABLE IF NOT EXISTS `Student_Subject_Grade` (
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`AdmissionNo`,`Subject`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Subject`
+--
+
+CREATE TABLE IF NOT EXISTS `Subject` (
+  `Number` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`Number`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `Subject`
+--
+
+INSERT INTO `Subject` VALUES(1, 'Science');
+INSERT INTO `Subject` VALUES(2, 'English');
+INSERT INTO `Subject` VALUES(3, 'Physics');
+INSERT INTO `Subject` VALUES(4, 'Mechanics');
+INSERT INTO `Subject` VALUES(5, 'Chemistry');
 
 -- --------------------------------------------------------
 
@@ -1286,7 +1321,7 @@ INSERT INTO `Timetable` VALUES(11, 'C', 0, 4, 'Mechanics', '13', 0);
 INSERT INTO `Timetable` VALUES(11, 'C', 0, 5, 'Mechanics', '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '13', 0);
-INSERT INTO `Timetable` VALUES(11, 'A', 1, 0, 'Physics', '13', 0);
+INSERT INTO `Timetable` VALUES(11, 'A', 1, 0, 'Mechanics', '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '13', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '13', 0);
@@ -1598,46 +1633,46 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '6', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '6', 2);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '6', 2);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '7', 0);
@@ -1813,14 +1848,15 @@ INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldv
 INSERT INTO `User` VALUES('blue', '$2y$10$FV/zw6c6WkCfHgALLROEmOnjDaiE9ARHAqcHdoQkll3lzPCVqeck.', 1, 0);
 INSERT INTO `User` VALUES('blue table', '$2y$10$nACqSmTdjU/VZp4Oae3d2.pzSw1MxI1hEcOpG79WxbtId5uj9GPmq', 1, 0);
 INSERT INTO `User` VALUES('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 2);
-INSERT INTO `User` VALUES('cd', '$2y$10$blpnAfzAvx22sggBq4A2FO9b8AMlB8hlRB6a.eTJYwVcC//aV0zJ2', 1, 0);
+INSERT INTO `User` VALUES('cd', '$2y$10$amqd2LCh9Bk65mwfgaG8LO42NZrk798.HN9Ng0T1JYF1ckPJ4UUM2', 1, 0);
 INSERT INTO `User` VALUES('chair', '$2y$10$c6d3EBGdek9QN9y5pN33oeU3P1xpTbVbJQixQXS.BW0VD1mJfL.vO', 1, 0);
 INSERT INTO `User` VALUES('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 2);
 INSERT INTO `User` VALUES('free', '$2y$10$05tBD.F8Nxi45Ww7oiTUdOeV/qYsk2Dyaa0a8gKWfQrK3PZitmi0y', 1, 2);
 INSERT INTO `User` VALUES('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 2);
 INSERT INTO `User` VALUES('isuru@sliit.lk', '$2y$10$7kD7JsAbPk5fSgIVfnqyguoDlFJML9uBVb12UZ3aqXOEJkze7EHcC', 1, 0);
 INSERT INTO `User` VALUES('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0);
-INSERT INTO `User` VALUES('red@blue.org', '$2y$10$c1sE8j/pzNlA14fUOLNmve8LaGX9jutVMJsCbST2QVkVg7vn4FORy', 1, 0);
+INSERT INTO `User` VALUES('red@blue.org', '$2y$10$GTAR2ISrSJc/3E7pqclth.gLbyYlnar3FHubs5tJ66opJ7.gMYlgy', 1, 2);
+INSERT INTO `User` VALUES('s', '$2y$10$5Dr1zqERyeGwod5i5nrQv.m0xBCpUNKOvYJ/q9KOCEx7AQV3ThvIi', 2, 0);
 INSERT INTO `User` VALUES('sh', '$2y$10$k6WWAhhSBD7UkvbcHDQVj.l6zLYTBpwuyCrO8a2o10qhTR.6gJBKe', 1, 2);
 INSERT INTO `User` VALUES('shavin47', '$2y$10$QmPP8f1zzx0qW6b3v.h.X.Fox.FyA3mLwy7LrlzkJHdhF8D3srp5.', 1, 2);
 INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0);
