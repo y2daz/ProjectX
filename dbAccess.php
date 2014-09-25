@@ -1370,7 +1370,7 @@ function getFreeTeachers($position,$day,$id)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT StaffID, NameWithInitials, ContactNumber FROM Staff WHERE StaffID IN (SELECT staffID FROM Timetable WHERE Position = ? AND Day = ? AND isDeleted = 0 AND (Subject IS NULL) AND StaffID <> ?);"))
+    if ($stmt = $mysqli->prepare("SELECT s.StaffID, s.NameWithInitials, s.SubjectMostTaught, s.ContactNumber FROM Staff s WHERE StaffID IN (SELECT staffID FROM Timetable t WHERE Position = ? AND Day = ? AND isDeleted = 0 AND (Subject IS NULL) AND StaffID <> ?);"))
     {
         //  $id = "%" . $id . "%";
         $stmt -> bind_param("iii", $position, $day, $id );
@@ -2538,4 +2538,8 @@ function markAttendance($AdmissionNoArr, $DateArr, $isPresentArr)
     }
     $mysqli->close();
     return false;
+}
+
+function regenerateSubjectTable(){
+
 }

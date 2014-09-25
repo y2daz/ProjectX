@@ -246,7 +246,9 @@ if (isset($_GET["getTimetable"]))
                 <tr>
                     <th>Staff ID</th>
                     <th>Teacher's Name</th>
+                    <th>Main Subject</th>
                     <th>Contact Number</th>
+                    <th></th>
                 </tr>
                 <?php
                     $rowcount = 0;
@@ -258,6 +260,7 @@ if (isset($_GET["getTimetable"]))
                             echo "<td>" . $row[0] . "</td>";
                             echo "<td>" . $row[1] . "</td>";
                             echo "<td>" . $row[2] . "</td>";
+                            echo "<td>" . $row[3] . "</td>";
                             $date = date("y/m/d");
                             echo "<td><input type = button value='Confirm' name='Confirm' onclick='confirmSubstitution( $currentStaffId , $Grade , $Class , $Day , $Position , $date  , $row[0] )' > <td>";
                             echo "</tr>";
@@ -279,7 +282,7 @@ if (isset($_GET["getTimetable"]))
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1200 + ($rowcount * 18);
+$fullPageHeight = 1200 + ($rowcount * 29);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
 //Only change above
