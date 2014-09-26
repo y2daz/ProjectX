@@ -120,3 +120,13 @@ h2{
     width: 390px;
     text-align: center;
 }
+#schoolName{
+    position: relative;
+    left: 15%;
+}
+#teacherName{
+    position: relative;
+    left: 50%;
+    text-align: center;
+    font-size: 1.5em;
+}

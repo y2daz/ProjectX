@@ -22,7 +22,8 @@ $currentStaffName = "";
 
 error_reporting(0);//Temporarily turn of all errors
 
-
+$status = "";
+$teacher = "";
 if(!isFilled($_GET["staffID"]))
 {
     header("Location: " . PATHFRONT . "/TimeTable/timetable.php");
@@ -44,7 +45,6 @@ else{
 }
 $civil = getCivilStatus($_GET["staffID"]);
 $gender = getGender($_GET["staffID"]);
-$status = " ";
 if ($gender == 1)
 {
     $status = "Mr. " ;
@@ -57,8 +57,6 @@ else
 {
     $status = "Mrs. ";
 }
-
-    //$status = " mama";
 
 ?>
 <html>
@@ -84,51 +82,6 @@ else
     </style>
 
     <script>
-        $(document).ready(function() {
-
-            var i = 0;
-
-//                setInterval(function(){
-//                    $("#" + i).toggleClass("animated");
-//                    i++;
-//                    if(i >= 40)
-//                        i=0;
-//                }, 100);
-
-            var editable = false;
-
-//            $('#btnMakeEditable').on('click', function(e){
-//                if (editable == false){
-//                    $('.classroom input').each( function(i, obj){
-//                        $(obj)
-//                            .attr("readonly", false)
-//                            .closest("div")
-//                                .css("opacity",".7");
-//                    });
-//                    $('.subject textarea').each( function(i, obj){
-//                        $(obj)
-//                            .attr("readonly", false)
-//                            .css("color", "#101010");
-//                    });
-//                    editable = true;
-//                }
-//                else{
-//                    $('.classroom input').each( function(i, obj){
-//                        $(obj)
-//                            .attr("readonly", true)
-//                            .closest("div")
-//                            .css("opacity",".5");
-//                    });
-//                    $('.subject textarea').each( function(i, obj){
-//                        $(obj)
-//                            .attr("readonly", true)
-//                            .css("color", "#444444");
-//                    });
-//                    editable = false;
-                }
-            });
-
-        });
     </script>
 </head>
 <body>
@@ -140,19 +93,16 @@ else
     <table id="info">
         <tr>
             <th>
-            <img id="flag" src="/images/dslogo.jpg"/>
+                <img id="flag" src="/images/dslogo.jpg"/>
             </th>
-            <th><h1>D.S.Senanayake College</h1></th>
+            <th id="schoolName"><h1>D.S. Senanayake College</h1></th>
         </tr>
         <tr>
-            <th></br></th>
-        </tr>
-        <tr>
-            <td><label class="text1"><?php echo $status;?><?php echo $teacher;?></label> </td>
-
+            <td colspan="3" id="teacherName"><?php echo $status . $teacher;?></td>
         </tr>
     </table>
 </form>
+
 
 
 <form name="frmTimetable" method="post">
