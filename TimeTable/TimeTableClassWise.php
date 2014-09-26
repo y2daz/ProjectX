@@ -238,7 +238,7 @@ if (isset($_GET["getTimetable"]))
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1200 + ($rowcount * 29);
+$fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
 //Only change above
