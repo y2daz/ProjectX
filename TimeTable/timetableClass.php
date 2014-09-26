@@ -42,8 +42,13 @@ class Timetable {
         if(isFilled($result)){
             $i = 0;
 
+//            for($i = 0; $i < 8; $i++){
+//            for($x = 0; $x < 6; $x++){
+
             foreach($result as $row){
-                $this->insertSLot($i, $row[0], $row[1], $row[4] );
+                $number= ($row[3] + (8 * ($row[2] - 1) )) + 8;
+//                echo "<br /> $number";
+                $this->insertSLot($number, $row[0], $row[1], $row[4] );
                 $i++;
             }
         }

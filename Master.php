@@ -155,7 +155,7 @@
                 $navMenu .= "<li><a>" . $timetables . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $staffTimetable . "</a><hr /></li>\n";
-                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . "Class Timetable" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetableClasswise.php\">" . "Class Timetable" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
@@ -190,7 +190,7 @@
                 $navMenu .= "<li><a>" . $timetables . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $staffTimetable . "</a><hr /></li>\n";
-                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . "Class Timetable" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetableClasswise.php\">" . "Class Timetable" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a></li>\n";
                 $navMenu .= "</ul>\n";

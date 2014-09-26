@@ -1,4 +1,4 @@
-INSERT INTO `timetable` (`Grade`, `Class`, `Day`, `Position`, `Subject`, `StaffID`, `isDeleted`) VALUES
+INSERT INTO `Timetable` (`Grade`, `Class`, `Day`, `Position`, `Subject`, `StaffID`, `isDeleted`) VALUES
 
 (NULL, NULL, 0, 0, NULL, '11', 0),
 
