@@ -72,6 +72,16 @@ else
 
     <link rel="stylesheet" href="TimetableReport.css">
 <!--    <script src="timetable.js"></script>-->
+    <style type="text/css">
+        #flag {
+            position: relative;
+            top: 10px;
+            left: 15px;
+            /*border: 5px solid black;*/
+            width: 120px;
+            height: 120px;
+        }
+    </style>
 
     <script>
         $(document).ready(function() {
@@ -109,12 +119,12 @@ else
 //                            .closest("div")
 //                            .css("opacity",".5");
 //                    });
-                    $('.subject textarea').each( function(i, obj){
-                        $(obj)
-                            .attr("readonly", true)
-                            .css("color", "#444444");
-                    });
-                    editable = false;
+//                    $('.subject textarea').each( function(i, obj){
+//                        $(obj)
+//                            .attr("readonly", true)
+//                            .css("color", "#444444");
+//                    });
+//                    editable = false;
                 }
             });
 
@@ -129,14 +139,17 @@ else
 <form method="get">
     <table id="info">
         <tr>
-            <td><label><?php echo getLanguage("staffId",$lang)?></td>
-            <td><label><?php echo $currentStaffId?></label></td>
-<!--            <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>-->
+            <th>
+            <img id="flag" src="/images/dslogo.jpg"/>
+            </th>
+            <th><h1>D.S.Senanayake College</h1></th>
         </tr>
-
         <tr>
-            <td><label class="text1"><?php echo $status;?></label> </td>
-            <td><label class="text1"><?php echo $teacher;?></label></td>
+            <th></br></th>
+        </tr>
+        <tr>
+            <td><label class="text1"><?php echo $status;?><?php echo $teacher;?></label> </td>
+
         </tr>
     </table>
 </form>
