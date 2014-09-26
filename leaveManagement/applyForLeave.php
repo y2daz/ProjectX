@@ -328,6 +328,7 @@
         $enterdetails = "තොරතුරු  ඇතුලත් කරන්න";
         $availableleavedays = "ඉතුරු  නිවාඩු  දින";
         $staffname = "නම";
+        $searchstaffid = "Search Staff ID";
     }
     else
     {
@@ -343,7 +344,7 @@
         $reset ="Reset";
         $getleavedata = "Get Leave Data";
         $enterdetails = "Enter Details";
-        $availableleavedays ="Available Leave Days";
+        $availableleavedays ="No. of Available Days";
         $staffname = "Name";
         $searchstaffid = "Search Staff ID";
     }
