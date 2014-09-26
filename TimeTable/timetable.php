@@ -105,14 +105,6 @@ if (isset($_GET["getTimetable"]))
             $(document).ready(function() {
 
                 var i = 0;
-
-//                setInterval(function(){
-//                    $("#" + i).toggleClass("animated");
-//                    i++;
-//                    if(i >= 40)
-//                        i=0;
-//                }, 100);
-
                 var editable = false;
 
                 $('#btnMakeEditable').on('click', function(e){

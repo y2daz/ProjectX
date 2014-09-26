@@ -14,6 +14,8 @@ class Timetable {
 
     public $slot = array();
     public $staffId = 0;
+    public $class = 0;
+    public $grade = "";
 
     function __construct(){
         for ($i = 0; $i < 40; $i++)
@@ -24,6 +26,18 @@ class Timetable {
 
     public function getTimetableFromDB(){
         $result = getTimetable($this->staffId);
+
+        if(isFilled($result)){
+            $i = 0;
+
+            foreach($result as $row){
+                $this->insertSLot($i, $row[0], $row[1], $row[4] );
+                $i++;
+            }
+        }
+    }
+    public function getTimetableClassFromDB(){
+        $result = getTimetablebyClass($this->class,$this->grade);
 
         if(isFilled($result)){
             $i = 0;
@@ -59,12 +73,18 @@ class Timetable {
         return updateTimetable($this->staffId, $gradeArr, $classArr, $subjectArr);
     }
 
-    public function insertSLot($number, $grade, $class, $subject)
+    public function insertSLot($number, $grade , $class, $subject)
     {
         $this->slot[$number]->Grade = $grade;
         $this->slot[$number]->Class = $class;
         $this->slot[$number]->Subject = $subject;
     }
+//    public function insertSlotclass($number,  $subject)
+//    {
+//        //$this->slot[$number]->Grade = $grade;
+//        //$this->slot[$number]->Class = $class;
+//        $this->slot[$number]->Subject = $subject;
+//    }
 
 
 }
