@@ -29,6 +29,7 @@
         if( strcmp( $_SERVER['PHP_SELF'], "/Menu.php") !== 0){
             header("Location: " . PATHFRONT . "/Menu.php");
         }
+
     }
     else{
         $privilege = checkPrivilege($_SESSION["user"]);
@@ -74,6 +75,7 @@
             /*Dynamic Styles*/
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
+            <?php echo ( (isset($_SESSION["user"]))? "": "\n#nav{ display:none;}\n" ) ?>
             /*Static Styles*/
             /*INSERT ALL YOUR CSS HERE*/
 
