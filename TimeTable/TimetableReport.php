@@ -87,28 +87,28 @@ else
 
             var editable = false;
 
-            $('#btnMakeEditable').on('click', function(e){
-                if (editable == false){
-                    $('.classroom input').each( function(i, obj){
-                        $(obj)
-                            .attr("readonly", false)
-                            .closest("div")
-                                .css("opacity",".7");
-                    });
-                    $('.subject textarea').each( function(i, obj){
-                        $(obj)
-                            .attr("readonly", false)
-                            .css("color", "#101010");
-                    });
-                    editable = true;
-                }
-                else{
-                    $('.classroom input').each( function(i, obj){
-                        $(obj)
-                            .attr("readonly", true)
-                            .closest("div")
-                            .css("opacity",".5");
-                    });
+//            $('#btnMakeEditable').on('click', function(e){
+//                if (editable == false){
+//                    $('.classroom input').each( function(i, obj){
+//                        $(obj)
+//                            .attr("readonly", false)
+//                            .closest("div")
+//                                .css("opacity",".7");
+//                    });
+//                    $('.subject textarea').each( function(i, obj){
+//                        $(obj)
+//                            .attr("readonly", false)
+//                            .css("color", "#101010");
+//                    });
+//                    editable = true;
+//                }
+//                else{
+//                    $('.classroom input').each( function(i, obj){
+//                        $(obj)
+//                            .attr("readonly", true)
+//                            .closest("div")
+//                            .css("opacity",".5");
+//                    });
                     $('.subject textarea').each( function(i, obj){
                         $(obj)
                             .attr("readonly", true)
