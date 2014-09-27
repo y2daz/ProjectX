@@ -18,8 +18,7 @@ require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
 
 
-//hehe
-//hhee
+
 
 ob_start();
 $currentStaffMembers="";
@@ -521,6 +520,9 @@ else
     $ALevel =  getLanguage('ALevel', $language);
     $OLevelandOther =  getLanguage('OLevelandOther', $language);
     $update =  getLanguage('update', $language);
+    $search = getlanguage('search', $language);
+    $expand = getLanguage('expand', $language);
+    $delete = getLanguage('delete',$language);
 ?>
 <body>
 <h1> <?php echo getLanguage('searchStaffMember', $language) ?></h1>
@@ -534,14 +536,14 @@ else
             <td colspan="2"><span id="selection">Search by : </span>
              <input type="text" class="text1" name="query" value="">
             </td>
-            <td><input class="button" name="search" type="submit" value="Search"></td>
+            <td><input class="button" name="search" type="submit" value=<?php echo getlanguage('search', $language)?>></td>
         </tr>
         <tr><td></td><td>&nbsp;</td></tr>
         <tr>
-            <td><input type="RADIO" name="Choice" value="Staffid" checked />Staff ID</td>
-            <td><input type="RADIO" name="Choice" value="Name"  />Name</td>
-            <td><input type="RADIO" name="Choice" value="nicnumber" />NIC Number</td>
-            <td><input type="RADIO" name="Choice" value="contactnumber" />Contact Number</td>
+            <td><input type="RADIO" name="Choice" value="Staffid" checked /><?php echo getLanguage('staffID', $language)?></td>
+            <td><input type="RADIO" name="Choice" value="Name"  /><?php echo getLanguage('nameWithInitials', $language)?></td>
+            <td><input type="RADIO" name="Choice" value="nicnumber" /><?php echo getLanguage('nicNumber', $language)?></td>
+            <td><input type="RADIO" name="Choice" value="contactnumber" /><?php echo getLanguage('contactnumber', $language)?></td>
         </tr>
 
     </table>
@@ -551,10 +553,10 @@ else
 <form method="post">
     <table class="viewTable">
         <tr>
-            <th>Staff ID</th>
-            <th>Name</th>
-            <th>NIC Number</th>
-            <th>Contact Number</th>
+            <th><?php echo getLanguage('staffID', $language)?></th>
+            <th><?php echo getLanguage('nameWithInitials', $language)?></th>
+            <th><?php echo getLanguage('nicNumber', $language)?></th>
+            <th><?php echo getLanguage('contactnumber', $language)?></th>
             <th></th>
             <th></th>
         </tr>
@@ -578,8 +580,8 @@ else
                     echo "<td>$row[1]</td>";
                     echo "<td>$row[2]</td>";
                     echo "<td>$row[3]</td>";
-                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand\" formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
+                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete \"onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                             . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                     echo "</td></tr>";
                 }
@@ -599,12 +601,12 @@ else
         <tr><th><?php echo $generalInformation?></th><th></th></tr>
 
         <tr>
-            <td> Staff ID </td>
+            <td> <?php echo $staffID?> </td>
             <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
             <td></td>
         </tr>
         <tr>
-            <td> Name with Initials </td>
+            <td><?php echo $nameWithInitials?> </td>
             <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
             <td></td>
         </tr>
@@ -612,13 +614,13 @@ else
 
 
         <tr>
-            <td> Date of Birth  </td>
+            <td><?php echo $dateOfBirth?></td>
             <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
             <td></td>
         </tr>
 
         <tr>
-            <td> Gender </td>
+            <td><?php echo $gender?></td>
             <td>
                 <input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> />Male
                 <input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> />Female
@@ -627,7 +629,7 @@ else
         </tr>
 
         <tr>
-            <td>Nationality/Race </td>
+            <td><?php echo $nationalityRace?></td>
             <td > <input class="number" id="NumberCb1" type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb1" name="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
@@ -643,7 +645,7 @@ else
 
 
         <tr>
-            <td> Religion </td>
+            <td><?php echo $religion?></td>
             <td ><input class="number" id="NumberCb2" type = "text" name="Religion" value="<?php echo $staffReligion?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb2" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -658,7 +660,7 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Civil Status  </td>
+            <td><?php echo $civilStatus?></td>
             <td > <input class="number" id="NumberCb3" type = "text" name="CivilStatus" value="<?php echo $CivilStatus?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb3" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -671,34 +673,34 @@ else
             <td></td>
         </tr>
         <tr>
-            <td>NIC Number  </td>
+            <td><?php echo $nicNumber?></td>
             <td > <input type = "text" name="NICNumber" value="<?php echo $NICNumber?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td>Mail Delivery Address</td>
+            <td><?php echo $maildeliveryaddress?></td>
             <td > <input type = "text" name="MailDeliveryAddress" value="<?php echo $MailDeliveryAddress?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td>Contact Number </td>
+            <td><?php echo $contactnumber?></td>
             <td > <input type = "text" name="ContactNumber" value="<?php echo $ContactNumber?>"/> </td>
             <td></td>
         </tr>
 
         <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
-            <td>Date Appointed as Teacher/principal</td>
+            <td><?php echo $dateAppointedAsTeacher?></td>
             <td > <input type ="text" name="DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td> Date joined this school  </td>
-            <td > <input type="text" name="DatejoinedthisSchool" value="<?php echo $DateJoinedthisSchool?>"/> </td>
+            <td><?php echo $dateJoinedSchool?></td>
+            <td><input type="text" name="DatejoinedthisSchool" value="<?php echo $DateJoinedthisSchool?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td> Employement status </td>
+            <td><?php echo $employmentStatus?></td>
             <td > <input class="number" id="NumberCb4" type = "text" name="EmploymentStatus" value="<?php echo $EmploymentStatus?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb4" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -714,7 +716,7 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Medium </td>
+            <td><?php echo $medium?></td>
             <td > <input class="number" id="NumberCb5" type = "text" name="Medium" value="<?php echo $Medium?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb5" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -726,7 +728,7 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Position in school  </td>
+            <td><?php echo $positionInSchool?></td>
             <td > <input class="number" id="NumberCb6" type = "text" name="PositioninSchool" value="<?php echo $PositioninSchool?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb6" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -742,7 +744,7 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Section  </td>
+            <td><?php echo $section?></td>
             <td ><input class="number" id="NumberCb7" type="text" name="Section" value="<?php echo $Section?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb7" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -811,7 +813,7 @@ else
             <td></td>
         </tr>
         <tr>
-            <td>  Service Grade  </td>
+            <td><?php echo $serviceGrade?></td>
             <td > <input class="number" id="NumberCb10" type = "text" name="ServiceGrade" value="<?php echo $ServiceGrade?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb10" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
@@ -833,15 +835,15 @@ else
             <td></td>
         </tr>
         <tr>
-            <td>  Salary</td>
-            <td > <input type = "text" name="Salary" value="<?php echo $Salary?>"/> </td>
+            <td><?php echo $salary?></td>
+            <td><input type = "text" name="Salary" value="<?php echo $Salary?>"/></td>
             <td></td>
         </tr>
 
         <tr><th><?php echo $educationInformation?></th><th></th></tr>
         <tr>
-            <td> Highest Educational Qualification  </td>
-            <td > <input class="number" id="NumberCb11" type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>" onkeyup="changeTextbox(this)"/>
+            <td><?php echo $highestEducationalQualification?></td>
+            <td><input class="number" id="NumberCb11" type = "text" name="HighestEducationalQualification" value="<?php echo $HighestEducationalQualification?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb11" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$BelowOLevel?></option>
@@ -856,8 +858,8 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Highest Professional Qualification  </td>
-            <td > <input class="number" id="NumberCb12" type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>" onkeyup="changeTextbox(this)"/>
+            <td><?php echo $highestProfessionalQualification?></td>
+            <td><input class="number" id="NumberCb12" type = "text" name="HighestProfessionalQualification" value="<?php echo $HighestProfessionalQualification?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb12" name="" onchange="changeTextbox(this)">
                 <option value=""><?php echo "--"?></option>
                 <option value="1"><?php echo "1 - " .$PhDEd?></option>
@@ -884,114 +886,118 @@ else
             <td></td>
         </tr>
         <tr>
-            <td> Course of Study </td>
-            <td > <input class="number" id="NumberCb13" type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>" onkeyup="changeTextbox(this)"/>
+            <td><?php echo $courseOfStudy?></td>
+            <td><input class="number" id="NumberCb13" type = "text" name="CourseofStudy" value="<?php echo $CourseofStudy?>" onkeyup="changeTextbox(this)"/>
                 <select id="Cb13" name="" onchange="changeTextbox(this)">
-                <option value=""><?php echo "--"?></option>
-                <option value="1"><?php echo "1 - " .$BscinEducation?></option>
-                <option value="2"><?php echo "2 - " .$BscinPhysics?></option>
-                <option value="3"><?php echo "3 - " .$BscinBiology?></option>
-                <option value="4"><?php echo "4 - " .$BscinCombinedMathematics?></option>
-                <option value="5"><?php echo "5 - " .$BScspecialisationinMathematics?></option>
-                <option value="6"><?php echo "6 - " .$PassedMathswithoutadegreeinscience?></option>
-                <option value="7"><?php echo "7 - " .$BscinAgriculture?></option>
-                <option value="8"><?php echo "8 - " .$BscinHomeScience?></option>
-                <option value="9"><?php echo "9 - " .$BscinIT?></option>
-                <option value="10"><?php echo "10 - " .$BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
-                <option value="11"><?php echo "11 - " .$BscinSocialScience?></option>
-                <option value="12"><?php echo "12 - " .$BAinEasternMusicorequivalentDip?></option>
-                <option value="13"><?php echo "13 - " .$BAinArts?></option>
-                <option value="14"><?php echo "14 - " .$BAinDancingorequivalentDip?></option>
-                <option value="15"><?php echo "15 - " .$BADegreesorequivalent?></option>
-                <option value="16"><?php echo "16 - " .$BAinEnglishorequivalent?></option>
-                <option value="17"><?php echo "17 - " .$BAinaForeignLanguageexcludingEnglish?></option>
+                    <optgroup label="Graduate Teachers">
+                        <option value=""><?php echo "--"?></option>
+                        <option value="1"><?php echo "1 - " .$BscinEducation?></option>
+                        <option value="2"><?php echo "2 - " .$BscinPhysics?></option>
+                        <option value="3"><?php echo "3 - " .$BscinBiology?></option>
+                        <option value="4"><?php echo "4 - " .$BscinCombinedMathematics?></option>
+                        <option value="5"><?php echo "5 - " .$BScspecialisationinMathematics?></option>
+                        <option value="6"><?php echo "6 - " .$PassedMathswithoutadegreeinscience?></option>
+                        <option value="7"><?php echo "7 - " .$BscinAgriculture?></option>
+                        <option value="8"><?php echo "8 - " .$BscinHomeScience?></option>
+                        <option value="9"><?php echo "9 - " .$BscinIT?></option>
+                        <option value="10"><?php echo "10 - " .$BscinCommerceBusinessMgmtAccountingoequivalentDip?></option>
+                        <option value="11"><?php echo "11 - " .$BscinSocialScience?></option>
+                        <option value="12"><?php echo "12 - " .$BAinEasternMusicorequivalentDip?></option>
+                        <option value="13"><?php echo "13 - " .$BAinArts?></option>
+                        <option value="14"><?php echo "14 - " .$BAinDancingorequivalentDip?></option>
+                        <option value="15"><?php echo "15 - " .$BADegreesorequivalent?></option>
+                        <option value="16"><?php echo "16 - " .$BAinEnglishorequivalent?></option>
+                        <option value="17"><?php echo "17 - " .$BAinaForeignLanguageexcludingEnglish?></option>
+                    </optgroup>
+                    <optgroup label="Trained Teachers">
+                        <option value="19"><?php echo "19 - " .$IT?></option>
+                        <option value="20"><?php echo "20 - " .$English?></option>
+                        <option value="21"><?php echo "21 - " .$Maths?></option>
+                        <option value="22"><?php echo "22 - " .$Science?></option>
+                        <option value="23"><?php echo "23 - " .$ScienceandMaths?></option>
+                        <option value="24"><?php echo "24 - " .$SocialStudies?></option>
+                        <option value="25"><?php echo "25 - " .$Commerce?></option>
+                        <option value="26"><?php echo "26 - " .$HomeScience?></option>
+                        <option value="27"><?php echo "27 - " .$BTecConstruction?></option>
+                        <option value="28"><?php echo "28 - " .$BTecMechanical?></option>
+                        <option value="29"><?php echo "29 - " .$BTecElectronicandElectrical?></option>
+                        <option value="30"><?php echo "30 - " .$Arts?></option>
+                        <option value="31"><?php echo "31 - " .$Agriculture?></option>
+                        <option value="32"><?php echo "32 - " .$WesternMusic?></option>
+                        <option value="33"><?php echo "33 - " .$EasternMusic?></option>
+                        <option value="34"><?php echo "34 - " .$ArtsAgain?></option>
+                        <option value="35"><?php echo "35 - " .$Dancing?></option>
+                        <option value="36"><?php echo "36 - " .$HealthandPhysicalEducation?></option>
+                        <option value="37"><?php echo "37 - " .$Buddhism?></option>
+                        <option value="38"><?php echo "38 - " .$hinduism?></option>
+                        <option value="39"><?php echo "39 - " .$Islam?></option>
+                        <option value="40"><?php echo "40 - " .$RomanCatholicism?></option>
+                        <option value="41"><?php echo "41 - " .$NonRomanCatholicism?></option>
+                        <option value="42"><?php echo "42 - " .$SpecialEducation?></option>
+                        <option value="43"><?php echo "43 - " .$Sinhala?></option>
+                        <option value="44"><?php echo "44 - " .$Tamil?></option>
+                        <option value="45"><?php echo "45 - " .$Arabic?></option>
+                        <option value="46"><?php echo "46 - " .$PrimaryGeneral?></option>
+                        <option value="47"><?php echo "47 - " .$LibraryandInformationScience?></option>
+                        <option value="48"><?php echo "48 - " .$TheatreandDrama?></option>
+                        <option value="49"><?php echo "49 - " .$Other?></option>
+                    </optgroup>
+                    <optgroup label="Untrained Teachers">
+                        <option value="50"><?php echo "50 - " .$Maths?></option>
+                        <option value="51"><?php echo "51 - " .$Science?></option>
+                        <option value="52"><?php echo "52 - " .$ScienceandMaths?></option>
+                        <option value="53"><?php echo "53 - " .$English?></option>
+                        <option value="54"><?php echo "54 - " .$Primary?></option>
+                        <option value="55"><?php echo "55 - " .$Religion?></option>
+                        <option value="56"><?php echo "56 - " .$SocialStudies?></option>
+                        <option value="57"><?php echo "57 - " .$Commerce?></option>
+                        <option value="58"><?php echo "58 - " .$Technology?></option>
+                        <option value="59"><?php echo "59 - " .$HomeScience?></option>
+                        <option value="60"><?php echo "59 - " .$Agriculture ?></option>
+                        <option value="61"><?php echo "61 - " .$Sinhala?></option>
+                        <option value="62"><?php echo "62 - " .$Tamil?></option>
+                        <option value="63"><?php echo "63 - " .$WesternMusic?></option>
+                        <option value="64"><?php echo "64 - " .$EasternMusic?></option>
+                        <option value="65"><?php echo "65 - " .$Dancing?></option>
+                        <option value="66"><?php echo "66 - " .$Art?></option>
+                        <option value="67"><?php echo "67 - " .$ForeignLanguageExcludingEnglish?></option>
+                        <option value="68"><?php echo "68 - " .$Malay?></option>
+                        <option value="69"><?php echo "69 - " .$other?></option>
+                    </optgroup>
+                    <optgroup label="Newly appointed Teachers">
+                        <option value="75"><?php echo "75 - " .$Maths?></option>
+                        <option value="76"><?php echo "76 - " .$Science?></option>
+                        <option value="77"><?php echo "77 - " .$ScienceandMaths?></option>
+                        <option value="78"><?php echo "78 - " .$English?></option>
+                        <option value="79"><?php echo "79 - " .$Primary?></option>
+                        <option value="80"><?php echo "80 - " .$Religion?></option>
+                        <option value="81"><?php echo "81 - " .$SocialStudies?></option>
+                        <option value="82"><?php echo "82 - " .$Commerce?></option>
+                        <option value="83"><?php echo "83 - " .$Technology?></option>
+                        <option value="84"><?php echo "84 - " .$HomeScience?></option>
+                        <option value="85"><?php echo "85 - " .$Agriculture ?></option>
+                        <option value="86"><?php echo "86 - " .$Sinhala?></option>
+                        <option value="87"><?php echo "87 - " .$Tamil?></option>
+                        <option value="88"><?php echo "88 - " .$WesternMusic?></option>
+                        <option value="89"><?php echo "89 - " .$EasternMusic?></option>
+                        <option value="90"><?php echo "90 - " .$Dancing?></option>
+                        <option value="91"><?php echo "91 - " .$Art?></option>
+                        <option value="92"><?php echo "92 - " .$ForeignLanguageExcludingEnglish?></option>
+                        <option value="93"><?php echo "93 - " .$Malay?></option>
+                        <option value="94"><?php echo "94 - " .$Other?></option>
 
-                    <option value="19"><?php echo "19 - " .$IT?></option>
-                    <option value="20"><?php echo "20 - " .$English?></option>
-                    <option value="21"><?php echo "21 - " .$Maths?></option>
-                    <option value="22"><?php echo "22 - " .$Science?></option>
-                    <option value="23"><?php echo "23 - " .$ScienceandMaths?></option>
-                    <option value="24"><?php echo "24 - " .$SocialStudies?></option>
-                    <option value="25"><?php echo "25 - " .$Commerce?></option>
-                    <option value="26"><?php echo "26 - " .$HomeScience?></option>
-                    <option value="27"><?php echo "27 - " .$BTecConstruction?></option>
-                    <option value="28"><?php echo "28 - " .$BTecMechanical?></option>
-                    <option value="29"><?php echo "29 - " .$BTecElectronicandElectrical?></option>
-                    <option value="30"><?php echo "30 - " .$Arts?></option>
-                    <option value="31"><?php echo "31 - " .$Agriculture?></option>
-                    <option value="32"><?php echo "32 - " .$WesternMusic?></option>
-                    <option value="33"><?php echo "33 - " .$EasternMusic?></option>
-                    <option value="34"><?php echo "34 - " .$ArtsAgain?></option>
-                    <option value="35"><?php echo "35 - " .$Dancing?></option>
-                    <option value="36"><?php echo "36 - " .$HealthandPhysicalEducation?></option>
-                    <option value="37"><?php echo "37 - " .$Buddhism?></option>
-                    <option value="38"><?php echo "38 - " .$hinduism?></option>
-                    <option value="39"><?php echo "39 - " .$Islam?></option>
-                    <option value="40"><?php echo "40 - " .$RomanCatholicism?></option>
-                    <option value="41"><?php echo "41 - " .$NonRomanCatholicism?></option>
-                    <option value="42"><?php echo "42 - " .$SpecialEducation?></option>
-                    <option value="43"><?php echo "43 - " .$Sinhala?></option>
-                    <option value="44"><?php echo "44 - " .$Tamil?></option>
-                    <option value="45"><?php echo "45 - " .$Arabic?></option>
-                    <option value="46"><?php echo "46 - " .$PrimaryGeneral?></option>
-                    <option value="47"><?php echo "47 - " .$LibraryandInformationScience?></option>
-                    <option value="48"><?php echo "48 - " .$TheatreandDrama?></option>
-                    <option value="49"><?php echo "49 - " .$Other?></option>
 
-                    <option value="50"><?php echo "50 - " .$Maths?></option>
-                    <option value="51"><?php echo "51 - " .$Science?></option>
-                    <option value="52"><?php echo "52 - " .$ScienceandMaths?></option>
-                    <option value="53"><?php echo "53 - " .$English?></option>
-                    <option value="54"><?php echo "54 - " .$Primary?></option>
-                    <option value="55"><?php echo "55 - " .$Religion?></option>
-                    <option value="56"><?php echo "56 - " .$SocialStudies?></option>
-                    <option value="57"><?php echo "57 - " .$Commerce?></option>
-                    <option value="58"><?php echo "58 - " .$Technology?></option>
-                    <option value="59"><?php echo "59 - " .$HomeScience?></option>
-                    <option value="60"><?php echo "59 - " .$Agriculture ?></option>
-                    <option value="61"><?php echo "61 - " .$Sinhala?></option>
-                    <option value="62"><?php echo "62 - " .$Tamil?></option>
-                    <option value="63"><?php echo "63 - " .$WesternMusic?></option>
-                    <option value="64"><?php echo "64 - " .$EasternMusic?></option>
-                    <option value="65"><?php echo "65 - " .$Dancing?></option>
-                    <option value="66"><?php echo "66 - " .$Art?></option>
-                    <option value="67"><?php echo "67 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value="68"><?php echo "68 - " .$Malay?></option>
-                    <option value="69"><?php echo "69 - " .$Other?></option>
-
-                    <option value="75"><?php echo "75 - " .$Maths?></option>
-                    <option value="76"><?php echo "76 - " .$Science?></option>
-                    <option value="77"><?php echo "77 - " .$ScienceandMaths?></option>
-                    <option value="78"><?php echo "78 - " .$English?></option>
-                    <option value="79"><?php echo "79 - " .$Primary?></option>
-                    <option value="80"><?php echo "80 - " .$Religion?></option>
-                    <option value="81"><?php echo "81 - " .$SocialStudies?></option>
-                    <option value="82"><?php echo "82 - " .$Commerce?></option>
-                    <option value="83"><?php echo "83 - " .$Technology?></option>
-                    <option value="84"><?php echo "84 - " .$HomeScience?></option>
-                    <option value="85"><?php echo "85 - " .$Agriculture ?></option>
-                    <option value="86"><?php echo "86 - " .$Sinhala?></option>
-                    <option value="87"><?php echo "87 - " .$Tamil?></option>
-                    <option value="88"><?php echo "88 - " .$WesternMusic?></option>
-                    <option value="89"><?php echo "89 - " .$EasternMusic?></option>
-                    <option value="90"><?php echo "90 - " .$Dancing?></option>
-                    <option value="91"><?php echo "91 - " .$Art?></option>
-                    <option value="92"><?php echo "92 - " .$ForeignLanguageExcludingEnglish?></option>
-                    <option value="93"><?php echo "93 - " .$Malay?></option>
-                    <option value="94"><?php echo "94 - " .$Other?></option>
-
-
-                    <option value="97"><?php echo "97- " .$Graduates?></option>
-                    <option value="98"><?php echo "98 - " .$ALevel?></option>
-                    <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
-                    <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
+                        <option value="97"><?php echo "97- " .$Graduates?></option>
+                        <option value="98"><?php echo "98 - " .$ALevel?></option>
+                        <option value="99"><?php echo "99 - " .$OLevelandOther?></option>
+                    </optgroup>
                     </select>
             </td>
             <td></td>
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr>
-            <td colspan="3" style="text-align: center"><input type="Submit" value="Update" name="Submit" /> </td>
+            <td colspan="3" style="text-align: center"><input type="Submit" value=<?php echo getLanguage('update', $language)?>></td>
         </tr>
         </table>
 

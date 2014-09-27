@@ -683,7 +683,7 @@ INSERT INTO `LabelLanguage` VALUES('printTransction', 1, 'ගනුදෙනු 
 INSERT INTO `LabelLanguage` VALUES('prizeGiving', 0, 'Prize Giving Ceremony');
 INSERT INTO `LabelLanguage` VALUES('prizeGiving', 1, 'ත්‍යාග ප්‍රධානෝත්සවය');
 INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member');
-INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න');
+INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය ලියාපදිංචිය');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 0, 'Released To Other Institute/Office/Service');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 1, 'වෙනත් ආයතනයකට/කාර්යාලයකට/සේවයකට');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherSchool', 0, 'Released To Other School');
@@ -832,7 +832,14 @@ INSERT INTO `LabelLanguage` VALUES('westernMusic', 0, 'Western Music');
 INSERT INTO `LabelLanguage` VALUES('westernMusic', 1, 'සංගීතය-පෙරදිග');
 INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
 INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
-
+INSERT INTO `LabelLanguage` VALUES('update', 0, 'Update');
+INSERT INTO `LabelLanguage` VALUES('update', 1, 'යාවත්කාලින කරන්න');
+INSERT INTO `LabelLanguage` VALUES('search', 0, 'Search');
+INSERT INTO `LabelLanguage` VALUES('search', 1, 'සොයන්න');
+INSERT INTO `LabelLanguage` VALUES('expand', 0, 'Expand');
+INSERT INTO `LabelLanguage` VALUES('expand', 1, 'වැඩි විස්තර');
+INSERT INTO `LabelLanguage` VALUES('delete', 0, 'Delete');
+INSERT INTO `LabelLanguage` VALUES('delete', 1, 'ඉවත්කරන්න');
 -- --------------------------------------------------------
 
 --

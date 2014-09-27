@@ -751,7 +751,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     </optgroup>
                 </select>
             </td>
-            <td><input class="button" name="newStaff" type="submit" value="Submit"></td>
+            <td><input class="button" name="newStaff" type="submit" value=<?php echo getlanguage('submit',$language)?>></td>
         </tr>
     </table>
 
