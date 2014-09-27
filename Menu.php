@@ -14,9 +14,14 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
+include(THISROOT . "/common.php");
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 ob_start();
 
+
+if (isset($_GET["error"])){
+    sendNotification("That just caused an error. Maybe you shouldn't try that again?");
+}
 
 ?>
 <html>

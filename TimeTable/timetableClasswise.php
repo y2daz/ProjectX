@@ -68,6 +68,8 @@ if(isset($_POST["getSubstitute"]))
     $_GET["staffID"] = $_POST["StaffID"];
 
     $currentStaffId = $_POST["StaffID"];
+    $Position = $_POST["Position"];
+    $Day = $_POST["Day"];
 
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
 
@@ -145,7 +147,7 @@ if (isset($_GET["getTimetable"]))
 
                 $(".subject").on("click", function(e){ //Write substitute code
                     var position = $(this).attr("id");
-                    console.log(position);
+                    //console.log(position);
                     alert(position);
             });
         </script>
@@ -261,9 +263,11 @@ if (isset($_GET["getTimetable"]))
                         echo "<td>" . $row[1] . "</td>";
                         echo "<td>" . $row[2] . "</td>";
                         echo "<td>" . $row[3] . "</td>";
-                        $date = date("y/m/d");
-                        echo "<td><input type = button value='Confirm' name='Confirm' onclick='confirmSubstitution( $currentStaffId , $Grade , $Class , $Day , $Position , $date  , $row[0] )' > <td>";
+                       // $date = date("y/m/d");
+                        echo "<td><input type = button value='Confirm' name='Confirm' > <td>";
+
                         echo "</tr>";
+
                         $rowcount++;
                     }
 

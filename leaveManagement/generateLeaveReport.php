@@ -75,9 +75,9 @@ ob_start();
 
         <h1 align="center"> Generate Report </h1>
 
-        <form class="insert">
+        <form method="post">
 
-            <table>
+            <table class="insert">
 
                 <tr><th> Search by </th></tr>
 
@@ -90,30 +90,12 @@ ob_start();
 
                 </tr>
 
-
-                <tr><th>Select Search Results</th></tr>
-
-                <tr>
-                    <td>
-
-                        <input type="checkbox" name="check1" value="RequestedDate" id="r3"> Requested Date
-                        <input type="checkbox" name="check1" value="Approved" id="r4">Approved
-                        <input type="checkbox" name="check1" value="Rejected" id="r5">Rejected
-                        <input type="checkbox" name="check1" value="LeaveType" id="r6"> Leave Type
-                        <input type="checkbox" name="check1" value="Status" id="r7" ">Status
-
-                    </td>
-                </tr>
-
             </table>
 
             <br>
             <br>
-
-
             <input type="submit" name="GenerateReport" value="Generate Report">
             <input type="reset" name="reset" align="center">
-
         </form>
 
     </body>
