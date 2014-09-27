@@ -137,7 +137,8 @@ if (isset($_GET["search"]))
 
     <h2>Search G.C.E.O/L Results</h2>
 
-    <form action="OLevelSearch.php" method="get" class="insert">
+    <form action="OLevelSearch.php"method="get" class="insert">
+        <form action="OLReport.php.php"method="get" class="insert">
 
             <table id="OL">
                 <tr>
@@ -154,6 +155,7 @@ if (isset($_GET["search"]))
                 </tr>
 
             </table>
+        </form>
         </form>
 
 

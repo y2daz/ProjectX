@@ -525,16 +525,16 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
                     <option value="17"><?php echo "17 - " .$SecondarySupervisor?></option>
                     <option value="18"><?php echo "18 - " .$ALevelSupervisor?></option>
                     <option value="19"><?php echo "19 - " .$Counselling?></option>
-                    <option value="20"><?php echo "21 - " .$Library?></option>
-                    <option value="21"><?php echo "22 - " .$HealthandPhysicalEducation?></option>
+                    <option value="20"><?php echo "20 - " .$Library?></option>
+                    <option value="21"><?php echo "21 - " .$HealthandPhysicalEducation?></option>
 
-                    <option value="22"><?php echo "23 - " .$Optional?></option>
-                    <option value="23"><?php echo "24 - " .$Management?></option>
-                    <option value="24"><?php echo "25 - " .$StaffAdvisorParttime?></option>
-                    <option value="25"><?php echo "26 - " .$StaffAdvisorFulltime?></option>
-                    <option value="26"><?php echo "27 - " .$ReleasedtoOtherSchool?></option>
-                    <option value="27"><?php echo "28 - " .$Releasedtootherinstituteofficeservice?></option>
-                    <option value="28"><?php echo "29 - " .$Onpaidleave?></option>
+                    <option value="22"><?php echo "22 - " .$Optional?></option>
+                    <option value="23"><?php echo "23 - " .$Management?></option>
+                    <option value="24"><?php echo "24 - " .$StaffAdvisorParttime?></option>
+                    <option value="25"><?php echo "25 - " .$StaffAdvisorFulltime?></option>
+                    <option value="26"><?php echo "26 - " .$ReleasedtoOtherSchool?></option>
+                    <option value="27"><?php echo "27 - " .$Releasedtootherinstituteofficeservice?></option>
+                    <option value="28"><?php echo "28 - " .$Onpaidleave?></option>
                 </select>
 
             </td>
