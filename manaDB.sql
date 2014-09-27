@@ -768,6 +768,8 @@ INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
 INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
 INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Details');
 INSERT INTO `LabelLanguage` VALUES('staffManagement', 1, 'කාර්යමණ්ඩල තොරතුරු');
+INSERT INTO `LabelLanguage` VALUES('staffregistrationform', 0, 'Staff Registration Form');
+INSERT INTO `LabelLanguage` VALUES('staffregistrationform', 1, 'පාසලේ අධ්‍යන කාර්ය මණ්ඩලවල තොරතුරු');
 INSERT INTO `LabelLanguage` VALUES('staffTimetable', 0, 'Teacher''s Timetable');
 INSERT INTO `LabelLanguage` VALUES('staffTimetable', 1, 'ගුරුවරුන්ගේ කාලසටහන');
 INSERT INTO `LabelLanguage` VALUES('startTime', 0, 'Start Time ');

@@ -348,12 +348,13 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         $ALevel =  getLanguage('ALevel', $language);
         $OLevelandOther =  getLanguage('OLevelandOther', $language);
         $submit =  getLanguage('submit', $language);
+
     ?>
     <body>
 
     <div class="front">
 
-    <h1>Staff Registration Form</h1>
+    <h1><?php echo getLanguage('staffregistrationform', $language)?></h1>
 
     <form onsubmit="" name="thisForm" method="post">
 <!--    <div class="staffimage">-->

@@ -517,7 +517,7 @@ else
     $beginnerslevelteacher =  getLanguage('beginnerslevelteacher', $language);
     $Contractbaseandother =  getLanguage('ContractBasedandOther', $language);
     $Graduates =  getLanguage('Graduates', $language);
-    $Graduates =  getLanguage('Graduates', $language);
+
     $ALevel =  getLanguage('ALevel', $language);
     $OLevelandOther =  getLanguage('OLevelandOther', $language);
     $update =  getLanguage('update', $language);
