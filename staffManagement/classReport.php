@@ -112,7 +112,7 @@ $column3Header = "Teachers'Name";
             margin: 0 auto;
             clear: both;
         }
-        .report .center{
+        .report .center1{
             text-align: center;
             max-width: 100px;
         }
