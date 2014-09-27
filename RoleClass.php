@@ -36,7 +36,7 @@ class Role {
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();
-                $i = 0;
+//                $i = 0;
                 while($row = $result->fetch_assoc())
                 {
                     $role->permissions[ $row["permDesc"] ] = true;
@@ -50,6 +50,9 @@ class Role {
 
     // check if a permission is set
     public function hasPerm($permission) {
+
+//        var_dump( $this->$permissions );
+
         return isset($this->permissions[$permission]);
     }
 } 

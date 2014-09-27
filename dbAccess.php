@@ -37,14 +37,10 @@
                 $stmt->bind_result($OUTuserPassword, $OUTaccessLevel);
                 $stmt->fetch();
 
-//                echo $password . " " . $OUTuserPassword . "\n";
-//                echo password_hash($password, PASSWORD_DEFAULT);
-
-//                $hash=password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
-
                 if (password_verify($password, $OUTuserPassword))
                 {
                     $_SESSION["user"]="$email";
+                    $_SESSION["accessLevel"] = "$OUTaccessLevel";
                     $stmt->close();
                     $mysqli->close();
                     return true;
@@ -166,6 +162,7 @@
         return $set;
 
     }
+
     function insertUser($email, $password, $accessLevel)
     {
         $dbObj = new dbConnect();
@@ -439,7 +436,6 @@ function SearchStudentByName($key)
     }
 }
 
-
 function SearchStudent($key)
 {
 
@@ -501,7 +497,6 @@ function SearchStudentbyclass($key)
     $mysqli->close();
     return $set;
 }
-
 
 function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
                        $Medium, $Address, $Grade, $Class, $House)
@@ -822,7 +817,6 @@ function getEventTransactions($eventid)
         return $set;
     }
 
-
     function getExpenses($eventid)
     {
 
@@ -877,7 +871,6 @@ function getEventTransactions($eventid)
         $mysqli->close();
         return $result;
     }
-
 
     function getTimetable($staffId)
     {
@@ -935,7 +928,6 @@ function getTimetablebyClass($class , $grade)
     return $set;
 
 }
-
 
 function substitute($subject)
 {
@@ -1065,7 +1057,6 @@ function deleteTimetable($staffId)
         return $set;
     }
 
-
 function getAllStudents()
     {
 
@@ -1154,7 +1145,6 @@ function getAllStudents()
         return $set;
     }
 
-
     function getLanguage($label, $language)
     {
         $dbObj = new dbConnect();
@@ -1184,7 +1174,7 @@ function getAllStudents()
         $mysqli->close();
     }
 
-    function checkPrivilege( $username ) //Checking yo privilege
+    /*function checkPrivilege( $username ) //Checking yo privilege
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -1213,7 +1203,7 @@ function getAllStudents()
             }
         }
         $mysqli->close();
-    }
+    }*/
 
     function deleteUser($email){
         $dbObj = new dbConnect();

@@ -10,7 +10,6 @@
     }
     require_once("dbAccess.php");
     require_once("common.php");
-    require_once("RoleClass.php");
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
@@ -30,10 +29,11 @@
         if( strcmp( $_SERVER['PHP_SELF'], "/Menu.php") !== 0){
             header("Location: " . PATHFRONT . "/Menu.php");
         }
-
     }
     else{
-        $privilege = checkPrivilege($_SESSION["user"]);
+        $user = Role::getRolePerms( $_SESSION["accessLevel"] );
+        $privilege = $_SESSION["accessLevel"];
+//        echo "ALALAALA YAZDAAN " . true . $user->hasPerm('Administration Panel') ;
         $logging = "Log Out";
     }
 
