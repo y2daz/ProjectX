@@ -1,11 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: vimukthi
- * Date: 9/11/14
- * Time: 4:45 PM
+ * User: User
+ * Date: 9/27/14
+ * Time: 9:46 AM
  */
-
 
 session_start();
 
@@ -34,13 +33,13 @@ $result = getAllStaff();
 /*LANGUAGE
  *
  * */
-$line1 = "Class Teachers Report";
+$line1 = "Student information Report";
 $line2 = "D.S Senanayake College Colombo 7";
 
 $column0Header = "Grade";
 $column1Header = "Class";
-$column2Header = "Teachers'ID";
-$column3Header = "Teachers'Name";
+$column2Header = "Admission Number";
+$column3Header = "Student Name";
 
 /*LANGUAGE
  *
@@ -50,7 +49,7 @@ $column3Header = "Teachers'Name";
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Class Report</title>
+    <title>Student Report</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
@@ -174,7 +173,7 @@ $column3Header = "Teachers'Name";
 
     <?php
 
-    $result = getAllClassroom();
+    $result = getAllStudents();
 
     if ($result == null)
     {
@@ -182,8 +181,7 @@ $column3Header = "Teachers'Name";
     }
     else
     {
-        foreach($result as $row)
-        {
+        foreach($result as $row){
             echo "<tr>\n";
             echo "<td>$row[0]</td>";
             echo "<td>$row[1]</td>";
