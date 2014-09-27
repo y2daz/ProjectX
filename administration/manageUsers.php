@@ -18,24 +18,16 @@ require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/common.php");
 
-
 ob_start();
-
-
 
 if (isset($_POST["newUser"])) //User has clicked the submit button to add a user
 {
-    if(hasSpaces($_POST["txtEmail"]))
-    {
-        sendNotification("Illegal email address.");
+    $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
+    if ($operation == 1){
+        sendNotification("User added successfully.");
     }
-    elseif(strcmp($_POST["txtPassword"], $_POST["txtConfirmPassword"]) == 0)
-    {
-        $operation = insertUser($_POST["txtEmail"], $_POST["txtPassword"], $_POST["txtAccessLevel"]);
-        if ($operation == 1)
-            sendNotification("User added successfully.");
-        else
-            sendNotification("Error adding user.");
+    else{
+        sendNotification("Error adding user.");
     }
 }
 elseif (isset($_POST["reset"])) //User has clicked a reset password button
@@ -61,11 +53,6 @@ else{
         }
     }
 }
-
-
-
-
-
 
 ?>
     <html>
