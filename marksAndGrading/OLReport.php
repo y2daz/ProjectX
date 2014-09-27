@@ -11,89 +11,49 @@ define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
-$Value = "";
-$Choice = "";
 
-$IndexNo = "";
-$AdmissionNo = "";
-$name="";
-$Year = "";
-$Subject="Subject";
-$Grade="Grade";
-
-
-
-
-if(isFilled($_GET["value"]))
+if(isset($_GET["indexNo"]))
 {
-    $Value = $_GET["value"];
-}
-
-if(isFilled($_GET["Choice"]))
-{
-    $Choice = $_GET["Choice"];
-}
-
-if (isset($_POST["Update"])) //User has clicked the submit button to add a user
-{
-    $operation = UpdateOLResults($_POST["Grade"]);
-
-    if ($operation == true)
-    {
-        sendNotification("Results Updated Successfully");
-    }
-    else
-    {
-        sendNotification("Error updating Results.");
-    }
-}
-
-
-if (isset($_GET["expand"]))
-{
-    $result = getOlResults($_GET["expand"]);
-
-
-
-    foreach($result as $row) //
-    {
-
-
-        $IndexNo = $row[0];
-        $AdmissionNo = $row[1];
-
-        $Year = $row[3];
-        $Subject=$row[4];
-        $Grade=$row[5];
-
-    }
-
+    $indexNo = $_GET["indexNo"];
 }
 else
-{  $IndexNo = "";
-    $AdmissionNo="";
+{
+    $indexNo = "";
+}
 
+if(isset($_GET["AdmissionNo"]))
+{
+    $AdmissionNo = $_GET["AdmissionNo"];
+}
+else
+{
+    $AdmissionNo = "";
+}
+
+if(isset($_GET["Name"]))
+{
+    $Name = $_GET["Name"];
+}
+else
+{
+    $Name = "";
+}
+
+if(isset($_GET["Year"]))
+{
+    $Year = $_GET["Year"];
+}
+else
+{
     $Year = "";
-    $Subject="";
-    $Grade="";
-
 }
 
-if (isset($_POST["NewGrade"])){
-
-    $operation = updateOLResults($_POST["IndexNo"], $_POST["Subject"], $_POST["Grade"] );
-
-    if($operation==1){
-        sendNotification("Update successful");
-    }
-    else{
-        sendNotification("Error updating grade.");
-    }
-}
-
-
+//echo $indexNo;
+//echo $AdmissionNo;
 
 ?>
+
+
 
 <html>
 <head>
@@ -124,7 +84,7 @@ if (isset($_POST["NewGrade"])){
             top: 170pt;
 
         }
-
+//
         #hd{
             position: relative;
             font-size: 14pt;
@@ -145,6 +105,27 @@ if (isset($_POST["NewGrade"])){
             top: 170pt;
 
         }
+
+        .insert
+        {
+            position: absolute;
+            left: 240px;
+            top: 350px;
+            width: 200px;
+
+        }
+
+        .insert2
+        {
+            position: absolute;
+            left: 240px;
+            top: 500px;
+            width: 240px;
+        }
+
+        .insert2 th{
+            text-align: left;
+        }
     </style>
 
     
@@ -152,7 +133,7 @@ if (isset($_POST["NewGrade"])){
 <body>
 
 <h1 id="sch">D.S.Senanayake College</h1>
-<h2>Gregory's Road,Colombo 07,Sri Lanka.</h2>
+<h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
 <h1 id="hd">THE GENERAL CERTIFICATE OF EDUCATION</h1>
 <h1 id="hd">ORDINARY LEVEL</h1>
 
@@ -175,26 +156,35 @@ if (isset($_POST["NewGrade"])){
 
     <table class="insert">
 
+        <tr>
+            <td>Index Number</td>
+            <td style="text-align: right"><?php echo $indexNo ?></td>
+        </tr>
+        <tr>
+            <td>Admission Number</td>
+            <td style="text-align: right"><?php echo $AdmissionNo ?></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td style="text-align: right"><?php echo $Name ?></td>
+        </tr>
+        <tr>
+            <td>Year</td>
+            <td style="text-align: right"><?php echo $Year ?></td>
+        </tr>
+
+
+    </table>
+
+    <table class="insert2">
+
+
         <th>Subject</th>
         <th colspan="2">Grade</th>
 
         <?php
+            $result = searchOLMarks($indexNo);
 
-
-        if(is_numeric($Value))
-        {
-            if($Choice == "IndexNo")
-            {
-                $result = searchOLMarks($Value);
-            }
-            else if($Choice == "AdmissionNo")
-            {
-                $result = searchOLbyAdmission($Value);
-            }
-            else if($Choice == "Year")
-            {
-                $result = searchOLbyYear($Value);
-            }
             if(isFilled($result))
             {
                 $i = 1;
@@ -209,61 +199,18 @@ if (isset($_POST["NewGrade"])){
 
                     echo $top;
                     echo "<td>$row[4]</td>";
-                    echo "<td><input class='grade notEditable' name='txt$row[4]' value='$row[5]' readonly/></td>";
-                    echo "<td><input class='edit' type='button' name='$row[4]' value='Edit' /></td>";
-
-
+                    echo "<td>$row[5]</td>";
                     echo "</tr>";
-//                                echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"OLinput.php?expand=" . $row[0] . "\" /> </td> ";
+
                 }
             }
             else
             {
-                echo "<style> .insert{display: none} </style>";
-
-                sendNotification("No records found");
+                sendNotification("Error");
             }
-
-        }
-        else
-        {
-            echo "<style> .insert{display: none} </style>";
-
-            sendNotification("Invalid search parameter entered");
-        }
-
 
 
         ?>
-
-    </table>
-
-    <table class="insert2">
-
-        <tr>
-            <td>Index Number</td>
-            <td><input type="text" id="IndexNo" name="IndexNo" value="<?php echo $IndexNo ?>" readonly /></td>
-        </tr>
-
-        <tr>
-            <td>Admission Number</td>
-            <td><input type="text" name="AdmissionNo"  value="<?php echo $AdmissionNo ?>" readonly/> </td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td><input type="text" name="Name"  value="<?php echo $name ?>" readonly/> </td>
-        </tr>
-
-
-
-        <tr>
-            <td>Year</td>
-            <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
-        </tr>
-
-
-
-
 
 
 

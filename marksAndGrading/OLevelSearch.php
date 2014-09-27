@@ -180,6 +180,12 @@ if (isset($_POST["NewGrade"])){
                 top:720px;
             }
 
+            .printResults
+            {
+                position: absolute;
+                left: 500px;
+                top: 150px;
+            }
         </style>
 
         <script>
@@ -280,7 +286,12 @@ if (isset($_POST["NewGrade"])){
 
                 ?>
 
+
+
             </table>
+
+            <a class="printResults" href="<?php echo THISPATHFRONT . "/marksAndGrading/OLReport.php" . "?indexNo=" . $IndexNo . "&AdmissionNo=" . $AdmissionNo . "&Name=" . $name . "&Year=" . $Year ?>"> Print Results</a>
+
 
             <table class="insert2">
 
@@ -304,10 +315,10 @@ if (isset($_POST["NewGrade"])){
                     <td>Year</td>
                     <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
                 </tr>
-                <tr>
-                    <td><a href= "/marksAndGrading/OLReport.php" > Print Results Sheet</a></td>
-
-                </tr>
+<!--                <tr>-->
+<!--                    <td><a href= "/marksAndGrading/OLReport.php" > Print Results Sheet</a></td>-->
+<!---->
+<!--                </tr>-->
 
 
 
