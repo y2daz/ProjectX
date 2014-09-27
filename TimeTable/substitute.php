@@ -44,6 +44,7 @@ if(isset($_POST["getSubstitute"]))
 
     $currentStaffId = $_POST["StaffID"];
 
+
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
 
     if($freeTeachersSet == null)
@@ -137,7 +138,7 @@ if (isset($_GET["getTimetable"]))
             <tr>
                 <td><label><?php echo getLanguage("staffId",$lang)?></td>
                 <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
-                <td><input type="submit" class="text1" name="getTimetable" value="Submit" /></td>
+                <td><input type="submit" class="text1" name="getTimetable" value="Submit"/></td>
             </tr>
             <tr><td></td>
                 <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
@@ -239,8 +240,8 @@ if (isset($_GET["getTimetable"]))
                             echo "<td>" . $row[1] . "</td>";
                             echo "<td>" . $row[2] . "</td>";
                             echo "<td>" . $row[3] . "</td>";
-                            $date = date("y/m/d");
-                            echo "<td><input type = button value='Confirm' name='Confirm' onclick='confirmSubstitution( $currentStaffId , $Grade , $Class , $Day , $Position , $date  , $row[0] )' > <td>";
+                           // $date = date("y/m/d");
+                            echo "<td><input type = button value='Confirm' name='Confirm'  </td>";
                             echo "</tr>";
                             $rowcount++;
                         }
