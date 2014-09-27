@@ -12,10 +12,18 @@
 
 
 function isFilled($value){
-    if (($value == NULL) || ($value == "")){
+    if ( $value == NULL){
         return false;
     }
     else{
+        if (is_string($value)){
+            if(strlen($value) == 0){
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
         return true;
     }
 }

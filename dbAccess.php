@@ -991,7 +991,7 @@ function deleteTimetable($staffId)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("UPDATE timetable SET isDeleted=? WHERE StaffID=? AND isDeleted=0;"))
+    if ($stmt = $mysqli->prepare("UPDATE Timetable SET isDeleted=? WHERE StaffID=? AND isDeleted=0;"))
     {
         $deletetimetable = 2 ;
         $stmt->bind_param("is", $deletetimetable , $staffId);
@@ -2615,8 +2615,7 @@ function regenerateSubjectTable(){
     return false;
 }
 
-function getAttendance()
-{
+function getRoles(){ //Get Cutlets and patties too.
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2627,7 +2626,7 @@ function getAttendance()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select AdmissionNo, Date, isPresent FROM attendance WHERE isDeleted = 0 ORDER BY AdmissionNo;"))
+    if ($stmt = $mysqli->prepare("Select RoleId, RoleName FROM Roles ORDER BY RoleId;"))
     {
         if ($stmt->execute())
         {
@@ -2635,11 +2634,42 @@ function getAttendance()
             $i = 0;
             while($row = $result->fetch_array())
             {
-                $set[$i++ ]=$row;
+                $set[$i++]=$row;
             }
         }
     }
-
     $mysqli->close();
     return $set;
 }
+
+function getPermissions($role){ //Get Cutlets and patties too.
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT r.RoleId, p.PermId, p.PermDesc FROM RolePerm r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = ? ORDER BY p.permDesc;"))
+    {
+        $stmt->bind_param("i", $role);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+
+
+//SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1

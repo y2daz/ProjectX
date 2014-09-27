@@ -42,22 +42,24 @@ class Timetable {
         if(isFilled($result)){
             $i = 0;
 
-//            for($i = 0; $i < 8; $i++){
-//            for($x = 0; $x < 6; $x++){
-
             foreach($result as $row){
                 $number= ($row[3] + (8 * ($row[2] - 1) )) + 8;
 //                echo "<br /> $number";
-                $this->insertSLot($number, $row[0], $row[1], $row[4] );
+                if (isFilled($this->slot[$number]->Subject)){
+                    $this->insertSLot($number, $row[0], $row[1], $this->slot[$number]->Subject . " / $row[4]");
+                    $this->insertSLot($number, $row[0], $row[1], "Multiple Subjects");
+                }else{
+                    $this->insertSLot($number, $row[0], $row[1], $row[4] );
+                }
                 $i++;
             }
         }
     }
 
+//            $this -> insertSLot($i, $GradeArr[$i], $ClassArr[$i], $SubjectArr[$i]);
 //    public function setTimetable( $GradeArr, $ClassArr, $SubjectArr ){
 //
 //        for($i = 0; $i < 40; $i++){
-//            $this -> insertSLot($i, $GradeArr[$i], $ClassArr[$i], $SubjectArr[$i]);
 //            echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
 //        }
 //    }
