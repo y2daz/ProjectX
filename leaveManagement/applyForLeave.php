@@ -328,7 +328,7 @@
         $enterdetails = "තොරතුරු  ඇතුලත් කරන්න";
         $availableleavedays = "ඉතුරු  නිවාඩු  දින";
         $staffname = "නම";
-        $searchstaffid = "Search Staff ID";
+        $searchstaffid = "අනුක්‍රමික අංකය සොයන්න";
     }
     else
     {
