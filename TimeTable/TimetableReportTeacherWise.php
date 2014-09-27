@@ -109,9 +109,6 @@ else
     <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
 
-<!--    <table id="edit">-->
-<!--        <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td></tr>-->
-<!--    </table>-->
     <table class="timetable" >
         <tr>
             <th class="time"><?php echo getLanguage("time",$lang)?></th>

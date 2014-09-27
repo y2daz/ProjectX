@@ -13,6 +13,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
+define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 include("timetableClass.php");
@@ -61,6 +62,28 @@ error_reporting(0);//Temporarily turn of all errors
 ////        var_dump($myTime);
 //}
 */
+if(isset($_POST["getSubstitute"]))
+{
+    $_GET["getTimetable"] = $_POST["StaffID"];
+    $_GET["staffID"] = $_POST["StaffID"];
+
+    $currentStaffId = $_POST["StaffID"];
+
+    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+
+    if($freeTeachersSet == null)
+    {
+        sendNotification("No free teachers.");
+    }
+    else{
+        sendNotification("Teachers available for substitution obtained.");
+    }
+
+    $row = $freeTeachersSet[0];
+    $currentStaffName = $row[0];
+}
+
+
 if (isset($_GET["getTimetable"]))
 {
     $myTime = new Timetable();
@@ -103,8 +126,6 @@ if (isset($_GET["getTimetable"]))
             }
             .viewTable td{
                 padding: 4px;
-                /*padding-left: 4px;*/
-                /*padding-right: 4px;*/
                 min-width: 60px;
                 text-align: center;
             }
@@ -125,13 +146,7 @@ if (isset($_GET["getTimetable"]))
                 $(".subject").on("click", function(e){ //Write substitute code
                     var position = $(this).attr("id");
                     console.log(position);
-////                    alert(position);
-//                    var staffID = getParameterByName('staffID');
-////                    alert(staffID);
-//
-//                    getTeachersForSubstition( staffID, position);
-                });
-
+                    alert(position);
             });
         </script>
 
@@ -142,26 +157,23 @@ if (isset($_GET["getTimetable"]))
 
     <h1><?php echo getLanguage("timetable", $lang) ?></h1>
 
-    <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
     <form method="get">
         <table id="info">
             <tr>
                 <td><label><?php echo getLanguage("class",$lang)?></td>
                 <td><input type="text" class="text1" name="classroom" value="<?php echo $classroom?>" /></td>
-                <td><input type="submit" class="text1" name="getTimetable" value="Submit" /></td>
+                <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
+                <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportTeacherWise.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
             </tr>
-<!--            <tr><td></td>-->
-<!--                <td colspan="2"><label class="text1">--><?php //echo $currentStaffName;?><!--</label></td>-->
-<!--            </tr>-->
+        </table>
+        <table id="edit">
+
         </table>
     </form>
 
 
     <form name="frmTimetable" onsubmit="return classValidation()" method="post">
 
-        <!--        <table id="edit">-->
-        <!--            <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td></tr>-->
-        <!--        </table>-->
         <table class="timetable" >
             <tr>
                 <th class="time"><?php echo getLanguage("time",$lang)?></th>
@@ -182,7 +194,7 @@ if (isset($_GET["getTimetable"]))
 
             for($i = 0; $i < 8; $i++){
 
-                if(($i == 4)){ //INTERVAL
+                if(($i == 4)){ //Interval
                     $intervalRow = "\t<tr class=interval>\t<td>10.30-10.50</td> \t<td colspan=\"5\" >" . "INTERVAL" . "</td>\t</tr>\n";
                     echo $intervalRow;
                 }
@@ -198,7 +210,6 @@ if (isset($_GET["getTimetable"]))
                         $thisCell = "";
 
                         $subject = $myTime->slot[$number]->Subject;
-//                        $class = $myTime->slot[$number]->Grade . " " . $myTime->slot[$number]->Class;
 
                         $currColour = $colourArray[(rand(0,14))];
                         while ( in_array($currColour, $subjectColour) )
@@ -216,8 +227,6 @@ if (isset($_GET["getTimetable"]))
                             $currColour = $subjectColour[$subject];
                         }
 
-//                        $classDiv = "<div class='classroom'><input id='classroom_$number' name='classroom_$number' readonly value='" . $class . "' /></div>";
-
                         $thisCell .= "\t<td class='subject' style='background-color:$subjectColour[$subject];'  id=\"" . $number . "\">";
                         $thisCell .= "<textarea id='subject_$number' name='subject_$number' readonly style='background-color:$subjectColour[$subject];'>" . $subject . "</textarea>";
 
@@ -232,16 +241,51 @@ if (isset($_GET["getTimetable"]))
 
         <br/>
         <br/>
+        <form method="post">
+            <table class="viewTable">
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Teacher's Name</th>
+                    <th>Main Subject</th>
+                    <th>Contact Number</th>
+                    <th></th>
+                </tr>
+                <?php
+                $rowcount = 0;
+                if (isFilled($freeTeachersSet)){
+
+                    foreach($freeTeachersSet as $row){
+                        echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
+                        echo "<tr>";
+                        echo "<td>" . $row[0] . "</td>";
+                        echo "<td>" . $row[1] . "</td>";
+                        echo "<td>" . $row[2] . "</td>";
+                        echo "<td>" . $row[3] . "</td>";
+                        $date = date("y/m/d");
+                        echo "<td><input type = button value='Confirm' name='Confirm' onclick='confirmSubstitution( $currentStaffId , $Grade , $Class , $Day , $Position , $date  , $row[0] )' > <td>";
+                        echo "</tr>";
+                        $rowcount++;
+                    }
+
+
+
+                }
+                ?>
+            </table>
+        </form>
+        </table>
+    </form>
+
 
     </form>
     </body>
     </html>
 <?php
-//Change these to what you want
+
 $fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
-//Only change above
+
 
 $pageContent = ob_get_contents();
 ob_end_clean();
