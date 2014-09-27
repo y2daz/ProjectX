@@ -12,6 +12,7 @@
  */
     require_once("dbConnect.php");
     require_once("formValidation.php");
+    require_once("RoleClass.php");
 
     function login($email, $password)
     {
@@ -2653,7 +2654,7 @@ function getPermissions($role){ //Get Cutlets and patties too.
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT r.RoleId, p.PermId, p.PermDesc FROM RolePerm r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = ? ORDER BY p.permDesc;"))
+    if ($stmt = $mysqli->prepare("SELECT r.RoleId, p.PermId, p.PermDesc, p.OrderKey FROM RolePerm r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = ? ORDER BY p.OrderKey;"))
     {
         $stmt->bind_param("i", $role);
         if ($stmt->execute())
@@ -2670,6 +2671,34 @@ function getPermissions($role){ //Get Cutlets and patties too.
     return $set;
 }
 
+function savePermissions($role, $permArr){
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("DELETE FROM RolePerm WHERE RoleId = ?")){
+        $stmt->bind_param("i", $role);
+        $stmt->execute();
+
+        if ($stmt = $mysqli->prepare("INSERT INTO RolePerm (RoleId, PermId) VALUES (?, ?);"))
+        {
+            foreach($permArr as $permID){
+                $stmt->bind_param("ii", $role, $permID);
+                $stmt->execute();
+            }
+            $stmt->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
 
 
 //SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1

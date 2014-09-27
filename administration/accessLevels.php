@@ -18,6 +18,32 @@ require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/common.php");
 ob_start();
 
+if (!isset( $_GET["role"])){
+    $_GET["role"] = 1;
+}
+
+if (isset( $_POST["sbtNewPermissions"])){
+
+    $permArr = array();
+
+    $i = 0;
+
+    foreach( $_POST["perm"] as $perm){
+        $permArr[ $i++ ] = $perm;
+//        echo "<br />" . $perm;
+    }
+
+    $operation = savePermissions( $_GET["role"], $permArr );
+
+    if ($operation){
+        sendNotification("Changed permissions for role.");
+    }
+    else{
+        sendNotification("Error changing permissions.");
+    }
+}
+
+
 ?>
     <head>
         <style type=text/css>
@@ -42,6 +68,10 @@ ob_start();
             }
             #permissions td{
                 padding: 2px 10px 2px 10px;
+            }
+            #sbtNewPermissions{
+                position: relative;
+                left: 50px;
             }
         </style>
     </head>
@@ -75,24 +105,34 @@ ob_start();
 
         <br />
 
-        <table id="permissions">
-            <tr>
-                <th>Permission</th>
-<!--                <th></th>-->
-            </tr>
-            <?php
-            $allPermissions = getPermissions( (isset($_GET["role"])? $_GET["role"] : 1 ) );
+        <form method="post">
+            <table id="permissions">
+                <tr>
+                    <th>Permission</th>
+                </tr>
+                <?php
+                $allPermissions = getPermissions( (isset($_GET["role"])? $_GET["role"] : 1 ) );
 
-            foreach($allPermissions as $singlePerm){
-                echo "<tr><td><label><input type='checkbox' value='" . $singlePerm[1] . "' " .  ( isFilled($singlePerm[0]) ? "checked" : "") . " /> $singlePerm[2] </label></td></tr>\n";
-            }
-            ?>
-        </table>
+                foreach($allPermissions as $singlePerm){
+                    echo "<tr><td><label><input type='checkbox' name='perm[]' value='" . $singlePerm[1] . "' ";
+                    echo ( isFilled($singlePerm[0]) ? "checked" : "") . " /> " . (( $singlePerm[3] % 10 != 0) ? "&nbsp;&nbsp;&nbsp;&nbsp;" : "")  . " $singlePerm[2] </label></td></tr>\n";
+                }
+                ?>
+                <tr>
+                    <td>
+                    </td>
+                </tr>
+            </table>
 
+            <br />
+            <br />
+
+            <input id="sbtNewPermissions" type="Submit" name="sbtNewPermissions" value="Save New Permissions" />
+        </form>
     </body>
 <?php
 //Change these to what you want
-$fullPageHeight = 800;
+$fullPageHeight = 850;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Menu";
 //Only change above

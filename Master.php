@@ -10,6 +10,7 @@
     }
     require_once("dbAccess.php");
     require_once("common.php");
+    require_once("RoleClass.php");
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
@@ -41,8 +42,6 @@
         $_SESSION["user"] = NULL;
         header("Location: " . PATHFRONT . "/Menu.php");
     }
-
-
 
 ?>
 <!DOCTYPE html>
