@@ -199,7 +199,23 @@ else{
                                 </tr>
                             </table>
                         </td>
-                        <td class="column"><input type="text"  name="txtAccessLevel" value="1" maxlength="1" class="txtAccessLevel"/></td>
+                        <td class="column">
+<!--                            <input type="text"  name="txtAccessLevel" value="1" maxlength="1" class="txtAccessLevel"/>-->
+                            <select name="txtAccessLevel">
+                                <?php
+                                $allRoles = getRoles();
+
+                                foreach($allRoles as $singleRole){
+                                    if ($singleRole[0] == $_GET["role"]){
+                                        echo "<option selected value='" . $singleRole[0] . "'>$singleRole[0] - $singleRole[1] </option>\n";
+                                    }
+                                    else{
+                                        echo "<option value='" . $singleRole[0] . "'>$singleRole[0] - $singleRole[1] </option>\n";
+                                    }
+                                }
+                                ?>
+                            </select>
+                        </td>
                         <td class="column"><input type="Submit" value="Submit" name="newUser" formaction=""></td>
                     </tr>
                 </table>
