@@ -856,7 +856,7 @@ function getEventTransactions($eventid)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from `Transaction` where eventID = ? and transactiontype = 0"))
+        if ($stmt = $mysqli->prepare("SELECT SUM(amount) from Transaction where eventID = ? and transactiontype = 0"))
         {
             $stmt -> bind_param("s", $eventid);
 
@@ -969,8 +969,20 @@ function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Da
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
+    if ($stmt = $mysqli->prepare("INSERT INTO issubstituted(StaffID, Grade, Class, Day, Position, Date, SubsttitutedTeachedID, isDeleted) VALUES (?,?,?,?,?,?,?,?,;"))
+    {
+        $isdelete = 0 ;
 
-
+        $stmt->bind_param("sisiissi", $StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID , $isdelete);
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+    }
+    $mysqli->close();
+    return false;
 }
 
 function deleteTimetable($staffId)

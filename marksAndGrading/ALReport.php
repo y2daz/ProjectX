@@ -160,7 +160,7 @@ else
 <h1 id="sch">D.S.Senanayake College</h1>
 <h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
 <h1 id="hd">THE GENERAL CERTIFICATE OF EDUCATION</h1>
-<h1 id="hd">ORDINARY LEVEL</h1>
+<h1 id="hd">ADVANCED LEVEL</h1>
 
 <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
 <form method="get">
@@ -211,26 +211,60 @@ else
         <th colspan="2">Grade</th>
 
         <?php
-            $result = searchOLMarks($indexNo);
+            $result = searchALMarks($indexNo);
 
-            if(isFilled($result))
-            {
-                $i = 1;
+        if(isFilled($result))
+        {
+            $i = 1;
 
-                foreach($result as $row){
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+            foreach($result as $row){
+//                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+                $IndexNo = $row[0];
+                $AdmissionNo = $row[1];
+                $name=$row[2];
+                $Year = $row[3];
+                // echo "<td><input class='edit' type='button' name='$row[15]' value='Edit' /></td>";
 
-                    $IndexNo = $row[0];
-                    $AdmissionNo = $row[1];
-                    $name=$row[2];
-                    $Year = $row[3];
+                echo "<tr>";
+                echo "<td id='Subject1'> $row[4]</td>";
+                echo "<td id='S1Grade'>$row[7]</td>";
+                echo "</tr><tr>";
+                echo "<td id='Subject2'>$row[5]</td>";
+                echo "<td id='S2Grade'>$row[8]</td>";
+                echo "</tr><tr>";
+                echo  "<td id='Subject3'>$row[6]</td>";
+                echo  "<td id='S3Grade'>$row[9]</td>";
+                echo "</tr><tr>";
+                echo  "<td>General English Test</td>";
+                echo  "<td id='GenGrade'>$row[10]</td>";
+                echo "</tr><tr>";
+                echo  "<td>Common General Test</td>";
+                echo  "<td id='CommonGeneralTest'>$row[11]</td>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo "</tr><tr>";
+                echo  "<td>Z-Score</td>";
+                echo  "<td id='Zscore'>" . round( $row[12] , 3). "</td>";
+                echo "</tr><tr>";
 
-                    echo $top;
-                    echo "<td>$row[4]</td>";
-                    echo "<td>$row[5]</td>";
-                    echo "</tr>";
+                echo  "<td>Island Rank</td>";
+                echo  "<td id='IslandRank'>$row[13]</td>";
+                echo "</tr><tr>";
+                echo  "<td>District Rank</td>";
+                echo  "<td id='DistrictRank'>$row[14]</td>";
+                //echo "<td><input name=\"Edit" . "\" type=\"submit\" value=\"Edit\"  /> </td> ";
+                echo "</tr>";
 
-                }
+
+
+            }
             }
             else
             {
