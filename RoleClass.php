@@ -51,7 +51,11 @@ class Role {
     // check if a permission is set
     public function hasPerm($permission) {
 
-//        var_dump( $this->$permissions );
+
+//        var_dump( $this->permissions );
+//        echo "<br />";
+//        echo "<br />";
+//        echo "<br />";
 
         return isset($this->permissions[$permission]);
     }
