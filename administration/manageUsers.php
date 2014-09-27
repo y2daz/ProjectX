@@ -206,12 +206,7 @@ else{
                                 $allRoles = getRoles();
 
                                 foreach($allRoles as $singleRole){
-                                    if ($singleRole[0] == $_GET["role"]){
-                                        echo "<option selected value='" . $singleRole[0] . "'>$singleRole[0] - $singleRole[1] </option>\n";
-                                    }
-                                    else{
-                                        echo "<option value='" . $singleRole[0] . "'>$singleRole[0] - $singleRole[1] </option>\n";
-                                    }
+                                    echo "<option value='" . $singleRole[0] . "'>$singleRole[0] - $singleRole[1] </option>\n";
                                 }
                                 ?>
                             </select>

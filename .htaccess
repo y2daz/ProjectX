@@ -1,0 +1,1 @@
+ErrorDocument 404 /Menu.php?error=404
