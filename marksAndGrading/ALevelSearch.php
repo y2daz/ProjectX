@@ -177,6 +177,12 @@ if( isset( $_POST["IndexNo"]) ){
 
 
             }
+            .printResults
+            {
+                position: absolute;
+                left: 500px;
+                top: 150px;
+            }
 
         </style>
         <script>
@@ -294,6 +300,9 @@ if( isset( $_POST["IndexNo"]) ){
             }
             ?>
         </table>
+
+        <a class="printResults" href="<?php echo THISPATHFRONT . "/marksAndGrading/ALReport.php" . "?indexNo=" . $IndexNo . "&AdmissionNo=" . $AdmissionNo . "&Name=" . $name . "&Year=" . $Year ?>"> Print Results</a>
+
 
         <table class="insert2">
             <tr>
