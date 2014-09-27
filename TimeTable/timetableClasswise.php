@@ -101,6 +101,7 @@ if (isset($_GET["getTimetable"]))
     }
     $classroom = $myTime->grade . " " . $myTime->class;
 
+
     $myTime->getTimetableClassFromDB();
 }
 
@@ -165,7 +166,7 @@ if (isset($_GET["getTimetable"]))
                 <td><label><?php echo getLanguage("class",$lang)?></td>
                 <td><input type="text" class="text1" name="classroom" value="<?php echo $classroom?>" /></td>
                 <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
-                <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportTeacherWise.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
+                <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportClasswise.php" . "?classroom=" . $classroom ?>" target="_blank" > Print Timetable</a></td>
             </tr>
         </table>
         <table id="edit">

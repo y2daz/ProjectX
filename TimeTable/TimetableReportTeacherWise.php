@@ -124,7 +124,7 @@ else
 //        $colourArray = array("#f69988", "#f48fb1", "#ce93d8", "#b39ddb", "#9fa8da", "#afbfff", "#81d4fa", "#80deea", "#80cbc4", "#72d572", "#c5e1a5",
 //            "#e6ee9c", "#ffcc80", "#fff59d", "#ffe082"); //15
 
-        $classColour = array();
+//       $classColour = array();
 
 
         for($i = 0; $i < 8; $i++){
