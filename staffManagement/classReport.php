@@ -34,8 +34,10 @@ $result = getAllStaff();
 /*LANGUAGE
  *
  * */
-$line1 = "Class Teachers Report";
-$line2 = "D.S Senanayake College Colombo 7";
+$line1 = "Class Teacher Allocation";
+$line2 = "D.S Senanayake College";
+$line3 = "Gregory's Road, Colombo 7";
+$line4 = "තමාට පෙර රට";
 
 $column0Header = "Grade";
 $column1Header = "Class";
@@ -72,8 +74,16 @@ $column3Header = "Teachers'Name";
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
-        h1,h3{
+        h2,h3,h5,h4{
             text-align: center;
+        }
+        #flag {
+            position: relative;
+            top: -10px;
+            left:205pt;
+            /*border: 5px solid black;*/
+            width: 120px;
+            height: 120px;
         }
         .report{
         }
@@ -88,8 +98,16 @@ $column3Header = "Teachers'Name";
         .report .headerRow{
             height:50px;
         }
+        h4{
+            position: relative;
+            font-size: 12pt;
+            text-align: center;
+            left: 0pt;
+            top: 380pt;
+
+        }
         .report{
-            /*text-align: center;*/
+
             position: relative;
             margin: 0 auto;
             clear: both;
@@ -128,22 +146,9 @@ $column3Header = "Teachers'Name";
             min-width: 150px;
             padding-left: 10px;
             padding-right: 10px;
-        ;
-        }
-        /*.rotate { *//*http://css-tricks.com/snippets/css/text-rotation/ *//*
-            *//* Safari *//*
-            -webkit-transform: rotate(-90deg);
-            *//* Firefox *//*
-            -moz-transform: rotate(-90deg);
-            *//* IE *//*
-            -ms-transform: rotate(-90deg);
-            *//* Opera *//*
-            -o-transform: rotate(-90deg);
-            *//* Internet Explorer *//*
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
-            *//*vertical-align: top;*//*
-        }*/
+        }
+
         #PrintButton{
             position: absolute;
             top: 100px;
@@ -155,8 +160,24 @@ $column3Header = "Teachers'Name";
 
 <body>
 
-<h1><?php echo $line1 ?></h1>
+<h2><?php echo $line1 ?></h2>
+
+
+<form method="get">
+    <table id="info">
+        <tr>
+        <th>
+            <img id="flag" src="/images/dslogo.jpg"/>
+
+
+    </table>
+</form>
+
 <h3><?php echo $line2 ?></h3>
+<h5><?php echo $line3 ?></h5>
+
+<h4><?php echo $line4 ?></h4>
+
 
 <table class="report">
     <tr class="secret">
@@ -195,7 +216,6 @@ $column3Header = "Teachers'Name";
 
 
     ?>
-
 
 </table>
 <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>

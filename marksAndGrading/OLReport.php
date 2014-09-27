@@ -84,7 +84,7 @@ else
             top: 170pt;
 
         }
-//
+
         #hd{
             position: relative;
             font-size: 14pt;
