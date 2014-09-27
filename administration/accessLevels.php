@@ -71,7 +71,7 @@ if (isset( $_POST["sbtNewPermissions"])){
             }
             #sbtNewPermissions{
                 position: relative;
-                left: 50px;
+                left: 130px;
             }
         </style>
     </head>
