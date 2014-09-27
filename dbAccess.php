@@ -2614,3 +2614,32 @@ function regenerateSubjectTable(){
     $mysqli->close();
     return false;
 }
+
+function getAttendance()
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, Date, isPresent FROM attendance WHERE isDeleted = 0 ORDER BY AdmissionNo;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
+}

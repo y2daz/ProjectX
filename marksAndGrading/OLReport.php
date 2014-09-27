@@ -84,7 +84,7 @@ else
             top: 170pt;
 
         }
-//
+
         #hd{
             position: relative;
             font-size: 14pt;
@@ -111,7 +111,8 @@ else
             position: absolute;
             left: 240px;
             top: 350px;
-            width: 200px;
+            width: 300px;
+            text-align:left;
 
         }
 
@@ -121,6 +122,7 @@ else
             left: 240px;
             top: 500px;
             width: 240px;
+
         }
 
         .insert2 th{
@@ -142,7 +144,7 @@ else
     <table id="info">
         <tr>
             <th>
-                <img id="flag" src="/images/dslogo.jpg"/>
+                <img id="flag" src="/images/abc.jpg"/>
 
 
     </table>
@@ -155,22 +157,23 @@ else
 <form method="get">
 
     <table class="insert">
-
+        <th colspan="3">
+            </th>
         <tr>
             <td>Index Number</td>
-            <td style="text-align: right"><?php echo $indexNo ?></td>
+            <td style="text-align: left"><?php echo $indexNo ?></td>
         </tr>
         <tr>
             <td>Admission Number</td>
-            <td style="text-align: right"><?php echo $AdmissionNo ?></td>
+            <td style="text-align: left"><?php echo $AdmissionNo ?></td>
         </tr>
         <tr>
             <td>Name</td>
-            <td style="text-align: right"><?php echo $Name ?></td>
+            <td style="text-align: left"><?php echo $Name ?></td>
         </tr>
         <tr>
             <td>Year</td>
-            <td style="text-align: right"><?php echo $Year ?></td>
+            <td style="text-align: left"><?php echo $Year ?></td>
         </tr>
 
 
