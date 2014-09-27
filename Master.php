@@ -29,10 +29,10 @@
         if( strcmp( $_SERVER['PHP_SELF'], "/Menu.php") !== 0){
             header("Location: " . PATHFRONT . "/Menu.php");
         }
-
     }
     else{
-        $privilege = checkPrivilege($_SESSION["user"]);
+        $privilege = $_SESSION["accessLevel"];
+//        echo "ALALAALA YAZDAAN " . true . $user->hasPerm('Administration Panel') ;
         $logging = "Log Out";
     }
 
@@ -41,8 +41,6 @@
         $_SESSION["user"] = NULL;
         header("Location: " . PATHFRONT . "/Menu.php");
     }
-
-
 
 ?>
 <!DOCTYPE html>
@@ -140,7 +138,7 @@
 
             <?php
 
-            if($privilege == 2){ // Change to 1 later.
+            /*if($privilege == 2){ // Change t 1 later.
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
@@ -165,7 +163,8 @@
                 $navMenu .= "<li><a>Administrative Tasks</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/accessLevels.php\">" . "Manage User Permissions" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a>Reports</a>\n";
@@ -174,7 +173,10 @@
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
-            elseif($privilege >= 0) {
+            elseif($privilege >= 0) {*/
+            $user = Role::getRolePerms( $_SESSION["accessLevel"] );
+            $navMenu = "";
+            if ($user->hasPerm('Staff Details System')){
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
@@ -182,6 +184,8 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Leave Management System')){
                 $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
@@ -189,6 +193,8 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/checkStatus.php\">" . "Check Leave Status" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Timetables System')){
                 $navMenu .= "<li><a>" . $timetables . "</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/TimeTable/timetable.php\">" . $staffTimetable . "</a><hr /></li>\n";
@@ -197,6 +203,8 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/TimeTable/substitute.php\">" . "Substitute Teacher" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Student Information System')){
                 $navMenu .= "<li><a>Student Information</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/studentInformation/studentRegistration.php\">" . "Register Student" . "</a><hr /></li>\n";
@@ -205,6 +213,8 @@
                 $navMenu .= "</li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/eventManagement/eventList.php\">" . $eventManagement . "</a>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Attendance System')){
                 $navMenu .= "<li><a>Attendance</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/markAttendance.php\">" . "Mark Attendance" . "</a><hr /></li>\n";
@@ -213,6 +223,8 @@
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/viewAttendance.php\">" . "View Attendance" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Marks and Grading System')){
                 $navMenu .= "<li><a>Marks and Grading</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/OLinput.php\">" . "Enter O/L Results" . "</a><hr /></li>\n";
@@ -221,21 +233,24 @@
                 $navMenu .= "<li><a  href=\"" . PATHFRONT . "/marksAndGrading/searchMarks.php\">" . "Search Grading Information" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Administration Panel')){
                 $navMenu .= "<li><a>Administrative Tasks</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/accessLevels.php\">" . "Manage User Permissions" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
+            }
+            if ($user->hasPerm('Staff Report')){
                 $navMenu .= "<li><a>Reports</a>\n";
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
-            else{
-                $navMenu = "";
-            }
+            /*}*/
 
             echo $navMenu;
 

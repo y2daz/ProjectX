@@ -476,4 +476,4 @@ INSERT INTO `Timetable` (`Grade`, `Class`, `Day`, `Position`, `Subject`, `StaffI
 
 (NULL, NULL, 4, 6, NULL, '7', 0),
 
-(NULL, NULL, 4, 7, NULL, '7', 0),
+(NULL, NULL, 4, 7, NULL, '7', 0)

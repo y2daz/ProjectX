@@ -30,12 +30,12 @@ if(isset($_GET["logout"]))
 
 //$result = ();
 
-$line1 = "Class Wise Report";
+/*$line1 = "Class Wise Report";
 $line2 = "D.S Senanayake College Colombo 7";
 
 $column0Header = "AdmissionNo";
 $column1Header = "Class";
-$column2Header = "Date";
+$column2Header = "Date"; **/
 
 
 
@@ -194,13 +194,57 @@ $column2Header = "Date";
             left :40px;
             font-size: 1.5em;
         }
+        #flag {
+            position: relative;
+            top: -120px;
+            left:205pt;
+            /*border: 5px solid black;*/
+            width: 120px;
+            height: 120px;
+        }
+        #sch{
+            position:relative;
+            font-size: 24pt;
+            text-align: center;
+            left:10pt;
+            top: 120pt;
+
+        }
+        h2{
+            position: relative;
+            font-size: 12pt;
+            text-align: center;
+            left: 0pt;
+            top: 105pt;
+
+        }
+        h3{
+            position: relative;
+            font-size: 15pt;
+            text-align: center;
+            left: 0pt;
+            top: 100pt;
+        }
+
+
     </style>
 </head>
 
 <body>
 
-<h1><?php echo $line1 ?></h1>
-<h3><?php echo $line2 ?></h3>
+    <h1 id="sch">D.S.Senanayake College</h1>
+    <h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
+    <h3>Class wise report</h3>
+
+
+    <form method="get">
+    <table id="info">
+        <tr>
+        <th>
+    <img id="flag" src="/images/abc.jpg"/>
+
+    </table>
+    </form>
 
 
 <table class="report">
@@ -216,6 +260,29 @@ $column2Header = "Date";
 
     </tr>
 </table>
+
+    <?php
+
+    $result = getAttendance();
+
+    if ($result == null)
+    {
+        echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
+    }
+    else
+    {
+        foreach($result as $row)
+        {
+            echo "<tr>\n";
+            echo "<td>$row[0]</td>";
+            echo "<td>$row[1]</td>";
+            echo "<td>$row[2]</td>";
+            echo "</tr>\n";
+        }
+    }
+
+
+    ?>
 
 <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 

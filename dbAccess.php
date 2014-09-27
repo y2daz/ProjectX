@@ -12,6 +12,7 @@
  */
     require_once("dbConnect.php");
     require_once("formValidation.php");
+    require_once("RoleClass.php");
 
     function login($email, $password)
     {
@@ -36,14 +37,10 @@
                 $stmt->bind_result($OUTuserPassword, $OUTaccessLevel);
                 $stmt->fetch();
 
-//                echo $password . " " . $OUTuserPassword . "\n";
-//                echo password_hash($password, PASSWORD_DEFAULT);
-
-//                $hash=password_hash("rasmuslerdorf", PASSWORD_DEFAULT);
-
                 if (password_verify($password, $OUTuserPassword))
                 {
                     $_SESSION["user"]="$email";
+                    $_SESSION["accessLevel"] = "$OUTaccessLevel";
                     $stmt->close();
                     $mysqli->close();
                     return true;
@@ -165,6 +162,7 @@
         return $set;
 
     }
+
     function insertUser($email, $password, $accessLevel)
     {
         $dbObj = new dbConnect();
@@ -438,7 +436,6 @@ function SearchStudentByName($key)
     }
 }
 
-
 function SearchStudent($key)
 {
 
@@ -500,7 +497,6 @@ function SearchStudentbyclass($key)
     $mysqli->close();
     return $set;
 }
-
 
 function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion,
                        $Medium, $Address, $Grade, $Class, $House)
@@ -821,7 +817,6 @@ function getEventTransactions($eventid)
         return $set;
     }
 
-
     function getExpenses($eventid)
     {
 
@@ -876,7 +871,6 @@ function getEventTransactions($eventid)
         $mysqli->close();
         return $result;
     }
-
 
     function getTimetable($staffId)
     {
@@ -935,7 +929,6 @@ function getTimetablebyClass($class , $grade)
 
 }
 
-
 function substitute($subject)
 {
     $dbObj = new dbConnect();
@@ -991,7 +984,7 @@ function deleteTimetable($staffId)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("UPDATE timetable SET isDeleted=? WHERE StaffID=? AND isDeleted=0;"))
+    if ($stmt = $mysqli->prepare("UPDATE Timetable SET isDeleted=? WHERE StaffID=? AND isDeleted=0;"))
     {
         $deletetimetable = 2 ;
         $stmt->bind_param("is", $deletetimetable , $staffId);
@@ -1063,7 +1056,6 @@ function deleteTimetable($staffId)
         $mysqli->close();
         return $set;
     }
-
 
 function getAllStudents()
     {
@@ -1153,7 +1145,6 @@ function getAllStudents()
         return $set;
     }
 
-
     function getLanguage($label, $language)
     {
         $dbObj = new dbConnect();
@@ -1183,7 +1174,7 @@ function getAllStudents()
         $mysqli->close();
     }
 
-    function checkPrivilege( $username ) //Checking yo privilege
+    /*function checkPrivilege( $username ) //Checking yo privilege
     {
         $dbObj = new dbConnect();
         $mysqli = $dbObj->getConnection();
@@ -1212,7 +1203,7 @@ function getAllStudents()
             }
         }
         $mysqli->close();
-    }
+    }*/
 
     function deleteUser($email){
         $dbObj = new dbConnect();
@@ -2614,3 +2605,90 @@ function regenerateSubjectTable(){
     $mysqli->close();
     return false;
 }
+
+function getRoles(){ //Get Cutlets and patties too.
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select RoleId, RoleName FROM Roles ORDER BY RoleId;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getPermissions($role){ //Get Cutlets and patties too.
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT r.RoleId, p.PermId, p.PermDesc, p.OrderKey FROM RolePerm r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = ? ORDER BY p.OrderKey;"))
+    {
+        $stmt->bind_param("i", $role);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function savePermissions($role, $permArr){
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("DELETE FROM RolePerm WHERE RoleId = ?")){
+        $stmt->bind_param("i", $role);
+        $stmt->execute();
+
+        if ($stmt = $mysqli->prepare("INSERT INTO RolePerm (RoleId, PermId) VALUES (?, ?);"))
+        {
+            foreach($permArr as $permID){
+                $stmt->bind_param("ii", $role, $permID);
+                $stmt->execute();
+            }
+            $stmt->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+
+//SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1

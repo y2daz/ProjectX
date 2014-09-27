@@ -21,8 +21,6 @@ ob_start();
 ?>
     <head>
         <style type=text/css>
-<!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
-<!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
             /*
             ADD YOUR CSS HERE
@@ -40,7 +38,7 @@ ob_start();
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Menu";
+$pageTitle= "";
 //Only change above
 
 $pageContent = ob_get_contents();

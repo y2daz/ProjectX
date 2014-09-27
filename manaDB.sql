@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 25, 2014 at 10:49 PM
+-- Generation Time: Sep 27, 2014 at 03:47 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -355,15 +355,15 @@ INSERT INTO `LabelLanguage` VALUES('agriculture', 1, 'කෘෂිකර්ම�
 INSERT INTO `LabelLanguage` VALUES('ALevel', 0, ' A Level');
 INSERT INTO `LabelLanguage` VALUES('ALevel', 1, '"අ.පො.ස(උ.පෙ)/හෝ සමාන(A/L)');
 INSERT INTO `LabelLanguage` VALUES('ALevelArtsCommerce', 0, ' A Level Arts Commerce');
-INSERT INTO `LabelLanguage` VALUES('ALevelArtsCommerce', 1, 'උ.පෙළ (12-13) කල/වාණිජ ප්‍රධාන විෂයයන්');
+INSERT INTO `LabelLanguage` VALUES('ALevelArtsCommerce', 1, 'උ.පෙළ (12-13) කල/වාණිජ  ප්‍රදාන විෂයයන්');
 INSERT INTO `LabelLanguage` VALUES('ALevelOptional', 0, ' A Level Optional');
 INSERT INTO `LabelLanguage` VALUES('ALevelOptional', 1, 'උ.පෙළ (12-13) අතිරේක විෂයයන්');
 INSERT INTO `LabelLanguage` VALUES('ALevelScienceMain', 0, ' A Level Science Main');
-INSERT INTO `LabelLanguage` VALUES('ALevelScienceMain', 1, 'උ.පෙළ (12-13) විද්‍යා ප්‍රධාන විෂයයන් ');
+INSERT INTO `LabelLanguage` VALUES('ALevelScienceMain', 1, 'උ.පෙළ (12-13) විද්‍යා ප්‍රදාන විෂයයන් ');
 INSERT INTO `LabelLanguage` VALUES('ALevelSupervisor', 0, 'A Level Supervisor');
 INSERT INTO `LabelLanguage` VALUES('ALevelSupervisor', 1, 'උ.පෙළ (12-13) අධීක්ෂණ ගුරු');
 INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 0, ' A Level Technology');
-INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 1, 'උ.පෙළ (12-13) තාක්ෂණික ප්‍රධාන විෂයයන්');
+INSERT INTO `LabelLanguage` VALUES('ALevelTechnology', 1, 'උ.පෙළ (12-13) තාක්ෂණික ප්‍රදාන විෂයයන්');
 INSERT INTO `LabelLanguage` VALUES('amount', 0, 'Amount');
 INSERT INTO `LabelLanguage` VALUES('amount', 1, 'මුදල');
 INSERT INTO `LabelLanguage` VALUES('applyForLeave', 0, 'Apply for Leave');
@@ -459,7 +459,7 @@ INSERT INTO `LabelLanguage` VALUES('contractBasedandOther', 1, 'කොන්ත�
 INSERT INTO `LabelLanguage` VALUES('counselling', 0, 'Counselling');
 INSERT INTO `LabelLanguage` VALUES('counselling', 1, 'උපදේශනය');
 INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 0, 'Course of Study');
-INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 1, 'වර්තමාන පත්වීමේ වර්ගීකරණය');
+INSERT INTO `LabelLanguage` VALUES('courseOfStudy', 1, 'වර්ගමාන පත්වීමේ වර්ගීකරණය');
 INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 0, 'Create Timetable by Class');
 INSERT INTO `LabelLanguage` VALUES('createTimetableByClass', 1, 'පන්තිය විසින් කාලසටහන සැකසුම');
 INSERT INTO `LabelLanguage` VALUES('createTimetableByTeacher', 0, 'Create Timetable by Teacher');
@@ -475,7 +475,7 @@ INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 1, 'මෙම විද�
 INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 0, 'Date of Birth');
 INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 1, 'උපන් දිනය');
 INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 0, 'Deputy Principal');
-INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 1, 'නියෝජ්‍ය විදුහල්පතිි');
+INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 1, 'නියෝජ්‍ය විදුහල්පති');
 INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description');
 INSERT INTO `LabelLanguage` VALUES('description', 1, 'විස්තරය');
 INSERT INTO `LabelLanguage` VALUES('dipinAgriculture', 0, 'Dip in Agriculture');
@@ -523,11 +523,11 @@ INSERT INTO `LabelLanguage` VALUES('fr', 1, 'සි');
 INSERT INTO `LabelLanguage` VALUES('friday', 0, 'Friday');
 INSERT INTO `LabelLanguage` VALUES('friday', 1, 'සිකුරාදා');
 INSERT INTO `LabelLanguage` VALUES('fullTime', 0, 'Full Time');
-INSERT INTO `LabelLanguage` VALUES('fullTime', 1, 'මෙම පාසලින් වැටුප් ලබන හා පාසලේ පුර්ණකාලීනව සේවය කරන');
+INSERT INTO `LabelLanguage` VALUES('fullTime', 1, 'මෙම පාසලින් වැටුප් ලබනහ පාසලේ පුර්ණ කාලීනව සේවය කරන');
 INSERT INTO `LabelLanguage` VALUES('fullTime_BroughtFromOtherSchool', 0, 'Full Time (Brought from other School)');
-INSERT INTO `LabelLanguage` VALUES('fullTime_BroughtFromOtherSchool', 1, 'වෙනත් පාසලකින් වැටුප් ලබා මෙම පාසලේ පුර්නකාලිනව සේවය කරන ');
+INSERT INTO `LabelLanguage` VALUES('fullTime_BroughtFromOtherSchool', 1, 'වෙනත් පාසලකින් වැටුප් ලබා මෙම පාසලේ පුර්නකලිනවා සේවය කරන ');
 INSERT INTO `LabelLanguage` VALUES('fullTime_ReleasedToOtherSchool', 0, 'Full Time (Released to other School)');
-INSERT INTO `LabelLanguage` VALUES('fullTime_ReleasedToOtherSchool', 1, 'මෙම පාසලින් වැටුප් ලබන හා පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට පුර්නකාලිනව නිදහස් කර ඇති');
+INSERT INTO `LabelLanguage` VALUES('fullTime_ReleasedToOtherSchool', 1, 'මෙම පාසලින් වැටුප් ලබන හා පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට පුර්නකලිනව නිදහස් කර ඇති');
 INSERT INTO `LabelLanguage` VALUES('gender', 0, 'Gender');
 INSERT INTO `LabelLanguage` VALUES('gender', 1, 'ස්ත්‍රී/පුරුෂ භාවය');
 INSERT INTO `LabelLanguage` VALUES('generalInformation', 0, 'General Information');
@@ -637,7 +637,7 @@ INSERT INTO `LabelLanguage` VALUES('OLevelandOther', 1, 'අ.පො.ස (ස.ප
 INSERT INTO `LabelLanguage` VALUES('onContract_Government', 0, 'On Contract (Government)');
 INSERT INTO `LabelLanguage` VALUES('onContract_Government', 1, 'රජයෙන් වැටුප් ලබන කොන්ත්‍රාත් පදනම මත සේවයට බදවාගත් ');
 INSERT INTO `LabelLanguage` VALUES('onPaidLeave', 0, 'On Paid Leave');
-INSERT INTO `LabelLanguage` VALUES('onPaidLeave', 1, 'වැටුප් සහිත පුර්ණකාලින අද්යන නිවාඩු');
+INSERT INTO `LabelLanguage` VALUES('onPaidLeave', 1, 'වැටුප් සහිත පුර්නකාලින අද්යන නිවාඩු');
 INSERT INTO `LabelLanguage` VALUES('optional', 0, 'Optional');
 INSERT INTO `LabelLanguage` VALUES('optional', 1, 'අතිරේක');
 INSERT INTO `LabelLanguage` VALUES('other', 0, 'Other');
@@ -647,7 +647,7 @@ INSERT INTO `LabelLanguage` VALUES('otherGovernmentDepartment', 1, 'වෙනත
 INSERT INTO `LabelLanguage` VALUES('paidFromSchoolFees', 0, 'Paid from School Fees');
 INSERT INTO `LabelLanguage` VALUES('paidFromSchoolFees', 1, 'පහසුකම් ගාස්තු/ වෙනත් මාර්ග වලින් දීමනා ලබන');
 INSERT INTO `LabelLanguage` VALUES('partTime', 0, 'Part Time');
-INSERT INTO `LabelLanguage` VALUES('partTime', 1, 'මෙම පාසලින් වැටුප් ලබන පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට අර්ධකාලිනව නිදහස් කර ඇති');
+INSERT INTO `LabelLanguage` VALUES('partTime', 1, 'මෙම පාසලින් වැටුප් ලබන පාසලකට/ආයතනයකට/කාර්යාලයකට/සේවයකට අර්ධකලිනවා නිදහස් කර ඇති');
 INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 0, 'Passed Maths without a degree in science');
 INSERT INTO `LabelLanguage` VALUES('passedMathswithoutadegreeinscience', 1, 'ගණිතය විෂයක් ලෙස සමත් වු විද්‍යා නොවන උපාධි');
 INSERT INTO `LabelLanguage` VALUES('pGDipinEASL', 0, 'PG Dip in EASL');
@@ -685,7 +685,7 @@ INSERT INTO `LabelLanguage` VALUES('prizeGiving', 1, 'ත්‍යාග ප්�
 INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 0, 'Register Staff Member');
 INSERT INTO `LabelLanguage` VALUES('registerStaffMember', 1, 'කාර්යමණ්ඩලය වාර්තාකරන්න');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 0, 'Released To Other Institute/Office/Service');
-INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 1, 'වෙනත් ආයතනයකට/කාර්යාලයකට/සේවයකට නිදහස් කළ');
+INSERT INTO `LabelLanguage` VALUES('releasedToOtherInstituteOfficeService', 1, 'වෙනත් ආයතනයකට/කාර්යාලයකට/සේවයකට');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherSchool', 0, 'Released To Other School');
 INSERT INTO `LabelLanguage` VALUES('releasedToOtherSchool', 1, 'වෙනත් පාසලකට නිදහස් කල');
 INSERT INTO `LabelLanguage` VALUES('religion', 0, 'Religion');
@@ -715,7 +715,7 @@ INSERT INTO `LabelLanguage` VALUES('secondarySecondLanguage', 1, 'ද්වි�
 INSERT INTO `LabelLanguage` VALUES('secondarySupervisor', 0, 'Secondary Supervisor');
 INSERT INTO `LabelLanguage` VALUES('secondarySupervisor', 1, 'ද්විතීයික (6-11) අධීක්ෂණ ගුරු');
 INSERT INTO `LabelLanguage` VALUES('secondaryTechnology', 0, 'Secondary Technology');
-INSERT INTO `LabelLanguage` VALUES('secondaryTechnology', 1, 'ද්විතීයික (6-11) තාක්ෂණික');
+INSERT INTO `LabelLanguage` VALUES('secondaryTechnology', 1, 'ද්විතීයික (6-11)තාක්ෂණික');
 INSERT INTO `LabelLanguage` VALUES('section', 0, 'Section');
 INSERT INTO `LabelLanguage` VALUES('section', 1, 'නිරතවන කාර්යය');
 INSERT INTO `LabelLanguage` VALUES('serviceGrade', 0, 'Service Grade');
@@ -952,6 +952,185 @@ CREATE TABLE IF NOT EXISTS `ParentsInformation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Permissions`
+--
+
+CREATE TABLE IF NOT EXISTS `Permissions` (
+  `permId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `permDesc` varchar(50) NOT NULL,
+  `orderKey` int(11) DEFAULT '0',
+  PRIMARY KEY (`permId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+
+--
+-- Dumping data for table `Permissions`
+--
+
+INSERT INTO `Permissions` VALUES(1, 'Administration Panel', 70);
+INSERT INTO `Permissions` VALUES(2, 'Staff Details System', 0);
+INSERT INTO `Permissions` VALUES(3, 'Leave Management System', 10);
+INSERT INTO `Permissions` VALUES(4, 'Leave Application', 11);
+INSERT INTO `Permissions` VALUES(5, 'Leave Approval', 11);
+INSERT INTO `Permissions` VALUES(6, 'Timetables System', 20);
+INSERT INTO `Permissions` VALUES(7, 'Classteacher Allocation', 21);
+INSERT INTO `Permissions` VALUES(8, 'Substitute Teacher', 21);
+INSERT INTO `Permissions` VALUES(9, 'Student Information System', 30);
+INSERT INTO `Permissions` VALUES(10, 'Student Registration', 31);
+INSERT INTO `Permissions` VALUES(11, 'Search Student', 31);
+INSERT INTO `Permissions` VALUES(12, 'Event Management System', 40);
+INSERT INTO `Permissions` VALUES(13, 'Add Event', 41);
+INSERT INTO `Permissions` VALUES(14, 'Attendance System', 50);
+INSERT INTO `Permissions` VALUES(15, 'Keep Attendance', 51);
+INSERT INTO `Permissions` VALUES(16, 'View Attendance', 51);
+INSERT INTO `Permissions` VALUES(17, 'Marks and Grading System', 60);
+INSERT INTO `Permissions` VALUES(18, 'Enter O/A Level Examination Grades', 61);
+INSERT INTO `Permissions` VALUES(19, 'Enter Term Test Marks', 61);
+INSERT INTO `Permissions` VALUES(20, 'Search Grades', 61);
+INSERT INTO `Permissions` VALUES(21, 'Staff Report', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `RolePerm`
+--
+
+CREATE TABLE IF NOT EXISTS `RolePerm` (
+  `roleId` int(10) unsigned NOT NULL,
+  `permId` int(10) unsigned NOT NULL,
+  KEY `roleId` (`roleId`),
+  KEY `permId` (`permId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `RolePerm`
+--
+
+INSERT INTO `RolePerm` VALUES(1, 13);
+INSERT INTO `RolePerm` VALUES(1, 1);
+INSERT INTO `RolePerm` VALUES(1, 14);
+INSERT INTO `RolePerm` VALUES(1, 7);
+INSERT INTO `RolePerm` VALUES(1, 18);
+INSERT INTO `RolePerm` VALUES(1, 19);
+INSERT INTO `RolePerm` VALUES(1, 12);
+INSERT INTO `RolePerm` VALUES(1, 15);
+INSERT INTO `RolePerm` VALUES(1, 4);
+INSERT INTO `RolePerm` VALUES(1, 5);
+INSERT INTO `RolePerm` VALUES(1, 3);
+INSERT INTO `RolePerm` VALUES(1, 17);
+INSERT INTO `RolePerm` VALUES(1, 20);
+INSERT INTO `RolePerm` VALUES(1, 11);
+INSERT INTO `RolePerm` VALUES(1, 2);
+INSERT INTO `RolePerm` VALUES(1, 21);
+INSERT INTO `RolePerm` VALUES(1, 9);
+INSERT INTO `RolePerm` VALUES(1, 10);
+INSERT INTO `RolePerm` VALUES(1, 8);
+INSERT INTO `RolePerm` VALUES(1, 6);
+INSERT INTO `RolePerm` VALUES(1, 16);
+INSERT INTO `RolePerm` VALUES(2, 1);
+INSERT INTO `RolePerm` VALUES(2, 7);
+INSERT INTO `RolePerm` VALUES(2, 4);
+INSERT INTO `RolePerm` VALUES(2, 5);
+INSERT INTO `RolePerm` VALUES(2, 3);
+INSERT INTO `RolePerm` VALUES(2, 2);
+INSERT INTO `RolePerm` VALUES(2, 21);
+INSERT INTO `RolePerm` VALUES(2, 8);
+INSERT INTO `RolePerm` VALUES(2, 6);
+INSERT INTO `RolePerm` VALUES(4, 13);
+INSERT INTO `RolePerm` VALUES(4, 14);
+INSERT INTO `RolePerm` VALUES(4, 19);
+INSERT INTO `RolePerm` VALUES(4, 12);
+INSERT INTO `RolePerm` VALUES(4, 15);
+INSERT INTO `RolePerm` VALUES(4, 4);
+INSERT INTO `RolePerm` VALUES(4, 3);
+INSERT INTO `RolePerm` VALUES(4, 17);
+INSERT INTO `RolePerm` VALUES(4, 20);
+INSERT INTO `RolePerm` VALUES(4, 11);
+INSERT INTO `RolePerm` VALUES(4, 9);
+INSERT INTO `RolePerm` VALUES(4, 6);
+INSERT INTO `RolePerm` VALUES(4, 16);
+INSERT INTO `RolePerm` VALUES(5, 13);
+INSERT INTO `RolePerm` VALUES(5, 14);
+INSERT INTO `RolePerm` VALUES(5, 7);
+INSERT INTO `RolePerm` VALUES(5, 18);
+INSERT INTO `RolePerm` VALUES(5, 19);
+INSERT INTO `RolePerm` VALUES(5, 12);
+INSERT INTO `RolePerm` VALUES(5, 15);
+INSERT INTO `RolePerm` VALUES(5, 4);
+INSERT INTO `RolePerm` VALUES(5, 3);
+INSERT INTO `RolePerm` VALUES(5, 17);
+INSERT INTO `RolePerm` VALUES(5, 20);
+INSERT INTO `RolePerm` VALUES(5, 11);
+INSERT INTO `RolePerm` VALUES(5, 2);
+INSERT INTO `RolePerm` VALUES(5, 21);
+INSERT INTO `RolePerm` VALUES(5, 9);
+INSERT INTO `RolePerm` VALUES(5, 10);
+INSERT INTO `RolePerm` VALUES(5, 8);
+INSERT INTO `RolePerm` VALUES(5, 6);
+INSERT INTO `RolePerm` VALUES(5, 16);
+INSERT INTO `RolePerm` VALUES(6, 13);
+INSERT INTO `RolePerm` VALUES(6, 1);
+INSERT INTO `RolePerm` VALUES(6, 14);
+INSERT INTO `RolePerm` VALUES(6, 7);
+INSERT INTO `RolePerm` VALUES(6, 18);
+INSERT INTO `RolePerm` VALUES(6, 19);
+INSERT INTO `RolePerm` VALUES(6, 12);
+INSERT INTO `RolePerm` VALUES(6, 15);
+INSERT INTO `RolePerm` VALUES(6, 4);
+INSERT INTO `RolePerm` VALUES(6, 5);
+INSERT INTO `RolePerm` VALUES(6, 3);
+INSERT INTO `RolePerm` VALUES(6, 17);
+INSERT INTO `RolePerm` VALUES(6, 20);
+INSERT INTO `RolePerm` VALUES(6, 11);
+INSERT INTO `RolePerm` VALUES(6, 2);
+INSERT INTO `RolePerm` VALUES(6, 21);
+INSERT INTO `RolePerm` VALUES(6, 9);
+INSERT INTO `RolePerm` VALUES(6, 10);
+INSERT INTO `RolePerm` VALUES(6, 8);
+INSERT INTO `RolePerm` VALUES(6, 6);
+INSERT INTO `RolePerm` VALUES(6, 16);
+INSERT INTO `RolePerm` VALUES(3, 2);
+INSERT INTO `RolePerm` VALUES(3, 21);
+INSERT INTO `RolePerm` VALUES(3, 3);
+INSERT INTO `RolePerm` VALUES(3, 4);
+INSERT INTO `RolePerm` VALUES(3, 5);
+INSERT INTO `RolePerm` VALUES(3, 6);
+INSERT INTO `RolePerm` VALUES(3, 7);
+INSERT INTO `RolePerm` VALUES(3, 8);
+INSERT INTO `RolePerm` VALUES(3, 9);
+INSERT INTO `RolePerm` VALUES(3, 11);
+INSERT INTO `RolePerm` VALUES(3, 12);
+INSERT INTO `RolePerm` VALUES(3, 13);
+INSERT INTO `RolePerm` VALUES(3, 14);
+INSERT INTO `RolePerm` VALUES(3, 16);
+INSERT INTO `RolePerm` VALUES(3, 17);
+INSERT INTO `RolePerm` VALUES(3, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Roles`
+--
+
+CREATE TABLE IF NOT EXISTS `Roles` (
+  `roleId` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `roleName` varchar(50) NOT NULL,
+  PRIMARY KEY (`roleId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `Roles`
+--
+
+INSERT INTO `Roles` VALUES(1, 'Full Control');
+INSERT INTO `Roles` VALUES(2, 'Single User');
+INSERT INTO `Roles` VALUES(3, 'Principal');
+INSERT INTO `Roles` VALUES(4, 'Teacher');
+INSERT INTO `Roles` VALUES(5, 'Date Entry Operator');
+INSERT INTO `Roles` VALUES(6, 'Administrator');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Staff`
 --
 
@@ -1075,7 +1254,7 @@ CREATE TABLE IF NOT EXISTS `Subject` (
   `Number` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`Number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `Subject`
@@ -1236,41 +1415,41 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '10', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 3, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 7, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 6, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 1, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 7, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 2, 'Business Studies', '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 3, 'Business Studies', '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 4, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 3, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '11', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '11', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 5, 'Business Studies', '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '11', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '12', 0);
@@ -1473,85 +1652,85 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '16', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '16', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '16', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '16', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '2', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 0, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 1, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 6, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 0, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 4, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 0, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 3, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 0, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 2, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 3, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 0, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 7, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 0, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 2, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 0, 'Sinhala', '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 1, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 7, 'Sinhala', '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 0, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 6, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 0, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 6, 'Sinhala', '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 7, 'Sinhala', '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 0, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '3', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 6, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '4', 0);
@@ -1594,26 +1773,26 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 1, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 3, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 2, 'History', '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 3, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 7, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 1, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 4, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '5', 0);
@@ -1621,84 +1800,84 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 4, 'History', '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 5, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 1, 'History', '5', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 2, 'History', '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '5', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '5', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, '', '6', 2);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, '', '6', 2);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 7, 'History', '5', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 2, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 6, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 1, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 5, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 2, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 3, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 6, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 7, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 5, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 6, '', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 4, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '6', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 6, 'English', '6', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '6', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 0, 5, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 0, 7, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 1, 3, 'Information Technology', '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 4, 'Information Technology', '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 1, 5, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 2, 4, 'Information Technology', '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 2, 5, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 3, 1, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '7', 0);
@@ -1708,8 +1887,8 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '7', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 3, 'Information Technology', '7', 0);
+INSERT INTO `Timetable` VALUES(10, 'B', 4, 4, 'Information Technology', '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '7', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '7', 0);
@@ -1738,15 +1917,15 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '8', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '8', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 3, 1, 'Science', '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '8', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '8', 0);
-INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '8', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 0, 'Science', '8', 0);
+INSERT INTO `Timetable` VALUES(10, 'A', 4, 1, 'Science', '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '8', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '8', 0);
@@ -1962,6 +2141,13 @@ ADD CONSTRAINT `OLMarks_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student`
 --
 ALTER TABLE `ParentsInformation`
 ADD CONSTRAINT `ParentsInformation_ibfk_1` FOREIGN KEY (`AdmissionNo`) REFERENCES `Student` (`AdmissionNo`);
+
+--
+-- Constraints for table `RolePerm`
+--
+ALTER TABLE `RolePerm`
+ADD CONSTRAINT `RolePerm_ibfk_1` FOREIGN KEY (`roleId`) REFERENCES `Roles` (`roleId`),
+ADD CONSTRAINT `RolePerm_ibfk_2` FOREIGN KEY (`permId`) REFERENCES `Permissions` (`permId`);
 
 --
 -- Constraints for table `Student_Subject_Grade`
