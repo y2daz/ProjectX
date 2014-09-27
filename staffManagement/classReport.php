@@ -81,7 +81,7 @@ $column3Header = "Teachers'Name";
             position: relative;
             top: -10px;
             left:205pt;
-            /*border: 5px solid black;*/
+            /*border: 5pxxx solid black;*/
             width: 120px;
             height: 120px;
         }
