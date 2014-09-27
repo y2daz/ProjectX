@@ -147,6 +147,7 @@ if (isset($_GET["getTimetable"]))
 
 <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
     <form method="get">
+
         <table id="info">
             <tr>
                 <td><label><?php echo getLanguage("staffId",$lang)?></td>
@@ -169,7 +170,7 @@ if (isset($_GET["getTimetable"]))
 
         <table id="edit">
             <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td>
-            <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReport.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
+            <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportTeacherWise.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
         </table>
         <table class="timetable" >
             <tr>

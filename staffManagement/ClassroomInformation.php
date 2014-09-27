@@ -7,7 +7,7 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+//define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/formValidation.php");
@@ -178,8 +178,7 @@ if( isset($_GET["grade"]) )
             <tr>
                 <td> Staff ID </td>
                 <td colspan="2"><input type=text name="staffId"  /> </td>
-            </tr>
-
+                </tr>
 
         </table>
 

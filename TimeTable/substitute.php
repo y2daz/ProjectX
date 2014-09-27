@@ -20,11 +20,6 @@ ob_start();
 
 $lang = $_COOKIE["language"];
 
-//if( isset($_GET["getTimetable"]) ){
-//
-//}
-//$_GET["getTimetable"] = $_GET["getTimetable"] | "";
-
 $currentStaffId = "";
 $currentStaffName = "";
 
@@ -33,14 +28,12 @@ error_reporting(0);//Temporarily turn of all errors
 if (isset($_POST["Submit"]))
 {
 
-//        echo  $operation;
     if ($operation == true){
         sendNotification("Timetable updated.");
     }else{
         sendNotification("Error updating timetable.");
     }
 
-//        var_dump($myTime);
 }
 $freeTeachersSet = null;
 
@@ -52,7 +45,6 @@ if(isset($_POST["getSubstitute"]))
     $currentStaffId = $_POST["StaffID"];
 
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
-//    $freeTeachersSet = getFreeTeachers( 1, 2, 10 );
 
     if($freeTeachersSet == null)
     {
@@ -61,7 +53,7 @@ if(isset($_POST["getSubstitute"]))
     else{
         sendNotification("Teachers available for substitution obtained.");
     }
-//    sendNotification($_POST["Position"] . "," . $_POST["Day"]. "," .  $_POST["StaffID"]);
+
     $row = $freeTeachersSet[0];
     $currentStaffName = $row[0];
 }
@@ -108,8 +100,6 @@ if (isset($_GET["getTimetable"]))
             }
             .viewTable td{
                 padding: 4px;
-                /*padding-left: 4px;*/
-                /*padding-right: 4px;*/
                 min-width: 60px;
                 text-align: center;
             }
@@ -129,10 +119,7 @@ if (isset($_GET["getTimetable"]))
 
                 $(".subject").on("click", function(e){ //Write substitute code
                    var position = $(this).attr("id");
-//                    alert(position);
                     var staffID = getParameterByName('staffID');
-//                    alert(staffID);
-
                     getTeachersForSubstition( staffID, position);
                 });
 
@@ -162,10 +149,6 @@ if (isset($_GET["getTimetable"]))
     <form name="frmTimetable" onsubmit="return classValidation()" method="post">
         <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
-
-<!--        <table id="edit">-->
-<!--            <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td></tr>-->
-<!--        </table>-->
         <table class="timetable" >
             <tr>
                 <th class="time"><?php echo getLanguage("time",$lang)?></th>
@@ -236,11 +219,6 @@ if (isset($_GET["getTimetable"]))
 
         <br/>
         <br/>
-<!--        <table id="submit">-->
-<!--            <tr>-->
-<!--                <td><input type="submit" name="Submit" value="Save Changes"></td>-->
-<!--            </tr>-->
-<!--        </table>-->
         <form method="post">
             <table class="viewTable">
                 <tr>
@@ -281,11 +259,11 @@ if (isset($_GET["getTimetable"]))
     </body>
     </html>
 <?php
-//Change these to what you want
+
 $fullPageHeight = 1200 + ($rowcount * 29);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
-//Only change above
+
 
 $pageContent = ob_get_contents();
 ob_end_clean();
