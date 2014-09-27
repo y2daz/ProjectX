@@ -304,6 +304,10 @@ if (isset($_POST["NewGrade"])){
                     <td>Year</td>
                     <td><input type="text" name="Year" value="<?php echo $Year ?>" readonly /> </td>
                 </tr>
+                <tr>
+                    <td><a href= "/marksAndGrading/OLReport.php" > Print Results Sheet</a></td>
+
+                </tr>
 
 
 
