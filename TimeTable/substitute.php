@@ -137,9 +137,15 @@ if (isset($_GET["getTimetable"]))
                 var i = 0;
 
                 $(".subject").on("click", function(e){ //Write substitute code
-                   var position = $(this).attr("id");
+                    var position = $(this).attr("id");
                     var staffID = getParameterByName('staffID');
-                    getTeachersForSubstition( staffID, position);
+
+                    if (staffID != null && staffID != ""){
+                        var subj = $("#subject_" + position).html();
+                        if (subj != null && subj != ""){
+                            getTeachersForSubstition( staffID, position);
+                        }
+                    }
                 });
 
                 $('.confirm').on("click", function(e){
