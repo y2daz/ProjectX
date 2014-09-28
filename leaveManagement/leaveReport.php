@@ -84,7 +84,6 @@ if(isset($_GET["id"]))
             position: absolute;
             left: 200px;
             top: 480px;
-
         }
 
     </style>
