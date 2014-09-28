@@ -59,6 +59,17 @@ if(isset($_POST["getSubstitute"]))
     $currentStaffName = $row[0];
 }
 
+if(isset( $_POST["substitute"] )){
+    $operation = confirmSubstitution( $_POST["replacementStaffID"], null, null, $_POST["Day"], $_POST["Position"], $_POST["Date"], $_POST["originalID"]);
+
+    if ($operation){
+        sendNotification( "Substitution successful" );
+    }
+    else{
+        sendNotification( "Error substituting" );
+    }
+}
+
 if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];

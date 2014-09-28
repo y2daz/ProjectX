@@ -969,11 +969,9 @@ function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Pos
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO issubstituted(StaffID, Grade, Class, Day, Position, Date, SubsttitutedTeachedID, isDeleted) VALUES (?,?,?,?,?,?,?,?,;"))
+    if ($stmt = $mysqli->prepare("INSERT INTO IsSubstituted(StaffID, Grade, Class, Day, Position, Date, SubsttitutedTeachedID) VALUES (?,?,?,?,?,?,?);"))
     {
-        $isdelete = 0 ;
-
-        $stmt->bind_param("sisiissi", $replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID , $isdelete);
+        $stmt->bind_param("iisiisi", $replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID);
             if ($stmt->execute())
             {
                 $stmt->close();
