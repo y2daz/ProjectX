@@ -143,9 +143,9 @@
             if ($user->hasPerm('Staff Details System')){
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
-                if ($user->hasPerm('Change Staff Details')){
+              // if ($user->hasPerm('Change Staff Details')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
-                }
+              // }
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";

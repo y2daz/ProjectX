@@ -98,6 +98,35 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
         </style>
     </head>
+    <?php
+    $language = $_COOKIE['language'];
+    $AdmissionNo =  getLanguage('AdmissionNo', $language);
+    $nameWithInitials =  getLanguage('nameWithInitials', $language);
+    $dateOfBirth =  getLanguage('dateOfBirth', $language);
+    $nationalityRace =  getLanguage('nationalityRace', $language);
+    $religion =  getLanguage('religion', $language);
+    $Medium =  getLanguage('Medium', $language);
+    $Address =  getLanguage('Address', $language);
+    $Grade = getLanguage('grade',$language);
+    $Class = getLanguage('class',$language);
+    $sinhala =  getLanguage('sinhala', $language);
+    $srilankantamil =  getLanguage('srilankantamil', $language);
+    $indiantamil =  getLanguage('indiantamil', $language);
+    $srilankanmuslim =  getLanguage('srilankanmuslim', $language);
+    $other =  getLanguage('other', $language);
+    $sinhala =  getLanguage('sinhala', $language);
+    $tamil =  getLanguage('tamil', $language);
+    $english =  getLanguage('english', $language);
+    $buddhism =  getLanguage('buddhism', $language);
+    $hinduism =  getLanguage('hindusm', $language);
+    $islam =  getLanguage('islam', $language);
+    $catholic =  getLanguage('catholic', $language);
+    $christianity =  getLanguage('christianity', $language);
+    $other =  getLanguage('other', $language);
+    $generalInformation = getLanguage("generalInformation", $language);
+    $submit =  getLanguage('submit', $language);
+
+    ?>
     <body>
 
     <div  id="general" style="">
@@ -108,68 +137,71 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
 
         <form method="Post" class="insert">
         <table  cellspacing="0">
-            <tr><th>General Information</th><th></th></tr>
+            <tr><th><?php echo getLanguage('generalInformation', $language)?></th><th></th></tr>
             <tr>
-                <td>Admission ID</td>
+                <td><?php echo getLanguage('AdmissionNo',$language)?></td>
                 <td><input name="admissionID" type="text" value="" required="true"></td>
             </tr>
 
             <tr>
-                <td>Name With Initials</td>
+                <td><?php echo getLanguage('nameWithInitials', $language)?></td>
                 <td><input name="name" type="text" value="" required="true"></td>
             </tr>
             <tr>
-                <td>Date of Birth</td>
+                <td><?php echo getLanguage('dateOfBirth', $language)?></td>
                 <td><input name="dateOfBirth" type="date" value="" required="true"></td>
             </tr>
             <tr>
-                <td>Nationality/Race</td>
+                <td><?php echo getLanguage('nationalityRace', $language)?></td>
                 <td><select name="race" type="text" value="" required="true">
-                        <option value="1">Sinhala</option>
-                        <option value="2">Sri Lankan Tamil</option>
-                        <option value="3">Indian Tamil</option>
-                        <option value="4">Sri Lankan Muslim</option>
-                        <option value="5">Other</option>
+                        <option value=""><?php echo "--"?></option>
+                        <option value="1"><?php echo "1 - " . $sinhala?></option>
+                        <option value="2"><?php echo "2 - " . $srilankantamil?></option>
+                        <option value="3"><?php echo "3 - " . $indiantamil?></option>
+                        <option value="4"><?php echo "4 - " . $srilankanmuslim?></option>
+                        <option value="5"><?php echo "5 - " . $other?></option>
                     </select></td>
             </tr>
             <tr>
-                <td>Religion</td>
+                <td><?php echo getLanguage('religion', $language)?></td>
                 <td><select name="religion" type="text" value="" required="true">
-                        <option value="1">Buddhism</option>
-                        <option value="2">Hinduism</option>
-                        <option value="3">Islam</option>
-                        <option value="4">Christianity</option>
-                        <option value="5">Other</option>
+                        <option value=""><?php echo "--"?></option>
+                        <option value="1"><?php echo "1 - " .$buddhism?></option>
+                        <option value="2"><?php echo "2 - " .$hinduism?></option>
+                        <option value="3"><?php echo "3 - " .$islam?></option>
+                        <option value="4"><?php echo "4 - " .$catholic?></option>
+                        <option value="5"><?php echo "5 - " .$christianity?></option>
+                        <option value="6"><?php echo "6 - " .$other?></option>
                     </select></td>
             </tr>
             <tr>
-                <td>Medium</td>
+                <td><?php echo getLanguage('Medium', $language)?></td>
                 <td>
-                    <input type="radio" name="medium" value="1">Sinhala
-                    <input type="radio" name="medium" value="2">Tamil
-                    <input type="radio" name="medium" value="3">English
+                    <input type="radio" name="medium" value=<?php echo getLanguage('sinhala', $language)?>>Sinhala
+                    <input type="radio" name="medium" value=<?php echo getLanguage('tamil', $language)?>>Tamil
+                    <input type="radio" name="medium" value=<?php echo getLanguage('english', $language)?>>English
                 </td>
             </tr>
             <tr>
-                <td>Address</td>
+                <td><?php echo getlanguage('Address', $language)?></td>
                 <td><input name="address" type="text" value="" required="true"></td>
             </tr>
             <tr>
-                <td>Grade/Year</td>
+                <td><?php echo getlanguage('grade',$language)?></td>
                 <td><input name="grade" type="text" value="" required="true"></td>
             </tr>
             <tr>
-                <td>Class</td>
+                <td><?php echo getlanguage('class',$language)?></td>
                 <td><input name="class" type="text" value="" required="true"></td>
             </tr>
             <tr>
-                <td>House</td>
+                <td><?php echo getLanguage('house',$language)?></td>
                 <td><input name="house" type="text" value="" required="true"></td>
             </tr>
             <tr>
                 <td></td>
 
-                <td><input name="submit" class="button1" type="submit" value="Submit" required="true"></td>
+                <td><input name="submit" class="button1" type="submit" value=<?php echo getLanguage('submit', $language)?> required="true"></td>
 
 
             </tr>
