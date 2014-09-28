@@ -28,7 +28,7 @@ if(isset($_GET["logout"]))
 }
 
 
-//$result = ();
+$result = getAttendance();
 
 /*$line1 = "Class Wise Report";
 $line2 = "D.S Senanayake College Colombo 7";
@@ -230,7 +230,7 @@ $column2Header = "Date"; **/
     </style>
 </head>
 
-<body>
+    <body>
 
     <h1 id="sch">D.S.Senanayake College</h1>
     <h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
@@ -238,28 +238,26 @@ $column2Header = "Date"; **/
 
 
     <form method="get">
-    <table id="info">
-        <tr>
-        <th>
-    <img id="flag" src="/images/abc.jpg"/>
+        <table id="info">
+            <tr>
+                <th>
+                    <img id="flag" src="/images/abc.jpg"/>
+                </th>
+            </tr>
 
-    </table>
+        </table>
     </form>
 
 
-<table class="report">
-    <tr class="secret">
-
-    </tr>
-    <tr></tr>
-    <tr class="headerRow">
-        <td id="col_0"><?php echo $column0Header ?></td>
-        <td id="col_1"><?php echo $column1Header ?></td>
-        <td id="col_2"><?php echo $column2Header ?></td>
-
-
-    </tr>
-</table>
+    <table class="report">
+        <tr class="secret">
+        </tr>
+        <tr class="headerRow">
+            <td id="col_0"><?php echo $column0Header ?></td>
+            <td id="col_1"><?php echo $column1Header ?></td>
+            <td id="col_2"><?php echo $column2Header ?></td>
+        </tr>
+    </table>
 
     <?php
 
@@ -284,9 +282,9 @@ $column2Header = "Date"; **/
 
     ?>
 
-<button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
+    <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 
 <br />
 
-</body>
+    </body>
 </html>

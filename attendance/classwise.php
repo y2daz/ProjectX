@@ -9,19 +9,17 @@ ob_start();
 
     if($_COOKIE["language"] == 1)
     {
-        $gradetxt="වසර";
-        $classtxt="පන්තිය";
+        $gradeAndclass="";
         $dateFromtxt="දින සිට";
         $dateTotxt="දින දක්වා";
         $SubmitBtn="තහවුරු  කරන්න";
     }
     else
     {
-        $gradetxt="Grade";
-        $classtxt="Class";
+        $gradeAndclass="Grade And class";
         $dateFromtxt="Date From";
         $dateTotxt="Date To";
-        $SubmitBtn="Submit";
+        $SubmitBtn="Generate";
     }
 ?>
 <html>
@@ -68,12 +66,11 @@ ob_start();
         <form>
 
             <table class="insert" cellspacing="0">
-                <tr><th>Class-wise Report</th><th></th></tr>
+                <tr><th>Class-wise Report</th></tr>
                 <tr>
-                    <td><?php echo $gradetxt ?></td>
+                    <td><?php echo $gradeAndclass ?></td>
                     <td><input name="studentGrade" type="text" value=""required="true"></td>
-                    <td><?php echo $classtxt ?></td>
-                    <td><input name="studentClass" type="text" value=""></td>
+
                 </tr>
                 <tr>
                     <td><?php echo $dateFromtxt ?></td>
