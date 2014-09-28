@@ -958,7 +958,7 @@ function substitute($subject)
 
 }
 
-function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID )
+function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -969,11 +969,9 @@ function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Da
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO issubstituted(StaffID, Grade, Class, Day, Position, Date, SubsttitutedTeachedID, isDeleted) VALUES (?,?,?,?,?,?,?,?,;"))
+    if ($stmt = $mysqli->prepare("INSERT INTO IsSubstituted(StaffID, Grade, Class, Day, Position, Date, SubsttitutedTeachedID) VALUES (?,?,?,?,?,?,?);"))
     {
-        $isdelete = 0 ;
-
-        $stmt->bind_param("sisiissi", $StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID , $isdelete);
+        $stmt->bind_param("iisiisi", $replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID);
             if ($stmt->execute())
             {
                 $stmt->close();
@@ -2764,5 +2762,34 @@ function getAttendance()
     return $set;
 }
 
+function isHoliday($date)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select * FROM Holiday WHERE Day = ? ;"))
+    {
+        $stmt->bind_param("s", $date);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            if($result->num_rows > 0)
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $stmt->close();
+    }
+    $mysqli->close();
+    return false;
+}
 
 //SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1

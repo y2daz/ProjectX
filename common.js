@@ -308,7 +308,6 @@ function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,
     $.prompt(states);
 }
 
-
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.
 
@@ -330,21 +329,92 @@ function post(path, params, method) { //Allows us to set POST variables with jav
     form.submit();
 }
 
-function validate($courseOfStudy)
-    {
-        var combo1 = document.getElementById("courseofstudy")
+//function validate(courseOfStudy)
+//{
+//    var combo1 = document.getElementById("courseofstudy");
+//
+//    if(combo1.value == null || combo1.value == "18" || combo1.value == "70" || combo1.value == "71" || combo1.value == "72" || combo1.value == "73" || combo1.value == "74" || combo1.value == "95" ||combo1.value == "96")
+//    {
+//        alert("Please select Course of study");
+//        return 0;
+//    }
+//    else
+//    {
+//        return 1;
+//    }
+//}
 
-        if(combo1.value == null || combo1.value == "18" || combo1.value == "70" || combo1.value == "71" || combo1.value == "72" || combo1.value == "73" || combo1.value == "74" || combo1.value == "95" ||combo1.value == "96")
-        {
-            alert("Please select Course of study");
-            return 0;
+function substituteTeacher(day, position, originalID, replacementID, originalName, replacementName){
+//    indexNo += subject;
+    var weekday = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+    var period = new Array('1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th');
+    var substitutionDate;
+    var states = {
+        state0: {
+            title: "Substituting " +  originalName /*+ " with ID " + originalID*/,
+            html:'<table>' +
+                '   <tr>' +
+                '       <td style="text-align: center">' + weekday[day] + ' ' + period[position] + ' period</td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Substituted teacher ' + replacementName + /*' with ID ' + replacementID +*/ ' </label></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
+                '   </tr>' +
+                '</table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                var selectedDate = f["jDteSubstituted"];
+                substitutionDate = f["jDteSubstituted"];
+                var selectedDay = new Date(selectedDate);
+
+                selectedDay = selectedDay.getDay() - 1;
+                if (selectedDay == -1){
+                    selectedDay = 6;
+                }
+                if( v == 1){
+                    if ( selectedDay == day)
+                    {
+                        $.prompt.goToState('state1', true);
+                    }
+                    else{
+                        $.prompt.goToState('state2', true);
+                    }
+                }
+                else
+                    $.prompt.close();
+            }
+        },
+        state1: {
+            html:'Confirm substitution?',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                if( v == 1 ){
+//                    $.prompt.goToState('state0');
+                    var params = {"substitute":true, "replacementStaffID" : replacementID, "Grade" : null, "Class" : null, "Day" : day, "Position" : position, "Date" : substitutionDate, "originalID" : originalID};
+                    post(document.URL, params, "post");
+                }
+                else{
+                    $.prompt.close();
+                }
+            }
+        },
+        state2: {
+            html:'Please select a ' + weekday[day],
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                $.prompt.goToState('state0');
+            }
         }
-        else
-        {
-            return 1;
-        }
+    }
+    $.prompt(states);
 }
-
 
 function getTeachersForSubstition(staffID, absPosition){
     var relPosition = absPosition % 8;
@@ -359,6 +429,19 @@ function getParameterByName(name) {
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
 
-function noti(position){
-    alert(position);
+function getTodayDate(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd < 10) {
+        dd='0'+dd
+    }
+
+    if(mm < 10){
+        mm='0'+mm
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    return today;
 }
