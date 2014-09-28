@@ -38,9 +38,9 @@ function isNIC($nicNumber)
     }
 }
 
-function isNumeric($courseOfStudy)
+function isNumeric($nationalityRace)
 {
-    if(preg_match("/^[0-9]$/", $courseOfStudy)){
+    if(preg_match("/^[0-9]$/", $nationalityRace)){
         return true;
     }
     else{
