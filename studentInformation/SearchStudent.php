@@ -14,7 +14,6 @@ require_once(THISROOT . "/common.php");
 
 
 
-
 ob_start();
 $currentStudent="";
 

@@ -21,47 +21,14 @@ require_once(THISROOT . "/common.php");
 
 
 ob_start();
-error_reporting(E_ERROR | E_PARSE);
 
-
-$currentAttendance="";
-
-if( isset($_GET["AdmissionNo"]) )
-{
-    $admissionNo = $_GET["AdmissionNo"];
-
-}
-elseif(isset($_GET["Class"]))
-{
-    $Class = $_GET["Class"];
-}
+$AdmissionNo ="";
+$DateFrom = "";
+$DateTo ="";
 
 
 
-$tableDetails = "none";
-$tableViewTable = "none";
-$fullPageHeight = 600;
 
-if (isset($_GET["search"]))
-{
-    $currentAttendance = null;
-
-    if ($_GET["Choice"] == "AdmissionNo")
-    {
-        $currentAttendance = ViewAttendance($_GET["value"]);
-    }
-    else if($_GET["Choice"] == "Class")
-    {
-        $currentAttendance = ViewAttendancebyclass($_GET["value"]);
-        //echo $_GET["value"];
-    }
-
-    $tableDetails= "none";
-    $tableViewTable= "block";
-
-}
-$admissionNo="";
-$Date = "";
 
 ?>
     <html>
@@ -70,56 +37,88 @@ $Date = "";
     <!--            #main{ height:--><?php //echo "$fullPageHeight" . "px";?><!-- }-->
     <!--            #footer{ top:--><?php //echo "$footerTop" . "px";?><!-- }-->
 
-                /*
-                ADD YOUR CSS HERE
-                */
-    h1{
-        text-align: center;
-    }
-    h3{
-        position: relative;
-        left:50px;
-    }
-    #info{
-        position: relative;
-        left: 40px;
-    }
-    .viewTable{
-        position: relative;
-        border-collapse: collapse;
-        left:25px;
-        max-width: 750px;
-        display: <?php echo $tableViewTable ?>;
-    }
-    .viewTable th{
-        width: 300px;
-        font-weight: 600;
-        color:white;
-        background-color: #005e77;
-    }
-    .viewTable tr.alt{
-        background-color: #bed9ff;
-    }
-    .viewTable td{
-        padding-left: 4px;
-        padding-right: 4px;
-        min-width: 60px;
-        text-align: center;
-    }
-    .details {
-        /*position: relative;*/
-        /*top:50px;*/
-        width:500px;
-        height:150px;
-        display: <?php echo $tableDetails ?>
-    }
-    input.button1 {
-        position:relative;
-        font-weight:bold;
-        font-size:15px;
-        right:-150px;
-        top:100px;
-    }
+            h1{
+                text-align: center;
+            }
+            h3{
+                position: relative;
+                left:50px;
+            }
+            #info{
+                position: absolute;
+                padding: 10px;
+                left: 40px;
+            }
+
+            .insert2
+            {
+                position:absolute;
+                left:330px;
+                top:275px;
+
+            }
+
+            .viewTable{
+                position: relative;
+                border-collapse: collapse;
+                left:25px;
+                max-width: 750px;
+                display: <?php echo $tableViewTable ?>;
+            }
+            .viewTable th{
+                width: 300px;
+                font-weight: 600;
+                color:white;
+                background-color: #005e77;
+            }
+            .viewTable tr.alt{
+                background-color: #bed9ff;
+            }
+            .viewTable td{
+                padding-left: 4px;
+                padding-right: 4px;
+                min-width: 60px;
+                text-align: center;
+            }
+            .details {
+                /*position: relative;*/
+                /*top:50px;*/
+                width:500px;
+                height:150px;
+                display: <?php echo $tableDetails ?>
+            }
+            input.button1 {
+                position:relative;
+                font-weight:bold;
+                font-size:15px;
+                right:-150px;
+                top:100px;
+            }
+
+            .resultsTable
+            {
+                position: absolute;
+                left: 300px;
+                top: 350px;
+            }
+
+            .insert{
+                position:relative;
+                left:40px;
+                bottom:5px;
+            }
+
+            .insert td{
+                padding:10px;
+            }
+
+
+
+
+
+
+
+
             </style>
         </head>
     <body>
@@ -133,79 +132,77 @@ $Date = "";
                 <table id="info">
                     <tr>
                         <td colspan="2"><span id="selection">Search by : </span>
-                            <input type="text" class="text1" name="value" value="">
+                            <input type="text" class="text1" name="search" value="">
                         </td>
-                        <td><input class="button" name="search" type="submit" value="Search"></td>
                     </tr>
-                    <tr><td></td><td>&nbsp;</td></tr>
+                    <tr><td><br></td></tr>
                     <tr>
-                        <td><input type="RADIO" name="Choice" value="AdmissionNo" checked />Admission Number</td>
-                        <!--                <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with-->
-                        <!--                    Initials</td> -->
-                        <!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
-                        <!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
-                        <td><input type="RADIO" name="Choice" value="Class" />Class</td>
-                        <!--                <td><input type="RADIO" name="Choice" value="House"  />House</td>-->
+                        <td><input type="radio" name="Choice" value="AdmissionNo"  />Admission Number</td>
+
+                        <td><input type="radio" name="Choice" value="Class" />Class</td>
+
+                        <td><input type="checkbox" name="viewAbsentCheck" value="ViewAbsentOnlyAbsentDays"  />View only absent days</td>
+
                     </tr>
+
+                    <tr><td><br></td></tr>
+
+                    <tr>
+                        <td>Date From</td>
+                        <td><input type="date" name="datefrom" value=""></td>
+                        <td>Date To</td>
+                        <td><input type="date" name="dateto" value=""></td>
+                    </tr>
+
+                    <tr><td><br></td></tr>
 
                 </table>
-            </form>
-            <br />
+
+                <table align="center" class="insert2">
+                    <tr style="text-align: center"><td><input type="submit" value="Search" name="value"></td></tr>
+                </table>
 
 
-            <form method="post">
-                <table class="viewTable">
-                    <tr>
-                        <th>AdmissionNo</th>
-                        <th>Date</th>
-                        <!--<th>Date of Birth</th>-->
-                        <!--<th>Grade and Class</th>*/
-                        <th></th>
-                    </tr>-->
-                    <?php
 
-                    $res = $currentStudent;
+                <table class="resultsTable">
 
-                    $i = 1;
+                    <th>Date</th>
+                    <th>Present</th>
 
-                    if (isFilled($res))
+                <?php
+
+                if(isset($_POST["search"]))
+                {
+                    if($_GET["Choice"] == "AdmissionNo")
                     {
-                        foreach($res as $row)
+                        $AdmissionNo = $_GET["value"];
+                        $DateFrom = $_GET["datefrom"];
+                        $DateTo = $_GET["dateto"];
+
+                        $result =  getAttendanceByAdmissionNo($AdmissionNo, $DateFrom,  $DateTo);
+
+                        foreach($result as $row)
                         {
                             $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" :
                                 "<tr><td>";
                             echo $top;
-                            echo "$row[0]";
-                            echo "<td>$row[1]</td>";
-                            echo "<td>$row[2]</td>";
-                            echo "<td>$row[3]</td>";
-                          //  echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand Details\" formaction=\"SearchStudent.php?expand=" . $row[0] . "\" /> </td> ";
-
-                            echo "</td></tr>";
+                            echo "<tr> $row[0] </tr>";
+                            echo "<tr> $row[1] </tr>";
                         }
-                    }
-                    else{
-                        echo "<tr>";
-                        echo "<td colspan='5'>There are no records to show</td>";
-                        echo "</tr>";
-                    }
 
-                    if (isset($_GET["search"]))
+                    }
+                    else if($_GET["Choice"] == "Class")
                     {
-                        $fullPageHeight = ( 600 + ($i * 18) );
+                        $Class = $_GET["value"];
                     }
+                }
 
-                    ?>
+                ?>
+
                 </table>
-            </form>
-            <br />
-            <br />
 
-
-
-
-
-</body>
+       </form>
+    </body>
 </html>
 <?php
 //Change these to what you want
