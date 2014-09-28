@@ -846,6 +846,13 @@ INSERT INTO `LabelLanguage` VALUES('Address', 0, 'Postal Address');
 INSERT INTO `LabelLanguage` VALUES('Address', 1, 'ලිපිනය');
 INSERT INTO `LabelLanguage` VALUES('House', 0, 'House');
 INSERT INTO `LabelLanguage` VALUES('House', 1, 'නිවාසය');
+INSERT INTO `LabelLanguage` VALUES('Staffallocation', 0, 'Class Teacher Allocation');
+INSERT INTO `LabelLanguage` VALUES('Staffallocation', 1, 'පන්ති භාර ගුරු භවතුන්');
+INSERT INTO `LabelLanguage` VALUES('Teachersid', 0, 'Teachers ID');
+INSERT INTO `LabelLanguage` VALUES('Teachersid', 1, 'අනුක්‍රමික අංකය');
+INSERT INTO `LabelLanguage` VALUES('gradeclass', 0, 'Grade and Class');
+INSERT INTO `LabelLanguage` VALUES('gradeclass', 1, 'වසර සහ පන්තිය');
+
 -- --------------------------------------------------------
 
 --

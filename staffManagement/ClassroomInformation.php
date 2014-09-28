@@ -114,18 +114,33 @@ if( isset($_GET["grade"]) )
             });
         </script>
     </head>
+    <?php
+    $language = $_COOKIE['language'];
+    $Grade = getLanguage('grade', $language);
+    $Class = getLanguage('class', $language);
+    $Teachersid = getLanguage('Teachersid', $language);
+    $Teachersname = getLanguage('Teachersname', $language);
+    $Staffallocation = getLanguage('Staffallocation', $language);
+    $update =  getLanguage('update', $language);
+    $expand = getLanguage('expand', $language);
+    $delete = getLanguage('delete',$language);
+    $staffID =  getLanguage('staffID', $language);
+    $gradeclass = getLanguage('gradeclass', $language);
+
+
+    ?>
     <body>
-    <h1 align="center"> Class-teacher Allocation</h1>
+    <h1 align="center"><?php echo getLanguage('Staffallocation', $language)?></h1>
     <br />
 
 
     <form method="post">
     <table class="ClassroomTable" align="center">
         <tr>
-            <th>Grade</th>
-            <th>Class</th>
-            <th>Teacher ID</th>
-            <th>Teachers' Name</th>
+            <th><?php echo getLanguage('grade', $language)?></th>
+            <th><?php echo getLanguage('class', $language)?></th>
+            <th><?php echo getLanguage('Teachersid', $language)?></th>
+            <th><?php echo getLanguage('Teachersname', $language)?></th>
             <th></th>
             <th></th>
         </tr>
@@ -167,7 +182,7 @@ if( isset($_GET["grade"]) )
     <form method="post">
         <table class="details" >
             <tr>
-                <td> Grade and Class</td>
+                <td><?php echo getLanguage('gradeclass', $language)?></td>
                 <td><input id="gradeAndClass" type="text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
                 <td id="suggestion"></td>
             </tr>
@@ -176,7 +191,7 @@ if( isset($_GET["grade"]) )
 <!--                <td><input type = "text" name="className" value="--><?php //echo $className ?><!--" /> </td>-->
 <!--            </tr>-->
             <tr>
-                <td> Staff ID </td>
+                <td><?php echo getLanguage('staffID', $language)?> </td>
                 <td colspan="2"><input type=text name="staffId"  /> </td>
                 </tr>
 
@@ -187,7 +202,7 @@ if( isset($_GET["grade"]) )
 
         <table align="center">
             <tr>
-                <td> <input type="Submit" value="Update" name="Submit" /> </td>
+                <td> <input type="Submit" value=<?php echo getLanguage('update', $language)?>></td>
             </tr>
         </table>
     </form>
