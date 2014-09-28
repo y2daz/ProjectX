@@ -186,10 +186,7 @@ if( isset($_GET["grade"]) )
                 <td><input id="gradeAndClass" type="text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
                 <td id="suggestion"></td>
             </tr>
-<!--            <tr>-->
-<!--                <td> Class Name </td>-->
-<!--                <td><input type = "text" name="className" value="--><?php //echo $className ?><!--" /> </td>-->
-<!--            </tr>-->
+
             <tr>
                 <td><?php echo getLanguage('staffID', $language)?> </td>
                 <td colspan="2"><input type=text name="staffId"  /> </td>
