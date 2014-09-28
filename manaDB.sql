@@ -1,12 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10deb1
--- http://www.phpmyadmin.net
---
-    -- Host: localhost
-    -- Generation Time: Aug 06, 2014 at 02:10 PM
-    -- Server version: 5.5.38-0ubuntu0.14.04.1
-    -- PHP Version: 5.5.9-1ubuntu4.3
-
 DROP DATABASE IF EXISTS `manaDB`;
 
 -- phpMyAdmin SQL Dump

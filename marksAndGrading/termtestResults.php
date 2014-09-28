@@ -19,23 +19,19 @@ if (isset($_POST["submit"]))
 
     $AdmissionNoVar =$_POST["AdmissionNumber"];
     $SubjectVar = $_GET["Subject"];
-    $YearVar = $_GET["Year"];
-    $GradeVar = $_GET["Grade"];
     $TermVar = $_GET["Term"];
     $MarkVar = $_POST["marks"];
     $RemarksVar = $_POST["remarks"];
 
 
-    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $YearVar, $GradeVar, $TermVar, $MarkVar, $RemarksVar);
+    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $TermVar, $MarkVar, $RemarksVar);
 
 
-    echo $AdmissionNoVar . "<br />";
-    echo $SubjectVar. "<br />";
-    echo $YearVar . "<br />";
-    echo $GradeVar . "<br />";
-    echo $TermVar . "<br />";
-    echo $MarkVar . "<br />";
-    echo $RemarksVar . "<br />";
+//    echo $AdmissionNoVar . "<br />";
+//    echo $SubjectVar. "<br />";
+//    echo $TermVar . "<br />";
+//    echo $MarkVar . "<br />";
+//    echo $RemarksVar . "<br />";
 
 
 
@@ -284,7 +280,7 @@ else
 //Change these to what you want
 $fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Term Test Results";
 //Only change above
 
 $pageContent = ob_get_contents();
