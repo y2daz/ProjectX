@@ -405,7 +405,7 @@ function substituteTeacher(day, position, originalID, replacementID, originalNam
             }
         },
         state2: {
-            html:'Incorrect Date Provided',
+            html:'Please select a ' + weekday[day],
             focus: 1,
             submit:function( e, v, m, f){
                 e.preventDefault();

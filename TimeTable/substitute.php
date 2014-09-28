@@ -46,13 +46,17 @@ if(isset($_POST["getSubstitute"]))
 
 
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+    $selectedDay = $_POST["Day"];
+    $selectedPosition = $_POST["Position"];
 
+    $daySet = array("Monday","Tuesday","Wednesday","Thursday","Friday");
+    $periodSet = array("1st" , "2nd", "3rd" , "4th" , "5th" , "6th" , "7th" , "8th");
     if($freeTeachersSet == null)
     {
         sendNotification("No free teachers.");
     }
     else{
-        sendNotification("Teachers available for substitution obtained.");
+        sendNotification("Teachers available for " . $daySet[$selectedDay]." ".$periodSet[$selectedPosition]. " period.");
     }
 
     $row = $freeTeachersSet[0];
