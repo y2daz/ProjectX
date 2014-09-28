@@ -27,8 +27,8 @@ if(isset($_GET["logout"]))
     header("Location: " . PATHFRONT . "/Menu.php");
 }
 
-
-$result = getAttendance();
+//$AdmissionNo;
+//$result = getAttendance();
 
 /*$line1 = "Class Wise Report";
 $line2 = "D.S Senanayake College Colombo 7";
@@ -249,40 +249,43 @@ $column2Header = "Date"; **/
     </form>
 
 
-    <table class="report">
-        <tr class="secret">
-        </tr>
-        <tr class="headerRow">
-            <td id="col_0"><?php echo $column0Header ?></td>
-            <td id="col_1"><?php echo $column1Header ?></td>
-            <td id="col_2"><?php echo $column2Header ?></td>
-        </tr>
+    <table>
+
+        <th>Admission Number</th>
+        <th>Date</th>
+        <th>is Present</th>
+
+        <?php
+
+        $result = getAttendancereport();
+
+        if ($result == null)
+        {
+            echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
+        }
+        else
+        {
+            foreach($result as $row)
+            {
+
+                echo "<tr>";
+
+                echo "<td>$row[0]</td>";
+                echo "<td>$row[1]</td>";
+                echo "<td>$row[2]</td>";
+                echo "</tr>";
+            }
+        }
+
+
+        ?>
+
+
     </table>
 
-    <?php
-
-    $result = getAttendance();
-
-    if ($result == null)
-    {
-        echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
-    }
-    else
-    {
-        foreach($result as $row)
-        {
-            echo "<tr>\n";
-            echo "<td>$row[0]</td>";
-            echo "<td>$row[1]</td>";
-            echo "<td>$row[2]</td>";
-            echo "</tr>\n";
-        }
-    }
 
 
-    ?>
-
-    <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
+<!--    <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>-->
 
 <br />
 
