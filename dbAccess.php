@@ -958,7 +958,7 @@ function substitute($subject)
 
 }
 
-function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID )
+function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -973,7 +973,7 @@ function confirmSubstitution($StaffID , $Grade , $Class , $Day , $Position , $Da
     {
         $isdelete = 0 ;
 
-        $stmt->bind_param("sisiissi", $StaffID , $Grade , $Class , $Day , $Position , $Date , $SubsttitutedTeachedID , $isdelete);
+        $stmt->bind_param("sisiissi", $replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID , $isdelete);
             if ($stmt->execute())
             {
                 $stmt->close();

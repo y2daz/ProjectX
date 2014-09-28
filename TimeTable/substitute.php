@@ -124,6 +124,27 @@ if (isset($_GET["getTimetable"]))
                     getTeachersForSubstition( staffID, position);
                 });
 
+                $('.confirm').on("click", function(e){
+                    var id = $(this).attr("name");
+                    var idArr = id.split("_");
+                    id = idArr[1].trim();
+
+                    var position = parseInt( $("#subsPosition").val() );
+                    var day = parseInt( $("#subsDay").val() ) ;
+
+                    var replacementName = $("#replacementName_" + id).html();
+
+                    var number = (position + (8 * day));
+//                    var substitutedId = parseInt( getParameterByName("staffID") )
+                    var substitutedId = parseInt( $('#staffId').val() );
+                    var substitutedName = $('#staffName').html();
+
+//                    editOLGrade(2, "English");
+                    substituteTeacher(day, position, substitutedId, id, substitutedName, replacementName);
+//                    substituteTeacher(day, position);
+//                    requestConfirmation("Are you sure you want to substitute " + substitutedId + " (" + substitutedName + ") for " + id + " at position " + position + ", " + day + " that is " + number + "?", "Confirm Substitution" )
+                });
+
             });
         </script>
 
@@ -141,14 +162,14 @@ if (isset($_GET["getTimetable"]))
                 <td><input type="submit" class="text1" name="getTimetable" value="Submit"/></td>
             </tr>
             <tr><td></td>
-                <td colspan="2"><label class="text1"><?php echo $currentStaffName;?></label></td>
+                <td colspan="2"><label id="staffName" class="text1"><?php echo $currentStaffName;?></label></td>
             </tr>
         </table>
     </form>
 
 
     <form name="frmTimetable" onsubmit="return classValidation()" method="post">
-        <input name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
+        <input id="staffId" name="staffId" value="<?php echo $currentStaffId?>" hidden="hidden"/>
 
         <table class="timetable" >
             <tr>
@@ -237,11 +258,11 @@ if (isset($_GET["getTimetable"]))
                             echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
                             echo "<tr>";
                             echo "<td>" . $row[0] . "</td>";
-                            echo "<td>" . $row[1] . "</td>";
+                            echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
                             echo "<td>" . $row[2] . "</td>";
                             echo "<td>" . $row[3] . "</td>";
                            // $date = date("y/m/d");
-                            echo "<td><input type = button value='Confirm' name='Confirm'  </td>";
+                            echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                             echo "</tr>";
                             $rowcount++;
                         }
@@ -255,7 +276,8 @@ if (isset($_GET["getTimetable"]))
             </table>
         </form>
 
-    </form>
+    <input id="subsPosition" hidden="hidden" name="subsPosition" value="<?php echo $_POST["Position"]  ?>"/>
+    <input id="subsDay" hidden="hidden" name="subsDay" value="<?php echo $_POST["Day"]  ?>"/>
 
     </body>
     </html>

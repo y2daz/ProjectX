@@ -139,7 +139,7 @@ if (isset($_GET["getTimetable"]))
                 });
 
             });
-        </script>
+            </script>
     </head>
     <body>
 
@@ -152,7 +152,7 @@ if (isset($_GET["getTimetable"]))
             <tr>
                 <td><label><?php echo getLanguage("staffId",$lang)?></td>
                     <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
-                    <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
+                    <td><input id="getTimetable" type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
 
             </tr>
             <tr <?php echo (!isFilled($currentStaffName))? "style='display:none'" : ""; ?> >
@@ -244,7 +244,7 @@ if (isset($_GET["getTimetable"]))
         <br/>
         <table id="submit">
             <tr>
-                <td><input type="submit" name="Submit" value="Save Changes" ></td>
+                <td><input id="btnsavechanges" type="submit" name="Submit" value="Save Changes"  ></td>
             </tr>
         </table>
 
