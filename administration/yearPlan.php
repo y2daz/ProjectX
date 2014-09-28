@@ -101,6 +101,7 @@ function printArrJs($Arr){
             .days:hover {
                 background:#9F0;
                 border-color:#000;
+                cursor: pointer;
             }
             .day6 {
                 background:#ECECEC;
