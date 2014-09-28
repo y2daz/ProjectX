@@ -49,15 +49,12 @@ $DateTo ="";
                 padding: 10px;
                 left: 40px;
             }
-
-            .insert2
-            {
+            .insert2{
                 position:absolute;
                 left:330px;
                 top:275px;
 
             }
-
             .viewTable{
                 position: relative;
                 border-collapse: collapse;
@@ -124,7 +121,7 @@ $DateTo ="";
     <body>
       <form>
 
-        <table class="insert" cellspacing="0">
+        <table class="insert" >
         <h1>View Attendance</h1>
 
             <form method="GET">

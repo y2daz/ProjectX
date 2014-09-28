@@ -2733,7 +2733,7 @@ function savePermissions($role, $permArr){
 }
 
 //for report
-function getAttendance()
+function getAttendance($minDate, $maxDate)
 {
 
     $dbObj = new dbConnect();
@@ -2745,7 +2745,7 @@ function getAttendance()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select AdmissionNo, Date, isPresent FROM attendance WHERE isDeleted = 0 ORDER BY AdmissionNo;"))
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, Date, isPresent FROM Attendance WHERE  Date BETWEEN ? AND ? ORDER BY AdmissionNo;"))
     {
         if ($stmt->execute())
         {
