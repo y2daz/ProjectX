@@ -109,7 +109,7 @@ else
         .insert
         {
             position: absolute;
-            left: 240px;
+            left: 220px;
             top: 350px;
             width: 300px;
             text-align:left;
@@ -119,7 +119,7 @@ else
         .insert2
         {
             position: absolute;
-            left: 240px;
+            left: 220px;
             top: 500px;
             width: 240px;
 

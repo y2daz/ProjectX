@@ -2209,7 +2209,7 @@ function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subje
 
 }
 
-function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, $Remarks)
+function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Mark, $Remarks)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2220,10 +2220,10 @@ function insertTermTestMarks($AdmissionNo, $Subject,$Year,$Grade, $Term, $Mark, 
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?)"))
     {
         $isDeleted = 0;
-        $stmt->bind_param("ssissisi", $AdmissionNo,$Subject,$Year,$Grade, $Term, $Mark, $Remarks, $isDeleted);
+        $stmt->bind_param("ssiisi", $AdmissionNo,$Subject, $Term, $Mark, $Remarks, $isDeleted);
 
         if($stmt->execute())
         {
@@ -2792,4 +2792,4 @@ function isHoliday($date)
     return false;
 }
 
-//SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1
+//SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1Fs
