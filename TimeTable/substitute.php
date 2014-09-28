@@ -44,24 +44,29 @@ if(isset($_POST["getSubstitute"]))
 
     $currentStaffId = $_POST["StaffID"];
 
-
+    if($subject != null){
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+    }
+
     $selectedDay = $_POST["Day"];
     $selectedPosition = $_POST["Position"];
 
     $daySet = array("Monday","Tuesday","Wednesday","Thursday","Friday");
     $periodSet = array("1st" , "2nd", "3rd" , "4th" , "5th" , "6th" , "7th" , "8th");
-    if($freeTeachersSet == null)
+
+    if($freeTeachersSet == null && $subject != null)
     {
         sendNotification("No free teachers.");
     }
-    else{
+    else if($subject == null){
+        sendNotification("bla bla");
+    }else
         sendNotification("Teachers available for " . $daySet[$selectedDay]." ".$periodSet[$selectedPosition]. " period.");
     }
 
     $row = $freeTeachersSet[0];
     $currentStaffName = $row[0];
-}
+
 
 if(isset( $_POST["substitute"] )){
     $operation = confirmSubstitution( $_POST["replacementStaffID"], null, null, $_POST["Day"], $_POST["Position"], $_POST["Date"], $_POST["originalID"]);
@@ -103,7 +108,7 @@ if (isset($_GET["getTimetable"]))
                 border-collapse: collapse;
                 left:25px;
                 max-width: 750px;
-                display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none") ?> ;
+                display: <?php echo ( isset($_POST["getSubstitute"]) && $subject!=null ? "block" : "none")  ?> ;
             }
             .viewTable th{
                 width: 300px;
