@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 27, 2014 at 03:47 PM
+-- Generation Time: Sep 28, 2014 at 11:38 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -38,8 +38,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `manaDB`
 --
-CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `manaDB`;
 
 -- --------------------------------------------------------
 
@@ -348,8 +346,12 @@ INSERT INTO `LabelLanguage` VALUES('addManager', 0, 'Add Event Managers ');
 INSERT INTO `LabelLanguage` VALUES('addManager', 1, 'සිදුවීම් කළමනාකරුවන් එක් කරන්න ');
 INSERT INTO `LabelLanguage` VALUES('addnewEvent', 0, 'Add New Event');
 INSERT INTO `LabelLanguage` VALUES('addnewEvent', 1, 'නව සිදුවීමක් එකතු කරන්න');
+INSERT INTO `LabelLanguage` VALUES('Address', 0, 'Postal Address');
+INSERT INTO `LabelLanguage` VALUES('Address', 1, 'ලිපිනය');
 INSERT INTO `LabelLanguage` VALUES('addTransaction', 0, 'Add Transaction');
 INSERT INTO `LabelLanguage` VALUES('addTransaction', 1, 'ගනුදෙනුව එකතු කරන්න');
+INSERT INTO `LabelLanguage` VALUES('AdmissionNo', 0, 'Admission No');
+INSERT INTO `LabelLanguage` VALUES('AdmissionNo', 1, 'ඇතුලත්වීමේ අංකය');
 INSERT INTO `LabelLanguage` VALUES('agriculture', 0, 'Agriculture');
 INSERT INTO `LabelLanguage` VALUES('agriculture', 1, 'කෘෂිකර්මය');
 INSERT INTO `LabelLanguage` VALUES('ALevel', 0, ' A Level');
@@ -474,6 +476,8 @@ INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 0, 'Date Joined this Scho
 INSERT INTO `LabelLanguage` VALUES('dateJoinedSchool', 1, 'මෙම විදුහලේ පත්වීම භාරගත් වර්ෂය හා මාසය');
 INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 0, 'Date of Birth');
 INSERT INTO `LabelLanguage` VALUES('dateOfBirth', 1, 'උපන් දිනය');
+INSERT INTO `LabelLanguage` VALUES('delete', 0, 'Delete');
+INSERT INTO `LabelLanguage` VALUES('delete', 1, 'ඉවත්කරන්න');
 INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 0, 'Deputy Principal');
 INSERT INTO `LabelLanguage` VALUES('deputyPrincipal', 1, 'නියෝජ්‍ය විදුහල්පති');
 INSERT INTO `LabelLanguage` VALUES('description', 0, 'Description');
@@ -514,6 +518,8 @@ INSERT INTO `LabelLanguage` VALUES('eventName', 0, 'EventName');
 INSERT INTO `LabelLanguage` VALUES('eventName', 1, 'සිදුවීම');
 INSERT INTO `LabelLanguage` VALUES('eventType', 0, 'Event Type');
 INSERT INTO `LabelLanguage` VALUES('eventType', 1, 'සිදුවීම් වර්ගය');
+INSERT INTO `LabelLanguage` VALUES('expand', 0, 'Expand');
+INSERT INTO `LabelLanguage` VALUES('expand', 1, 'වැඩි විස්තර');
 INSERT INTO `LabelLanguage` VALUES('female', 0, 'Female');
 INSERT INTO `LabelLanguage` VALUES('female', 1, 'ගැහැණු');
 INSERT INTO `LabelLanguage` VALUES('foreignLanguageExcludingEnglish', 0, 'Foreign Language Excluding English');
@@ -534,6 +540,8 @@ INSERT INTO `LabelLanguage` VALUES('generalInformation', 0, 'General Information
 INSERT INTO `LabelLanguage` VALUES('generalInformation', 1, 'සාමාන්‍ය තොරතුරු');
 INSERT INTO `LabelLanguage` VALUES('grade', 0, ' Grade');
 INSERT INTO `LabelLanguage` VALUES('grade', 1, 'වසර');
+INSERT INTO `LabelLanguage` VALUES('gradeclass', 0, 'Grade and Class');
+INSERT INTO `LabelLanguage` VALUES('gradeclass', 1, 'වසර සහ පන්තිය');
 INSERT INTO `LabelLanguage` VALUES('graduates', 0, 'Graduates');
 INSERT INTO `LabelLanguage` VALUES('graduates', 1, 'උපාධි');
 INSERT INTO `LabelLanguage` VALUES('healthAndPE', 0, 'Health and P.E.');
@@ -548,6 +556,8 @@ INSERT INTO `LabelLanguage` VALUES('hinduism', 0, 'Hinduism');
 INSERT INTO `LabelLanguage` VALUES('hinduism', 1, 'හින්දු');
 INSERT INTO `LabelLanguage` VALUES('homeScience', 0, 'Home Science');
 INSERT INTO `LabelLanguage` VALUES('homeScience', 1, 'ගෘහ විද්‍යාව');
+INSERT INTO `LabelLanguage` VALUES('House', 0, 'House');
+INSERT INTO `LabelLanguage` VALUES('House', 1, 'නිවාසය');
 INSERT INTO `LabelLanguage` VALUES('indianTamil', 0, 'Indian Tamil');
 INSERT INTO `LabelLanguage` VALUES('indianTamil', 1, 'ඉන්දියානු  දෙමළ');
 INSERT INTO `LabelLanguage` VALUES('informationTechnology', 0, 'Information Technology');
@@ -700,6 +710,8 @@ INSERT INTO `LabelLanguage` VALUES('science', 0, 'Science');
 INSERT INTO `LabelLanguage` VALUES('science', 1, 'විද්‍යාව');
 INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 0, 'Science And Maths');
 INSERT INTO `LabelLanguage` VALUES('scienceAndMaths', 1, 'විද්‍යා -ගණිත');
+INSERT INTO `LabelLanguage` VALUES('search', 0, 'Search');
+INSERT INTO `LabelLanguage` VALUES('search', 1, 'සොයන්න');
 INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 0, 'Search and Update Details');
 INSERT INTO `LabelLanguage` VALUES('searchStaffMember', 1, 'තොරතුරු සෙවීම හා යාවත්කාලීන කිරීම');
 INSERT INTO `LabelLanguage` VALUES('secondaryArts', 0, 'Secondary Arts');
@@ -764,6 +776,8 @@ INSERT INTO `LabelLanguage` VALUES('staffAdvisorFullTime', 0, 'Staff Advisor (Fu
 INSERT INTO `LabelLanguage` VALUES('staffAdvisorFullTime', 1, 'ගුරු උපදේශක (පුර්නකාලින)');
 INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 0, 'Staff Advisor (Part-Time)');
 INSERT INTO `LabelLanguage` VALUES('staffAdvisorPartTime', 1, 'ගුරු උපදේශක (අර්ධකාලින)');
+INSERT INTO `LabelLanguage` VALUES('Staffallocation', 0, 'Class Teacher Allocation');
+INSERT INTO `LabelLanguage` VALUES('Staffallocation', 1, 'පන්ති භාර ගුරු භවතුන්');
 INSERT INTO `LabelLanguage` VALUES('staffID', 0, 'Staff ID');
 INSERT INTO `LabelLanguage` VALUES('staffID', 1, 'අනුක්‍රමික අංකය');
 INSERT INTO `LabelLanguage` VALUES('staffManagement', 0, 'Staff Details');
@@ -788,6 +802,8 @@ INSERT INTO `LabelLanguage` VALUES('teacher', 0, 'Teacher');
 INSERT INTO `LabelLanguage` VALUES('teacher', 1, 'ගුරුවරයා');
 INSERT INTO `LabelLanguage` VALUES('teacherDay', 0, 'Teacher''s Day');
 INSERT INTO `LabelLanguage` VALUES('teacherDay', 1, 'ගුරු දිනය');
+INSERT INTO `LabelLanguage` VALUES('Teachersid', 0, 'Teachers ID');
+INSERT INTO `LabelLanguage` VALUES('Teachersid', 1, 'අනුක්‍රමික අංකය');
 INSERT INTO `LabelLanguage` VALUES('teachersName', 0, 'Teacher''s Name');
 INSERT INTO `LabelLanguage` VALUES('teachersName', 1, 'ගුරුවරයාගේ නම');
 INSERT INTO `LabelLanguage` VALUES('technology', 0, 'Technology');
@@ -818,6 +834,8 @@ INSERT INTO `LabelLanguage` VALUES('type', 0, 'Type');
 INSERT INTO `LabelLanguage` VALUES('type', 1, 'වර්ගය');
 INSERT INTO `LabelLanguage` VALUES('unmarried', 0, 'Not Married');
 INSERT INTO `LabelLanguage` VALUES('unmarried', 1, 'අවිවාහක');
+INSERT INTO `LabelLanguage` VALUES('update', 0, 'Update');
+INSERT INTO `LabelLanguage` VALUES('update', 1, 'යාවත්කාලින කරන්න');
 INSERT INTO `LabelLanguage` VALUES('viewInvitees', 0, 'View Invitees List');
 INSERT INTO `LabelLanguage` VALUES('viewInvitees', 1, 'ආරාධිත ලැයිස්තුව බලන්න');
 INSERT INTO `LabelLanguage` VALUES('viewLeaveHistory', 0, 'View Leave History');
@@ -832,26 +850,6 @@ INSERT INTO `LabelLanguage` VALUES('westernMusic', 0, 'Western Music');
 INSERT INTO `LabelLanguage` VALUES('westernMusic', 1, 'සංගීතය-පෙරදිග');
 INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
 INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
-INSERT INTO `LabelLanguage` VALUES('update', 0, 'Update');
-INSERT INTO `LabelLanguage` VALUES('update', 1, 'යාවත්කාලින කරන්න');
-INSERT INTO `LabelLanguage` VALUES('search', 0, 'Search');
-INSERT INTO `LabelLanguage` VALUES('search', 1, 'සොයන්න');
-INSERT INTO `LabelLanguage` VALUES('expand', 0, 'Expand');
-INSERT INTO `LabelLanguage` VALUES('expand', 1, 'වැඩි විස්තර');
-INSERT INTO `LabelLanguage` VALUES('delete', 0, 'Delete');
-INSERT INTO `LabelLanguage` VALUES('delete', 1, 'ඉවත්කරන්න');
-INSERT INTO `LabelLanguage` VALUES('AdmissionNo', 0, 'Admission No');
-INSERT INTO `LabelLanguage` VALUES('AdmissionNo', 1, 'ඇතුලත්වීමේ අංකය');
-INSERT INTO `LabelLanguage` VALUES('Address', 0, 'Postal Address');
-INSERT INTO `LabelLanguage` VALUES('Address', 1, 'ලිපිනය');
-INSERT INTO `LabelLanguage` VALUES('House', 0, 'House');
-INSERT INTO `LabelLanguage` VALUES('House', 1, 'නිවාසය');
-INSERT INTO `LabelLanguage` VALUES('Staffallocation', 0, 'Class Teacher Allocation');
-INSERT INTO `LabelLanguage` VALUES('Staffallocation', 1, 'පන්ති භාර ගුරු භවතුන්');
-INSERT INTO `LabelLanguage` VALUES('Teachersid', 0, 'Teachers ID');
-INSERT INTO `LabelLanguage` VALUES('Teachersid', 1, 'අනුක්‍රමික අංකය');
-INSERT INTO `LabelLanguage` VALUES('gradeclass', 0, 'Grade and Class');
-INSERT INTO `LabelLanguage` VALUES('gradeclass', 1, 'වසර සහ පන්තිය');
 
 -- --------------------------------------------------------
 
@@ -982,7 +980,7 @@ CREATE TABLE IF NOT EXISTS `Permissions` (
   `permDesc` varchar(50) NOT NULL,
   `orderKey` int(11) DEFAULT '0',
   PRIMARY KEY (`permId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `Permissions`
@@ -1009,6 +1007,7 @@ INSERT INTO `Permissions` VALUES(18, 'Enter O/A Level Examination Grades', 61);
 INSERT INTO `Permissions` VALUES(19, 'Enter Term Test Marks', 61);
 INSERT INTO `Permissions` VALUES(20, 'Search Grades', 61);
 INSERT INTO `Permissions` VALUES(21, 'Staff Report', 1);
+INSERT INTO `Permissions` VALUES(22, 'Manage Users', 71);
 
 -- --------------------------------------------------------
 
@@ -1027,27 +1026,6 @@ CREATE TABLE IF NOT EXISTS `RolePerm` (
 -- Dumping data for table `RolePerm`
 --
 
-INSERT INTO `RolePerm` VALUES(1, 13);
-INSERT INTO `RolePerm` VALUES(1, 1);
-INSERT INTO `RolePerm` VALUES(1, 14);
-INSERT INTO `RolePerm` VALUES(1, 7);
-INSERT INTO `RolePerm` VALUES(1, 18);
-INSERT INTO `RolePerm` VALUES(1, 19);
-INSERT INTO `RolePerm` VALUES(1, 12);
-INSERT INTO `RolePerm` VALUES(1, 15);
-INSERT INTO `RolePerm` VALUES(1, 4);
-INSERT INTO `RolePerm` VALUES(1, 5);
-INSERT INTO `RolePerm` VALUES(1, 3);
-INSERT INTO `RolePerm` VALUES(1, 17);
-INSERT INTO `RolePerm` VALUES(1, 20);
-INSERT INTO `RolePerm` VALUES(1, 11);
-INSERT INTO `RolePerm` VALUES(1, 2);
-INSERT INTO `RolePerm` VALUES(1, 21);
-INSERT INTO `RolePerm` VALUES(1, 9);
-INSERT INTO `RolePerm` VALUES(1, 10);
-INSERT INTO `RolePerm` VALUES(1, 8);
-INSERT INTO `RolePerm` VALUES(1, 6);
-INSERT INTO `RolePerm` VALUES(1, 16);
 INSERT INTO `RolePerm` VALUES(2, 1);
 INSERT INTO `RolePerm` VALUES(2, 7);
 INSERT INTO `RolePerm` VALUES(2, 4);
@@ -1070,46 +1048,6 @@ INSERT INTO `RolePerm` VALUES(4, 11);
 INSERT INTO `RolePerm` VALUES(4, 9);
 INSERT INTO `RolePerm` VALUES(4, 6);
 INSERT INTO `RolePerm` VALUES(4, 16);
-INSERT INTO `RolePerm` VALUES(5, 13);
-INSERT INTO `RolePerm` VALUES(5, 14);
-INSERT INTO `RolePerm` VALUES(5, 7);
-INSERT INTO `RolePerm` VALUES(5, 18);
-INSERT INTO `RolePerm` VALUES(5, 19);
-INSERT INTO `RolePerm` VALUES(5, 12);
-INSERT INTO `RolePerm` VALUES(5, 15);
-INSERT INTO `RolePerm` VALUES(5, 4);
-INSERT INTO `RolePerm` VALUES(5, 3);
-INSERT INTO `RolePerm` VALUES(5, 17);
-INSERT INTO `RolePerm` VALUES(5, 20);
-INSERT INTO `RolePerm` VALUES(5, 11);
-INSERT INTO `RolePerm` VALUES(5, 2);
-INSERT INTO `RolePerm` VALUES(5, 21);
-INSERT INTO `RolePerm` VALUES(5, 9);
-INSERT INTO `RolePerm` VALUES(5, 10);
-INSERT INTO `RolePerm` VALUES(5, 8);
-INSERT INTO `RolePerm` VALUES(5, 6);
-INSERT INTO `RolePerm` VALUES(5, 16);
-INSERT INTO `RolePerm` VALUES(6, 13);
-INSERT INTO `RolePerm` VALUES(6, 1);
-INSERT INTO `RolePerm` VALUES(6, 14);
-INSERT INTO `RolePerm` VALUES(6, 7);
-INSERT INTO `RolePerm` VALUES(6, 18);
-INSERT INTO `RolePerm` VALUES(6, 19);
-INSERT INTO `RolePerm` VALUES(6, 12);
-INSERT INTO `RolePerm` VALUES(6, 15);
-INSERT INTO `RolePerm` VALUES(6, 4);
-INSERT INTO `RolePerm` VALUES(6, 5);
-INSERT INTO `RolePerm` VALUES(6, 3);
-INSERT INTO `RolePerm` VALUES(6, 17);
-INSERT INTO `RolePerm` VALUES(6, 20);
-INSERT INTO `RolePerm` VALUES(6, 11);
-INSERT INTO `RolePerm` VALUES(6, 2);
-INSERT INTO `RolePerm` VALUES(6, 21);
-INSERT INTO `RolePerm` VALUES(6, 9);
-INSERT INTO `RolePerm` VALUES(6, 10);
-INSERT INTO `RolePerm` VALUES(6, 8);
-INSERT INTO `RolePerm` VALUES(6, 6);
-INSERT INTO `RolePerm` VALUES(6, 16);
 INSERT INTO `RolePerm` VALUES(3, 2);
 INSERT INTO `RolePerm` VALUES(3, 21);
 INSERT INTO `RolePerm` VALUES(3, 3);
@@ -1126,6 +1064,70 @@ INSERT INTO `RolePerm` VALUES(3, 14);
 INSERT INTO `RolePerm` VALUES(3, 16);
 INSERT INTO `RolePerm` VALUES(3, 17);
 INSERT INTO `RolePerm` VALUES(3, 20);
+INSERT INTO `RolePerm` VALUES(1, 2);
+INSERT INTO `RolePerm` VALUES(1, 21);
+INSERT INTO `RolePerm` VALUES(1, 3);
+INSERT INTO `RolePerm` VALUES(1, 4);
+INSERT INTO `RolePerm` VALUES(1, 5);
+INSERT INTO `RolePerm` VALUES(1, 6);
+INSERT INTO `RolePerm` VALUES(1, 7);
+INSERT INTO `RolePerm` VALUES(1, 8);
+INSERT INTO `RolePerm` VALUES(1, 9);
+INSERT INTO `RolePerm` VALUES(1, 10);
+INSERT INTO `RolePerm` VALUES(1, 11);
+INSERT INTO `RolePerm` VALUES(1, 12);
+INSERT INTO `RolePerm` VALUES(1, 13);
+INSERT INTO `RolePerm` VALUES(1, 14);
+INSERT INTO `RolePerm` VALUES(1, 15);
+INSERT INTO `RolePerm` VALUES(1, 16);
+INSERT INTO `RolePerm` VALUES(1, 17);
+INSERT INTO `RolePerm` VALUES(1, 18);
+INSERT INTO `RolePerm` VALUES(1, 19);
+INSERT INTO `RolePerm` VALUES(1, 20);
+INSERT INTO `RolePerm` VALUES(1, 1);
+INSERT INTO `RolePerm` VALUES(1, 22);
+INSERT INTO `RolePerm` VALUES(5, 2);
+INSERT INTO `RolePerm` VALUES(5, 21);
+INSERT INTO `RolePerm` VALUES(5, 3);
+INSERT INTO `RolePerm` VALUES(5, 4);
+INSERT INTO `RolePerm` VALUES(5, 6);
+INSERT INTO `RolePerm` VALUES(5, 7);
+INSERT INTO `RolePerm` VALUES(5, 8);
+INSERT INTO `RolePerm` VALUES(5, 9);
+INSERT INTO `RolePerm` VALUES(5, 10);
+INSERT INTO `RolePerm` VALUES(5, 11);
+INSERT INTO `RolePerm` VALUES(5, 12);
+INSERT INTO `RolePerm` VALUES(5, 13);
+INSERT INTO `RolePerm` VALUES(5, 14);
+INSERT INTO `RolePerm` VALUES(5, 15);
+INSERT INTO `RolePerm` VALUES(5, 16);
+INSERT INTO `RolePerm` VALUES(5, 17);
+INSERT INTO `RolePerm` VALUES(5, 18);
+INSERT INTO `RolePerm` VALUES(5, 19);
+INSERT INTO `RolePerm` VALUES(5, 20);
+INSERT INTO `RolePerm` VALUES(5, 1);
+INSERT INTO `RolePerm` VALUES(6, 2);
+INSERT INTO `RolePerm` VALUES(6, 21);
+INSERT INTO `RolePerm` VALUES(6, 3);
+INSERT INTO `RolePerm` VALUES(6, 4);
+INSERT INTO `RolePerm` VALUES(6, 5);
+INSERT INTO `RolePerm` VALUES(6, 6);
+INSERT INTO `RolePerm` VALUES(6, 7);
+INSERT INTO `RolePerm` VALUES(6, 8);
+INSERT INTO `RolePerm` VALUES(6, 9);
+INSERT INTO `RolePerm` VALUES(6, 10);
+INSERT INTO `RolePerm` VALUES(6, 11);
+INSERT INTO `RolePerm` VALUES(6, 12);
+INSERT INTO `RolePerm` VALUES(6, 13);
+INSERT INTO `RolePerm` VALUES(6, 14);
+INSERT INTO `RolePerm` VALUES(6, 15);
+INSERT INTO `RolePerm` VALUES(6, 16);
+INSERT INTO `RolePerm` VALUES(6, 17);
+INSERT INTO `RolePerm` VALUES(6, 18);
+INSERT INTO `RolePerm` VALUES(6, 19);
+INSERT INTO `RolePerm` VALUES(6, 20);
+INSERT INTO `RolePerm` VALUES(6, 1);
+INSERT INTO `RolePerm` VALUES(6, 22);
 
 -- --------------------------------------------------------
 
@@ -1147,7 +1149,7 @@ INSERT INTO `Roles` VALUES(1, 'Full Control');
 INSERT INTO `Roles` VALUES(2, 'Single User');
 INSERT INTO `Roles` VALUES(3, 'Principal');
 INSERT INTO `Roles` VALUES(4, 'Teacher');
-INSERT INTO `Roles` VALUES(5, 'Date Entry Operator');
+INSERT INTO `Roles` VALUES(5, 'Data Entry Operator');
 INSERT INTO `Roles` VALUES(6, 'Administrator');
 
 -- --------------------------------------------------------
