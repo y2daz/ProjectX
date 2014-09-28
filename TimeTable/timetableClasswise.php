@@ -116,7 +116,7 @@ if (isset($_GET["getTimetable"]))
                 border-collapse: collapse;
                 left:25px;
                 max-width: 750px;
-                display: <?php echo $tableViewTable ?>;
+                display: none;
             }
             .viewTable th{
                 width: 300px;
@@ -159,6 +159,7 @@ if (isset($_GET["getTimetable"]))
 
 
     <h1><?php echo getLanguage("timetable", $lang) ?></h1>
+
 
     <form method="get">
         <table id="info">

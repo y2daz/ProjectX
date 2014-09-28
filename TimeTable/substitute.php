@@ -103,7 +103,7 @@ if (isset($_GET["getTimetable"]))
                 border-collapse: collapse;
                 left:25px;
                 max-width: 750px;
-                display: <?php echo $tableViewTable ?>;
+                display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none") ?> ;
             }
             .viewTable th{
                 width: 300px;
@@ -168,7 +168,6 @@ if (isset($_GET["getTimetable"]))
 
     <h1><?php echo getLanguage("timetable", $lang) ?></h1>
 
-    <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
     <form method="get">
         <table id="info">
             <tr>
@@ -181,6 +180,41 @@ if (isset($_GET["getTimetable"]))
             </tr>
         </table>
     </form>
+    <br />
+    <br />
+    <form method="post">
+        <table class="viewTable">
+            <tr>
+                <th>Staff ID</th>
+                <th>Teacher's Name</th>
+                <th>Main Subject</th>
+                <th>Contact Number</th>
+                <th></th>
+            </tr>
+            <?php
+            $rowcount = 0;
+            if (isFilled($freeTeachersSet)){
+
+                foreach($freeTeachersSet as $row){
+                    echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
+                    echo "<tr>";
+                    echo "<td>" . $row[0] . "</td>";
+                    echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
+                    echo "<td>" . $row[2] . "</td>";
+                    echo "<td>" . $row[3] . "</td>";
+                    // $date = date("y/m/d");
+                    echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
+                    echo "</tr>";
+                    $rowcount++;
+                }
+
+
+
+            }
+            ?>
+        </table>
+    </form>
+    <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
 
 
     <form name="frmTimetable" onsubmit="return classValidation()" method="post">
@@ -256,38 +290,7 @@ if (isset($_GET["getTimetable"]))
 
         <br/>
         <br/>
-        <form method="post">
-            <table class="viewTable">
-                <tr>
-                    <th>Staff ID</th>
-                    <th>Teacher's Name</th>
-                    <th>Main Subject</th>
-                    <th>Contact Number</th>
-                    <th></th>
-                </tr>
-                <?php
-                    $rowcount = 0;
-                    if (isFilled($freeTeachersSet)){
 
-                        foreach($freeTeachersSet as $row){
-                            echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
-                            echo "<tr>";
-                            echo "<td>" . $row[0] . "</td>";
-                            echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
-                            echo "<td>" . $row[2] . "</td>";
-                            echo "<td>" . $row[3] . "</td>";
-                           // $date = date("y/m/d");
-                            echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
-                            echo "</tr>";
-                            $rowcount++;
-                        }
-
-
-
-                    }
-                ?>
-                </table>
-            </form>
             </table>
         </form>
 
