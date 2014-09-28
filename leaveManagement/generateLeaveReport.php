@@ -53,15 +53,6 @@ ob_start();
                 font-size:15px;
             }
 
-            .insert input.button{
-                position:relative;
-                font-weight:bold;
-                font-size:15px;
-                Right:-335px;
-                top:20px;
-            }
-
-
         </style>
 
         <script type="text/javascript">
@@ -75,27 +66,26 @@ ob_start();
 
         <h1 align="center"> Generate Report </h1>
 
-        <form method="post">
+        <form method="get" action="leaveReport.php">
 
             <table class="insert">
 
-                <tr><th> Search by </th></tr>
-
                 <tr>
+                    <td>Enter Staff ID</td>
                     <td>
-                        <input type="radio" name="radiobutton" value="Staff ID" id="StaffID" checked>By Staff ID
-                        <input type="radio" name="radiobutton" value="Date" id="Date" >By Date
-                        <input type="text" class="text1" name="SearchBy" value="">
+                        <input type="text" class="text1" name="id" value="">
                     </td>
-
                 </tr>
 
             </table>
 
             <br>
             <br>
-            <input type="submit" name="GenerateReport" value="Generate Report">
-            <input type="reset" name="reset" align="center">
+
+            <input type="submit" name="submit" value="Generate Report" style="position: absolute; left: 215px; top: 150px">
+
+
+
         </form>
 
     </body>
