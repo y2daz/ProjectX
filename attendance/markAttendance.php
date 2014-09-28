@@ -21,8 +21,6 @@
         $gradeandclass = "පන්තිය සහ වසර";
         $week = "සතිය";
         $markAttendance ="පැමිණීම සටහන් කිරීම";
-
-
     }
     else{
         $gradeandclass = "Grade and Class";
@@ -36,7 +34,7 @@ $arrGradeAndClass[1] = "";
 $attendanceDisplay = "none";
 $classDateDisplay = "block";
 
-    if (isset($_POST["submit"])) //User has clicked the submit button to add a user
+    if (isset($_POST["submit"])) //User has clicked the submit button
     {
         $workingWeekArr = explode("-W", $_GET["week"]);
         $workingWeek = $workingWeekArr[1];
@@ -187,7 +185,7 @@ if (isset($_GET["Grade"])){
                 var today = new Date();
 
 //                $("#week").val( today.getWeek() );
-                $("#week").val( today.getFullYear() + "-W" + today.getWeek() );
+//                $("#week").val( today.getFullYear() + "-W" + today.getWeek() );
 
 
             });
@@ -201,10 +199,10 @@ if (isset($_GET["Grade"])){
         <form method="get">
             <table id="classDate">
                 <tr><td>Grade and class</td>
-                    <td><input type="text" name="Grade" value="" required></td></tr>
+                    <td><input type="text" name="Grade" value="<?php echo ( isset($_GET["Grade"])? $_GET["Grade"] : "" ) ?>" required></td></tr>
                 <tr><td><br/></td></tr>
                 <tr><td>Week</td>
-                    <td><input id="week" name="week" type="week" required/></td></tr>
+                    <td><input id="week" name="week" type="week" value="<?php echo ( isset($_GET["week"])? $_GET["week"] : "" ) ?>" required/></td></tr>
                 <tr><td colspan="2">&nbsp;</td> </tr>
                 <tr><td></td><td><input type="submit" name="sbtGetStudent" value="Mark Attendance"/></td></tr>
             </table>
@@ -213,7 +211,7 @@ if (isset($_GET["Grade"])){
         <br />
         <form method="post">
             <input type="text" name="classroom" value="<?php echo $class ?>" hidden="hidden" />
-            <input type="text" name="week" value="<?php echo $workingWeek ?>" hidden="hidden" />
+            <input type="text" name="week" value="<?php echo ( isset($_GET["week"])? $_GET["week"] : "" ) ?>" hidden="hidden" />
         <table id="attendance">
             <tr id="tHeader">
                 <th>Admission No</th><th>Name</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th>
