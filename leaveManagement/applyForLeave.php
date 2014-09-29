@@ -458,6 +458,12 @@
                     post(document.URL, params, "post");
                 });
 
+                $("#startdate")
+                    .attr("min", getTodayDate())
+                    .on("change", function(e){
+                        $("#enddate").attr("min", $("#startdate").val() );
+                    });
+
             });
 
         </script>
@@ -483,11 +489,11 @@
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                        <td><input id="startdate" type="date" name="startdate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
+                        <td><input id="enddate" type="date" name="enddate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $leavetype ?></td>
