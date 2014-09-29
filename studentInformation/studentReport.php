@@ -13,6 +13,8 @@ require_once("../common.php");
 
 define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+error_reporting(0);
+
 if(!isFilled($_COOKIE['language']))
 {
     setcookie('language', '0'); //where 0 is English and 1 is Sinhala
@@ -28,16 +30,18 @@ if(isset($_GET["logout"]))
 }
 
 
-$result = getAllStaff();
+$result =getAllStudents();
 
 /*LANGUAGE
  *
  * */
-$line1 = "Student information Report";
-$line2 = "D.S Senanayake College Colombo 7";
+$line1 = "Student Details Report";
+$line2 = "D.S Senanayake College";
+$line3 = "Gregory's Road, Colombo 7";
+$line4 = "තමාට පෙර රට";
 
-$column0Header = "Grade";
-$column1Header = "Class";
+$column0Header = "Grade and Class";
+$column1Header = "Date of Birth";
 $column2Header = "Admission Number";
 $column3Header = "Student Name";
 
@@ -71,8 +75,16 @@ $column3Header = "Student Name";
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
         }
-        h1,h3{
+        h2,h3,h5,h4{
             text-align: center;
+        }
+        #flag {
+            position: relative;
+            top: -10px;
+            left:205pt;
+            /*border: 5pxxx solid black;*/
+            width: 120px;
+            height: 120px;
         }
         .report{
         }
@@ -87,13 +99,21 @@ $column3Header = "Student Name";
         .report .headerRow{
             height:50px;
         }
+        h4{
+            position: relative;
+            font-size: 12pt;
+            text-align: center;
+            left: 0pt;
+            top: 380pt;
+
+        }
         .report{
-            /*text-align: center;*/
+
             position: relative;
             margin: 0 auto;
             clear: both;
         }
-        .report .center{
+        .report .center1{
             text-align: center;
             max-width: 100px;
         }
@@ -104,45 +124,40 @@ $column3Header = "Student Name";
             border-right: 1px solid white;
         }
 
-        #col_0{
-            max-width: 50px;
+        #col0{
+            max-width: 150px;
             min-width: 50px;
             padding-left: 10px;
             padding-right: 10px;
         }
-        #col_1{
-            max-width: 50px;
+        #col1{
+            max-width: 150px;
             min-width: 50px;
             padding-left: 10px;
             padding-right: 10px;
         }
-        #col_2{
+        #col2{
             max-width: 150px;
             min-width: 100px;
             padding-left: 8px;
             padding-right: 8px;
         }
-        #col_3{
+        #col3{
             max-width: 250px;
             min-width: 150px;
             padding-left: 10px;
             padding-right: 10px;
-        ;
-        }
-        /*.rotate { *//*http://css-tricks.com/snippets/css/text-rotation/ *//*
-            *//* Safari *//*
-            -webkit-transform: rotate(-90deg);
-            *//* Firefox *//*
-            -moz-transform: rotate(-90deg);
-            *//* IE *//*
-            -ms-transform: rotate(-90deg);
-            *//* Opera *//*
-            -o-transform: rotate(-90deg);
-            *//* Internet Explorer *//*
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
-            *//*vertical-align: top;*//*
-        }*/
+        }
+
+        #col4{
+            max-width: 250px;
+            min-width: 150px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+        }
+
         #PrintButton{
             position: absolute;
             top: 100px;
@@ -154,47 +169,69 @@ $column3Header = "Student Name";
 
 <body>
 
-<h1><?php echo $line1 ?></h1>
-<h3><?php echo $line2 ?></h3>
+<h2><?php echo $line1 ?></h2>
 
+
+<form method="get">
+    <table id="info">
+        <tr>
+        <th>
+            <img id="flag" src="/images/dslogo.jpg"/>
+
+
+    </table>
+</form>
+
+<h3><?php echo $line2 ?></h3>
+<h5><?php echo $line3 ?></h5>
+
+<h4><?php echo $line4 ?></h4>
 <table class="report">
     <tr class="secret">
 
     </tr>
     <tr></tr>
     <tr class="headerRow">
-        <td id="col_0"><?php echo $column0Header ?></td>
-        <td id="col_1"><?php echo $column1Header ?></td>
-        <td id="col_2"><?php echo $column2Header ?></td>
-        <td id="col_3"><?php echo $column3Header ?></td>
+        <th id="col0">Admission No</th>
+        <th id="col1">Name With Initials</th>
+        <th id="col2">Date Of Birth</th>
+        <th id="col3">Grade</th>
+        <th id="col4">Class</th>
 
     </tr>
 
 
     <?php
 
-    $result = getAllStudents();
+
+
+    $result = studentReport($_GET["Grade"],$_GET["Class"]);
+    $i = 1;
 
     if ($result == null)
     {
-        echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
+        echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
     }
     else
     {
         foreach($result as $row){
-            echo "<tr>\n";
-            echo "<td>$row[0]</td>";
+            $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+            echo $top;
+            echo "$row[0]";
             echo "<td>$row[1]</td>";
             echo "<td>$row[2]</td>";
             echo "<td>$row[3]</td>";
-            echo "</tr>\n";
+            echo "<td>$row[4]</td>";
+
+//                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+
+            echo "</tr>";
+
+            //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+            //                            post(document.URL, params, "post");
         }
     }
-
-
     ?>
-
-
 </table>
 <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 

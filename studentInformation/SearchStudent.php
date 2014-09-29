@@ -15,7 +15,13 @@ require_once(THISROOT . "/common.php");
 
 
 ob_start();
+
+$result = null;
+
+
+
 $currentStudent="";
+
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to add a user
 {
@@ -310,6 +316,43 @@ else
 
         </tr>
     </table>
+
+    <?php
+
+    if(isset($_GET["value"]))
+    {
+        $arrGradeClass = getGradeAndClass( $_GET["value"] );
+
+        $Grade = $arrGradeClass[0];
+        $Class = $arrGradeClass[1];
+    }
+    else
+    {
+        $Grade = "";
+        $Class = "";
+    }
+
+//    echo $Grade;
+//    echo $Class;
+
+    ?>
+
+    <?php
+
+    if($_GET["Choice"] == "Class")
+    {
+        $displayButton = "block";
+    }
+    else
+    {
+        $displayButton = "none";
+    }
+
+    ?>
+
+    <input style="display: <?php echo $displayButton ?>" type="button" name="button" id="button8" value="Generate Student Report"  onClick="window.location = 'studentReport.php?Grade=<?php echo $Grade ?>&Class=<?php echo $Class ?>'" style=position:relative; top :100px; left: 0px; width:150"/>
+
+
 
     <br />
     <br />
