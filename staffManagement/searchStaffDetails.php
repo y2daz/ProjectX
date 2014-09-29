@@ -534,17 +534,17 @@ else
 
     <table id="info">
         <tr>
-            <td colspan="2"><span id="selection"><?php echo getlanguage('searchby', $language)?> : </span>
+            <td colspan="2"><span id="selection"><?php echo getlanguage('searchBy', $language)?> : </span>
              <input type="text" class="text1" name="query" value="">
             </td>
             <td><input class="button" name="search" type="submit" value=<?php echo getlanguage('search', $language)?>></td>
         </tr>
         <tr><td></td><td>&nbsp;</td></tr>
         <tr>
-            <td><input type="RADIO" name="Choice" value="Staffid" checked /><?php echo getLanguage('staffID', $language)?></td>
-            <td><input type="RADIO" name="Choice" value="Name"  /><?php echo getLanguage('nameWithInitials', $language)?></td>
-            <td><input type="RADIO" name="Choice" value="nicnumber" /><?php echo getLanguage('nicNumber', $language)?></td>
-            <td><input type="RADIO" name="Choice" value="contactnumber" /><?php echo getLanguage('contactnumber', $language)?></td>
+            <td><label><input type="RADIO" name="Choice" value="Staffid" checked /><?php echo getLanguage('staffID', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="Name"  /><?php echo getLanguage('nameWithInitials', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="nicnumber" /><?php echo getLanguage('nicNumber', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="contactnumber" /><?php echo getLanguage('contactnumber', $language)?></label> </td>
         </tr>
 
     </table>
