@@ -199,7 +199,7 @@ if( isset($_GET["grade"]) )
 
         <table align="center">
             <tr>
-                <td> <input type="Submit" value=<?php echo getLanguage('update', $language)?>></td>
+                <td> <input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
             </tr>
         </table>
     </form>
