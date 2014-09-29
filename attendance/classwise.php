@@ -162,8 +162,8 @@ $arrClassroom="";
             <tr>
                 <th>Admission Number</th>
                 <th>Name</th>
-                <th>Main Subject</th>
-                <th>Contact Number</th>
+                <th>Present Days</th>
+                <th>No of school Days</th>
                 <th></th>
             </tr>
             <?php
