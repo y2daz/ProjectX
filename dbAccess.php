@@ -2790,6 +2790,35 @@ function getAttendance($minDate, $maxDate)
     $mysqli->close();
     return $set;
 }
+function getAttendanceReport($startDate,$endDate,$grade,$class)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, SUM(a.isPresent), COUNT(a.isPresent) FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo)WHERE (a.Date BETWEEN ? AND ? ) AND  s.Grade=? AND s.Class=? GROUP BY a.AdmissionNo, s.NamewithInitials"))
+    {
+        $stmt->bind_param("ssis",$startDate,$endDate,$grade, $class);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
+}
 
 function isHoliday($date)
 {
@@ -2821,7 +2850,7 @@ function isHoliday($date)
     return false;
 }
 
-function getAttendancereport()
+/*function getAttendancereport()
 {
 
     $dbObj = new dbConnect();
@@ -2850,6 +2879,7 @@ function getAttendancereport()
     $mysqli->close();
     return $set;
 }
+}**/
 
 
 //SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1Fs

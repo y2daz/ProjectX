@@ -65,7 +65,7 @@ $classDateDisplay = "block";
                 $tempWeek = $_POST["box"]; //tempWeek is a 2D array
                 $studentWeek = $tempWeek[$row[0]];
 
-                if( $studentWeek[ $dateArr[$i] ] ){
+                if( isset($studentWeek[ $dateArr[$i] ] )){
                     $presentArr[$i] = '1';
                 }
                 else{
