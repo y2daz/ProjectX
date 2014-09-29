@@ -2792,4 +2792,35 @@ function isHoliday($date)
     return false;
 }
 
+function getAttendancereport()
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT * FROM attendance WHERE 1"))
+    {
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+
 //SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1Fs
