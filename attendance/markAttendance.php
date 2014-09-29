@@ -189,6 +189,10 @@ if (isset($_GET["Grade"])){
 //                $("#week").val( today.getWeek() );
 //                $("#week").val( today.getFullYear() + "-W" + today.getWeek() );
 
+//                alert( getWeekNumber( 55 ));
+//
+//                $("#week").attr("max", getWeekNumber( getTodayDate() ) );
+
 
             });
 
