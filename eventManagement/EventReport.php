@@ -11,16 +11,45 @@ include(THISROOT . "/dbAccess.php");
 ob_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <style type=text/css>
-        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-        #footer{ top:<?php echo "$footerTop" . "px";?> }
+    <title>Class Report</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+
+    <script>
+        function printPage(){
+            console.log("printing");
+            window.print();
+            console.log("printing");
+        }
+    </script>
+
+    <style>
+        *{
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        }
 
         #general{
             /*width:50%;*/
             height:auto;
             text-align: center;
+        }
+
+        #flag {
+            position: relative;
+            top: -10px;
+            left:205pt;
+            /*border: 5pxxx solid black;*/
+            width: 120px;
+            height: 120px;
         }
 
         #eventReport{
@@ -84,6 +113,13 @@ ob_start();
 
         }
 
+        #PrintButton{
+            position: absolute;
+            top: 100px;
+            left :40px;
+            font-size: 1.5em;
+        }
+
 </style>
     </head>
 
@@ -91,6 +127,17 @@ ob_start();
         <div class="" id="general" style="">
 
             <h1>Event Report</h1>
+
+            <form method="get">
+                <table id="info">
+                    <tr>
+                    <th>
+                        <img id="flag" src="/images/dslogo.jpg"/>
+
+
+                </table>
+            </form>
+
             <table id="eventReport">
 
                 <tr>
@@ -100,7 +147,7 @@ ob_start();
                     <th>Location</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th>Event Manager</th>
+<!--                    <th>Event Manager</th>-->
                 </tr>
 
                 <?php
@@ -118,7 +165,7 @@ ob_start();
                     echo "<td>$row[3]</td>";
                     echo "<td>$row[4]</td>";
                     echo "<td>$row[5]</td>";
-                    echo "<td>$row[6]</td>";
+//                    echo "<td>$row[6]</td>";
 
 
 
@@ -134,5 +181,6 @@ ob_start();
 
             </table>
         </div>
+        <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
     </body>
 </html>

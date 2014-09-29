@@ -155,37 +155,37 @@ function editEvent($name, $description, $location, $date, $starttime, $endtime, 
 
     }
 
-    function getEventdetails($EventID)
-    {
-        $dbObj = new dbConnect();
-        $mysqli = $dbObj->getConnection();
-
-        $set = null;
-
-        if ($mysqli->connect_errno) {
-            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-        }
-
-
-        if ($stmt = $mysqli->prepare("Select e.Name, e.Description,e.EventDate, e.Location, e.StartTime, e.EndTime, s.NameWithInitials FROM Event e , EventManager m, Staff s WHERE e.EventID=? AND e.EventID = m.EventID AND m.StaffID = s.StaffID"))
-        {
-            $stmt->bind_param('i', $EventID);
-
-            if ($stmt->execute())
-            {
-                $result = $stmt->get_result();
-                $i = 0;
-                while($row = $result->fetch_array())
-                {
-                    $set[$i++]=$row;
-                }
-            }
-        }
-        $mysqli->close();
-
-        return $set;
-
-    }
+//    function getEventdetails($EventID)
+//    {
+//        $dbObj = new dbConnect();
+//        $mysqli = $dbObj->getConnection();
+//
+//        $set = null;
+//
+//        if ($mysqli->connect_errno) {
+//            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+//        }
+//
+//
+//        if ($stmt = $mysqli->prepare("Select Name, Description,EventDate,Location, StartTime, EndTime,  FROM Event WHERE EventID=?"))
+//        {
+//            $stmt->bind_param('i', $EventID);
+//
+//            if ($stmt->execute())
+//            {
+//                $result = $stmt->get_result();
+//                $i = 0;
+//                while($row = $result->fetch_array())
+//                {
+//                    $set[$i++]=$row;
+//                }
+//            }
+//        }
+//        $mysqli->close();
+//
+//        return $set;
+//
+//    }
 
     function insertUser($email, $password, $accessLevel)
     {

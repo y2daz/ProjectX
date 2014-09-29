@@ -351,8 +351,8 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
     <br>
     <div>
         &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-        <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
-        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+<!--        <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=--><?php //echo $eventID ?><!--';" style=position:relative; top :100px; left: 0px; width:150"/>-->
+        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
         <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
 
     </div>
@@ -399,8 +399,9 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 
                     <tr>
                         <td>
-
-                             <input type="submit" name="editEvent" value="Edit Event" align="center">
+                           <br>
+                            <br>
+                             <input type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
                         </td>
                     </tr>
                 </table>
