@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 28, 2014 at 11:38 PM
+-- Generation Time: Sep 29, 2014 at 08:25 AM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -109,6 +109,61 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
   `isPresent` bit(1) DEFAULT b'0',
   PRIMARY KEY (`AdmissionNo`,`Date`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Attendance`
+--
+
+INSERT INTO `Attendance` VALUES('12325', '2014-09-15', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-16', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-17', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-19', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-17', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-19', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-16', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-16', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-15', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-16', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-15', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-16', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-17', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-18', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-19', b'1');
 
 -- --------------------------------------------------------
 
@@ -2038,7 +2093,12 @@ CREATE TABLE IF NOT EXISTS `User` (
 -- Dumping data for table `User`
 --
 
-INSERT INTO `User` VALUES('1', '$2y$10$bEOYHN38SCG2xjwgLBXude39avl5ohE/NeMl4UkmnK7/hCdpQS.l.', 1, 2);
+INSERT INTO `User` VALUES('1', '$2y$10$ITa1DX.IR57egONMAFcQuOVPXycANGqfFchP6nTiEYlkTfoFQwaam', 1, 0);
+INSERT INTO `User` VALUES('22', '$2y$10$iCRtx31Ie73wtbrq.1Sulue/3dFLByKPOOlVVoeoc1e/hwBJTpW5C', 2, 0);
+INSERT INTO `User` VALUES('3', '$2y$10$1T0ZymlVYB8qKgN/B853SO9pptD02f3DrPf98NhJZ0IwdA8.gb4tu', 3, 0);
+INSERT INTO `User` VALUES('4', '$2y$10$kGrSp.K0fcM6XFO5RRXMxeP6Xq/HuYLkSdLZqjsoi4QjBBo9lhsd.', 4, 0);
+INSERT INTO `User` VALUES('5', '$2y$10$l8JhKd0.s3VRR0zTEMc6JexC4lqCe2OzO54Rd468z6ttrniCJGLVC', 5, 0);
+INSERT INTO `User` VALUES('6', '$2y$10$HV2SfdLnz5GSLvtNANPR5.4Ihk4IO.imENY44kMUmtOSXyKaDspFC', 6, 0);
 INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
 INSERT INTO `User` VALUES('ab', '$2y$10$8Az470QmxIuRqy5a6TNmfOiYKvPoJmUSvo08m9CfC6F6PpXKyWEoe', 2, 2);
 INSERT INTO `User` VALUES('abc', '$2y$10$3TeoYC5i/ROkO.ZC6nomLeniQ/PYn1jbkxw4hKm5wbO8LZoduMshK', 1, 2);
