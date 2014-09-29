@@ -69,8 +69,6 @@ function printArrJs($Arr){
                     this.classList.toggle("selected");
                 });
 
-
-
                 fillYearPlan(  <?php printArrJs($holidaysArr); ?> );
             });
 
@@ -180,6 +178,8 @@ function printArrJs($Arr){
   </table>
 
 
+  <br />
+  <br />
   <br />
 
     <table id="calendar" border="1">
