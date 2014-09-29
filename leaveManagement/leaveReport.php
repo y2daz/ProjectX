@@ -35,55 +35,43 @@ if(isset($_GET["id"]))
     <style type="text/css">
         #flag {
             position: absolute;
-            left: 440px;
-            top:100px;
+            left: 290px;
+            top:10px;
             width: 120px;
             height: 120px;
         }
 
-        #sch{
-            position:relative;
-            font-size: 24pt;
+        .title
+        {
+            position: absolute;
+            left: 145px;
+            top: 150px;
             text-align: center;
-            left:10pt;
-            top: 170pt;
-
-        }
-
-        #hd{
-            position: relative;
-            font-size: 14pt;
-            text-align: center;
-            bottom: -50px;
-            top: -60pt;
-            left: 10pt;
-
-
-
-        }
-
-        h2{
-            position: relative;
-            font-size: 12pt;
-            text-align: center;
-            left: 0pt;
-            top: 170pt;
-
         }
 
         .leaveTable
         {
             position: absolute;
-            left:400px;
-            top:400px;
+            left:58px;
+            top:380px;
             width: 200px;
         }
 
         .leaveTable2
         {
             position: absolute;
-            left: 200px;
-            top: 480px;
+            left: 45px;
+            top: 440px;
+        }
+
+        .leaveTable2 td
+        {
+            text-align: center;
+        }
+
+        .leaveTable2 th
+        {
+            width: 100px;
         }
 
     </style>
@@ -92,9 +80,22 @@ if(isset($_GET["id"]))
 </head>
 <body>
 
-<h1 id="sch">D.S.Senanayake College</h1>
-<h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
-<h1 id="sch">Staff Leave Report</h1>
+<table class="title">
+
+    <tr>
+        <td><h1>D.S.Senanayake College</h1></td>
+    </tr>
+
+    <tr>
+        <td><h2>Gregory's Road, Colombo 07, Sri Lanka.</h2></td>
+    </tr>
+
+    <tr>
+        <td><h1>Staff Leave Analysis Report</h1></td>
+    </tr>
+
+</table>
+
 <form method="get">
 
     <img id="flag" src="/images/abc.jpg"/>
@@ -121,6 +122,7 @@ if(isset($_GET["id"]))
     else
     {
         foreach($result as $row){
+
             $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
             echo $top;
@@ -143,7 +145,6 @@ if(isset($_GET["id"]))
     <th>Start Date</th>
     <th>End Date</th>
     <th>Leave Type</th>
-    <th>Other Information</th>
     <th>Approval Status</th>
 
 
@@ -190,7 +191,7 @@ if(isset($_GET["id"]))
 
             echo "<td>$LeaveType</td>";
 
-            echo "<td>$row[5]</td>";
+//            echo "<td>$row[5]</td>";
 
             if($row[6] == 0)
             {

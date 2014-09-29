@@ -46,19 +46,22 @@ if(isset($_POST["getSubstitute"]))
 
 
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+
+
     $selectedDay = $_POST["Day"];
     $selectedPosition = $_POST["Position"];
 
     $daySet = array("Monday","Tuesday","Wednesday","Thursday","Friday");
     $periodSet = array("1st" , "2nd", "3rd" , "4th" , "5th" , "6th" , "7th" , "8th");
-    if($freeTeachersSet == null)
+
+    if($freeTeachersSet == null )
     {
         sendNotification("No free teachers.");
     }
-    else{
+    else
+    {
         sendNotification("Teachers available for " . $daySet[$selectedDay]." ".$periodSet[$selectedPosition]. " period.");
     }
-
     $row = $freeTeachersSet[0];
     $currentStaffName = $row[0];
 }
@@ -103,7 +106,7 @@ if (isset($_GET["getTimetable"]))
                 border-collapse: collapse;
                 left:25px;
                 max-width: 750px;
-                display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none") ?> ;
+                display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none")  ?> ;
             }
             .viewTable th{
                 width: 300px;
@@ -134,9 +137,15 @@ if (isset($_GET["getTimetable"]))
                 var i = 0;
 
                 $(".subject").on("click", function(e){ //Write substitute code
-                   var position = $(this).attr("id");
+                    var position = $(this).attr("id");
                     var staffID = getParameterByName('staffID');
-                    getTeachersForSubstition( staffID, position);
+
+                    if (staffID != null && staffID != ""){
+                        var subj = $("#subject_" + position).html();
+                        if (subj != null && subj != ""){
+                            getTeachersForSubstition( staffID, position);
+                        }
+                    }
                 });
 
                 $('.confirm').on("click", function(e){

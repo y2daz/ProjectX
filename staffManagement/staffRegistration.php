@@ -390,7 +390,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $nationalityRace?></td>
-            <td><input id="NumberCb1" type="text" name="nationalityRace" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)" />
+            <td><input id="NumberCb1" type="text" name="nationalityRace" onkeypress="return isNumeric(event)" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)" />
                             <select id="Cb1" name="" type="text" value="" onchange="changeTextbox(this)">
                                     <option value=""><?php echo "--"?></option>
                                     <option value="1"><?php echo "1 - " . $sinhala?></option>
@@ -403,7 +403,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $religion?></td>
-            <td><input id="NumberCb2" type="text" name="religion" maxlength="1" value="" required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb2" type="text" name="religion" onkeypress="return isNumeric(event)" maxlength="1" value="" required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb2" name="" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$buddhism?></option>
@@ -417,7 +417,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $civilStatus?></td>
-            <td><input id="NumberCb3" type="text" name="civilStatus" maxlength="1" onclick="isNumeric()" value="" required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb3" type="text" name="civilStatus" onkeypress="return isNumeric(event)" maxlength="1" onclick="isNumeric()" value="" required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb3"name="civilStatus" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$married?></option>
@@ -435,7 +435,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr >
             <td><?php echo $maildeliveryaddress?></td>
-            <td><input name="maildeliveryaddress" type="text" size="55"  value="" required="true"></td>
+            <td><input name="maildeliveryaddress" type="text" size="55"  value="" required="true" ></td>
         </tr>
 
         <tr >
@@ -458,7 +458,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr>
             <td><?php echo $employmentStatus?></td>
-            <td><input id="NumberCb4" type="text" name="$employmentStatus"   maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb4" type="text" name="$employmentStatus"  onkeypress="return isNumeric(event)"  maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb4"name="employmentStatus" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$fulltime?></option>
@@ -475,7 +475,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
         <tr>
             <td><?php echo $medium?></td>
-            <td><input id="NumberCb5" type="text" name="nationalityRace" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this) "/>
+            <td><input id="NumberCb5" type="text" name="nationalityRace" onkeypress="return isNumeric(event)" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this) "/>
                 <select id="Cb5" name="medium" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$sinhala?></option>
@@ -486,7 +486,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $positionInSchool?></td>
-            <td><input id="NumberCb6" type="text" name="$positionInSchool" maxlength="1" value="" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb6" type="text" name="$positionInSchool" onkeypress="return isNumeric(event)" maxlength="1" value="" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb6" name="positionInSchool" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$principal?></option>
@@ -502,7 +502,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $section?></td>
-            <td><input id="NumberCb7" type="text" name=" $section" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb7" type="text" name="$section" onkeypress="return isNumeric(event)" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb7" name="section" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$PrimaryMultiple?></option>
@@ -569,7 +569,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $serviceGrade?></td>
-            <td><input id="NumberCb10" type="text" name="$serviceGrade" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb10" type="text" name="$serviceGrade" onkeypress="return isNumeric(event)" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb10" name="serviceGrade" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$SriLankaEducationAdministrativeServiceI?></option>
@@ -590,7 +590,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $salary?></td>
-            <td><input name="Salary" type="text" value="" required="true"></td>
+            <td><input name="Salary" type="text" value="" required="true" onkeypress="return isNumeric(event)"></td>
         </tr>
 
         <!-- </table>
@@ -599,7 +599,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         <tr><th><?php echo $educationInformation?></th><th></th></tr>
         <tr>
             <td><?php echo $highestEducationalQualification?></td>
-            <td><input id="NumberCb11" type="text" name="$highestEducationalQualification" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb11" type="text" name="$highestEducationalQualification" onkeypress="return isNumeric(event)" maxlength="1" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
             <select id="Cb11"name="highestEducationalQualification" type="text" value="" onchange="changeTextbox(this)">
                     <option value=""><?php echo "--"?></option>
                     <option value="1"><?php echo "1 - " .$BelowOLevel?></option>
@@ -615,7 +615,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $highestProfessionalQualification?></td>
-            <td><input id="NumberCb12" type="text" name="$highestProfessionalQualification" maxlength="2" value="" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb12" type="text" name="$highestProfessionalQualification" onkeypress="return isNumeric(event)" maxlength="2" value="" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb12" name="highestProfessionalQualification" type="text" value="" onchange="changeTextbox(this)">
 
                     <option value=""><?php echo "--"?></option>
@@ -644,7 +644,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $courseOfStudy?></td>
-            <td><input id="NumberCb13" type="text" name="$courseOfStudy" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb13" type="text" name="$courseOfStudy" onkeypress="return isNumeric(event)" maxlength="2" value=""  required="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb13" name="courseOfStudy" type="text" value="" onchange="changeTextbox(this)">
 
                     <optgroup label="Graduate Teachers">
