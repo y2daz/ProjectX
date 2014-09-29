@@ -33,8 +33,8 @@ if (isset($_GET["error"])){
 
             #flag {
                 position: relative;
-                top: 10px;
-                left: 95px;
+                top: 15px;
+                left: 25%;
                 border: 5px solid black;
             }
             .content {
@@ -55,7 +55,7 @@ if (isset($_GET["error"])){
 
     <h1>Staff Management System</h1>
 
-    <img id="flag" src="<?php echo THISPATHFRONT . "/images/DsFlag.jpg" ?>" />
+    <img id="flag" src="<?php echo THISPATHFRONT . "/images/dslogo.jpg" ?>" width="400px" />
 
     <br />
     <br />
