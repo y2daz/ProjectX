@@ -49,11 +49,11 @@ $column6Header = "ජනවර්ගය";
 $column7Header = "ආගම";
 $column8Header = "විවාහක / අවිවාහක බව";
 
-$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු<br /> වශයෙන් සේවයට පනවූ වර්ෂය(අවසන් අංක දෙක)හා මාසය ";
+$column910Header ="විදුහල්පති ධුරයට හෝ ගුරු සේවයට<br />  පනවූ වර්ෂය හා මාසය ";
 $column9Header = "අවු";
 $column10Header = "මාස";
 
-$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත් වර්ෂය<br />හා මාසය(අවසන් අංක දෙක)";
+$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත්<br />   වර්ෂය හා මාසය";
 $column11Header = $column9Header;
 $column12Header = $column10Header;
 $column13Header = "පාසලට පනවීමේ සවභාවය"; //Employment Status
@@ -207,7 +207,7 @@ $column27Header3 = "උදා 583021007 V";
             padding-top: 10px;
             padding-bottom: 10px;
             width: 230px;
-            /*border-up: 1px solid #000000;*/
+
         }
         #col_0{
             text-indent: -6.5em;
