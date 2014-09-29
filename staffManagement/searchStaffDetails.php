@@ -523,6 +523,7 @@ else
     $search = getlanguage('search', $language);
     $expand = getLanguage('expand', $language);
     $delete = getLanguage('delete',$language);
+    $searchby =getlanguage('searchby', $language);
 ?>
 <body>
 <h1> <?php echo getLanguage('searchStaffMember', $language) ?></h1>
@@ -533,7 +534,7 @@ else
 
     <table id="info">
         <tr>
-            <td colspan="2"><span id="selection">Search by : </span>
+            <td colspan="2"><span id="selection"><?php echo getlanguage('searchby', $language)?> : </span>
              <input type="text" class="text1" name="query" value="">
             </td>
             <td><input class="button" name="search" type="submit" value=<?php echo getlanguage('search', $language)?>></td>
