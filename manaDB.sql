@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 29, 2014 at 08:25 AM
+-- Generation Time: Sep 29, 2014 at 11:08 AM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -38,6 +38,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `manaDB`
 --
+CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `manaDB`;
 
 -- --------------------------------------------------------
 
@@ -1081,15 +1083,6 @@ CREATE TABLE IF NOT EXISTS `RolePerm` (
 -- Dumping data for table `RolePerm`
 --
 
-INSERT INTO `RolePerm` VALUES(2, 1);
-INSERT INTO `RolePerm` VALUES(2, 7);
-INSERT INTO `RolePerm` VALUES(2, 4);
-INSERT INTO `RolePerm` VALUES(2, 5);
-INSERT INTO `RolePerm` VALUES(2, 3);
-INSERT INTO `RolePerm` VALUES(2, 2);
-INSERT INTO `RolePerm` VALUES(2, 21);
-INSERT INTO `RolePerm` VALUES(2, 8);
-INSERT INTO `RolePerm` VALUES(2, 6);
 INSERT INTO `RolePerm` VALUES(4, 13);
 INSERT INTO `RolePerm` VALUES(4, 14);
 INSERT INTO `RolePerm` VALUES(4, 19);
@@ -1183,6 +1176,16 @@ INSERT INTO `RolePerm` VALUES(6, 19);
 INSERT INTO `RolePerm` VALUES(6, 20);
 INSERT INTO `RolePerm` VALUES(6, 1);
 INSERT INTO `RolePerm` VALUES(6, 22);
+INSERT INTO `RolePerm` VALUES(2, 2);
+INSERT INTO `RolePerm` VALUES(2, 21);
+INSERT INTO `RolePerm` VALUES(2, 3);
+INSERT INTO `RolePerm` VALUES(2, 4);
+INSERT INTO `RolePerm` VALUES(2, 5);
+INSERT INTO `RolePerm` VALUES(2, 6);
+INSERT INTO `RolePerm` VALUES(2, 7);
+INSERT INTO `RolePerm` VALUES(2, 8);
+INSERT INTO `RolePerm` VALUES(2, 1);
+INSERT INTO `RolePerm` VALUES(2, 22);
 
 -- --------------------------------------------------------
 
@@ -2094,7 +2097,8 @@ CREATE TABLE IF NOT EXISTS `User` (
 --
 
 INSERT INTO `User` VALUES('1', '$2y$10$ITa1DX.IR57egONMAFcQuOVPXycANGqfFchP6nTiEYlkTfoFQwaam', 1, 0);
-INSERT INTO `User` VALUES('22', '$2y$10$iCRtx31Ie73wtbrq.1Sulue/3dFLByKPOOlVVoeoc1e/hwBJTpW5C', 2, 0);
+INSERT INTO `User` VALUES('2', '$2y$10$hyL8X/Qj5csCvtAv3msRF.7PXuhlVJk31JD0hBI/4sBqU.1yTxoSy', 2, 0);
+INSERT INTO `User` VALUES('22', '$2y$10$iCRtx31Ie73wtbrq.1Sulue/3dFLByKPOOlVVoeoc1e/hwBJTpW5C', 2, 2);
 INSERT INTO `User` VALUES('3', '$2y$10$1T0ZymlVYB8qKgN/B853SO9pptD02f3DrPf98NhJZ0IwdA8.gb4tu', 3, 0);
 INSERT INTO `User` VALUES('4', '$2y$10$kGrSp.K0fcM6XFO5RRXMxeP6Xq/HuYLkSdLZqjsoi4QjBBo9lhsd.', 4, 0);
 INSERT INTO `User` VALUES('5', '$2y$10$l8JhKd0.s3VRR0zTEMc6JexC4lqCe2OzO54Rd468z6ttrniCJGLVC', 5, 0);
