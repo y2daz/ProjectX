@@ -19,12 +19,12 @@ if(!isFilled($_COOKIE['language']))
 }
 if(!isFilled($_SESSION["user"]))
 {
-    header("Location: " . PATHFRONT . "/Menu.php");
+    header("Location: " . PATHFRONT . "/login.php");
 }
 if(isset($_GET["logout"]))
 {
     $_SESSION["user"] = NULL;
-    header("Location: " . PATHFRONT . "/Menu.php");
+    header("Location: " . PATHFRONT . "/login.php");
 }
 
 
@@ -33,7 +33,7 @@ $result = getAllStaff();
 /*LANGUAGE
  *
  * */
-$line1 = "2013 ජුනි 01 දිනට පාසලේ අධ්‍යයන කාර්ය මණ්ඩලවල තොරතුරු";
+$line1 = "2014 ජුනි 01 දිනට පාසලේ අධ්‍යයන කාර්ය මණ්ඩලවල තොරතුරු";
 $line2 = "සැම විදුහල්පති තනතුරු ධාරියකු හා ගුරුවර්යකු සඳහා ම සියලුම තීරු සම්පුඋර්ණ කිරීම අනිවාර්යය වේ. මුල් පිටුවේ උපදෙස් හොදින් කියවන්න.";
 
 $column0Header = "අනුක්‍රමික අංකය";
@@ -49,11 +49,11 @@ $column6Header = "ජනවර්ගය";
 $column7Header = "ආගම";
 $column8Header = "විවාහක / අවිවාහක බව";
 
-$column910Header ="විදුහල්පති ධුරයට හෝ ගුරු සේවයට<br />  පනවූ වර්ෂය හා මාසය ";
+$column910Header = "විදුහල්පති ධුරයට හෝ ගුරුවරයකු වශයෙන් සේවයට\n පනවූ වර්ෂය ( අවසන් අංක දෙක ) හා මාසය ";
 $column9Header = "අවු";
 $column10Header = "මාස";
 
-$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත්<br />   වර්ෂය හා මාසය";
+$column1112Header = "මෙම විදුහලේ මන්වීම භාරගත් වර්ෂය හා මාසය ( අවසන් අංක දෙක )";
 $column11Header = $column9Header;
 $column12Header = $column10Header;
 $column13Header = "පාසලට පනවීමේ සවභාවය"; //Employment Status
@@ -149,7 +149,7 @@ $column27Header3 = "උදා 583021007 V";
             position: relative;
             text-align: left;
             white-space: nowrap;
-            top: 50px;
+            top: 40px;
             text-overflow: ellipsis;
             min-width: 25px;
             max-width: 25px;
@@ -161,27 +161,7 @@ $column27Header3 = "උදා 583021007 V";
             /*text-indent: -7.5em;*/
             padding: 0px 0px 0px 0px;
             margin: 0px;
-
         }
-        .upcol1{
-            position: relative;
-            text-align: left;
-            white-space: nowrap;
-            top: 250px;
-            text-overflow: ellipsis;
-            min-width: 25px;
-            max-width: 25px;
-            /*display: block;*/
-            /*background-color: white;*/
-            /*border-bottom: 1px solid black;*/
-
-            writing-mode: bt-rl;
-            /*text-indent: -7.5em;*/
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-
-        }
-
         .whiteBox{
             display: block;
             position: relative;
@@ -194,20 +174,18 @@ $column27Header3 = "උදා 583021007 V";
             width: 74px;
             border-bottom: 1px solid #000000;
         }
-
-        .whiteBox1{
+        .whiteBoxR{
             display: block;
             position: relative;
-            z-index: 1;
+            z-index: 3;
             background-color: #ffffff;
-            text-indent:1em;
-            left:1px;
-            top:9px;
-
+            text-indent: -12em;
+            left:0px;
+            top:15px;
             padding-top: 10px;
-            padding-bottom: 10px;
-            width: 230px;
-
+            padding-bottom: 20px;
+            width: 74px;
+            /*border-bottom: 1px solid #000000;*/
         }
         #col_0{
             text-indent: -6.5em;
@@ -266,16 +244,17 @@ $column27Header3 = "උදා 583021007 V";
         <tr class="secret">
             <td></td>
             <td></td>
-            <td class="upcol"><div class="whiteBox"><?php echo $column234Header ?></div></td>
+            <td></td>
+            <td  class="upcol"><div class="whiteBox"><?php echo $column234Header ?></div></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
             <td></td>
-            <td class="upcol1 rotate"><div class="whiteBox1"><?php echo $column910Header ?></div></td>
+<!--            <td  class="upcol rotate"><div class="whiteBoxR">--><?php //echo $column910Header ?><!--</div></td>-->
             <td></td>
-            <td class="upcol1 rotate"><div class="whiteBox1"><?php echo $column1112Header ?></div></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
