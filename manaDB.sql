@@ -21,16 +21,12 @@ DROP DATABASE IF EXISTS `manaDB`;
 #
 #   FLUSH PRIVILEGES;
 
-CREATE DATABASE IF NOT EXISTS manaDB;
-
-USE manaDB;
-
 -- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 29, 2014 at 11:08 AM
+-- Generation Time: Sep 29, 2014 at 09:18 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
@@ -120,56 +116,176 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 -- Dumping data for table `Attendance`
 --
 
+INSERT INTO `Attendance` VALUES('12325', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-15', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-17', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-19', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-26', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-29', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-29', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-03', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('3', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-30', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-17', b'0');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-19', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-30', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('43435', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-03', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-24', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-10-01', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-24', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-10-01', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-03', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-03', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-26', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-10-03', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-03', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-05', b'1');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-15', b'0');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-17', b'1');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-18', b'0');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-19', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-22', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-23', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-24', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-25', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-26', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-29', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-30', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-10-01', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-10-02', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-10-03', b'0');
 
 -- --------------------------------------------------------
 
@@ -205,6 +321,7 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
 --
 
 INSERT INTO `ClassInformation` VALUES('6', 0, 'B', 2);
+INSERT INTO `ClassInformation` VALUES('7', 7, 'A', 0);
 INSERT INTO `ClassInformation` VALUES('5', 10, 'A', 0);
 INSERT INTO `ClassInformation` VALUES('8', 10, 'C', 0);
 INSERT INTO `ClassInformation` VALUES('13', 11, 'A', 0);
@@ -911,11 +1028,6 @@ INSERT INTO `LabelLanguage` VALUES('westernMusic', 0, 'Western Music');
 INSERT INTO `LabelLanguage` VALUES('westernMusic', 1, 'සංගීතය-පෙරදිග');
 INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
 INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
-INSERT INTO `LabelLanguage` VALUES('SearchandViewStudentDetails', 0, 'Search and Update Student Details');
-INSERT INTO `LabelLanguage` VALUES('SearchandViewStudentDetails', 1, 'ශිෂ්‍ය තොරතුරු සෙවීම හා යාවත්කාලින කිරීම');
-INSERT INTO `LabelLanguage` VALUES('Searchby', 0, 'Search by');
-INSERT INTO `LabelLanguage` VALUES('Searchby', 1, 'සෙවිය යුත්තේ');
-
 
 -- --------------------------------------------------------
 
@@ -1046,7 +1158,7 @@ CREATE TABLE IF NOT EXISTS `Permissions` (
   `permDesc` varchar(50) NOT NULL,
   `orderKey` int(11) DEFAULT '0',
   PRIMARY KEY (`permId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `Permissions`
@@ -1074,6 +1186,7 @@ INSERT INTO `Permissions` VALUES(19, 'Enter Term Test Marks', 61);
 INSERT INTO `Permissions` VALUES(20, 'Search Grades', 61);
 INSERT INTO `Permissions` VALUES(21, 'Staff Report', 1);
 INSERT INTO `Permissions` VALUES(22, 'Manage Users', 71);
+INSERT INTO `Permissions` VALUES(23, 'Change Staff Details', 1);
 
 -- --------------------------------------------------------
 
@@ -1122,13 +1235,14 @@ INSERT INTO `RolePerm` VALUES(3, 16);
 INSERT INTO `RolePerm` VALUES(3, 17);
 INSERT INTO `RolePerm` VALUES(3, 20);
 INSERT INTO `RolePerm` VALUES(1, 2);
+INSERT INTO `RolePerm` VALUES(1, 23);
 INSERT INTO `RolePerm` VALUES(1, 21);
 INSERT INTO `RolePerm` VALUES(1, 3);
 INSERT INTO `RolePerm` VALUES(1, 4);
 INSERT INTO `RolePerm` VALUES(1, 5);
 INSERT INTO `RolePerm` VALUES(1, 6);
-INSERT INTO `RolePerm` VALUES(1, 7);
 INSERT INTO `RolePerm` VALUES(1, 8);
+INSERT INTO `RolePerm` VALUES(1, 7);
 INSERT INTO `RolePerm` VALUES(1, 9);
 INSERT INTO `RolePerm` VALUES(1, 10);
 INSERT INTO `RolePerm` VALUES(1, 11);
@@ -1138,18 +1252,30 @@ INSERT INTO `RolePerm` VALUES(1, 14);
 INSERT INTO `RolePerm` VALUES(1, 15);
 INSERT INTO `RolePerm` VALUES(1, 16);
 INSERT INTO `RolePerm` VALUES(1, 17);
-INSERT INTO `RolePerm` VALUES(1, 18);
-INSERT INTO `RolePerm` VALUES(1, 19);
 INSERT INTO `RolePerm` VALUES(1, 20);
+INSERT INTO `RolePerm` VALUES(1, 19);
+INSERT INTO `RolePerm` VALUES(1, 18);
 INSERT INTO `RolePerm` VALUES(1, 1);
 INSERT INTO `RolePerm` VALUES(1, 22);
+INSERT INTO `RolePerm` VALUES(2, 2);
+INSERT INTO `RolePerm` VALUES(2, 23);
+INSERT INTO `RolePerm` VALUES(2, 21);
+INSERT INTO `RolePerm` VALUES(2, 3);
+INSERT INTO `RolePerm` VALUES(2, 4);
+INSERT INTO `RolePerm` VALUES(2, 5);
+INSERT INTO `RolePerm` VALUES(2, 6);
+INSERT INTO `RolePerm` VALUES(2, 8);
+INSERT INTO `RolePerm` VALUES(2, 7);
+INSERT INTO `RolePerm` VALUES(2, 1);
+INSERT INTO `RolePerm` VALUES(2, 22);
 INSERT INTO `RolePerm` VALUES(5, 2);
+INSERT INTO `RolePerm` VALUES(5, 23);
 INSERT INTO `RolePerm` VALUES(5, 21);
 INSERT INTO `RolePerm` VALUES(5, 3);
 INSERT INTO `RolePerm` VALUES(5, 4);
 INSERT INTO `RolePerm` VALUES(5, 6);
-INSERT INTO `RolePerm` VALUES(5, 7);
 INSERT INTO `RolePerm` VALUES(5, 8);
+INSERT INTO `RolePerm` VALUES(5, 7);
 INSERT INTO `RolePerm` VALUES(5, 9);
 INSERT INTO `RolePerm` VALUES(5, 10);
 INSERT INTO `RolePerm` VALUES(5, 11);
@@ -1159,18 +1285,19 @@ INSERT INTO `RolePerm` VALUES(5, 14);
 INSERT INTO `RolePerm` VALUES(5, 15);
 INSERT INTO `RolePerm` VALUES(5, 16);
 INSERT INTO `RolePerm` VALUES(5, 17);
-INSERT INTO `RolePerm` VALUES(5, 18);
-INSERT INTO `RolePerm` VALUES(5, 19);
 INSERT INTO `RolePerm` VALUES(5, 20);
+INSERT INTO `RolePerm` VALUES(5, 19);
+INSERT INTO `RolePerm` VALUES(5, 18);
 INSERT INTO `RolePerm` VALUES(5, 1);
 INSERT INTO `RolePerm` VALUES(6, 2);
+INSERT INTO `RolePerm` VALUES(6, 23);
 INSERT INTO `RolePerm` VALUES(6, 21);
 INSERT INTO `RolePerm` VALUES(6, 3);
 INSERT INTO `RolePerm` VALUES(6, 4);
 INSERT INTO `RolePerm` VALUES(6, 5);
 INSERT INTO `RolePerm` VALUES(6, 6);
-INSERT INTO `RolePerm` VALUES(6, 7);
 INSERT INTO `RolePerm` VALUES(6, 8);
+INSERT INTO `RolePerm` VALUES(6, 7);
 INSERT INTO `RolePerm` VALUES(6, 9);
 INSERT INTO `RolePerm` VALUES(6, 10);
 INSERT INTO `RolePerm` VALUES(6, 11);
@@ -1180,21 +1307,11 @@ INSERT INTO `RolePerm` VALUES(6, 14);
 INSERT INTO `RolePerm` VALUES(6, 15);
 INSERT INTO `RolePerm` VALUES(6, 16);
 INSERT INTO `RolePerm` VALUES(6, 17);
-INSERT INTO `RolePerm` VALUES(6, 18);
-INSERT INTO `RolePerm` VALUES(6, 19);
 INSERT INTO `RolePerm` VALUES(6, 20);
+INSERT INTO `RolePerm` VALUES(6, 19);
+INSERT INTO `RolePerm` VALUES(6, 18);
 INSERT INTO `RolePerm` VALUES(6, 1);
 INSERT INTO `RolePerm` VALUES(6, 22);
-INSERT INTO `RolePerm` VALUES(2, 2);
-INSERT INTO `RolePerm` VALUES(2, 21);
-INSERT INTO `RolePerm` VALUES(2, 3);
-INSERT INTO `RolePerm` VALUES(2, 4);
-INSERT INTO `RolePerm` VALUES(2, 5);
-INSERT INTO `RolePerm` VALUES(2, 6);
-INSERT INTO `RolePerm` VALUES(2, 7);
-INSERT INTO `RolePerm` VALUES(2, 8);
-INSERT INTO `RolePerm` VALUES(2, 1);
-INSERT INTO `RolePerm` VALUES(2, 22);
 
 -- --------------------------------------------------------
 
