@@ -102,10 +102,10 @@ function printArrJs($Arr){
                 cursor: pointer;
             }
             .day6 {
-                background:#ECECEC;
+                background:#DEDEDE;
             }
             .day7 {
-                background:#ECECEC;
+                background:#DEDEDE;
             }
             .monthName {
                 text-align:left;
