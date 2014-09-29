@@ -911,6 +911,11 @@ INSERT INTO `LabelLanguage` VALUES('westernMusic', 0, 'Western Music');
 INSERT INTO `LabelLanguage` VALUES('westernMusic', 1, 'සංගීතය-පෙරදිග');
 INSERT INTO `LabelLanguage` VALUES('widow', 0, 'Widow');
 INSERT INTO `LabelLanguage` VALUES('widow', 1, 'වැන්දබු');
+INSERT INTO `LabelLanguage` VALUES('SearchandViewStudentDetails', 0, 'Search and Update Student Details');
+INSERT INTO `LabelLanguage` VALUES('SearchandViewStudentDetails', 1, 'ශිෂ්‍ය තොරතුරු සෙවීම හා යාවත්කාලින කිරීම');
+INSERT INTO `LabelLanguage` VALUES('Searchby', 0, 'Search by');
+INSERT INTO `LabelLanguage` VALUES('Searchby', 1, 'සෙවිය යුත්තේ');
+
 
 -- --------------------------------------------------------
 

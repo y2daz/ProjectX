@@ -181,8 +181,43 @@ else
         </style>
         <script src="studentinformation.js"></script>
     </head>
+    <?php
+    $language = $_COOKIE['language'];
+    $AdmissionNo =  getLanguage('AdmissionNo', $language);
+    $nameWithInitials =  getLanguage('nameWithInitials', $language);
+    $dateOfBirth =  getLanguage('dateOfBirth', $language);
+    $nationalityRace =  getLanguage('nationalityRace', $language);
+    $religion =  getLanguage('religion', $language);
+    $Medium =  getLanguage('Medium', $language);
+    $Address =  getLanguage('Address', $language);
+    $Grade = getLanguage('grade',$language);
+    $Class = getLanguage('class',$language);
+    $sinhala =  getLanguage('sinhala', $language);
+    $srilankantamil =  getLanguage('srilankantamil', $language);
+    $indiantamil =  getLanguage('indiantamil', $language);
+    $srilankanmuslim =  getLanguage('srilankanmuslim', $language);
+    $other =  getLanguage('other', $language);
+    $sinhala =  getLanguage('sinhala', $language);
+    $tamil =  getLanguage('tamil', $language);
+    $english =  getLanguage('english', $language);
+    $buddhism =  getLanguage('buddhism', $language);
+    $hinduism =  getLanguage('hindusm', $language);
+    $islam =  getLanguage('islam', $language);
+    $catholic =  getLanguage('catholic', $language);
+    $christianity =  getLanguage('christianity', $language);
+    $other =  getLanguage('other', $language);
+    $generalInformation = getLanguage("generalInformation", $language);
+    $submit =  getLanguage('submit', $language);
+    $SearchandViewStudentDetails = getLanguage('SearchandViewStudentDetails', $language);
+    $gradeclass =getLanguage('gradeclass', $language);
+    $update =  getLanguage('update', $language);
+    $search = getlanguage('search', $language);
+    $expand = getLanguage('expand', $language);
+    $delete = getLanguage('delete',$language);
+
+    ?>
 <body>
-    <h1> Search and View Student Details </h1>
+    <h1><?php echo getLanguage('SearchandViewStudentDetails', $language)?>  </h1>
     <br />
     <!--<h3>Search by</h3>-->
 
@@ -190,18 +225,18 @@ else
 
         <table id="info">
             <tr>
-                <td colspan="1"><span id="selection">Search : </span>
+                <td colspan="1"><span id="selection"><?php echo getlanguage('searchby', $language)?>: </span>
                     <input type="text" class="text1" name="value" id="value" value=""/>
                 </td>
-                <td ><input class="button" name="search" type="submit" value="Search"></td>
+                <td ><input class="button" name="search" type="submit" value=<?php echo getLanguage('search', $language)?>></td>
             </tr>
             <tr><td></td><td>&nbsp;</td></tr>
             <tr>
-                <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
-                <td><input type="RADIO" name="Choice" value="NamewithInitials"  />Name with Initials</td>
+                <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/><?php echo getLanguage('AdmissionNo', $language)?></td>
+                <td><input type="RADIO" name="Choice" value="NamewithInitials"  /><?php echo getLanguage('nameWithInitials', $language)?></td>
 <!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
 <!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
-                <td><input type="RADIO" name="Choice" value="Class" />By Class</td>
+                <td><input type="RADIO" name="Choice" value="Class" /><?php echo getLanguage('class', $language)?></td>
 <!--                <td><input type="RADIO" name="Choice" value="House"  />House</td>-->
             </tr>
 
@@ -212,10 +247,10 @@ else
     <form method="post">
         <table class="viewTable">
             <tr>
-                <th>Admisson Number</th>
-                <th>Name with Initials</th>
-                <th>Date of Birth</th>
-                <th>Grade and Class</th>
+                <th><?php echo getLanguage('AdmissionNo', $language)?></th>
+                <th><?php echo getLanguage('nameWithInitials', $language)?></th>
+                <th><?php echo getLanguage('dateOfBirth', $language)?></th>
+                <th><?php echo getLanguage('gradeclass', $language)?></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -262,57 +297,57 @@ else
 <form method="post">
     <table class="details" align="center">
     <tr>
-        <td> Admission Number </td>
+        <td><?php echo getLanguage('AdmissionNo',$language)?></td>
         <td > <input type = "text" name="AdmissionNo"  value="<?php echo $admissionNo?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td> Name with Initials </td>
+        <td><?php echo getLanguage('nameWithInitials', $language)?> </td>
         <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td> Date of Birth  </td>
+        <td><?php echo getLanguage('dateOfBirth', $language)?></td>
         <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td>Nationality/Race </td>
+        <td><?php echo getLanguage('nationalityRace', $language)?></td>
         <td > <input type = "text" name="NationalityRace" value="<?php echo $NationalityRace?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td> Religion </td>
-        <td > <input type = "text" name="Religion" value="<?php echo $Religion?>"/> </td>
+        <td><?php echo getLanguage('religion', $language)?></td>
+        <td><input type = "text" name="Religion" value="<?php echo $Religion?>"/></td>
         <td></td>
     </tr>
     <tr>
-        <td> Medium  </td>
+        <td><?php echo getLanguage('Medium', $language)?></td>
         <td > <input type = "text" name="Medium" value="<?php echo $Medium?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td>Address  </td>
+        <td><?php echo getlanguage('Address', $language)?></td>
         <td > <input type = "text" name="Address" value="<?php echo $Address?>"/> </td>
         <td></td>
     </tr>
     <tr>
-        <td>Grade</td>
+        <td><?php echo getlanguage('grade',$language)?></td>
         <td > <input type = "text" name="Grade" value="<?php echo $Grade?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td>Class</td>
+            <td><?php echo getlanguage('class',$language)?></td>
             <td > <input type = "text" name="Class" value="<?php echo $Class?>"/> </td>
             <td></td>
         </tr>
         <tr>
-            <td> House </td>
-            <td > <input type = "text" name="House" value="<?php echo $House?>"/> </td>
+            <td><?php echo getLanguage('house',$language)?></td>
+            <td ><input type = "text" name="House" value="<?php echo $House?>"/> </td>
             <td></td>
         </tr>
                 <tr>
-            <td> <input type="Submit" value="Update" name="Submit" /> </td>
+            <td> <input type="Submit" value=<?php echo getLanguage('update', $language)?> name="Submit" /> </td>
 
         </tr>
     </table>
