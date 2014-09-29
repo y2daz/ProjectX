@@ -38,11 +38,8 @@ else{
     die();
 }
 
-
-
-if (isset($_POST["submit"])) //User has clicked the submit button to add a student
+function insertParentFunc()
 {
-
     $operation = insertParent($_POST["admin_no"], $_POST["par_gur"], $_POST["p_name"],$_POST["occupation"], $_POST["p_number"], $_POST["m_number"], $_POST["address"], $_POST["o_address"] );
 
     if($operation)
@@ -54,6 +51,24 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
         sendNotification("Error!");
     }
 }
+
+
+
+if (isset($_POST["submit"])) //User has clicked the submit button to add a student
+{
+    if(isContactNumber($_POST["p_number"]) && isContactNumber($_POST["m_number"]))
+    {
+        insertParentFunc();
+    }
+    else
+    {
+        sendNotification("Invalid Contact Number Entered");
+    }
+
+
+}
+
+
 
 ?>
     <html>
