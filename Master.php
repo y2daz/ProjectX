@@ -13,8 +13,6 @@
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
-//    $privilege = -1;
-
     if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
@@ -31,8 +29,6 @@
         }
     }
     else{
-        $privilege = $_SESSION["accessLevel"];
-//        echo "ALALAALA YAZDAAN " . true . $user->hasPerm('Administration Panel') ;
         $logging = "Log Out";
     }
 
