@@ -62,7 +62,10 @@ $classDateDisplay = "block";
                 $admissionNoArr[$i] = $row[0];
                 $dateArr[$i] = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursday : $friday ))));
 
-                if( isset( $_POST["box"][ $row[$i] ] ) ){
+                $tempWeek = $_POST["box"]; //tempWeek is a 2D array
+                $studentWeek = $tempWeek[$row[0]];
+
+                if( $studentWeek[ $dateArr[$i] ] ){
                     $presentArr[$i] = '1';
                 }
                 else{
@@ -71,15 +74,8 @@ $classDateDisplay = "block";
                 $i++;
             }
         }
-        echo "<pre>";
-        print_r($dateArr);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($_POST["box"]);
-        echo "</pre>";
 
-
-//        $operation = markAttendance( $admissionNoArr, $dateArr, $presentArr);
+        $operation = markAttendance( $admissionNoArr, $dateArr, $presentArr);
         echo $operation;
 
         if ($operation == true)
