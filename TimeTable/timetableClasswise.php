@@ -71,6 +71,7 @@ if(isset($_POST["getSubstitute"]))
     $Position = $_POST["Position"];
     $Day = $_POST["Day"];
 
+
     $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
 
     if($freeTeachersSet == null)

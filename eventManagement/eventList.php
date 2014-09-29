@@ -16,7 +16,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 ob_start();
 
-
 ?>
 <html>
     <head>
@@ -48,6 +47,14 @@ ob_start();
             #eventTable #description{
                 width:300px;
             }
+
+            #eventTable th{
+                color:white;
+                background-color: #005e77;
+                height:30px;
+                padding:5px;
+            }
+
 
 
         </style>

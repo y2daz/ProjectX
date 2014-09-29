@@ -78,6 +78,7 @@ $column2Header = "Date"; **/
             max-height: 300px;
 
 
+
         }
         .report .headerRow{
             height:50px;
@@ -249,7 +250,8 @@ $column2Header = "Date"; **/
     </form>
 
 
-    <table>
+    <table class="report" align="center">
+        <tr class="secret">
 
         <th>Admission Number</th>
         <th>Date</th>
@@ -280,7 +282,7 @@ $column2Header = "Date"; **/
 
         ?>
 
-
+        </tr>
     </table>
 
 

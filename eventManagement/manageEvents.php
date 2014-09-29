@@ -9,11 +9,23 @@
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
+//include(THISROOT . "/formValidation.php");
+
+
 ob_start();
 
 $result = null;
 
-$eventID = $_REQUEST["eventID"];
+if(isset($_POST["eventID"]))
+{
+    $eventID = $_REQUEST["eventID"];
+}
+else
+{
+    $eventID = "";
+}
+
+echo $eventID;
 
 if(isset($_POST["delete"]))
 {
@@ -49,7 +61,26 @@ if (isset($_POST["addTransaction"])){
 
 }
 
+if (isset($_POST["editEvent"]))
+{
+//    echo "<pre>";
+//    print_r($_POST);
+//    echo "</pre>";
+
+    $operation = editEvent( $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], $_POST["eventdate"], $_POST["starttime"], $_POST["endtime"], $_POST["eventID"]);
+
+    if ($operation){
+        sendNotification("Event Details Edited");
+    }
+    else{
+        sendNotification("Error Editing Event Details");
+    }
+}
+
+
 ?>
+
+
 
 <html>
 <head>
@@ -62,13 +93,6 @@ if (isset($_POST["addTransaction"])){
             height:auto;
             text-align: center;
         }
-        #Manager{
-            position: relative;
-            left:25px;
-            width:750px;
-            border:1px solid #005e77;
-            border-collapse: collapse;
-        }
         #transaction{
             position: relative;
             left:25px;
@@ -76,41 +100,48 @@ if (isset($_POST["addTransaction"])){
             border:1px solid #005e77;
             border-collapse: collapse;
         }
-        #Manager td{
-            padding: 5px;
-        }
-        #Manager #id{
-            width:300px;
-        }
-        #Manager #name{
-            width:400px;
-        }
-        #Manager #contact{
-            width:300px;
-        }
-        #Manager #space{
-            width:500px;
-        }
+        /*#transaction{*/
+            /*position: relative;*/
+            /*left:25px;*/
+            /*width:750px;*/
+            /*border:1px solid #005e77;*/
+            /*border-collapse: collapse;*/
+        /*}*/
+        /*#Manager td{*/
+            /*padding: 5px;*/
+        /*}*/
+        /*#Manager #id{*/
+            /*width:300px;*/
+        /*}*/
+        /*#Manager #name{*/
+            /*width:400px;*/
+        /*}*/
+        /*#Manager #contact{*/
+            /*width:300px;*/
+        /*}*/
+        /*#Manager #space{*/
+            /*width:500px;*/
+        /*}*/
 
-        #Manager #staffid{
-            width:500px;
-        }
+        /*#Manager #staffid{*/
+            /*width:500px;*/
+        /*}*/
 
-        #Manager #button1{
-           width:150px;
-        }
+        /*#Manager #button1{*/
+           /*width:150px;*/
+        /*}*/
 
-        #Manager #button2{
-           width:150px;
-        }
+        /*#Manager #button2{*/
+           /*width:150px;*/
+        /*}*/
 
-        #Manager #button3{
-           width:150px;
-        }
+        /*#Manager #button3{*/
+           /*width:150px;*/
+        /*}*/
 
-        #Manager #button4{
-           width:250px;
-        }
+        /*#Manager #button4{*/
+           /*width:250px;*/
+        /*}*/
 
         #transaction td{
             max-width:200px;
@@ -119,12 +150,12 @@ if (isset($_POST["addTransaction"])){
             max-width:200px;
         }
 
-        #Manager th{
-            color:white;
-            background-color: #005e77;
-            height:30px;
-            padding:5px;
-        }
+        /*#Manager th{*/
+            /*color:white;*/
+            /*background-color: #005e77;*/
+            /*height:30px;*/
+            /*padding:5px;*/
+        /*}*/
 
         #transaction th{
             color:white;
@@ -163,69 +194,77 @@ $staffID = getLanguage("staffID ", $_COOKIE["language"]);
 $addManager = getLanguage("addManager ", $_COOKIE["language"]);
 $addTransaction = getLanguage("addTransaction ", $_COOKIE["language"]);
 $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
+$name = getLanguage("name ", $_COOKIE["language"]);
+$description = getLanguage("description ", $_COOKIE["language"]);
+$location = getLanguage("location ", $_COOKIE["language"]);
+$eventtype = getLanguage("eventtype ", $_COOKIE["language"]);
+$status = getLanguage("status ", $_COOKIE["language"]);
+$date = getLanguage("date", $_COOKIE["language"]);
+$starttime = getLanguage("starttime", $_COOKIE["language"]);
+$endtime = getLanguage("endtime", $_COOKIE["language"]);
 
 ?>
 <body>
-
-    <div  id="general" style="">
-
-        <h1><?php echo $manageEvents ?></h1>
-
-        <h3><?php echo $managerList ?></h3>
-
-        <form method="post">
-
-            <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
-            <input name="manage" value="Manage" hidden="hidden" />
-
-        <table id="Manager">
-            <tr>
-
-                <th id="staffid"><?php echo $staffID ?></th>
-                <th id="name"><?php echo $managerName ?></th>
-                <th id="contact"><?php echo $contactNumber ?></th>
-                <th id="space"></th>
-
-
-                <!--<span class="table" style="width:570px;height:auto">-->
-            </tr>
-            <?php
-            $result = getEventManagers($eventID);
-            $i = 1;
-
-            if ($result == null)
-            {
-                echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
-            }
-            else
-            {
-                foreach($result as $row){
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
-                    echo $top;
-                    echo "$row[0]";
-                    echo "<td>$row[1]</td>";
-                    echo "<td>$row[2]</td>";
-//                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
-                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
-                    echo "</tr>";
-
-                    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
-                    //                            post(document.URL, params, "post");
-                }
-            }
-            ?>
-
-            <tr>
-                <td><input type="text" name="newManagerID" value=""></td>
-                <td >
-                    <input type="submit" name="addManager" id="button4" value="<?php echo $addManager ?>" />
-                </td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-           </form>
-    </div>
+<!---->
+<!--   <div  id="general" style="">-->
+<!---->
+       <h1 align="center"><?php echo $manageEvents ?></h1>
+<!---->
+<!--        <h3>--><?php //echo $managerList ?><!--</h3>-->
+<!---->
+<!--        <form method="post">-->
+<!---->
+<!--            <input name="eventID" value="--><?php //echo $eventID ?><!--" hidden="hidden" />-->
+<!--            <input name="manage" value="Manage" hidden="hidden" />-->
+<!---->
+<!--        <table id="Manager">-->
+<!--            <tr>-->
+<!---->
+<!--                <th id="staffid">--><?php //echo $staffID ?><!--</th>-->
+<!--                <th id="name">--><?php //echo $managerName ?><!--</th>-->
+<!--                <th id="contact">--><?php //echo $contactNumber ?><!--</th>-->
+<!--                <th id="space"></th>-->
+<!---->
+<!---->
+<!--                <!--<span class="table" style="width:570px;height:auto">-->-->
+<!--            </tr>-->
+<!--            --><?php
+//            $result = getEventManagers($eventID);
+//            $i = 1;
+//
+//            if ($result == null)
+//            {
+//                echo "<tr><td colspan='4'>There are no records to show.</td></tr>";
+//            }
+//            else
+//            {
+//                foreach($result as $row){
+//                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
+//                    echo $top;
+//                    echo "$row[0]";
+//                    echo "<td>$row[1]</td>";
+//                    echo "<td>$row[2]</td>";
+////                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+//                    echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"post(document.URL, {'delete' : '" . $row[0] . "' }, 'post');\" /> </td> ";
+//                    echo "</tr>";
+//
+//                    //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+//                    //                            post(document.URL, params, "post");
+//                }
+//            }
+//            ?>
+<!---->
+<!--            <tr>-->
+<!--                <td><input type="text" name="newManagerID" value="" required="true"></td>-->
+<!--                <td >-->
+<!--                    <input type="submit" name="addManager" id="button4" value="--><?php //echo $addManager ?><!--" />-->
+<!--                </td>-->
+<!--                <td></td>-->
+<!--                <td></td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--           </form>-->
+<!--    </div>-->
 
 
 <!--    <h3>--><?php //echo $invitees ?><!--</h3>-->
@@ -239,9 +278,6 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
     <div  id="general" style="">
 
-
-        <br>
-        <br>
         <h3><?php echo $tlog ?></h3>
 
 
@@ -298,7 +334,7 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
                         <option value="1">Expenditure</option>
                 </select></td>
                 <td><input type="text" name="tAmount" value="" required="true"></td>
-                <td><input type="text" name="tDescription" value=""></td>
+                <td><input type="text" name="tDescription" value="" required="true"></td>
             </form>
             </tr>
 
@@ -321,10 +357,56 @@ $printTransction = getLanguage("printTransction ", $_COOKIE["language"]);
 
     </div>
 
+         <form method="POST">
+            <div  id="general" style="">
+
+                <h1> Edit Event Details </h1>
+
+                <table align="center">
 
 
+                    <tr>
+                        <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
+                        <input name="manage" value="Manage" hidden="hidden" />
+                        <td><?php echo $name ?></td>
+                        <td><input type="text" name="eventname" required="true" /></td>
+                    </tr>
 
+                    <tr>
+                        <td><?php echo $description ?></td>
+                        <td><input type="text" name="eventdescription" required="true"/> </td>
+                    </tr>
 
+                    <tr>
+                        <td><?php echo $location ?></td>
+                        <td><input type="text" name="eventlocation" required="true"/></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $date ?></td>
+                        <td><input type="date" name="eventdate" required="true"/></td>
+                    </tr>
+
+                    <tr>
+                        <td><?php echo $starttime ?></td>
+                        <td><input type="time" name="starttime" required="true"/> </td>
+
+                    </tr>
+
+                    <tr>
+                        <td><?php echo $endtime ?></td>
+                        <td><input type="time" name="endtime" required="true"/></td>
+                    </tr>
+
+                    <tr>
+                        <td>
+
+                             <input type="submit" name="editEvent" value="Edit Event" align="center">
+                        </td>
+                    </tr>
+                </table>
+    </div>
+
+         </form>
 
 
 
