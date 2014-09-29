@@ -529,7 +529,7 @@
 
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
-                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'">
+                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
                 </p>
 
             </form>
