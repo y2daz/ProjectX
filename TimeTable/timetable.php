@@ -139,7 +139,21 @@ if (isset($_GET["getTimetable"]))
                 });
 
             });
-            </script>
+            $(document).ready(function(){
+                $("#btnsavechanges").hide();
+                $("#btnMakeEditable").click(function(){
+                    $("#btnMakeEditable").hide();
+                    $("#link").hide();
+                    $("#btnsavechanges").show();
+                });
+                $("#show").click(function(){
+                    $("#btnMakeEditable").show();
+                    $("#link").show();
+                    $("#btnsavechanges").hide();
+                });
+            });
+
+        </script>
     </head>
     <body>
 
@@ -170,7 +184,7 @@ if (isset($_GET["getTimetable"]))
 
         <table id="edit">
             <tr><td><input id="btnMakeEditable" type="button" name="btnMakeEditable" value="Edit Timetable"></td>
-            <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportTeacherWise.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
+            <td><a id="link" href="<?php echo PATHFRONT . "/TimeTable/TimetableReportTeacherWise.php" . "?staffID=" . $currentStaffId ?>" target="_blank" > Print Timetable</a></td></tr>
         </table>
         <table class="timetable" >
             <tr>
@@ -255,7 +269,7 @@ if (isset($_GET["getTimetable"]))
 <?php
 //Change these to what you want
 $fullPageHeight = 1200;
-$footerTop = $fullPageHeight + 100;
+$footerTop = $fullPageHeight+100;
 $pageTitle= "Timetable";
 //Only change above
 

@@ -109,10 +109,13 @@ if (isset($_GET["getTimetable"]))
                 display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none")  ?> ;
             }
             .viewTable th{
-                width: 300px;
+                width: 200px;
                 font-weight: 600;
                 color:white;
                 background-color: #005e77;
+            }
+            .viewTable th .name{
+                width: 400px;
             }
             .viewTable tr.alt{
                 background-color: #bed9ff;
@@ -195,7 +198,7 @@ if (isset($_GET["getTimetable"]))
         <table class="viewTable">
             <tr>
                 <th>Staff ID</th>
-                <th>Teacher's Name</th>
+                <th id="name">Teacher's Name</th>
                 <th>Main Subject</th>
                 <th>Contact Number</th>
                 <th></th>
@@ -310,7 +313,7 @@ if (isset($_GET["getTimetable"]))
     </html>
 <?php
 
-$fullPageHeight = 1200 + ($rowcount * 29);
+$fullPageHeight = 1200 + ($rowcount * 35);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Timetable";
 
