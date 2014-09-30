@@ -136,11 +136,11 @@ if (isset($_POST["submit"]))
     <table>
     <tr>
         <td><td><?php echo $indexno ?></td></td>
-        <td><td><input name="indexNo" type="text" value="" ></td></td>
+        <td><td><input name="indexNo" type="text" value="" required="true" onkeypress="isNumeric(event)"></td></td>
         <td><td><?php echo $admissionnumber ?></td></td>
-        <td><td><input name="admissionNo" type="text" value="" ></td></td>
+        <td><td><input name="admissionNo" type="text" value="" required="true"></td></td>
         <td><td><?php echo $year ?></td></td>
-        <td><td><input name="year" type=text" value=""></td></td>
+        <td><td><input name="year" type=text" value="" required="true" onkeypress="isNumeric(event)" maxlength="4"></td></td>
     </tr>
     </table>
 
@@ -152,7 +152,7 @@ if (isset($_POST["submit"]))
             <th><?php echo $grade ?></th>
         </tr>
         <tr>
-            <td><input name="subject_1"type="text" value="" ></td>
+            <td><input name="subject_1"type="text" value="" required="true" ></td>
             <td text><select name="grade_1" type="text" value="">
                     <option>--</option>
                     <option>A</option>
@@ -164,7 +164,7 @@ if (isset($_POST["submit"]))
             </td>
         </tr>
         <tr>
-            <td><input name="subject_2" type="text" value="" ></td>
+            <td><input name="subject_2" type="text" value="" required="true"></td>
             <td><select name="grade_2"  type="text" value="">
                     <option>--</option>
                     <option>A</option>
@@ -176,7 +176,7 @@ if (isset($_POST["submit"]))
             </td>
         </tr>
         <tr>
-            <td><input name="subject_3" type="text" value="" ></td>
+            <td><input name="subject_3" type="text" value="" required="true"></td>
             <td><select name="grade_3" type="text" value="">
                     <option>--</option>
                     <option>A</option>
@@ -204,7 +204,7 @@ if (isset($_POST["submit"]))
         <tr>
 
             <td><input name=<?php echo $commongeneraltest?>type="text" value="Common General Test"  readonly></td>
-            <td><input name="commongeneraltest" type="text" value="" maxlength="3" size="3">
+            <td><input name="commongeneraltest" type="text" value="" onkeypress="isNumeric(event)" maxlength="3" size="3">
 
             </td>
         </tr>
@@ -216,18 +216,18 @@ if (isset($_POST["submit"]))
                 <tr>
                     <td  colspan="1"><?php echo $zscore ?></td>
 
-                    <td><input name="zScore" type="text" value="" >
+                    <td><input name="zScore" type="text" value="" required="true" onkeypress="isNumeric(event)">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="1"><?php echo $islandrank ?></td>
 
-                    <td><input name="IsLandRank" type="text" value="" >
+                    <td><input name="IsLandRank" type="text" value="" required="true" onkeypress="isNumeric(event)" >
                     </td>
                 </tr>
                 <tr>
                     <td colspan="1"><?php echo $districrank ?></td>
-                    <td><input name="districRank" type="text" value="" >
+                    <td><input name="districRank" type="text" value="" required="true" onkeypress="isNumeric(event)" >
                     </td>
                 </tr>
         </table>

@@ -20,11 +20,12 @@ if (isset($_POST["submit"]))
     $AdmissionNoVar =$_POST["AdmissionNumber"];
     $SubjectVar = $_GET["Subject"];
     $TermVar = $_GET["Term"];
+    $YearVar=$_GET["Year"];
     $MarkVar = $_POST["marks"];
     $RemarksVar = $_POST["remarks"];
 
 
-    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $TermVar, $MarkVar, $RemarksVar);
+    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $TermVar,$YearVar, $MarkVar, $RemarksVar);
 
 
 //    echo $AdmissionNoVar . "<br />";
@@ -254,8 +255,8 @@ else
                 echo $top;
                 echo "<td>$row[0]</td>";
                 echo "<td>$row[1]</td>";
-                echo "<td><input type='text' name='marks' value=''></td>";
-                echo "<td><input type='text' name='remarks' value=''/> ";
+                echo "<td><input type='text' name='marks' value='' required='true' onkeypress='isNumeric(event)'></td>";
+                echo "<td><input type='text' name='remarks' value='' required='true'/> ";
                 echo "<input hidden=hidden type='text' name='AdmissionNumber' value='" . $row[0] . "' /></td>";
                 echo "</tr>";
             }

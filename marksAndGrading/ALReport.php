@@ -109,21 +109,34 @@ else
         .insert
         {
             position: absolute;
-            left: 240px;
+            left: 220px;
             top: 350px;
             width: 300px;
-            text-align:left;
+            text-align: justify;
+
+
 
         }
 
         .insert2
         {
             position: absolute;
-            left: 240px;
+            left: 220px;
             top: 500px;
             width: 240px;
 
+
         }
+        .insert td{
+            padding: 2pt;
+        }
+
+        .insert2 td{
+            padding: 2pt;
+        }
+
+
+
 
         .insert2 th{
             text-align: left;
@@ -132,7 +145,7 @@ else
 
         .text{
             position: absolute;
-            top: 800px;
+            top: 770px;
             text-align: justify;
             font-size: 12pt;
             right: 6px;
@@ -140,14 +153,14 @@ else
 
         .text1{
             position: absolute;
-            top: 950px;
+            top: 900px;
             left: 50px;
 
         }
 
         .text2{
             position: absolute;
-            top: 950px;
+            top: 900px;
             left: 550px;
 
         }
@@ -183,19 +196,19 @@ else
         <th colspan="3">
             </th>
         <tr>
-            <td>Index Number</td>
+            <td>Index Number:</td>
             <td style="text-align: left"><?php echo $indexNo ?></td>
         </tr>
         <tr>
-            <td>Admission Number</td>
+            <td>Admission Number:</td>
             <td style="text-align: left"><?php echo $AdmissionNo ?></td>
         </tr>
         <tr>
-            <td>Name</td>
+            <td>Name:</td>
             <td style="text-align: left"><?php echo $Name ?></td>
         </tr>
         <tr>
-            <td>Year</td>
+            <td>Year:</td>
             <td style="text-align: left"><?php echo $Year ?></td>
         </tr>
 
