@@ -11,16 +11,45 @@ include(THISROOT . "/dbAccess.php");
 ob_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <style type=text/css>
-        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-        #footer{ top:<?php echo "$footerTop" . "px";?> }
+    <title>Event Report</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+
+    <script>
+        function printPage(){
+            console.log("printing");
+            window.print();
+            console.log("printing");
+        }
+    </script>
+
+    <style>
+        *{
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        }
 
         #general{
             /*width:50%;*/
             height:auto;
             text-align: center;
+        }
+
+        #flag {
+            position: relative;
+            top: -10px;
+            left: 605px;
+            /*border: 5pxxx solid black;*/
+            width: 120px;
+            height: 120px;
         }
 
         #eventReport{
@@ -35,33 +64,34 @@ ob_start();
             background-color: #ffffff;
         }
         #eventReport td{
+
             padding: 5px;
             border: 1px solid black;
             border-collapse: collapse;
         }
 
         #eventReport #eventName{
-            width:200px;
+            width:100px;
         }
 
         #eventReport #description{
-            width:300px;
+            width: 70px;
         }
 
         #eventReport #date{
-            width:200px;
+            width:50px;
         }
 
         #eventReport #location{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #starttime{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #endtime{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #manager{
@@ -84,6 +114,13 @@ ob_start();
 
         }
 
+        #PrintButton{
+            position: absolute;
+            top: 100px;
+            left :40px;
+            font-size: 1.5em;
+        }
+
 </style>
     </head>
 
@@ -91,6 +128,17 @@ ob_start();
         <div class="" id="general" style="">
 
             <h1>Event Report</h1>
+
+            <form method="get">
+                <table id="info">
+                    <tr>
+                    <th>
+                        <img id="flag" src="/images/dslogo.jpg"/>
+
+
+                </table>
+            </form>
+
             <table id="eventReport">
 
                 <tr>
@@ -100,32 +148,44 @@ ob_start();
                     <th>Location</th>
                     <th>Start Time</th>
                     <th>End Time</th>
-                    <th>Event Manager</th>
+<!--                    <th>Event Manager</th>-->
                 </tr>
 
                 <?php
+
+
                 $result = getEventdetails($_GET["id"]);
+
                 $i = 1;
 
-                foreach($result as $row){
-                    $top = "<form method='post' action='EventReport.php'>";
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+               if(isFilled($result))
+               {
+                   foreach($result as $row){
+                       $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                    echo $top;
-                    echo "<td>$row[0]</td>";
-                    echo "<td>$row[1]</td>";
-                    echo "<td>$row[2]</td>";
-                    echo "<td>$row[3]</td>";
-                    echo "<td>$row[4]</td>";
-                    echo "<td>$row[5]</td>";
-                    echo "<td>$row[6]</td>";
-
-
-
+                       echo $top;
+                       echo "<td id='eventName'>$row[0]</td>";
+                       echo "<td id='description'>$row[1]</td>";
+                       echo "<td id='date'>$row[2]</td>";
+                       echo "<td id='location'>$row[3]</td>";
+                       echo "<td id='starttime'>$row[4]</td>";
+                       echo "<td id='endtime'>$row[5]</td>";
+//                    echo "<td>$row[6]</td>";
 
 
-                    echo "</td></tr></form>";
-                }
+
+
+
+                      echo "</tr>";
+                   }
+               }
+               else
+               {
+                   echo "<tr><td colspan='6'>No Data Found</td></tr>";
+               }
+
+
+
                 ?>
 
 
@@ -134,5 +194,6 @@ ob_start();
 
             </table>
         </div>
+        <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
     </body>
 </html>

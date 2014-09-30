@@ -14,6 +14,8 @@ include(THISROOT . "/common.php");
 
 ob_start();
 
+error_reporting(E_ERROR | E_PARSE);
+
 $result = null;
 
 if(isset($_POST["eventID"]))
@@ -48,16 +50,28 @@ if (isset($_POST["addManager"])){
     }
 }
 
-if (isset($_POST["addTransaction"])){
+if (isset($_POST["addTransaction"]))
+    {
+        if(is_numeric($_POST["amount"]))
+        {
+            $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
+            if ($operation == true){
+                sendNotification("Transaction added");
+            }
+            else{
+                sendNotification("Error adding transaction");
+            }
+        }
 
-    $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
 
-    if ($operation == true){
-        sendNotification("Transaction added");
-    }
-    else{
-        sendNotification("Error adding transaction");
-    }
+        else
+        {
+            sendNotification("Amount is Invalid");
+        }
+
+
+
+
 
 }
 
@@ -226,8 +240,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 <!--                <th id="space"></th>-->
 <!---->
 <!---->
-<!--                <!--<span class="table" style="width:570px;height:auto">-->-->
-<!--            </tr>-->
+<!--                <!--<span class="table" style="width:570px;height:auto">-->
 <!--            --><?php
 //            $result = getEventManagers($eventID);
 //            $i = 1;
@@ -281,7 +294,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
         <h3><?php echo $tlog ?></h3>
 
 
-<!--            --><?php //echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+<!--            <?php //echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
 
         <table id="transaction">
             <tr>
@@ -352,7 +365,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
     <div>
         &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
         <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
-        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
         <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
 
     </div>
@@ -399,8 +412,9 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 
                     <tr>
                         <td>
-
-                             <input type="submit" name="editEvent" value="Edit Event" align="center">
+                           <br>
+                            <br>
+                             <input style="position: absolute; left: 365px; top: 600px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
                         </td>
                     </tr>
                 </table>
