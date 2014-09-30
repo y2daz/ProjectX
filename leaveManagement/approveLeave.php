@@ -162,7 +162,7 @@
             #footer{ top:<?php echo "$footerTop" . "px";?> }
 
 
-            table.leaveTable {
+            .leaveTable {
                 border-spacing:0px 5px;
                 min-width: 500px;
             }
@@ -173,7 +173,7 @@
                 top:20px;
             }
 
-            th{
+            .leaveTable th{
                 align:center;
                 color:white;
                 background-color:#005e77;
@@ -181,9 +181,12 @@
                 padding:5px;
             }
 
-            td {
+            .leaveTable td {
                 text-align: center;
                 padding:5px;
+            }
+            .leaveTable .left{
+                text-align: left;
             }
             .leaveTable .alt{
                 background-color: #bed9ff;
@@ -258,7 +261,7 @@
 
                         echo $top;
                         echo "<td>$row[0]</td>";
-                        echo "<td>$row[1]</td>";
+                        echo "<td class='left'>$row[1]</td>";
                         echo "<td>$leavetype</td>";
                         echo "<td>$row[3]</td>";
 
@@ -277,7 +280,7 @@
 
                         echo "<td>$leaveStatus</td>";
                         echo "<td>$row[6]</td>";
-                        echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand Details\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
+                        echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
 
 
                         echo "</tr>";
