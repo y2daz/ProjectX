@@ -52,15 +52,18 @@ if(isset($_POST["delete"]))
 
 if (isset($_POST["addTransaction"]))
     {
-        if(is_numeric($_POST["amount"]))
-        {
+//        if(is_numeric($_POST["amount"]))
+//        {
             $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
 
-        }
-            else
-            {
-                sendNotification("Invalid Amount");
-            }
+//        }
+    if ($operation){
+    sendNotification("Event Details Edited");
+}
+//            else
+//            {
+//                sendNotification("Invalid Amount");
+//            }
     }
 
 
