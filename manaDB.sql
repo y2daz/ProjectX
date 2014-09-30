@@ -26,13 +26,11 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 30, 2014 at 01:23 PM
+-- Generation Time: Sep 30, 2014 at 11:17 PM
 -- Server version: 5.5.38-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
@@ -70,7 +68,10 @@ CREATE TABLE IF NOT EXISTS `ALMarks` (
 -- Dumping data for table `ALMarks`
 --
 
-INSERT INTO `ALMarks` VALUES(2, '12345', 2012, 'Mathematics', 'Arts', 'Physics', 'B', 'A', 'C', 'B', 70, 2.22, 7650, 1210);
+INSERT INTO `ALMarks` VALUES(2, '12345', 2012, 'Mathematics', 'Arts', 'Physics', 'A', 'D', 'C', 'D', 70, 2.22, 7650, 1212);
+INSERT INTO `ALMarks` VALUES(21, '1', 2014, 'Combined Mathematics', 'Physics', 'Chemistry', 'A', 'A', 'A', 'B', 65, 3.18, 20, 5);
+INSERT INTO `ALMarks` VALUES(22, '12325', 2013, 'Economics', 'Accounting', 'Business Studies', 'A', 'A', 'A', 'B', 56, 2.16, 2555, 236);
+INSERT INTO `ALMarks` VALUES(23, '12345', 2012, 'Logic', 'Buddhist Culture', 'Economics', 'A', 'B', 'C', 'S', 54, 1.69, 254444, 2456);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,10 @@ CREATE TABLE IF NOT EXISTS `ApplyLeave` (
 --
 
 INSERT INTO `ApplyLeave` VALUES('13', '2014-09-22', '2014-09-26', '2014-09-26', 1, '', 1, NULL, '2014-09-30', 0);
-INSERT INTO `ApplyLeave` VALUES('4', '2014-09-30', '2014-09-30', '2014-10-02', 3, '', 0, NULL, NULL, 0);
+INSERT INTO `ApplyLeave` VALUES('20', '2014-09-30', '2014-10-02', '2014-10-02', 2, '', 1, NULL, '2014-09-30', 0);
+INSERT INTO `ApplyLeave` VALUES('21', '2014-09-30', '2014-10-01', '2014-11-01', 3, '', 0, NULL, NULL, 0);
+INSERT INTO `ApplyLeave` VALUES('4', '2014-09-30', '2014-09-30', '2014-10-02', 3, '', 1, NULL, '2014-09-30', 0);
+INSERT INTO `ApplyLeave` VALUES('7', '2014-09-30', '2014-10-02', '2014-10-18', 3, '', 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -117,8 +121,31 @@ CREATE TABLE IF NOT EXISTS `Attendance` (
 -- Dumping data for table `Attendance`
 --
 
+INSERT INTO `Attendance` VALUES('12325', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-03-17', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-03-20', b'0');
+INSERT INTO `Attendance` VALUES('12325', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('12325', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-15', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-09-17', b'0');
@@ -134,8 +161,31 @@ INSERT INTO `Attendance` VALUES('12325', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('12325', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('12325', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-03-18', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-03-20', b'0');
+INSERT INTO `Attendance` VALUES('12345', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('12345', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-09-17', b'1');
@@ -151,8 +201,31 @@ INSERT INTO `Attendance` VALUES('12345', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('12345', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('12345', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-02-12', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-03-19', b'0');
+INSERT INTO `Attendance` VALUES('3', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-03', b'0');
 INSERT INTO `Attendance` VALUES('3', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('3', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-09-17', b'1');
@@ -168,8 +241,31 @@ INSERT INTO `Attendance` VALUES('3', '2014-09-30', b'0');
 INSERT INTO `Attendance` VALUES('3', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('3', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('3', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('43435', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-09-17', b'0');
@@ -185,8 +281,31 @@ INSERT INTO `Attendance` VALUES('43435', '2014-09-30', b'0');
 INSERT INTO `Attendance` VALUES('43435', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('43435', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('43435', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-03-21', b'0');
+INSERT INTO `Attendance` VALUES('43536', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-03', b'0');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('43536', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-09-17', b'1');
@@ -202,8 +321,31 @@ INSERT INTO `Attendance` VALUES('43536', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('43536', '2014-10-01', b'0');
 INSERT INTO `Attendance` VALUES('43536', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('43536', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-02-10', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-03-20', b'0');
+INSERT INTO `Attendance` VALUES('45678', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('45678', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-09-17', b'1');
@@ -219,8 +361,31 @@ INSERT INTO `Attendance` VALUES('45678', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('45678', '2014-10-01', b'0');
 INSERT INTO `Attendance` VALUES('45678', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('45678', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-03-19', b'0');
+INSERT INTO `Attendance` VALUES('65578', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-03', b'0');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('65578', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('65578', '2014-09-17', b'1');
@@ -236,8 +401,31 @@ INSERT INTO `Attendance` VALUES('65578', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('65578', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('65578', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-03-18', b'0');
+INSERT INTO `Attendance` VALUES('65784', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('65784', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('65784', '2014-09-17', b'1');
@@ -253,8 +441,31 @@ INSERT INTO `Attendance` VALUES('65784', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('65784', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('65784', '2014-10-03', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-02-10', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-03-17', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-03-18', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-03-19', b'0');
+INSERT INTO `Attendance` VALUES('75857', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-03', b'0');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('75857', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-15', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-16', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-09-17', b'1');
@@ -270,8 +481,31 @@ INSERT INTO `Attendance` VALUES('75857', '2014-09-30', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-10-01', b'1');
 INSERT INTO `Attendance` VALUES('75857', '2014-10-02', b'0');
 INSERT INTO `Attendance` VALUES('75857', '2014-10-03', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-02-10', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-02-12', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-02-13', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-03-17', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-03-18', b'0');
+INSERT INTO `Attendance` VALUES('76954', '2014-03-19', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-03-20', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-03-21', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-04-07', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-04-08', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-04-09', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-04-10', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-02', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-12', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-13', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-14', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-15', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-05-16', b'1');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-03', b'1');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-05', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-08', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-09', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-10', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-11', b'1');
+INSERT INTO `Attendance` VALUES('76954', '2014-09-12', b'1');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-15', b'0');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-16', b'0');
 INSERT INTO `Attendance` VALUES('76954', '2014-09-17', b'1');
@@ -323,8 +557,9 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
 
 INSERT INTO `ClassInformation` VALUES('6', 0, 'B', 2);
 INSERT INTO `ClassInformation` VALUES('7', 7, 'A', 0);
+INSERT INTO `ClassInformation` VALUES('5', 8, 'B', 2);
 INSERT INTO `ClassInformation` VALUES('5', 10, 'A', 0);
-INSERT INTO `ClassInformation` VALUES('8', 10, 'C', 0);
+INSERT INTO `ClassInformation` VALUES('1', 10, 'C', 0);
 INSERT INTO `ClassInformation` VALUES('13', 11, 'A', 0);
 INSERT INTO `ClassInformation` VALUES('14', 11, 'B', 0);
 INSERT INTO `ClassInformation` VALUES('12', 11, 'C', 0);
@@ -401,6 +636,7 @@ INSERT INTO `Holiday` VALUES(2014, '2014-01-01');
 INSERT INTO `Holiday` VALUES(2014, '2014-01-02');
 INSERT INTO `Holiday` VALUES(2014, '2014-01-03');
 INSERT INTO `Holiday` VALUES(2014, '2014-02-04');
+INSERT INTO `Holiday` VALUES(2014, '2014-02-11');
 INSERT INTO `Holiday` VALUES(2014, '2014-02-14');
 INSERT INTO `Holiday` VALUES(2014, '2014-02-27');
 INSERT INTO `Holiday` VALUES(2014, '2014-04-11');
@@ -1106,9 +1342,13 @@ INSERT INTO `LeaveData` VALUES('13', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('14', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('15', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('16', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('18', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('2', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('20', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('21', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('3', 15, 90, 15, 0);
-INSERT INTO `LeaveData` VALUES('4', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('31', 15, 90, 15, 0);
+INSERT INTO `LeaveData` VALUES('4', 15, 90, 13, 0);
 INSERT INTO `LeaveData` VALUES('5', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('6', 15, 90, 15, 0);
 INSERT INTO `LeaveData` VALUES('7', 15, 90, 15, 0);
@@ -1131,6 +1371,38 @@ CREATE TABLE IF NOT EXISTS `OLMarks` (
   KEY `AdmissionNo` (`AdmissionNo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `OLMarks`
+--
+
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Commerce', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'English Language', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'English Literature', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'History', 'B');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Information Technology', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Mathematics', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Religion', 'B');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Science and Technology', 'A');
+INSERT INTO `OLMarks` VALUES(12, '1', 2014, 'Sinhala Language', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Commerce', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'English Language', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'History', 'C');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Information Technology', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Mathematics', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Religion', 'B');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Science and Technology', 'A');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Sinhala Language', 'B');
+INSERT INTO `OLMarks` VALUES(13, '12325', 2014, 'Sinhala Literature', 'C');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Commerce', 'B');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Drama', 'A');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'English Language', 'A');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'History', 'A');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Home Science', 'C');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Mathematics', 'B');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Religion', 'A');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Science and Technology', 'B');
+INSERT INTO `OLMarks` VALUES(14, '12345', 2014, 'Sinhala Language', 'A');
+
 -- --------------------------------------------------------
 
 --
@@ -1149,6 +1421,36 @@ CREATE TABLE IF NOT EXISTS `ParentsInformation` (
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`AdmissionNo`,`NamewithInitials`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ParentsInformation`
+--
+
+INSERT INTO `ParentsInformation` VALUES('1', 'Madhu De Silva', b'1', 'Teacher', '0312285596', '0773432532', 'Moratuwa', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('12325', 'Shavin', b'1', 'Banker', '0117272111', '0712323232', 'Kadirana', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('1234', 'Mark Weather', b'1', 'Chef', '0112887898', '0777777854', 'Nugegoda', 'Nedimala', 0);
+INSERT INTO `ParentsInformation` VALUES('12345', 'Milan', b'1', 'Teacher', '0312283234', '0771211212', 'katana', 'negombo', 0);
+INSERT INTO `ParentsInformation` VALUES('19642', 'Dilani', b'1', 'Teacher', '0117272111', '0782323233', 'Negombo', 'Kotuwa', 0);
+INSERT INTO `ParentsInformation` VALUES('19642', 'Dulip De Silva', b'1', 'Teacher', '0117272111', '0726262837', 'negombo', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('2', 'Madusha Perera', b'1', 'Salesrep', '0117272111', '0726262837', 'Negombo', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('23247', 'joseph', b'1', 'Anta', '0312228721', '0712323232', 'Colombo', 'Bamba', 0);
+INSERT INTO `ParentsInformation` VALUES('23415', 'Nimal', b'1', 'Banker', '0117272111', '0782323233', 'Moratuwa', 'Dehiwela Colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('24242', 'Kamal', b'1', 'Engineer', '0117272111', '0726262837', 'Negombo', 'Dehiwa', 0);
+INSERT INTO `ParentsInformation` VALUES('3', 'yazdan Jayakodi', b'1', 'Manager ', '0312228721', '0771123243', 'Negombo', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('32424', 'Upeka', b'1', 'Merchent', '0117272111', '0726262837', 'Colombo', 'Bamba', 0);
+INSERT INTO `ParentsInformation` VALUES('43435', 'Kalum', b'1', 'Lecturer', '0117272111', '0726262837', 'Negombo', 'Bamba', 0);
+INSERT INTO `ParentsInformation` VALUES('43536', 'Vasantha', b'1', 'Business', '0312228721', '0712323232', 'Colombo', 'Kottawa', 0);
+INSERT INTO `ParentsInformation` VALUES('43568', 'john', b'1', 'Business', '0117272111', '0782323233', 'Kurunagala', 'colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('45678', 'Srikantha', b'1', 'Teacher', '0312285596', '0726262837', 'Moratuwa', 'negombo', 0);
+INSERT INTO `ParentsInformation` VALUES('54645', 'Fonseka', b'1', 'Teacher', '0312285596', '0712323232', 'kolpity', 'Dehiwela Colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('54646', 'Dinal', b'1', 'Pilot', '0312228721', '0712323232', 'Colombo', 'Dehiwela Colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('64558', 'Malki', b'1', 'Banker', '0117272111', '0782323233', 'Moratuwa', 'Bamba', 0);
+INSERT INTO `ParentsInformation` VALUES('65578', 'Amrasena', b'1', 'Driver', '0312228721', '0726262837', 'Negombo', 'Galle', 0);
+INSERT INTO `ParentsInformation` VALUES('65758', 'Madusha', b'1', 'Teacher', '0117272111', '0782323233', 'Moratuwa', 'Bamba', 0);
+INSERT INTO `ParentsInformation` VALUES('65784', 'Sri', b'1', 'CEO', '0117272111', '0782323233', 'Negombo', 'Dehiwela Colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('75638', 'Arathy', b'1', 'Banker', '0117272111', '0712323232', 'Colombo', 'Dehiwa', 0);
+INSERT INTO `ParentsInformation` VALUES('75857', 'Kalum', b'1', 'Business', '0312283234', '0712323232', 'kolpity', 'Dehiwela Colombo', 0);
+INSERT INTO `ParentsInformation` VALUES('76954', 'Shevon', b'1', 'Manager ', '0312228721', '0712323232', 'Negombo', 'Bamba', 0);
 
 -- --------------------------------------------------------
 
@@ -1381,7 +1683,7 @@ INSERT INTO `Staff` VALUES('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '12
 INSERT INTO `Staff` VALUES('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789V', 'Makola', '0756489326', '2014-08-06', '2014-08-30', 3, 1, 5, 6, 1, 1, 2, 70000, 2, 2, 2, 0);
 INSERT INTO `Staff` VALUES('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963V', 'Kollupitiya', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 45000, 3, 3, 3, 0);
 INSERT INTO `Staff` VALUES('12', 'Chathuri Perera', '0081-08-02', 2, 1, 3, 3, '814562395V', 'Negombo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 2, 2, 1, 1, 5, 28000, 5, 5, 51, 0);
-INSERT INTO `Staff` VALUES('13', 'Anthony Ashan', '1987-01-21', 1, 1, 2, 1, '123456789V', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 1, 1, 1, 123, 1, 12, 55, 0);
+INSERT INTO `Staff` VALUES('13', 'Anthony Ashan', '1987-01-21', 1, 1, 2, 1, '123456789V', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 1, 1, 2, 1, 1, 12334, 2, 12, 55, 0);
 INSERT INTO `Staff` VALUES('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543V', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 6, 19, 2, 3, 13, 17000, 3, 18, 41, 0);
 INSERT INTO `Staff` VALUES('15', 'Sahan Malinga Tissera', '1993-02-02', 1, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 17000, 3, 19, 17, 0);
 INSERT INTO `Staff` VALUES('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 1, 14, 3, 7, 4, 25000, 4, 1, 19, 0);
@@ -1401,9 +1703,10 @@ INSERT INTO `Staff` VALUES('28', 'Perera T.M', '2014-09-03', NULL, 3, 3, 2, '963
 INSERT INTO `Staff` VALUES('29', 'Fernando M.K.L.A', '2014-09-04', 2, 2, 2, 4, '923568741v', '123/23/G Havelock rd,nugegoda', '0714562395', '2014-09-03', '2014-09-25', 2, 1, 2, 20, 2, 3, 2, 20000, 1, 1, 1, 0);
 INSERT INTO `Staff` VALUES('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '936257891V', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 35000, 2, 2, 4, 0);
 INSERT INTO `Staff` VALUES('30', 'Jayawardena Mahela', '2014-09-19', 1, 1, 1, 1, '887456321v', '56/A Mahara rd,Kadawatha', '0112365892', '2014-09-02', '2014-09-18', 2, 2, 2, 2, 2, 2, 2, 20000, 1, 1, 17, 0);
+INSERT INTO `Staff` VALUES('31', 'Superman', '2014-09-16', 1, 1, 1, 1, '123456789v', 'asd', '1234567890', '2014-09-02', '2014-09-23', 1, 1, 1, 1, 1, 1, 1, 12345, 1, 2, 1, 0);
 INSERT INTO `Staff` VALUES('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278V', 'moratuwa paradai', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 96000, 1, 10, 57, 0);
 INSERT INTO `Staff` VALUES('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879V', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 2, 2, 2, 2, 2, 45000, 1, 10, 10, 0);
-INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '958964525V', 'wellawattha', '071456932', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
+INSERT INTO `Staff` VALUES('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '958964525V', 'wellawattha', '07145693', '2014-08-13', '2014-08-22', 5, 3, 1, 1, 1, 1, 1, 98623, 3, 4, 10, 0);
 INSERT INTO `Staff` VALUES('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745V', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 6, 1, 1, 1, 1, 10000, 3, 7, 45, 0);
 INSERT INTO `Staff` VALUES('8', 'Yazdaan M.A.', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '012236598', '2014-07-09', '2014-08-15', 3, 3, 2, 2, 3, 1, 1, 201369, 2, 1, 33, 0);
 INSERT INTO `Staff` VALUES('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '456321845V', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 6, 6, 2, 2, 5, 45000, 4, 6, 8, 0);
@@ -1435,7 +1738,9 @@ CREATE TABLE IF NOT EXISTS `Student` (
 
 INSERT INTO `Student` VALUES('1', 'Madusha', '2000-12-12', 1, 1, 1, 'Here', 12, 'B', 'Blue', 0);
 INSERT INTO `Student` VALUES('12325', 'B.T.M Mendia', '1993-12-01', 1, 1, 1, 'Moratuwa', 11, 'A', 'Shantha', 0);
+INSERT INTO `Student` VALUES('1234', 'Alimudeen P.N', '2000-06-06', 1, 1, 0, 'sada', 4, 'c', 'blue', 0);
 INSERT INTO `Student` VALUES('12345', 'J.A.I Jayakody', '1993-12-31', 1, 1, 1, 'Colombo', 11, 'A', 'Surya', 0);
+INSERT INTO `Student` VALUES('19642', 'Madhushan G.L.N.A.M', '1990-07-27', 1, 4, 0, 'negombo', 1, 'A', 'Blue', 0);
 INSERT INTO `Student` VALUES('2', 'Peiris M.S.E', '1993-09-03', 1, 1, 1, 'kolpity', 11, 'C', 'Green', 0);
 INSERT INTO `Student` VALUES('23247', 'Sanchayan Balayan', '1991-01-01', 1, 1, 1, 'Wellawattha', 11, 'B', 'Surya', 0);
 INSERT INTO `Student` VALUES('23415', 'Upeka tisser', '1990-12-23', 1, 1, 1, 'Wadduwa', 11, 'B', 'Surya', 0);
@@ -1479,17 +1784,22 @@ CREATE TABLE IF NOT EXISTS `Subject` (
   `Number` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`Number`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Dumping data for table `Subject`
 --
 
-INSERT INTO `Subject` VALUES(1, 'Science');
-INSERT INTO `Subject` VALUES(2, 'English');
-INSERT INTO `Subject` VALUES(3, 'Physics');
-INSERT INTO `Subject` VALUES(4, 'Mechanics');
-INSERT INTO `Subject` VALUES(5, 'Chemistry');
+INSERT INTO `Subject` VALUES(1, 'Business Studies');
+INSERT INTO `Subject` VALUES(2, 'Chemistry');
+INSERT INTO `Subject` VALUES(3, 'English');
+INSERT INTO `Subject` VALUES(4, 'History');
+INSERT INTO `Subject` VALUES(5, 'Information Technology');
+INSERT INTO `Subject` VALUES(6, 'Maths');
+INSERT INTO `Subject` VALUES(7, 'Mechanics');
+INSERT INTO `Subject` VALUES(8, 'Physics');
+INSERT INTO `Subject` VALUES(9, 'Science');
+INSERT INTO `Subject` VALUES(10, 'Sinhala');
 
 -- --------------------------------------------------------
 
@@ -1535,6 +1845,21 @@ CREATE TABLE IF NOT EXISTS `TermMarks` (
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`AdmissionNo`,`Subject`,`Term`,`Year`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `TermMarks`
+--
+
+INSERT INTO `TermMarks` VALUES('12325', 'Maths', 0, 2014, 78, '', 0);
+INSERT INTO `TermMarks` VALUES('12345', 'Maths', 0, 2014, 63, '', 0);
+INSERT INTO `TermMarks` VALUES('3', 'Maths', 0, 2014, 55, 'Good', 0);
+INSERT INTO `TermMarks` VALUES('43435', 'Maths', 0, 2014, 75, 'Not bad', 0);
+INSERT INTO `TermMarks` VALUES('43536', 'Maths', 0, 2014, 99, 'Can do better', 0);
+INSERT INTO `TermMarks` VALUES('45678', 'Maths', 0, 2014, 78, '', 0);
+INSERT INTO `TermMarks` VALUES('65578', 'Maths', 0, 2014, 100, 'Should try harder', 0);
+INSERT INTO `TermMarks` VALUES('65784', 'Maths', 0, 2014, 65, '', 0);
+INSERT INTO `TermMarks` VALUES('75857', 'Maths', 0, 2014, 43, 'Brilliant', 0);
+INSERT INTO `TermMarks` VALUES('76954', 'Maths', 0, 2014, 44, '', 0);
 
 -- --------------------------------------------------------
 
@@ -1918,6 +2243,166 @@ INSERT INTO `Timetable` VALUES(10, 'C', 4, 4, 'Maths', '2', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '2', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '2', 0);
 INSERT INTO `Timetable` VALUES(10, 'B', 4, 7, 'Maths', '2', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '23', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '24', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '25', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '29', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '29', 0);
 INSERT INTO `Timetable` VALUES(10, 'B', 0, 0, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(10, 'A', 0, 2, 'Sinhala', '3', 0);
@@ -1958,6 +2443,46 @@ INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '3', 0);
 INSERT INTO `Timetable` VALUES(10, 'A', 4, 6, 'Sinhala', '3', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '3', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 3, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 4, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 5, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 6, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 7, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 0, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 1, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 2, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 3, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 4, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 5, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 6, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 1, 7, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 0, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 1, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 2, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 3, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 4, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 5, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 6, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 2, 7, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 0, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 1, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 2, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 3, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 4, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 5, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 6, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 3, 7, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 0, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 1, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 2, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 3, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 4, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 5, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 6, NULL, '31', 0);
+INSERT INTO `Timetable` VALUES(NULL, NULL, 4, 7, NULL, '31', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 0, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 1, NULL, '4', 0);
 INSERT INTO `Timetable` VALUES(NULL, NULL, 0, 2, NULL, '4', 0);
@@ -2220,7 +2745,16 @@ CREATE TABLE IF NOT EXISTS `Transaction` (
 -- Dumping data for table `Transaction`
 --
 
+INSERT INTO `Transaction` VALUES(2, 1, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 2, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 3, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 4, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 5, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 6, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 7, '0000-00-00', b'0', 0, '', 0);
+INSERT INTO `Transaction` VALUES(2, 8, '0000-00-00', b'0', 0, '', 0);
 INSERT INTO `Transaction` VALUES(4, 1, '0000-00-00', b'0', 10000, 'mhh', 0);
+INSERT INTO `Transaction` VALUES(4, 2, '0000-00-00', b'0', 0, '', 0);
 
 -- --------------------------------------------------------
 
@@ -2241,39 +2775,47 @@ CREATE TABLE IF NOT EXISTS `User` (
 --
 
 INSERT INTO `User` VALUES('1', '$2y$10$ITa1DX.IR57egONMAFcQuOVPXycANGqfFchP6nTiEYlkTfoFQwaam', 1, 0);
-INSERT INTO `User` VALUES('2', '$2y$10$hyL8X/Qj5csCvtAv3msRF.7PXuhlVJk31JD0hBI/4sBqU.1yTxoSy', 2, 0);
+INSERT INTO `User` VALUES('2', '$2y$10$Z4hLXwEmV7qZSXxH8lSoY.R4BRXji51YRxGfkdco.2V6LOKPsVtC6', 2, 0);
 INSERT INTO `User` VALUES('22', '$2y$10$iCRtx31Ie73wtbrq.1Sulue/3dFLByKPOOlVVoeoc1e/hwBJTpW5C', 2, 2);
 INSERT INTO `User` VALUES('3', '$2y$10$1T0ZymlVYB8qKgN/B853SO9pptD02f3DrPf98NhJZ0IwdA8.gb4tu', 3, 0);
 INSERT INTO `User` VALUES('4', '$2y$10$kGrSp.K0fcM6XFO5RRXMxeP6Xq/HuYLkSdLZqjsoi4QjBBo9lhsd.', 4, 0);
 INSERT INTO `User` VALUES('5', '$2y$10$l8JhKd0.s3VRR0zTEMc6JexC4lqCe2OzO54Rd468z6ttrniCJGLVC', 5, 0);
 INSERT INTO `User` VALUES('6', '$2y$10$HV2SfdLnz5GSLvtNANPR5.4Ihk4IO.imENY44kMUmtOSXyKaDspFC', 6, 0);
-INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 0);
+INSERT INTO `User` VALUES('a', '$2y$10$h01VyUflSOarmJs5H98.Wem2.0UIj8WdUC/Sayxa8BVKAOBvUFUfm', 1, 2);
 INSERT INTO `User` VALUES('ab', '$2y$10$8Az470QmxIuRqy5a6TNmfOiYKvPoJmUSvo08m9CfC6F6PpXKyWEoe', 2, 2);
 INSERT INTO `User` VALUES('abc', '$2y$10$3TeoYC5i/ROkO.ZC6nomLeniQ/PYn1jbkxw4hKm5wbO8LZoduMshK', 1, 2);
-INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 0);
+INSERT INTO `User` VALUES('alimudeen', '$2y$10$qu/g54MkhYm0ih3eB23HlujlRxIrJ7rEODi6tDkPO1dYMvS.5p5yq', 2, 2);
 INSERT INTO `User` VALUES('apple', '$2y$10$X67s43KjvUygW5GVeoStCOFVylBbXsUeyD2e6EKCMMUEjxqcEsIFa', 1, 2);
-INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$hVONYOoTGLmmG.dfVBJm1.DuPsUTlhJhIqvsYSkQC3KNr0JzDb5bO', 1, 0);
+INSERT INTO `User` VALUES('arabic@gmail.com', '$2y$10$hVONYOoTGLmmG.dfVBJm1.DuPsUTlhJhIqvsYSkQC3KNr0JzDb5bO', 1, 2);
 INSERT INTO `User` VALUES('avd', '$2y$10$f3jufXzojZ1AgE0e5uTQGeJUi3ydJyv7QDT4popfq5K2sEGCjmbre', 4, 2);
-INSERT INTO `User` VALUES('b', '$2y$10$ujaPveBM11/hXY6caye3f.nQYKlnVcdrQGZWksMm9lVk5oYlj4RmO', 2, 0);
-INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 0);
-INSERT INTO `User` VALUES('blue', '$2y$10$FV/zw6c6WkCfHgALLROEmOnjDaiE9ARHAqcHdoQkll3lzPCVqeck.', 1, 0);
-INSERT INTO `User` VALUES('blue table', '$2y$10$nACqSmTdjU/VZp4Oae3d2.pzSw1MxI1hEcOpG79WxbtId5uj9GPmq', 1, 0);
+INSERT INTO `User` VALUES('b', '$2y$10$ujaPveBM11/hXY6caye3f.nQYKlnVcdrQGZWksMm9lVk5oYlj4RmO', 2, 2);
+INSERT INTO `User` VALUES('blacksheep.44@yahoo.com', '$2y$10$TRqmylBUWNmhWBwoldvAjOVBltTU4I54PjkYsNn9Av9NtYv3eQLSG', 2, 2);
+INSERT INTO `User` VALUES('blue', '$2y$10$FV/zw6c6WkCfHgALLROEmOnjDaiE9ARHAqcHdoQkll3lzPCVqeck.', 1, 2);
+INSERT INTO `User` VALUES('blue table', '$2y$10$nACqSmTdjU/VZp4Oae3d2.pzSw1MxI1hEcOpG79WxbtId5uj9GPmq', 1, 2);
 INSERT INTO `User` VALUES('c', '$2y$10$qz4mVPkUBF8GPjOJQeClxOOEfNcOoe0R09M8yKwKNF7LbfNhEcUXK', 1, 2);
-INSERT INTO `User` VALUES('cd', '$2y$10$amqd2LCh9Bk65mwfgaG8LO42NZrk798.HN9Ng0T1JYF1ckPJ4UUM2', 1, 0);
-INSERT INTO `User` VALUES('chair', '$2y$10$c6d3EBGdek9QN9y5pN33oeU3P1xpTbVbJQixQXS.BW0VD1mJfL.vO', 1, 0);
+INSERT INTO `User` VALUES('cd', '$2y$10$amqd2LCh9Bk65mwfgaG8LO42NZrk798.HN9Ng0T1JYF1ckPJ4UUM2', 1, 2);
+INSERT INTO `User` VALUES('chair', '$2y$10$c6d3EBGdek9QN9y5pN33oeU3P1xpTbVbJQixQXS.BW0VD1mJfL.vO', 1, 2);
 INSERT INTO `User` VALUES('d', '$2y$10$LMTiPnchDfPE2x0SnHW4lev7la9THyPfZDnhUX4NofWXunu7IdLgu', 4, 2);
 INSERT INTO `User` VALUES('free', '$2y$10$05tBD.F8Nxi45Ww7oiTUdOeV/qYsk2Dyaa0a8gKWfQrK3PZitmi0y', 1, 2);
 INSERT INTO `User` VALUES('git', '$2y$10$Aan/40UqjW6tQq1frr7qmuKyH7CTVcMfIytE1KWMs5jx16mcjTSXe', 2, 2);
 INSERT INTO `User` VALUES('isuru@sliit.lk', '$2y$10$7kD7JsAbPk5fSgIVfnqyguoDlFJML9uBVb12UZ3aqXOEJkze7EHcC', 1, 0);
+INSERT INTO `User` VALUES('IT13001308', '$2y$10$uaNWXELT/WbmBZsyLi4gae6mIkVVYleRH2inqtAE8YavmQU9eVwTG', 1, 0);
+INSERT INTO `User` VALUES('IT13006426', '$2y$10$NqCLCny59SCxkegqqik2yep7eZvL/wrzP2K/WzorW9JE6UL8Oa7CC', 1, 0);
+INSERT INTO `User` VALUES('IT13008338', '$2y$10$84xtndo0WnKjrrCJukUO3ecnHZxJ9UePxU8vlGBnw70AXqPTQSRz2', 1, 0);
+INSERT INTO `User` VALUES('IT13013424', '$2y$10$sQT1wVw5LqeroKEDiNJjhu5r755pG6jjFvUNqflTfibjDyzOuE0JS', 1, 0);
+INSERT INTO `User` VALUES('IT13014650', '$2y$10$AcDiHK25rLRomS.rLkbPRe8558LOGSiacPumJNxdeKlIYlwZrnMMC', 1, 0);
+INSERT INTO `User` VALUES('IT13024000', '$2y$10$APNgCTivQk1uS9jzczbRi.e.fQUw1eMmSeRMEghlbwQz1bSCQ8EMO', 1, 0);
+INSERT INTO `User` VALUES('IT13028206', '$2y$10$elZ28Kvg3d0NIXLcUMcXo.3WVYBLR4Mo1DVRs0iOoktP8XL5b/G26', 1, 0);
+INSERT INTO `User` VALUES('IT13031312', '$2y$10$i3MU2aeGIZzU8zvfdnTqcuMXrmUhwFHIErS7FSvwIg9Hz.5mBThLa', 1, 0);
 INSERT INTO `User` VALUES('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0);
 INSERT INTO `User` VALUES('red@blue.org', '$2y$10$GTAR2ISrSJc/3E7pqclth.gLbyYlnar3FHubs5tJ66opJ7.gMYlgy', 1, 2);
-INSERT INTO `User` VALUES('s', '$2y$10$5Dr1zqERyeGwod5i5nrQv.m0xBCpUNKOvYJ/q9KOCEx7AQV3ThvIi', 2, 0);
+INSERT INTO `User` VALUES('s', '$2y$10$5Dr1zqERyeGwod5i5nrQv.m0xBCpUNKOvYJ/q9KOCEx7AQV3ThvIi', 2, 2);
 INSERT INTO `User` VALUES('sh', '$2y$10$k6WWAhhSBD7UkvbcHDQVj.l6zLYTBpwuyCrO8a2o10qhTR.6gJBKe', 1, 2);
 INSERT INTO `User` VALUES('shavin47', '$2y$10$QmPP8f1zzx0qW6b3v.h.X.Fox.FyA3mLwy7LrlzkJHdhF8D3srp5.', 1, 2);
-INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 0);
-INSERT INTO `User` VALUES('viim@ubuntu.org', '$2y$10$voK79P1GEwkSeEnvPwcSr.kvBMfyDHnL9ErDVDP9CkoyWHWZSgMru', 2, 0);
+INSERT INTO `User` VALUES('temp@realorg.edu', '$2y$10$J1IivLPWM1F7Rc3qk2Ij4.2yT1mvHzfk/nSZ8hvmTjtb2X8ar4Ut2', 2, 2);
+INSERT INTO `User` VALUES('viim@ubuntu.org', '$2y$10$voK79P1GEwkSeEnvPwcSr.kvBMfyDHnL9ErDVDP9CkoyWHWZSgMru', 2, 2);
 INSERT INTO `User` VALUES('y', '$2y$10$VKCBn2MD5Q4hifDqhlbPWO.J7hYmW.VNU2oi7lWwoPmH76mSr/Z3e', 1, 2);
-INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$PbyD11uQUq0dQMLbidQAr.R3N/HY.Kg..GEkk3QXBvlL2mQ1tDXr6', 1, 0);
+INSERT INTO `User` VALUES('yazdaan.alimudeen@gmail.com', '$2y$10$PbyD11uQUq0dQMLbidQAr.R3N/HY.Kg..GEkk3QXBvlL2mQ1tDXr6', 1, 2);
 
 --
 -- Constraints for dumped tables
@@ -2404,4 +2946,3 @@ ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`S
 --
 ALTER TABLE `Transaction`
 ADD CONSTRAINT `Transaction_ibfk_1` FOREIGN KEY (`EventID`) REFERENCES `Event` (`EventID`);
-COMMIT;
