@@ -17,14 +17,25 @@ if (isset($_POST["submit"]))
 {
 
 
-    $AdmissionNoVar =$_POST["AdmissionNumber"];
+    $AdmissionNoArr =$_POST["AdmissionNumber"];
     $SubjectVar = $_GET["Subject"];
     $TermVar = $_GET["Term"];
-    $MarkVar = $_POST["marks"];
-    $RemarksVar = $_POST["remarks"];
+
+    if( strcmp($TermVar, "Mid") == 0){
+        $TermVar = 0;
+    }
+    else{
+        $TermVar = 1;
+    }
+
+    $MarksArr = $_POST["marks"];
+    $RemarksArr = $_POST["remarks"];
+    $YearVar = $_GET["Year"];
 
 
-    $operation =  insertTermTestMarks($AdmissionNoVar, $SubjectVar, $TermVar, $MarkVar, $RemarksVar);
+    $operation =  insertTermTestMarks($AdmissionNoArr, $SubjectVar, $TermVar, $YearVar, $MarksArr, $RemarksArr);
+
+
 
 
 //    echo $AdmissionNoVar . "<br />";
@@ -81,6 +92,7 @@ else
 if(isset($_GET["Term"]))
 {
     $Term = $_GET["Term"];
+
 }
 else
 {
@@ -254,9 +266,9 @@ else
                 echo $top;
                 echo "<td>$row[0]</td>";
                 echo "<td>$row[1]</td>";
-                echo "<td><input type='text' name='marks' value=''></td>";
-                echo "<td><input type='text' name='remarks' value=''/> ";
-                echo "<input hidden=hidden type='text' name='AdmissionNumber' value='" . $row[0] . "' /></td>";
+                echo "<td><input type='text' name='marks[$row[0]]' value=''></td>";
+                echo "<td><input type='text' name='remarks[$row[0]]' value=''/> ";
+                echo "<input hidden=hidden type='text' name='AdmissionNumber[$i]' value='" . $row[0] . "' /></td>";
                 echo "</tr>";
             }
 
@@ -269,6 +281,8 @@ else
 
 
     </table>
+        <br />
+        <br />
     <input name="submit" class="button" type="submit" value="<?php echo $submit ?>">
     </form>
 
@@ -278,7 +292,7 @@ else
 
 <?php
 //Change these to what you want
-$fullPageHeight = 700;
+$fullPageHeight = 600 + (($i+1)*10);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Term Test Results";
 //Only change above

@@ -43,12 +43,16 @@
                     $_SESSION["accessLevel"] = "$OUTaccessLevel";
                     $stmt->close();
                     $mysqli->close();
-                    return true;
+                    return 1;
+                }
+                else{
+                    $mysqli->close();
+                    return 0;
                 }
             }
         }
         $mysqli->close();
-        return false;
+        return 0;
     }
 
     function insertEvent( $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime)
@@ -913,6 +917,12 @@ function getEventTransactions($eventid)
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();
+
+                if($result->num_rows == 0){
+                    insertNewTimetable($staffId);
+                    return null;
+                }
+
                 $i = 0;
                 while($row = $result->fetch_array())
                 {
@@ -2262,7 +2272,7 @@ function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subje
 
 }
 
-function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Mark, $Remarks)
+function insertTermTestMarks($AdmissionNoArr, $Subject, $Term, $Year, $MarksArr, $RemarksArr)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2273,22 +2283,24 @@ function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Mark, $Remarks)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO TermMarks VALUES(?, ?, ?, ?, ?, ?, ?)"))
     {
         $isDeleted = 0;
-        $stmt->bind_param("ssiisi", $AdmissionNo,$Subject, $Term, $Mark, $Remarks, $isDeleted);
 
-        if($stmt->execute())
-        {
-            $stmt->close();
-            return true;
+        foreach($AdmissionNoArr as $AdmissionNo){
+//            echo $AdmissionNo . " " . $MarksArr[$AdmissionNo] . " " . $RemarksArr[$AdmissionNo] . "<br/>";
+            $MarkVar = $MarksArr[$AdmissionNo];
+            $RemarksVar = $RemarksArr[$AdmissionNo];
+
+            $stmt->bind_param("ssiiisi", $AdmissionNo,$Subject, $Term, $Year, $MarkVar, $RemarksVar, $isDeleted);
+            $stmt->execute();
         }
-
+        $stmt->close();
+        $mysqli->close();
+        return true;
     }
-
     $mysqli->close();
     return false;
-
 }
 
 
