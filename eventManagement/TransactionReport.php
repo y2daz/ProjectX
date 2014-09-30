@@ -123,7 +123,7 @@ ob_start();
             position: relative;
             font-size: 15pt;
             text-align: center;
-            left: 0pt;
+            left:0pt;
             top: 100pt;
         }
 
@@ -135,7 +135,7 @@ ob_start();
 
     <body>
 
-    <h1 id="sch">D.S.Senanayake College</h1>
+    <h1>D.S.Senanayake College</h1>
     <h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
     <h3>Transaction Report</h3>
 
