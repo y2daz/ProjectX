@@ -34,6 +34,15 @@ if (isset($_POST["addevent"]))
             if(checkStaffMember($_POST["eventcreator"]))
             {
                 $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+
+                if($operation)
+                {
+                    sendNotification("Event Added");
+                }
+                else
+                {
+                    sendNotification("An Error Occurred");
+                }
             }
             else
             {

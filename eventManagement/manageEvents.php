@@ -7,8 +7,11 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
-include(THISROOT . "/common.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+require_once(THISROOT . "/common.php");
 //include(THISROOT . "/formValidation.php");
 
 
@@ -27,7 +30,7 @@ else
     $eventID = "";
 }
 
-echo $eventID;
+//echo $eventID;
 
 if(isset($_POST["delete"]))
 {
@@ -51,20 +54,28 @@ if(isset($_POST["delete"]))
 //}
 
 if (isset($_POST["addTransaction"]))
+{
+    if(is_numeric($_POST["tAmount"]))
     {
-//        if(is_numeric($_POST["amount"]))
-//        {
-            $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
+        $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
 
-//        }
-    if ($operation){
-    sendNotification("Transaction Added");
-}
-//            else
-//            {
-//                sendNotification("Invalid Amount");
-//            }
+        if($operation)
+        {
+            sendNotification("Transaction added");
+        }
+        else
+        {
+            sendNotification("Error");
+        }
     }
+    else
+    {
+        sendNotification("Error adding transaction");
+    }
+
+
+
+}
 
 
 if (isset($_POST["editEvent"]))

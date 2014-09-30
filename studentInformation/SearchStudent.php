@@ -9,7 +9,6 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
 //error_reporting(0);
-
 require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
