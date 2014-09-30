@@ -209,7 +209,7 @@ if( isset($_GET["grade"]) )
 //Assign all Page Specific variables
 $fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Classroom Information";
+$pageTitle= "Class-teacher Allocation";
 
 $pageContent = ob_get_contents();
 ob_end_clean();

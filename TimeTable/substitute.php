@@ -316,7 +316,7 @@ if (isset($_GET["getTimetable"]))
 
 $fullPageHeight = 1200 + ($rowcount * 35);
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Timetable";
+$pageTitle= "Substitute Teacher";
 
 
 $pageContent = ob_get_contents();

@@ -162,7 +162,7 @@ else
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Term Test Marks Input";
+$pageTitle= "Insert Term Test Marks";
 //Only change above
 
 $pageContent = ob_get_contents();

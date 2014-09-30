@@ -94,7 +94,7 @@ ob_start();
 //Change these to what you want
 $fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Generate Leave Report";
+$pageTitle= "Generate Individual Staff Report";
 //Only change above
 
 $pageContent = ob_get_contents();

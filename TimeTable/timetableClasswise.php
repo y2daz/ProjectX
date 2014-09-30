@@ -220,7 +220,7 @@ if (isset($_GET["getTimetable"]))
 
 $fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Timetable";
+$pageTitle= "Class Timetable";
 
 
 $pageContent = ob_get_contents();

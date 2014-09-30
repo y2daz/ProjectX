@@ -218,7 +218,7 @@ if (isset($_GET["Grade"])){
     </head>
     <body>
 
-        <h1>Keep Attendance</h1>
+        <h1>Mark Attendance</h1>
 
         <form method="get">
             <table id="classDate">
@@ -312,7 +312,7 @@ if (isset($_GET["Grade"])){
 
     $pageContent = ob_get_contents();
     ob_end_clean();
-    $pageTitle= "Attendance";
+    $pageTitle= "Mark Attendance";
     //Apply the template
     include("../Master.php");
 ?>
