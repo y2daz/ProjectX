@@ -56,7 +56,7 @@ if(isset($_GET["id"]))
             position: absolute;
             left:58px;
             top:300px;
-            width: 200px;
+            width: 250px;
         }
 
         .leaveTable2
@@ -174,15 +174,15 @@ if(isset($_GET["id"]))
             echo "<td>$row[2]</td>";
             echo "<td>$row[3]</td>";
 
-            if($row[4] == 0)
+            if($row[4] == 1)
             {
                 $LeaveType = "Official";
             }
-            else if($row[4] == 1)
+            else if($row[4] == 2)
             {
                 $LeaveType = "Maternity";
             }
-            else if($row[4] == 2)
+            else if($row[4] == 3)
             {
                 $LeaveType  = "Other";
             }
