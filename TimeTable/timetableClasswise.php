@@ -25,66 +25,7 @@ $classroom = "";
 $class = "";
 
 error_reporting(0);//Temporarily turn of all errors
-/*
-//if (isset($_POST["Submit"]))
-//{
-//    $myTime = new Timetable();
-////    $myTime->class = $_POST["Class"];
-////    $myTime->class = $_POST["Grade"];
-//
-//    $arrClassroom = getGradeAndClass( $_POST[ ($prefixClassroom . $i) ] ) ;
-//
-//    if( (isFilled($arrClassroom[0])) && (isFilled($arrClassroom[1])) ){
-//        $myTime->grade = $Grade = $arrClassroom[0];
-//        $myTime->class = $Class = $arrClassroom[1];
-//    }
-//
-//    for($i = 0; $i < 40; $i++){
-//        $subjectArr = array();
-//
-//        $subjectArr[$i] = trim($_POST[ ($prefixSubject . $i) ]);
-//        $myTime -> insertSLot($i, $gradeArr[$i], $classArr[$i], $subjectArr[$i]);
-//    }
-//
-//
-//        var_dump($myTime);
-//}
-//if (isset($_POST["Submit"]))
-//{
-//
-////        echo  $operation;
-//    if ($operation == true){
-//        sendNotification("Timetable updated.");
-//    }else{
-//        sendNotification("Error updating timetable.");
-//    }
-//
-////        var_dump($myTime);
-//}
-*/
-if(isset($_POST["getSubstitute"]))
-{
-    $_GET["getTimetable"] = $_POST["StaffID"];
-    $_GET["staffID"] = $_POST["StaffID"];
 
-    $currentStaffId = $_POST["StaffID"];
-    $Position = $_POST["Position"];
-    $Day = $_POST["Day"];
-
-
-    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
-
-    if($freeTeachersSet == null)
-    {
-        sendNotification("No free teachers.");
-    }
-    else{
-        sendNotification("Teachers available for substitution obtained.");
-    }
-
-    $row = $freeTeachersSet[0];
-    $currentStaffName = $row[0];
-}
 
 
 if (isset($_GET["getTimetable"]))
@@ -141,18 +82,6 @@ if (isset($_GET["getTimetable"]))
         <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
         <script src="timetable.js"></script>
-
-        <script>
-            $(document).ready(function() {
-
-                var i = 0;
-
-                $(".subject").on("click", function(e){ //Write substitute code
-                    var position = $(this).attr("id");
-                    //console.log(position);
-                    alert(position);
-            });
-        </script>
 
     </head>
     <body>
