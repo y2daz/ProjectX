@@ -7,8 +7,11 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
-ob_start();
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+require_once(THISROOT . "/common.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,11 +20,11 @@ ob_start();
     <title>Class Report</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+    <link href="<?php echo THISPATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
-    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
-    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
-    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/common.js"></script>
 
     <script>
         function printPage(){
@@ -169,27 +172,36 @@ ob_start();
                 $result = getTransactionReport($_GET["id"]);
                 $i = 1;
 
-                foreach($result as $row){
+                if(isFilled($result))
+                {
+                    foreach($result as $row){
 
-                    $top = "<form method='post' action='TransactionReport.php'>";
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+                        $top = "<form method='post' action='TransactionReport.php'>";
+                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                    echo $top;
-                    echo "<td>$row[0]</td>";
+                        echo $top;
+                        echo "<td>$row[0]</td>";
 
-                    if($row[1] == 0){
-                        $TransactionType = "Income";
+                        if($row[1] == 0){
+                            $TransactionType = "Income";
+                        }
+                        else{
+                            $TransactionType = "Expenditure";
+                        }
+                        echo "<td>$TransactionType</td>";
+                        echo "<td>$row[2]</td>";
+                        echo "<td>$row[3]</td>";
+
+                        echo "</td></tr></form>";
+
                     }
-                    else{
-                        $TransactionType = "Expenditure";
-                    }
-                    echo "<td>$TransactionType</td>";
-                    echo "<td>$row[2]</td>";
-                    echo "<td>$row[3]</td>";
-
-                    echo "</td></tr></form>";
-
                 }
+                else
+                {
+                    echo "<tr><td colspan='4'>No Data Found</td></tr>";
+                }
+
+
                 ?>
 
 

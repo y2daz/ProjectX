@@ -7,8 +7,11 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
-include(THISROOT . "/common.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+require_once(THISROOT . "/common.php");
 //include(THISROOT . "/formValidation.php");
 
 
@@ -27,7 +30,7 @@ else
     $eventID = "";
 }
 
-echo $eventID;
+//echo $eventID;
 
 if(isset($_POST["delete"]))
 {
@@ -51,20 +54,28 @@ if(isset($_POST["delete"]))
 //}
 
 if (isset($_POST["addTransaction"]))
+{
+    if(is_numeric($_POST["tAmount"]))
     {
-//        if(is_numeric($_POST["amount"]))
-//        {
-            $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
+        $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
 
-//        }
-    if ($operation){
-    sendNotification("Transaction Added");
-}
-//            else
-//            {
-//                sendNotification("Invalid Amount");
-//            }
+        if($operation)
+        {
+            sendNotification("Transaction added");
+        }
+        else
+        {
+            sendNotification("Error");
+        }
     }
+    else
+    {
+        sendNotification("Error adding transaction");
+    }
+
+
+
+}
 
 
 if (isset($_POST["editEvent"]))
@@ -172,6 +183,9 @@ if (isset($_POST["editEvent"]))
         }
         #eventDetais{
             text-align: left;
+            position: absolute;
+            left: 20px;
+            top: 470px;
         }
 
         input.#button8{
@@ -358,9 +372,8 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
         <br>
     <br>
     <div>
-        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
         <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
-        &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
+
         <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
 
     </div>
@@ -368,7 +381,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
          <form method="POST">
             <div  id="general" style="">
 
-                <h1> Edit Event Details </h1>
+                <h1 style="position: absolute; top: 380px; left: 280px;"> Edit Event Details </h1>
 
                 <table id="eventDetais" align="center">
 
@@ -414,6 +427,8 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
                     </tr>
                 </table>
     </div>
+
+<!--             <input type="button" name="delete" value="Delete Event" style="position: absolute; left: 500px; top: 500px;">-->
 
          </form>
 

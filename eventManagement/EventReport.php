@@ -7,7 +7,11 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+require_once(THISROOT . "/common.php");
 ob_start();
 ?>
 
@@ -17,11 +21,11 @@ ob_start();
     <title>Event Report</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+    <link href="<?php echo THISPATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
 
-    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
-    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
-    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo THISPATHFRONT ?>/common.js"></script>
 
     <script>
         function printPage(){
