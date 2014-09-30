@@ -57,7 +57,7 @@
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
-        <script src="<?php echo PATHFRONT ?>/sandbox/jquery-ui.min.js"></script>
+<!--        <script src="--><?php //echo PATHFRONT ?><!--/scripts/jquery-ui.min.js"></script>-->
 
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
@@ -114,7 +114,30 @@
                     logIn();
                 });
 
+                $("#staffReport").on("click", function(e){
+                    e.preventDefault();
+
+                    var noOfStaff = parseFloat(<?php echo getNoOfStaff();?>);
+                    var noOfPages = (noOfStaff / 20.0);
+
+//                    Math.ceil(noOfPages);
+                    var i;
+                    var linkList = "<p>Producing Staff Report</p>";
+                    for(i = 0; i < Math.ceil(noOfPages); i++){
+                        linkList += "<ul><a href='<?php echo PATHFRONT?>" + "/staffManagement/staffReport.php?start=" + (i*20) + "' target='_blank'>Page " + (i+1) + "</ul>";
+                    }
+
+                    sendMessage(linkList);
+                    var i;
+
+                    console.log("noOfPages = " + noOfPages);
+<!---->
+<!--                    window.open("--><?php //echo PATHFRONT?><!--" + "/staffManagement/staffReport.php?start=" + 20, '_blank');-->
+<!--                    window.open("--><?php //echo PATHFRONT?><!--" + "/staffManagement/staffReport.php?start=" + 0, '_blank');-->
+                });
+
             });
+
 
         </script>
     </head>
@@ -142,7 +165,6 @@
                 if($logSuccess == false){
                     sendNotification("Invalid username or password");
                 }
-
                 echo ($pageContent);
             ?>
         </div>
@@ -166,6 +188,7 @@
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a><hr /></li>\n";
                 }
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/generatestaffmember.php\">" . "Individual Staff Member Report " . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
@@ -244,7 +267,7 @@
             if ($user->hasPerm('Staff Report')){
                 $navMenu .= "<li><a>Reports</a>\n";
                 $navMenu .= "<ul>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffReport.php\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a id='staffReport' href=\"" . PATHFRONT . "/staffManagement/staffReport.php?start=0\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
@@ -272,10 +295,12 @@
         </div>
 
         <div id="footer">
-<!--            <div id="aboutus">-->
-<!--                <p> ABOUT US</p>-->
-<!--                <span>We're pretty amazing.</span>-->
-<!--            </div>-->
+            <div id="aboutus">
+                <p> ABOUT US</p>
+                <span>The Mana System was developed for D.S. Senanayake College, Colombo by Students in the Faculty of Computing, SLIIT.
+                    The school use it to manage staff information.
+                    Copyright &copy; Mr. Prasanna S. Haddela, Faculty of Computing, SLIIT. </span>
+            </div>
         </div>
 
         <div id="language">

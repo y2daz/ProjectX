@@ -62,8 +62,8 @@ if (isset($_GET["error"])){
     <p class="content"> D.S. Senanyake College is a public school in Sri Lanka, named after the first Prime Minister
         of Independent Sri Lanka, Rt.Hon. D.S. Senanayake. It was established on February 10, 1967 under the
         stewardship of R.I.T. Alles. </p>
-    <p class="content" > The Mana System was developed for D.S. Senanayake College Colombo to manage school information
-        by Students at SLIIT.</p>
+<!--    <p class="content" > The Mana System was developed for D.S. Senanayake College Colombo to manage school information-->
+<!--        by Students at SLIIT.</p>-->
 
     </body>
 </html>

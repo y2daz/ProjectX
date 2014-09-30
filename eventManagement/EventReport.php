@@ -46,7 +46,7 @@ ob_start();
         #flag {
             position: relative;
             top: -120px;
-            left: 595px;
+            left: 440px;
             /*border: 5pxxx solid black;*/
             width: 120px;
             height: 120px;
@@ -55,7 +55,7 @@ ob_start();
         #eventReport{
             position: relative;
             left:25px;
-            width:1300px;
+            width:1000px;
             border: 1px solid black;
             border-collapse: collapse;
             text-align: center;

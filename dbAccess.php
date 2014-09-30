@@ -1780,7 +1780,37 @@ function insertClassroom($staffID, $grade, $class)
         return $set;
     }
 
-    function getAllStaffDetailed()
+    function getNoOfStaff()
+    {
+        $dbObj = new dbConnect();
+        $mysqli = $dbObj->getConnection();
+
+        if ($mysqli->connect_errno) {
+            die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+        }
+
+        if ($stmt = $mysqli->prepare("SELECT COUNT(StaffID) FROM Staff;"))
+        {
+            if ($stmt->execute())
+            {
+                $OUTValue = "";
+                $stmt->bind_result($OUTvalue);
+                $stmt->fetch();
+
+                if (!isFilled($OUTvalue))
+                {
+                    return 1;
+                }
+
+                $stmt->close();
+                $mysqli->close();
+                return $OUTvalue;
+            }
+        }
+        $mysqli->close();
+    }
+
+    function getAllStaffDetailed( $initial )
     {
 
         $dbObj = new dbConnect();
@@ -1792,8 +1822,9 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE isDeleted = 0 ORDER BY StaffId;"))
+        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE isDeleted = 0 ORDER BY StaffId LIMIT ?, 20;"))
         {
+            $stmt -> bind_param("i", $initial);
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();
