@@ -159,7 +159,7 @@ if (isset($_POST["addevent"]))
 //Change these to what you want
 $fullPageHeight = 600;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Add New Event";
 //Only change above
 
 $pageContent = ob_get_contents();

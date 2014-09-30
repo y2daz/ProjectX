@@ -285,7 +285,7 @@ else
 //Change these to what you want
 $fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Insert O'Level Grades";
+$pageTitle= "Insert O/Level Grades";
 //Only change above
 
 $pageContent = ob_get_contents();

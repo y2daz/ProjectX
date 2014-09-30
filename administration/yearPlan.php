@@ -301,7 +301,7 @@ function printArrJs($Arr){
 //Change these to what you want
 $fullPageHeight = 900;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "Template";
+$pageTitle= "Year Plan";
 //Only change above
 
 $pageContent = ob_get_contents();

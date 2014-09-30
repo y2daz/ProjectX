@@ -245,7 +245,7 @@ if (isset($_POST["submit"]))
 //Change these to what you want
 $fullPageHeight = 700;
 $footerTop = $fullPageHeight + 100;
-$pageTitle= "A Level Marks Input";
+$pageTitle= "Insert A/Level Grades";
 //Only change above
 
 $pageContent = ob_get_contents();

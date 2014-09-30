@@ -271,7 +271,7 @@ if (isset($_GET["getTimetable"]))
 //Change these to what you want
 $fullPageHeight = 1200;
 $footerTop = $fullPageHeight+100;
-$pageTitle= "Timetable";
+$pageTitle= "Teacher's Timetable";
 //Only change above
 
 $pageContent = ob_get_contents();
