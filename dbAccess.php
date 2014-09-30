@@ -2688,9 +2688,13 @@ function markAttendance($AdmissionNoArr, $DateArr, $isPresentArr)
             $stmt->execute();
             $i++;
         }
+        if ($stmt->affected_rows > 0){
+            $stmt -> close();
+            $mysqli->close();
+            return true;
+        };
         $stmt -> close();
         $mysqli->close();
-        return true;
     }
     $mysqli->close();
     return false;
