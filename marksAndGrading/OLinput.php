@@ -7,7 +7,9 @@
  */
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 include(THISROOT . "/dbAccess.php");
-include(THISROOT . "/common.php");
+require_once(THISROOT . "/dbAccess.php");
+require_once(THISROOT . "/formValidation.php");
+require_once(THISROOT . "/common.php");
 ob_start();
 error_reporting(E_ERROR | E_PARSE);
 
@@ -86,6 +88,7 @@ else
             #results {
                 border: 0px solid black;
                 max-width: 250;
+                left: 400pt;
 
             }
             #results th{
@@ -128,11 +131,11 @@ else
         <table>
             <tr class = "alt">
                 <td><td><?php echo $indexno ?></td></td>
-                <td><td><input name="indexNo" type="text" value="" ></td></td>
+                <td><td><input name="indexNo" type="text" value="" required="true" onkeypress="isNumeric(event)" ></td></td>
                 <td><td><?php echo $admissionnumber ?></td></td>
-                <td><td><input name="admissionNo" type="text" value="" ></td></td>
+                <td><td><input name="admissionNo" type="text" value="" required="true"></td></td>
                 <td><td><?php echo $year ?></td></td>
-                <td><td><input name="year" type=text" value=""></td></td>
+                <td><td><input name="year" type=text" value="" required="true" onkeypress="isNumeric(event)" maxlength="4"></td></td>
             </tr>
         </table>
 
@@ -227,7 +230,7 @@ else
             <tr>
                 <td>7</td>
                 <td><input name="subject_7" type="text" value=""></td>
-                <td><select name="grade_7" type="text" value="">
+                <td><select name="grade_7" type="text" value="" required="true" >
                         <option>--</option>
                         <option>A</option>
                         <option>B</option>
@@ -239,7 +242,7 @@ else
             </tr>
             <tr>
                 <td>8</td>
-                <td><input name="subject_8" type="text" value=""></td>
+                <td><input name="subject_8" type="text" value=""required="true" ></td>
                 <td><select name="grade_8" type="text" value="">
                         <option>--</option>
                         <option>A</option>
@@ -252,7 +255,7 @@ else
             </tr>
             <tr>
                 <td>9   </td>
-                <td><input name="subject_9" type="text" value="" ></td>
+                <td><input name="subject_9" type="text" value="" required="true" ></td>
                 <td><select name="grade_9" type="text" value="">
                         <option>--</option>
                         <option>A</option>
