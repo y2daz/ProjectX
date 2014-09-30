@@ -44,7 +44,7 @@ ob_start();
 
         #flag {
             position: relative;
-            top: -10px;
+            top: -120px;
             left:450px;
             /*border: 5pxxx solid black;*/
             width: 120px;
@@ -102,21 +102,52 @@ ob_start();
 
         }
 
+        h2{
+            position: relative;
+            font-size: 12pt;
+            text-align: center;
+            left: 0pt;
+            top: 105pt;
+
+        }
+
+        h1{
+            position: relative;
+            font-size: 12pt;
+            text-align: center;
+            left: 0pt;
+            top: 105pt;
+
+        }
+        h3{
+            position: relative;
+            font-size: 15pt;
+            text-align: center;
+            left: 0pt;
+            top: 100pt;
+        }
+
+
 
 
     </style>
 </head>
 
     <body>
+
+    <h1 id="sch">D.S.Senanayake College</h1>
+    <h2>Gregory's Road, Colombo 07, Sri Lanka.</h2>
+    <h3>Transaction Report</h3>
+
         <div class="" id="general" style="">
 
-            <h1>Transaction Report</h1>
+
 
             <form method="get">
                 <table id="info">
                     <tr>
                     <th>
-                        <img id="flag" src="/images/dslogo.jpg"/>
+                        <img id="flag" src="/images/abc.jpg"/>
 
 
                 </table>
