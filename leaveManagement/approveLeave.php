@@ -27,7 +27,7 @@
 
         if($operation)
         {
-            sendNotification("Leave Request Rejected!");
+            sendNotification("Leave Request Rejected!", "approveLeave.php");
         }
         else
         {
@@ -51,7 +51,7 @@
 
                 if($operation)
                 {
-                    sendNotification($success);
+                    sendNotification($success, "approveLeave.php");
                 }
                 else
                 {
