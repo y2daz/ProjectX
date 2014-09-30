@@ -100,8 +100,53 @@ if (isset($_GET["expand"]))
         $admissionNo = $row[0];
         $NamewithInitials =$row[1];
         $DateofBirth = $row[2];
-        $NationalityRace = $row[3];
-        $Religion = $row[4];
+
+        if($row[3] == 1)
+        {
+            $NationalityRace = "Sinhala";
+        }
+        else if($row[3] == 2)
+        {
+            $NationalityRace = "Sri Lankan Tamil";
+        }
+        else if($row[3] == 3)
+        {
+            $NationalityRace = "Indian Tamil";
+        }
+        else if($row[3] == 4)
+        {
+            $NationalityRace = "Sri Lankan Muslim";
+        }
+        else if($row[3] == 5)
+        {
+            $NationalityRace = "Other";
+        }
+
+        if($row[3] == 1)
+        {
+            $Religion = "Buddhism";
+        }
+        else if($row[3] == 2)
+        {
+            $Religion = "Hinduism";
+        }
+        else if($row[3] == 3)
+        {
+            $Religion = "Islam";
+        }
+        else if($row[3] == 4)
+        {
+            $Religion = "Catholicism";
+        }
+        else if($row[3] == 5)
+        {
+            $Religion = "Christianity";
+        }
+        else if($row[3] == 6)
+        {
+            $Religion = "Other";
+        }
+
         $Medium =$row[5];
         $Address = $row[6];
         $Grade = $row[7];
@@ -194,8 +239,8 @@ else
     $religion =  getLanguage('religion', $language);
     $Medium =  getLanguage('Medium', $language);
     $Address =  getLanguage('Address', $language);
-    $Grade = getLanguage('grade',$language);
-    $Class = getLanguage('class',$language);
+    $grade = getLanguage('grade',$language);
+    $class = getLanguage('class',$language);
     $sinhala =  getLanguage('sinhala', $language);
     $srilankantamil =  getLanguage('srilankantamil', $language);
     $indiantamil =  getLanguage('indiantamil', $language);
@@ -420,7 +465,7 @@ $footerTop = $fullPageHeight + 100;
 
 $pageContent = ob_get_contents();
 ob_end_clean();
-$pageTitle= "newsearchStaffdetails";
+$pageTitle= "Search Student";
 //Apply the template
 include("../Master.php");
 ?>
