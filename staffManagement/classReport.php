@@ -132,12 +132,7 @@ $column3Header = "Teacher Name";
             padding-left: 10px;
             padding-right: 10px;
         }
-        #col_1{
-            max-width: 50px;
-            min-width: 50px;
-            padding-left: 10px;
-            padding-right: 10px;
-        }
+
         #col_2{
             max-width: 150px;
             min-width: 100px;

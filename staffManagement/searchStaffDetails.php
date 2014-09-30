@@ -67,7 +67,7 @@ $fullPageHeight = 600;
 if (isset($_GET["search"]))
 {
     $_SESSION["queryString"] = $_SERVER['QUERY_STRING'];
-//    echo $_SERVER['QUERY_STRING'];
+
     $currentStaffMembers = null;
 
     if ($_GET["Choice"] == "Staffid")
