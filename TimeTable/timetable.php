@@ -157,7 +157,8 @@ if (isset($_GET["getTimetable"]))
     </head>
     <body>
 
-    <h1><?php echo getLanguage("timetable", $lang) ?></h1>
+<!--    <h1>--><?php //echo getLanguage("timetable", $lang) ?><!--</h1>-->
+    <h1>Teacher's Timetable</h1>
 
 <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
     <form method="get">

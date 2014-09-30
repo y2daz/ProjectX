@@ -27,18 +27,17 @@ else
     $eventID = "";
 }
 
-echo $eventID;
 
 if(isset($_POST["delete"]))
 {
     $StaffIDtoDelete = $_POST["delete"];
 
-    echo $StaffIDtoDelete;
+//    echo $StaffIDtoDelete;
 }
 
 if (isset($_POST["addManager"])){
 
-    echo ($_POST["newManagerID"]);
+//    echo ($_POST["newManagerID"]);
 
     $operation = insertManager($eventID, $_POST["newManagerID"]);
 
@@ -62,17 +61,10 @@ if (isset($_POST["addTransaction"]))
                 sendNotification("Error adding transaction");
             }
         }
-
-
         else
         {
             sendNotification("Amount is Invalid");
         }
-
-
-
-
-
 }
 
 if (isset($_POST["editEvent"]))
@@ -114,48 +106,48 @@ if (isset($_POST["editEvent"]))
             border:1px solid #005e77;
             border-collapse: collapse;
         }
-        /*#transaction{*/
-            /*position: relative;*/
-            /*left:25px;*/
-            /*width:750px;*/
-            /*border:1px solid #005e77;*/
-            /*border-collapse: collapse;*/
-        /*}*/
-        /*#Manager td{*/
-            /*padding: 5px;*/
-        /*}*/
-        /*#Manager #id{*/
-            /*width:300px;*/
-        /*}*/
-        /*#Manager #name{*/
-            /*width:400px;*/
-        /*}*/
-        /*#Manager #contact{*/
-            /*width:300px;*/
-        /*}*/
-        /*#Manager #space{*/
-            /*width:500px;*/
-        /*}*/
+        #transaction{
+            position: relative;
+            left:25px;
+            width:750px;
+            border:1px solid #005e77;
+            border-collapse: collapse;
+        }
+        #Manager td{
+            padding: 5px;
+        }
+        #Manager #id{
+            width:300px;
+        }
+        #Manager #name{
+            width:400px;
+        }
+        #Manager #contact{
+            width:300px;
+        }
+        #Manager #space{
+            width:500px;
+        }
 
-        /*#Manager #staffid{*/
-            /*width:500px;*/
-        /*}*/
+        #Manager #staffid{
+            width:500px;
+        }
 
-        /*#Manager #button1{*/
-           /*width:150px;*/
-        /*}*/
+        #Manager #button1{
+           width:150px;
+        }
 
-        /*#Manager #button2{*/
-           /*width:150px;*/
-        /*}*/
+        #Manager #button2{
+           width:150px;
+        }
 
-        /*#Manager #button3{*/
-           /*width:150px;*/
-        /*}*/
+        #Manager #button3{
+           width:150px;
+        }
 
-        /*#Manager #button4{*/
-           /*width:250px;*/
-        /*}*/
+        #Manager #button4{
+           width:250px;
+        }
 
         #transaction td{
             max-width:200px;
@@ -164,12 +156,12 @@ if (isset($_POST["editEvent"]))
             max-width:200px;
         }
 
-        /*#Manager th{*/
-            /*color:white;*/
-            /*background-color: #005e77;*/
-            /*height:30px;*/
-            /*padding:5px;*/
-        /*}*/
+        #Manager th{
+            color:white;
+            background-color: #005e77;
+            height:30px;
+            padding:5px;
+        }
 
         #transaction th{
             color:white;
@@ -177,6 +169,9 @@ if (isset($_POST["editEvent"]))
             height:30px;
             padding:5px;
 
+        }
+        #details{
+            text-align: left;
         }
 
         input.#button8{
@@ -294,7 +289,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
         <h3><?php echo $tlog ?></h3>
 
 
-<!--            <?php //echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+            <?php echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
 
         <table id="transaction">
             <tr>
@@ -336,6 +331,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
             ?>
 
 
+
             <tr style="width:150px;height:30px" >
         <form method="post">
             <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
@@ -370,51 +366,56 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 
     </div>
 
+
+<br />
+<br />
+<br />
          <form method="POST">
             <div  id="general" style="">
 
                 <h1> Edit Event Details </h1>
 
-                <table align="center">
+                <table id="details" align="center">
 
+                    <?php $eventDetails = getEventdetails($eventID) ?>
 
                     <tr>
                         <input name="eventID" value="<?php echo $eventID ?>" hidden="hidden" />
                         <input name="manage" value="Manage" hidden="hidden" />
                         <td><?php echo $name ?></td>
-                        <td><input type="text" name="eventname" required="true" /></td>
+                        <td><input type="text" name="eventname" required="true" value="<?php echo $eventDetails[0][1] ?>" /></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $description ?></td>
-                        <td><input type="text" name="eventdescription" required="true"/> </td>
+                        <td><input type="text" name="eventdescription" value="<?php echo $eventDetails[0][2] ?>" required="true"/> </td>
                     </tr>
 
                     <tr>
                         <td><?php echo $location ?></td>
-                        <td><input type="text" name="eventlocation" required="true"/></td>
+                        <td><input type="text" name="eventlocation" value="<?php echo $eventDetails[0][3] ?>" required="true"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $date ?></td>
-                        <td><input type="date" name="eventdate" required="true"/></td>
+                        <td><input type="date" name="eventdate" value="<?php echo $eventDetails[0][4] ?>" required="true"/></td>
                     </tr>
 
                     <tr>
                         <td><?php echo $starttime ?></td>
-                        <td><input type="time" name="starttime" required="true"/> </td>
+                        <td><input type="time" name="starttime" value="<?php echo $eventDetails[0][5] ?>" required="true"/> </td>
 
                     </tr>
 
                     <tr>
                         <td><?php echo $endtime ?></td>
-                        <td><input type="time" name="endtime" required="true"/></td>
+                        <td><input type="time" name="endtime" value="<?php echo $eventDetails[0][6] ?>" required="true"/></td>
                     </tr>
 
                     <tr>
                         <td>
                            <br>
                             <br>
-                             <input style="position: absolute; left: 365px; top: 600px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
+                             <input style="position: relative;" type="submit" name="editEvent" id="button10" value="Update Event" >
                         </td>
                     </tr>
                 </table>
