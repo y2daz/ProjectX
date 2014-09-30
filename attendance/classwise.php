@@ -40,6 +40,7 @@ $arrClassroom="";
         $class = $arrClassroom[1];
 
         $studentList = getAttendanceReport( $startDate, $endDate, $grade, $class );
+        //$attendenceArray =(""$startDate, : $endDate, $grade, $class);
 
 //        echo "<pre>";
 //        print_r($studentList);
@@ -65,7 +66,6 @@ $arrClassroom="";
         <style type=text/css>
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
-
             h1{
                 text-align: center;
             }
@@ -84,7 +84,7 @@ $arrClassroom="";
                 position:relative;
                 font-weight:bold;
                 font-size:15px;
-                Right:-335px;
+                /*Right:-335px;*/
                 top:20px;
             }
             .insert input{
@@ -117,6 +117,11 @@ $arrClassroom="";
             .viewTable .alt{
                 background-color: #bed9ff;
             }
+            #link{
+                position: relative;
+                top: 26px;
+                left: 140px;
+            }
         </style>
     </head>
 
@@ -142,16 +147,29 @@ $arrClassroom="";
                 <tr>
                     <td></td>
                     <td><input class="button" type="submit" name="getAttendence" value="<?php echo $SubmitBtn?>"></td>
+                    <td><a id="link"
+                           href="<?php echo PATHFRONT . "/Attendance/reportClass.php" . "?grade=" . $_GET["studentGrade"] . "&dateFrom=" . $_GET["dateFrom"] ."&dateTo=" . $_GET["dateTo"] ?>"
+                           target="_blank" > Print Report</a></td>
+                    <td></td>
                 </tr>
             </table>
         </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         <form method="post">
         <table class="viewTable">
             <tr>
-                <th>Staff ID</th>
-                <th>Teacher's Name</th>
-                <th>Main Subject</th>
-                <th>Contact Number</th>
+                <th>Admission Number</th>
+                <th>Name</th>
+                <th>Present Days</th>
+                <th>No of school Days</th>
                 <th></th>
             </tr>
             <?php
@@ -181,8 +199,8 @@ $arrClassroom="";
 </html>
 <?php
 //Assign all Page Specific variables
-$fullPageHeight = 600;
-$footerTop = $fullPageHeight + 100;
+$fullPageHeight = 600+ $rowcount*20;
+$footerTop = $fullPageHeight +100;
 
 $pageContent = ob_get_contents();
 ob_end_clean();

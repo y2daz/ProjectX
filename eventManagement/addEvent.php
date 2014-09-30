@@ -12,13 +12,45 @@
  *
  */
 
+
+require_once("../formValidation.php");
+require_once("../dbAccess.php");
+
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
+define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once(THISROOT . "/common.php");
+
 ob_start();
+
+
 
 if (isset($_POST["addevent"]))
 {
-    $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+    if(is_numeric($_POST["eventid"]))
+    {
+        if(is_numeric($_POST["eventcreator"]))
+        {
+            if(checkStaffMember($_POST["eventcreator"]))
+            {
+                $operation = insertEvent($_POST["eventid"], $_POST["eventname"], $_POST["eventdescription"], $_POST["eventlocation"], 0/*Stauts is always 0 when entering*/, $_POST["eventdate"],  $_POST["eventcreator"], $_POST["starttime"], $_POST["endtime"]);
+            }
+            else
+            {
+                sendNotification("Event creator does not exist");
+            }
+        }
+        else
+        {
+            sendNotification("Event creator is invalid");
+        }
+
+    }
+    else
+    {
+        sendNotification("Invalid Event ID");
+    }
+
 }
 
 ?>
