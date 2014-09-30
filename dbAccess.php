@@ -1113,7 +1113,7 @@ function getAllStudents()
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class, FROM User WHERE isDeleted = 0 ORDER BY accessLevel;"))
+        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class, FROM Student WHERE isDeleted = 0 ORDER BY accessLevel;"))
         {
             if ($stmt->execute())
             {
@@ -1141,7 +1141,7 @@ function getAllStudents()
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class FROM student WHERE Grade = ? and Class = ?;"))
+        if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class FROM Student WHERE Grade = ? and Class = ?;"))
         {
             $stmt -> bind_param("is", $Grade,$Class);
 
@@ -2028,6 +2028,8 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
         }
 
+
+
         if($stmt = $mysqli->prepare("SELECT l.OfficialLeave, l.MaternityLeave, l.OtherLeave, s.NamewithInitials FROM LeaveData l, Staff s WHERE l.StaffID = ? AND s.StaffID = l.StaffID"))
         {
             $stmt->bind_param("s", $StaffID);
@@ -2036,6 +2038,10 @@ function insertClassroom($staffID, $grade, $class)
             {
                 $result = $stmt->get_result();
                 $i = 0;
+                if($result->num_rows == 0){
+                    insertNewLeaveData($StaffID);
+                    return null;
+                }
 
                 while($row = $result->fetch_array())
                 {

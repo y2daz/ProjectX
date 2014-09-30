@@ -140,18 +140,18 @@ if (isset($_GET["getTimetable"]))
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
-        <script src="timetable.js"></script>
+<!--        <script src="timetable.js"></script>-->
 
         <script>
-            $(document).ready(function() {
-
-                var i = 0;
-
-                $(".subject").on("click", function(e){ //Write substitute code
-                    var position = $(this).attr("id");
-                    //console.log(position);
-                    alert(position);
-            });
+//            $(document).ready(function() {
+//
+//                var i = 0;
+//
+//                $(".subject").on("click", function(e){ //Write substitute code
+//                    var position = $(this).attr("id");
+//                    //console.log(position);
+//                    alert(position);
+//            });
         </script>
 
     </head>
