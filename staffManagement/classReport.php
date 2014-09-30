@@ -37,7 +37,7 @@ $result = getAllStaff();
 $line1 = "Class Teacher Allocation";
 $line2 = "D.S Senanayake College";
 $line3 = "Gregory's Road, Colombo 7";
-$line4 = "තමාට පෙර රට";
+
 
 $column0Header = "Grade and Class";
 $column1Header = "Class";
@@ -155,14 +155,14 @@ $column3Header = "Teacher Name";
 
 <body>
 
-<h2><?php echo $line1 ?></h2>
+
 
 
 <form method="get">
     <table id="info">
         <tr>
         <th>
-            <img id="flag" src="/images/dslogo.jpg"/>
+            <img id="flag" src="/images/abc.jpg"/>
 
 
     </table>
@@ -170,8 +170,10 @@ $column3Header = "Teacher Name";
 
 <h3><?php echo $line2 ?></h3>
 <h5><?php echo $line3 ?></h5>
+<h2><?php echo $line1 ?></h2>
 
-<h4><?php echo $line4 ?></h4>
+
+
 
 
 <table class="report">
