@@ -125,37 +125,38 @@ $column3Header = "Student Name";
         }
 
         #col0{
-            max-width: 150px;
-            min-width: 50px;
+            max-width: 250px;
             padding-left: 10px;
             padding-right: 10px;
+            text-align: center;
         }
         #col1{
-            max-width: 150px;
-            min-width: 50px;
+            width: 200px;
             padding-left: 10px;
             padding-right: 10px;
+            text-align: left;
         }
         #col2{
             max-width: 150px;
             min-width: 100px;
             padding-left: 8px;
             padding-right: 8px;
+            text-align: center;
         }
         #col3{
-            max-width: 250px;
-            min-width: 150px;
+            max-width: 100px;
+            min-width: 100px;
             padding-left: 10px;
             padding-right: 10px;
+            text-align: center;
 
         }
 
         #col4{
-            max-width: 250px;
-            min-width: 150px;
+            width: 100px;
             padding-left: 10px;
             padding-right: 10px;
-
+            text-align: center;;
         }
 
         #PrintButton{
@@ -185,7 +186,7 @@ $column3Header = "Student Name";
 <h3><?php echo $line2 ?></h3>
 <h5><?php echo $line3 ?></h5>
 
-<h4><?php echo $line4 ?></h4>
+<!--<h4>--><?php //echo $line4 ?><!--</h4>-->
 <table class="report">
     <tr class="secret">
 
@@ -218,10 +219,10 @@ $column3Header = "Student Name";
             $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
             echo $top;
             echo "$row[0]";
-            echo "<td>$row[1]</td>";
-            echo "<td>$row[2]</td>";
-            echo "<td>$row[3]</td>";
-            echo "<td>$row[4]</td>";
+            echo "<td id='col1'>$row[1]</td>";
+            echo "<td id='col2'>$row[2]</td>";
+            echo "<td id='col3'>$row[3]</td>";
+            echo "<td id='col4'>$row[4]</td>";
 
 //                    echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
 

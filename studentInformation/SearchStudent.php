@@ -8,9 +8,13 @@
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 define('THISPATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+//error_reporting(0);
+
 require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
+
+
 
 
 
@@ -234,10 +238,7 @@ else
             <tr>
                 <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/><?php echo getLanguage('AdmissionNo', $language)?></td>
                 <td><input type="RADIO" name="Choice" value="NamewithInitials"  /><?php echo getLanguage('nameWithInitials', $language)?></td>
-<!--                <td><input type="RADIO" name="Choice" value="Medium"  />Medium</td>-->
-<!--                <td><input type="RADIO" name="Choice" value="Grade"  />Grade</td>-->
                 <td><input type="RADIO" name="Choice" value="Class" /><?php echo getLanguage('class', $language)?></td>
-<!--                <td><input type="RADIO" name="Choice" value="House"  />House</td>-->
             </tr>
 
         </table>
@@ -374,18 +375,27 @@ else
 
     <?php
 
-    if($_GET["Choice"] == "Class")
+    if(isset($_GET["Choice"]))
     {
-        $displayButton = "block";
+        if($_GET["Choice"] == "Class")
+        {
+            $displayButton = "block";
+        }
+        else
+        {
+            $displayButton = "none";
+        }
     }
     else
     {
         $displayButton = "none";
     }
 
+
+
     ?>
 
-    <input style="display: <?php echo $displayButton ?>" type="button" name="button" id="button8" value="Generate Student Report"  onClick="window.location = 'studentReport.php?Grade=<?php echo $Grade ?>&Class=<?php echo $Class ?>'" style=position:relative; top :100px; left: 0px; width:150"/>
+    <input style="position:absolute; left: 590px; top: 90px; display: <?php echo $displayButton ?>" type="button" name="button" id="button8" value="Generate Student Report"  onClick="window.location = 'studentReport.php?Grade=<?php echo $Grade ?>&Class=<?php echo $Class ?>'" style=position:relative; top :100px; left: 0px; width:150"/>
 
 
 
