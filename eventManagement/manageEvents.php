@@ -58,7 +58,7 @@ if (isset($_POST["addTransaction"]))
 
 //        }
     if ($operation){
-    sendNotification("Event Details Edited");
+    sendNotification("Transaction Added");
 }
 //            else
 //            {
