@@ -1,4 +1,4 @@
-﻿﻿<?php
+﻿﻿﻿<?php
 /**
  * Created by PhpStorm.
  * User: DR1215
@@ -105,7 +105,7 @@ else
 <table class="insert" cellspacing="0">
     <tr>
         <td><?php echo $grade . " and " . $class ?></td>
-        <td><input name="gradeAndClass" type="text" value="" /></td>
+        <td><input name="gradeAndClass" type="text" value="" required="true"/></td>
     </tr>
 <!--    <tr>-->
 <!--        <td>--><?php //echo $class ?><!--</td>-->
@@ -113,7 +113,7 @@ else
 <!--    </tr>-->
     <tr>
         <td><?php echo $staffId ?></td>
-        <td><input type="text" value="" name="staffId" required="true"></td>
+        <td><input type="text" value="" name="staffId" required="true" onkeypress="isNumeric(event)"></td>
     </tr>
     <tr>
     <tr>
@@ -123,13 +123,13 @@ else
     <tr>
     <tr>
         <td><?php echo $year ?></td>
-        <td><input type="text" value="" name="Year" maxlength="4" required="true"></td>
+        <td><input type="text" value="" name="Year" maxlength="4" required="true" onkeypress="isNumeric(event)"></td>
     </tr>
     <tr>
         <td><?php echo $term ?></td>
         <td>
-            <label><input type="radio" name="Term" value="Mid"><?php echo $mid ?></label>
-            <label><input type="radio" name="Term" value="Final"><?php echo $final ?></label>
+            <input type="radio" name="Term" value="Mid" checked><?php echo $mid ?>
+            <input type="radio" name="Term" value="Final"><?php echo $final ?>
         </td>
     </tr>
 </table>

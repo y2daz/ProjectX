@@ -1,4 +1,4 @@
-﻿<?php
+﻿﻿<?php
 /**
  * Created by PhpStorm.
  * User: DR1215
@@ -149,9 +149,10 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><label><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</label></td>
-                    <td><label><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</label></td>
-                    <td><label><input type="RADIO" name="Choice" value="Year"  />Year</label></td>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
+
+
                 </tr>
 
             </table>
@@ -176,8 +177,8 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><label><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</label></td>
-                    <td><label><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</label></td>
+                    <td><input type="RADIO" name="Choice" value="AdmissionNo"checked  />By Admission Number</td>
+                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
                 </tr>
 
             </table>
@@ -186,30 +187,7 @@ if (isset($_GET["search"]))
 
 
 
-    <h2>Search Term Test Marks</h2>
 
-    <form>
-    <table id="term">
-
-    <tr>
-
-        <td>Admission Number</td>
-        <td><input name="admissionNo" type="text" value=""></td>
-        <td>Year</td>
-        <td><input name="year" type="text" value=""></td>
-        <td>Term</td>
-        <td><select name="Term" type="text" value="" >
-
-                <option>Mid</option>
-                <option>Final</option>
-            </select></td>
-
-        <td><input class="buttonterm" name="search2" type="submit" value="Search"></td>
-
-
-        </tr>
-        </table>
-        </form>
 
 
 
