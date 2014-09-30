@@ -239,7 +239,7 @@ function logIn(){
                     $.prompt.close();
             }
         }
-    }
+    };
     $.prompt(states);
 }
 

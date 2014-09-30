@@ -43,12 +43,16 @@
                     $_SESSION["accessLevel"] = "$OUTaccessLevel";
                     $stmt->close();
                     $mysqli->close();
-                    return true;
+                    return 1;
+                }
+                else{
+                    $mysqli->close();
+                    return 0;
                 }
             }
         }
         $mysqli->close();
-        return false;
+        return 0;
     }
 
     function insertEvent( $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime)
