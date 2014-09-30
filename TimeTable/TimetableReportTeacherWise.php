@@ -73,14 +73,14 @@ else
     <style type="text/css">
         #flag {
             position: relative;
-            top: 10px;
+            /*top: 10px;*/
             left: 15px;
             /*border: 5px solid black;*/
             width: 120px;
             height: 120px;
         }
         h1{
-            text-align: right;
+            text-align: center;
         }
         h5{
             text-align: center;
@@ -107,7 +107,7 @@ else
             <td id="schoolname" colspan="4"><h1>D.S. Senanayake College</h1></td>
         </tr>
         <tr>
-            <td id="teacherName" colspan="4"><h5>Academic Timetable <?php echo $status . $teacher;?></h5></td>
+            <td id="teacherName" colspan="4"><h3>Academic Timetable for  <?php echo $status . $teacher;?></h3></td>
         </tr>
     </table>
 </form>

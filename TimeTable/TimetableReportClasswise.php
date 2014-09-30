@@ -55,6 +55,17 @@ else{
             width: 120px;
             height: 120px;
         }
+        h1{
+            text-align: center;
+        }
+        h5{
+            text-align: center;
+            left: -10px;
+        }
+        .info td{
+            min-width: 150px;
+            max-width: 600px;
+        }
     </style>
 
     <script>
@@ -66,17 +77,15 @@ else{
 
 <!--    <h2>--><?php //echo getLanguage("chooseOption", $lang) ?><!--</h2>-->
 <form method="get">
-    <table id="info">
-        <tr>
-            <th>
-                <img id="flag" src="/images/dslogo.jpg"/>
-            </th>
-            <th id="schoolName"><h1>D.S. Senanayake College</h1></th>
-        </tr>
-        <tr>
-            <td colspan="3" id="teacherName">Class <?php echo $classroom;?></td>
-        </tr>
-    </table>
+        <table class="info">
+            <tr>
+                <td rowspan="2"><img id="flag" src="/images/dslogo.jpg"/></td>
+                <td id="schoolname" colspan="4"><h1>D.S. Senanayake College</h1></td>
+            </tr>
+            <tr>
+                <td id="class" colspan="4">Academic Timetable for Class <?php echo $classroom;?></td>
+            </tr>
+        </table>
 </form>
 
 
