@@ -167,7 +167,7 @@ function editEvent($name, $description, $location, $date, $starttime, $endtime, 
         }
 
 
-        if ($stmt = $mysqli->prepare("Select e.Name, e.Description,e.EventDate, e.Location, e.StartTime, e.EndTime, s.NameWithInitials FROM Event e , EventManager m, Staff s WHERE e.EventID=? AND e.EventID = m.EventID AND m.StaffID = s.StaffID"))
+        if ($stmt = $mysqli->prepare("Select Name, Description, EventDate, Location, StartTime, EndTime FROM Event WHERE EventID=?"))
         {
             $stmt->bind_param('i', $EventID);
 
