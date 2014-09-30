@@ -66,7 +66,6 @@ $arrClassroom="";
         <style type=text/css>
             #main{ height:<?php echo "$fullPageHeight" . "px";?> }
             #footer{ top:<?php echo "$footerTop" . "px";?> }
-
             h1{
                 text-align: center;
             }
@@ -118,6 +117,11 @@ $arrClassroom="";
             .viewTable .alt{
                 background-color: #bed9ff;
             }
+            #link{
+                position: relative;
+                top: 26px;
+                left: 140px;
+            }
         </style>
     </head>
 
@@ -143,7 +147,9 @@ $arrClassroom="";
                 <tr>
                     <td></td>
                     <td><input class="button" type="submit" name="getAttendence" value="<?php echo $SubmitBtn?>"></td>
-                    <td></td>
+                    <td><a id="link"
+                           href="<?php echo PATHFRONT . "/Attendance/reportClass.php" . "?grade=" . $_GET["studentGrade"] . "&dateFrom=" . $_GET["dateFrom"] ."&dateTo=" . $_GET["dateTo"] ?>"
+                           target="_blank" > Print Timetable</a></td>
                     <td></td>
                 </tr>
             </table>

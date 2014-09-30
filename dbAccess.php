@@ -2886,7 +2886,7 @@ function getAttendanceReport2($startDate,$endDate,$admissionNo)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, a.Date, a.isPresent FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo) WHERE a.Date BETWEEN ? AND ? AND a.AdmissionNo, s.NamewithInitials "))
+    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, SUM(a.isPresent), COUNT(a.isPresent) FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo)WHERE (a.Date BETWEEN ? AND ? ) AND  s.Grade=? AND s.Class=? GROUP BY a.AdmissionNo, s.NamewithInitials "))
     {
         $stmt->bind_param("ssis",$startDate,$endDate,$admissionNo);
         if ($stmt->execute())
