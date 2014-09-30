@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: User
+ * User: vimukthi
  * Date: 9/30/14
  * Time: 12:32 PM
  */
@@ -54,7 +54,7 @@ if(isset($_GET["id"]))
         .stafftable
         {
             position: absolute;
-            left:175px;
+            left: 125px;
             top:300px;
             width: 600px;
         }
@@ -74,7 +74,7 @@ if(isset($_GET["id"]))
     </tr>
 
     <tr>
-        <td><h4>Gregory's Road, Colombo 07, Sri Lanka.</h4></td>
+        <td><h4> Gregory's Road, Colombo 07, Sri Lanka.</h4></td>
     </tr>
 
     <tr>
@@ -430,19 +430,114 @@ if(isset($_GET["id"]))
             echo "<td style='font-weight: bold'> Salary </td>";
             echo "<td style='text-align: left'> $row[19] </td>";
             echo "</tr>";
+
+            if($row[20] == 1)
+            {
+                $highestEducationalQualification= "Below O/Level";
+            }
+            else if($row[20] == 2)
+            {
+                $highestEducationalQualification= "O/Level";
+            }
+            else if($row[20] == 3)
+            {
+                $highestEducationalQualification = "ALevel";
+            }
+            else if($row[20] == 4)
+            {
+                $highestEducationalQualification= "BA/BSc/BEd";
+            }
+            else if($row[20] == 5)
+            {
+                $highestEducationalQualification= "MA/MSc/MEd";
+            }
+            else if($row[20] == 6)
+            {
+                $highestEducationalQualification= "MPhil";
+            }
+            else if($row[20] == 7)
+            {
+                $highestEducationalQualification= "PhD";
+            }
+
+            echo "<tr>";
+            echo "<td style='font-weight: bold'> Highest Educational Qualification </td>";
+            echo "<td style='text-align: left'> $highestEducationalQualification </td>";
+            echo "</tr>";
+
+            if($row[21] == 1)
+            {
+                $highestProfessionalQualification= "PhDEd";
+            }
+            else if($row[21] == 2)
+            {
+                $highestProfessionalQualification= "MPhilEd";
+            }
+            else if($row[21] == 3)
+            {
+                $highestProfessionalQualification= "MEd";
+            }
+            else if($row[21] == 4)
+            {
+                $highestProfessionalQualification= "MA in Ed";
+            }
+            else if($row[21] == 5)
+            {
+                $highestProfessionalQualification= "Dip in Ed";
+            }
+            else if($row[21] == 6)
+            {
+                $highestProfessionalQualification= "MSc in Ed Mgmt";
+            }
+            else if($row[21] == 7)
+            {
+                $highestProfessionalQualification= "PG Dip in EdMgm";
+            }
+
+            echo "<tr>";
+            echo "<td style='font-weight: bold'>Highest Professional Qualification</td>";
+            echo "<td style='text-align: left'>$highestProfessionalQualification</td>";
+            echo "</tr>";
+
+            if($row[22] == 1)
+            {
+                $courseOfStudy= "BSc in Education";
+            }
+            else if($row[22] == 2)
+            {
+                $courseOfStudy= "BSc in Physics";
+            }
+            else if($row[22] == 3)
+            {
+                $courseOfStudy = "BSc in Biology";
+            }
+            else if($row[22] == 4)
+            {
+                $courseOfStudy= "BSc in CombinedMathematics";
+            }
+            else if($row[22] == 5)
+            {
+                $courseOfStudy= "BSc specialisation in Mathematics";
+            }
+            else if($row[22] == 6)
+            {
+                $courseOfStudy= "Passed Maths without a degree in science";
+            }
+            else if($row[22] == 7)
+            {
+                $courseOfStudy= "BSc in Agriculture";
+            }
+
+            echo "<tr>";
+            echo "<td style='font-weight: bold'>Course Of Study</td>";
+            echo "<td style='text-align: left'>$courseOfStudy</td>";
+            echo "</tr>";
         }
     }
     ?>
 </table>
-
 </form>
-
-
-
-
 </body>
-
-
 </html>
 
 
