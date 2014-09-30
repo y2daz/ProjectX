@@ -47,7 +47,6 @@ if(isset($_GET["id"]))
             left: 205px;
             top: 150px;
             text-align: center;
-
         }
 
 
