@@ -54,7 +54,7 @@ if(isset($_GET["id"]))
         .stafftable
         {
             position: absolute;
-            left: 125px;
+            left: 124px;
             top:300px;
             width: 600px;
         }
