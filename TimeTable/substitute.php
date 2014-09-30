@@ -178,7 +178,8 @@ if (isset($_GET["getTimetable"]))
     </head>
     <body>
 
-    <h1><?php echo getLanguage("timetable", $lang) ?></h1>
+<!--    <h1>--><?php //echo getLanguage("timetable", $lang) ?><!--</h1>-->
+    <h1>Substitute Teacher</h1>
 
     <form method="get">
         <table id="info">

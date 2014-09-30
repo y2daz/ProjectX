@@ -46,7 +46,7 @@ elseif( isset($_GET["delete"]) ){
         $operation = deleteClassroom($delGrade, $delClassName);
 
         if ($operation == TRUE) {
-            sendNotification("Class successfully deleted.");
+            sendNotification("Class " .$delGrade . " " . $delClassName . " successfully deleted.");
         } elseif ($operation == FALSE) {
             sendNotification("Error deleting class.");
         }
