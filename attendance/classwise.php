@@ -148,7 +148,7 @@ $arrClassroom="";
                     <td></td>
                     <td><input class="button" type="submit" name="getAttendence" value="<?php echo $SubmitBtn?>"></td>
                     <td><a id="link"
-                           href="<?php echo PATHFRONT . "/Attendance/reportClass.php" . "?grade=" . $_GET["studentGrade"] . "&dateFrom=" . $_GET["dateFrom"] ."&dateTo=" . $_GET["dateTo"] ?>"
+                           href="<?php echo PATHFRONT . "/attendance/reportClass.php" . "?grade=" . $_GET["studentGrade"] . "&dateFrom=" . $_GET["dateFrom"] ."&dateTo=" . $_GET["dateTo"] ?>"
                            target="_blank" > Print Report</a></td>
                     <td></td>
                 </tr>
