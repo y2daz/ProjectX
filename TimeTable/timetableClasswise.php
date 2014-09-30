@@ -62,7 +62,7 @@ error_reporting(0);//Temporarily turn of all errors
 ////        var_dump($myTime);
 //}
 */
-if(isset($_POST["getSubstitute"]))
+/*if(isset($_POST["getSubstitute"]))
 {
     $_GET["getTimetable"] = $_POST["StaffID"];
     $_GET["staffID"] = $_POST["StaffID"];
@@ -84,7 +84,7 @@ if(isset($_POST["getSubstitute"]))
 
     $row = $freeTeachersSet[0];
     $currentStaffName = $row[0];
-}
+}*/
 
 
 if (isset($_GET["getTimetable"]))
@@ -159,7 +159,8 @@ if (isset($_GET["getTimetable"]))
 
 
 
-    <h1><?php echo getLanguage("timetable", $lang) ?></h1>
+<!--    <h1>--><?php //echo getLanguage("timetable", $lang) ?><!--</h1>-->
+    <h1>Class Timetable</h1>
 
 
     <form method="get">
@@ -170,9 +171,6 @@ if (isset($_GET["getTimetable"]))
                 <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
                 <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportClasswise.php" . "?classroom=" . $classroom ?>" target="_blank" > Print Timetable</a></td>
             </tr>
-        </table>
-        <table id="edit">
-
         </table>
     </form>
 
@@ -260,7 +258,7 @@ if (isset($_GET["getTimetable"]))
                 if (isFilled($freeTeachersSet)){
 
                     foreach($freeTeachersSet as $row){
-                        echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
+                        echo ( $rowcount % 2 == 0 ? "\n<tr>" : "<tr class='alt'>");
                         echo "<tr>";
                         echo "<td>" . $row[0] . "</td>";
                         echo "<td>" . $row[1] . "</td>";
@@ -269,22 +267,14 @@ if (isset($_GET["getTimetable"]))
                        // $date = date("y/m/d");
                         echo "<td><input type = button value='Confirm' name='Confirm' > <td>";
 
-                        echo "</tr>";
+                        echo "</tr>\n";
 
                         $rowcount++;
                     }
-
-
-
                 }
                 ?>
             </table>
         </form>
-        </table>
-    </form>
-
-
-    </form>
     </body>
     </html>
 <?php
