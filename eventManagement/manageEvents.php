@@ -406,7 +406,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
                         <td>
                            <br>
                             <br>
-                             <input style="position: absolute; left: 365px; top: 660px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
+                             <input style="position: relative; left: 80px; top: -20px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
                         </td>
                     </tr>
                 </table>
