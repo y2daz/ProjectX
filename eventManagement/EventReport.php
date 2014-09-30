@@ -14,7 +14,7 @@ ob_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Class Report</title>
+    <title>Event Report</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
@@ -46,7 +46,7 @@ ob_start();
         #flag {
             position: relative;
             top: -10px;
-            left:205pt;
+            left: 605px;
             /*border: 5pxxx solid black;*/
             width: 120px;
             height: 120px;
@@ -64,33 +64,34 @@ ob_start();
             background-color: #ffffff;
         }
         #eventReport td{
+
             padding: 5px;
             border: 1px solid black;
             border-collapse: collapse;
         }
 
         #eventReport #eventName{
-            width:200px;
+            width:100px;
         }
 
         #eventReport #description{
-            width:300px;
+            width: 70px;
         }
 
         #eventReport #date{
-            width:200px;
+            width:50px;
         }
 
         #eventReport #location{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #starttime{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #endtime{
-            width:200px;
+            width:70px;
         }
 
         #eventReport #manager{
@@ -151,28 +152,40 @@ ob_start();
                 </tr>
 
                 <?php
+
+
                 $result = getEventdetails($_GET["id"]);
+
                 $i = 1;
 
-                foreach($result as $row){
-                    $top = "<form method='post' action='EventReport.php'>";
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
+               if(isFilled($result))
+               {
+                   foreach($result as $row){
+                       $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
-                    echo $top;
-                    echo "<td>$row[0]</td>";
-                    echo "<td>$row[1]</td>";
-                    echo "<td>$row[2]</td>";
-                    echo "<td>$row[3]</td>";
-                    echo "<td>$row[4]</td>";
-                    echo "<td>$row[5]</td>";
+                       echo $top;
+                       echo "<td id='eventName'>$row[0]</td>";
+                       echo "<td id='description'>$row[1]</td>";
+                       echo "<td id='date'>$row[2]</td>";
+                       echo "<td id='location'>$row[3]</td>";
+                       echo "<td id='starttime'>$row[4]</td>";
+                       echo "<td id='endtime'>$row[5]</td>";
 //                    echo "<td>$row[6]</td>";
 
 
 
 
 
-                    echo "</td></tr></form>";
-                }
+                      echo "</tr>";
+                   }
+               }
+               else
+               {
+                   echo "<tr><td colspan='6'>No Data Found</td></tr>";
+               }
+
+
+
                 ?>
 
 

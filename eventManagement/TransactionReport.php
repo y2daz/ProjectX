@@ -45,7 +45,7 @@ ob_start();
         #flag {
             position: relative;
             top: -10px;
-            left:205pt;
+            left:450px;
             /*border: 5pxxx solid black;*/
             width: 120px;
             height: 120px;
