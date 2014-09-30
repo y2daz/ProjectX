@@ -19,7 +19,7 @@ error_reporting(0);//Temporarily turn of all errors
 
 if(!isFilled($_GET["classroom"]))
 {
-    header("Location: " . PATHFRONT . "/TimeTable/timetableClasswise.php");
+//    header("Location: " . PATHFRONT . "/TimeTable/timetableClasswise.php");
 }
 else{
     $classroom = $_GET["classroom"];
