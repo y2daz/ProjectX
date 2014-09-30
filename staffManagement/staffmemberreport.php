@@ -12,6 +12,8 @@ include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
 
+error_reporting(0);
+
 if(isset($_GET["id"]))
 {
     $StaffId=$_GET["id"];

@@ -66,7 +66,7 @@ ob_start();
 
     <h1 align="center"> Generate Staff Member Report </h1>
 
-    <form method="get" action="leaveReport.php">
+    <form method="get" action="staffmemberreport.php">
 
         <table class="insert">
 
