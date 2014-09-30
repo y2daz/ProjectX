@@ -111,7 +111,7 @@ else
         {
             position: absolute;
             left: 220px;
-            top: 350px;
+            top: 330px;
             width: 300px;
             text-align: justify;
 
@@ -123,13 +123,13 @@ else
         {
             position: absolute;
             left: 220px;
-            top: 500px;
+            top: 470px;
             width: 240px;
 
 
         }
         .insert td{
-          padding: 2pt;
+            padding: 2pt;
         }
 
         .insert2 td{
@@ -146,7 +146,7 @@ else
 
         .text{
             position: absolute;
-            top: 770px;
+            top: 750px;
             text-align: justify;
             font-size: 12pt;
             right: 6px;
@@ -154,14 +154,14 @@ else
 
         .text1{
             position: absolute;
-            top: 900px;
+            top: 880px;
             left: 50px;
 
         }
 
         .text2{
             position: absolute;
-            top: 900px;
+            top: 880px;
             left: 550px;
 
         }
