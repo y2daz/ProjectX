@@ -1387,7 +1387,7 @@ function getStudent($AdmissionNo)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("SELECT * FROM applyleave WHERE StaffID = ? ORDER BY RequestDate"))
+        if ($stmt = $mysqli->prepare("SELECT * FROM ApplyLeave WHERE StaffID = ? ORDER BY RequestDate"))
         {
             $stmt -> bind_param("s", $StaffID);
 
@@ -1969,7 +1969,7 @@ function insertClassroom($staffID, $grade, $class)
 
         $set = NULL;
 
-        if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, LeaveType, OtherInformation FROM applyleave WHERE StaffID = ? ORDER BY RequestDate"))
+        if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, LeaveType, OtherInformation FROM ApplyLeave WHERE StaffID = ? ORDER BY RequestDate"))
         {
             $stmt->bind_param("s", $StaffID);
 
