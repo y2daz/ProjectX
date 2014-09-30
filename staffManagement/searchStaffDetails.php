@@ -25,9 +25,10 @@ $currentStaffMembers="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
 {
+
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"], $_POST["HighestEducationalQualification"], $_POST["HighestProfessionalQualification"], $_POST["CourseofStudy"]);
 
-    if ($operation == true)
+    if ($operation)
     {
         sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
     }
@@ -623,8 +624,8 @@ else
         <tr>
             <td><?php echo $gender?></td>
             <td>
-                <input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> />Male
-                <input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> />Female
+                <input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> /><?php echo $male?>
+                <input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> /><?php echo $female?>
             </td>
             <td></td>
         </tr>
@@ -998,7 +999,7 @@ else
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr>
-            <td colspan="3" style="text-align: center"><input type="Submit" value=<?php echo getLanguage('update', $language)?>></td>
+            <td colspan="3" style="text-align: center"><input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
         </tr>
         </table>
 

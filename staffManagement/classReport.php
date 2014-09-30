@@ -39,10 +39,10 @@ $line2 = "D.S Senanayake College";
 $line3 = "Gregory's Road, Colombo 7";
 $line4 = "තමාට පෙර රට";
 
-$column0Header = "Grade";
+$column0Header = "Grade and Class";
 $column1Header = "Class";
-$column2Header = "Teachers'ID";
-$column3Header = "Teachers'Name";
+$column2Header = "Teacher ID";
+$column3Header = "Teacher Name";
 
 /*LANGUAGE
  *
@@ -122,10 +122,13 @@ $column3Header = "Teachers'Name";
             border-left: 1px solid white;
             border-right: 1px solid white;
         }
+        .report td{
+            padding: 5px 10px 5px 10px;
+        }
 
         #col_0{
-            max-width: 50px;
-            min-width: 50px;
+            max-width: 130px;
+            min-width: 130px;
             padding-left: 10px;
             padding-right: 10px;
         }
@@ -142,11 +145,8 @@ $column3Header = "Teachers'Name";
             padding-right: 8px;
         }
         #col_3{
-            max-width: 250px;
-            min-width: 150px;
-            padding-left: 10px;
-            padding-right: 10px;
-
+            max-width: 240px;
+            min-width: 240px;
         }
 
         #PrintButton{
@@ -186,7 +186,7 @@ $column3Header = "Teachers'Name";
     <tr></tr>
     <tr class="headerRow">
         <td id="col_0"><?php echo $column0Header ?></td>
-        <td id="col_1"><?php echo $column1Header ?></td>
+<!--        <td id="col_1">--><?php //echo $column1Header ?><!--</td>-->
         <td id="col_2"><?php echo $column2Header ?></td>
         <td id="col_3"><?php echo $column3Header ?></td>
 
@@ -199,15 +199,14 @@ $column3Header = "Teachers'Name";
 
     if ($result == null)
     {
-        echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
+        echo "<tr><td colspan='5'>There are no records to show.</td></tr>";
     }
     else
     {
         foreach($result as $row)
         {
             echo "<tr>\n";
-            echo "<td>$row[0]</td>";
-            echo "<td>$row[1]</td>";
+            echo "<td>$row[0] $row[1]</td>";
             echo "<td>$row[2]</td>";
             echo "<td>$row[3]</td>";
             echo "</tr>\n";
