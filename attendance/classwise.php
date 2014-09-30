@@ -99,6 +99,7 @@ $arrClassroom="";
                 border-collapse: collapse;
                 left:25px;
                 max-width: 750px;
+                border: 1px solid #005e77;
             }
             .viewTable th{
                 width: 300px;
@@ -113,6 +114,9 @@ $arrClassroom="";
                 padding: 4px;
                 min-width: 60px;
                 text-align: center;
+            }
+            .viewTable .left{
+                text-align: left;
             }
             .viewTable .alt{
                 background-color: #bed9ff;
@@ -170,7 +174,7 @@ $arrClassroom="";
                 <th>Name</th>
                 <th>Present Days</th>
                 <th>No of school Days</th>
-                <th></th>
+                <th>Attendance (Percentage)</th>
             </tr>
             <?php
             $rowcount = 0;
@@ -178,11 +182,11 @@ $arrClassroom="";
 
                 foreach($studentList as $row){
                     echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
-                    echo "<tr>";
                     echo "<td>" . $row[0] . "</td>";
-                    echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
+                    echo "<td class='left' >" . $row[1] . "</td>";
                     echo "<td>" . $row[2] . "</td>";
                     echo "<td>" . $row[3] . "</td>";
+                    echo "<td>" . number_format( (($row[2] / $row[3] ) * 100), 2 ) . "</td>";
                     // $date = date("y/m/d");
 //                    echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                     echo "</tr>";
