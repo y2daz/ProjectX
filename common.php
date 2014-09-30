@@ -48,4 +48,11 @@
         return $arrGradeClass; //Grade in [0] and class in [1]
     }
 
+/**
+ * http://webcheatsheet.com/php/get_current_page_url.php
+ */
+    function curPageName() {
+        return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
+    }
+
 ?>

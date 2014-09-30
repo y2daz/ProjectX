@@ -477,8 +477,8 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         <tr >
             <td><?php echo $gender?></td>
             <td>
-                <input type="radio" name="gender" value="1"><?php echo $male?>
-                <input type="radio" name="gender" value="2"><?php echo $female?>
+                <label><input type="radio" name="gender" value="1"><?php echo $male?></label>
+                <label><input type="radio" name="gender" value="2"><?php echo $female?></label>
             </td>
             <td></td>
         </tr>
@@ -856,7 +856,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1400;
+$fullPageHeight = 1400 + ($language * 400);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Staff Registration";
 //Only change above

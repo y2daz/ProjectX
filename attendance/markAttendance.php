@@ -57,23 +57,41 @@ $classDateDisplay = "block";
 
         $i = 0;
 
+        $holidayX = array();
+
+        $holidayX[0] = isHoliday( $monday );
+        $holidayX[1] = isHoliday( $tuesday );
+        $holidayX[2] = isHoliday( $wednesday );
+        $holidayX[3] = isHoliday( $thursday );
+        $holidayX[4] = isHoliday( $friday );
+
+
+
         foreach($result as $row){
             for($x = 0; $x < 5; $x++){
-                $admissionNoArr[$i] = $row[0];
-                $dateArr[$i] = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursday : $friday ))));
+                if ( !$holidayX[$x] ){
+                    $admissionNoArr[$i] = $row[0];
+                    $dateArr[$i] = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3 ? $thursday : $friday ) ) ) );
 
-                $tempWeek = $_POST["box"]; //tempWeek is a 2D array
-                $studentWeek = $tempWeek[$row[0]];
+                    $tempWeek = $_POST["box"]; //tempWeek is a 2D array
+                    $studentWeek = $tempWeek[$row[0]];
 
-                if( isset($studentWeek[ $dateArr[$i] ] )){
-                    $presentArr[$i] = '1';
+                    if( isset($studentWeek[ $dateArr[$i] ] )){
+                        $presentArr[$i] = '1';
+                    }
+                    else{
+                        $presentArr[$i] = '0';
+                    }
+                    $i++;
                 }
-                else{
-                    $presentArr[$i] = '0';
-                }
-                $i++;
             }
         }
+
+//        $i = 0;
+//        foreach(  $admissionNoArr as $admin){
+//            echo "markAttendance(" . $admin . " " . $dateArr[$i] . " " . $presentArr[$i] .") <br />";
+//            $i++;
+//        }
 
         $operation = markAttendance( $admissionNoArr, $dateArr, $presentArr);
         echo $operation;
@@ -250,27 +268,27 @@ if (isset($_GET["Grade"])){
 
                         if ($i % 2 == 1)
                         {
-                            echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>";
+                            echo "<tr class=\"alt\"><td>$admissionNo</td> <td>$studentName</td>\n";
                         }
                         else{
-                            echo "<tr><td>$admissionNo</td> <td>$studentName</td>";
+                            echo "<tr><td>$admissionNo</td> <td>$studentName</td>\n";
                         }
 
                         for($x = 0; $x < 5; $x++)
                         {
-                            $dayDate = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursdayh : $friday ))));
+                            $dayDate = ($x == 0? $monday : ($x == 1? $tuesday : ($x == 2? $wednesday : ($x == 3? $thursday : $friday ))));
 
                             if ( $holidayArr[$x] ) //Insert holiday logic
                             {
-                                $cBox = "<td class=\"disabled\"></td>";
+                                $cBox = "\t<td class=\"disabled\"></td>\n";
                             }
                             else
                             {
-                                $cBox = "<td><input type=\"checkbox\" name=\"box[$admissionNo][$dayDate]\" checked />";
+                                $cBox = "\t<td><input type=\"checkbox\" name=\"box[$admissionNo][$dayDate]\" checked />\n";
                             }
                             echo $cBox;
                         }
-                        echo "</tr>";
+                        echo "</tr>\n\n";
                         $i++;
                     }
                 }

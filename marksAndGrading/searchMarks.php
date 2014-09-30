@@ -149,9 +149,9 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</td>
-                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
-                    <td><input type="RADIO" name="Choice" value="Year"  />Year</td>
+                    <td><label><input type="RADIO" name="Choice" value="AdmissionNo" checked/>By Admission Number</label></td>
+                    <td><label><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</label></td>
+                    <td><label><input type="RADIO" name="Choice" value="Year"  />Year</label></td>
                 </tr>
 
             </table>
@@ -176,8 +176,8 @@ if (isset($_GET["search"]))
                 </tr>
 
                 <tr>
-                    <td><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</td>
-                    <td><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</td>
+                    <td><label><input type="RADIO" name="Choice" value="AdmissionNo" />By Admission Number</label></td>
+                    <td><label><input type="RADIO" name="Choice" value="IndexNo"  />Index Number</label></td>
                 </tr>
 
             </table>

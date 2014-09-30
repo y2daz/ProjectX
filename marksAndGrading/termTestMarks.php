@@ -128,8 +128,8 @@ else
     <tr>
         <td><?php echo $term ?></td>
         <td>
-            <input type="radio" name="Term" value="Mid"><?php echo $mid ?>
-            <input type="radio" name="Term" value="Final"><?php echo $final ?>
+            <label><input type="radio" name="Term" value="Mid"><?php echo $mid ?></label>
+            <label><input type="radio" name="Term" value="Final"><?php echo $final ?></label>
         </td>
     </tr>
 </table>

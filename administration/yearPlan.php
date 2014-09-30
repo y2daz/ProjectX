@@ -69,8 +69,6 @@ function printArrJs($Arr){
                     this.classList.toggle("selected");
                 });
 
-
-
                 fillYearPlan(  <?php printArrJs($holidaysArr); ?> );
             });
 
@@ -104,10 +102,10 @@ function printArrJs($Arr){
                 cursor: pointer;
             }
             .day6 {
-                background:#ECECEC;
+                background:#DEDEDE;
             }
             .day7 {
-                background:#ECECEC;
+                background:#DEDEDE;
             }
             .monthName {
                 text-align:left;
@@ -180,6 +178,8 @@ function printArrJs($Arr){
   </table>
 
 
+  <br />
+  <br />
   <br />
 
     <table id="calendar" border="1">

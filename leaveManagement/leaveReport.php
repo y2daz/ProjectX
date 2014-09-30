@@ -44,16 +44,18 @@ if(isset($_GET["id"]))
         .title
         {
             position: absolute;
-            left: 145px;
+            left: 205px;
             top: 150px;
             text-align: center;
+
         }
+
 
         .leaveTable
         {
             position: absolute;
             left:58px;
-            top:380px;
+            top:300px;
             width: 200px;
         }
 
@@ -61,7 +63,7 @@ if(isset($_GET["id"]))
         {
             position: absolute;
             left: 45px;
-            top: 440px;
+            top: 360px;
         }
 
         .leaveTable2 td
@@ -83,15 +85,15 @@ if(isset($_GET["id"]))
 <table class="title">
 
     <tr>
-        <td><h1>D.S.Senanayake College</h1></td>
+        <td><h3>D.S.Senanayake College</h3></td>
     </tr>
 
     <tr>
-        <td><h2>Gregory's Road, Colombo 07, Sri Lanka.</h2></td>
+        <td><h4>Gregory's Road, Colombo 07, Sri Lanka.</h4></td>
     </tr>
 
     <tr>
-        <td><h1>Staff Leave Analysis Report</h1></td>
+        <td><h3>Staff Leave Analysis Report</h3></td>
     </tr>
 
 </table>
