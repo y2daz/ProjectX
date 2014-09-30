@@ -913,6 +913,12 @@ function getEventTransactions($eventid)
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();
+
+                if($result->num_rows == 0){
+                    insertNewTimetable($staffId);
+                    return null;
+                }
+
                 $i = 0;
                 while($row = $result->fetch_array())
                 {
