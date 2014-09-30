@@ -221,7 +221,8 @@ else
 
     ?>
 <body>
-    <h1><?php echo getLanguage('SearchandViewStudentDetails', $language)?>  </h1>
+<!--    <h1>--><?php //echo getLanguage('SearchandViewStudentDetails', $language)?><!--  </h1>-->
+    <h1>Search Student Information</h1>
     <br />
     <!--<h3>Search by</h3>-->
 

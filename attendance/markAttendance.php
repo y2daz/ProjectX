@@ -94,7 +94,7 @@ $classDateDisplay = "block";
 //        }
 
         $operation = markAttendance( $admissionNoArr, $dateArr, $presentArr);
-        echo $operation;
+//        echo $operation;
 
         if ($operation == true)
         {
