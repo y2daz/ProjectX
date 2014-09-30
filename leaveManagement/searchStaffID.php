@@ -161,7 +161,7 @@ else
     </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 600;
+$fullPageHeight = 1100;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Search Staff ID";
 //Only change above
