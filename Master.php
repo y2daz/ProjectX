@@ -74,6 +74,19 @@
             /*Static Styles*/
             /*INSERT ALL YOUR CSS HERE*/
 
+            #whoami{
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                display: block;
+                padding: 5px 10px 5px 10px;
+                background-color: #efefef;
+                border: 2px solid #003448;
+                /*width: 220px;*/
+                /*height: 30px;*/
+                color: #0099d4;
+            }
+
 
         </style>
         <script>
@@ -260,5 +273,15 @@
 
 <!--        <div id="dsLogo">-->
 <!--        </div>-->
+
+        <div id="whoami">
+            <?php
+
+            $userArray = array( "IT13001308" => "Alimudeen M.Y.", "IT13006426" => "Mendis B.T.M.", "IT13008338" => "Peiries M.S.E.",
+                "IT13013424" => "Liyanage M.C.", "IT13031312" => "Joseph V.S.", "IT13014650" => "Rathnayake R.M.D.A.",
+                "IT13028206" => "Jayakody J.A.I.", "IT13024000" => "De Silva G.L.N.A.M.");
+
+            echo $_SESSION["user"] . " " . $userArray[$_SESSION["user"]]; ?>
+        </div>
     </body>
 </html>
