@@ -1420,7 +1420,7 @@ function getStudent($AdmissionNo)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE StaffID LIKE ? AND isDeleted = 0 LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
         {
             $stmt -> bind_param("s", $StaffID);
 
