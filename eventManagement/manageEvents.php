@@ -372,9 +372,9 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
         <br>
     <br>
     <div>
-        <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
+        <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style="position:relative; left: 0px; width:150"/>
 
-        <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style=position:relative; top :100px; left: 0px; width:150"/>
+        <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style="position:relative; left: 0px; width:150"/>
 
     </div>
 
