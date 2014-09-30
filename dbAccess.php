@@ -167,7 +167,7 @@ function editEvent($name, $description, $location, $date, $starttime, $endtime, 
         }
 
 
-        if ($stmt = $mysqli->prepare("Select e.Name, e.Description,e.EventDate, e.Location, e.StartTime, e.EndTime, s.NameWithInitials FROM Event e , EventManager m, Staff s WHERE e.EventID=? AND e.EventID = m.EventID AND m.StaffID = s.StaffID"))
+        if ($stmt = $mysqli->prepare("Select Name, Description, EventDate, Location, StartTime, EndTime FROM Event WHERE EventID=?"))
         {
             $stmt->bind_param('i', $EventID);
 
@@ -2903,7 +2903,7 @@ function isHoliday($date)
     return false;
 }
 
-/*function getAttendancereport()
+function getAttendanceReport2($startDate,$endDate,$admissionNo)
 {
 
     $dbObj = new dbConnect();
@@ -2915,9 +2915,9 @@ function isHoliday($date)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT * FROM attendance WHERE 1"))
+    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, SUM(a.isPresent), COUNT(a.isPresent) FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo)WHERE (a.Date BETWEEN ? AND ? ) AND  s.Grade=? AND s.Class=? GROUP BY a.AdmissionNo, s.NamewithInitials "))
     {
-
+        $stmt->bind_param("ssis",$startDate,$endDate,$admissionNo);
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
@@ -2932,7 +2932,6 @@ function isHoliday($date)
     $mysqli->close();
     return $set;
 }
-}**/
 
 
 //SELECT r.RoleId, p.PermId, p.PermDesc FROM `RolePerm` r RIGHT OUTER JOIN Permissions p on (p.permId = r.PermId) AND r.RoleId = 1Fs

@@ -37,6 +37,37 @@ $column0Header = "AdmissionNo";
 $column1Header = "Class";
 $column2Header = "Date"; **/
 
+if(!isFilled($_GET["grade"]))
+{
+    header("Location:    " . PATHFRONT . "/TimeTable/timetableClasswise.php");
+}
+else{
+    $classroom =$_GET["grade"];
+    $startDate=$_GET["dateFrom"];
+    $endDate=$_GET["dateTo"];
+
+
+    $arrClassroom = getGradeAndClass( $classroom );
+
+    $grade = $arrClassroom[0];
+    $class = $arrClassroom[1];
+
+    $studentList = getAttendanceReport( $startDate, $endDate, $grade, $class );
+
+
+//        echo "<pre>";
+//        print_r($studentList);
+//        echo "</pre>";
+//        if($studentList == null )
+//        {
+//            sendNotification("No free teachers.");
+//        }
+//        else
+//        {
+//            sendNotification("Teachers available for .");
+//        }
+
+}
 
 
 ?>
@@ -76,9 +107,7 @@ $column2Header = "Date"; **/
             border: 1px solid black;
             border-collapse: collapse;
             max-height: 300px;
-
-
-
+            padding: 5px 10px 5px 10px;
         }
         .report .headerRow{
             height:50px;
@@ -90,65 +119,10 @@ $column2Header = "Date"; **/
             text-align: center;
             max-width: 100px;
         }
-
         .secret td{
             border-top: 1px solid white;
             border-left: 1px solid white;
             border-right: 1px solid white;
-        }
-        .numberCol{
-            text-align: left;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            min-width: 25px;
-            max-width: 25px;
-
-            writing-mode: bt-rl;
-            text-indent: -7.5em;
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-        }
-        .upcol{
-            position: relative;
-            text-align: center;
-            white-space: nowrap;
-            top: 40px;
-            text-overflow: ellipsis;
-            min-width: 25px;
-            max-width: 25px;
-            /*display: block;*/
-            /*background-color: white;*/
-            /*border-bottom: 1px solid black;*/
-
-            writing-mode: bt-rl;
-            /*text-indent: -7.5em;*/
-            padding: 0px 0px 0px 0px;
-            margin: 0px;
-        }
-        .whiteBox{
-            display: block;
-            position: relative;
-            z-index: 3;
-            background-color: #ffffff;
-            left:1px;
-            top:15px;
-            padding-top: 10px;
-            padding-bottom: 20px;
-            width: 74px;
-            border-bottom: 1px solid #000000;
-        }
-        .whiteBoxR{
-            display: block;
-            position: relative;
-            z-index: 3;
-            background-color: #ffffff;
-            text-indent: -12em;
-            left:0px;
-            top:15px;
-            padding-top: 10px;
-            padding-bottom: 20px;
-            width: 74px;
-            /*border-bottom: 1px solid #000000;*/
         }
         #col_0{
             max-width: 100px;
@@ -173,22 +147,7 @@ $column2Header = "Date"; **/
             min-width: 150px;
             padding-left: 10px;
             padding-right: 10px;
-        ;
         }
-        /*.rotate { *//*http://css-tricks.com/snippets/css/text-rotation/ *//*
-            *//* Safari *//*
-            -webkit-transform: rotate(-90deg);
-            *//* Firefox *//*
-            -moz-transform: rotate(-90deg);
-            *//* IE *//*
-            -ms-transform: rotate(-90deg);
-            *//* Opera *//*
-            -o-transform: rotate(-90deg);
-            *//* Internet Explorer *//*
-            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-
-            *//*vertical-align: top;*//*
-        }*/
         #PrintButton{
             position: absolute;
             top: 100px;
@@ -253,29 +212,32 @@ $column2Header = "Date"; **/
     <table class="report" align="center">
         <tr class="secret">
 
-        <th>Admission Number</th>
-        <th>Date</th>
-        <th>is Present</th>
+            <th>Admission Number</th>
+            <th>Name</th>
+            <th>Present Days</th>
+            <th>No of school Days</th>
 
         <?php
 
-        $result = getAttendancereport();
 
-        if ($result == null)
+        if(!isFilled($studentList))
         {
             echo "<tr><td colspan='37'>There are no records to show.</td></tr>";
         }
         else
         {
-            foreach($result as $row)
-            {
-
+            $rowcount = 0;
+            foreach($studentList as $row){
+                echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
                 echo "<tr>";
-
-                echo "<td>$row[0]</td>";
-                echo "<td>$row[1]</td>";
-                echo "<td>$row[2]</td>";
+                echo "<td>" . $row[0] . "</td>";
+                echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
+                echo "<td>" . $row[2] . "</td>";
+                echo "<td>" . $row[3] . "</td>";
+                // $date = date("y/m/d");
+//                    echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                 echo "</tr>";
+                $rowcount++;
             }
         }
 

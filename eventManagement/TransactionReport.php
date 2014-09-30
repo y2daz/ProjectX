@@ -11,16 +11,44 @@ include(THISROOT . "/dbAccess.php");
 ob_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <style type=text/css>
-        #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-        #footer{ top:<?php echo "$footerTop" . "px";?> }
+    <title>Class Report</title>
 
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+
+    <script>
+        function printPage(){
+            console.log("printing");
+            window.print();
+            console.log("printing");
+        }
+    </script>
+
+    <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 400;
+        }
         #general{
             /*width:50%;*/
             height:auto;
             text-align: center;
+        }
+
+        #flag {
+            position: relative;
+            top: -10px;
+            left:450px;
+            /*border: 5pxxx solid black;*/
+            width: 120px;
+            height: 120px;
         }
 
         #TransactionReport{
@@ -83,6 +111,17 @@ ob_start();
         <div class="" id="general" style="">
 
             <h1>Transaction Report</h1>
+
+            <form method="get">
+                <table id="info">
+                    <tr>
+                    <th>
+                        <img id="flag" src="/images/dslogo.jpg"/>
+
+
+                </table>
+            </form>
+
             <table id="TransactionReport">
 
                 <tr>
@@ -142,6 +181,8 @@ ob_start();
         <span id="totalspent">Total Spent = </span>
         &nbsp;
         <span id="totalSpent"> <?php echo getExpenses($_GET["id"])?></span>
+
+        <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 
     </body>
 </html>
