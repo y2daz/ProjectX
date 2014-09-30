@@ -112,6 +112,9 @@ else{
         .report .headerRow{
             height:50px;
         }
+        .report th.number{
+            max-width: 100px;
+        }
         .report.{
             text-align: center;
         }
@@ -214,8 +217,9 @@ else{
 
             <th>Admission Number</th>
             <th>Name</th>
-            <th>Present Days</th>
-            <th>No of school Days</th>
+            <th class="number">Present Days</th>
+            <th class="number">No of school Days</th>
+            <th class="number">Attendance (Percentage)</th>
 
         <?php
 
@@ -234,6 +238,7 @@ else{
                 echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
                 echo "<td>" . $row[2] . "</td>";
                 echo "<td>" . $row[3] . "</td>";
+                echo "<td>" . number_format( (($row[2] / $row[3] ) * 100), 2 ) . "</td>";
                 // $date = date("y/m/d");
 //                    echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                 echo "</tr>";

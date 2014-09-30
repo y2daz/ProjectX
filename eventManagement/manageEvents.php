@@ -170,6 +170,9 @@ if (isset($_POST["editEvent"]))
             padding:5px;
 
         }
+        #eventDetais{
+            text-align: left;
+        }
 
         input.#button8{
             position:absolute;
@@ -367,7 +370,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 
                 <h1> Edit Event Details </h1>
 
-                <table align="center">
+                <table id="eventDetais" align="center">
 
 
                     <tr>

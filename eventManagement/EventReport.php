@@ -46,7 +46,7 @@ ob_start();
         #flag {
             position: relative;
             top: -120px;
-            left: 615px;
+            left: 595px;
             /*border: 5pxxx solid black;*/
             width: 120px;
             height: 120px;
@@ -118,7 +118,7 @@ ob_start();
             position: relative;
             font-size: 12pt;
             text-align: center;
-            left: 100pt;
+            left: 0pt;
             top: 105pt;
 
         }
@@ -127,7 +127,7 @@ ob_start();
             position: relative;
             font-size: 12pt;
             text-align: center;
-            left: 100pt;
+            left: 0pt;
             top: 105pt;
 
         }
@@ -135,7 +135,7 @@ ob_start();
             position: relative;
             font-size: 15pt;
             text-align: center;
-            left:100pt;
+            left:0pt;
             top: 100pt;
         }
 

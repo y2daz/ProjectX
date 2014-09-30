@@ -118,7 +118,7 @@ if (isset($_POST["submit"])) //User has clicked the submit button to add a stude
     $tamil =  getLanguage('tamil', $language);
     $english =  getLanguage('english', $language);
     $buddhism =  getLanguage('buddhism', $language);
-    $hinduism =  getLanguage('hindusm', $language);
+    $hinduism =  getLanguage('hinduism', $language);
     $islam =  getLanguage('islam', $language);
     $catholic =  getLanguage('catholic', $language);
     $christianity =  getLanguage('christianity', $language);
