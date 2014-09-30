@@ -245,7 +245,8 @@ if( isset( $_POST["IndexNo"]) ){
                 {
                     $i = 1;
 
-                    foreach($result as $row){
+                    $row = $result[0];
+//                    foreach($result as $row){
 //                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
                         $IndexNo = $row[0];
                         $AdmissionNo = $row[1];
@@ -280,11 +281,10 @@ if( isset( $_POST["IndexNo"]) ){
                         echo  "<td id='DistrictRank'>$row[14]</td>";
                         //echo "<td><input name=\"Edit" . "\" type=\"submit\" value=\"Edit\"  /> </td> ";
 
-
                         echo "<td><input id='btnEdit' name='Edit' class='edit' type='button'  value='Edit' /></td>";
 
                         echo "</tr>";
-                    }
+//                    }
                 }
                 else
                 {
