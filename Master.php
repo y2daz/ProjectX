@@ -13,13 +13,16 @@
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+    $logSuccess = true;
+
+    if(isset($_POST["username"])) {
+        $operation = login($_POST["username"],$_POST["password"]);
+        $logSuccess = ($operation == 0 ? false : true );
+    }
+
     if(!isset($_COOKIE['language']))
     {
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
-    }
-
-    if(isset($_POST["username"])) {
-        login($_POST["username"],$_POST["password"]);
     }
 
     if(!isset($_SESSION["user"])){
@@ -37,6 +40,8 @@
         $_SESSION["user"] = NULL;
         header("Location: " . PATHFRONT . "/Menu.php");
     }
+
+
 
 ?>
 <!DOCTYPE html>
@@ -73,6 +78,20 @@
             <?php echo ( (isset($_SESSION["user"]))? "": "\n#nav{ display:none;}\n" ) ?>
             /*Static Styles*/
             /*INSERT ALL YOUR CSS HERE*/
+
+            #whoami{
+                position: fixed;
+                top: 5px;
+                left: 5px;
+                display: block;
+                padding: 5px 10px 5px 10px;
+                background-color: #efefef;
+                border: 2px solid #003448;
+                /*width: 220px;*/
+                /*height: 30px;*/
+                z-index: 40;
+                color: #003f5d;
+            }
 
 
         </style>
@@ -120,6 +139,10 @@
 
         <div id="main">
             <?php
+                if($logSuccess == false){
+                    sendNotification("Invalid username or password");
+                }
+
                 echo ($pageContent);
             ?>
         </div>
@@ -153,6 +176,7 @@
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
                 if ($user->hasPerm('Leave Approval')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a><hr /></li>\n";
+                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/generateLeaveReport.php\">" . "Generate Leave Report " . "</a><hr /></li>\n";
                 }
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/checkStatus.php\">" . "Check Leave Status" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
@@ -260,5 +284,20 @@
 
 <!--        <div id="dsLogo">-->
 <!--        </div>-->
+
+
+            <?php
+
+            $userArray = array( "IT13001308" => "Alimudeen M.Y.", "IT13006426" => "Mendis B.T.M.", "IT13008338" => "Peiries M.S.E.",
+                "IT13013424" => "Liyanage M.C.", "IT13031312" => "Joseph V.S.", "IT13014650" => "Rathnayake R.M.D.A.",
+                "IT13028206" => "Jayakody J.A.I.", "IT13024000" => "De Silva G.L.N.A.M.");
+
+
+            if (array_key_exists( $_SESSION["user"] , $userArray)){
+                echo "<div id='whoami'>";
+                echo $_SESSION["user"] . " " . $userArray[$_SESSION["user"]];
+                echo "</div>";
+            }
+            ?>
     </body>
 </html>

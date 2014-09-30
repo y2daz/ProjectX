@@ -36,44 +36,36 @@ if(isset($_POST["delete"]))
     echo $StaffIDtoDelete;
 }
 
-if (isset($_POST["addManager"])){
-
-    echo ($_POST["newManagerID"]);
-
-    $operation = insertManager($eventID, $_POST["newManagerID"]);
-
-    if ($operation == true){
-        sendNotification("Manager added");
-    }
-    else{
-        sendNotification("Error adding manager");
-    }
-}
+//if (isset($_POST["addManager"])){
+//
+//    echo ($_POST["newManagerID"]);
+//
+//    $operation = insertManager($eventID, $_POST["newManagerID"]);
+//
+//    if ($operation == true){
+//        sendNotification("Manager added");
+//    }
+//    else{
+//        sendNotification("Error adding manager");
+//    }
+//}
 
 if (isset($_POST["addTransaction"]))
     {
-        if(is_numeric($_POST["amount"]))
-        {
+//        if(is_numeric($_POST["amount"]))
+//        {
             $operation = insertTransaction($eventID, $_POST["tDate"], $_POST["tType"], $_POST["tAmount"], $_POST["tDescription"]);
-            if ($operation == true){
-                sendNotification("Transaction added");
-            }
-            else{
-                sendNotification("Error adding transaction");
-            }
-        }
 
-
-        else
-        {
-            sendNotification("Amount is Invalid");
-        }
-
-
-
-
-
+//        }
+    if ($operation){
+    sendNotification("Transaction Added");
 }
+//            else
+//            {
+//                sendNotification("Invalid Amount");
+//            }
+    }
+
 
 if (isset($_POST["editEvent"]))
 {
@@ -114,13 +106,13 @@ if (isset($_POST["editEvent"]))
             border:1px solid #005e77;
             border-collapse: collapse;
         }
-        /*#transaction{*/
-            /*position: relative;*/
-            /*left:25px;*/
-            /*width:750px;*/
-            /*border:1px solid #005e77;*/
-            /*border-collapse: collapse;*/
-        /*}*/
+        #transaction{
+            position: relative;
+            left:25px;
+            width:750px;
+            border:1px solid #005e77;
+            border-collapse: collapse;
+        }
         /*#Manager td{*/
             /*padding: 5px;*/
         /*}*/
@@ -294,7 +286,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
         <h3><?php echo $tlog ?></h3>
 
 
-<!--            <?php //echo insertTransaction($eventID, "3", "a", ".", "" ); ?>
+
 
         <table id="transaction">
             <tr>
@@ -414,7 +406,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
                         <td>
                            <br>
                             <br>
-                             <input style="position: absolute; left: 365px; top: 600px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
+                             <input style="position: relative; left: 80px; top: -20px;" type="submit" name="editEvent" id="button10" value="Edit Event" align="center">
                         </td>
                     </tr>
                 </table>

@@ -105,6 +105,8 @@ else
 
     </table>
 
+    <input style="position: absolute; left: 600px; top: 500px" type="button" name="back" value="Back" onclick="window.location='SearchStudent.php'"
+
     </body>
     </html>
 <?php

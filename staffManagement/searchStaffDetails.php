@@ -591,7 +591,7 @@ else
 
             if (isset($_GET["search"]))
             {
-                $fullPageHeight = ( 600 + ($i * 18) );
+                $fullPageHeight = ( 600 + ($i * 19) );
             }
 
         ?>

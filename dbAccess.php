@@ -43,12 +43,16 @@
                     $_SESSION["accessLevel"] = "$OUTaccessLevel";
                     $stmt->close();
                     $mysqli->close();
-                    return true;
+                    return 1;
+                }
+                else{
+                    $mysqli->close();
+                    return 0;
                 }
             }
         }
         $mysqli->close();
-        return false;
+        return 0;
     }
 
     function insertEvent( $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime)
@@ -913,6 +917,12 @@ function getEventTransactions($eventid)
             if ($stmt->execute())
             {
                 $result = $stmt->get_result();
+
+                if($result->num_rows == 0){
+                    insertNewTimetable($staffId);
+                    return null;
+                }
+
                 $i = 0;
                 while($row = $result->fetch_array())
                 {
@@ -1410,7 +1420,7 @@ function getStudent($AdmissionNo)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE StaffID LIKE ? AND isDeleted = 0 LIMIT 1;"))
+        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
         {
             $stmt -> bind_param("s", $StaffID);
 
@@ -2262,7 +2272,7 @@ function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subje
 
 }
 
-function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Year, $Mark, $Remarks)
+function insertTermTestMarks($AdmissionNoArr, $Subject, $Term, $Year, $MarksArr, $RemarksArr)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -2273,22 +2283,24 @@ function insertTermTestMarks($AdmissionNo, $Subject, $Term, $Year, $Mark, $Remar
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO termmarks VALUES(?, ?, ? ,? , ?, ?,?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO TermMarks VALUES(?, ?, ?, ?, ?, ?, ?)"))
     {
         $isDeleted = 0;
-        $stmt->bind_param("ssiiisi", $AdmissionNo,$Subject, $Term ,$Year, $Mark, $Remarks, $isDeleted);
 
-        if($stmt->execute())
-        {
-            $stmt->close();
-            return true;
+        foreach($AdmissionNoArr as $AdmissionNo){
+//            echo $AdmissionNo . " " . $MarksArr[$AdmissionNo] . " " . $RemarksArr[$AdmissionNo] . "<br/>";
+            $MarkVar = $MarksArr[$AdmissionNo];
+            $RemarksVar = $RemarksArr[$AdmissionNo];
+
+            $stmt->bind_param("ssiiisi", $AdmissionNo,$Subject, $Term, $Year, $MarkVar, $RemarksVar, $isDeleted);
+            $stmt->execute();
         }
-
+        $stmt->close();
+        $mysqli->close();
+        return true;
     }
-
     $mysqli->close();
     return false;
-
 }
 
 
@@ -2624,35 +2636,6 @@ function updateALResults($IndexNo, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $
 
     $mysqli->close();
     return false;
-}
-
-function searchTermMarks($admissionNo,$year,$term)
-{
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    $set = null;
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    if ($stmt = $mysqli->prepare("Select * From termmarks WHERE o.IndexNo=? AND o.AdmissionNo=s.AdmissionNo"))
-    {
-        $stmt -> bind_param("i", $id );
-
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
-            $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++ ]=$row;
-            }
-        }
-    }
-    $mysqli->close();
-    return $set;
 }
 
 
