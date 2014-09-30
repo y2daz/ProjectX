@@ -375,8 +375,8 @@ $column27Header3 = "උදා 583021007 V";
         </tr>
 
         <?php
-
-        $result = getAllStaffDetailed();
+        $initial = $_GET["start"];
+        $result = getAllStaffDetailed( $initial );
 
         if ($result == null)
         {
