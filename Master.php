@@ -165,7 +165,6 @@
                 if($logSuccess == false){
                     sendNotification("Invalid username or password");
                 }
-
                 echo ($pageContent);
             ?>
         </div>
@@ -295,10 +294,12 @@
         </div>
 
         <div id="footer">
-<!--            <div id="aboutus">-->
-<!--                <p> ABOUT US</p>-->
-<!--                <span>We're pretty amazing.</span>-->
-<!--            </div>-->
+            <div id="aboutus">
+                <p> ABOUT US</p>
+                <span>The Mana System was developed for D.S. Senanayake College, Colombo by Students in the Faculty of Computing, SLIIT.
+                    The school use it to manage staff information.
+                    Copyright &copy; Mr. Prasanna S. Haddela, Faculty of Computing, SLIIT. </span>
+            </div>
         </div>
 
         <div id="language">
