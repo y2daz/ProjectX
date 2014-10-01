@@ -185,7 +185,7 @@ if (isset($_POST["editEvent"]))
             text-align: left;
             position: absolute;
             left: 20px;
-            top: 470px;
+            top: 600px;
         }
 
         input.#button8{
@@ -367,11 +367,14 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
 
     <br />
 
-    <span><?php echo $trecieved ?> </span><span id="totalReceived"> <?php echo getIncomes($eventID)?></span> <br />
-    <span><?php echo $tspent ?></span><span id="totalspent"> <?php echo getExpenses($eventID)?></span>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <span><?php echo $trecieved ?>= </span><span id="totalReceived"> <?php echo getIncomes($eventID)?></span> <br />
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <span><?php echo $tspent ?>= </span><span id="totalspent"> <?php echo getExpenses($eventID)?></span>
         <br>
     <br>
     <div>
+        &nbsp&nbsp&nbsp&nbsp&nbsp
         <input type="button" name="button" id="button8" value="Generate Event Report "  onClick="window.location = 'EventReport.php?id=<?php echo $eventID ?>';" style="position:relative; left: 0px; width:150"/>
 
         <input type="button" name="button" id="button9" value="Generate Transaction Report "  onClick="window.location = 'TransactionReport.php?id=<?php echo $eventID ?>';" style="position:relative; left: 0px; width:150"/>
@@ -381,7 +384,7 @@ $endtime = getLanguage("endtime", $_COOKIE["language"]);
          <form method="POST">
             <div  id="general" style="">
 
-                <h1 style="position: absolute; top: 380px; left: 280px;"> Edit Event Details </h1>
+                <h1 style="position: absolute; top: 500px; left: 280px;"> Edit Event Details </h1>
 
                 <table id="eventDetais" align="center">
 
