@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`AdmissionNo`, `NameWithInitials`, `DateOfBirth`, `Nationality_Race`, `Religion`, `Medium`, `Address`, `Grade`, `Class`, `House`, `isDeleted`) VALUES
+INSERT INTO `Student` (`AdmissionNo`, `NameWithInitials`, `DateOfBirth`, `Nationality_Race`, `Religion`, `Medium`, `Address`, `Grade`, `Class`, `House`, `isDeleted`) VALUES
 ('1', 'Madusha', '2000-12-12', 1, 1, 1, 'Here', 12, 'B', 'Blue', 0),
 ('12325', 'B.T.M Mendia', '1993-12-01', 1, 1, 1, 'Moratuwa', 11, 'A', 'Shantha', 0),
 ('12345', 'J.A.I Jayakody', '1993-12-31', 1, 1, 1, 'Colombo', 11, 'A', 'Surya', 0),

@@ -17,7 +17,7 @@ require_once(THISROOT . "/common.php");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Class Report</title>
+    <title>Transaction Report</title>
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo THISPATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>

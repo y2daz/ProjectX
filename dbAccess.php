@@ -1822,7 +1822,7 @@ function insertClassroom($staffID, $grade, $class)
             die ("Failed to connect to MySQL: " . $mysqli->connect_error );
         }
 
-        if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE isDeleted = 0 ORDER BY StaffId LIMIT ?, 20;"))
+        if ($stmt = $mysqli->prepare("Select * FROM Staff s WHERE s.isDeleted = 0 ORDER BY s.StaffId LIMIT ?, 20;"))
         {
             $stmt -> bind_param("i", $initial);
             if ($stmt->execute())

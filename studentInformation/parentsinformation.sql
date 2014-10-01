@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Dumping data for table `parentsinformation`
 --
 
-INSERT INTO `parentsinformation` (`AdmissionNo`, `NamewithInitials`, `Parent_Guardian`, `Occupation`, `PhoneLand`, `PhoneMobile`, `HomeAddress`, `OfficeAddress`, `isDeleted`) VALUES
+INSERT INTO `ParentsInformation` (`AdmissionNo`, `NamewithInitials`, `Parent_Guardian`, `Occupation`, `PhoneLand`, `PhoneMobile`, `HomeAddress`, `OfficeAddress`, `isDeleted`) VALUES
 ('1', 'Madhu De Silva', b'1', 'Teacher', '0312285596', '0773432532', 'Moratuwa', 'colombo', 0),
 ('12325', 'Shavin', b'1', 'Banker', '0117272111', '0712323232', 'Kadirana', 'colombo', 0),
 ('12345', 'Milan', b'1', 'Teacher', '0312283234', '0771211212', 'katana', 'negombo', 0),
