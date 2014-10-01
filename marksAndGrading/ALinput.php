@@ -239,7 +239,7 @@ if (isset($_POST["submit"]))
             <input class="button1" type="reset" value="<?php echo $reset ?>">
             </form>
 
-</body>
+</body>s
 </html>
 <?php
 //Change these to what you want

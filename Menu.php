@@ -55,7 +55,7 @@ if (isset($_GET["error"])){
 
     <h1>Staff Management System</h1>
 
-    <img id="flag" src="<?php echo THISPATHFRONT . "/images/dslogo.jpg" ?>" width="400px" />
+    <img id="flag" src="<?php echo THISPATHFRONT . "/images/abc.jpg" ?>" width="400px" />
 
     <br />
     <br />
