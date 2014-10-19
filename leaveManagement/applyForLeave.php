@@ -334,7 +334,7 @@
     {
         $staffid = "Staff ID";
         $startdate = "Start Date";
-        $enddate ="End Date";
+        $enddate ="Date Assuming Duty";
         $leavetype ="Leave Type";
         $otherreasons="Other Reasons";
         $officialleavecombo = "Official Leave";

@@ -123,6 +123,12 @@ if (isset($_GET["getTimetable"]))
             .viewTable td{
                 padding: 4px;
                 min-width: 60px;
+                text-align: left;
+            }
+            .viewtable .number{
+                text-align: right;
+            }
+            .viewtable .center{
                 text-align: center;
             }
             .viewTable .alt{
@@ -201,7 +207,7 @@ if (isset($_GET["getTimetable"]))
                 <th>Staff ID</th>
                 <th id="name">Teacher's Name</th>
                 <th>Main Subject</th>
-                <th>Contact Number</th>
+                <th class="number" >Contact Number</th>
                 <th></th>
             </tr>
             <?php
@@ -214,9 +220,9 @@ if (isset($_GET["getTimetable"]))
                     echo "<td>" . $row[0] . "</td>";
                     echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
                     echo "<td>" . $row[2] . "</td>";
-                    echo "<td>" . $row[3] . "</td>";
+                    echo "<td class='number'>" . $row[3] . "</td>";
                     // $date = date("y/m/d");
-                    echo "<td><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
+                    echo "<td class='center'><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                     echo "</tr>";
                     $rowcount++;
                 }
