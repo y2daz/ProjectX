@@ -11,7 +11,7 @@ $(document).ready(function() {
     }
 
     var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    if (w <= 1280)
+    if (w <= 1420) //1120 + size of nav
     {
         moveNav();
     }
