@@ -59,6 +59,7 @@ if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
 if (!isset($_SESSION["queryString"])){
     $_SESSION["queryString"] = null;
 }
+
 $tableDetails = "none";
 $tableViewTable = "none";
 $fullPageHeight = 600;
