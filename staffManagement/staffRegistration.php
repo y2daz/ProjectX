@@ -132,9 +132,9 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 <html>
     <head>
         <style type=text/css>
-            h1{
-                text-align:center;
-            }
+        h1{
+            text-align:center;
+        }
         table .general{
             border-spacing:0px 5px;
         }
@@ -142,7 +142,8 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             position:absolute;
             left:10px;
             top:80px;
-            max-width: 800px;
+            max-width: 850px;
+            min-width: 850px;
         }
         .general th{
             align:center;
@@ -640,7 +641,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $subjectMostTaught?></td>
-            <td><input id="NumberCb8" type="text" name="$subjectMostTaught" maxlength="2" value="<?php echo ( isset( $_POST["subjectMostTaught"] ) ? $_POST["subjectMostTaught"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb8" type="text" name="$subjectMostTaught" onkeypress="return isNumeric(event)" maxlength="2" value="<?php echo ( isset( $_POST["subjectMostTaught"] ) ? $_POST["subjectMostTaught"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb8"name="subjectMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <?php
                     echo "<option value=''>--</option>";
@@ -654,7 +655,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $subjectSecondMostTaught?></td>
-            <td><input id="NumberCb9" type="text" name="$subjectSecondMostTaugh" maxlength="2" value="<?php echo ( isset( $_POST["subjectSecondMostTaught"] ) ? $_POST["subjectSecondMostTaught"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
+            <td><input id="NumberCb9" type="text" name="$subjectSecondMostTaugh" onkeypress="return isNumeric(event)" maxlength="2" value="<?php echo ( isset( $_POST["subjectSecondMostTaught"] ) ? $_POST["subjectSecondMostTaught"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb9"name="subjectSecondMostTaught" type="text" value="" onchange="changeTextbox(this)">
                     <?php
                     echo "<option value=''>--</option>";
@@ -688,7 +689,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr >
             <td><?php echo $salary?></td>
-            <td><input name="Salary" onkeypress="return isNumeric(event)"type="text" value="<?php echo ( isset( $_POST["Salary"] ) ? $_POST["Salary"] : "" ) ?>"  ></td>
+            <td><input name="Salary" onkeypress="return isNumeric(event)" type="text" value="<?php echo ( isset( $_POST["Salary"] ) ? $_POST["Salary"] : "" ) ?>"  ></td>
         </tr>
 
         <!-- </table>

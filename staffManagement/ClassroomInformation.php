@@ -151,11 +151,20 @@ if( isset($_GET["grade"]) )
 
         $result = getAllClassroom();
 
+        $next = $prev =  $result[0][0];
+
         if (isFilled($result))
         {
             foreach($result as $row)
             {
-                $top = ($i++ % 2 == 0)? "\n<tr class=\"alt\"><td>" : "\n<tr><td>";
+                $i++;
+                $next = $row[0];
+                if ($prev != $next){
+                    echo "<tr class=\"alt\" > <td colspan='10'> &nbsp; </td> </tr> ";
+                    $i++;
+                }
+
+                $top = ($prev != $next)? "\n<tr><td>" : "\n<tr><td>";
 
                 echo $top;
                 echo "\n$row[0]" . "</td>" ;
@@ -164,13 +173,14 @@ if( isset($_GET["grade"]) )
                 echo "\n<td>$row[3]</td>";
                 echo "\n<td><input name=\"Change" . "\" type=\"submit\" value=\"Change Teacher\" formaction=\"ClassroomInformation.php?grade=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
                 echo "\n<td><input name=\"Delete" . "\" type=\"submit\" value=\"Delete\" formaction=\"ClassroomInformation.php?delete=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
-                //yazdan remove query String
+                //yazdaan remove query String
+                //NO confirmation!!! :O
+
+
+                $prev = $next;
             }
         }
-        if (isset($_GET["search"]))
-        {
-            $fullPageHeight = ( 600 + ($i * 18) );
-        }
+        $fullPageHeight = ( 600 + ($i * 27) );
 
         ?>
     </table>
@@ -207,7 +217,7 @@ if( isset($_GET["grade"]) )
     </html>
 <?php
 //Assign all Page Specific variables
-$fullPageHeight = 800;
+//$fullPageHeight = 800;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Class-teacher Allocation";
 
