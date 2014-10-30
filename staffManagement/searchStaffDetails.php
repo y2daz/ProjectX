@@ -18,9 +18,8 @@ require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/common.php");
 
 
-
-
 ob_start();
+
 $currentStaffMembers="";
 
 if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
@@ -230,7 +229,7 @@ else
             max-width:800px;
             height:150px;
             border-collapse: collapse;
-            display: <?php echo $tableDetails ?>
+            display: <?php echo $tableDetails ?>;
         }
         .details .number{
             max-width: 20px;
