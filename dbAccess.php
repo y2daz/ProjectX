@@ -59,7 +59,7 @@ function login($email, $password)
     }
     $mysqli->close();
     return 0;
-}
+} //Logs existing non-deleted user into system
 
 function insertUser($email, $password, $accessLevel)
 {
@@ -115,7 +115,7 @@ function insertUser($email, $password, $accessLevel)
     }
     $mysqli->close();
     return false;
-}
+} //Saves new user record or updates a soft-deleted user to undeleted
 
 function changePassword($email, $password)
 {
@@ -140,7 +140,7 @@ function changePassword($email, $password)
     }
     $mysqli->close();
     return false;
-}
+} //Changes password to $password for $email
 
 function deleteUser($email){
     $dbObj = new dbConnect();
@@ -168,7 +168,7 @@ function deleteUser($email){
     }
     $mysqli->close();
     return false;
-}
+} //Soft-deletes $email
 
 function getAllUsers()
 {
@@ -195,7 +195,7 @@ function getAllUsers()
     }
     $mysqli->close();
     return $set;
-}
+} //Returns all non-soft-deleted users
 
 function getRoles(){ //Get Cutlets and patties too.
 
@@ -222,7 +222,7 @@ function getRoles(){ //Get Cutlets and patties too.
     }
     $mysqli->close();
     return $set;
-}
+} //Get all roles
 
 function getPermissions($role){ //Get Cutlets and patties too.
 
@@ -250,7 +250,7 @@ function getPermissions($role){ //Get Cutlets and patties too.
     }
     $mysqli->close();
     return $set;
-}
+} //Get all permissions for a role
 
 function savePermissions($role, $permArr){
 
@@ -279,7 +279,7 @@ function savePermissions($role, $permArr){
     }
     $mysqli->close();
     return false;
-}
+} //Saves new permissions for a role
 
 
 //
@@ -299,7 +299,7 @@ function checkStaffMember($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if($stmt = $mysqli->prepare("SELECT StaffID from Staff WHERE StaffID = ?"))
+    if($stmt = $mysqli->prepare("SELECT StaffID from Staff WHERE StaffID = ? AND isDeleted = 0 "))
     {
         $stmt->bind_param("s", $StaffID);
 
@@ -324,9 +324,12 @@ function checkStaffMember($StaffID)
     $mysqli->close();
     return false;
 
-}
+} //Checks if a staff member exists and isn't soft-deleted
 
-function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
+function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber,
+                           $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium,
+                           $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
+                           $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -356,9 +359,12 @@ function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $
 
     $mysqli->close();
     return false;
-}
+} //Inserts new staff member, then creates blank timetable and unused leave data
 
-function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
+function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber,
+                     $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium,
+                     $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
+                     $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -366,26 +372,27 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Nation
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
-    /*if ($stmtCheck = $mysqli->prepare("SELECT * FROM Staff WHERE StaffID=? ;"))/*
-    {
-        $stmtCheck -> bind_param("s", $AdmissionNo);
-        $stmtCheck -> execute();
-        $result = $stmtCheck->get_result();
 
-        if ($result -> num_rows == 1)
-        {*/
+    if( checkStaffMember( $staffID ) ){
 
-    if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?, NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?, EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?, ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
-    {
-        $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
-
-        if ($stmt->execute())
+        if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?,
+                                        NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?,
+                                        EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?,
+                                        ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
         {
+            $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,
+                $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,
+                $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
+                $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
+
+            if ($stmt->execute())
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
             $stmt->close();
-            $mysqli->close();
-            return true;
         }
-        $stmt->close();
     }
     /*            }
 
@@ -394,7 +401,7 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Nation
         }*/
     $mysqli->close();
     return false;
-}
+} //Updates details of a staff member who hasn't been soft-deleted
 
 function getCivilStatus($staffID)
 {
@@ -420,7 +427,7 @@ function getCivilStatus($staffID)
 
     $mysqli->close();
     return $row[0];
-}
+} //Returns the civil status of a staff member
 
 function getGender($staffID)
 {
@@ -447,7 +454,7 @@ function getGender($staffID)
 
     $mysqli->close();
     return $row[0];
-}
+} //Returns the gender of a staff member
 
 function getStaffMember($StaffID)
 {
@@ -477,7 +484,7 @@ function getStaffMember($StaffID)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns the whole record of a staff member from the staff table
 
 function deleteStaff($staffID)
 {
@@ -490,40 +497,43 @@ function deleteStaff($staffID)
 
     $newStaffID="";
 
-    if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE StaffID=?; "))
-    {
-        $deleteNo = 2;
-        $stmt -> bind_param("is", $deleteNo, $staffID);
-        if ($stmt->execute())
-        {
-            if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID = ? where StaffID = ? "))
-            {
-                $stmt -> bind_param("ss", $newStaffID, $staffID);
-                if ($stmt->execute())
-                {
-                    if ($stmt = $mysqli->prepare("UPDATE Timetable SET isDeleted = ? where StaffID = ? ")){
-                        $stmt -> bind_param("is", $deleteNo, $staffID);
+    if ( checkStaffMember( $staffID ) ){
 
-                        if($stmt->execute()){
-                            $stmt->close();
-                            $mysqli->close();
-                            return TRUE;
+        if ($stmt = $mysqli->prepare("UPDATE Staff SET isDeleted=? WHERE StaffID=?; "))
+        {
+            $deleteNo = 2;
+            $stmt -> bind_param("is", $deleteNo, $staffID);
+            if ($stmt->execute())
+            {
+                if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID = ? where StaffID = ? "))
+                {
+                    $stmt -> bind_param("ss", $newStaffID, $staffID);
+                    if ($stmt->execute())
+                    {
+                        if ($stmt = $mysqli->prepare("UPDATE Timetable SET isDeleted = ? where StaffID = ? ")){
+                            $stmt -> bind_param("is", $deleteNo, $staffID);
+
+                            if($stmt->execute()){
+                                $stmt->close();
+                                $mysqli->close();
+                                return TRUE;
+                            }
                         }
                     }
                 }
             }
+            $stmt->close();
+            deleteTimetable($staffID);
+            $mysqli->close();
+            return TRUE;
         }
-        $stmt->close();
-        deleteTimetable($staffID);
-        $mysqli->close();
-        return TRUE;
     }
 
     $mysqli->close();
     return false;
-}
+} //Deletes a staff member along with their classroom and their timetable
 
-function searchStaff($id)
+function searchStaff($key)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -537,7 +547,7 @@ function searchStaff($id)
     if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE StaffID LIKE ? AND isDeleted = 0 ORDER BY StaffId + 0;"))
     {
         //  $id = "%" . $id . "%";
-        $stmt -> bind_param("s", $id );
+        $stmt -> bind_param("s", $key );
 
         if ($stmt->execute())
         {
@@ -551,9 +561,9 @@ function searchStaff($id)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns non-deleted staff member with staffID $key
 
-function SearchStaffbyname($id)
+function SearchStaffbyname($key)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -566,8 +576,8 @@ function SearchStaffbyname($id)
 
     if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE NamewithInitials LIKE ? AND isDeleted = 0 ORDER BY StaffId + 0;"))
     {
-        $id = "%" . $id . "%";
-        $stmt -> bind_param("s", $id );
+        $key = "%" . $key . "%";
+        $stmt -> bind_param("s", $key );
 
         if ($stmt->execute())
         {
@@ -581,9 +591,9 @@ function SearchStaffbyname($id)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns non-deleted staff member with namewithintials $key
 
-function SearchStaffbycontactnumber($id)
+function SearchStaffbycontactnumber($key)
 {
 
     $dbObj = new dbConnect();
@@ -597,8 +607,8 @@ function SearchStaffbycontactnumber($id)
 
     if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ContactNumber LIKE ? AND isDeleted = 0 ORDER BY StaffId + 0;"))
     {
-        $id = "%" . $id . "%";
-        $stmt -> bind_param("s", $id );
+        $key = "%" . $key . "%";
+        $stmt -> bind_param("s", $key );
 
         if ($stmt->execute())
         {
@@ -612,9 +622,9 @@ function SearchStaffbycontactnumber($id)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns non-deleted staff member with contactnumber $key
 
-function SearchStaffbynic($id)
+function SearchStaffbynic($key)
 {
 
     $dbObj = new dbConnect();
@@ -628,8 +638,8 @@ function SearchStaffbynic($id)
 
     if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE NICNumber LIKE ? AND isDeleted = 0 ORDER BY StaffId + 0;"))
     {
-        $id = "%" . $id . "%";
-        $stmt -> bind_param("s", $id );
+        $key = "%" . $key . "%";
+        $stmt -> bind_param("s", $key );
 
         if ($stmt->execute())
         {
@@ -643,7 +653,7 @@ function SearchStaffbynic($id)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns non-deleted staff member with NIC $key
 
 function getNewStaffId()
 {
@@ -673,7 +683,7 @@ function getNewStaffId()
         }
     }
     $mysqli->close();
-}
+} //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
 
 function getAllStaff()
 {
@@ -702,7 +712,7 @@ function getAllStaff()
 
     $mysqli->close();
     return $set;
-}
+} //Returns select attributes of all non-deleted stafff members
 
 function getNoOfStaff()
 {
@@ -713,7 +723,7 @@ function getNoOfStaff()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT COUNT(StaffID) FROM Staff;"))
+    if ($stmt = $mysqli->prepare("SELECT COUNT(StaffID) FROM Staff WHERE isDeleted = 0;"))
     {
         if ($stmt->execute())
         {
@@ -732,7 +742,7 @@ function getNoOfStaff()
         }
     }
     $mysqli->close();
-}
+} //Returns number of non-deleted staff records
 
 function getAllStaffDetailed( $initial )
 {
@@ -762,7 +772,7 @@ function getAllStaffDetailed( $initial )
 
     $mysqli->close();
     return $set;
-}
+} //Returns 20 records of non-deleted staff records starting from $initial
 
 //
 ///
@@ -781,7 +791,7 @@ function getLeave($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT * FROM ApplyLeave WHERE StaffID = ? ORDER BY RequestDate"))
+    if ($stmt = $mysqli->prepare("SELECT * FROM ApplyLeave WHERE StaffID = ? AND isDeleted <> 0 ORDER BY RequestDate"))
     {
         $stmt -> bind_param("s", $StaffID);
 
@@ -798,7 +808,7 @@ function getLeave($StaffID)
     $mysqli->close();
     return $set;
 
-}
+} //Returns all the applied leave of a non deleted staff member
 
 function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
 {
@@ -856,7 +866,7 @@ function insertLeave($staffid, $startdate, $enddate, $leavetype, $otherreasons)
     $mysqli->close();
     return false;
 
-}
+} //Optimisation possible// Inserts a leave application for a staff member
 
 function checkLeaveStatus($StaffID)
 {
@@ -890,7 +900,7 @@ function checkLeaveStatus($StaffID)
     $mysqli->close();
     return $set;
 
-}
+} //Returns select records of a staff members applied leaves
 
 function insertNewLeaveData($staffID){
 
@@ -912,12 +922,11 @@ function insertNewLeaveData($staffID){
     {
         $stmt->bind_param("siii", $staffID, $noOfficialLeave, $noMaternityLeave, $noOtherLeave);
         $stmt->execute();
-
         $stmt->close();
     }
 
     $mysqli->close();
-}
+} //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
 function getLeaveData($StaffID)
 {
@@ -956,7 +965,7 @@ function getLeaveData($StaffID)
 
     $mysqli->close();
     return $set;
-}
+} //Returns leave numbers for the staff member. Inserts nwe  numbers if not existing.
 
 function getLeaveToApprove(){
 
@@ -985,7 +994,7 @@ function getLeaveToApprove(){
 
     $mysqli->close();
     return $set;
-}
+} //Returns all leaves not reviewed along with their staff member's details
 
 function getStaffLeavetoApprove( $StaffID, $sDate ){
 
@@ -1015,7 +1024,7 @@ function getStaffLeavetoApprove( $StaffID, $sDate ){
 
     $mysqli->close();
     return $set;
-}
+} //Gets a single instance of applied leave for a staff member
 
 function approveLeave($StaffID, $sDate, $eDate, $leavetype, $ReviewedBy)
 {
@@ -1170,7 +1179,7 @@ function insertClassroom($staffID, $grade, $class)
     }
     $mysqli->close();
     return 0; //Failed Adding Classroom
-}
+} //Inserts new classroom teacher information or updates existing deleted one
 
 function getAllClassroom()
 {
@@ -1203,7 +1212,7 @@ function getAllClassroom()
 //    $stmt->close();
     $mysqli->close();
     return $set;
-}
+} //Returns all undeleted classroom information and their teacher's information
 
 function deleteClassroom($grade, $class)
 {
@@ -1232,7 +1241,7 @@ function deleteClassroom($grade, $class)
     }
     $mysqli->close();
     return FALSE;
-}
+} //Softdelets classroom information
 
 //
 ///
@@ -1283,7 +1292,7 @@ function getAllSubjects()
     }
     $mysqli->close();
     return $set;
-}
+} //Self-explanatory
 
 function insertNewTimetable($staffId)
 {
@@ -1316,7 +1325,7 @@ function insertNewTimetable($staffId)
 
     $mysqli->close();
     return false;
-}
+} //Inserts blank timetable for a staff member
 
 function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
 {
@@ -1349,7 +1358,7 @@ function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
     }
     $mysqli->close();
     return false;
-}
+} //Self-explanatory
 
 function deleteTimetable($staffId)
 {
@@ -1379,7 +1388,7 @@ function deleteTimetable($staffId)
     $mysqli->close();
     return false;
 
-}
+} //Self-explanatory
 
 function getTimetable($staffId)
 {
@@ -1413,7 +1422,7 @@ function getTimetable($staffId)
     }
     $mysqli->close();
     return $set;
-}
+} //Self-explanatory
 
 function getTimetablebyClass($class , $grade)
 {
@@ -1442,7 +1451,7 @@ function getTimetablebyClass($class , $grade)
     $mysqli->close();
     return $set;
 
-}
+} //Self-explanatory
 
 function substitute($subject)
 {
@@ -1471,7 +1480,7 @@ function substitute($subject)
     $mysqli->close();
     return $set;
 
-}
+} //Unused
 
 function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID )
 {
@@ -1496,7 +1505,7 @@ function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Pos
     }
     $mysqli->close();
     return false;
-}
+} //Inserts into isSubstituted the substitution record
 
 function getFreeTeachers($position,$day,$id)
 {
@@ -1526,7 +1535,7 @@ function getFreeTeachers($position,$day,$id)
     }
     $mysqli->close();
     return $set;
-}
+} //Returns all free staff members on a slot in the timetable
 
 //
 ///
@@ -1562,7 +1571,7 @@ function getLanguage($label, $language)
     }
     $mysqli->close();
     return null;
-}
+} //Returns language data of a $label for $language
 
 //
 ///
@@ -1598,7 +1607,7 @@ function isHoliday($date)
     }
     $mysqli->close();
     return false;
-}
+} //Checks if $date is a $holiday
 
 function getHolidays($year){
 
@@ -1634,7 +1643,7 @@ function getHolidays($year){
     }
     $mysqli->close();
     return $set;
-}
+} //Returns all holidays of a $year
 
 function insertHolidays($year, $dayArray)
 {
@@ -1644,10 +1653,6 @@ function insertHolidays($year, $dayArray)
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
-
-//        $isDeleted = 0;
-
-//        $query = "SET AUTOCOMMIT = 0; START TRANSACTION; DELETE FROM Holiday WHERE Year=?; COMMIT;";
 
     if ($stmtDel = $mysqli->prepare("DELETE FROM Holiday WHERE Year=?;"))
     {
@@ -1671,4 +1676,1109 @@ function insertHolidays($year, $dayArray)
 
     $mysqli->close();
     return 0;
+} //Deletes records of $year and inserts new holidays
+
+//
+///
+/////  UNCATALOGUED
+///
+//
+
+function insertEvent( $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Event values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
+    {
+        $stmt -> bind_param("ssssissssi",  $eventid, $name, $description, $location, $status, $date, $eventcreator, $starttime, $endtime, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function editEvent($name, $description, $location, $date, $starttime, $endtime, $eventID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE Event SET Name=?, Description=?, Location=?, EventDate=?, StartTime=?, EndTime=? WHERE EventID=?;"))
+    {
+        $stmt -> bind_param("ssssssi", $name, $description, $location, $date, $starttime, $endtime, $eventID);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getAllEvents()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+
+    if ($stmt = $mysqli->prepare("Select EventID, Name, EventDate, Description FROM Event WHERE isDeleted = 0 ORDER BY EventDate;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
+
+}
+
+function getEventdetails($EventID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+
+    if ($stmt = $mysqli->prepare("Select Name, Description, EventDate, Location, StartTime, EndTime FROM Event WHERE EventID=?"))
+    {
+        $stmt->bind_param('i', $EventID);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    return $set;
+
+}
+
+function insertStudent($admissionNo, $name, $dateofbirth, $nat_race, $religion, $medium, $address, $grade, $class, $house)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Student values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    {
+        $stmt -> bind_param("sssiiisissi", $admissionNo, $name, $dateofbirth ,$nat_race, $religion, $medium, $address, $grade, $class, $house, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getParent($key)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select NamewithInitials, Occupation, PhoneLand, PhoneMobile, HomeAddress, OfficeAddress FROM ParentsInformation WHERE isDeleted = 0 AND AdmissionNo = ?;"))
+    {
+        $stmt->bind_param("s", $key);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function insertParent($admin_no, $par_gur, $p_name,$occupation, $p_number, $m_number, $address, $o_address )
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+
+
+    if ($stmt = $mysqli->prepare("INSERT INTO ParentsInformation (AdmissionNo, NamewithInitials, Parent_Guardian, Occupation, PhoneLand, PhoneMobile, HomeAddress, OfficeAddress, isDeleted) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    {
+        $isDeleted = 0;
+
+        $stmt -> bind_param("ssisssssi", $admin_no, $p_name, $par_gur, $occupation, $p_number, $m_number, $address, $o_address , $isDeleted);
+
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+}
+
+function SearchStudentByName($key)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, CONCAT(Grade, ' ', Class) FROM Student WHERE NameWithInitials LIKE ? AND isDeleted = 0 ORDER BY AdmissionNo;"))
+    {
+        $id = "%" . $key . "%";
+        $stmt -> bind_param("s", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+
+}
+
+function SearchStudent($key)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, CONCAT(Grade, ' ', Class) FROM Student WHERE AdmissionNo = ? AND isDeleted = 0;"))
+    {
+        $stmt -> bind_param("s", $key);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function SearchStudentbyclass($key)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+    $arrGradeAndClass = array();
+    $arrGradeAndClass = getGradeAndClass($key);
+
+    if ($stmt = $mysqli->prepare("Select s1.AdmissionNo, s1.NameWithInitials, s1.DateOfBirth, CONCAT(s1.Grade, ' ', s1.Class) FROM Student s1 WHERE Grade = ? AND Class = ?;"))
+    {
+        $stmt -> bind_param("is", $arrGradeAndClass[0], $arrGradeAndClass[1]);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function UpdateStudent($AdmissionNo, $NamewithInitials, $DOB, $Race, $Religion, $Medium, $Address, $Grade, $Class, $House)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmtCheck = $mysqli->prepare("SELECT * FROM Student WHERE AdmissionNo=? ;"))
+    {
+        $stmtCheck -> bind_param("s", $AdmissionNo);
+        $stmtCheck -> execute();
+        $result = $stmtCheck->get_result();
+
+//        echo "YAZDAAN LOOK HERE" . $result->num_rows;
+
+        if ($result -> num_rows == 1)
+        {
+            if ($stmt = $mysqli->prepare("UPDATE Student SET NameWithInitials=?, DateOfBirth=?, Nationality_Race=?, Religion=?, Medium=?, Address=?, Grade=?, Class=?, House=?, isDeleted=? WHERE AdmissionNo=?"))
+            {
+                $isDeleted = 0;
+                $stmt -> bind_param("ssiiisissis",$NamewithInitials, $DOB, $Race, $Religion, $Medium, $Address, $Grade, $Class, $House, $isDeleted, $AdmissionNo);
+
+                if ($stmt->execute())
+                {
+                    $stmt->close();
+                    $mysqli->close();
+                    return true;
+                }
+                $stmt->close();
+            }
+        }
+
+        $stmtCheck->close();
+
+    }
+    $mysqli->close();
+    return false;
+}
+
+function insertManager( $eventId, $staffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("INSERT INTO EventManager values(?, ?, ?);"))
+    {
+
+
+        $stmt -> bind_param("isi",  $eventId, $staffID, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function insertTransaction($eventID, $tDate, $tType, $amount, $description )
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+
+    if ($stmt = $mysqli->prepare("SELECT MAX(TransactionID)FROM Transaction where eventID = ?;" )){
+        $stmt -> bind_param("i", $eventID);
+        $stmt->execute();
+
+        $result = $stmt -> get_result();
+        $result = $result -> fetch_array();
+        $result = $result[0];
+        $result++;
+
+//        return "MANOJ LOOK HERE" . $result;
+
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Transaction (EventID, TransactionID, TransactionDate, TransactionType, Amount, Description, isDeleted) values(?, ?, ?, ?, ?, ?, ?)"))
+    {
+        $stmt -> bind_param("iisissi",$eventID, $result, $tDate, $tType, $amount, $description, $isDeleted);
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getEventManagers($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select s.StaffID, s.NamewithInitials, s.ContactNumber  FROM Staff s RIGHT OUTER JOIN EventManager e on( e.StaffID = s.staffID) where e.eventid = ?"))
+    {
+        $stmt -> bind_param("i", $eventid);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ] = $row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getEventTransactions($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select TransactionID, TransactionDate, TransactionType, Amount, Description  FROM Transaction where eventId = ?"))
+    {
+        $stmt -> bind_param("i", $eventid);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getTransactionReport($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select  TransactionDate, TransactionType, Amount, Description  FROM Transaction where EventID = ?"))
+    {
+        $stmt -> bind_param("i", $eventid);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getExpenses($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $result = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT SUM(Amount) from Transaction where EventID = ? and TransactionType= 1"))
+    {
+        $stmt -> bind_param("s", $eventid);
+
+        $stmt->execute();
+
+        $result = $stmt -> get_result();
+        $result = $result -> fetch_array();
+        $result = $result[0];
+    }
+    $stmt->close();
+    $mysqli->close();
+    return $result;
+}
+
+function getIncomes($eventid)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $result = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT SUM(Amount) from Transaction where EventID = ? and TransactionType = 0"))
+    {
+        $stmt -> bind_param("s", $eventid);
+
+        if ($stmt->execute())
+            $stmt->execute();
+
+        $result = $stmt -> get_result();
+        $result = $result -> fetch_array();
+        $result = $result[0];
+    }
+    $stmt->close();
+    $mysqli->close();
+    return $result;
+}
+
+function getAllStudents()
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class, FROM Student WHERE isDeleted = 0 ORDER BY accessLevel;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function studentReport($Grade, $Class)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials, DateOfBirth, Grade, Class FROM Student WHERE Grade = ? and Class = ?;"))
+    {
+        $stmt -> bind_param("is", $Grade,$Class);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getStudent($AdmissionNo)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select * FROM Student WHERE isDeleted = 0 AND AdmissionNo = ?;"))
+    {
+        $stmt->bind_param("s", $AdmissionNo);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function getClassOfStudents($grade, $class){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, NameWithInitials FROM Student WHERE isDeleted = 0 AND Class = ? AND Grade = ?;"))
+    {
+        $stmt->bind_param("si", $class, $grade);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function insertOLMarks($admissionNo,$indexNo,$year,$subjectArr,$GradeArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO OLMarks (IndexNo, AdmissionNo,Year, Subject, Grade) VALUES(?, ?, ? ,?, ?)"))
+    {
+        $noRows = 0;
+        for($i=0;$i<9;$i++){
+            $stmt->bind_param("isiss", $indexNo,$admissionNo,$year,$subjectArr[$i],$GradeArr[$i]);
+            $stmt->execute();
+            $noRows += $stmt->affected_rows;
+        }
+
+        $stmt->close();
+
+        if ($noRows != -9){
+            $mysqli->close();
+            return true;
+        }
+    }
+
+    $mysqli->close();
+    return false;
+
+}
+
+function insertALMarks($admissionNo,$indexNo,$year, $Subject1, $Subject2, $Subject3,$Grade1, $Grade2, $Grade3, $GeneralEnglish,$CommonGenaralTest,$ZScore,$IslandRank,$DistrictRank)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO ALMarks VALUES(?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    {
+
+        $stmt->bind_param("isisssssssidii", $indexNo, $admissionNo, $year, $Subject1, $Subject2, $Subject3, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGenaralTest, $ZScore, $IslandRank, $DistrictRank);
+
+        if($stmt->execute())
+        {
+            $stmt->close();
+            return true;
+        }
+
+    }
+
+    $mysqli->close();
+    return false;
+
+}
+
+function insertTermTestMarks($AdmissionNoArr, $Subject, $Term, $Year, $MarksArr, $RemarksArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO TermMarks VALUES(?, ?, ?, ?, ?, ?, ?)"))
+    {
+        $isDeleted = 0;
+
+        foreach($AdmissionNoArr as $AdmissionNo){
+//            echo $AdmissionNo . " " . $MarksArr[$AdmissionNo] . " " . $RemarksArr[$AdmissionNo] . "<br/>";
+            $MarkVar = $MarksArr[$AdmissionNo];
+            $RemarksVar = $RemarksArr[$AdmissionNo];
+
+            $stmt->bind_param("ssiiisi", $AdmissionNo,$Subject, $Term, $Year, $MarkVar, $RemarksVar, $isDeleted);
+            $stmt->execute();
+        }
+        $stmt->close();
+        $mysqli->close();
+        return true;
+    }
+    $mysqli->close();
+    return false;
+}
+
+function searchOLMarks($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o, Student s WHERE o.IndexNo=? AND o.AdmissionNo=s.AdmissionNo"))
+    {
+        $stmt -> bind_param("i", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function searchOLbyAdmission($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo"))
+    {
+        $stmt -> bind_param("s", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function searchOLbyYear($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.Year=? AND o.AdmissionNo=s.AdmissionNo"))
+    {
+        $stmt -> bind_param("i", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getOlResults($AdmissionNo)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select o.IndexNo, o.AdmissionNo,s.NameWithInitials, o.Year, o.Subject, o.Grade From OLMarks o , Student s WHERE o.AdmissionNo=? AND o.AdmissionNo=s.AdmissionNo;"))
+    {
+        $stmt->bind_param("s", $AdmissionNo);
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function updateOLResults($IndexNo, $Subject, $Grade)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE OLMarks SET Grade=? WHERE IndexNo=? AND Subject=?"))
+    {
+
+        $stmt -> bind_param("sis",$Grade, $IndexNo, $Subject);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $stmt->close();
+    }
+
+
+    $mysqli->close();
+    return false;
+}
+
+function searchALMarks($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Island_Rank,a.District_Rank From ALMarks a, Student s WHERE a.IndexNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    {
+        $stmt -> bind_param("i", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function searchALByAdmission($id)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select a.IndexNo, a.AdmissionNo, s.NameWithInitials ,a.Year, a.Subject_1,a.Subject_2,a.Subject_3, a.Grade_1,a.Grade_2,a.Grade_3,a.Gen_Eng_Grade,a.Cmn_Gen_Mark,a.Z_Score,a.Island_Rank,a.District_Rank From ALMarks a, Student s WHERE a.AdmissionNo=? AND a.AdmissionNo=s.AdmissionNo ;"))
+    {
+        $stmt -> bind_param("i", $id );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function updateALResults($IndexNo, $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("UPDATE ALMarks SET Grade_1=?, Grade_2=?, Grade_3=?, Gen_Eng_Grade=?, Cmn_Gen_Mark=?, Z_Score=?, Island_Rank=?, District_Rank=? WHERE IndexNo=?"))
+    {
+        $stmt -> bind_param("sssssdiii", $Grade1, $Grade2, $Grade3, $GeneralEnglish, $CommonGeneralTest, $ZScore, $IslandRank, $DistrictRank, $IndexNo);
+
+        if ($stmt->execute())
+        {
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+        $stmt->close();
+    }
+
+    $mysqli->close();
+    return false;
+}
+
+function markAttendance($AdmissionNoArr, $DateArr, $isPresentArr)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("INSERT INTO Attendance values(?, ?, ?);"))
+    {
+        $i = 0;
+        foreach($AdmissionNoArr as $AdmissionNo){
+            $stmt -> bind_param("isi",  $AdmissionNo, $DateArr[$i], $isPresentArr[$i]);
+            $stmt->execute();
+            $i++;
+        }
+        if ($stmt->affected_rows > 0){
+            $stmt -> close();
+            $mysqli->close();
+            return true;
+        };
+        $stmt -> close();
+        $mysqli->close();
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getAttendance($minDate, $maxDate)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("Select AdmissionNo, Date, isPresent FROM Attendance WHERE  Date BETWEEN ? AND ? ORDER BY AdmissionNo;"))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function getAttendanceReport($startDate,$endDate,$grade,$class)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, SUM(a.isPresent), COUNT(a.isPresent) FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo)WHERE (a.Date BETWEEN ? AND ? ) AND  s.Grade=? AND s.Class=? GROUP BY a.AdmissionNo, s.NamewithInitials"))
+    {
+        $stmt->bind_param("ssis",$startDate,$endDate,$grade, $class);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
+}
+
+function getAttendanceReport2($startDate,$endDate,$admissionNo)
+{
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT a.AdmissionNo, s.NamewithInitials, SUM(a.isPresent), COUNT(a.isPresent) FROM Attendance a JOIN Student s ON (a.AdmissionNo = s.AdmissionNo)WHERE (a.Date BETWEEN ? AND ? ) AND  s.Grade=? AND s.Class=? GROUP BY a.AdmissionNo, s.NamewithInitials "))
+    {
+        $stmt->bind_param("ssis",$startDate,$endDate,$admissionNo);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+
+    $mysqli->close();
+    return $set;
 }
