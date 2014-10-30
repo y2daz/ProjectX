@@ -42,9 +42,6 @@
     }
 
 
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -81,38 +78,25 @@
             /*Static Styles*/
             /*INSERT ALL YOUR CSS HERE*/
 
-            #whoami{
-                position: fixed;
-                top: 5px;
-                left: 5px;
-                display: block;
-                padding: 5px 10px 5px 10px;
-                background-color: #efefef;
-                border: 2px solid #003448;
-                /*width: 220px;*/
-                /*height: 30px;*/
-                z-index: 40;
-                color: #003f5d;
-            }
-
 
         </style>
         <script>
             $(document).ready(function () {
                 $('#nav > li > a').click(function(){
                     if ($(this).attr('class') != 'active'){
-                        $('#nav li ul').slideUp(300);
-                        $(this).next().slideToggle(300);
+                        $('#nav li ul').slideUp(150);
+                        $(this).next().slideToggle(150);
                         $('#nav li a').removeClass('active');
                         $(this).addClass('active');
                     }
                     else{
-                        $('#nav li ul').slideUp(300);
+                        $('#nav li ul').slideUp(150);
                         $('#nav li a').removeClass('active');
                     }
                 });
 
                 $("#logInLink").on("click", function(e){
+                    e.preventDefault();
                     logIn();
                 });
 
@@ -130,7 +114,6 @@
                     }
 
                     sendMessage(linkList);
-                    var i;
 
                     console.log("noOfPages = " + noOfPages);
 <!---->
@@ -260,6 +243,8 @@
                 $navMenu .= "<ul>\n";
                 if ($user->hasPerm('Manage Users')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/manageUsers.php\">" . "Manage Users" . "</a><hr /></li>\n";
+                }
+                if ($user->hasPerm('Manage Permissions')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/accessLevels.php\">" . "Manage User Permissions" . "</a><hr /></li>\n";
                 }
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a></li>\n";
@@ -312,19 +297,5 @@
 <!--        <div id="dsLogo">-->
 <!--        </div>-->
 
-
-            <?php
-
-            $userArray = array( "IT13001308" => "Alimudeen M.Y.", "IT13006426" => "Mendis B.T.M.", "IT13008338" => "Peiries M.S.E.",
-                "IT13013424" => "Liyanage M.C.", "IT13031312" => "Joseph V.S.", "IT13014650" => "Rathnayake R.M.D.A.",
-                "IT13028206" => "Jayakody J.A.I.", "IT13024000" => "De Silva G.L.N.A.M.");
-
-
-            if (array_key_exists( $_SESSION["user"] , $userArray)){
-                echo "<div id='whoami'>";
-                echo $_SESSION["user"] . " " . $userArray[$_SESSION["user"]];
-                echo "</div>";
-            }
-            ?>
     </body>
 </html>

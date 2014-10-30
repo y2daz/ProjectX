@@ -43,11 +43,11 @@ $(document).ready(function() {
         this.classList.toggle("active");
 
         if ($(this).hasClass('active')){
-            $('#nav').stop().animate({left:'0'}, 200);
+            $('#nav').stop().animate({left:'0'}, 150);
         }
         else
         {
-            $('#nav').stop().animate({left: '-100%'}, 200);
+            $('#nav').stop().animate({left: '-100%'}, 150);
         }
     });
 
@@ -114,7 +114,7 @@ function moveNav()
     var menuBut = document.getElementById('menuButton');
     $(menuBut).removeClass('hidden');
     var element = document.getElementById('nav');
-    element.style.left = -230 + "px";
+    element.style.left = -300 + "px";
 }
 
 function sendMessage(message, relocatePath){
@@ -328,21 +328,6 @@ function post(path, params, method) { //Allows us to set POST variables with jav
     document.body.appendChild(form);
     form.submit();
 }
-
-//function validate(courseOfStudy)
-//{
-//    var combo1 = document.getElementById("courseofstudy");
-//
-//    if(combo1.value == null || combo1.value == "18" || combo1.value == "70" || combo1.value == "71" || combo1.value == "72" || combo1.value == "73" || combo1.value == "74" || combo1.value == "95" ||combo1.value == "96")
-//    {
-//        alert("Please select Course of study");
-//        return 0;
-//    }
-//    else
-//    {
-//        return 1;
-//    }
-//}
 
 function substituteTeacher(day, position, originalID, replacementID, originalName, replacementName){
 //    indexNo += subject;
