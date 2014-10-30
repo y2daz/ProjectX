@@ -50,9 +50,8 @@ if (isset($_GET["getTimetable"]))
 
 }
 
-
 ?>
-    <html>
+<html>
     <head>
         <link rel="stylesheet" href="timetable.css">
         <style>
@@ -189,11 +188,11 @@ if (isset($_GET["getTimetable"]))
                     <th></th>
                 </tr>
                 <?php
-                $rowcount = 0;
+                $rowCount = 0;
                 if (isFilled($freeTeachersSet)){
 
                     foreach($freeTeachersSet as $row){
-                        echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
+                        echo ( $rowCount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
                         echo "<tr>";
                         echo "<td>" . $row[0] . "</td>";
                         echo "<td>" . $row[1] . "</td>";
@@ -204,7 +203,7 @@ if (isset($_GET["getTimetable"]))
 
                         echo "</tr>";
 
-                        $rowcount++;
+                        $rowCount++;
                     }
 
 
@@ -213,13 +212,11 @@ if (isset($_GET["getTimetable"]))
                 ?>
             </table>
         </form>
-        </table>
-    </form>
-
 
     </form>
+
     </body>
-    </html>
+</html>
 <?php
 
 $fullPageHeight = 900;
