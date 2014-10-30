@@ -243,6 +243,71 @@ function logIn(){
     $.prompt(states);
 }
 
+function editOLGrade(indexNo, subject){
+//    indexNo += subject;
+    var states = {
+        state0: {
+            title: "Enter new grade",
+            html:'<table><tr><td><label>Grade</td><td><input type="text" name="jTxtGrade" value=""></label></td></tr></table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtGrade']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                var grade = f["jTxtGrade"];
+
+                if( v == 1){
+                    var params = {"IndexNo" : indexNo, "Subject" : subject, "Grade" : grade, "NewGrade" : "NewGrade"};
+                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    }
+    $.prompt(states);
+}
+
+function editALGrade(indexNo,Subject1,S1Grade,Subject2,S2Grade,Subject3,S3Grade,GenGrade,CommonGeneralTest,Zscore,IslandRank,DistrictRank){
+//    indexNo += subject;
+    var states = {
+        state0: {
+            title: "Enter new grades for Index Number" + indexNo,
+            html:'<table><tr><td><label>' + Subject1 + '</td><td><input type="text" name="jTxtS1Grade" value="' + S1Grade + '"></label></td></tr>' +
+                '<tr><td><label>' + Subject2 + '</td><td><input type="text" name="jTxtS2Grade" value="' + S2Grade + '"></label></td></tr>' +
+                '<tr><td><label>' + Subject3 + '</td><td><input type="text" name="jTxtS3Grade" value="' + S3Grade + '"></label></td></tr>' +
+                '<tr><td><label>General English</td><td><input type="text" name="jTxtGenGrade" value="' + GenGrade + '"></label></td></tr>' +
+                '<tr><td><label>Common General Test</td><td><input type="text" name="jTxtCommonGeneralTest" value="' + CommonGeneralTest + '"></label></td></tr>' +
+                '<tr><td><label>Z-Score</td><td><input type="text" name="jTxtZScore" value="' + Zscore + '"></label></td></tr>' +
+                '<tr><td><label>Island Rank</td><td><input type="text" name="jTxtIslandRank" value="' + IslandRank + '"></label></td></tr>' +
+                '<tr><td><label>District Rank</td><td><input type="text" name="jTxtDistrictRank" value="'+ DistrictRank +'"></label></td></tr>' +
+                '</table>',
+            buttons: { Okay: 1, Cancel: -1 },
+//            focus: "input[name='jTxtGrade']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                console.log(Zscore);
+                S1Grade = f["jTxtS1Grade"];
+                S2Grade = f["jTxtS2Grade"];
+                S3Grade = f["jTxtS3Grade"];
+                GenGrade = f["jTxtGenGrade"];
+                CommonGeneralTest = f["jTxtCommonGeneralTest"];
+                Zscore = f["jTxtZScore"];
+                IslandRank = f["jTxtIslandRank"];
+                DistrictRank = f["jTxtDistrictRank"];
+                console.log(Zscore);
+
+                if( v == 1){
+                    var params = {"IndexNo" : indexNo, "S1Grade" : S1Grade, "S2Grade" : S2Grade, "S3Grade" : S3Grade, "GenGrade" : GenGrade, "CommonGeneralTest" : CommonGeneralTest, "Zscore" : Zscore, "IslandRank" : IslandRank, "DistrictRank" : DistrictRank};
+                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
+}
+
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.
 
