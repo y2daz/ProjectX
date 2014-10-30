@@ -51,6 +51,10 @@ $(document).ready(function() {
         }
     });
 
+    $("#dsLogo").on("click", function(){
+        refreshPage();
+    });
+
 });
 
 function setCookie(cName,value) //Sets a cookie.

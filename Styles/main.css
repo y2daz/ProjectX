@@ -57,6 +57,7 @@ li, ul {
 #main {
     width:800px;
     /*height: Set dynamically;*/
+    z-index: 2;
     margin: 0px auto 0px auto;
     clear: both;
     top:100px;
@@ -70,7 +71,7 @@ li, ul {
     position:absolute;
     top:0px;
     left:0px;
-    z-index: -1;
+    z-index: 0;
     width:100%;
     height:250px;
     background-color: #003448;
@@ -180,6 +181,7 @@ li, ul {
 }
 #dsLogo{
     position: absolute;
+    z-index: 10;
     left:0;
     right:0;
     margin-left:auto;
