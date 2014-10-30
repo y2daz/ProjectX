@@ -40,11 +40,14 @@ if (isset($_GET["getTimetable"]))
     if( (isFilled($arrClassroom[0])) && (isFilled($arrClassroom[1])) ){
         $myTime->grade = $arrClassroom[0];
         $myTime->class = $arrClassroom[1];
+
+        $classroom = $myTime->grade . " " . $myTime->class;
+        $myTime->getTimetableClassFromDB();
     }
-    $classroom = $myTime->grade . " " . $myTime->class;
+    else{
+        sendNotification("Class does not exist");
+    }
 
-
-    $myTime->getTimetableClassFromDB();
 }
 
 

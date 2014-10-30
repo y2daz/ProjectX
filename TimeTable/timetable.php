@@ -86,13 +86,15 @@ if (isset($_GET["getTimetable"]))
     {
         sendNotification("Staff Member does not exist");
     }
-    $row = $result[0];
-    $currentStaffName = $row[1];
+    else{
+        $row = $result[0];
+        $currentStaffName = $row[1];
 
-    $myTime = new Timetable();
+        $myTime = new Timetable();
 
-    $myTime->staffId = "$currentStaffId";
-    $myTime->getTimetableFromDB();
+        $myTime->staffId = "$currentStaffId";
+        $myTime->getTimetableFromDB();
+    }
 }
 
 ?>
