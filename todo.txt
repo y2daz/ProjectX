@@ -1,0 +1,14 @@
+STAFF nO FULL IMPLEMENTATION
+>Register Staff member allow enter staff no
+>Suggest staff number
+>search by staff number
+>resetting staff numbers
+>allocating staff numbers
+
+new leave data
+
+leave reports interface
+
+search leave by everything for staff
+
+
