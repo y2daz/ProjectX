@@ -542,10 +542,10 @@ else
         </tr>
         <tr><td></td><td>&nbsp;</td></tr>
         <tr>
-            <td><label><input type="RADIO" name="Choice" value="Staffid" checked /><?php echo getLanguage('staffID', $language)?></label> </td>
-            <td><label><input type="RADIO" name="Choice" value="Name"  /><?php echo getLanguage('nameWithInitials', $language)?></label> </td>
-            <td><label><input type="RADIO" name="Choice" value="nicnumber" /><?php echo getLanguage('nicNumber', $language)?></label> </td>
-            <td><label><input type="RADIO" name="Choice" value="contactnumber" /><?php echo getLanguage('contactnumber', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="Staffid" <?php echo ( strcmp( $_GET["Choice"], "Staffid" ) == 0 ?  "checked />" : " />" ) . getLanguage('staffID', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="Name" <?php echo ( strcmp( $_GET["Choice"], "Name" ) == 0 ?  "checked />" : " />" ) . getLanguage('nameWithInitials', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="nicnumber" <?php echo ( strcmp( $_GET["Choice"], "nicnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('nicNumber', $language)?></label> </td>
+            <td><label><input type="RADIO" name="Choice" value="contactnumber" <?php echo ( strcmp( $_GET["Choice"], "contactnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('contactnumber', $language)?></label> </td>
         </tr>
 
     </table>
