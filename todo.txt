@@ -11,4 +11,14 @@ leave reports interface
 
 search leave by everything for staff
 
+insert all subjects
+>subject codes
+>timetable  long subject name abbr
+
+calculate leave days
+>no of days leave applied
+
+apply leave interface change to form
+
+maybe remove year plan
 
