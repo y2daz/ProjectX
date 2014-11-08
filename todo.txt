@@ -27,3 +27,6 @@ split staff table to
  qualifications
  use view maybe
 
+staff report actual leave data numbers
+
+reset leave data at the end of every year

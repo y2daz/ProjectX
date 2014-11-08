@@ -128,12 +128,13 @@
     </head>
     <?php //Get language and make changes
 
+        $_COOKIE["language"] = ( isset( $_COOKIE["language"]) ? $_COOKIE["language"] : 0 );
+
         $staffManagement = getLanguage("staffManagement", $_COOKIE["language"]);
         $leaveManagement = getLanguage("leaveManagement ", $_COOKIE["language"]);
         $eventManagement = getLanguage("eventManagement ", $_COOKIE["language"]);
         $timetables = getLanguage("timetables ", $_COOKIE["language"]);
         $staffTimetable = getLanguage("staffTimetable", $_COOKIE["language"]);
-
         $registerStaffMember = getLanguage("registerStaffMember ", $_COOKIE["language"]);
         $searchStaffMember = getLanguage("searchStaffMember ", $_COOKIE["language"]);
         $applyForLeave = getLanguage("applyForLeave ", $_COOKIE["language"]);
