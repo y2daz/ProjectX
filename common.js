@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
     window.open    = function(){};
-    window.print   = function(){};
+//    window.print   = function(){};
     // Support hover state for mobile.
     if (false) {
         window.ontouchstart = function(){};

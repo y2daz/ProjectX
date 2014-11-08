@@ -78,9 +78,6 @@ $column27Header1 = "සාම නිලධාරියකු සඳහාම අ
 $column27Header2 = "ජාතික හැඳුනුම් පත් අංකය ";
 $column27Header3 = "උදා 583021007 V";
 
-/*LANGUAGE
- *
- */
 
 ?>
 <!DOCTYPE html>
@@ -96,11 +93,19 @@ $column27Header3 = "උදා 583021007 V";
     <script src="<?php echo PATHFRONT ?>/common.js"></script>
 
     <script>
-        function printPage(){
-            console.log("printing");
-            window.print();
-            console.log("printing");
-        }
+        $(document).ready( function(){
+            $( '#PrintButton' ).on( 'click', function(){
+//                alert("Boo");
+                $("#PrintButton").attr( "hidden", "hidden" ) ;
+
+                var print = setInterval( function(){
+                    window.print();
+//                    $("#PrintButton").removeAttribute( "hidden" );
+                    clearInterval( print );
+                }, 300 );
+    //            console.log("Lalala2");
+            });
+        });
     </script>
 
     <style>
@@ -273,11 +278,12 @@ $column27Header3 = "උදා 583021007 V";
             left :40px;
             font-size: 1.5em;
         }
+        #PrintButton .hidden{
+            display: none;
+        }
     </style>
 </head>
-
 <body>
-
     <h2><?php echo $line1 ?></h2>
     <h3><?php echo $line2 ?></h3>
 
@@ -439,7 +445,7 @@ $column27Header3 = "උදා 583021007 V";
 
     </table>
 
-    <button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
+    <input id="PrintButton" type="button" value="Print Report" />
 
     <br />
 
