@@ -95,15 +95,12 @@ $column27Header3 = "උදා 583021007 V";
     <script>
         $(document).ready( function(){
             $( '#PrintButton' ).on( 'click', function(){
-//                alert("Boo");
                 $("#PrintButton").attr( "hidden", "hidden" ) ;
 
                 var print = setInterval( function(){
                     window.print();
-//                    $("#PrintButton").removeAttribute( "hidden" );
                     clearInterval( print );
                 }, 300 );
-    //            console.log("Lalala2");
             });
         });
     </script>
