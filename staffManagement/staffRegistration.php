@@ -78,21 +78,6 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         $validationPass = false;
         $errorArr[ $i++ ] = "Salary";
     }
-    if( !isNumeric( $_POST["highestEducationalQualification"]))
-    {
-        $validationPass = false;
-        $errorArr[ $i++ ] = "highest Educational Qualification";
-    }
-    if( !isNumeric( $_POST["courseOfStudy"]))
-    {
-        $validationPass = false;
-        $errorArr[ $i++ ] = "Course Of Study";
-    }
-    if( !isNumeric( $_POST["highestProfessionalQualification"] ))
-    {
-        $validationPass = false;
-        $errorArr[ $i++ ] = "highest Professional Qualification";
-    }
     if( !isContactNumber($_POST["contactnumber"]))
     {
         $validationPass = false;
@@ -466,7 +451,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr>
             <td><?php echo $staffID?></td>
-            <td><input name="staffID" type="text" value="<?php echo getNewStaffId() ?>" readonly></td>
+            <td><input name="staffID" type="text" value="<?php echo getNewStaffNo() ?>" ></td>
         </tr>
         <tr >
             <td><?php echo $nameWithInitials?></td>

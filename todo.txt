@@ -11,7 +11,7 @@ leave reports interface
 
 access control file level.
 
-laeve taken in leav applicatin interface
+leave taken in leave application interface
 
 search leave by everything for staff
 
@@ -40,8 +40,8 @@ reset leave data at the end of every year
 
 change all staff nos at the end of every year
 
-expanding nav hiddens
+expanding nav hidden
 
 *** PRINT BUTTON ON REPORTS
 
-leave reviewal
+leave reviewing

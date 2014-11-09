@@ -326,10 +326,14 @@ function checkStaffMember($StaffID)
 
 } //Checks if a staff member exists and isn't soft-deleted
 
-function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber,
-                           $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium,
-                           $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
+/**/function insertStaffMember($staffID, $NameWithInitials, $DateOfBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber,
+                           $MailDeliveryAddress, $ContactNumber, $DateAppointedAsTeacherPrincipal, $DateJoinedThisSchool, $EmploymentStatus,$Medium,
+                           $PositionInSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
+//    if ( isFilled( getStaffID( $staffID ) ) ){
+//        return false;
+//    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -337,12 +341,12 @@ function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-
-
     if ($stmt = $mysqli->prepare("INSERT INTO Staff values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
     {
         $isdeleted = 0;
-        $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $isdeleted);
+        $stmt -> bind_param("sssiiiisssssiiiiiiidi",$staffID, $NameWithInitials, $DateOfBirth, $Gender, $NationalityRace, $Religion,
+                        $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedAsTeacherPrincipal, $DateJoinedThisSchool,
+                        $EmploymentStatus, $Medium, $PositionInSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $isdeleted);
 
         if ($stmt->execute())
         {
@@ -677,6 +681,36 @@ function getNewStaffId()
     $mysqli->close();
 } //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
 
+function getNewStaffNo()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT MAX(CAST(StaffNo AS UNSIGNED))+1 FROM StaffNo LIMIT 1;"))
+    {
+        if ($stmt->execute())
+        {
+            $OUTvalue = "% NO Staff ID %";
+            $stmt->bind_result($OUTvalue);
+            $stmt->fetch();
+
+            if (!isFilled($OUTvalue))
+            {
+                return 1;
+            }
+
+            $stmt->close();
+            $mysqli->close();
+            return $OUTvalue;
+        }
+    }
+    $mysqli->close();
+} //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
+
 function getAllStaff()
 {
 
@@ -766,6 +800,58 @@ function getAllStaffDetailed( $initial )
     return $set;
 } //Returns 20 records of non-deleted staff records starting from $initial
 
+function getStaffID( $staffNo ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+    $result = null ;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $row = 0;
+
+    if ($stmt = $mysqli->prepare('SELECT MAX(Year) FROM StaffNo'))
+    {
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $row = $result->fetch_array();
+        }
+    }
+
+    $mysqli->close();
+    $thisYear = $row[0];
+
+    $row = 0;
+
+    if ($stmt = $mysqli->prepare('SELECT StaffID FROM StaffNo WHERE StaffNo = ? and Year = ?'))
+    {
+        $stmt -> bind_param("ii", $staffNo, $thisYear );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $mysqli->close();
+            $stmt ->close();
+            if( $result->num_rows > 1){
+                sendNotification( "More than one staff member has that number. Please reallocate staff numbers." );
+                return null;
+            }
+            elseif( $result->num_rows == 0 ){
+                sendNotification( "There are no staff members with that number." );
+                return null;
+            }
+            else{
+                $row = $result->fetch_array();
+            }
+
+
+        }
+    }
+    $mysqli->close();
+    return $row[0];
+}
 //
 ///
 /////  LEAVE MANAGEMENT
