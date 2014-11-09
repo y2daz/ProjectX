@@ -13,6 +13,12 @@
 
     define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 
+    $curFile = curPageName();
+
+    /*if( strcmp( $curFile, "Menu.php" ) != 0 ){
+
+    }*/
+
     $logSuccess = true;
 
     if(isset($_POST["username"])) {
@@ -40,7 +46,6 @@
         $_SESSION["user"] = NULL;
         header("Location: " . PATHFRONT . "/Menu.php");
     }
-
 
 ?>
 <!DOCTYPE html>
