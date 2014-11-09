@@ -66,7 +66,7 @@ else{
                 left: 30px;
             }
             .userList{
-                border: 1px solid #005e77;
+                /*border: 1px solid #005e77;*/
                 border-collapse: collapse;
                 border-spacing: 0;
             }
@@ -75,13 +75,10 @@ else{
                 color: white;
                 padding: 5px;
             }
-            .userList .alt{
-                background-color: #bed9ff;
-            }
             .userList td{
                 padding: 5px;
                 text-align: center;
-                border: 1px solid #005e77;
+                /*border: 1px solid #005e77;*/
             }
             #newUser{
                 border: 1px solid #005e77;
@@ -104,6 +101,9 @@ else{
 
             .emailCol, .txtEmail{
                 min-width: 250px;
+            }
+            .userList .searchEmail{
+                text-align: left;
             }
             .txtAccessLevel{
                 width: 50px;
@@ -158,14 +158,14 @@ else{
                         else
                         {
                             foreach($result as $row){
-                                $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td class=\"searchEmail\">" : "<tr><td class=\"searchEmail\">";
-                                echo $top;
-                                echo "$row[0]";
+                                echo "<tr><td class=\"searchEmail\">";
+                                echo "$row[0]" . "</td>";
                                 echo "<td>$row[1]</td>";
                                 echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
                                 echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"requestConfirmation('Are you sure you want to delete this user?'," .
                                 " 'Delete confirmation', 'delete', '" . $row[0] . "'); \" /> </td> ";
                                 echo "</td></tr>";
+                                echo ( $i++ % 3 == 0 ? "<tr class=\"blank\"> <td colspan='6'>&nbsp;</td>  </tr>" : "");
 
     //                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
     //                            post(document.URL, params, "post");

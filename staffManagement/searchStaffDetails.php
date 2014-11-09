@@ -199,6 +199,8 @@ else
         .viewTable td{
             padding-left: 10px;
             padding-right: 12px;
+            padding-top: 4px;
+            padding-bottom: 4px;
             min-width: 60px;
         }
         .details {
@@ -233,7 +235,6 @@ else
         .details .number{
             max-width: 20px;
         }
-
         input.button1 {
             position:relative;
             font-weight:bold;
@@ -574,8 +575,8 @@ else
             {
                 foreach($result as $row)
                 {
-                    $top = ($i++ % 2 == 0)? "<tr class=\"alt\"><td>" : "<tr><td>";
-                    echo $top;
+
+                    echo "<tr><td>";
                     echo "$row[0]";
                     echo "<td>$row[1]</td>";
                     echo "<td>$row[2]</td>";
@@ -584,12 +585,13 @@ else
                     echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete \"onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                             . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                     echo "</td></tr>";
+                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\"><td colspan='6'>&nbsp;</td>" : "");
                 }
             }
 
             if (isset($_GET["search"]))
             {
-                $fullPageHeight = ( 600 + ($i * 19) );
+                $fullPageHeight = ( 600 + ($i * 28) );
             }
 
         ?>
