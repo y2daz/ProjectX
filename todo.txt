@@ -17,6 +17,8 @@ search leave by everything for staff
 
 qualifications interface
 
+section designation all other big dropdown listed stuffs sql database
+
 insert all subjects
 >subject codes
 >timetable long subject name abbr

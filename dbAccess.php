@@ -1005,7 +1005,7 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT l.CasualLeave, l.MedicalLeave, l.DutyLeave, s.NamewithInitials FROM LeaveData l, Staff s WHERE l.StaffID = ? AND s.StaffID = l.StaffID"))
+    if($stmt = $mysqli->prepare("SELECT l.CasualLeave, l.MedicalLeave, l.DutyLeave, s.NamewithInitials, s.Section, s.PositioninSchool FROM LeaveData l, Staff s WHERE l.StaffID = ? AND s.StaffID = l.StaffID"))
     {
         $stmt->bind_param("s", $StaffID);
 
