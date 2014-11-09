@@ -107,7 +107,7 @@ if(isset($_POST["submit"]))
 
             <?php
 
-            if(! isFilled($result))
+            if(! isset($result))
             {
                 echo "<tr><td colspan='3'>No request data</td></tr>";
             }
@@ -119,7 +119,6 @@ if(isset($_POST["submit"]))
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
                     $Status = "Pending";
-                    $LeaveType = "Other";
                     $LeaveReason = $row[3];
 
                     if($row[1] == 0)
@@ -134,20 +133,6 @@ if(isset($_POST["submit"]))
                     {
                         $Status = "Rejected";
                     }
-
-                    if($row[2] == 1)
-                    {
-                        $LeaveType = "Official Leave";
-                    }
-                    else if($row[2] == 2)
-                    {
-                        $LeaveType = "Maternity Leave";
-                    }
-                    else if($row[2] == 3)
-                    {
-                        $LeaveType = "Other Leave";
-                    }
-
 
                     echo $top;
                     echo "<td> $row[0] </td>";

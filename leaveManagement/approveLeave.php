@@ -230,7 +230,7 @@
                 </tr>
 
                 <?php
-                $result = getLeaveToApprove();
+                $result = getAllLeaveToApprove();
                 $i = 1;
 
 

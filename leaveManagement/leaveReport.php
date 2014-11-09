@@ -158,7 +158,7 @@ if(isset($_GET["id"]))
 
     if (!isFilled($result))
     {
-        echo "<style> .leaveTable2{display: none} </style>";
+//        echo "<style> .leaveTable2{display: none} </style>";
 
         echo "<tr><td colspan='5'>There are no Leave Requests.</td></tr>";
         //sendNotification("There are no records to show.");
