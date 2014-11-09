@@ -941,7 +941,7 @@ function getLeaveData($StaffID)
     }
     $mysqli->close();
     return $set;
-} //Returns leave numbers for the staff member. Inserts nwe  numbers if not existing.
+} //Returns leave numbers for the staff member. Inserts new numbers if not existing.
 
 /**/function getAllLeaveToApprove(){
 
@@ -983,7 +983,7 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.LeaveType, l.RequestDate, l.Status, l.StartDate, l.EndDate, l.OtherInformation,  ld.OfficialLeave, ld.MaternityLeave, ld.OtherLeave, s.ContactNumber FROM ApplyLeave l, Staff s, LeaveData ld WHERE l.StaffId=? AND s.StaffId = l.StaffId AND l.StartDate=? AND l.StaffId = ld.StaffId;"))
+    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.RequestDate, l.StartDate, l.EndDate, l.Status, l.reason, ld.CasualLeave, ld.MedicalLeave, ld.DutyLeave, s.ContactNumber FROM ApplyLeave l, Staff s, LeaveData ld WHERE l.StaffId=? AND s.StaffId = l.StaffId AND l.StartDate=? AND l.StaffId = ld.StaffId;"))
     {
         $stmt->bind_param("ss", $StaffID, $sDate);
 
@@ -1002,48 +1002,23 @@ function getLeaveData($StaffID)
     return $set;
 } //Gets a single instance of applied leave for a staff member
 
-/**/function approveLeave($StaffID, $sDate, $eDate, $leavetype, $ReviewedBy)
+/**/function approveLeave($StaffID, $sDate, $ReviewedBy = null)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
     $result = getLeaveData($StaffID);
 
-    $startdate = $sDate;
-    $enddate = $eDate;
-
-    $start = strtotime($startdate);
-    $end = strtotime($enddate);
-
-    $datediff = $end - $start;
-
-    $datediff = floor($datediff/(60*60*24));
-
-    $datediff = abs($datediff);
+    $noOfCasual = $noOfDuty = $noOfMedical = 0;
 
     foreach($result as $row)
     {
-        if(isFilled($result))
+        if( isset( $result ) )
         {
-            $OfficialLeave = $row[0];
-            $MaternityLeave = $row[1];
-            $OtherLeave = $row[2];
+            $noOfCasual = $row[0];
+            $noOfMedical = $row[1];
+            $noOfDuty = $row[2];
         }
-
-    }
-
-    if($leavetype == "Official Leave")
-    {
-        $OfficialLeave = $OfficialLeave - $datediff;
-    }
-    else if ($leavetype == "Maternity Leave")
-    {
-        $MaternityLeave = $MaternityLeave - $datediff;
-
-    }
-    else if ($leavetype == "Other Leave")
-    {
-        $OtherLeave = $OtherLeave - $datediff;
     }
 
     if ($mysqli->connect_errno) {
@@ -1051,11 +1026,11 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if($stmt = $mysqli->prepare("UPDATE  ApplyLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?,a.OfficialLeave=?, a.MaternityLeave=?, a.OtherLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+    if($stmt = $mysqli->prepare("UPDATE  ApplyLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?, a.CasualLeave=?, a.MedicalLeave=?, a.DutyLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
     {
         $ReviewedDate = date("Y-m-d");
 
-        $stmt->bind_param("ssiiiss", $ReviewedBy, $ReviewedDate, $OfficialLeave, $MaternityLeave, $OtherLeave, $StaffID, $sDate);
+        $stmt->bind_param("ssiiiss", $ReviewedBy, $ReviewedDate, $noOfCasual, $noOfMedical, $noOfDuty, $StaffID, $sDate);
 
         if($stmt->execute())
         {
