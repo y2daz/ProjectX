@@ -328,8 +328,7 @@ function checkStaffMember($StaffID)
 
 function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,$NICNumber,
                            $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,$Medium,
-                           $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
-                           $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
+                           $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -340,10 +339,10 @@ function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $
 
 
 
-    if ($stmt = $mysqli->prepare("INSERT INTO Staff values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
+    if ($stmt = $mysqli->prepare("INSERT INTO Staff values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
     {
         $isdeleted = 0;
-        $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $isdeleted);
+        $stmt -> bind_param("sssiiiisssssiiiiiiidiiii",$staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $isdeleted);
 
         if ($stmt->execute())
         {
@@ -363,8 +362,7 @@ function insertStaffMember($staffID, $NamewithInitials, $DateofBirth, $Gender, $
 
 function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus, $NICNumber,
                      $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium,
-                     $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
-                     $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy)
+                     $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -378,12 +376,11 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Nation
         if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Nationality_Race=?, Religion=?, CivilStatus=?,
                                         NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?,
                                         EmploymentStatus=?, Medium=?, PositioninSchool=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?,
-                                        ServiceGrade=?, Salary=?, HighestEducationalQualification=?, HighestProfessionalQualification=?, CourseofStudy=? WHERE StaffID = ?;"))
+                                        ServiceGrade=?, Salary=? WHERE StaffID = ?;"))
         {
             $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $NationalityRace, $Religion, $CivilStatus,
                 $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,
-                $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary,
-                $HighestEducationalQualification, $HighestProfessionalQualification, $CourseofStudy, $staffID);
+                $Medium, $PositioninSchool, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $staffID);
 
             if ($stmt->execute())
             {
@@ -394,11 +391,6 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Nation
             $stmt->close();
         }
     }
-    /*            }
-
-        $stmt->close();
-
-        }*/
     $mysqli->close();
     return false;
 } //Updates details of a staff member who hasn't been soft-deleted

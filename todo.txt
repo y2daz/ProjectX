@@ -20,12 +20,14 @@ calculate leave days
 
 apply leave interface change to form
 
-*** maybe remove year plan
+maybe remove year plan
 
 split staff table to
  general info
  qualifications
  use view maybe
+
+qualification list database tables
 
 staff report actual leave data numbers
 
