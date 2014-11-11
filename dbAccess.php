@@ -73,7 +73,7 @@ function insertUser($email, $password, $accessLevel)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT * FROM User WHERE userEmail=? AND isDeleted <> 0 LIMIT 1;"))
+    if ($stmt = $mysqli->prepare("SELECT `userEmail`, `userPassword`, `accessLevel`, `isDeleted` FROM User WHERE userEmail=? AND isDeleted <> 0 LIMIT 1;"))
     {
         $stmt -> bind_param("s", $email);
 
@@ -464,7 +464,11 @@ function getStaffMember($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select * FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
+    if ($stmt = $mysqli->prepare("Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Nationality_Race`,
+                `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
+                `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `PositioninSchool`, `Section`, `SubjectMostTaught`,
+                `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
+                FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
     {
         $stmt -> bind_param("s", $StaffID);
 
@@ -501,7 +505,7 @@ function deleteStaff($staffID)
             $stmt -> bind_param("is", $deleteNo, $staffID);
             if ($stmt->execute())
             {
-                if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID = ? where StaffID = ? "))
+                if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID = ? where StaffID = ? ")) //YAZDAAN, MAKE NEW FUNCTION TO DELETE THIS AND TIMETABLE
                 {
                     $stmt -> bind_param("ss", $newStaffID, $staffID);
                     if ($stmt->execute())
@@ -782,7 +786,11 @@ function getAllStaffDetailed( $initial )
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select * FROM Staff s WHERE s.isDeleted = 0 ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
+    if ($stmt = $mysqli->prepare("Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Nationality_Race`,
+                `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
+                `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `PositioninSchool`, `Section`, `SubjectMostTaught`,
+                `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
+                FROM Staff s WHERE s.isDeleted = 0 ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
     {
         $stmt -> bind_param("i", $initial);
         if ($stmt->execute())
@@ -869,7 +877,9 @@ function getStaffID( $staffNo ){
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT * FROM ApplyLeave WHERE StaffID = ? AND isDeleted <> 0 ORDER BY RequestDate"))
+    if ($stmt = $mysqli->prepare("SELECT `StaffID`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `RequestDate`, `StartDate`,
+                `EndDate`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`, `isDeleted`
+                FROM ApplyLeave WHERE StaffID = ? AND isDeleted <> 0 ORDER BY RequestDate"))
     {
         $stmt -> bind_param("s", $StaffID);
 
@@ -908,7 +918,7 @@ function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate,
 
         $stmt -> bind_param("siiissssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $currentDate, $startDate, $endDate, $reason, $status, $reviewedBy, $reviewedDate, $isDeleted);
 
-        $query = $mysqli->prepare("SELECT * FROM LeaveData WHERE StaffID = ?");
+        $query = $mysqli->prepare("SELECT `StaffID`, `CasualLeave`, `MedicalLeave`, `DutyLeave`, `isDeleted` FROM LeaveData WHERE StaffID = ?");
         $query -> bind_param("i", $staffId);
         $query -> execute();
         $query -> store_result();
@@ -1177,7 +1187,7 @@ function insertClassroom($staffID, $grade, $class)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmtCheck = $mysqli->prepare("SELECT * FROM ClassInformation WHERE Grade=? AND Class=?;"))
+    if ($stmtCheck = $mysqli->prepare("SELECT `StaffID`, `Grade`, `Class`, `isDeleted` FROM ClassInformation WHERE Grade=? AND Class=?;"))
     {
         $stmtCheck -> bind_param("is", $grade, $class);
         $stmtCheck -> execute();
@@ -1627,7 +1637,7 @@ function isHoliday($date)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select * FROM Holiday WHERE Day = ? ;"))
+    if ($stmt = $mysqli->prepare("Select `Year`, `Day` FROM Holiday WHERE Day = ? ;"))
     {
         $stmt->bind_param("s", $date);
         if ($stmt->execute())
