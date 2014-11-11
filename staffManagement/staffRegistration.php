@@ -229,7 +229,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         $dateJoinedSchool =  getLanguage('dateJoinedSchool', $language);
         $employmentStatus =  getLanguage('employmentStatus', $language);
         $medium =  getLanguage('medium', $language);
-        $positionInSchool =  getLanguage('positionInSchool', $language);
+        $positionInSchool =  getLanguage('designation', $language);
         $section =  getLanguage('section', $language);
         $subjectMostTaught =  getLanguage('subjectMostTaught', $language);
         $subjectSecondMostTaught =  getLanguage('subjectSecondMostTaught', $language);
