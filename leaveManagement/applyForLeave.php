@@ -112,7 +112,7 @@
         $officialleavecombo = "Official Leave";
         $maternityleavecombo = "Maternity Leave";
         $otherleavecombo = "Other Leave";
-        $applyforleave = "Apply for Leave";
+        $applyforleave = "Apply";
         $reset ="Reset";
         $getleavedata = "Get Leave Data";
         $enterdetails = "Enter Details";
@@ -261,7 +261,7 @@
                                 <th>Total</th>
                             </tr>
                             <tr>
-                                <td>Applied</td>
+                                <td>Applying</td>
                                 <td> <input id="noOfCasual" class="changeNoDays" type="number" min="0" max="21" name="noOfCasual" /> </td>
                                 <td> <input id="noOfMedical" class="changeNoDays" type="number" min="0" max="20" name="noOfMedical" /> </td>
                                 <td> <input id="noOfDuty" class="changeNoDays" type="number" min="0" max="99" name="noOfDuty" /> </td>

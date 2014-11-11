@@ -47,3 +47,8 @@ expanding nav hidden
 *** PRINT BUTTON ON REPORTS
 
 leave reviewing
+
+deleting staff delete all references inc leavedata
+
+comments
+  on eeverything

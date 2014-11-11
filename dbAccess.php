@@ -860,6 +860,7 @@ function getStaffID( $staffNo ){
     $mysqli->close();
     return $row[0];
 }
+
 //
 ///
 /////  LEAVE MANAGEMENT
@@ -1586,7 +1587,7 @@ function getFreeTeachers($position,$day,$id)
 
 //
 ///
-/////  LANGUAGE
+/////  LANGUAGE AND UTITLITY
 ///
 //
 
