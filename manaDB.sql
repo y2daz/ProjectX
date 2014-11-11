@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2014 at 12:57 AM
+-- Generation Time: Nov 12, 2014 at 02:47 AM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -37,8 +37,6 @@ START TRANSACTION;
 --
 -- Database: `manaDB`
 --
-CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `manaDB`;
 
 -- --------------------------------------------------------
 
@@ -46,6 +44,7 @@ USE `manaDB`;
 -- Table structure for table `ApplyLeave`
 --
 
+DROP TABLE IF EXISTS `ApplyLeave`;
 CREATE TABLE IF NOT EXISTS `ApplyLeave` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
   `NoOfCasual` int(11) NOT NULL DEFAULT '0',
@@ -85,6 +84,7 @@ INSERT INTO `ApplyLeave` VALUES
 -- Table structure for table `ClassInformation`
 --
 
+DROP TABLE IF EXISTS `ClassInformation`;
 CREATE TABLE IF NOT EXISTS `ClassInformation` (
   `StaffID` varchar(5) DEFAULT NULL,
   `Grade` int(11) NOT NULL DEFAULT '0',
@@ -116,6 +116,7 @@ INSERT INTO `ClassInformation` VALUES
 -- Table structure for table `CourseOfStudy`
 --
 
+DROP TABLE IF EXISTS `CourseOfStudy`;
 CREATE TABLE IF NOT EXISTS `CourseOfStudy` (
   `StaffId` int(11) NOT NULL,
   `Course` int(11) NOT NULL,
@@ -167,6 +168,7 @@ INSERT INTO `CourseOfStudy` VALUES
 -- Table structure for table `EduQualification`
 --
 
+DROP TABLE IF EXISTS `EduQualification`;
 CREATE TABLE IF NOT EXISTS `EduQualification` (
   `StaffId` int(11) NOT NULL,
   `Qualification` int(11) NOT NULL,
@@ -221,12 +223,204 @@ INSERT INTO `EduQualification` VALUES
 -- Table structure for table `FormOption`
 --
 
+DROP TABLE IF EXISTS `FormOption`;
 CREATE TABLE IF NOT EXISTS `FormOption` (
   `Label` varchar(80) NOT NULL DEFAULT '',
   `Number` int(11) NOT NULL DEFAULT '0',
   `Data` varchar(200) DEFAULT NULL,
+  `group` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Label`,`Number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `FormOption`
+--
+
+INSERT INTO `FormOption` VALUES
+  ('civilStatus', 1, 'Married', NULL),
+  ('civilStatus', 2, 'Not Married', NULL),
+  ('civilStatus', 3, 'Widow', NULL),
+  ('civilStatus', 4, 'Other', NULL),
+  ('courseOfStudy', 1, 'BSc in Education', 'Graduate Teachers'),
+  ('courseOfStudy', 2, 'BSc in Physics', 'Graduate Teachers'),
+  ('courseOfStudy', 3, 'BSc in Biology', 'Graduate Teachers'),
+  ('courseOfStudy', 4, 'BSc in Combined Mathematics', 'Graduate Teachers'),
+  ('courseOfStudy', 5, 'BSc Specialisation in Mathematics', 'Graduate Teachers'),
+  ('courseOfStudy', 6, 'Passed Maths without a degree in science', 'Graduate Teachers'),
+  ('courseOfStudy', 7, 'BSc in Agriculture', 'Graduate Teachers'),
+  ('courseOfStudy', 8, 'BSc in Home Science', 'Graduate Teachers'),
+  ('courseOfStudy', 9, 'BSc in IT', 'Graduate Teachers'),
+  ('courseOfStudy', 10, 'BSc in Commerce Business Mgmt Accounting or equivalent Dip', 'Graduate Teachers'),
+  ('courseOfStudy', 11, 'Bscin Social Science', 'Graduate Teachers'),
+  ('courseOfStudy', 12, 'BA in Eastern Music or equivalent Dip', 'Graduate Teachers'),
+  ('courseOfStudy', 13, 'BA in Arts', 'Graduate Teachers'),
+  ('courseOfStudy', 14, 'BA in Dancing or equivalent Dip', 'Graduate Teachers'),
+  ('courseOfStudy', 15, 'BA Degrees or equivalent', 'Graduate Teachers'),
+  ('courseOfStudy', 16, 'BA in English or equivalent', 'Graduate Teachers'),
+  ('courseOfStudy', 17, 'BA in a Foreign Language excluding English', 'Graduate Teachers'),
+  ('courseOfStudy', 19, 'IT', 'Trained Teachers'),
+  ('courseOfStudy', 20, 'English', 'Trained Teachers'),
+  ('courseOfStudy', 21, 'Maths', 'Trained Teachers'),
+  ('courseOfStudy', 22, 'Science', 'Trained Teachers'),
+  ('courseOfStudy', 23, 'Science And Maths', 'Trained Teachers'),
+  ('courseOfStudy', 24, 'Social Studies', 'Trained Teachers'),
+  ('courseOfStudy', 25, 'Commerce', 'Trained Teachers'),
+  ('courseOfStudy', 26, 'Home Science', 'Trained Teachers'),
+  ('courseOfStudy', 27, 'BTec Construction', 'Trained Teachers'),
+  ('courseOfStudy', 28, 'BTec Mechanical', 'Trained Teachers'),
+  ('courseOfStudy', 29, 'BTec Electronic and Electrical', 'Trained Teachers'),
+  ('courseOfStudy', 30, 'Arts', 'Trained Teachers'),
+  ('courseOfStudy', 31, 'Agriculture', 'Trained Teachers'),
+  ('courseOfStudy', 32, 'Western Music', 'Trained Teachers'),
+  ('courseOfStudy', 33, 'Eastern Music', 'Trained Teachers'),
+  ('courseOfStudy', 34, 'Arts Again', 'Trained Teachers'),
+  ('courseOfStudy', 35, 'Dancing', 'Trained Teachers'),
+  ('courseOfStudy', 36, 'Health and Physical Education', 'Trained Teachers'),
+  ('courseOfStudy', 37, 'Buddhism', 'Trained Teachers'),
+  ('courseOfStudy', 38, 'Hinduism', 'Trained Teachers'),
+  ('courseOfStudy', 39, 'Islam', 'Trained Teachers'),
+  ('courseOfStudy', 40, 'Roman Catholicism', 'Trained Teachers'),
+  ('courseOfStudy', 41, 'Non Roman Catholicism', 'Trained Teachers'),
+  ('courseOfStudy', 42, 'Special Education', 'Trained Teachers'),
+  ('courseOfStudy', 43, 'Sinhala', 'Trained Teachers'),
+  ('courseOfStudy', 44, 'Tamil', 'Trained Teachers'),
+  ('courseOfStudy', 45, 'Arabic', 'Trained Teachers'),
+  ('courseOfStudy', 46, 'Primary General', 'Trained Teachers'),
+  ('courseOfStudy', 47, 'Library and Information Science', 'Trained Teachers'),
+  ('courseOfStudy', 48, 'Theatre and Drama', 'Trained Teachers'),
+  ('courseOfStudy', 49, 'Other', 'Trained Teachers'),
+  ('courseOfStudy', 50, 'Maths', 'Untrained Teachers'),
+  ('courseOfStudy', 51, 'Science', 'Untrained Teachers'),
+  ('courseOfStudy', 52, 'Science And Maths', 'Untrained Teachers'),
+  ('courseOfStudy', 53, 'English', 'Untrained Teachers'),
+  ('courseOfStudy', 54, 'Primary', 'Untrained Teachers'),
+  ('courseOfStudy', 55, 'Religion', 'Untrained Teachers'),
+  ('courseOfStudy', 56, 'Social Studies', 'Untrained Teachers'),
+  ('courseOfStudy', 57, 'Commerce', 'Untrained Teachers'),
+  ('courseOfStudy', 58, 'Technology', 'Untrained Teachers'),
+  ('courseOfStudy', 59, 'Home Science', 'Untrained Teachers'),
+  ('courseOfStudy', 60, 'Agriculture', 'Untrained Teachers'),
+  ('courseOfStudy', 61, 'Sinhala', 'Untrained Teachers'),
+  ('courseOfStudy', 62, 'Tamil', 'Untrained Teachers'),
+  ('courseOfStudy', 63, 'Western Music', 'Untrained Teachers'),
+  ('courseOfStudy', 64, 'Eastern Music', 'Untrained Teachers'),
+  ('courseOfStudy', 65, 'Dancing', 'Untrained Teachers'),
+  ('courseOfStudy', 66, 'Art', 'Untrained Teachers'),
+  ('courseOfStudy', 67, 'Foreign Language Excluding English', 'Untrained Teachers'),
+  ('courseOfStudy', 68, 'Malay', 'Untrained Teachers'),
+  ('courseOfStudy', 69, 'Other', 'Untrained Teachers'),
+  ('courseOfStudy', 75, 'Maths', 'Newly appointed Teachers'),
+  ('courseOfStudy', 76, 'Science', 'Newly appointed Teachers'),
+  ('courseOfStudy', 77, 'Science And Maths', 'Newly appointed Teachers'),
+  ('courseOfStudy', 78, 'English', 'Newly appointed Teachers'),
+  ('courseOfStudy', 79, 'Primary', 'Newly appointed Teachers'),
+  ('courseOfStudy', 80, 'Religion', 'Newly appointed Teachers'),
+  ('courseOfStudy', 81, 'Social Studies', 'Newly appointed Teachers'),
+  ('courseOfStudy', 82, 'Commerce', 'Newly appointed Teachers'),
+  ('courseOfStudy', 83, 'Technology', 'Newly appointed Teachers'),
+  ('courseOfStudy', 84, 'Home Science', 'Newly appointed Teachers'),
+  ('courseOfStudy', 85, 'Agriculture', 'Newly appointed Teachers'),
+  ('courseOfStudy', 86, 'Sinhala', 'Newly appointed Teachers'),
+  ('courseOfStudy', 87, 'Tamil', 'Newly appointed Teachers'),
+  ('courseOfStudy', 88, 'Western Music', 'Newly appointed Teachers'),
+  ('courseOfStudy', 89, 'Eastern Music', 'Newly appointed Teachers'),
+  ('courseOfStudy', 90, 'Dancing', 'Newly appointed Teachers'),
+  ('courseOfStudy', 91, 'Art', 'Newly appointed Teachers'),
+  ('courseOfStudy', 92, 'Foreign Language Excluding English', 'Newly appointed Teachers'),
+  ('courseOfStudy', 93, 'Malay', 'Newly appointed Teachers'),
+  ('courseOfStudy', 94, 'Other', 'Newly appointed Teachers'),
+  ('employmentStatus', 1, 'Full Time', NULL),
+  ('employmentStatus', 2, 'Part Time', NULL),
+  ('employmentStatus', 3, 'Full Time (Released to other School)', NULL),
+  ('employmentStatus', 4, 'Full Time (Brought from other School)', NULL),
+  ('employmentStatus', 5, 'On Contract (Government)', NULL),
+  ('employmentStatus', 6, 'Paid from School Fees', NULL),
+  ('employmentStatus', 7, 'Other Government Department', NULL),
+  ('highestEducationalQualification', 1, 'Below O Level', NULL),
+  ('highestEducationalQualification', 2, 'O Level', NULL),
+  ('highestEducationalQualification', 3, 'A Level', NULL),
+  ('highestEducationalQualification', 4, 'BA, BSc, BEd', NULL),
+  ('highestEducationalQualification', 5, 'MA, MSc, MEd', NULL),
+  ('highestEducationalQualification', 6, 'MPhil', NULL),
+  ('highestEducationalQualification', 7, 'PhD', NULL),
+  ('highestProfessionalQualification', 1, 'PhD Ed', NULL),
+  ('highestProfessionalQualification', 2, 'MPhil Ed', NULL),
+  ('highestProfessionalQualification', 3, 'M Ed', NULL),
+  ('highestProfessionalQualification', 4, 'MA in Ed', NULL),
+  ('highestProfessionalQualification', 5, 'Dip in Ed', NULL),
+  ('highestProfessionalQualification', 6, 'MSc in Ed Mgmt', NULL),
+  ('highestProfessionalQualification', 7, 'PG Dip in Ed Mgmt', NULL),
+  ('highestProfessionalQualification', 8, 'PG Dip in EASL', NULL),
+  ('highestProfessionalQualification', 9, 'BNIE, BEd', NULL),
+  ('highestProfessionalQualification', 10, 'Dip in EASL', NULL),
+  ('highestProfessionalQualification', 11, 'Dip in Library', NULL),
+  ('highestProfessionalQualification', 12, 'Cert. in Library', NULL),
+  ('highestProfessionalQualification', 13, 'PG Dip in Library Science', NULL),
+  ('highestProfessionalQualification', 14, 'MSc in Library', NULL),
+  ('highestProfessionalQualification', 15, 'Dip in Agriculture', NULL),
+  ('highestProfessionalQualification', 16, 'Cert. in Teacher Training (Institute)', NULL),
+  ('highestProfessionalQualification', 17, 'Cert. in Teacher Training (Away)', NULL),
+  ('highestProfessionalQualification', 18, 'Nat Dip in Teaching', NULL),
+  ('highestProfessionalQualification', 19, 'None', NULL),
+  ('positionInSchool', 1, 'Principal', NULL),
+  ('positionInSchool', 2, 'Acting Principal', NULL),
+  ('positionInSchool', 3, 'Deputy Principal', NULL),
+  ('positionInSchool', 4, 'Acting Deputy Principal', NULL),
+  ('positionInSchool', 5, 'Assistant Principal', NULL),
+  ('positionInSchool', 6, 'Acting Assistant Principal', NULL),
+  ('positionInSchool', 7, 'Teacher', NULL),
+  ('race', 1, 'Sinhala', NULL),
+  ('race', 2, 'Sri Lankan Tamil', NULL),
+  ('race', 3, 'Indian Tamil', NULL),
+  ('race', 4, 'Sri Lankan Muslim', NULL),
+  ('race', 5, 'Other', NULL),
+  ('religion', 1, 'Buddhism', NULL),
+  ('religion', 2, 'Hinduism', NULL),
+  ('religion', 3, 'Islam', NULL),
+  ('religion', 4, 'Catholicism', NULL),
+  ('religion', 5, 'Christianity', NULL),
+  ('religion', 6, 'Other', NULL),
+  ('section', 1, 'Primary Multiple', NULL),
+  ('section', 2, 'Primary English', NULL),
+  ('section', 3, 'Primary Second Language', NULL),
+  ('section', 4, 'Secondary Science Maths', NULL),
+  ('section', 5, 'Secondary English', NULL),
+  ('section', 6, 'Secondary Arts', NULL),
+  ('section', 7, 'Secondary Technology', NULL),
+  ('section', 8, 'Secondary Second Language', NULL),
+  ('section', 9, 'Secondary Multiple', NULL),
+  ('section', 10, 'A Level Science Main', NULL),
+  ('section', 11, 'A Level Arts Commerce', NULL),
+  ('section', 12, 'A Level Technology', NULL),
+  ('section', 13, 'A Level Optional', NULL),
+  ('section', 14, 'Special Education', NULL),
+  ('section', 15, 'Information Technology', NULL),
+  ('section', 16, 'Primary Supervisor', NULL),
+  ('section', 17, 'Secondary Supervisor', NULL),
+  ('section', 18, 'A Level Supervisor', NULL),
+  ('section', 19, 'Counselling', NULL),
+  ('section', 20, 'Library', NULL),
+  ('section', 21, 'Health and Physical Education', NULL),
+  ('section', 22, 'Optional', NULL),
+  ('section', 23, 'Management', NULL),
+  ('section', 24, 'Staff Advisor (Part', NULL),
+  ('section', 25, 'Staff Advisor (Full', NULL),
+  ('section', 26, 'Released To Other School', NULL),
+  ('section', 27, 'Released To Other Institute/Office/Service', NULL),
+  ('section', 28, 'On Paid Leave', NULL),
+  ('serviceGrade', 1, 'Sri Lanka Education Administrative Service I', NULL),
+  ('serviceGrade', 2, 'Sri Lanka Education Administrative Service I I', NULL),
+  ('serviceGrade', 3, 'Sri Lanka Education Administrative Service I I I', NULL),
+  ('serviceGrade', 4, 'Sri Lanka Principal Service I', NULL),
+  ('serviceGrade', 5, 'Sri Lanka Principal Service 2 I', NULL),
+  ('serviceGrade', 6, 'Sri Lanka Principal Service 2 I I', NULL),
+  ('serviceGrade', 7, 'Sri Lanka Principal Service 3', NULL),
+  ('serviceGrade', 8, 'Sri Lanka Teacher Service I', NULL),
+  ('serviceGrade', 9, 'Sri Lanka Teacher Service 2 I', NULL),
+  ('serviceGrade', 10, 'Sri Lanka Teacher Service 2 I I', NULL),
+  ('serviceGrade', 11, 'Sri Lanka Teacher Service 3 I', NULL),
+  ('serviceGrade', 12, 'Sri Lanka Teacher Service 3 I I', NULL),
+  ('serviceGrade', 13, 'Sri Lanka Teacher Service Pending', NULL);
 
 -- --------------------------------------------------------
 
@@ -234,6 +428,7 @@ CREATE TABLE IF NOT EXISTS `FormOption` (
 -- Table structure for table `Holiday`
 --
 
+DROP TABLE IF EXISTS `Holiday`;
 CREATE TABLE IF NOT EXISTS `Holiday` (
   `Year` int(11) NOT NULL DEFAULT '0',
   `Day` date NOT NULL,
@@ -320,6 +515,7 @@ INSERT INTO `Holiday` VALUES
 -- Table structure for table `IsSubstituted`
 --
 
+DROP TABLE IF EXISTS `IsSubstituted`;
 CREATE TABLE IF NOT EXISTS `IsSubstituted` (
   `StaffID` varchar(5) DEFAULT NULL,
   `Grade` int(11) DEFAULT NULL,
@@ -348,6 +544,7 @@ INSERT INTO `IsSubstituted` VALUES
 -- Table structure for table `LabelLanguage`
 --
 
+DROP TABLE IF EXISTS `LabelLanguage`;
 CREATE TABLE IF NOT EXISTS `LabelLanguage` (
   `Label` varchar(50) NOT NULL DEFAULT '',
   `Language` int(11) NOT NULL DEFAULT '0',
@@ -525,6 +722,8 @@ INSERT INTO `LabelLanguage` VALUES
   ('emergencyContact', 1, 'හදිසි අවස්ථාවකදී  සමබන්ද කරගත යුතු පුදගලයාගේ නම'),
   ('emergencyContactNumber', 0, 'Emergency Contact''s Name'),
   ('emergencyContactNumber', 1, 'හදිසි අවස්ථාවකදී ඇමතිය යුතු දුරකථන අංකය'),
+  ('employment', 0, 'Employment'),
+  ('employment', 1, ''),
   ('employmentInformation', 0, 'Employment Information'),
   ('employmentInformation', 1, 'සේවයේ තොරතුරු'),
   ('employmentStatus', 0, 'Employment Status'),
@@ -884,6 +1083,7 @@ INSERT INTO `LabelLanguage` VALUES
 -- Table structure for table `Language`
 --
 
+DROP TABLE IF EXISTS `Language`;
 CREATE TABLE IF NOT EXISTS `Language` (
   `Language` int(11) NOT NULL DEFAULT '0',
   `Value` varchar(20) DEFAULT NULL,
@@ -904,6 +1104,7 @@ INSERT INTO `Language` VALUES
 -- Table structure for table `LanguageGroup`
 --
 
+DROP TABLE IF EXISTS `LanguageGroup`;
 CREATE TABLE IF NOT EXISTS `LanguageGroup` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
   `GroupName` varchar(50) DEFAULT NULL,
@@ -917,6 +1118,7 @@ CREATE TABLE IF NOT EXISTS `LanguageGroup` (
 -- Table structure for table `LanguageOption`
 --
 
+DROP TABLE IF EXISTS `LanguageOption`;
 CREATE TABLE IF NOT EXISTS `LanguageOption` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
   `OptionNo` int(11) NOT NULL DEFAULT '0',
@@ -932,6 +1134,7 @@ CREATE TABLE IF NOT EXISTS `LanguageOption` (
 -- Table structure for table `LeaveData`
 --
 
+DROP TABLE IF EXISTS `LeaveData`;
 CREATE TABLE IF NOT EXISTS `LeaveData` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
   `CasualLeave` int(11) DEFAULT NULL,
@@ -978,6 +1181,7 @@ INSERT INTO `LeaveData` VALUES
 -- Table structure for table `Permissions`
 --
 
+DROP TABLE IF EXISTS `Permissions`;
 CREATE TABLE IF NOT EXISTS `Permissions` (
   `permId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permDesc` varchar(50) NOT NULL,
@@ -1021,6 +1225,7 @@ INSERT INTO `Permissions` VALUES
 -- Table structure for table `ProQualification`
 --
 
+DROP TABLE IF EXISTS `ProQualification`;
 CREATE TABLE IF NOT EXISTS `ProQualification` (
   `StaffId` int(11) NOT NULL,
   `Qualification` int(11) NOT NULL,
@@ -1072,6 +1277,7 @@ INSERT INTO `ProQualification` VALUES
 -- Table structure for table `RolePerm`
 --
 
+DROP TABLE IF EXISTS `RolePerm`;
 CREATE TABLE IF NOT EXISTS `RolePerm` (
   `roleId` int(10) unsigned NOT NULL,
   `permId` int(10) unsigned NOT NULL,
@@ -1203,6 +1409,7 @@ INSERT INTO `RolePerm` VALUES
 -- Table structure for table `Roles`
 --
 
+DROP TABLE IF EXISTS `Roles`;
 CREATE TABLE IF NOT EXISTS `Roles` (
   `roleId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `roleName` varchar(50) NOT NULL,
@@ -1227,6 +1434,7 @@ INSERT INTO `Roles` VALUES
 -- Table structure for table `Staff`
 --
 
+DROP TABLE IF EXISTS `Staff`;
 CREATE TABLE IF NOT EXISTS `Staff` (
   `StaffID` varchar(5) NOT NULL,
   `NamewithInitials` varchar(60) DEFAULT NULL,
@@ -1297,6 +1505,7 @@ INSERT INTO `Staff` VALUES
 -- Table structure for table `StaffNo`
 --
 
+DROP TABLE IF EXISTS `StaffNo`;
 CREATE TABLE IF NOT EXISTS `StaffNo` (
   `staffID` int(11) NOT NULL,
   `staffNo` int(11) NOT NULL,
@@ -1349,6 +1558,7 @@ INSERT INTO `StaffNo` VALUES
 -- Table structure for table `Subject`
 --
 
+DROP TABLE IF EXISTS `Subject`;
 CREATE TABLE IF NOT EXISTS `Subject` (
   `Number` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
@@ -1377,6 +1587,7 @@ INSERT INTO `Subject` VALUES
 -- Table structure for table `Subject_Grade`
 --
 
+DROP TABLE IF EXISTS `Subject_Grade`;
 CREATE TABLE IF NOT EXISTS `Subject_Grade` (
   `SubjectID` int(11) NOT NULL DEFAULT '0',
   `Grade` int(11) DEFAULT NULL,
@@ -1391,6 +1602,7 @@ CREATE TABLE IF NOT EXISTS `Subject_Grade` (
 -- Table structure for table `Teaches`
 --
 
+DROP TABLE IF EXISTS `Teaches`;
 CREATE TABLE IF NOT EXISTS `Teaches` (
   `Subject` varchar(64) NOT NULL DEFAULT '0',
   `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -1405,6 +1617,7 @@ CREATE TABLE IF NOT EXISTS `Teaches` (
 -- Table structure for table `Timetable`
 --
 
+DROP TABLE IF EXISTS `Timetable`;
 CREATE TABLE IF NOT EXISTS `Timetable` (
   `Grade` int(11) DEFAULT NULL,
   `Class` char(2) DEFAULT NULL,
@@ -2349,6 +2562,7 @@ INSERT INTO `Timetable` VALUES
 -- Table structure for table `User`
 --
 
+DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
   `userEmail` varchar(50) NOT NULL,
   `userPassword` varchar(80) DEFAULT NULL,

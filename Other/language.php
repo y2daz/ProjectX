@@ -99,6 +99,60 @@ require_once("../common.php");
                 }
             });
 
+            $("#translateForm").on("click", function(){
+                var enteredText = $("#pasteZoneForm").val().split("\n");
+                var NoofLines = $("#pasteZoneForm").val().split("\n").length;
+
+                var i = 0;
+
+                var complete = "";
+
+                var label = $("#formLabel").val();
+                var group = "null";
+
+                for(i = 0; i < NoofLines; i++){
+                    var currentLine = enteredText[i].split(">");
+
+                    var part = currentLine[0];
+                    if( part.trim() == "</optgroup>"){
+                        continue;
+                    }
+                    if( part.trim().substring( 1, 9 ) == "optgroup" ){
+                        part = part.split('="');
+                        part = part[1];
+                        part = part.substring(0, part.length - 1);
+                        console.log("*" + part + "*" );
+                        group = "'" + part + "'";
+                        continue;
+                    }
+
+                    currentLine = currentLine[1];
+//                        console.log(currentLine);
+                    currentLine = currentLine.split("-");
+//                        console.log(currentLine[0]);
+//                        console.log(currentLine[1]);
+//                        console.log(" - ");
+
+
+
+                    var currentLine1 = parseInt( currentLine[0].trim() );
+                    if (isNaN(currentLine1)){
+                        continue;
+                    }
+//                        console.log( "Number = " + currentLine1);
+
+                    var currentLine2 = currentLine[1].trim();
+                    currentLine2 = currentLine2.replace(/<\/option$/i , "");
+//                        console.log("Word = " + currentLine2);
+//                        console.log(" --- ");
+
+                    var query = "INSERT INTO `FormOption`(`Label`, `Number`, `Data`, `group`) VALUES  ( '" + label + "', '" + currentLine1 + "', '" + currentLine2 + "', " + group + "); ";
+                    complete = complete + query + "\n";
+
+                    $("#pasteZoneForm").val( complete );
+                }
+            });
+
             $(".label").on("blur input propertychange paste", function(){
                 var myValue = $(this).val();
                 var i=0;
@@ -122,23 +176,32 @@ require_once("../common.php");
                 $("#englishvalue_" + id + "").val( UCFirst(myValue) );
 
             });
+
+            function searchEmail(element){
+                //                 alert(element.value)
+                var text = $(element).val();
+
+                if (text.length >= 1)
+                {
+                    //                alert(text);
+                    $("td.searchLanguage").closest('tr').addClass("hide");
+                    $("td.searchLanguage").filter(function(){ return($.text([this]).toLowerCase().indexOf( text.toLowerCase() ) > -1); }).closest('tr').removeClass("hide");
+                }
+                else
+                {
+                    $("td.searchLanguage").closest('tr').removeClass("hide");
+                }
+            }
+
+            console.log("something");
+
+            $("#hideAllLanguage").on("click", function(){
+                console.log(" shoul happen");
+                $("#labelList").css("display", "none");
+                $("#languageTable").css("display", "none");
+            });
+
         });
-
-        function searchEmail(element){
-            //                 alert(element.value)
-            var text = $(element).val();
-
-            if (text.length >= 1)
-            {
-                //                alert(text);
-                $("td.searchLanguage").closest('tr').addClass("hide");
-                $("td.searchLanguage").filter(function(){ return($.text([this]).toLowerCase().indexOf( text.toLowerCase() ) > -1); }).closest('tr').removeClass("hide");
-            }
-            else
-            {
-                $("td.searchLanguage").closest('tr').removeClass("hide");
-            }
-        };
     </script>
     <style>
         *{
@@ -177,12 +240,11 @@ require_once("../common.php");
         }
         .pasteZone{
             height:200px;
-            width:500px;
+            width:800px;
         }
 
     </style>
 
-<!--    <link rel="stylesheet" href="../reportico/stylesheet/cleanandsimple.css" type="text/css" />-->
 
 </head>
 
@@ -194,13 +256,9 @@ require_once("../common.php");
         <table>
             <tr>
                 <td>Paste area for PHP language code</td>
-<!--                <td>Paste area for english</td>-->
-<!--                <td>Paste area for sinhala</td>-->
             </tr>
             <tr>
                 <td><textarea id="pasteZoneLab" class="pasteZone"></textarea></td>
-<!--                <td><textarea id="pasteZoneEng" class="pasteZone"></textarea></td>-->
-<!--                <td><textarea id="pasteZoneSin" class="pasteZone"></textarea></td>-->
             </tr>
         </table>
 
@@ -234,8 +292,9 @@ require_once("../common.php");
 
     </form>
 
+    <label><input type="button" id="hideAllLanguage" name="hideAllLanguage" value="Hide" /> all language data </label>
     <br />
-        <table class="LanguageList">
+        <table class="LanguageList" id="languageTable">
             <tr>
                 <th>#</th>
                 <th>Label</th>
@@ -264,13 +323,24 @@ require_once("../common.php");
     <table>
         <tr>
             <td>Paste area for PHP language code for generating getLanguage Functions</td>
-            <!--                <td>Paste area for english</td>-->
-            <!--                <td>Paste area for sinhala</td>-->
         </tr>
         <tr>
             <td><textarea id="pasteZoneFun" class="pasteZone"></textarea><input type="button" id="translate" value="translate"/></td>
-            <!--                <td><textarea id="pasteZoneEng" class="pasteZone"></textarea></td>-->
-            <!--                <td><textarea id="pasteZoneSin" class="pasteZone"></textarea></td>-->
+        </tr>
+    </table>
+
+    <br />
+    <br />
+
+    <table>
+        <tr>
+            <td>Paste area for HTML code for generating INSERT INTO Statements for FormOption table</td>
+        </tr>
+        <tr>
+            <td><label> Label <input type="text" id="formLabel" /></label></td>
+        </tr>
+        <tr>
+            <td><textarea id="pasteZoneForm" class="pasteZone"></textarea><input type="button" id="translateForm" value="translate"/></td>
         </tr>
     </table>
 
