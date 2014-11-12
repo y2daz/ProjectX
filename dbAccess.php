@@ -1401,7 +1401,7 @@ function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
         }
         $stmt->close();
         $mysqli->close();
-        regenerateSubjectTable();
+//        regenerateSubjectTable();
         return true;
     }
     $mysqli->close();
