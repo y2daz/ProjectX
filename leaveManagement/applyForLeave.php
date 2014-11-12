@@ -175,7 +175,7 @@
 
             }
             .innerTable{
-                min-width: 500px;
+                min-width: 550px;
                 border-collapse: collapse;
             }
             .innerTable th th{
@@ -213,11 +213,13 @@
                 $(".changeNoDays")
                     .val("0")
                     .on("input", function(){
-                        var total = parseInt( $("#noOfCasual").val() ) + parseInt( $("#noOfMedical").val() ) + parseInt( $("#noOfDuty").val() );
+                        var total = ( 0.5 * parseInt( $("#noOfShort").val() ) ) + parseInt( $("#noOfCasual").val() ) + parseInt( $("#noOfMedical").val() ) +
+                            parseInt( $("#noOfDuty").val() ) + parseInt( $("#noOfNoPay").val() );
                         $("#noOfTotal").val( total );
                 });
 
-                var totalTaken = parseInt( $("#noOfCasualTaken").val() ) + parseInt( $("#noOfMedicalTaken").val() ) + parseInt( $("#noOfDutyTaken").val() );
+                var totalTaken = ( 2 * parseInt( $("#noOfShort").val() ) ) + parseInt( $("#noOfCasualTaken").val() ) + parseInt( $("#noOfMedicalTaken").val() ) +
+                    parseInt( $("#noOfDutyTaken").val() ) + parseInt( $("#noOfNoPayTaken").val() );
                 $("#noOfTotalTaken").val( totalTaken );
             });
 
@@ -226,7 +228,7 @@
 
     </head>
     <body>
-        <h1><?php echo $applyforleave ?></h1>
+        <h1>Apply for Leave</h1>
 
         <form class="insert" method="post" action="applyForLeave.php">
 
@@ -255,23 +257,29 @@
                         <table class="innerTable">
                             <tr>
                                 <th>Days</th>
+                                <th>Short</th>
                                 <th>Casual</th>
                                 <th>Medical</th>
                                 <th>Duty</th>
+                                <th>No Pay</th>
                                 <th>Total</th>
                             </tr>
                             <tr>
                                 <td>Applying</td>
+                                <td> <input id="noOfShort" class="changeNoDays" type="number" min="0" max="21" name="noOfShort" /> </td>
                                 <td> <input id="noOfCasual" class="changeNoDays" type="number" min="0" max="21" name="noOfCasual" /> </td>
                                 <td> <input id="noOfMedical" class="changeNoDays" type="number" min="0" max="20" name="noOfMedical" /> </td>
                                 <td> <input id="noOfDuty" class="changeNoDays" type="number" min="0" max="99" name="noOfDuty" /> </td>
+                                <td> <input id="noOfNoPay" class="changeNoDays" type="number" min="0" max="99" name="noOfNoPay" /> </td>
                                 <td> <input id="noOfTotal" type="number" min="1" max="366" name="noTotal" readonly /> </td>
                             </tr>
                             <tr>
                                 <td>Taken</td>
+                                <td> <input id="noOfShortTaken" type="number" min="0" max="21" name="noOfShortTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
                                 <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
                                 <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $MedicalLeave ?>" /> </td>
                                 <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
+                                <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
                                 <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly /> </td>
                             </tr>
                         </table>

@@ -690,6 +690,10 @@ else
             <td></td>
         </tr>
 
+        <tr>
+            <td colspan="6">&nbsp;</td>
+        </tr>
+
         <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
             <td><?php echo $dateAppointedAsTeacher?></td>

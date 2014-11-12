@@ -19,6 +19,18 @@ qualifications interface
 
 section designation all other big dropdown listed stuffs sql database
 
+no pay leave database part
+
+staff registration table, more splits
+    Acedemic staff and non acedemic staff stuff
+
+short leave database
+
+date range for each leave type
+
+leave appliacation buttons next to dates for frquently used dates
+    if possible list box for frequently used reasons too... :P
+
 insert all subjects
 >subject codes
 >timetable long subject name abbr

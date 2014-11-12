@@ -8,9 +8,6 @@
  */
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
-include(THISROOT . "/dbAccess.php");
-
-
 
 require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/formValidation.php");
@@ -112,6 +109,8 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         sendNotification($errorMessage);
 //        sendNotification("Hello");
     }
+
+
 }
 ?>
 <html>
@@ -530,6 +529,9 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         <!--</table>
 
         <table class="employment" cellspacing="0"> -->
+        <tr>
+            <td colspan="6">&nbsp;</td>
+        </tr>
         <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
             <td><?php echo $dateAppointedAsTeacher?></td>
