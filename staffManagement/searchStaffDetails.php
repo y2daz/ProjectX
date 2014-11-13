@@ -30,7 +30,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to update staf
 
     if ($operation)
     {
-        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
+        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"], parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
     }
     else
     {
@@ -53,7 +53,10 @@ if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
     $operation = deleteStaff($_GET["valueMember"]);
 
     if ($operation == true){
-        sendNotification("Staff member deleted.");
+        sendNotification("Staff member deleted.", "searchStaffDetails.php");
+    }
+    else{
+        sendNotification("Error deleting Staff member", "searchStaffDetails.php");
     }
 }
 
@@ -574,7 +577,7 @@ $searchby =getlanguage('searchby', $language);
                         echo "<td>$row[2]</td>";
                         echo "<td>$row[3]</td>";
                         echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                        echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete \"onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                        echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                             . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
                         echo "</td></tr>";
                         echo ($i++ % 5 == 0 ? "<tr class=\"blank\"><td colspan='6'>&nbsp;</td>" : "");

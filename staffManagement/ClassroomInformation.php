@@ -37,18 +37,18 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to add a class
         sendNotification("Error inserting class information.");
     }
 }
-elseif( isset($_GET["delete"]) ){
-    if( isset($_GET["className"]) )
-    {
-        $delClassName = $_GET["className"];
-        $delGrade = $_GET["delete"];
+elseif( isset($_GET["valueName"]) ){
+    if( strcmp( $_GET["valueName"], "Delete" ) == 0 ){
+        $delClassArr = getGradeAndClass( $_GET["valueMember"] );
+        $delGrade = $delClassArr[ 0 ];
+        $delClass = $delClassArr[ 1 ];
 
-        $operation = deleteClassroom($delGrade, $delClassName);
+        $operation = deleteClassroom($delGrade, $delClass);
 
         if ($operation == TRUE) {
-            sendNotification("Class " .$delGrade . " " . $delClassName . " successfully deleted.");
+            sendNotification("Class " .$delGrade . " " . $delClass. " successfully deleted.", "ClassroomInformation.php");
         } elseif ($operation == FALSE) {
-            sendNotification("Error deleting class.");
+            sendNotification("Error deleting class.", "ClassroomInformation.php");
         }
     }
 }
@@ -67,8 +67,6 @@ if( isset($_GET["grade"]) )
     <html>
     <head>
         <style type=text/css>
-            #main{ height:<?php echo "$fullPageHeight" . "px";?> }
-            #footer{ top:<?php echo "$footerTop" . "px";?> }
             table.ClassroomTable {
                 border-spacing:0px 5px;
                 min-width: 600px;
@@ -96,12 +94,14 @@ if( isset($_GET["grade"]) )
             .ClassroomTable td, .details td{
                 padding:5px;
             }
-            .ClassroomTable .alt{
+            .ClassroomTable .alt, .ClassroomTable .alt td{
+                font-size: .1em;
                 background-color: #bed9ff;
+                padding: 0 0;
             }
         </style>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function(){
                 $("#gradeAndClass")
                     .on("focus", function(){
                         $("#suggestion").html(" e.g. 11A, 11 A, 11-A");
@@ -110,7 +110,7 @@ if( isset($_GET["grade"]) )
                     .on("blur", function(){
                         $("#suggestion").html("");
                         console.log("Lost focus");
-                    })
+                    });
             });
         </script>
     </head>
@@ -133,14 +133,45 @@ if( isset($_GET["grade"]) )
     <h1 align="center"><?php echo getLanguage('Staffallocation', $language)?></h1>
     <br />
 
+    <form method="post">
+        <table class="details" >
+            <tr>
+                <th colspan="2">
+                    New Class Information
+                </th>
+            </tr>
+            <tr>
+                <td><?php echo getLanguage('gradeclass', $language)?></td>
+                <td><input id="gradeAndClass" type="text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
+                <td id="suggestion"></td>
+            </tr>
+
+            <tr>
+                <td><?php echo getLanguage('staffID', $language)?> </td>
+                <td colspan="2"><input type=text name="staffId"  /> </td>
+            </tr>
+
+        </table>
+
+        <br />
+
+        <table align="center">
+            <tr>
+                <td> <input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
+            </tr>
+        </table>
+    </form>
+
+    <br />
+    <br />
 
     <form method="post">
     <table class="ClassroomTable" align="center">
         <tr>
             <th><?php echo getLanguage('grade', $language)?></th>
             <th><?php echo getLanguage('class', $language)?></th>
-            <th><?php echo getLanguage('Teachersid', $language)?></th>
-            <th><?php echo getLanguage('Teachersname', $language)?></th>
+            <th><?php echo getLanguage('staffID', $language)?></th>
+            <th><?php echo getLanguage('nameWithInitials', $language)?></th>
             <th></th>
             <th></th>
         </tr>
@@ -172,7 +203,8 @@ if( isset($_GET["grade"]) )
                 echo "\n<td>$row[2]</td>";
                 echo "\n<td>$row[3]</td>";
                 echo "\n<td><input name=\"Change" . "\" type=\"submit\" value=\"Change Teacher\" formaction=\"ClassroomInformation.php?grade=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
-                echo "\n<td><input name=\"Delete" . "\" type=\"submit\" value=\"Delete\" formaction=\"ClassroomInformation.php?delete=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
+                echo "\n<td><input name=\"Delete" . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete class $row[0] $row[1] ?', "
+                    . "'Delete Confirmation', 'Delete', '" . $row[0] . $row[1] . "'); \" /> </td> ";
                 //yazdaan remove query String
                 //NO confirmation!!! :O
 
@@ -180,44 +212,18 @@ if( isset($_GET["grade"]) )
                 $prev = $next;
             }
         }
-        $fullPageHeight = ( 600 + ($i * 27) );
+//        $fullPageHeight = ( 600 + ($i * 27) );
 
         ?>
     </table>
     </form>
 
-    <br />
-    <br />
-
-    <form method="post">
-        <table class="details" >
-            <tr>
-                <td><?php echo getLanguage('gradeclass', $language)?></td>
-                <td><input id="gradeAndClass" type="text" name="gradeAndClass" value="<?php echo $grade . " " . $className ?>"/> </td>
-                <td id="suggestion"></td>
-            </tr>
-
-            <tr>
-                <td><?php echo getLanguage('staffID', $language)?> </td>
-                <td colspan="2"><input type=text name="staffId"  /> </td>
-                </tr>
-
-        </table>
-
-        <br />
-        <br />
-
-        <table align="center">
-            <tr>
-                <td> <input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
-            </tr>
-        </table>
-    </form>
     </body>
     </html>
 <?php
 //Assign all Page Specific variables
 //$fullPageHeight = 800;
+$fullPageHeight = ( 600 + ($i * 27) );
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Class-teacher Allocation";
 

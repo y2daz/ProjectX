@@ -147,7 +147,7 @@ function requestConfirmation(message, title, valueName, valueMember){
 
                 if( v == 1){
                     var params = {"confirm" : 1, "valueName" : valueName, "valueMember" : valueMember};
-                    post(document.URL, params, "get");
+                    post(document.URL, params, "get"); //BEST POST
                 }
                 else
                     $.prompt.close();
