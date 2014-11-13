@@ -172,16 +172,12 @@
             <?php
             $user = Role::getRolePerms( $_SESSION["accessLevel"] );
             $navMenu = "";
-            if ($user->hasPerm('Staff Details System')){
+            if ($user->hasPerm('Change Staff Details')){
                 $navMenu = "<li><a> $staffManagement</a>\n";
                 $navMenu .= "<ul>\n";
-                if ($user->hasPerm('Change Staff Details')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
-                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a><hr /></li>\n";
-                }
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/generatestaffmember.php\">" . "Individual Staff Member Report " . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class Report" . "</a></li>\n";
+                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
+                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
@@ -260,7 +256,9 @@
             if ($user->hasPerm('Staff Report')){
                 $navMenu .= "<li><a>Reports</a>\n";
                 $navMenu .= "<ul>\n";
-                $navMenu .= "<li><a id='staffReport' href=\"" . PATHFRONT . "/staffManagement/staffReport.php?start=0\" target=\"_blank\">" . "Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a id='staffReport' href=\"" . PATHFRONT . "/staffManagement/staffReport.php?start=0\" target=\"_blank\">" . "Full Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/generatestaffmember.php\">" . "Individual Staff Member Report " . "</a><hr /></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class-Teacher Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }
