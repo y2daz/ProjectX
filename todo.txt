@@ -109,3 +109,5 @@ PREPARE LIST OF QUESTIONS TO ASK DS.
 understanding this code on reused code pages. e.g. main.css
 
 untrained something else
+
+all queries return false on numrows <= 0 not just

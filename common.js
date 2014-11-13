@@ -247,6 +247,30 @@ function logIn(){
     $.prompt(states);
 }
 
+function changeClassTeacher( Class ){
+    var states = {
+        state0: {
+            title: "New teacher for " + Class,
+            html:'<table><tr><td><label>Staff ID of New Teacher</td><td><input type="text" name="jTxtStaffID" value=""></label></td></tr></table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: "input[name='jTxtStaffID']",
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                var staffID = f["jTxtStaffID"];
+
+                if( v == 1){
+                    var params = {"changeClass" : "true", "staffId" : staffID, "gradeAndClass" : Class};
+                    post(document.URL, params, "post");
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
+}
+
 function post(path, params, method) { //Allows us to set POST variables with javascript
     method = method || "post"; // Set method to post by default if not specified.
 

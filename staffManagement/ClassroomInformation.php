@@ -15,7 +15,7 @@ require_once(THISROOT . "/common.php");
 
 ob_start();
 
-if (isset($_POST["Submit"])) //User has clicked the submit button to add a classroom
+if (isset($_POST["changeClass"])) //User has clicked the submit button to add a classroom
 {
     $arrGradeClass = getGradeAndClass( $_POST["gradeAndClass"] );
 
@@ -157,7 +157,7 @@ if( isset($_GET["grade"]) )
 
         <table align="center">
             <tr>
-                <td> <input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
+                <td> <input type="Submit" name="changeClass" value=<?php echo getLanguage('update', $language)?>></td>
             </tr>
         </table>
     </form>
@@ -202,7 +202,7 @@ if( isset($_GET["grade"]) )
                 echo "\n<td>$row[1]</td>";
                 echo "\n<td>$row[2]</td>";
                 echo "\n<td>$row[3]</td>";
-                echo "\n<td><input name=\"Change" . "\" type=\"submit\" value=\"Change Teacher\" formaction=\"ClassroomInformation.php?grade=" . $row[0] . "&className=". $row[1] . "\" /> </td> ";
+                echo "\n<td><input name=\"Change" . "\" type=\"button\" value=\"Change Teacher\" onClick=\"changeClassTeacher('$row[0] $row[1]'); \" /> </td>";
                 echo "\n<td><input name=\"Delete" . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete class $row[0] $row[1] ?', "
                     . "'Delete Confirmation', 'Delete', '" . $row[0] . $row[1] . "'); \" /> </td> ";
                 //yazdaan remove query String
