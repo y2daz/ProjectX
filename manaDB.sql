@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2014 at 02:47 AM
+-- Generation Time: Nov 13, 2014 at 08:41 PM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -37,6 +37,8 @@ START TRANSACTION;
 --
 -- Database: `manaDB`
 --
+CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `manaDB`;
 
 -- --------------------------------------------------------
 
@@ -44,7 +46,6 @@ START TRANSACTION;
 -- Table structure for table `ApplyLeave`
 --
 
-DROP TABLE IF EXISTS `ApplyLeave`;
 CREATE TABLE IF NOT EXISTS `ApplyLeave` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
   `NoOfCasual` int(11) NOT NULL DEFAULT '0',
@@ -71,6 +72,7 @@ INSERT INTO `ApplyLeave` VALUES
   ('17', 0, 0, 0, '2014-10-01', '2014-10-15', '2014-10-17', 'Testing', 1, NULL, '2014-10-01', 0),
   ('20', 0, 0, 0, '2014-09-30', '2014-10-02', '2014-10-02', '', 1, NULL, '2014-09-30', 0),
   ('21', 0, 0, 0, '2014-09-30', '2014-10-01', '2014-11-01', '', 0, NULL, NULL, 0),
+  ('3', 2, 0, 2, '2014-11-13', '2014-11-19', '2014-11-28', '', 0, NULL, NULL, 0),
   ('4', 0, 0, 0, '2014-09-30', '2014-09-30', '2014-10-02', '', 1, NULL, '2014-09-30', 0),
   ('4', 0, 0, 0, '2014-10-01', '2014-10-01', '2014-10-02', 'Testing', 1, NULL, '2014-10-01', 0),
   ('4', 0, 0, 0, '2014-10-21', '2014-10-22', '2014-10-24', '', 1, NULL, '2014-10-21', 0),
@@ -84,7 +86,6 @@ INSERT INTO `ApplyLeave` VALUES
 -- Table structure for table `ClassInformation`
 --
 
-DROP TABLE IF EXISTS `ClassInformation`;
 CREATE TABLE IF NOT EXISTS `ClassInformation` (
   `StaffID` varchar(5) DEFAULT NULL,
   `Grade` int(11) NOT NULL DEFAULT '0',
@@ -102,7 +103,7 @@ INSERT INTO `ClassInformation` VALUES
   ('6', 0, 'B', 2),
   ('6', 7, 'A', 0),
   ('4', 7, 'C', 0),
-  ('5', 8, 'B', 0),
+  ('5', 8, 'B', 2),
   ('15', 10, 'A', 0),
   ('1', 10, 'C', 0),
   ('13', 11, 'A', 0),
@@ -116,7 +117,6 @@ INSERT INTO `ClassInformation` VALUES
 -- Table structure for table `CourseOfStudy`
 --
 
-DROP TABLE IF EXISTS `CourseOfStudy`;
 CREATE TABLE IF NOT EXISTS `CourseOfStudy` (
   `StaffId` int(11) NOT NULL,
   `Course` int(11) NOT NULL,
@@ -168,7 +168,6 @@ INSERT INTO `CourseOfStudy` VALUES
 -- Table structure for table `EduQualification`
 --
 
-DROP TABLE IF EXISTS `EduQualification`;
 CREATE TABLE IF NOT EXISTS `EduQualification` (
   `StaffId` int(11) NOT NULL,
   `Qualification` int(11) NOT NULL,
@@ -223,7 +222,6 @@ INSERT INTO `EduQualification` VALUES
 -- Table structure for table `FormOption`
 --
 
-DROP TABLE IF EXISTS `FormOption`;
 CREATE TABLE IF NOT EXISTS `FormOption` (
   `Label` varchar(80) NOT NULL DEFAULT '',
   `Number` int(11) NOT NULL DEFAULT '0',
@@ -329,6 +327,13 @@ INSERT INTO `FormOption` VALUES
   ('courseOfStudy', 92, 'Foreign Language Excluding English', 'Newly appointed Teachers'),
   ('courseOfStudy', 93, 'Malay', 'Newly appointed Teachers'),
   ('courseOfStudy', 94, 'Other', 'Newly appointed Teachers'),
+  ('designation', 1, 'Principal', NULL),
+  ('designation', 2, 'Acting Principal', NULL),
+  ('designation', 3, 'Deputy Principal', NULL),
+  ('designation', 4, 'Acting Deputy Principal', NULL),
+  ('designation', 5, 'Assistant Principal', NULL),
+  ('designation', 6, 'Acting Assistant Principal', NULL),
+  ('designation', 7, 'Teacher', NULL),
   ('employmentStatus', 1, 'Full Time', NULL),
   ('employmentStatus', 2, 'Part Time', NULL),
   ('employmentStatus', 3, 'Full Time (Released to other School)', NULL),
@@ -362,13 +367,6 @@ INSERT INTO `FormOption` VALUES
   ('highestProfessionalQualification', 17, 'Cert. in Teacher Training (Away)', NULL),
   ('highestProfessionalQualification', 18, 'Nat Dip in Teaching', NULL),
   ('highestProfessionalQualification', 19, 'None', NULL),
-  ('positionInSchool', 1, 'Principal', NULL),
-  ('positionInSchool', 2, 'Acting Principal', NULL),
-  ('positionInSchool', 3, 'Deputy Principal', NULL),
-  ('positionInSchool', 4, 'Acting Deputy Principal', NULL),
-  ('positionInSchool', 5, 'Assistant Principal', NULL),
-  ('positionInSchool', 6, 'Acting Assistant Principal', NULL),
-  ('positionInSchool', 7, 'Teacher', NULL),
   ('race', 1, 'Sinhala', NULL),
   ('race', 2, 'Sri Lankan Tamil', NULL),
   ('race', 3, 'Indian Tamil', NULL),
@@ -428,7 +426,6 @@ INSERT INTO `FormOption` VALUES
 -- Table structure for table `Holiday`
 --
 
-DROP TABLE IF EXISTS `Holiday`;
 CREATE TABLE IF NOT EXISTS `Holiday` (
   `Year` int(11) NOT NULL DEFAULT '0',
   `Day` date NOT NULL,
@@ -515,7 +512,6 @@ INSERT INTO `Holiday` VALUES
 -- Table structure for table `IsSubstituted`
 --
 
-DROP TABLE IF EXISTS `IsSubstituted`;
 CREATE TABLE IF NOT EXISTS `IsSubstituted` (
   `StaffID` varchar(5) DEFAULT NULL,
   `Grade` int(11) DEFAULT NULL,
@@ -544,7 +540,6 @@ INSERT INTO `IsSubstituted` VALUES
 -- Table structure for table `LabelLanguage`
 --
 
-DROP TABLE IF EXISTS `LabelLanguage`;
 CREATE TABLE IF NOT EXISTS `LabelLanguage` (
   `Label` varchar(50) NOT NULL DEFAULT '',
   `Language` int(11) NOT NULL DEFAULT '0',
@@ -1083,7 +1078,6 @@ INSERT INTO `LabelLanguage` VALUES
 -- Table structure for table `Language`
 --
 
-DROP TABLE IF EXISTS `Language`;
 CREATE TABLE IF NOT EXISTS `Language` (
   `Language` int(11) NOT NULL DEFAULT '0',
   `Value` varchar(20) DEFAULT NULL,
@@ -1104,7 +1098,6 @@ INSERT INTO `Language` VALUES
 -- Table structure for table `LanguageGroup`
 --
 
-DROP TABLE IF EXISTS `LanguageGroup`;
 CREATE TABLE IF NOT EXISTS `LanguageGroup` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
   `GroupName` varchar(50) DEFAULT NULL,
@@ -1118,7 +1111,6 @@ CREATE TABLE IF NOT EXISTS `LanguageGroup` (
 -- Table structure for table `LanguageOption`
 --
 
-DROP TABLE IF EXISTS `LanguageOption`;
 CREATE TABLE IF NOT EXISTS `LanguageOption` (
   `GroupNo` int(11) NOT NULL DEFAULT '0',
   `OptionNo` int(11) NOT NULL DEFAULT '0',
@@ -1134,7 +1126,6 @@ CREATE TABLE IF NOT EXISTS `LanguageOption` (
 -- Table structure for table `LeaveData`
 --
 
-DROP TABLE IF EXISTS `LeaveData`;
 CREATE TABLE IF NOT EXISTS `LeaveData` (
   `StaffID` varchar(5) NOT NULL DEFAULT '',
   `CasualLeave` int(11) DEFAULT NULL,
@@ -1181,7 +1172,6 @@ INSERT INTO `LeaveData` VALUES
 -- Table structure for table `Permissions`
 --
 
-DROP TABLE IF EXISTS `Permissions`;
 CREATE TABLE IF NOT EXISTS `Permissions` (
   `permId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permDesc` varchar(50) NOT NULL,
@@ -1225,7 +1215,6 @@ INSERT INTO `Permissions` VALUES
 -- Table structure for table `ProQualification`
 --
 
-DROP TABLE IF EXISTS `ProQualification`;
 CREATE TABLE IF NOT EXISTS `ProQualification` (
   `StaffId` int(11) NOT NULL,
   `Qualification` int(11) NOT NULL,
@@ -1277,7 +1266,6 @@ INSERT INTO `ProQualification` VALUES
 -- Table structure for table `RolePerm`
 --
 
-DROP TABLE IF EXISTS `RolePerm`;
 CREATE TABLE IF NOT EXISTS `RolePerm` (
   `roleId` int(10) unsigned NOT NULL,
   `permId` int(10) unsigned NOT NULL,
@@ -1409,7 +1397,6 @@ INSERT INTO `RolePerm` VALUES
 -- Table structure for table `Roles`
 --
 
-DROP TABLE IF EXISTS `Roles`;
 CREATE TABLE IF NOT EXISTS `Roles` (
   `roleId` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `roleName` varchar(50) NOT NULL,
@@ -1434,7 +1421,6 @@ INSERT INTO `Roles` VALUES
 -- Table structure for table `Staff`
 --
 
-DROP TABLE IF EXISTS `Staff`;
 CREATE TABLE IF NOT EXISTS `Staff` (
   `StaffID` varchar(5) NOT NULL,
   `NamewithInitials` varchar(60) DEFAULT NULL,
@@ -1505,7 +1491,6 @@ INSERT INTO `Staff` VALUES
 -- Table structure for table `StaffNo`
 --
 
-DROP TABLE IF EXISTS `StaffNo`;
 CREATE TABLE IF NOT EXISTS `StaffNo` (
   `staffID` int(11) NOT NULL,
   `staffNo` int(11) NOT NULL,
@@ -1558,7 +1543,6 @@ INSERT INTO `StaffNo` VALUES
 -- Table structure for table `Subject`
 --
 
-DROP TABLE IF EXISTS `Subject`;
 CREATE TABLE IF NOT EXISTS `Subject` (
   `Number` int(11) NOT NULL AUTO_INCREMENT,
   `Name` varchar(30) DEFAULT NULL,
@@ -1587,7 +1571,6 @@ INSERT INTO `Subject` VALUES
 -- Table structure for table `Subject_Grade`
 --
 
-DROP TABLE IF EXISTS `Subject_Grade`;
 CREATE TABLE IF NOT EXISTS `Subject_Grade` (
   `SubjectID` int(11) NOT NULL DEFAULT '0',
   `Grade` int(11) DEFAULT NULL,
@@ -1602,7 +1585,6 @@ CREATE TABLE IF NOT EXISTS `Subject_Grade` (
 -- Table structure for table `Teaches`
 --
 
-DROP TABLE IF EXISTS `Teaches`;
 CREATE TABLE IF NOT EXISTS `Teaches` (
   `Subject` varchar(64) NOT NULL DEFAULT '0',
   `StaffID` varchar(5) NOT NULL DEFAULT '',
@@ -1617,7 +1599,6 @@ CREATE TABLE IF NOT EXISTS `Teaches` (
 -- Table structure for table `Timetable`
 --
 
-DROP TABLE IF EXISTS `Timetable`;
 CREATE TABLE IF NOT EXISTS `Timetable` (
   `Grade` int(11) DEFAULT NULL,
   `Class` char(2) DEFAULT NULL,
@@ -1955,46 +1936,46 @@ INSERT INTO `Timetable` VALUES
   (NULL, NULL, 4, 5, NULL, '16', 0),
   (NULL, NULL, 4, 6, NULL, '16', 0),
   (NULL, NULL, 4, 7, NULL, '16', 0),
-  (10, 'A', 0, 0, 'Maths', '2', 0),
-  (10, 'A', 0, 1, 'Maths', '2', 0),
-  (NULL, NULL, 0, 2, NULL, '2', 0),
-  (NULL, NULL, 0, 3, NULL, '2', 0),
-  (10, 'C', 0, 4, 'Maths', '2', 0),
-  (10, 'C', 0, 5, 'Maths', '2', 0),
-  (10, 'B', 0, 6, 'Maths', '2', 0),
-  (NULL, NULL, 0, 7, NULL, '2', 0),
-  (10, 'A', 1, 0, 'Maths', '2', 0),
-  (10, 'C', 1, 1, 'Maths', '2', 0),
-  (NULL, NULL, 1, 2, NULL, '2', 0),
-  (NULL, NULL, 1, 3, NULL, '2', 0),
-  (10, 'B', 1, 4, 'Maths', '2', 0),
-  (NULL, NULL, 1, 5, NULL, '2', 0),
-  (NULL, NULL, 1, 6, NULL, '2', 0),
-  (NULL, NULL, 1, 7, NULL, '2', 0),
-  (10, 'A', 2, 0, 'Maths', '2', 0),
-  (NULL, NULL, 2, 1, NULL, '2', 0),
-  (NULL, NULL, 2, 2, NULL, '2', 0),
-  (10, 'B', 2, 3, 'Maths', '2', 0),
-  (NULL, NULL, 2, 4, NULL, '2', 0),
-  (10, 'C', 2, 5, 'Maths', '2', 0),
-  (NULL, NULL, 2, 6, NULL, '2', 0),
-  (NULL, NULL, 2, 7, NULL, '2', 0),
-  (10, 'A', 3, 0, 'Maths', '2', 0),
-  (NULL, NULL, 3, 1, NULL, '2', 0),
-  (10, 'B', 3, 2, 'Maths', '2', 0),
-  (10, 'B', 3, 3, 'Maths', '2', 0),
-  (10, 'C', 3, 4, 'Maths', '2', 0),
-  (NULL, NULL, 3, 5, NULL, '2', 0),
-  (NULL, NULL, 3, 6, NULL, '2', 0),
-  (NULL, NULL, 3, 7, NULL, '2', 0),
-  (10, 'A', 4, 0, 'Maths', '2', 0),
-  (NULL, NULL, 4, 1, NULL, '2', 0),
-  (NULL, NULL, 4, 2, NULL, '2', 0),
-  (NULL, NULL, 4, 3, NULL, '2', 0),
-  (10, 'C', 4, 4, 'Maths', '2', 0),
-  (NULL, NULL, 4, 5, NULL, '2', 0),
-  (NULL, NULL, 4, 6, NULL, '2', 0),
-  (10, 'B', 4, 7, 'Maths', '2', 0),
+  (10, 'A', 0, 0, 'Maths', '2', 2),
+  (10, 'A', 0, 1, 'Maths', '2', 2),
+  (NULL, NULL, 0, 2, NULL, '2', 2),
+  (NULL, NULL, 0, 3, NULL, '2', 2),
+  (10, 'C', 0, 4, 'Maths', '2', 2),
+  (10, 'C', 0, 5, 'Maths', '2', 2),
+  (10, 'B', 0, 6, 'Maths', '2', 2),
+  (NULL, NULL, 0, 7, NULL, '2', 2),
+  (10, 'A', 1, 0, 'Maths', '2', 2),
+  (10, 'C', 1, 1, 'Maths', '2', 2),
+  (NULL, NULL, 1, 2, NULL, '2', 2),
+  (NULL, NULL, 1, 3, NULL, '2', 2),
+  (10, 'B', 1, 4, 'Maths', '2', 2),
+  (NULL, NULL, 1, 5, NULL, '2', 2),
+  (NULL, NULL, 1, 6, NULL, '2', 2),
+  (NULL, NULL, 1, 7, NULL, '2', 2),
+  (10, 'A', 2, 0, 'Maths', '2', 2),
+  (NULL, NULL, 2, 1, NULL, '2', 2),
+  (NULL, NULL, 2, 2, NULL, '2', 2),
+  (10, 'B', 2, 3, 'Maths', '2', 2),
+  (NULL, NULL, 2, 4, NULL, '2', 2),
+  (10, 'C', 2, 5, 'Maths', '2', 2),
+  (NULL, NULL, 2, 6, NULL, '2', 2),
+  (NULL, NULL, 2, 7, NULL, '2', 2),
+  (10, 'A', 3, 0, 'Maths', '2', 2),
+  (NULL, NULL, 3, 1, NULL, '2', 2),
+  (10, 'B', 3, 2, 'Maths', '2', 2),
+  (10, 'B', 3, 3, 'Maths', '2', 2),
+  (10, 'C', 3, 4, 'Maths', '2', 2),
+  (NULL, NULL, 3, 5, NULL, '2', 2),
+  (NULL, NULL, 3, 6, NULL, '2', 2),
+  (NULL, NULL, 3, 7, NULL, '2', 2),
+  (10, 'A', 4, 0, 'Maths', '2', 2),
+  (NULL, NULL, 4, 1, NULL, '2', 2),
+  (NULL, NULL, 4, 2, NULL, '2', 2),
+  (NULL, NULL, 4, 3, NULL, '2', 2),
+  (10, 'C', 4, 4, 'Maths', '2', 2),
+  (NULL, NULL, 4, 5, NULL, '2', 2),
+  (NULL, NULL, 4, 6, NULL, '2', 2),
+  (10, 'B', 4, 7, 'Maths', '2', 2),
   (NULL, NULL, 0, 0, NULL, '23', 0),
   (NULL, NULL, 0, 1, NULL, '23', 0),
   (NULL, NULL, 0, 2, NULL, '23', 0),
@@ -2164,7 +2145,7 @@ INSERT INTO `Timetable` VALUES
   (NULL, NULL, 0, 6, NULL, '3', 0),
   (NULL, NULL, 0, 7, NULL, '3', 0),
   (10, 'B', 1, 0, 'Sinhala', '3', 0),
-  (10, 'B', 1, 1, 'Sinhala', '3', 0),
+  (10, 'B', 1, 1, 'Business Studies', '3', 0),
   (NULL, NULL, 1, 2, NULL, '3', 0),
   (NULL, NULL, 1, 3, NULL, '3', 0),
   (NULL, NULL, 1, 4, NULL, '3', 0),
@@ -2172,7 +2153,7 @@ INSERT INTO `Timetable` VALUES
   (NULL, NULL, 1, 6, NULL, '3', 0),
   (10, 'A', 1, 7, 'Sinhala', '3', 0),
   (10, 'B', 2, 0, 'Sinhala', '3', 0),
-  (NULL, NULL, 2, 1, NULL, '3', 0),
+  (10, 'B', 2, 1, 'Business Studies', '3', 0),
   (NULL, NULL, 2, 2, NULL, '3', 0),
   (10, 'C', 2, 3, 'Sinhala', '3', 0),
   (NULL, NULL, 2, 4, NULL, '3', 0),
@@ -2562,7 +2543,6 @@ INSERT INTO `Timetable` VALUES
 -- Table structure for table `User`
 --
 
-DROP TABLE IF EXISTS `User`;
 CREATE TABLE IF NOT EXISTS `User` (
   `userEmail` varchar(50) NOT NULL,
   `userPassword` varchar(80) DEFAULT NULL,
@@ -2579,7 +2559,7 @@ INSERT INTO `User` VALUES
   ('1', '$2y$10$ITa1DX.IR57egONMAFcQuOVPXycANGqfFchP6nTiEYlkTfoFQwaam', 1, 0),
   ('2', '$2y$10$Z4hLXwEmV7qZSXxH8lSoY.R4BRXji51YRxGfkdco.2V6LOKPsVtC6', 2, 0),
   ('22', '$2y$10$iCRtx31Ie73wtbrq.1Sulue/3dFLByKPOOlVVoeoc1e/hwBJTpW5C', 2, 2),
-  ('3', '$2y$10$1T0ZymlVYB8qKgN/B853SO9pptD02f3DrPf98NhJZ0IwdA8.gb4tu', 3, 0),
+  ('3', '$2y$10$In6BRx4TXPyHVlPGvlpKN.7jjkSkBi/87Gc9fqNZatPq3btSBmdYu', 3, 0),
   ('4', '$2y$10$kGrSp.K0fcM6XFO5RRXMxeP6Xq/HuYLkSdLZqjsoi4QjBBo9lhsd.', 4, 0),
   ('5', '$2y$10$fr/e4cfyCmhH3YN0F5d3m.pNaDq/2itqC5q.ya0K/zthNVnWf7X9q', 5, 0),
   ('6', '$2y$10$HV2SfdLnz5GSLvtNANPR5.4Ihk4IO.imENY44kMUmtOSXyKaDspFC', 6, 0),
@@ -2610,7 +2590,7 @@ INSERT INTO `User` VALUES
   ('IT13024000', '$2y$10$APNgCTivQk1uS9jzczbRi.e.fQUw1eMmSeRMEghlbwQz1bSCQ8EMO', 1, 2),
   ('IT13028206', '$2y$10$elZ28Kvg3d0NIXLcUMcXo.3WVYBLR4Mo1DVRs0iOoktP8XL5b/G26', 1, 2),
   ('IT13031312', '$2y$10$i3MU2aeGIZzU8zvfdnTqcuMXrmUhwFHIErS7FSvwIg9Hz.5mBThLa', 1, 2),
-  ('madusha.1@sliit.lk', '$2y$10$oqSMJ39w6AWsz1eklYz1eeIVh8YonMDapF..F70P62oWfFwMTQNJi', 2, 0),
+  ('madusha.1@sliit.lk', '$2y$10$i61lBSBvuorthXo45WhZdeqdVIwypsWBmWerLcvKfCROw4mtokFAK', 2, 0),
   ('red@blue.org', '$2y$10$GTAR2ISrSJc/3E7pqclth.gLbyYlnar3FHubs5tJ66opJ7.gMYlgy', 1, 2),
   ('s', '$2y$10$5Dr1zqERyeGwod5i5nrQv.m0xBCpUNKOvYJ/q9KOCEx7AQV3ThvIi', 2, 2),
   ('sh', '$2y$10$k6WWAhhSBD7UkvbcHDQVj.l6zLYTBpwuyCrO8a2o10qhTR.6gJBKe', 1, 2),
