@@ -474,27 +474,36 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         <tr>
             <td><?php echo $nationalityRace . $_POST["nRace"]?></td>
             <td><input id="NumberCb1" type="text" name="nRace" onkeypress="return isNumeric(event)" maxlength="1" value="<?php echo ( isset( $_POST["nRace"] ) ? $_POST["nRace"] : "" ) ?>"  class="number" onkeyup="changeTextbox(this)" />
-                            <select id="Cb1" name="" type="text" value="" onchange="changeTextbox(this)">
-                                    <option value=""><?php echo "--"?></option>
-                                    <option value="1"><?php echo "1 - " . $sinhala?></option>
-                                    <option value="2"><?php echo "2 - " . $srilankantamil?></option>
-                                    <option value="3"><?php echo "3 - " . $indiantamil?></option>
-                                    <option value="4"><?php echo "4 - " . $srilankanmuslim?></option>
-                                    <option value="5"><?php echo "5 - " . $other?></option>
-                            </select>
+                <select id="Cb1" name="" type="text" value="" onchange="changeTextbox(this)">
+                    <?php
+
+                    $thisList = getFormOptions("race");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
+                </select>
             </td>
         </tr>
         <tr >
             <td><?php echo $religion?></td>
             <td><input id="NumberCb2" type="text" name="religion" onkeypress="return isNumeric(event)" maxlength="1" value="<?php echo ( isset( $_POST["religion"] ) ? $_POST["religion"] : "" ) ?>" ="true" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb2" name="" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$buddhism?></option>
-                    <option value="2"><?php echo "2 - " .$hinduism?></option>
-                    <option value="3"><?php echo "3 - " .$islam?></option>
-                    <option value="4"><?php echo "4 - " .$catholic?></option>
-                    <option value="5"><?php echo "5 - " .$christianity?></option>
-                    <option value="6"><?php echo "6 - " .$other?></option>
+                    <?php
+
+                    $thisList = getFormOptions("religion");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
                 </select>
             </td>
         </tr>
@@ -502,12 +511,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><?php echo $civilStatus?></td>
             <td><input id="NumberCb3" type="text" name="civilStatus" onkeypress="return isNumeric(event)" maxlength="1" onclick="isNumeric()" value="<?php echo ( isset( $_POST["civilStatus"] ) ? $_POST["civilStatus"] : "" ) ?>"  class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb3"name="civilStatus" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$married?></option>
-                    <option value="2"><?php echo "2 - " .$unmarried?></option>
-                    <option value="3"><?php echo "3 - " .$widow?></option>
-                    <option value="4"><?php echo "4 - " .$other?></option>
+                    <?php
 
+                    $thisList = getFormOptions("civilStatus");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
                 </select>
             </td>
         </tr>
@@ -546,16 +560,18 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><?php echo $employmentStatus?></td>
             <td><input id="NumberCb4" type="text" name="employmentStatus"  onkeypress="return isNumeric(event)"  maxlength="1" value="<?php echo ( isset( $_POST["employmentStatus"] ) ? $_POST["employmentStatus"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb4"name="employmentStatus" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$fulltime?></option>
-                    <option value="2"><?php echo "2 - " .$parttime?></option>
-                    <option value="3"><?php echo "3 - " .$fulltime_Releasedtootherschool?></option>
-                    <option value="4"><?php echo "4 - " .$fulltime_Broughtfromotherschool?></option>
-                    <option value="5"><?php echo "5 - " .$oncontract_Government?></option>
-                    <option value="6"><?php echo "6 - " .$paidfromschoolfees?></option>
-                    <option value="7"><?php echo "7 - " .$othergovernmentdepartment?></option>
-                </select>
+                    <?php
 
+                    $thisList = getFormOptions("employmentStatus");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
+                </select>
             </td>
         </tr>
 
@@ -574,14 +590,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><?php echo $positionInSchool?></td>
             <td><input id="NumberCb6" type="text" name="positionInSchool" onkeypress="return isNumeric(event)" maxlength="1" value="<?php echo ( isset( $_POST["positionInSchool"] ) ? $_POST["positionInSchool"] : "" ) ?>" class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb6" name="positionInSchool" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$principal?></option>
-                    <option value="2"><?php echo "2 - " .$actingprincipal?></option>
-                    <option value="3"><?php echo "3 - " .$deputyprincipal?></option>
-                    <option value="4"><?php echo "4 - " .$actingdeputyprincipal?></option>
-                    <option value="5"><?php echo "5 - " .$assistantprincipal?></option>
-                    <option value="6"><?php echo "6 - " .$actingassistantprincipal?></option>
-                    <option value="7"><?php echo "7 - " .$teacher?></option>
+                    <?php
+
+                    $thisList = getFormOptions("designation");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
                 </select>
 
             </td>
@@ -590,38 +609,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><?php echo $section?></td>
             <td><input id="NumberCb7" type="text" name="section" onkeypress="return isNumeric(event)" maxlength="2" value="<?php echo ( isset( $_POST["section"] ) ? $_POST["section"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb7" name="section" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$PrimaryMultiple?></option>
-                    <option value="2"><?php echo "2 - " .$PrimaryEnglish?></option>
-                    <option value="3"><?php echo "3 - " .$PrimarySecondLanguage?></option>
-                    <option value="4"><?php echo "4 - " .$SecondaryScienceMaths?></option>
-                    <option value="5"><?php echo "5 - " .$SecondaryEnglish?></option>
-                    <option value="6"><?php echo "6 - " .$SecondaryArts?></option>
-                    <option value="7"><?php echo "7 - " .$SecondaryTechnology?></option>
+                    <?php
 
-                    <option value="8"><?php echo "8 - " .$SecondarySecondLanguage?></option>
-                    <option value="9"><?php echo "9 - " .$SecondaryMultiple?></option>
-                    <option value="10"><?php echo "10 - " .$ALevelScienceMain?></option>
-                    <option value="11"><?php echo "11 - " .$ALevelArtsCommerce?></option>
-                    <option value="12"><?php echo "12 - " .$ALevelTechnology?></option>
-                    <option value="13"><?php echo "13 - " .$ALevelOptional?></option>
-                    <option value="14"><?php echo "14 - " .$SpecialEducation?></option>
+                    $thisList = getFormOptions("section");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
 
-                    <option value="15"><?php echo "15 - " .$InformationTechnology?></option>
-                    <option value="16"><?php echo "16 - " .$PrimarySupervisor?></option>
-                    <option value="17"><?php echo "17 - " .$SecondarySupervisor?></option>
-                    <option value="18"><?php echo "18 - " .$ALevelSupervisor?></option>
-                    <option value="19"><?php echo "19 - " .$Counselling?></option>
-                    <option value="20"><?php echo "20 - " .$Library?></option>
-                    <option value="21"><?php echo "21 - " .$HealthandPhysicalEducation?></option>
-
-                    <option value="22"><?php echo "22 - " .$Optional?></option>
-                    <option value="23"><?php echo "23 - " .$Management?></option>
-                    <option value="24"><?php echo "24 - " .$StaffAdvisorParttime?></option>
-                    <option value="25"><?php echo "25 - " .$StaffAdvisorFulltime?></option>
-                    <option value="26"><?php echo "26 - " .$ReleasedtoOtherSchool?></option>
-                    <option value="27"><?php echo "27 - " .$Releasedtootherinstituteofficeservice?></option>
-                    <option value="28"><?php echo "28 - " .$Onpaidleave?></option>
+                    ?>
                 </select>
 
             </td>
@@ -657,20 +655,17 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <td><?php echo $serviceGrade?></td>
             <td><input id="NumberCb10" type="text" name="$serviceGrade" onkeypress="return isNumeric(event)" maxlength="2" value="<?php echo ( isset( $_POST["serviceGrade"] ) ? $_POST["serviceGrade"] : "" ) ?>"   class="number" onkeyup="changeTextbox(this)"/>
                 <select id="Cb10" name="serviceGrade" type="text" value="" onchange="changeTextbox(this)">
-                    <option value=""><?php echo "--"?></option>
-                    <option value="1"><?php echo "1 - " .$SriLankaEducationAdministrativeServiceI?></option>
-                    <option value="2"><?php echo "2 - " .$SriLankaEducationAdministrativeServiceII?></option>
-                    <option value="3"><?php echo "3 - " .$SriLankaEducationAdministrativeServiceIII?></option>
-                    <option value="4"><?php echo "4 - " .$SriLankaPrincipalServiceI?></option>
-                    <option value="5"><?php echo "5 - " .$SriLankaPrincipalService2I?></option>
-                    <option value="6"><?php echo "6 - " .$SriLankaPrincipalService2II?></option>
-                    <option value="7"><?php echo "7 - " .$SriLankaPrincipalService3?></option>
-                    <option value="8"><?php echo "8 - " .$SriLankaTeacherServiceI?></option>
-                    <option value="9"><?php echo "9 - " .$SriLankaTeacherService2I?></option>
-                    <option value="10"><?php echo "10 - " .$SriLankaTeacherService2II?></option>
-                    <option value="11"><?php echo "11 - " .$SriLankaTeacherService3I?></option>
-                    <option value="12"><?php echo "12 - " .$SriLankaTeacherService3II?></option>
-                    <option value="13"><?php echo "13 - " .$SriLankaTeacherServicePending?></option>
+                    <?php
+
+                    $thisList = getFormOptions("serviceGrade");
+                    echo "<option value=''> -- </option>\n";
+                    if( isset( $thisList ) ){
+                        foreach( $thisList as $listItem ){
+                            echo "\t\t    <option value='" . $listItem[0] . "'> " . $listItem[0] . " - " . $listItem[1] . "</option>\n";
+                        }
+                    }
+
+                    ?>
                 </select>
             </td>
         </tr>

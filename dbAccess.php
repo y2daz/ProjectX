@@ -1621,6 +1621,33 @@ function getLanguage($label, $language)
     return null;
 } //Returns language data of a $label for $language
 
+function getFormOptions($label){ //Returns numbers and options for that form drop-down box
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT Number, Data, `Group` FROM FormOption WHERE Label LIKE ? ORDER BY Number;"))
+    {
+        $stmt -> bind_param("s", $label);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+} //Returns numbers and options for that form drop-down box
+
 //
 ///
 /////  YEAR PLAN
