@@ -22,21 +22,34 @@ require_once(THISROOT . "/common.php");
 ob_start();
 
 
+$tableDetails = "none";
+$tableViewTable = "none";
+$fullPageHeight = 600;
 $currentStaffMembers="";
+$fieldEnhancer = null;
 
-if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
-{
-    $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
+if( isset( $_GET["field"] ) ){
+    $result = getStaffFormOption( $_GET["field"] );
+    $selectedField = ( isset( $_GET['fieldValue'] ) ? $_GET['fieldValue'] : null );
+    if( isset( $result ) ){
+        $fieldEnhancer = "<select id='Qr1' name='fieldValue' onchange='changeTextbox(this)' >\n";
+        if( isset( $result ) ){
+            foreach( $result as $listItem ){
+                $fieldEnhancer .= "\t\t\t<option value='" . $listItem[0] . "'" . ( strcmp( $selectedField, $listItem[0] ) == 0 ? "selected" : "" ) .  "> $listItem[0] - $listItem[1] </option>\n";
+            }
+        }
 
-    if ($operation)
-    {
-        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"], parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
+        $fieldEnhancer .= "</select>\n";
+        $numberBox = "<span>&nbsp; is &nbsp;</span>";
+//            $numberBox .= "<input class='number' id='NumberQr1' type='text' name='fieldValue' onkeyup='changeTextbox(this)'/>";
+        $fieldEnhancer = $numberBox . $fieldEnhancer;
     }
-    else
-    {
-        sendNotification("Error updating information.");
-    }
+}else{
+    $fieldEnhancer = "";
 }
+
+/*
+
 if( isset($_GET["staffID"]) )
 {
     $staffID = $_GET["staffID"];
@@ -47,26 +60,11 @@ if( isset($_GET["NamewithInitials"]))
     $nameWithInitials = $_GET["NamewithInitials"];
 }
 
-if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
-{
-//    $operation = true;
-    $operation = deleteStaff($_GET["valueMember"]);
 
-    if ($operation == true){
-        sendNotification("Staff member deleted.", "searchStaffDetails.php");
-    }
-    else{
-        sendNotification("Error deleting Staff member", "searchStaffDetails.php");
-    }
-}
 
 if (!isset($_SESSION["queryString"])){
     $_SESSION["queryString"] = null;
 }
-
-$tableDetails = "none";
-$tableViewTable = "none";
-$fullPageHeight = 600;
 
 if ( !isset( $_GET["Choice"] ) ){
     $_GET["Choice"] = "Staffid";
@@ -80,7 +78,7 @@ if (isset($_GET["search"]))
 
     if ($_GET["Choice"] == "Staffid")
     {
-        $currentStaffMembers = searchStaff($_GET["query"]);
+        $currentStaffMembers = searchStaffByStaffID($_GET["query"]);
     }
     elseif($_GET["Choice"] == "Name")
     {
@@ -105,6 +103,34 @@ if (isset($_GET["search"]))
 else
 {
     $currentStaffMembers = getAllStaff();
+}
+*/
+
+if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
+{
+    $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
+
+    if ($operation)
+    {
+        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"], parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
+    }
+    else
+    {
+        sendNotification("Error updating information.");
+    }
+}
+
+if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
+{
+//    $operation = true;
+    $operation = deleteStaff($_GET["valueMember"]);
+
+    if ($operation == true){
+        sendNotification("Staff member deleted.", "searchStaffDetails.php");
+    }
+    else{
+        sendNotification("Error deleting Staff member", "searchStaffDetails.php");
+    }
 }
 
 if (isset($_GET["expand"]))
@@ -167,10 +193,10 @@ else
     $Salary ="";
 }
 
+
 ?>
 <head>
 <style type=text/css>
-
     h1{
         text-align: center;
     }
@@ -226,8 +252,10 @@ else
         border-collapse: collapse;
         display: <?php echo $tableDetails ?>;
     }
-    .details .number{
+    .number{
         max-width: 20px;
+        margin-right: 8px;
+        margin-left: 4px;
     }
     input .button1 {
         position:relative;
@@ -240,6 +268,12 @@ else
 <script>
     $(document).ready( function(){
         $(".number").keyup();
+
+        $("#querySelect").on("change", function(){
+            var field = $("#querySelect").val();
+            var params = {"field" : field};
+            post(document.URL, params, "get");
+        });
     });
 
     function changeTextbox(element){
@@ -248,6 +282,8 @@ else
 
         if (elementTag == "select"){
             changeId = "Number" + ($(element).attr('id'));
+
+            console.log( changeId );
 
             var toChange = document.getElementById(changeId);
             toChange.value = element.value;
@@ -272,35 +308,14 @@ $staffID =  getLanguage('staffID', $language);
 $nameWithInitials =  getLanguage('nameWithInitials', $language);
 $dateOfBirth =  getLanguage('dateOfBirth', $language);
 
-$staffID =  getLanguage('staffID', $language);
-$nameWithInitials =  getLanguage('nameWithInitials', $language);
 $nameinfull =  getLanguage('nameinfull', $language);
-$dateOfBirth =  getLanguage('dateOfBirth', $language);
 $gender =  getLanguage('gender', $language);
 $nationalityRace =  getLanguage('nationalityRace', $language);
 $religion =  getLanguage('religion', $language);
 $civilStatus =  getLanguage('civilStatus', $language);
 $nicNumber =  getLanguage('nicNumber', $language);
-
 $male =  getLanguage('male', $language);
 $female =  getLanguage('female', $language);
-$sinhala =  getLanguage('sinhala', $language);
-$srilankantamil =  getLanguage('srilankantamil', $language);
-$indiantamil =  getLanguage('indiantamil', $language);
-$srilankanmuslim =  getLanguage('srilankanmuslim', $language);
-$other =  getLanguage('other', $language);
-
-$buddhism =  getLanguage('buddhism', $language);
-$hindusm =  getLanguage('hindusm', $language);
-$islam =  getLanguage('islam', $language);
-$catholic =  getLanguage('catholic', $language);
-$christianity =  getLanguage('christianity', $language);
-$other =  getLanguage('other', $language);
-$married =  getLanguage('married', $language);
-$unmarried =  getLanguage('unmarried', $language);
-$widow =  getLanguage('widow', $language);
-$other =  getLanguage('other', $language);
-
 $maildeliveryaddress =  getLanguage('maildeliveryaddress', $language);
 $contactnumber =  getLanguage('contactnumber', $language);
 $contactpersonforemergency =  getLanguage('contactpersonforemergency', $language);
@@ -316,6 +331,26 @@ $subjectSecondMostTaught =  getLanguage('subjectSecondMostTaught', $language);
 $serviceGrade =  getLanguage('serviceGrade', $language);
 $salary =  getLanguage('salary', $language);
 
+$sinhala =  getLanguage('sinhala', $language);
+$tamil =  getLanguage('tamil', $language);
+$english =  getLanguage('english', $language);
+
+/*$sinhala =  getLanguage('sinhala', $language);
+$srilankantamil =  getLanguage('srilankantamil', $language);
+$indiantamil =  getLanguage('indiantamil', $language);
+$srilankanmuslim =  getLanguage('srilankanmuslim', $language);
+$other =  getLanguage('other', $language);
+
+$buddhism =  getLanguage('buddhism', $language);
+$hindusm =  getLanguage('hindusm', $language);
+$islam =  getLanguage('islam', $language);
+$catholic =  getLanguage('catholic', $language);
+$christianity =  getLanguage('christianity', $language);
+$other =  getLanguage('other', $language);
+$married =  getLanguage('married', $language);
+$unmarried =  getLanguage('unmarried', $language);
+$widow =  getLanguage('widow', $language);
+$other =  getLanguage('other', $language);
 $fulltime =  getLanguage('fulltime', $language);
 $parttime =  getLanguage('parttime', $language);
 $fulltime_Releasedtootherschool =  getLanguage('fulltime_Releasedtootherschool', $language);
@@ -323,10 +358,6 @@ $fulltime_Broughtfromotherschool =  getLanguage('fulltime_Broughtfromotherschool
 $oncontract_Government =  getLanguage('oncontract_Government', $language);
 $paidfromschoolfees =  getLanguage('paidfromschoolfees', $language);
 $othergovernmentdepartment =  getLanguage('othergovernmentdepartment', $language);
-$sinhala =  getLanguage('sinhala', $language);
-$tamil =  getLanguage('tamil', $language);
-$english =  getLanguage('english', $language);
-
 $principal =  getLanguage('principal', $language);
 $actingprincipal =  getLanguage('actingprincipal', $language);
 $deputyprincipal =  getLanguage('deputyprincipal', $language);
@@ -510,7 +541,8 @@ $Contractbaseandother =  getLanguage('ContractBasedandOther', $language);
 $Graduates =  getLanguage('Graduates', $language);
 
 $ALevel =  getLanguage('ALevel', $language);
-$OLevelandOther =  getLanguage('OLevelandOther', $language);
+$OLevelandOther =  getLanguage('OLevelandOther', $language);*/
+
 $update =  getLanguage('update', $language);
 $search = getlanguage('search', $language);
 $expand = getLanguage('expand', $language);
@@ -527,18 +559,39 @@ $searchby =getlanguage('searchby', $language);
 
         <table id="info">
             <tr>
-                <td colspan="2"><span id="selection"><?php echo getlanguage('searchBy', $language)?> : </span>
-                    <input type="text" class="text1" name="query" value="">
+                <td colspan="2"><label id="selection">Staff members with:
+                        <select name="field" id="querySelect" >
+                            <?php
+
+                            $selectedField = ( isset( $_GET["field"] ) ? $_GET["field"] : null );
+                            $thisList = getFormOptions("searchStaff", 1);
+//                            echo "<option value=''> -- </option>\n";
+                            if( isset( $thisList ) ){
+                                foreach( $thisList as $listItem ){
+                                    if( isset( $listItem[ 2 ] ) ){
+                                        echo "\t\t\t<option value='" . $listItem[0] . "' " . ( strcmp( $selectedField, $listItem[0] ) == 0 ? "selected" : "" ) . " >  $listItem[1] </option>\n";
+                                    }
+                                }
+                            }
+
+                            ?>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <?php
+                        echo $fieldEnhancer;
+                    ?>
                 </td>
                 <td><input class="button" name="search" type="submit" value=<?php echo getlanguage('search', $language)?>></td>
             </tr>
-            <tr><td></td><td>&nbsp;</td></tr>
+            <!--<tr><td></td><td>&nbsp;</td></tr>
             <tr>
-                <td><label><input type="RADIO" name="Choice" value="Staffid" <?php echo ( strcmp( $_GET["Choice"], "Staffid" ) == 0 ?  "checked />" : " />" ) . getLanguage('staffID', $language)?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="Name" <?php echo ( strcmp( $_GET["Choice"], "Name" ) == 0 ?  "checked />" : " />" ) . getLanguage('nameWithInitials', $language)?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="nicnumber" <?php echo ( strcmp( $_GET["Choice"], "nicnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('nicNumber', $language)?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="contactnumber" <?php echo ( strcmp( $_GET["Choice"], "contactnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('contactnumber', $language)?></label> </td>
-            </tr>
+                <td><label><input type="RADIO" name="Choice" value="Staffid" <?php /*echo ( strcmp( $_GET["Choice"], "Staffid" ) == 0 ?  "checked />" : " />" ) . getLanguage('staffID', $language)*/?></label> </td>
+                <td><label><input type="RADIO" name="Choice" value="Name" <?php /*echo ( strcmp( $_GET["Choice"], "Name" ) == 0 ?  "checked />" : " />" ) . getLanguage('nameWithInitials', $language)*/?></label> </td>
+                <td><label><input type="RADIO" name="Choice" value="nicnumber" <?php /*echo ( strcmp( $_GET["Choice"], "nicnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('nicNumber', $language)*/?></label> </td>
+                <td><label><input type="RADIO" name="Choice" value="contactnumber" <?php /*echo ( strcmp( $_GET["Choice"], "contactnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('contactnumber', $language)*/?></label> </td>
+            </tr>-->
 
         </table>
     </form>
@@ -556,21 +609,18 @@ $searchby =getlanguage('searchby', $language);
             </tr>
             <?php
 
-            if ( !isset( $_GET["expand"] ) ){
-                $result = $currentStaffMembers;
-
+            if ( isset( $_GET["search"] ) ){
+                $result = searchStaff( $_GET["field"], $_GET["fieldValue"] );
+                $tableDetails= "none";
+                $tableViewTable= "block";
                 $i = 1;
 
-                if (!isFilled($result))
-                {
+                if (!isset($result)){
                     $result = getAllStaff();
                 }
-
-                if (isFilled($result))
-                {
+                else{
                     foreach($result as $row)
                     {
-
                         echo "<tr><td>";
                         echo "$row[0]";
                         echo "<td>$row[1]</td>";
@@ -583,11 +633,11 @@ $searchby =getlanguage('searchby', $language);
                         echo ($i++ % 5 == 0 ? "<tr class=\"blank\"><td colspan='6'>&nbsp;</td>" : "");
                     }
                 }
-            }
-            if (isset($_GET["search"]))
-            {
                 $fullPageHeight = ( 600 + ($i * 28) );
             }
+//            if (isset($_GET["search"]))
+//            {
+//            }
 
             ?>
         </table>
@@ -596,7 +646,6 @@ $searchby =getlanguage('searchby', $language);
     <form method="post">
         <table class="details" >
             <tr><th><?php echo $generalInformation?></th><th></th></tr>
-
             <tr>
                 <td> <?php echo $staffID?> </td>
                 <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
@@ -607,15 +656,11 @@ $searchby =getlanguage('searchby', $language);
                 <td > <input type = "text" name="NamewithInitials" value="<?php echo $NamewithInitials?>"/> </td>
                 <td></td>
             </tr>
-
-
-
             <tr>
                 <td><?php echo $dateOfBirth?></td>
                 <td > <input type = "text" name="DateofBirth" value="<?php echo $DateofBirth?>"/> </td>
                 <td></td>
             </tr>
-
             <tr>
                 <td><?php echo $gender?></td>
                 <td>
@@ -644,8 +689,6 @@ $searchby =getlanguage('searchby', $language);
                 </td>
                 <td></td>
             </tr>
-
-
             <tr>
                 <td><?php echo $religion?></td>
                 <td ><input class="number" id="NumberCb2" type = "text" name="Religion" value="<?php echo $staffReligion?>" onkeyup="changeTextbox(this)"/>
@@ -843,11 +886,6 @@ $searchby =getlanguage('searchby', $language);
             </tr>
         </table>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
     <br />
 
 

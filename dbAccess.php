@@ -533,7 +533,52 @@ function deleteStaff($staffID)
     return false;
 } //Deletes a staff member along with their classroom and their timetable
 
-function searchStaff($key)
+function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20 ){ //Searches for $limit staff members with $field $operator $value from $start
+    /**
+     * $operator values
+     * 0 = Exactly equal
+     * 1 = Begins with
+     * 2 = Ends with
+     * 3 = Contains
+     *
+     */
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+//    $value = ( $operator == 0 ? "=" : ( $operator == 1 ? "$value%" : ( $operator == 2 ? "%$value" : "%$value%" ) ) );
+//    $operator = "LIKE";
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ? = ? AND isDeleted = 0 ORDER BY ? ' . $order .  ' LIMIT ?, ?;';
+
+    echo "field $field, value $fieldValue, Yazdaan";
+
+    echo "<br />" . " query = Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE $field = $fieldValue AND isDeleted = 0 ORDER BY $orderField  $order  LIMIT $start, $limit;" . "<br /> ";
+
+    if ($stmt = $mysqli->prepare( $query )){
+        $stmt -> bind_param("sisii", $field, $fieldValue, $orderField, $start, $limit );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            echo "Yazdaan" . $result -> num_rows . " rows";
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function searchStaffByStaffID($key)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1621,7 +1666,7 @@ function getLanguage($label, $language)
     return null;
 } //Returns language data of a $label for $language
 
-function getFormOptions($label){ //Returns numbers and options for that form drop-down box
+function getFormOptions($label, $OrderBy = 0){ //Returns numbers and options for that form drop-down box
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1631,7 +1676,13 @@ function getFormOptions($label){ //Returns numbers and options for that form dro
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT Number, Data, `Group` FROM FormOption WHERE Label LIKE ? ORDER BY Number;"))
+    $query = "SELECT `Number`, `Data`, `OrderingGroup` FROM FormOption WHERE Label LIKE ? ORDER BY Number + 0 ";
+
+    if( $OrderBy != 0 ){
+        $query = "SELECT `Number`, `Data`, `OrderingGroup`, `Type` FROM FormOption WHERE Label LIKE ? ORDER BY OrderingGroup + 0 ";
+    }
+
+    if ($stmt = $mysqli->prepare( $query ))
     {
         $stmt -> bind_param("s", $label);
         if ($stmt->execute())
@@ -1647,6 +1698,40 @@ function getFormOptions($label){ //Returns numbers and options for that form dro
     $mysqli->close();
     return $set;
 } //Returns numbers and options for that form drop-down box
+
+function getStaffFormOption( $field ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $query = "SELECT `Number`, `Data`, `OrderingGroup`, `Type` FROM FormOption WHERE Label = 'searchStaff' and Number = ? LIMIT 1;";
+
+    if ($stmt = $mysqli->prepare( $query ))
+    {
+        $stmt -> bind_param("s", $field);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array())
+            {
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    if ( $set[0][3] == 0 ){
+        return getFormOptions( $field );
+    }
+    else{
+        return null;
+    }
+}
 
 //
 ///
