@@ -274,25 +274,22 @@
         </div>
 
         <div id="header">
-            <img id="dsLogo" src="<?php echo PATHFRONT ?>/images/logo.jpg" height="90px" />
+            <img id="schoolLogo" src="<?php echo PATHFRONT ?>/images/logo.jpg" height="90px" />
         </div>
 
         <div id="divMenu">
-            <table id="topMenu">
-                <tr>
-                    <td><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></td>
-                    <td><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></td>
-<!--                    <td></td>-->
-                </tr>
-            </table>
+            <div id="topMenu">
+                    <div class="topMenuItem" id="home"><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></div>
+                    <div class="topMenuItem" id="currentUser"><span><?php echo (isset($_SESSION["user"]) ? "Logged in as: " . $_SESSION["user"] : "Not logged in" ) ; ?> </span></div>
+                    <div class="topMenuItem" id="logging"><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></div>
+            </div>
         </div>
 
         <div id="footer">
             <div id="aboutus">
                 <p> ABOUT US</p>
-                <span>The Mana System was developed for D.S. Senanayake College, Colombo by Students in the Faculty of Computing, SLIIT.
-                    The school use it to manage staff information.
-                    Copyright &copy; Mr. Prasanna S. Haddela, Faculty of Computing, SLIIT. </span>
+                <span>The Mana System was developed by Students in the Faculty of Computing, SLIIT to manage staff information.
+                    Copyright &copy; Faculty of Computing, SLIIT. </span>
             </div>
         </div>
 

@@ -1,3 +1,8 @@
+/*
+UNDERSTANDING THE STYLESHEET.
+
+*/
+
 
 *{
     font-family: 'Open Sans', sans-serif;
@@ -7,7 +12,7 @@ body {
     background-image:url('../images/cream_pixels.png');
     background-repeat: repeat;
 }
-li, ul {
+#nav, li, ul {
     list-style-type: none;
 }
 #nav {
@@ -19,6 +24,7 @@ li, ul {
     top: 260px;
     left: 0px;
     border: 2px solid #d5d5d5;
+    z-index: 3;
 }
 #nav li a {
     display: block;
@@ -76,6 +82,17 @@ li, ul {
     height:250px;
     background-color: #003448;
 }
+    #schoolLogo{
+        position: absolute;
+        z-index: 3;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        top:10px;
+        left:-700px;
+        border: 2px solid #000000;
+        /*left: 200px;*/
+    }
 #footer {
     position:absolute;
     /*top: Set dynamically;*/
@@ -85,9 +102,24 @@ li, ul {
     height:250px;
     background-color: #2d2d2d;
 }
+    #aboutus{
+        position: relative;
+        color: #f0f0f0;
+        margin:90px auto 0px auto;
+        clear: both;
+        max-width: 750px;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    #aboutus p{
+        font-weight: 600;
+        font-size: 18px;
+        color: #cc7f00;
+        margin-left: 20px;
+    }
 #language{
     position: absolute;
-    z-index: 7;
+    z-index: 3;
     background-color: #003448;
     margin: 10px 0px 0px 0px;
     top:0px;
@@ -107,54 +139,63 @@ li, ul {
     color: #cc7f00;
     padding: 0;
 }
-#aboutus{
-    position: relative;
-    color: #f0f0f0;
-    width:50%;
-    margin:90px auto 0px auto;
-    clear: both;
-}
-#aboutus p{
-    font-weight: 600;
-    font-size: 18px;
-    color: #cc7f00;
-}
 #divMenu{
     position: absolute;
     width:800px;
     margin-left: auto;
     margin-right: auto;
-    left: -3px;
+    left: 200px;
     right: 0;
     clear: both;
-    top:50px;
+    top:58px;
     height: 50px;
 }
-#topMenu{
-    border-collapse: collapse;
-}
-#topMenu td{
-    /*border: 1px solid #cc7f00;*/
-    background-color: #2d2d2d;
-    height: 50px;
-    width:120px;
-    text-align: center;
-    vertical-align: middle;
-    color: #cacaca;
-    font-weight: 600;
-    font-size: 18px;
-}
-#topMenu td a{
-    text-decoration: none;
-    color: #cacaca;
-    font-weight: 600;
-    font-size: 18px;
-}
-#topMenu a:hover{
-    color: #0099d4;
-    /*text-decoration: underline;*/
-    cursor: pointer; cursor: hand;
-}
+    .topMenuItem{
+        background-color: #2d2d2d;
+        height: 50px;
+        width:120px;
+        text-align: center;
+        vertical-align: middle;
+        color: #cacaca;
+        font-weight: 400;
+        font-size: 18px;
+        float: left;
+    }
+        .topMenuItem a{
+            position: relative;
+            top: 15px;
+            text-decoration: none;
+            color: #cacaca;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        #home{
+            border-radius: 5px 5px 0px 0px;
+        }
+        #currentUser{
+            position: relative;
+            width:480px;
+            text-align: right;
+            background: none;
+        }
+            #currentUser span{
+                position: relative;
+                top: 15px;
+            }
+        #logging{
+            position: relative;
+            background: none;
+            text-decoration: underline;
+            /*color: red;*/
+        }
+            #logging a{
+                font-weight: 400;
+                color: #cc7f00;
+            }
+        .topMenuItem a:hover{
+            color: #0099d4;
+            cursor: pointer;
+        }
 
 #navHide {
     position: absolute;
@@ -178,17 +219,6 @@ li, ul {
     height: 400px;
     vertical-align: middle;
     text-align: center;
-}
-#dsLogo{
-    position: absolute;
-    z-index: 10;
-    left:0;
-    right:0;
-    margin-left:auto;
-    margin-right:auto;
-    top:10px;
-    border: 2px solid #000000;
-    /*left: 200px;*/
 }
 .grayText{
     text-align: center;

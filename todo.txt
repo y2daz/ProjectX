@@ -64,3 +64,46 @@ deleting staff delete all references inc leavedata
 
 comments
   on eeverything
+
+short leave another area on interface
+    short
+    late
+    half day
+
+leave address on leave
+
+maybe checkbox leaves
+
+menu order
+    register
+    search
+    class teac alloc
+    class and ind reports in report
+
+individual staff report
+    reduce header line size
+    underline report heading
+
+
+best create two report templates (landscape portrait)
+
+logout top right corner
+show current logged in user
+
+edu emp id
+school staff id
+
+show year of staffid when registering/updating
+
+teacher id > staff id
+
+class allocation, use impromptu and shizzle
+    really thin class seperators
+
+justify about us text. remove sir's name... :P
+    remove "developed for ds"
+
+
+PREPARE LIST OF QUESTIONS TO ASK DS.
+
+understanding this code on reused code pages. e.g. main.css
