@@ -27,7 +27,6 @@ $tableViewTable = "none";
 $fullPageHeight = 600;
 $currentStaffMembers="";
 $fieldEnhancer = null;
-$isWord = "<span>&nbsp; is &nbsp;</span>";
 
 if( isset( $_GET["field"] ) ){
     $result = getStaffFormOption( $_GET["field"] );
@@ -42,10 +41,20 @@ if( isset( $_GET["field"] ) ){
 
         $fieldEnhancer .= "</select>\n";
 //            $numberBox .= "<input class='number' id='NumberQr1' type='text' name='fieldValue' onkeyup='changeTextbox(this)'/>";
+        $isWord = "<span>&nbsp; is &nbsp;</span>";
         $fieldEnhancer = $isWord . $fieldEnhancer;
     }
     else{
-        $fieldEnhancer = "<input type='text' id='Qr1' name='fieldValue' />";
+        $fieldValue = isset( $_GET["fieldValue"] ) ? $_GET["fieldValue"] : "";
+        $fieldEnhancer = "<input type='text' id='Qr1' name='fieldValue' value='$fieldValue' />";
+        $selectedField = isset( $_GET["operator"] ) ? $_GET["operator"] : 3;
+        $isWord = "&nbsp;<select name='operator'>
+                        <option value='0' " . ( $selectedField == 0 ? "selected" : "" ) . " > is</option>
+                        <option value='1' " . ( $selectedField == 1 ? "selected" : "" ) . " > begins with</option>
+                        <option value='2' " . ( $selectedField == 2 ? "selected" : "" ) . " > ends with </option>
+                        <option value='3' " . ( $selectedField == 3 ? "selected" : "" ) . " > contains </option>
+
+                    </select> &nbsp;";
         $fieldEnhancer = $isWord . $fieldEnhancer;
     }
 }
@@ -111,7 +120,7 @@ else
 }
 */
 
-if (isset($_POST["Submit"])) //User has clicked the submit button to update staff
+if (isset($_POST["Submit"])) //Submit button to update staff
 {
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
 
@@ -123,7 +132,7 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to update staf
     }
 }
 
-if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
+if (isset($_GET["valueName"]) && isset($_GET["valueMember"])) //Deletes a staff member
 {
 //    $operation = true;
     $operation = deleteStaff($_GET["valueMember"]);
@@ -205,7 +214,7 @@ elseif( isset( $_GET["search"] ) ){
     }
     #info{
         position: relative;
-        left: 40px;
+        left: 30px;
     }
     .viewTable{
         position: relative;
@@ -213,7 +222,7 @@ elseif( isset( $_GET["search"] ) ){
         left:50px;
         max-width: 875px;
         min-width: 600px;
-<!--        display: --><?php //echo $tableViewTable ?><!--;-->
+        display: <?php echo $tableViewTable ?>;
     }
     .viewTable th{
         font-weight: 600;
@@ -559,7 +568,7 @@ $searchby =getlanguage('searchby', $language);
         <table id="info">
             <tr>
                 <td colspan="2">
-                    <label id="selection">Staff members with:
+                    <label id="selection">Staff members whose:
                         <select name="field" id="querySelect" >
                             <?php
 
@@ -610,10 +619,10 @@ $searchby =getlanguage('searchby', $language);
             <?php
 
             if ( isset( $_GET["search"] ) ){
-                $operator = isset( $_GET["operator"] );
+                $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
                 //GET AND SET OPERATOR.
 
-                $result = searchStaff( $_GET["field"], $_GET["fieldValue"] );
+                $result = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator );
                 $i = 1;
 
                 if (!isset($result)){
@@ -636,9 +645,6 @@ $searchby =getlanguage('searchby', $language);
                 }
                 $fullPageHeight = ( 600 + ($i * 28) );
             }
-//            if (isset($_GET["search"]))
-//            {
-//            }
 
             ?>
         </table>

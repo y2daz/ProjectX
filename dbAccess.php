@@ -547,23 +547,22 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
 
     $set = null;
 
-    $fieldValue = ( $operator == 0 ? $fieldValue : ( $operator == 1 ? "$fieldValue%" : ( $operator == 2 ? "%$fieldValue" : "%$fieldValue%" ) ) );
-    $operator = ( $operator == 0 ? "=" : "LIKE" );
+    $fieldValue = ( $operator == 0 ? $fieldValue : ( $operator == 1 ? $fieldValue . "%"  : ( $operator == 2 ? "%" . $fieldValue : "%" . $fieldValue . "%" ) ) );
+    $operator = ( $operator == 0 ? "LIKE" : "LIKE" );
 //    $operator = "LIKE";
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ' . ($field) . ' = ?  AND isDeleted = 0 ';
-    $query .= 'ORDER BY ? ' . $order .  ' LIMIT ?, ?;';
+    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
+    $query .= 'ORDER BY ' . $orderField . ' + 0 ' . $order .  ' LIMIT ?, ?;';
 
-    echo "field $field, value $fieldValue, Yazdaan";
-
-    echo "<br />" . " query = " . $query . "<br /> ";
+//    echo "field $field, value $fieldValue, Yazdaan";
+//    echo "<br />" . " query = " . $query . "<br /> ";
 
     if ($stmt = $mysqli->prepare( $query )){
-        $stmt -> bind_param("isii", $fieldValue, $orderField, $start, $limit );
+        $stmt -> bind_param("sii", $fieldValue, $start, $limit );
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
