@@ -554,15 +554,15 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ? = ? AND isDeleted = 0 ORDER BY ? ' . $order .  ' LIMIT ?, ?;';
+    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ' . ($field) . ' = ?  AND isDeleted = 0 ';
+    $query .= 'ORDER BY ? ' . $order .  ' LIMIT ?, ?;';
 
     echo "field $field, value $fieldValue, Yazdaan";
 
-    echo "<br />" . " query = Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE $field = $fieldValue AND isDeleted = 0 ORDER BY $orderField  $order  LIMIT $start, $limit;" . "<br /> ";
+    echo "<br />" . " query = " . $query . "<br /> ";
 
     if ($stmt = $mysqli->prepare( $query )){
-        $stmt -> bind_param("sisii", $field, $fieldValue, $orderField, $start, $limit );
-
+        $stmt -> bind_param("isii", $fieldValue, $orderField, $start, $limit );
         if ($stmt->execute())
         {
             $result = $stmt->get_result();

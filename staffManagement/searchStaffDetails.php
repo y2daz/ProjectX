@@ -133,11 +133,30 @@ if (isset($_GET["valueName"]) && isset($_GET["valueMember"]))
     }
 }
 
+$staffid="";
+$NamewithInitials ="";
+$DateofBirth = "";
+$Gender = "";
+$NationalityRace = "";
+$staffReligion ="";
+$CivilStatus = "";
+$NICNumber = "";
+$MailDeliveryAddress ="";
+$ContactNumber = "";
+$DateAppointedasTeacherPrincipal ="";
+$DateJoinedthisSchool = "";
+$EmploymentStatus = "";
+$Medium ="";
+$PositioninSchool ="";
+$Section ="";
+$SubjectMostTaught ="";
+$SubjectSecondMostTaught ="";
+$ServiceGrade ="";
+$Salary ="";
+
 if (isset($_GET["expand"]))
 {
-
     $result = getStaffMember($_GET["expand"]);
-
     $i = 0;
 
     foreach($result as $row) //
@@ -169,28 +188,9 @@ if (isset($_GET["expand"]))
     $tableDetails= "block";
     $tableViewTable= "none";
 }
-else
-{
-    $staffid="";
-    $NamewithInitials ="";
-    $DateofBirth = "";
-    $Gender = "";
-    $NationalityRace = "";
-    $staffReligion ="";
-    $CivilStatus = "";
-    $NICNumber = "";
-    $MailDeliveryAddress ="";
-    $ContactNumber = "";
-    $DateAppointedasTeacherPrincipal ="";
-    $DateJoinedthisSchool = "";
-    $EmploymentStatus = "";
-    $Medium ="";
-    $PositioninSchool ="";
-    $Section ="";
-    $SubjectMostTaught ="";
-    $SubjectSecondMostTaught ="";
-    $ServiceGrade ="";
-    $Salary ="";
+elseif( isset( $_GET["search"] ) ){
+    $tableDetails= "none";
+    $tableViewTable= "block";
 }
 
 
@@ -209,7 +209,8 @@ else
         border-collapse: collapse;
         left:50px;
         max-width: 875px;
-        display: <?php echo $tableViewTable ?>;
+        min-width: 600px;
+<!--        display: --><?php //echo $tableViewTable ?><!--;-->
     }
     .viewTable th{
         font-weight: 600;
@@ -224,10 +225,14 @@ else
         min-width: 60px;
     }
     .details {
-        position:absolute;
-        left:10px;
-        top:80px;
-        max-width: 800px;
+        position: relative;
+        top:0px;
+        left: 40px;
+        max-width:800px;
+        min-width: 600px;
+        height:150px;
+        border-collapse: collapse;
+        display: <?php echo $tableDetails ?>;
     }
     .details th{
         text-align:center;
@@ -242,15 +247,6 @@ else
     .labelCol{
         max-width: 100px;
         min-width: 100px;
-    }
-    .details {
-        position: relative;
-        top:0px;
-        left: 40px;
-        max-width:800px;
-        height:150px;
-        border-collapse: collapse;
-        display: <?php echo $tableDetails ?>;
     }
     .number{
         max-width: 20px;
@@ -598,7 +594,7 @@ $searchby =getlanguage('searchby', $language);
     <br />
 
     <form method="post">
-        <table class="viewTable">
+        <table id="staffList" class="viewTable">
             <tr>
                 <th><?php echo getLanguage('staffID', $language)?></th>
                 <th><?php echo getLanguage('nameWithInitials', $language)?></th>
@@ -611,8 +607,6 @@ $searchby =getlanguage('searchby', $language);
 
             if ( isset( $_GET["search"] ) ){
                 $result = searchStaff( $_GET["field"], $_GET["fieldValue"] );
-                $tableDetails= "none";
-                $tableViewTable= "block";
                 $i = 1;
 
                 if (!isset($result)){
