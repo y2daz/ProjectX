@@ -146,7 +146,7 @@ require_once("../common.php");
 //                        console.log("Word = " + currentLine2);
 //                        console.log(" --- ");
 
-                    var query = "INSERT INTO `FormOption`(`Label`, `Number`, `Data`, `group`) VALUES  ( '" + label + "', '" + currentLine1 + "', '" + currentLine2 + "', " + group + "); ";
+                    var query = "INSERT INTO `FormOption`(`Label`, `Number`, `Data`, `OrderingGroup`) VALUES  ( '" + label + "', '" + currentLine1 + "', '" + currentLine2 + "', " + group + "); ";
                     complete = complete + query + "\n";
 
                     $("#pasteZoneForm").val( complete );

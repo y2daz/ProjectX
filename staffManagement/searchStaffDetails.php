@@ -28,7 +28,12 @@ $fullPageHeight = 600;
 $currentStaffMembers="";
 $fieldEnhancer = null;
 
-if( isset( $_GET["field"] ) ){
+$searchButton = null;
+if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
+    $searchButton = "<input class='button' name='search' type='submit' value='Search'></td>";
+}
+
+if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
     $result = getStaffFormOption( $_GET["field"] );
     $selectedField = ( isset( $_GET['fieldValue'] ) ? $_GET['fieldValue'] : null );
     if( isset( $result ) ){
@@ -221,7 +226,7 @@ elseif( isset( $_GET["search"] ) ){
         border-collapse: collapse;
         left:50px;
         max-width: 875px;
-        min-width: 600px;
+        min-width: 800px;
         display: <?php echo $tableViewTable ?>;
     }
     .viewTable th{
@@ -574,7 +579,7 @@ $searchby =getlanguage('searchby', $language);
 
                             $selectedField = ( isset( $_GET["field"] ) ? $_GET["field"] : null );
                             $thisList = getFormOptions("searchStaff", 1);
-//                            echo "<option value=''> -- </option>\n";
+                            echo "<option value=''> -- </option>\n";
                             if( isset( $thisList ) ){
                                 foreach( $thisList as $listItem ){
                                     if( isset( $listItem[ 2 ] ) ){
@@ -592,7 +597,12 @@ $searchby =getlanguage('searchby', $language);
                         echo $fieldEnhancer;
                     ?>
                 </td>
-                <td><input class="button" name="search" type="submit" value=<?php echo getlanguage('search', $language)?>></td>
+                <td>
+                    <?php
+                    echo $searchButton;
+                    ?>
+                </td>
+<!--                    <input class="button" name="search" type="submit" value=--><?php //echo getlanguage('search', $language)?><!-->
             </tr>
             <!--<tr><td></td><td>&nbsp;</td></tr>
             <tr>
@@ -626,7 +636,7 @@ $searchby =getlanguage('searchby', $language);
                 $i = 1;
 
                 if (!isset($result)){
-//                    $result = getAllStaff();
+                    echo "<tr><td colspan='6'>&nbsp; No staff member matches that criteria. </td></tr>";
                 }
                 else{
                     foreach($result as $row)
