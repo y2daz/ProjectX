@@ -256,7 +256,7 @@
             if ($user->hasPerm('Staff Report')){
                 $navMenu .= "<li><a>Reports</a>\n";
                 $navMenu .= "<ul>\n";
-                $navMenu .= "<li><a id='staffReport' href=\"" . PATHFRONT . "/staffManagement/staffReport.php?start=0\" target=\"_blank\">" . "Full Staff Report" . "</a></li>\n";
+                $navMenu .= "<li><a id='staffReport' href=\"" . PATHFRONT . "/staffManagement/staffReport.php?start=0\" target=\"_blank\">" . "Full Staff Report" . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/generatestaffmember.php\">" . "Individual Staff Member Report " . "</a><hr /></li>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/classReport.php\" target=\"_blank\">" . "Class-Teacher Report" . "</a></li>\n";
                 $navMenu .= "</ul>\n";
