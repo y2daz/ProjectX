@@ -547,7 +547,8 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
 
     $set = null;
 
-//    $value = ( $operator == 0 ? "=" : ( $operator == 1 ? "$value%" : ( $operator == 2 ? "%$value" : "%$value%" ) ) );
+    $fieldValue = ( $operator == 0 ? $fieldValue : ( $operator == 1 ? "$fieldValue%" : ( $operator == 2 ? "%$fieldValue" : "%$fieldValue%" ) ) );
+    $operator = ( $operator == 0 ? "=" : "LIKE" );
 //    $operator = "LIKE";
 
     if ($mysqli->connect_errno) {
@@ -566,10 +567,8 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
-            echo "Yazdaan" . $result -> num_rows . " rows";
             $i = 0;
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++ ]=$row;
             }
         }

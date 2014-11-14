@@ -27,12 +27,13 @@ $tableViewTable = "none";
 $fullPageHeight = 600;
 $currentStaffMembers="";
 $fieldEnhancer = null;
+$isWord = "<span>&nbsp; is &nbsp;</span>";
 
 if( isset( $_GET["field"] ) ){
     $result = getStaffFormOption( $_GET["field"] );
     $selectedField = ( isset( $_GET['fieldValue'] ) ? $_GET['fieldValue'] : null );
     if( isset( $result ) ){
-        $fieldEnhancer = "<select id='Qr1' name='fieldValue' onchange='changeTextbox(this)' >\n";
+        $fieldEnhancer = "<select id='Qr1' name='fieldValue' >\n";
         if( isset( $result ) ){
             foreach( $result as $listItem ){
                 $fieldEnhancer .= "\t\t\t<option value='" . $listItem[0] . "'" . ( strcmp( $selectedField, $listItem[0] ) == 0 ? "selected" : "" ) .  "> $listItem[0] - $listItem[1] </option>\n";
@@ -40,11 +41,15 @@ if( isset( $_GET["field"] ) ){
         }
 
         $fieldEnhancer .= "</select>\n";
-        $numberBox = "<span>&nbsp; is &nbsp;</span>";
 //            $numberBox .= "<input class='number' id='NumberQr1' type='text' name='fieldValue' onkeyup='changeTextbox(this)'/>";
-        $fieldEnhancer = $numberBox . $fieldEnhancer;
+        $fieldEnhancer = $isWord . $fieldEnhancer;
     }
-}else{
+    else{
+        $fieldEnhancer = "<input type='text' id='Qr1' name='fieldValue' />";
+        $fieldEnhancer = $isWord . $fieldEnhancer;
+    }
+}
+else{
     $fieldEnhancer = "";
 }
 
@@ -110,12 +115,10 @@ if (isset($_POST["Submit"])) //User has clicked the submit button to update staf
 {
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
 
-    if ($operation)
-    {
+    if ($operation){
         sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"], parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
     }
-    else
-    {
+    else{
         sendNotification("Error updating information.");
     }
 }
@@ -555,7 +558,8 @@ $searchby =getlanguage('searchby', $language);
 
         <table id="info">
             <tr>
-                <td colspan="2"><label id="selection">Staff members with:
+                <td colspan="2">
+                    <label id="selection">Staff members with:
                         <select name="field" id="querySelect" >
                             <?php
 
@@ -606,11 +610,14 @@ $searchby =getlanguage('searchby', $language);
             <?php
 
             if ( isset( $_GET["search"] ) ){
+                $operator = isset( $_GET["operator"] );
+                //GET AND SET OPERATOR.
+
                 $result = searchStaff( $_GET["field"], $_GET["fieldValue"] );
                 $i = 1;
 
                 if (!isset($result)){
-                    $result = getAllStaff();
+//                    $result = getAllStaff();
                 }
                 else{
                     foreach($result as $row)
