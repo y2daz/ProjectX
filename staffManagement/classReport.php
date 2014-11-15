@@ -28,9 +28,6 @@ if(isset($_GET["logout"]))
     header("Location: " . PATHFRONT . "/Menu.php");
 }
 
-
-$result = getAllStaff();
-
 /*LANGUAGE
  *
  * */

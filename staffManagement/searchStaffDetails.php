@@ -29,11 +29,15 @@ $currentStaffMembers="";
 $fieldEnhancer = null;
 
 $searchButton = null;
-if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
-    $searchButton = "<input class='button' name='search' type='submit' value='Search'></td>";
-}
+//if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
+//    $searchButton = "<input class='button' name='search' type='submit' value='Search'></td>";
+//}
+//else{
+//    $searchButton = "<input class='button' name='searchAll' type='submit' value='View All Staff Members'></td>";
+//}
 
 if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
+    $searchButton = "<input class='button' name='search' type='submit' value='Search'></td>";
     $result = getStaffFormOption( $_GET["field"] );
     $selectedField = ( isset( $_GET['fieldValue'] ) ? $_GET['fieldValue'] : null );
     if( isset( $result ) ){
@@ -64,6 +68,7 @@ if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
     }
 }
 else{
+    $searchButton = "<input class='button' name='searchAll' type='submit' value='View All Staff Members'></td>";
     $fieldEnhancer = "";
 }
 
@@ -200,12 +205,16 @@ if (isset($_GET["expand"]))
         $Salary = $row[$i++];
     }
 
-    $fullPageHeight = 1500;
+    $fullPageHeight = 1100;
 
     $tableDetails= "block";
     $tableViewTable= "none";
 }
 elseif( isset( $_GET["search"] ) ){
+    $tableDetails= "none";
+    $tableViewTable= "block";
+}
+elseif( isset( $_GET["searchAll"] ) ){
     $tableDetails= "none";
     $tableViewTable= "block";
 }
@@ -599,7 +608,7 @@ $searchby =getlanguage('searchby', $language);
                 </td>
                 <td>
                     <?php
-                    echo $searchButton;
+                        echo $searchButton;
                     ?>
                 </td>
 <!--                    <input class="button" name="search" type="submit" value=--><?php //echo getlanguage('search', $language)?><!-->
@@ -628,32 +637,36 @@ $searchby =getlanguage('searchby', $language);
             </tr>
             <?php
 
+            $result = NULL;
             if ( isset( $_GET["search"] ) ){
                 $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
                 //GET AND SET OPERATOR.
 
                 $result = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator );
-                $i = 1;
+            }
+            elseif( isset( $_GET["searchAll"] ) ){
+                $result = getAllStaff();
+            }
+            $i = 1;
 
-                if (!isset($result)){
-                    echo "<tr><td colspan='6'>&nbsp; No staff member matches that criteria. </td></tr>";
+            if (!isset( $result ) ){
+                echo "<tr><td colspan='6'>&nbsp; No staff member matches that criteria. </td></tr>";
+            }
+            else{
+                foreach($result as $row)
+                {
+                    echo "<tr><td>";
+                    echo "$row[0]<td/>\n";
+                    echo "<td>$row[1]</td>\n";
+                    echo "<td>$row[2]</td>\n";
+                    echo "<td>$row[3]</td>\n";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n ";
+                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                        . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n ";
+                    echo "</td>\n</tr>";
+                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n" : "");
                 }
-                else{
-                    foreach($result as $row)
-                    {
-                        echo "<tr><td>";
-                        echo "$row[0]";
-                        echo "<td>$row[1]</td>";
-                        echo "<td>$row[2]</td>";
-                        echo "<td>$row[3]</td>";
-                        echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td> ";
-                        echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
-                            . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td> ";
-                        echo "</td></tr>";
-                        echo ($i++ % 5 == 0 ? "<tr class=\"blank\"><td colspan='6'>&nbsp;</td>" : "");
-                    }
-                }
-                $fullPageHeight = ( 600 + ($i * 28) );
+                $fullPageHeight = ( 400 + ($i * 28) );
             }
 
             ?>

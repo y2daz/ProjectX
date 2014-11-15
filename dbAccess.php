@@ -758,9 +758,8 @@ function getNewStaffNo()
     $mysqli->close();
 } //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
 
-function getAllStaff()
+function getAllStaff( $start = 0 , $limit = 20 )
 {
-
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -770,15 +769,13 @@ function getAllStaff()
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId + 0;"))
-    {
-        if ($stmt->execute())
-        {
+    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId + 0 LIMIT ?, ?;")){
+        $stmt -> bind_param("ii", $start, $limit);
+        if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++ ]=$row;
+            while($row = $result->fetch_array()){
+                $set[ $i++ ] = $row;
             }
         }
     }
