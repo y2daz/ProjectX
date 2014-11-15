@@ -233,7 +233,7 @@ elseif( isset( $_GET["searchAll"] ) ){
     .viewTable{
         position: relative;
         border-collapse: collapse;
-        left:50px;
+        left:40px;
         max-width: 875px;
         min-width: 800px;
         display: <?php echo $tableViewTable ?>;
@@ -242,13 +242,18 @@ elseif( isset( $_GET["searchAll"] ) ){
         font-weight: 600;
         color:white;
         background-color: #005e77;
+        padding: 10px 8px 12px 10px;
+        /*padding-left: 10px;*/
+        /*padding-right: 12px;*/
+        /*padding-top: 4px;*/
+        /*padding-bottom: 4px;*/
     }
     .viewTable td{
         padding-left: 10px;
         padding-right: 12px;
         padding-top: 4px;
         padding-bottom: 4px;
-        min-width: 60px;
+        /*min-width: 60px;*/
     }
     .details {
         position: relative;
@@ -285,6 +290,12 @@ elseif( isset( $_GET["searchAll"] ) ){
         font-size:15px;
         right:-150px;
         top:100px;
+    }
+    .left{
+        text-align: left;
+    }
+    .right{
+        text-align: right;
     }
 </style>
 <script>
@@ -627,11 +638,11 @@ $searchby =getlanguage('searchby', $language);
 
     <form method="post">
         <table id="staffList" class="viewTable">
-            <tr>
-                <th><?php echo getLanguage('staffID', $language)?></th>
+            <tr class="left">
+                <th class="right"><?php echo getLanguage('staffID', $language)?></th>
                 <th><?php echo getLanguage('nameWithInitials', $language)?></th>
                 <th><?php echo getLanguage('nicNumber', $language)?></th>
-                <th><?php echo getLanguage('contactnumber', $language)?></th>
+                <th class="right"><?php echo getLanguage('contactnumber', $language)?></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -655,16 +666,16 @@ $searchby =getlanguage('searchby', $language);
             else{
                 foreach($result as $row)
                 {
-                    echo "<tr><td>";
-                    echo "$row[0]<td/>\n";
-                    echo "<td>$row[1]</td>\n";
-                    echo "<td>$row[2]</td>\n";
-                    echo "<td>$row[3]</td>\n";
-                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n ";
+                    echo "<tr class='left'>\n\t\t";
+                    echo "<td class='right'>$row[0]</td>\n\t\t";
+                    echo "<td>$row[1]</td>\n\t\t";
+                    echo "<td>$row[2]</td>\n\t\t";
+                    echo "<td class='right'>$row[3]</td>\n\t\t";
+                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n\t\t ";
                     echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
-                        . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n ";
-                    echo "</td>\n</tr>";
-                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n" : "");
+                        . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";
+                    echo "</tr>";
+                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
                 }
                 $fullPageHeight = ( 400 + ($i * 28) );
             }

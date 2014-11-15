@@ -1056,12 +1056,18 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT l.CasualLeave, l.MedicalLeave, l.DutyLeave, s.NamewithInitials, s.Section, s.PositioninSchool FROM LeaveData l, Staff s WHERE l.StaffID = ? AND s.StaffID = l.StaffID"))
+    if($stmt = $mysqli->prepare("SELECT l.CasualLeave, l.MedicalLeave, l.DutyLeave, s.NamewithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
+                                FROM LeaveData l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
+                                    FormOption fSection, FormOption fDesignation
+                                WHERE l.StaffId = ?
+                                    AND fSection.Number = s.Section
+                                    AND fSection.Label = 'Section'
+                                    AND fDesignation.Number = s.Designation
+                                    AND fDesignation.Label = 'Designation'"))
     {
         $stmt->bind_param("s", $StaffID);
 
-        if($stmt->execute())
-        {
+        if($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
             if($result->num_rows == 0){
@@ -1069,11 +1075,9 @@ function getLeaveData($StaffID)
                 return null;
             }
 
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++ ]=$row;
             }
-
         }
     }
     $mysqli->close();

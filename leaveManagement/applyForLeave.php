@@ -40,8 +40,7 @@
     {
         $checkStaffMember = checkStaffMember($_POST["staffid"]);
 
-        if($checkStaffMember)
-        {
+        if($checkStaffMember){
             $result = getLeaveData( $_POST["staffid"] );
 
             $row = $result[0];
@@ -52,8 +51,7 @@
 
             insertLeaveFunc();
         }
-        else
-        {
+        else{
             sendNotification("Staff Member Does Not Exist!");
         }
     }
@@ -74,7 +72,6 @@
             $StaffName = $row[3];
             $sectionVal = $row[4];
             $designationVal = $row[5];
-
         }
 
         $staffIdVal = $_POST["newStaffID"];
@@ -208,19 +205,32 @@
                         $("#enddate").attr("min", $("#startdate").val() );
                 });
 
-
-
                 $(".changeNoDays")
                     .val("0")
                     .on("input", function(){
-                        var total = ( 0.5 * parseInt( $("#noOfShort").val() ) ) + parseInt( $("#noOfCasual").val() ) + parseInt( $("#noOfMedical").val() ) +
+                        var total = parseInt( $("#noOfCasual").val() ) + parseInt( $("#noOfMedical").val() ) +
                             parseInt( $("#noOfDuty").val() ) + parseInt( $("#noOfNoPay").val() );
                         $("#noOfTotal").val( total );
                 });
 
-                var totalTaken = ( 2 * parseInt( $("#noOfShort").val() ) ) + parseInt( $("#noOfCasualTaken").val() ) + parseInt( $("#noOfMedicalTaken").val() ) +
+                var totalTaken = parseInt( $("#noOfCasualTaken").val() ) + parseInt( $("#noOfMedicalTaken").val() ) +
                     parseInt( $("#noOfDutyTaken").val() ) + parseInt( $("#noOfNoPayTaken").val() );
                 $("#noOfTotalTaken").val( totalTaken );
+
+                $( "[name='leaveType']").on("change", function(){
+                    var lType = $(this).attr("value");
+
+                    if( lType == "full"){
+                        $("#fullLeave").show();
+                        $("#shortLeave").hide();
+                    }
+                    else{
+                        $("#fullLeave").hide();
+                        $("#shortLeave").show();
+                    }
+                });
+
+                $( "[name='leaveType']" ).click();
             });
 
         </script>
@@ -253,58 +263,79 @@
                     <td><input type="text" name="designation" value="<?php echo $designationVal ?>" required="true" readonly /></td>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        <table class="innerTable">
-                            <tr>
-                                <th>Days</th>
-                                <th>Short</th>
-                                <th>Casual</th>
-                                <th>Medical</th>
-                                <th>Duty</th>
-                                <th>No Pay</th>
-                                <th>Total</th>
-                            </tr>
-                            <tr>
-                                <td>Applying</td>
-                                <td> <input id="noOfShort" class="changeNoDays" type="number" min="0" max="21" name="noOfShort" /> </td>
-                                <td> <input id="noOfCasual" class="changeNoDays" type="number" min="0" max="21" name="noOfCasual" /> </td>
-                                <td> <input id="noOfMedical" class="changeNoDays" type="number" min="0" max="20" name="noOfMedical" /> </td>
-                                <td> <input id="noOfDuty" class="changeNoDays" type="number" min="0" max="99" name="noOfDuty" /> </td>
-                                <td> <input id="noOfNoPay" class="changeNoDays" type="number" min="0" max="99" name="noOfNoPay" /> </td>
-                                <td> <input id="noOfTotal" type="number" min="1" max="366" name="noTotal" readonly /> </td>
-                            </tr>
-                            <tr>
-                                <td>Taken</td>
-                                <td> <input id="noOfShortTaken" type="number" min="0" max="21" name="noOfShortTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
-                                <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
-                                <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $MedicalLeave ?>" /> </td>
-                                <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
-                                <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
-                                <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly /> </td>
-                            </tr>
-                        </table>
-
+                    <td>
+                        <label> <input type="radio" name="leaveType" value="short" checked/> Short leave </label>
+                    </td>
+                    <td>
+                        <label> <input type="radio" name="leaveType" value="full"/> Full leave</label>
                     </td>
                 </tr>
-                <tr>
-                    <td>Reason</td>
-                    <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
-                </tr>
-                <tr>
-                    <td><?php echo $startdate ?></td>
-                    <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
-                </tr>
-                <tr>
-                    <td><?php echo $enddate ?></td>
-                    <td><input id="enddate" type="date" name="endDate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
-                </tr>
             </table>
-            <br />
 
-            <p align="center">
-                <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
-                <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
-            </p>
+            <div id="fullLeave">
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <table class="innerTable">
+                                <tr>
+                                    <th>Days</th>
+<!--                                    <th>Short</th>-->
+                                    <th>Casual</th>
+                                    <th>Medical</th>
+                                    <th>Duty</th>
+                                    <th>No Pay</th>
+                                    <th>Total</th>
+                                </tr>
+                                <tr>
+                                    <td>Applying</td>
+<!--                                    <td> <input id="noOfShort" class="changeNoDays" type="number" min="0" max="21" name="noOfShort" /> </td>-->
+                                    <td> <input id="noOfCasual" class="changeNoDays" type="number" min="0" max="21" name="noOfCasual" /> </td>
+                                    <td> <input id="noOfMedical" class="changeNoDays" type="number" min="0" max="20" name="noOfMedical" /> </td>
+                                    <td> <input id="noOfDuty" class="changeNoDays" type="number" min="0" max="99" name="noOfDuty" /> </td>
+                                    <td> <input id="noOfNoPay" class="changeNoDays" type="number" min="0" max="99" name="noOfNoPay" /> </td>
+                                    <td> <input id="noOfTotal" type="number" min="1" max="366" name="noTotal" readonly /> </td>
+                                </tr>
+                                <tr>
+                                    <td>Taken</td>
+<!--                                    <td> <input id="noOfShortTaken" type="number" min="0" max="21" name="noOfShortTaken" readonly value="--><?php //echo $CasualLeave ?><!--" /> </td>-->
+                                    <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
+                                    <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $MedicalLeave ?>" /> </td>
+                                    <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
+                                    <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
+                                    <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly /> </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reason</td>
+                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $startdate ?></td>
+                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $enddate ?></td>
+                        <td><input id="enddate" type="date" name="endDate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
+                    </tr>
+                </table>
+                <br />
+                <p align="center">
+                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
+                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
+                </p>
+            </div>
+            <div id="shortLeave">
+                <h1>Short Leave</h1>
+                <br />
+                <p align="center">
+                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
+                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
+                </p>
+            </div>
+
 
         </form>
     </body>
