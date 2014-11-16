@@ -37,7 +37,7 @@ $searchButton = null;
 //}
 
 if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
-    $searchButton = "<input class='button' name='search' type='submit' value='Search'></td>";
+    $searchButton = "<input name='search' type='submit' value='Search'></td>";
     $result = getStaffFormOption( $_GET["field"] );
     $selectedField = ( isset( $_GET['fieldValue'] ) ? $_GET['fieldValue'] : null );
     if( isset( $result ) ){
@@ -218,6 +218,10 @@ elseif( isset( $_GET["searchAll"] ) ){
     $tableDetails= "none";
     $tableViewTable= "block";
 }
+else{
+    $tableDetails= "none";
+    $tableViewTable= "none";
+}
 
 
 ?>
@@ -275,6 +279,41 @@ elseif( isset( $_GET["searchAll"] ) ){
     .details td {
         padding:5px;
     }
+    .pagination{
+        display: <?php echo $tableViewTable ?>;
+        position: relative;
+        text-align: center;
+        left: 40%;
+    }
+    .pagination .pageButton{
+        position:inherit;
+        /*display: block;*/
+        height: 30px;
+        width: 60px;
+        background-color: #005e77;
+        color: #efefef;
+        padding: 5px 10px 5px 10px;
+        text-align: center;
+        border-radius: 2px;
+        cursor: pointer; cursor: hand;
+    }
+    .pagination .pageButton{
+        color: #efefef;
+    }
+    .pagination .enabled{
+        color: #efefef;
+    }
+    .pagination .enabled:active{
+        color: #efefef;
+        background-color: #ffffff;
+    }
+    .pagination .pageButton{
+
+        text-decoration: none;
+    }
+    .pagination .pageButton:visited{
+        text-decoration: none;
+    }
     .labelCol{
         max-width: 100px;
         min-width: 100px;
@@ -283,13 +322,6 @@ elseif( isset( $_GET["searchAll"] ) ){
         max-width: 20px;
         margin-right: 8px;
         margin-left: 4px;
-    }
-    input .button1 {
-        position:relative;
-        font-weight:bold;
-        font-size:15px;
-        right:-150px;
-        top:100px;
     }
     .left{
         text-align: left;
@@ -636,6 +668,28 @@ $searchby =getlanguage('searchby', $language);
     </form>
     <br />
 
+    <div id="pagination" class="pagination">
+        <?php $pageNo = intval( isset( $_GET["pageNo"] ) ? $_GET["pageNo"]: 1 ); ?>
+        <table>
+            <tr>
+                <?php
+                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                if ($pageNo > 1 ){
+                    echo "<td><a class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
+                }
+                else{
+                    echo "<td><a  class='pageButton' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
+                }
+                if( strcmp( $tableViewTable, "block" ) == 0 ){
+                    echo "<td><a  class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo + 1 ) ) .  "'>Next</td>";
+                }
+                ?>
+            </tr>
+        </table>
+    </div>
+
+    <br />
+
     <form method="post">
         <table id="staffList" class="viewTable">
             <tr class="left">
@@ -677,7 +731,7 @@ $searchby =getlanguage('searchby', $language);
                     echo "</tr>";
                     echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
                 }
-                $fullPageHeight = ( 400 + ($i * 28) );
+                $fullPageHeight = ( 500 + ($i * 28) );
             }
 
             ?>
