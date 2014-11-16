@@ -264,10 +264,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label> <input type="radio" name="leaveType" value="short" checked/> Short leave </label>
+                        <label> <input type="radio" name="leaveType" value="short" checked/> Less than one day </label>
                     </td>
                     <td>
-                        <label> <input type="radio" name="leaveType" value="full"/> Full leave</label>
+                        <label> <input type="radio" name="leaveType" value="full"/> Other </label>
                     </td>
                 </tr>
             </table>
@@ -337,6 +337,10 @@
 
                 <table>
                     <tr>
+                        <td>Date</td>
+                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                    </tr>
+                    <tr>
                         <td colspan="3">
                             <table class="innerTable">
                                 <tr>
@@ -364,10 +368,6 @@
                     <tr>
                         <td>Reason</td>
                         <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>Date</td>
-                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
                     </tr>
                 </table>
 
