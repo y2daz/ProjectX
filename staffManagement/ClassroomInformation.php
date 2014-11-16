@@ -96,7 +96,7 @@ if( isset($_GET["grade"]) )
             }
             .ClassroomTable .alt, .ClassroomTable .alt td{
                 font-size: .1em;
-                background-color: #bed9ff;
+                background-color: #005e77;
                 padding: 0 0;
             }
         </style>

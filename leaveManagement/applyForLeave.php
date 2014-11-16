@@ -347,11 +347,13 @@
                                     <td>Applying</td>
                                     <td >
                                         <label> <input type="radio" name="shortLeave" value="late" checked/> Late </label> </td>
-                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> half Day</label>
+                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> Half Day</label></td>
+                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> Short Leave</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Days taken this month</td>
+                                    <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly  /> </td>
                                     <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly  /> </td>
                                     <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly  /> </td>
                                 </tr>

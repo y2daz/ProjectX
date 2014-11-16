@@ -845,7 +845,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 </html>
 <?php
 //Change these to what you want
-$fullPageHeight = 1400 + ($language * 400);
+$fullPageHeight = 1100 + ($language * 0);
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Staff Registration";
 //Only change above
