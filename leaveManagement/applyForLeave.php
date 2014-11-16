@@ -309,6 +309,10 @@
                         </td>
                     </tr>
                     <tr>
+                        <td>Address when on Leave</td>
+                        <td><input type="text" name="address" value="" /></td>
+                    </tr>
+                    <tr>
                         <td>Reason</td>
                         <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
                     </tr>
@@ -321,14 +325,50 @@
                         <td><input id="enddate" type="date" name="endDate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
                     </tr>
                 </table>
-                <br />
+
+
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
                     <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
                 </p>
             </div>
+
             <div id="shortLeave">
-                <h1>Short Leave</h1>
+
+                <table>
+                    <tr>
+                        <td colspan="3">
+                            <table class="innerTable">
+                                <tr>
+                                    <th></th>
+                                    <th colspan="3" style="text-align: center">Leave Type</th>
+                                </tr>
+                                <tr>
+                                    <td>Applying</td>
+                                    <td >
+                                        <label> <input type="radio" name="shortLeave" value="late" checked/> Late </label> </td>
+                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> half Day</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Days taken this month</td>
+                                    <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly  /> </td>
+                                    <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly  /> </td>
+                                </tr>
+                            </table>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Reason</td>
+                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Date</td>
+                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                    </tr>
+                </table>
+
                 <br />
                 <p align="center">
                     <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
@@ -343,7 +383,7 @@
 
 <?php
     //Assign all Page Specific variables
-    $fullPageHeight = 800;
+    $fullPageHeight = 900;
     $footerTop = $fullPageHeight + 100;
     $pageTitle= "Apply for Leave";
 
