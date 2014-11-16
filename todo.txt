@@ -103,6 +103,8 @@ class allocation, use impromptu and shizzle
 justify about us text. remove sir's name... :P
     remove "developed for ds"
 
+short leave database amd full
+
 
 PREPARE LIST OF QUESTIONS TO ASK DS.
 
