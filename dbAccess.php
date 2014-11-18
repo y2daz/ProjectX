@@ -570,7 +570,7 @@ function deleteStaff($staffID)
             $result = $stmt->get_result();
             $row = $result -> fetch_array();
             $noOfRows = $row[0];
-            echo "No of rows = $noOfRows";
+//            echo "No of rows = $noOfRows";
         }
     }
 
@@ -592,7 +592,7 @@ function deleteStaff($staffID)
         $maxPages++;
     }
     $maxPages = ( $maxPages == 0 ? 1 : $maxPages );
-    echo "max page = $maxPages";
+//    echo "max page = $maxPages";
 
     $returnArray = array($maxPages, $set);
     return $returnArray;
@@ -798,7 +798,7 @@ function getNewStaffNo()
             $result = $stmt->get_result();
             $row = $result -> fetch_array();
             $noOfRows = $row[0];
-            echo "No of rows = $noOfRows";
+//            echo "No of rows = $noOfRows";
         }
     }
 
@@ -818,7 +818,7 @@ function getNewStaffNo()
     if ( $noOfRows % $limit > 0 ){
         $maxPages++;
     }
-    echo "max page = $maxPages";
+//    echo "max page = $maxPages";
 
     $returnArray = array($maxPages, $set);
     return $returnArray;

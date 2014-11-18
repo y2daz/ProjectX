@@ -241,6 +241,42 @@ else{
 }
 
 
+function printPagination( $pageNo, $maxPage, $position = "top" ){
+    if( $maxPage <= 1 ){
+        return;
+    }
+
+    if( strcmp( $position, "top" ) == 0 ){
+        echo "<div id='paginationTop' class='pagination'>";
+    }
+    else{
+        echo "<div id='paginationBot' class='pagination'>";
+    }
+    ?>
+    <table>
+        <tr>
+            <?php
+            $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            if ($pageNo > 1 ){
+                echo "<td><a class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
+            }
+            else{
+                echo "<td><a class='pageButton' href='#'>Previous</a></td>";
+            }
+            if( $maxPage > $pageNo ){
+                echo "<td><a  class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo + 1 ) ) .  "'>Next</td>";
+            }
+            else{
+                echo "<td><a  class='pageButton' href='#' >Next</td>";
+            }
+            ?>
+        </tr>
+    </table>
+    </div>
+<?php
+}
+
+
 ?>
 <head>
 <style type=text/css>
@@ -296,11 +332,20 @@ else{
     .details td {
         padding:5px;
     }
+    #paginationTop{
+        position: relative;
+        left: 617px;
+        top: 15px;
+    }
+    #paginationBot{
+        position: relative;
+        left: 320px;
+        /*top: -15px;*/
+    }
     .pagination{
         display: <?php echo $tableViewTable ?>;
-        position: relative;
+
         text-align: center;
-        left: 40%;
     }
     .pagination .pageButton{
         position:inherit;
@@ -690,27 +735,9 @@ $searchby =getlanguage('searchby', $language);
     </form>
     <br />
 
-    <div id="pagination" class="pagination">
-        <table>
-            <tr>
-                <?php
-                $fullUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                if ($pageNo > 1 ){
-                    echo "<td><a class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
-                }
-                else{
-                    echo "<td><a class='pageButton' href='#'>Previous</a></td>";
-                }
-                if( $maxPage > $pageNo ){
-                    echo "<td><a  class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo + 1 ) ) .  "'>Next</td>";
-                }
-                else{
-                    echo "<td><a  class='pageButton' href='#' >Next</td>";
-                }
-                ?>
-            </tr>
-        </table>
-    </div>
+    <?php
+    printPagination($pageNo, $maxPage);
+    ?>
 
     <br />
 
@@ -745,12 +772,18 @@ $searchby =getlanguage('searchby', $language);
                     echo "</tr>";
                     echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
                 }
+                //Print an mepty row at the end if not printed
+                echo ( ($i - 1) % 5 != 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
                 $fullPageHeight = ( 500 + ($i * 28) );
             }
 
             ?>
         </table>
     </form>
+
+    <?php
+    printPagination($pageNo, $maxPage, "Bot");
+    ?>
 
     <form method="post">
         <table class="details" >
