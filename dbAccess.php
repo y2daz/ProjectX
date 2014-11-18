@@ -958,9 +958,12 @@ function getStaffID( $staffNo ){
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("SELECT `StaffID`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `RequestDate`, `StartDate`,
-                `EndDate`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`, `isDeleted`
-                FROM ApplyLeave WHERE StaffID = ? AND isDeleted <> 0 ORDER BY RequestDate"))
+    if ($stmt = $mysqli->prepare("  SELECT `StaffID`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `RequestDate`, `StartDate`,
+                                      `EndDate`, `AddressOnLeave`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`, `isDeleted`
+                                    FROM FullLeave
+                                    WHERE StaffID = ?
+                                      AND isDeleted <> 0
+                                    ORDER BY RequestDate"))
     {
         $stmt -> bind_param("s", $StaffID);
 
@@ -979,7 +982,7 @@ function getStaffID( $staffNo ){
 
 } //Returns all the applied leave of a non deleted staff member
 
-function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate, $endDate, $reason)
+/**/function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate, $endDate, $addressOnLeave, $reason)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -989,7 +992,7 @@ function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate,
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO ApplyLeave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO FullLeave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
     {
         $isDeleted = 0;
         $currentDate = date("Y-m-d");
@@ -997,7 +1000,8 @@ function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate,
         $reviewedBy = null;
         $reviewedDate = null;
 
-        $stmt -> bind_param("siiissssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $currentDate, $startDate, $endDate, $reason, $status, $reviewedBy, $reviewedDate, $isDeleted);
+        $stmt -> bind_param("siiisssssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $currentDate, $startDate, $endDate, $addressOnLeave,
+            $reason, $status, $reviewedBy, $reviewedDate, $isDeleted);
 
         $query = $mysqli->prepare("SELECT `StaffID`, `CasualLeave`, `MedicalLeave`, `DutyLeave`, `isDeleted` FROM LeaveData WHERE StaffID = ?");
         $query -> bind_param("i", $staffId);
@@ -1007,13 +1011,10 @@ function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate,
         $rows = $query->num_rows;
         $query->close();
 
-        if($rows == 0)
-        {
+        if($rows == 0){
             insertNewLeaveData( $staffId );
         }
-
-        if ($stmt->execute())
-        {
+        if ($stmt->execute()){
             $stmt->close();
             $mysqli->close();
             return true;
@@ -1038,7 +1039,7 @@ function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate,
 
     $set = NULL;
 
-    if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, Reason FROM ApplyLeave WHERE StaffID = ? ORDER BY RequestDate"))
+    if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, Reason FROM FullLeave WHERE StaffID = ? ORDER BY RequestDate"))
     {
         $stmt->bind_param("s", $StaffID);
 
@@ -1070,9 +1071,11 @@ function insertNewLeaveData($staffID){
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    $noCasualLeave = 21;
-    $noMedicalLeave = 20;
-    $noDutyLeave = 20;
+    $config = getConfigData();
+
+    $noCasualLeave = $config[ "noCasualLeave" ];
+    $noMedicalLeave = $config[ "noMedicalLeave" ];
+    $noDutyLeave = $config[ "noDutyLeave" ];
 
     if($stmt = $mysqli->prepare("INSERT INTO LeaveData (StaffID, CasualLeave, MedicalLeave, DutyLeave) VALUES ( ?, ?, ?, ? );"))
     {
@@ -1135,7 +1138,7 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials, l.LeaveType, l.RequestDate, l.Status, l.StartDate, s.ContactNumber FROM ApplyLeave l, Staff s WHERE l.StaffId = s.StaffId AND l.Status = 0 AND l.isDeleted = 0 ORDER BY l.StartDate, l.RequestDate"))
+    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials, l.LeaveType, l.RequestDate, l.Status, l.StartDate, s.ContactNumber FROM FullLeave l, Staff s WHERE l.StaffId = s.StaffId AND l.Status = 0 AND l.isDeleted = 0 ORDER BY l.StartDate, l.RequestDate"))
     {
         if ($stmt->execute())
         {
@@ -1164,7 +1167,7 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.RequestDate, l.StartDate, l.EndDate, l.Status, l.reason, ld.CasualLeave, ld.MedicalLeave, ld.DutyLeave, s.ContactNumber FROM ApplyLeave l, Staff s, LeaveData ld WHERE l.StaffId=? AND s.StaffId = l.StaffId AND l.StartDate=? AND l.StaffId = ld.StaffId;"))
+    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.RequestDate, l.StartDate, l.EndDate, l.Status, l.reason, ld.CasualLeave, ld.MedicalLeave, ld.DutyLeave, s.ContactNumber FROM FullLeave l, Staff s, LeaveData ld WHERE l.StaffId=? AND s.StaffId = l.StaffId AND l.StartDate=? AND l.StaffId = ld.StaffId;"))
     {
         $stmt->bind_param("ss", $StaffID, $sDate);
 
@@ -1207,7 +1210,7 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if($stmt = $mysqli->prepare("UPDATE  ApplyLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?, a.CasualLeave=?, a.MedicalLeave=?, a.DutyLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+    if($stmt = $mysqli->prepare("UPDATE  FullLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?, a.CasualLeave=?, a.MedicalLeave=?, a.DutyLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
     {
         $ReviewedDate = date("Y-m-d");
 
@@ -1234,7 +1237,7 @@ function rejectLeave($StaffID, $sDate, $ReviewedBy)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("UPDATE ApplyLeave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
+    if($stmt = $mysqli->prepare("UPDATE FullLeave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
     {
         $status = 2;
         $ReviewedDate = date("Y-m-d");

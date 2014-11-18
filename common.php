@@ -83,4 +83,17 @@
         return substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);
     }
 
+/**
+ * Getting configuration information
+ */
+
+    function getConfigData(){
+        $config = include( "configuration/data.php" );
+        return $config;
+    }
+
+    function storeConfigData( $config ){
+        file_put_contents( "configuration/data.php", '<?php return ' . var_export($config, true) . ';' );
+    }
+
 ?>

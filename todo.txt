@@ -1,6 +1,7 @@
 STAFF nO FULL IMPLEMENTATION
 >Register Staff member allow enter staff no
 >Suggest staff number
+>Delete staff nod when deleting members
 >search by staff number
 >resetting staff numbers
 >allocating staff numbers
@@ -16,8 +17,6 @@ leave taken in leave application interface
 search leave by everything for staff
 
 qualifications interface
-
-section designation all other big dropdown listed stuffs sql database
 
 no pay leave database part
 
