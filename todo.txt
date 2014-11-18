@@ -91,7 +91,9 @@ logout top right corner
 show current logged in user
 
 edu emp id
-school staff id
+school staff
+
+css cleaning
 
 show year of staffid when registering/updating
 

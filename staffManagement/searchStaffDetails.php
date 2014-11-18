@@ -155,6 +155,23 @@ if (isset($_GET["valueName"]) && isset($_GET["valueMember"])) //Deletes a staff 
     }
 }
 
+
+$tableData = NULL;
+$pageNo = intval( isset( $_GET["pageNo"] ) ? $_GET["pageNo"]: 1 );
+
+if ( isset( $_GET["search"] ) ){
+    $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
+    //GET AND SET OPERATOR.
+
+    $tableData = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator, "StaffId", "asc", ( $pageNo - 1 ) * 20 );
+}
+elseif( isset( $_GET["searchAll"] ) ){
+    $tableData = getAllStaff( ( $pageNo - 1 ) * 20 );
+}
+
+$maxPage = $tableData[0];
+$tableData = $tableData[1];
+
 $staffid="";
 $NamewithInitials ="";
 $DateofBirth = "";
@@ -300,15 +317,17 @@ else{
     .pagination .pageButton{
         color: #efefef;
     }
-    .pagination .enabled{
-        color: #efefef;
+    .enabled{
+        -webkit-transition: background-color 0.05s ease;
+        transition: background-color 0.05s ease;
     }
-    .pagination .enabled:active{
-        color: #efefef;
-        background-color: #ffffff;
+    .enabled:hover{
+        background-color: rgba(0, 134, 170, 1);
+    }
+    .enabled:active{
+        background-color: rgba(0, 54, 68, 1);
     }
     .pagination .pageButton{
-
         text-decoration: none;
     }
     .pagination .pageButton:visited{
@@ -328,6 +347,9 @@ else{
     }
     .right{
         text-align: right;
+    }
+    .center{
+        text-align: center;
     }
 </style>
 <script>
@@ -669,7 +691,6 @@ $searchby =getlanguage('searchby', $language);
     <br />
 
     <div id="pagination" class="pagination">
-        <?php $pageNo = intval( isset( $_GET["pageNo"] ) ? $_GET["pageNo"]: 1 ); ?>
         <table>
             <tr>
                 <?php
@@ -678,10 +699,13 @@ $searchby =getlanguage('searchby', $language);
                     echo "<td><a class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
                 }
                 else{
-                    echo "<td><a  class='pageButton' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo - 1 ) ) .  "'>Previous</a></td>";
+                    echo "<td><a class='pageButton' href='#'>Previous</a></td>";
                 }
-                if( strcmp( $tableViewTable, "block" ) == 0 ){
+                if( $maxPage > $pageNo ){
                     echo "<td><a  class='pageButton enabled' href='" . merge_querystring( $fullUrl ,'?pageNo=' . ( $pageNo + 1 ) ) .  "'>Next</td>";
+                }
+                else{
+                    echo "<td><a  class='pageButton' href='#' >Next</td>";
                 }
                 ?>
             </tr>
@@ -702,23 +726,13 @@ $searchby =getlanguage('searchby', $language);
             </tr>
             <?php
 
-            $result = NULL;
-            if ( isset( $_GET["search"] ) ){
-                $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
-                //GET AND SET OPERATOR.
-
-                $result = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator );
-            }
-            elseif( isset( $_GET["searchAll"] ) ){
-                $result = getAllStaff();
-            }
             $i = 1;
 
-            if (!isset( $result ) ){
-                echo "<tr><td colspan='6'>&nbsp; No staff member matches that criteria. </td></tr>";
+            if (!isset( $tableData) ){
+                echo "<tr><td colspan='6' class='center'>&nbsp; No staff member matches that criteria. </td></tr>";
             }
             else{
-                foreach($result as $row)
+                foreach($tableData as $row)
                 {
                     echo "<tr class='left'>\n\t\t";
                     echo "<td class='right'>$row[0]</td>\n\t\t";
@@ -977,7 +991,7 @@ $searchby =getlanguage('searchby', $language);
             </tr>
             <tr><td colspan="3">&nbsp;</td></tr>
             <tr>
-                <td colspan="3" style="text-align: center"><input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
+                <td colspan="3" class="center" ><input type="Submit" name="Submit" value=<?php echo getLanguage('update', $language)?>></td>
             </tr>
         </table>
 
@@ -995,6 +1009,6 @@ $pageTitle= "Search Staff Details";
 $pageContent = ob_get_contents();
 ob_end_clean();
 //Apply the template
-require_once(THISROOT . "/Master.php");
+require_once("../Master.php");
 ?>
 

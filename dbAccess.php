@@ -533,7 +533,7 @@ function deleteStaff($staffID)
     return false;
 } //Deletes a staff member along with their classroom and their timetable
 
-function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20 ){ //Searches for $limit staff members with $field $operator $value from $start
+/**/ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20 ){ //Searches for $limit staff members with $field $operator $value from $start
     /**
      * $operator values
      * 0 = Exactly equal
@@ -546,6 +546,7 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
     $mysqli = $dbObj->getConnection();
 
     $set = null;
+    $noOfRows = 0;
 
     $fieldValue = ( $operator == 0 ? $fieldValue : ( $operator == 1 ? $fieldValue . "%"  : ( $operator == 2 ? "%" . $fieldValue : "%" . $fieldValue . "%" ) ) );
     $operator = ( $operator == 0 ? "LIKE" : "LIKE" );
@@ -558,8 +559,20 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
     $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
     $query .= 'ORDER BY ' . $orderField . ' + 0 ' . $order .  ' LIMIT ?, ?;';
 
+    $numberQuery = 'Select COUNT(*) FROM Staff WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
+
 //    echo "field $field, value $fieldValue, Yazdaan";
 //    echo "<br />" . " query = " . $query . "<br /> ";
+    if ($stmt = $mysqli->prepare( $numberQuery )){
+        $stmt -> bind_param("s", $fieldValue);
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $row = $result -> fetch_array();
+            $noOfRows = $row[0];
+            echo "No of rows = $noOfRows";
+        }
+    }
 
     if ($stmt = $mysqli->prepare( $query )){
         $stmt -> bind_param("sii", $fieldValue, $start, $limit );
@@ -573,7 +586,16 @@ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID
         }
     }
     $mysqli->close();
-    return $set;
+
+    $maxPages = intval( $noOfRows / $limit );
+    if ( $noOfRows % $limit > 0 ){
+        $maxPages++;
+    }
+    $maxPages = ( $maxPages == 0 ? 1 : $maxPages );
+    echo "max page = $maxPages";
+
+    $returnArray = array($maxPages, $set);
+    return $returnArray;
 }
 
 function searchStaffByStaffID($key)
@@ -758,15 +780,26 @@ function getNewStaffNo()
     $mysqli->close();
 } //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
 
-function getAllStaff( $start = 0 , $limit = 20 )
+/**/function getAllStaff( $start = 0 , $limit = 20 )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
     $set = null;
+    $noOfRows = 0;
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare( "Select COUNT(*) FROM Staff WHERE isDeleted = 0 " )){
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $row = $result -> fetch_array();
+            $noOfRows = $row[0];
+            echo "No of rows = $noOfRows";
+        }
     }
 
     if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId + 0 LIMIT ?, ?;")){
@@ -779,10 +812,17 @@ function getAllStaff( $start = 0 , $limit = 20 )
             }
         }
     }
-
     $mysqli->close();
-    return $set;
-} //Returns select attributes of all non-deleted stafff members
+
+    $maxPages = intval( $noOfRows / $limit );
+    if ( $noOfRows % $limit > 0 ){
+        $maxPages++;
+    }
+    echo "max page = $maxPages";
+
+    $returnArray = array($maxPages, $set);
+    return $returnArray;
+} //Returns select attributes of all non-deleted staff members
 
 function getNoOfStaff()
 {
