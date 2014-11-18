@@ -24,7 +24,8 @@
 
     function insertLeaveFunc()
     {
-        $operation = insertLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"], $_POST["startDate"], $_POST["endDate"], $_POST["reason"]);
+        $operation = insertLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"], $_POST["startDate"], $_POST["endDate"],
+            $_POST["addressOnLeave"], $_POST["reason"]);
         $success = "Leave Request Sent!";
         $fail = "Request Failed!";
 
@@ -36,19 +37,17 @@
         }
     }
 
-    if (isset($_POST["ApplyforLeave"])) //user has clicked the button to apply leave
+    if (isset($_POST["ApplyFull"])) //user has clicked the button to apply leave
     {
         $checkStaffMember = checkStaffMember($_POST["staffid"]);
-
         if($checkStaffMember){
-            $result = getLeaveData( $_POST["staffid"] );
-
-            $row = $result[0];
-
-            $CasualLeave = $row[0];
-            $MedicalLeave = $row[1];
-            $DutyLeave = $row[2];
-
+//            $result = getLeaveData( $_POST["staffid"] );
+//
+//            $row = $result[0];
+//
+//            $CasualLeave = $row[0];
+//            $MedicalLeave = $row[1];
+//            $DutyLeave = $row[2];
             insertLeaveFunc();
         }
         else{
@@ -189,20 +188,16 @@
                 $("#StaffID").on("blur", function(){
 //                   alert( $(this).val() );
                     var staffId = $(this).val();
-                    var startDate = $( "[name='startdate']").val();
-                    var endDate = $( "[name='enddate']" ).val();
-                    var leaveType = $( "[name='leavetype']" ).val();
-                    var otherReasons = $( "[name='otherreasons']" ).val();
 
 //                    alert( staffId + "_" + startDate + "_" + endDate + "_" + leaveType + "_" + otherReasons);
-                    var params = {"newStaffID" : staffId, "startDate" : startDate, "endDate" : endDate, "leaveType" : leaveType, "otherReasons" : otherReasons};
+                    var params = {"newStaffID" : staffId};
                     post(document.URL, params, "post");
                 });
 
-                $("#startdate")
+                $("#startDate")
                     .attr("min", getTodayDate())
                     .on("change", function(e){
-                        $("#enddate").attr("min", $("#startdate").val() );
+                        $("#endDate").attr("min", $("#startDate").val() );
                 });
 
                 $(".changeNoDays")
@@ -240,7 +235,7 @@
     <body>
         <h1>Apply for Leave</h1>
 
-        <form class="insert" method="post" action="applyForLeave.php">
+        <form class="insert" method="post" >
 
             <table id="details">
                 <tr><th><?php echo $enterdetails ?><th></th> <th></th> </tr>
@@ -310,26 +305,26 @@
                     </tr>
                     <tr>
                         <td>Address when on Leave</td>
-                        <td><input type="text" name="address" value="" /></td>
+                        <td><input type="text" name="addressOnLeave" value="" /></td>
                     </tr>
                     <tr>
                         <td>Reason</td>
-                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
+                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"></textarea></td>
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                        <td><input id="startDate" type="date" name="startDate" required="true"  value="" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input id="enddate" type="date" name="endDate" required="true" value="<?php echo $endDateVal ?>" tabindex="3"/></td>
+                        <td><input id="endDate" type="date" name="endDate" required="true" value="" tabindex="3"/></td>
                     </tr>
                 </table>
 
 
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
-                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
+                    <input type="submit" name="ApplyFull" value="Applzzz" id="submitme" tabindex="5">
+                    <input type="Reset" >
                 </p>
             </div>
 
@@ -338,7 +333,7 @@
                 <table>
                     <tr>
                         <td>Date</td>
-                        <td><input id="startdate" type="date" name="startDate" required="true"  value="<?php echo $startDateVal ?>" tabindex="2"/></td>
+                        <td><input id="leaveDate" type="date" name="leaveDate" value="" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td colspan="3">
@@ -367,14 +362,14 @@
                     </tr>
                     <tr>
                         <td>Reason</td>
-                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"><?php echo $otherReasonsVal ?></textarea></td>
+                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"></textarea></td>
                     </tr>
                 </table>
 
                 <br />
                 <p align="center">
-                    <input type="submit" name="ApplyforLeave" value="<?php echo $applyforleave ?>" id="submitme" tabindex="5">
-                    <input type="button" name="Reset" value="<?php echo $reset ?>" tabindex="6" onclick="location.href='../leaveManagement/applyForLeave.php'" >
+                    <input type="submit" name="ApplyOther" value="Apply" id="submitsomeoneelse" tabindex="5">
+                    <input type="reset" >
                 </p>
             </div>
 

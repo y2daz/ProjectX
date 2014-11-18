@@ -1003,7 +1003,7 @@ function getStaffID( $staffNo ){
         $stmt -> bind_param("siiisssssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $currentDate, $startDate, $endDate, $addressOnLeave,
             $reason, $status, $reviewedBy, $reviewedDate, $isDeleted);
 
-        $query = $mysqli->prepare("SELECT `StaffID`, `CasualLeave`, `MedicalLeave`, `DutyLeave`, `isDeleted` FROM LeaveData WHERE StaffID = ?");
+        /*$query = $mysqli->prepare("SELECT `StaffID`, `CasualLeave`, `MedicalLeave`, `DutyLeave`, `isDeleted` FROM LeaveData WHERE StaffID = ?");
         $query -> bind_param("i", $staffId);
         $query -> execute();
         $query -> store_result();
@@ -1013,7 +1013,8 @@ function getStaffID( $staffNo ){
 
         if($rows == 0){
             insertNewLeaveData( $staffId );
-        }
+        }*/
+
         if ($stmt->execute()){
             $stmt->close();
             $mysqli->close();
@@ -1060,7 +1061,7 @@ function getStaffID( $staffNo ){
 } //Returns select records of a staff members applied leaves
 
 function insertNewLeaveData($staffID){
-
+/*
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1084,7 +1085,8 @@ function insertNewLeaveData($staffID){
         $stmt->close();
     }
 
-    $mysqli->close();
+    $mysqli->close();*/
+    return;
 } //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
 function getLeaveData($StaffID)
@@ -1099,14 +1101,16 @@ function getLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT l.CasualLeave, l.MedicalLeave, l.DutyLeave, s.NamewithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
-                                FROM LeaveData l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
-                                    FormOption fSection, FormOption fDesignation
-                                WHERE l.StaffId = ?
-                                    AND fSection.Number = s.Section
-                                    AND fSection.Label = 'Section'
-                                    AND fDesignation.Number = s.Designation
-                                    AND fDesignation.Label = 'Designation'"))
+    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
+                                    FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
+                                        FormOption fSection, FormOption fDesignation
+                                    WHERE s.StaffId = ?
+                                        AND l.status = 1
+                                        AND fSection.Number = s.Section
+                                        AND fSection.Label = 'Section'
+                                        AND fDesignation.Number = s.Designation
+                                        AND fDesignation.Label = 'Designation'
+                                    GROUP BY l.Staffid;"))
     {
         $stmt->bind_param("s", $StaffID);
 
