@@ -54,12 +54,10 @@ if(isset($_POST["getSubstitute"]))
     $daySet = array("Monday","Tuesday","Wednesday","Thursday","Friday");
     $periodSet = array("1st" , "2nd", "3rd" , "4th" , "5th" , "6th" , "7th" , "8th");
 
-    if($freeTeachersSet == null )
-    {
+    if($freeTeachersSet == null ){
         sendNotification("No free teachers.");
     }
-    else
-    {
+    else{
         sendNotification("Teachers available for " . $daySet[$selectedDay]." ".$periodSet[$selectedPosition]. " period.");
     }
     $row = $freeTeachersSet[0];
@@ -211,7 +209,7 @@ if (isset($_GET["getTimetable"]))
                 <th></th>
             </tr>
             <?php
-            $rowcount = 0;
+            $rowCount = 0;
             if (isFilled($freeTeachersSet)){
 
                 foreach($freeTeachersSet as $row){
