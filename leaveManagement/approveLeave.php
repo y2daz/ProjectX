@@ -69,40 +69,68 @@
 
     }
 
-    $staffId = "";
-    $name = "";
-    $startDate = "";
-    $endDate = "";
+    $exStaffId = "";
+    $exName = "";
+    $exDesignation = "";
+    $exSection = "";
+    $exNoOfCasualLeave = 0;
+    $exNoOfMedicalLeave = 0;
+    $exNoOfDutyLeave = 0;
+    $exNoOfNoPayLeave = 0;
+    $exNoOfCasualTaken = 0;
+    $exNoOfMedicalTaken = 0;
+    $exNoOfDutyTaken = 0;
+    $exNoOfNoPayTaken = 0;
+    $exRequestDate = "";
+    $exStartDate = "";
+    $exEndDate = "";
+    $exAddressOnLeave = "";
+    $exReason = "";
+    $exContactNumber = "";
+    $exNoOfTotalLeave = 0;
+    $exNoOfTotalTaken = 0;
+
     $leavetypeexpand = "";
-    $reason = "";
-    $noOfCasualLeave = "";
-    $noOfMedicalLeave = "";
-    $noOfDutyLeave = "";
-    $ContactNumber = "";
 
-    if (isset($_GET["expand"]))
-    {
-        if (isset($_GET["sdate"]))
-        {
-            $displaytable = "block";
+    if (isset($_GET["expand"])){
+        $displaytable = "block";
+        $displaygrid = "none";
 
-            $result = getStaffLeavetoApprove($_GET["expand"], $_GET["sdate"]);
+        $fullPageHeight = 800;
 
-            if (isFilled($result))
-            {
+        if (isset($_GET["sdate"])){
+            $result = getStaffLeavetoApprove( $_GET["expand"], $_GET["sdate"] );
+
+            if ( isset($result) ){
                 $row = $result[0];
+                $i = 0;
 
-                $staffId  = $row[0];
-                $name = $row[1];
-                //Request Date $row[2]
-                $startDate = $row[3];
-                $endDate = $row[4];
-                //status row[5]
-                $reason = $row[6];
-                $noOfCasualLeave = $row[7];
-                $noOfMedicalLeave = $row[8];
-                $noOfDutyLeave = $row[9];
-                $ContactNumber = $row[10];
+                $exStaffId  = $row[ $i++ ];
+                $exNoOfCasualLeave = $row[ $i++ ];
+                $exNoOfMedicalLeave = $row[ $i++ ];
+                $exNoOfDutyLeave = $row[ $i++ ];
+                $exNoOfNoPayLeave = $row[ $i++ ];
+                $exRequestDate = $row[ $i++ ];
+                $exStartDate = $row[ $i++ ];
+                $exEndDate = $row[ $i++ ];
+                $exAddressOnLeave = $row[ $i++ ];
+                $exReason = $row[ $i++ ];
+
+                $otherData = getFullLeaveData( $exStaffId );
+                $row = $otherData[0];
+                $i = 0;
+
+                $exNoOfCasualTaken = $row[ $i++ ];
+                $exNoOfMedicalTaken = $row[ $i++ ];
+                $exNoOfDutyTaken = $row[ $i++ ];
+                $exNoOfNoPayTaken = $row[ $i++ ];
+                $exName = $row[ $i++ ];
+                $exSection = $row[ $i++ ];
+                $exDesignation = $row[ $i++ ];
+                $exContactNumber = $row[ $i++ ];
+
+                $exNoOfTotalLeave = $exNoOfCasualLeave + $exNoOfMedicalLeave + $exNoOfDutyLeave + $exNoOfNoPayLeave;
+                $exNoOfTotalTaken = $exNoOfCasualTaken + $exNoOfMedicalTaken + $exNoOfDutyTaken + $exNoOfNoPayTaken;
             }
         }
     }
@@ -168,31 +196,35 @@
                 left:20px;
                 top:20px;
             }
-            .leaveTable th{
+            .leaveTable th, .viewTable th{
                 align:center;
                 color:white;
                 background-color:#005e77;
                 height:25px;
-                padding:5px;
+                padding:8px 15px 8px 15px;
             }
-            .leaveTable td {
-                text-align: center;
-                padding:5px;
+            .leaveTable td, .viewTable td{
+                /*text-align: center;*/
+                padding:7px;
             }
-            .leaveTable .left{
-                text-align: left;
-            }
-            .leaveTable .alt{
-                background-color: #bed9ff;
-            }
-            .details td{
-                text-align: left;
+            .viewGrid{
+                display: <?php echo $displaygrid ?>
             }
             .viewTable{
                 display: <?php echo $displaytable ?>
             }
-            .viewGrid{
-                display: <?php echo $displaygrid ?>
+            .innerTable{
+                min-width: 550px;
+                border-collapse: collapse;
+            }
+            .innerTable th th{
+                background-color: #ffffff;
+            }
+            .innerTable, .innerTable tr, .innerTable th, .innerTable td{
+                border: 1px solid #005e77 ;
+            }
+            .left{
+                text-align: left;
             }
         </style>
     </head>
@@ -214,84 +246,112 @@
                 </tr>
 
                 <?php
-                $result = getAllLeaveToApprove();
-                $i = 1;
 
-                if (!isset($result)){
-                    echo "<tr><td colspan='6'>There are no Leave Requests.</td></tr>";
-                    //sendNotification("There are no records to show.");
-                }
-                else{
-                    foreach($result as $row){
-                        echo "<tr>";
-                        echo "<td>$row[0]</td>";
-                        echo "<td>$row[1]</td>";
-                        echo "<td> " . ( $row[2] + $row[3] + $row[4] + $row[5] ) . "</td>";
-                        echo "<td>$row[7] to $row[8]</td>";
-                        echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
-                        echo "</tr>";
+                if( !isset( $_GET["expand"]) ){
+                    $result = getAllLeaveToApprove();
+                    $i = 1;
+
+                    if (!isset($result)){
+                        echo "<tr><td colspan='6'>There are no Leave Requests.</td></tr>";
+                        //sendNotification("There are no records to show.");
+                    }
+                    else{
+                        foreach($result as $row){
+                            echo "<tr>";
+                            echo "<td>$row[0]</td>";
+                            echo "<td>$row[1]</td>";
+                            echo "<td> " . ( $row[2] + $row[3] + $row[4] + $row[5] ) . "</td>";
+                            echo "<td>$row[7] to $row[8]</td>";
+                            echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[7] . "\" /> </td> ";
+                            echo "</tr>";
+                            echo ($i++ % 3 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
+                        }
+                        //Print an mepty row at the end if not printed
+                        echo ( ($i - 1) % 3 != 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
+
+                        $fullPageHeight = ( 400 + ($i * 28) );
                     }
                 }
+
                 ?>
             </table>
         </form>
 
-            <br />
-            <br />
-
         <form method="post" class="viewTable">
             <table class="details" align="center">
                 <tr>
+                    <th colspan="6">Leave application of <?php echo $exName ?></th>
+                </tr>
+                <tr>
                     <td>Staff ID</td>
-                    <td > <input type = "text" name="staffid" value="<?php echo $staffId ?>"/ readonly> </td>
+                    <td > <input type = "text" name="staffid" value="<?php echo $exStaffId ?>"/ readonly> </td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td> <input type = "text" name="name" value="<?php echo $exName ?>"/ readonly> </td>
+                </tr>
+                <tr>
+                    <td>Section</td>
+                    <td ><input type="text" name="section" value="<?php echo $exSection ?>"/ readonly></td>
+                </tr>
+                <tr>
+                    <td>Designation</td>
+                    <td > <input type="text" name="designation" value="<?php echo $exDesignation ?>" / readonly> </td>
+                </tr>
+
+                <tr><td colspan="4">&nbsp;</td></tr>
+                <tr>
+                    <td colspan="3">
+                        <table class="innerTable">
+                            <tr>
+                                <th>Days</th>
+                                <!--                                    <th>Short</th>-->
+                                <th>Casual</th>
+                                <th>Medical</th>
+                                <th>Duty</th>
+                                <th>No Pay</th>
+                                <th>Total</th>
+                            </tr>
+                            <tr>
+                                <td>Applying</td>
+                                <!--                                    <td> <input id="noOfShort" class="changeNoDays" type="number" min="0" max="21" name="noOfShort" /> </td>-->
+                                <td> <input id="noOfCasual" type="number" min="0" max="21" readonly value="<?php echo $exNoOfCasualLeave?>" /> </td>
+                                <td> <input id="noOfMedical" type="number" min="0" max="20" readonly value="<?php echo $exNoOfMedicalLeave?>" /> </td>
+                                <td> <input id="noOfDuty" type="number" min="0" max="99" readonly value="<?php echo $exNoOfDutyLeave?>" /> </td>
+                                <td> <input id="noOfNoPay" type="number" min="0" max="99" readonly value="<?php echo $exNoOfNoPayLeave?>" /> </td>
+                                <td> <input id="noOfTotal" type="number" min="1" max="366" readonly value="<?php echo $exNoOfTotalLeave ?>" /> </td>
+                            </tr>
+                            <tr>
+                                <td>Taken</td>
+                                <!--                                    <td> <input id="noOfShortTaken" type="number" min="0" max="21" name="noOfShortTaken" readonly value="--><?php //echo $CasualLeave ?><!--" /> </td>-->
+                                <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $exNoOfCasualTaken ?>" /> </td>
+                                <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $exNoOfMedicalTaken ?>" /> </td>
+                                <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $exNoOfDutyTaken ?>" /> </td>
+                                <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $exNoOfNoPayTaken ?>" /> </td>
+                                <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly value="<?php echo $exNoOfTotalTaken ?>" /> </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td> Address when on Leave  </td>
+                    <td > <input type = "text" name="address" value="<?php echo $exAddressOnLeave ?>"/ readonly> </td>
                 </tr>
 
                 <tr>
-                    <td>Name with Initials</td>
-                    <td> <input type = "text" name="name" value="<?php echo $name ?>"/ readonly> </td>
+                    <td>Reason</td>
+                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $exReason ?>"/ readonly> </td>
+                </tr>
+                <tr>
+                    <td> Start Date </td>
+                    <td > <input type="date" name="startDate" value="<?php echo $exStartDate?>" </td>
                 </tr>
 
                 <tr>
-                    <td><?php echo $startdatelang ?></td>
-                    <td ><input type="date" name="startdate" value="<?php echo $startDate ?>"/ readonly></td>
+                    <td> Date Assuming Duty</td>
+                    <td > <input type="date" name="endDate" value="<?php echo $exEndDate ?>" </td>
                 </tr>
-
-
-                <tr>
-                    <td><?php echo $enddatelang ?></td>
-                    <td > <input type="date" name="enddate" value="<?php echo $endDate ?>" / readonly> </td>
-                </tr>
-
-                <tr>
-                    <td> <?php echo $leavetypelang ?>  </td>
-                    <td > <input type = "text" name="leavetype" value="<?php echo $leavetypeexpand ?>"/ readonly> </td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $otherreasonslang ?></td>
-                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $reason ?>"/ readonly> </td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $officialleavecombo ?></td>
-                    <td > <input type="text" name="officialleave" value="<?php echo $noOfCasualLeave . " Days" ?>" </td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $maternityleavecombo ?></td>
-                    <td > <input type="text" name="maternityleave" value="<?php echo $noOfMedicalLeave . " Days" ?>" </td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $otherleavecombo ?></td>
-                    <td > <input type="text" name="otherleave" value="<?php echo $noOfDutyLeave . " Days" ?>" </td>
-                </tr>
-
-                <tr>
-                    <td><?php echo $contactnumberlang ?></td>
-                    <td > <input type="text" name="contactnumber" value="<?php echo $ContactNumber ?>" </td>
-                </tr>
-
             </table>
 
             <br />
@@ -310,7 +370,7 @@
 </html>
 <?php
     //Assign all Page Specific variables
-    $fullPageHeight = 1100;
+//    $fullPageHeight = 1100;
     $footerTop = $fullPageHeight + 100;
     $pageTitle= "Approve Leave";
 

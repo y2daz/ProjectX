@@ -89,6 +89,9 @@ comment return table samples for code
 
 admin log if possible
 
+database return num rows affected <= 0
+
+check all outer join queries
 
 best create two report templates (landscape portrait)
 

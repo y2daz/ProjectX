@@ -1137,7 +1137,9 @@ function getFullLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), SUM( l.NoOfNoPay ), s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
+    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), SUM( l.NoOfNoPay ),
+                                      s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation',
+                                      s.ContactNumber
                                     FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
                                         FormOption fSection, FormOption fDesignation
                                     WHERE s.StaffId = ?
@@ -1246,26 +1248,28 @@ function getOtherLeaveData($StaffID)
     $mysqli = $dbObj->getConnection();
 
     $set = null;
+    $sDate = date_format( date_create( $sDate ), "Y-m-d");
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials , l.RequestDate, l.StartDate, l.EndDate, l.Status, l.reason, ld.CasualLeave, ld.MedicalLeave, ld.DutyLeave, s.ContactNumber FROM FullLeave l, Staff s, LeaveData ld WHERE l.StaffId=? AND s.StaffId = l.StaffId AND l.StartDate=? AND l.StaffId = ld.StaffId;"))
+    if ($stmt = $mysqli->prepare("  SELECT fl.`StaffID`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`,
+                                        `NoOfNoPay`, `RequestDate`, `StartDate`, `EndDate`, `AddressOnLeave`, `Reason`
+                                    FROM `FullLeave` fl
+                                    WHERE fl.`StaffId` = ?
+                                        AND fl.`startDate` = ?
+                                        AND fl.`Status` = 0;"))
     {
         $stmt->bind_param("ss", $StaffID, $sDate);
-
-        if ($stmt->execute())
-        {
+        if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++]=$row;
             }
         }
     }
-
     $mysqli->close();
     return $set;
 } //Gets a single instance of applied leave for a staff member

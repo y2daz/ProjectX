@@ -770,10 +770,10 @@ $searchby =getlanguage('searchby', $language);
                     echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                         . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";
                     echo "</tr>";
-                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
+                    echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
                 }
                 //Print an mepty row at the end if not printed
-                echo ( ($i - 1) % 5 != 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t" : "");
+                echo ( ($i - 1) % 5 != 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
                 $fullPageHeight = ( 500 + ($i * 28) );
             }
 

@@ -158,7 +158,7 @@ ob_start();
         </tr>
         <tr>
             <td>Name</td>
-            <td style="text-align: left"><?php echo $Name ?></td>
+            <td style="text-align: left"><?php echo $exName ?></td>
         </tr>
         <tr>
             <td>Year</td>
