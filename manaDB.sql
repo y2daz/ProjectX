@@ -26,7 +26,7 @@ DROP DATABASE IF EXISTS `manaDB`;
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 14, 2014 at 11:55 PM
+-- Generation Time: Nov 19, 2014 at 11:10 PM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -39,46 +39,6 @@ START TRANSACTION;
 --
 CREATE DATABASE IF NOT EXISTS `manaDB` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `manaDB`;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ApplyLeave`
---
-
-CREATE TABLE IF NOT EXISTS `ApplyLeave` (
-  `StaffID` varchar(5) NOT NULL DEFAULT '',
-  `NoOfCasual` int(11) NOT NULL DEFAULT '0',
-  `NoOfMedical` int(11) NOT NULL DEFAULT '0',
-  `NoOfDuty` int(11) NOT NULL DEFAULT '0',
-  `RequestDate` date DEFAULT NULL,
-  `StartDate` date NOT NULL DEFAULT '0000-00-00',
-  `EndDate` date DEFAULT NULL,
-  `Reason` varchar(200) DEFAULT NULL,
-  `Status` int(11) DEFAULT NULL,
-  `ReviewedBy` varchar(5) DEFAULT NULL,
-  `ReviewedDate` date DEFAULT NULL,
-  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`StaffID`,`StartDate`),
-  KEY `fk013` (`ReviewedBy`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `ApplyLeave`
---
-
-INSERT INTO `ApplyLeave` VALUES
-  ('13', 0, 0, 0, '2014-09-22', '2014-09-26', '2014-09-26', '', 1, NULL, '2014-09-30', 0),
-  ('17', 0, 0, 0, '2014-10-01', '2014-10-15', '2014-10-17', 'Testing', 1, NULL, '2014-10-01', 0),
-  ('20', 0, 0, 0, '2014-09-30', '2014-10-02', '2014-10-02', '', 1, NULL, '2014-09-30', 0),
-  ('21', 0, 0, 0, '2014-09-30', '2014-10-01', '2014-11-01', '', 0, NULL, NULL, 0),
-  ('3', 2, 0, 2, '2014-11-13', '2014-11-19', '2014-11-28', '', 0, NULL, NULL, 0),
-  ('4', 0, 0, 0, '2014-09-30', '2014-09-30', '2014-10-02', '', 1, NULL, '2014-09-30', 0),
-  ('4', 0, 0, 0, '2014-10-01', '2014-10-01', '2014-10-02', 'Testing', 1, NULL, '2014-10-01', 0),
-  ('4', 0, 0, 0, '2014-10-21', '2014-10-22', '2014-10-24', '', 1, NULL, '2014-10-21', 0),
-  ('7', 0, 0, 0, '2014-10-01', '2014-10-01', '2014-10-03', 'Reason', 1, NULL, '2014-10-21', 0),
-  ('7', 0, 0, 0, '2014-09-30', '2014-10-02', '2014-10-18', '', 1, NULL, '2014-10-21', 0),
-  ('7', 0, 0, 0, '2014-10-01', '2014-10-03', '2014-10-05', '', 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -101,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
 
 INSERT INTO `ClassInformation` VALUES
   ('6', 0, 'B', 2),
-  ('6', 7, 'A', 0),
+  ('2', 7, 'A', 0),
   ('4', 7, 'C', 0),
   ('5', 8, 'B', 2),
   ('15', 10, 'A', 0),
@@ -450,6 +410,51 @@ INSERT INTO `FormOption` VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `FullLeave`
+--
+
+CREATE TABLE IF NOT EXISTS `FullLeave` (
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `NoOfCasual` int(11) NOT NULL DEFAULT '0',
+  `NoOfMedical` int(11) NOT NULL DEFAULT '0',
+  `NoOfDuty` int(11) NOT NULL DEFAULT '0',
+  `NoOfNoPay` int(11) NOT NULL DEFAULT '0',
+  `RequestDate` date DEFAULT NULL,
+  `StartDate` date NOT NULL DEFAULT '0000-00-00',
+  `EndDate` date DEFAULT NULL,
+  `AddressOnLeave` varchar(100) DEFAULT NULL,
+  `Reason` varchar(200) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `ReviewedBy` varchar(5) DEFAULT NULL,
+  `ReviewedDate` date DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`,`StartDate`),
+  KEY `fk013` (`ReviewedBy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `FullLeave`
+--
+
+INSERT INTO `FullLeave` VALUES
+  ('13', 0, 1, 0, 0, '2014-09-22', '2014-09-26', '2014-09-26', NULL, '', 1, NULL, '2014-09-30', 0),
+  ('17', 2, 0, 0, 0, '2014-10-01', '2014-10-15', '2014-10-17', NULL, 'Testing', 1, NULL, '2014-10-01', 0),
+  ('20', 2, 0, 0, 0, '2014-09-30', '2014-10-02', '2014-10-02', NULL, '', 1, NULL, '2014-09-30', 0),
+  ('21', 0, 0, 3, 0, '2014-09-30', '2014-10-01', '2014-11-01', NULL, '', 0, NULL, NULL, 0),
+  ('3', 2, 0, 2, 0, '2014-11-13', '2014-11-19', '2014-11-28', NULL, '', 0, NULL, NULL, 0),
+  ('4', 2, 0, 0, 0, '2014-09-30', '2014-09-30', '2014-10-02', NULL, '', 1, NULL, '2014-09-30', 0),
+  ('4', 2, 1, 0, 0, '2014-10-01', '2014-10-01', '2014-10-02', NULL, 'Testing', 1, NULL, '2014-10-01', 0),
+  ('4', 0, 2, 4, 0, '2014-10-21', '2014-10-22', '2014-10-24', NULL, '', 1, NULL, '2014-10-21', 0),
+  ('4', 2, 0, 0, 0, '2014-11-19', '2014-11-24', '2014-11-29', '', '', 2, NULL, '2014-11-19', 0),
+  ('4', 1, 0, 0, 1, '2014-11-19', '2014-11-29', '2014-11-30', 'I feel bad', NULL, 1, NULL, '2014-11-19', 0),
+  ('4', 0, 1, 0, 2, '2014-11-19', '2014-12-08', '2014-12-11', 'there', 'old', 1, NULL, '2014-11-19', 0),
+  ('7', 1, 0, 0, 0, '2014-10-01', '2014-10-01', '2014-10-03', NULL, 'Reason', 1, NULL, '2014-10-21', 0),
+  ('7', 0, 3, 0, 0, '2014-09-30', '2014-10-02', '2014-10-18', NULL, '', 1, NULL, '2014-10-21', 0),
+  ('7', 0, 0, 2, 0, '2014-10-01', '2014-10-03', '2014-10-05', NULL, '', 0, NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Holiday`
 --
 
@@ -474,6 +479,7 @@ INSERT INTO `Holiday` VALUES
   (2014, '2014-02-11'),
   (2014, '2014-02-14'),
   (2014, '2014-02-27'),
+  (2014, '2014-03-28'),
   (2014, '2014-04-11'),
   (2014, '2014-04-14'),
   (2014, '2014-04-15'),
@@ -559,7 +565,8 @@ CREATE TABLE IF NOT EXISTS `IsSubstituted` (
 
 INSERT INTO `IsSubstituted` VALUES
   ('1', NULL, NULL, 1, 0, '2014-10-07', '4', 0),
-  ('23', NULL, NULL, 0, 2, '2014-10-27', '13', 0);
+  ('23', NULL, NULL, 0, 2, '2014-10-27', '13', 0),
+  ('12', NULL, NULL, 2, 4, '2014-11-19', '14', 0);
 
 -- --------------------------------------------------------
 
@@ -1196,6 +1203,37 @@ INSERT INTO `LeaveData` VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `OtherLeave`
+--
+
+CREATE TABLE IF NOT EXISTS `OtherLeave` (
+  `StaffID` varchar(5) NOT NULL DEFAULT '',
+  `LeaveType` int(11) NOT NULL DEFAULT '0',
+  `RequestDate` date DEFAULT NULL,
+  `LeaveDate` date NOT NULL DEFAULT '0000-00-00',
+  `Reason` varchar(200) DEFAULT NULL,
+  `Status` int(11) DEFAULT NULL,
+  `ReviewedBy` varchar(5) DEFAULT NULL,
+  `ReviewedDate` date DEFAULT NULL,
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`StaffID`,`LeaveDate`),
+  KEY `OtherLeave_ibfk_2` (`ReviewedBy`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `OtherLeave`
+--
+
+INSERT INTO `OtherLeave` VALUES
+  ('4', 1, '2014-11-19', '2014-11-19', 'Hangover.', 0, NULL, NULL, 0),
+  ('4', 1, '2014-11-19', '2014-11-20', 'Last morning''s hangover..', 0, NULL, NULL, 0),
+  ('4', 3, '2014-11-19', '2014-11-25', '"Doctor''s" appointment. ;)', 0, NULL, NULL, 0),
+  ('4', 2, '2014-11-19', '2014-11-28', 'Couldn''t take it.', 0, NULL, NULL, 0),
+  ('4', 3, '2014-11-19', '2014-11-30', 'Okay, not a doctor.', 0, NULL, NULL, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Permissions`
 --
 
@@ -1453,7 +1491,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
   `NamewithInitials` varchar(60) DEFAULT NULL,
   `DateofBirth` date DEFAULT NULL,
   `Gender` int(11) DEFAULT NULL,
-  `Nationality_Race` int(11) DEFAULT NULL,
+  `Race` int(11) DEFAULT NULL,
   `Religion` int(11) DEFAULT NULL,
   `CivilStatus` int(11) DEFAULT NULL,
   `NICNumber` varchar(10) DEFAULT NULL,
@@ -1463,7 +1501,7 @@ CREATE TABLE IF NOT EXISTS `Staff` (
   `DateJoinedthisSchool` date DEFAULT NULL,
   `EmploymentStatus` int(11) DEFAULT NULL,
   `Medium` int(11) DEFAULT NULL,
-  `PositioninSchool` int(11) DEFAULT NULL,
+  `Designation` int(11) DEFAULT NULL,
   `Section` int(11) DEFAULT NULL,
   `SubjectMostTaught` int(11) DEFAULT NULL,
   `SubjectSecondMostTaught` int(11) DEFAULT NULL,
@@ -2573,9 +2611,10 @@ INSERT INTO `Timetable` VALUES
 CREATE TABLE IF NOT EXISTS `User` (
   `userEmail` varchar(50) NOT NULL,
   `userPassword` varchar(80) DEFAULT NULL,
-  `accessLevel` int(11) DEFAULT '2',
+  `accessLevel` int(10) unsigned DEFAULT '2',
   `isDeleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`userEmail`)
+  PRIMARY KEY (`userEmail`),
+  KEY `User_ibfk_1` (`accessLevel`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -2633,17 +2672,17 @@ INSERT INTO `User` VALUES
 --
 
 --
--- Constraints for table `ApplyLeave`
---
-ALTER TABLE `ApplyLeave`
-ADD CONSTRAINT `ApplyLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
-ADD CONSTRAINT `ApplyLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
-
---
 -- Constraints for table `ClassInformation`
 --
 ALTER TABLE `ClassInformation`
 ADD CONSTRAINT `ClassInformation_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `FullLeave`
+--
+ALTER TABLE `FullLeave`
+ADD CONSTRAINT `FullLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
+ADD CONSTRAINT `FullLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
 
 --
 -- Constraints for table `IsSubstituted`
@@ -2678,6 +2717,13 @@ ALTER TABLE `LeaveData`
 ADD CONSTRAINT `LeaveData_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
 
 --
+-- Constraints for table `OtherLeave`
+--
+ALTER TABLE `OtherLeave`
+ADD CONSTRAINT `OtherLeave_ibfk_1` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`),
+ADD CONSTRAINT `OtherLeave_ibfk_2` FOREIGN KEY (`ReviewedBy`) REFERENCES `Staff` (`StaffID`);
+
+--
 -- Constraints for table `RolePerm`
 --
 ALTER TABLE `RolePerm`
@@ -2695,4 +2741,10 @@ ADD CONSTRAINT `Teaches_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`Sta
 --
 ALTER TABLE `Timetable`
 ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`StaffID`);
+
+--
+-- Constraints for table `User`
+--
+ALTER TABLE `User`
+ADD CONSTRAINT `User_ibfk_1` FOREIGN KEY (`accessLevel`) REFERENCES `Roles` (`roleId`);
 COMMIT;
