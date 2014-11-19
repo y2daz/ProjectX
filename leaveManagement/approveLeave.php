@@ -205,52 +205,30 @@
                 <tr>
                     <th>Staff ID</th>
                     <th>Name with Initials</th>
-                    <th>Leave Apply Date</th>
-                    <th>Date Starting Leave</th>
-                    <th>Date Assuming Duty</th>
-                    <th>Reason</th>
-                    <th>Contact Number</th>
-                    <th>Status</th>
+                    <th>No of Days</th>
+                    <th>Date Range</th>
+<!--                    <th>Date Assuming Duty</th>-->
+<!--                    <th>Reason</th>-->
+<!--                    <th>Contact Number</th>-->
+                    <th>&nbsp;</th>
                 </tr>
 
                 <?php
                 $result = getAllLeaveToApprove();
                 $i = 1;
 
-                if (!isFilled($result)){
-                    echo "<style> .viewTable{display: none} </style>";
+                if (!isset($result)){
                     echo "<tr><td colspan='6'>There are no Leave Requests.</td></tr>";
                     //sendNotification("There are no records to show.");
                 }
                 else{
                     foreach($result as $row){
-                        $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
-
-                        echo $top;
+                        echo "<tr>";
                         echo "<td>$row[0]</td>";
                         echo "<td>$row[1]</td>";
-                        echo "<td>$row[2]</td>";
-                        echo "<td>$row[3]</td>";
-                        echo "<td>$row[4]</td>";
-                        echo "<td>$row[6]</td>";
-                        echo "<td>$row[10]</td>";
-
-                        if ($row[5] == 0)
-                        {
-                            $leaveStatus = "Not reviewed";
-                        }
-                        else if($row[5] == 1)
-                        {
-                            $leaveStatus = "Approved";
-                        }
-                        else if($row[5] == 2)
-                        {
-                            $leaveStatus = "Rejected";
-                        }
-
-                        echo "<td>$leaveStatus</td>";
+                        echo "<td> " . ( $row[2] + $row[3] + $row[4] + $row[5] ) . "</td>";
+                        echo "<td>$row[7] to $row[8]</td>";
                         echo "<td><input name=\"Expand\" type=\"Submit\" value=\"Expand\" formaction=\"approveLeave.php?expand=" . $row[0] . "&sdate=" . $row[5] . "\" /> </td> ";
-
                         echo "</tr>";
                     }
                 }

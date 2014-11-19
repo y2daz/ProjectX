@@ -23,7 +23,7 @@
     }
 
     function insertFullLeaveFunc(){
-        $operation = insertFullLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"], $_POST["startDate"], $_POST["endDate"],
+        $operation = insertFullLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"],  $_POST["noOfNoPay"], $_POST["startDate"], $_POST["endDate"],
             $_POST["addressOnLeave"], $_POST["reason"]);
         $success = "Leave Request Sent!";
         $fail = "Error sending leave request.";
@@ -77,6 +77,7 @@
     $CasualLeave = "";
     $MedicalLeave = "";
     $DutyLeave = "";
+    $NoPayLeave = "";
 
     $i = 0;
     for( $i = 0; $i < 3; $i++ ){
@@ -94,9 +95,10 @@
             $CasualLeave = $row[0];
             $MedicalLeave = $row[1];
             $DutyLeave = $row[2];
-            $StaffName = $row[3];
-            $sectionVal = $row[4];
-            $designationVal = $row[5];
+            $NoPayLeave = $row[3];
+            $StaffName = $row[4];
+            $sectionVal = $row[5];
+            $designationVal = $row[6];
         }
 
         $staffIdVal = $_POST["newStaffID"];
@@ -329,7 +331,7 @@
                                     <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $CasualLeave ?>" /> </td>
                                     <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $MedicalLeave ?>" /> </td>
                                     <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
-                                    <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $DutyLeave ?>" /> </td>
+                                    <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $NoPayLeave ?>" /> </td>
                                     <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly /> </td>
                                 </tr>
                             </table>

@@ -982,7 +982,7 @@ function getStaffID( $staffNo ){
 
 } //Returns all the applied fullLeave of a non deleted staff member
 
-/**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate, $endDate, $addressOnLeave, $reason)
+/**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $startDate, $endDate, $addressOnLeave, $reason)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -992,7 +992,7 @@ function getStaffID( $staffNo ){
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO FullLeave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
+    if ($stmt = $mysqli->prepare("INSERT INTO FullLeave values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"))
     {
         $isDeleted = 0;
         $currentDate = date("Y-m-d");
@@ -1000,7 +1000,7 @@ function getStaffID( $staffNo ){
         $reviewedBy = null;
         $reviewedDate = null;
 
-        $stmt -> bind_param("siiisssssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $currentDate, $startDate, $endDate, $addressOnLeave,
+        $stmt -> bind_param("siiiisssssissi", $staffId,  $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $currentDate, $startDate, $endDate, $addressOnLeave,
             $reason, $status, $reviewedBy, $reviewedDate, $isDeleted);
 
         /*$query = $mysqli->prepare("SELECT `StaffID`, `CasualLeave`, `MedicalLeave`, `DutyLeave`, `isDeleted` FROM LeaveData WHERE StaffID = ?");
@@ -1137,7 +1137,7 @@ function getFullLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
+    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), SUM( l.NoOfNoPay ), s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation'
                                     FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
                                         FormOption fSection, FormOption fDesignation
                                     WHERE s.StaffId = ?
@@ -1165,7 +1165,7 @@ function getFullLeaveData($StaffID)
     }
     $mysqli->close();
     return $set;
-} //Returns leave numbers for the staff member. Inserts new numbers if not existing.
+} //Returns full leave numbers for the staff member.
 
 function getOtherLeaveData($StaffID)
 {
@@ -1201,8 +1201,7 @@ function getOtherLeaveData($StaffID)
     }
     $mysqli->close();
     return $set;
-} //Returns leave numbers for the staff member. Inserts new numbers if not existing.
-
+} //Returns other leave numbers for the staff member.
 
 /**/function getAllLeaveToApprove(){
 
@@ -1215,20 +1214,28 @@ function getOtherLeaveData($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select l.StaffId, s.NamewithInitials, l.LeaveType, l.RequestDate, l.Status, l.StartDate, s.ContactNumber FROM FullLeave l, Staff s WHERE l.StaffId = s.StaffId AND l.Status = 0 AND l.isDeleted = 0 ORDER BY l.StartDate, l.RequestDate"))
+    if ($stmt = $mysqli->prepare("SELECT s.`StaffID`, s.NameWithInitials, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `NoOfNoPay`,
+                                        `RequestDate`, `StartDate`, `EndDate`, `AddressOnLeave`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`
+                                    FROM `FullLeave` fl INNER JOIN `Staff` s ON (s.StaffId = fl.StaffId)
+                                    WHERE fl.isDeleted = 0
+                                        AND fl.Status = 0
+                                    ORDER BY fl.RequestDate, s.NameWithInitials"))
     {
-        if ($stmt->execute())
-        {
+        if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
 
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
+                $row[6] = date_format( date_create( $row[6] ), 'd-m-Y' );
+                $row[7] = date_format( date_create( $row[7] ), 'd-m-Y' );
+                $row[8] = date_format( date_create( $row[8] ), 'd-m-Y' );
+//                echo date_format($test, 'Y-m-d
                 $set[$i++]=$row;
             }
         }
     }
 
+//    $set = null;
     $mysqli->close();
     return $set;
 } //Returns all leaves not reviewed along with their staff member's details
