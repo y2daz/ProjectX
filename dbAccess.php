@@ -980,9 +980,9 @@ function getStaffID( $staffNo ){
     $mysqli->close();
     return $set;
 
-} //Returns all the applied leave of a non deleted staff member
+} //Returns all the applied fullLeave of a non deleted staff member
 
-/**/function insertLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate, $endDate, $addressOnLeave, $reason)
+/**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $startDate, $endDate, $addressOnLeave, $reason)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1023,8 +1023,44 @@ function getStaffID( $staffNo ){
     }
     $mysqli->close();
     return false;
-
 } //Inserts a leave application for a staff member
+
+/**/function insertOtherLeave( $staffID, $leaveType, $leaveDate, $reason ){
+    /**
+     * FOR LeaveType
+     * 0 = None
+     * 1 = Late
+     * 2 = Half day
+     * 3 = Short leave
+     */
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $isDeleted = 0;
+    $currentDate = date("Y-m-d");
+    $status = 0;
+    $reviewedBy = null;
+    $reviewedDate = null;
+
+    if ($stmt = $mysqli->prepare("INSERT INTO `OtherLeave` (`StaffID`, `LeaveType`, `RequestDate`, `LeaveDate`, `Reason`, `Status`, `ReviewedBy`,
+            `ReviewedDate`, `isDeleted`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )"))
+    {
+        $stmt -> bind_param("sisssissi", $staffID,  $leaveType, $currentDate, $leaveDate, $reason, $status, $reviewedBy, $reviewedDate, $isDeleted );
+
+        if ($stmt->execute()){
+            $stmt->close();
+            $mysqli->close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+} //Inserts a (-n other) leave application for a staff member
 
 /**/function checkLeaveStatus($StaffID)
 {
@@ -1089,7 +1125,7 @@ function insertNewLeaveData($staffID){
     return;
 } //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
-function getLeaveData($StaffID)
+function getFullLeaveData($StaffID)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1130,6 +1166,43 @@ function getLeaveData($StaffID)
     $mysqli->close();
     return $set;
 } //Returns leave numbers for the staff member. Inserts new numbers if not existing.
+
+function getOtherLeaveData($StaffID)
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = NULL;
+
+    if($mysqli->connect_errno)
+    {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
+    }
+
+    if($stmt = $mysqli->prepare("SELECT `LeaveType`, COUNT(`LeaveType`)
+                                    FROM `OtherLeave`
+                                    WHERE StaffID = ?
+                                        AND isDeleted = 0
+                                    GROUP BY `LeaveType`; "))
+    {
+        $stmt->bind_param("s", $StaffID);
+
+        if($stmt->execute()){
+            $result = $stmt->get_result();
+            if($result->num_rows == 0){
+//                insertNewLeaveData($StaffID);
+                return null;
+            }
+            $i = 0;
+            while($row = $result->fetch_array()){
+                $set[$i++ ]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+} //Returns leave numbers for the staff member. Inserts new numbers if not existing.
+
 
 /**/function getAllLeaveToApprove(){
 
@@ -1195,7 +1268,7 @@ function getLeaveData($StaffID)
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
-    $result = getLeaveData($StaffID);
+    $result = getFullLeaveData($StaffID);
 
     $noOfCasual = $noOfDuty = $noOfMedical = 0;
 

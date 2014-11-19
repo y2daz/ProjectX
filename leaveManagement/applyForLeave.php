@@ -22,12 +22,11 @@
         $_POST["newStaffID"] = $_GET["StaffID"];
     }
 
-    function insertLeaveFunc()
-    {
-        $operation = insertLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"], $_POST["startDate"], $_POST["endDate"],
+    function insertFullLeaveFunc(){
+        $operation = insertFullLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"], $_POST["startDate"], $_POST["endDate"],
             $_POST["addressOnLeave"], $_POST["reason"]);
         $success = "Leave Request Sent!";
-        $fail = "Request Failed!";
+        $fail = "Error sending leave request.";
 
         if($operation){
             sendNotification($success);
@@ -37,18 +36,38 @@
         }
     }
 
-    if (isset($_POST["ApplyFull"])) //user has clicked the button to apply leave
+    function insertOtherLeaveFunc(){
+        $operation = insertOtherLeave( $_POST["staffid"], $_POST["otherLeaveType"], $_POST["leaveDate"], $_POST["otherReason"] );
+        if($operation){
+            sendNotification("Leave request sent.");
+        }
+        else{
+            sendNotification("Error sending leave request.");
+        }
+    }
+
+    if (isset($_POST["ApplyFull"])) //user has clicked the button to apply full leave
     {
         $checkStaffMember = checkStaffMember($_POST["staffid"]);
         if($checkStaffMember){
-//            $result = getLeaveData( $_POST["staffid"] );
+//            $result = getFullLeaveData( $_POST["staffid"] );
 //
 //            $row = $result[0];
 //
 //            $CasualLeave = $row[0];
 //            $MedicalLeave = $row[1];
 //            $DutyLeave = $row[2];
-            insertLeaveFunc();
+            insertFullLeaveFunc();
+        }
+        else{
+            sendNotification("Staff Member Does Not Exist!");
+        }
+    }
+
+    if ( isset( $_POST[ "ApplyOther" ] ) ){ //user has clicked the button to apply short leave
+        $checkStaffMember = checkStaffMember($_POST["staffid"]);
+        if($checkStaffMember){
+            insertOtherLeaveFunc();
         }
         else{
             sendNotification("Staff Member Does Not Exist!");
@@ -59,9 +78,16 @@
     $MedicalLeave = "";
     $DutyLeave = "";
 
+    $i = 0;
+    for( $i = 0; $i < 3; $i++ ){
+//        for( $x = 0; $x < 2; $x++ ){
+            $arrOtherLeave[$i] = 0;
+//        }
+    }
+
     if (isFilled($_POST["newStaffID"])){
 
-        $result = getLeaveData($_POST["newStaffID"]);
+        $result = getFullLeaveData($_POST["newStaffID"]);
 
         foreach($result as $row)
         {
@@ -77,6 +103,10 @@
         $CasualLeave = ($CasualLeave < 0 ? 0 : $CasualLeave);
         $MedicalLeave = ($MedicalLeave < 0 ? 0 : $MedicalLeave);
         $DutyLeave = ($DutyLeave < 0 ? 0 : $DutyLeave);
+
+        $otherResult = getOtherLeaveData( $_POST["newStaffID"] );
+
+        $arrOtherLeave = array( $otherResult[0][1], $otherResult[1][1], $otherResult[2][1]);
     }
 
 
@@ -179,6 +209,9 @@
             }
             .innerTable, .innerTable tr, .innerTable th, .innerTable td{
                 border: 1px solid #005e77 ;
+            }
+            .center{
+                text-align: center;
             }
         </style>
 
@@ -313,23 +346,22 @@
                     </tr>
                     <tr>
                         <td><?php echo $startdate ?></td>
-                        <td><input id="startDate" type="date" name="startDate" required="true"  value="" tabindex="2"/></td>
+                        <td><input id="startDate" type="date" name="startDate"  value="" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td><?php echo $enddate ?></td>
-                        <td><input id="endDate" type="date" name="endDate" required="true" value="" tabindex="3"/></td>
+                        <td><input id="endDate" type="date" name="endDate" value="" tabindex="3"/></td>
                     </tr>
                 </table>
 
 
                 <p align="center">
-                    <input type="submit" name="ApplyFull" value="Applzzz" id="submitme" tabindex="5">
+                    <input type="submit" name="ApplyFull" value="Apply" id="submitme" tabindex="5">
                     <input type="Reset" >
                 </p>
             </div>
 
             <div id="shortLeave">
-
                 <table>
                     <tr>
                         <td>Date</td>
@@ -339,30 +371,29 @@
                         <td colspan="3">
                             <table class="innerTable">
                                 <tr>
-                                    <th></th>
-                                    <th colspan="3" style="text-align: center">Leave Type</th>
+                                    <th>&nbsp;</th>
+                                    <th colspan="3" class="center">Leave Type</th>
                                 </tr>
                                 <tr>
                                     <td>Applying</td>
                                     <td >
-                                        <label> <input type="radio" name="shortLeave" value="late" checked/> Late </label> </td>
-                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> Half Day</label></td>
-                                        <td><label> <input type="radio" name="shortLeave" value="half" checked/> Short Leave</label>
+                                        <label> <input type="radio" name="otherLeaveType" value="1" checked/> Late </label> </td>
+                                        <td><label> <input type="radio" name="otherLeaveType" value="2" checked/> Half Day</label></td>
+                                        <td><label> <input type="radio" name="otherLeaveType" value="3" checked/> Short Leave</label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Days taken this month</td>
-                                    <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly  /> </td>
-                                    <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly  /> </td>
-                                    <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly  /> </td>
+                                    <td> <input id="noOfLateTaken" type="number" min="0" max="21" name="noOfLateTaken" readonly value="<?php echo $arrOtherLeave[0]?>"  /> </td>
+                                    <td> <input id="noOfHalfDayTaken" type="number" min="0" max="21" name="noOfHalfDayTaken" readonly value="<?php echo $arrOtherLeave[1]?>" /> </td>
+                                    <td> <input id="noOfShortLeaveTaken" type="number" min="0" max="21" name="noOfShortLeaveTaken" readonly value="<?php echo $arrOtherLeave[2]?>" /> </td>
                                 </tr>
                             </table>
-
                         </td>
                     </tr>
                     <tr>
                         <td>Reason</td>
-                        <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"></textarea></td>
+                        <td><textarea name="otherReason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"></textarea></td>
                     </tr>
                 </table>
 

@@ -83,6 +83,12 @@ individual staff report
     reduce header line size
     underline report heading
 
+apply leave form required validation
+
+comment return table samples for code
+
+admin log if possible
+
 
 best create two report templates (landscape portrait)
 
