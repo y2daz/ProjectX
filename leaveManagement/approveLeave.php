@@ -19,54 +19,26 @@
     $displaytable = "none";
     $displaygrid = "block";
 
-    if(isset($_POST["reject"]))
-    {
-        $Principal = null;
+    if(isset($_POST["reject"])){
+        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], null, 2);
 
-        $operation = rejectLeave($_POST["staffid"], $_POST["startdate"], null);
-
-        if($operation)
-        {
+        if($operation){
             sendNotification("Leave Request Rejected!", "approveLeave.php");
         }
-        else
-        {
-            sendNotification("Leave Request Rejection Failed!");
+        else{
+            sendNotification("Error rejecting leave request.");
         }
     }
 
-    if(isset($_POST["approve"]))
-    {
-        if(! $_POST["staffid"] == "")
-        {
-            if(is_numeric($_POST["staffid"]))
-            {
-                $operation = approveLeave($_POST["staffid"], $_POST["startdate"]);
+    if(isset($_POST["approve"])){
+        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"]);
 
-                $success = "Leave Approved!";
-                $fail = "Approval Failed!";
-
-                if($operation)
-                {
-                    sendNotification($success, "approveLeave.php");
-                }
-                else
-                {
-                    sendNotification($fail);
-                }
-            }
-            else
-            {
-                sendNotification("Invalid Staff ID");
-            }
-
+        if($operation){
+            sendNotification( "Leave Approved!", "approveLeave.php");
         }
-        else
-        {
-            sendNotification("Please enter Staff ID");
+        else{
+            sendNotification( "Error approving leave request." );
         }
-
-
     }
 
     $exStaffId = "";
@@ -223,6 +195,9 @@
             .innerTable, .innerTable tr, .innerTable th, .innerTable td{
                 border: 1px solid #005e77 ;
             }
+            input[type="submit"] {
+                width: 110px;
+            }
             .left{
                 text-align: left;
             }
@@ -284,19 +259,19 @@
                 </tr>
                 <tr>
                     <td>Staff ID</td>
-                    <td > <input type = "text" name="staffid" value="<?php echo $exStaffId ?>"/ readonly> </td>
+                    <td > <input type = "text" name="staffId" value="<?php echo $exStaffId ?>"/ readonly> </td>
                 </tr>
                 <tr>
                     <td>Name</td>
-                    <td> <input type = "text" name="name" value="<?php echo $exName ?>"/ readonly> </td>
+                    <td> <input type = "text" value="<?php echo $exName ?>"/ readonly> </td>
                 </tr>
                 <tr>
                     <td>Section</td>
-                    <td ><input type="text" name="section" value="<?php echo $exSection ?>"/ readonly></td>
+                    <td ><input type="text" value="<?php echo $exSection ?>"/ readonly></td>
                 </tr>
                 <tr>
                     <td>Designation</td>
-                    <td > <input type="text" name="designation" value="<?php echo $exDesignation ?>" / readonly> </td>
+                    <td > <input type="text" value="<?php echo $exDesignation ?>" / readonly> </td>
                 </tr>
 
                 <tr><td colspan="4">&nbsp;</td></tr>
@@ -324,11 +299,11 @@
                             <tr>
                                 <td>Taken</td>
                                 <!--                                    <td> <input id="noOfShortTaken" type="number" min="0" max="21" name="noOfShortTaken" readonly value="--><?php //echo $CasualLeave ?><!--" /> </td>-->
-                                <td> <input id="noOfCasualTaken" type="number" min="0" max="21" name="noOfCasualTaken" readonly value="<?php echo $exNoOfCasualTaken ?>" /> </td>
-                                <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" name="noOfMedicalTaken" readonly value="<?php echo $exNoOfMedicalTaken ?>" /> </td>
-                                <td> <input id="noOfDutyTaken" type="number" min="0" max="99" name="noOfDutyTaken" readonly value="<?php echo $exNoOfDutyTaken ?>" /> </td>
-                                <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" name="noOfNoPayTaken" readonly value="<?php echo $exNoOfNoPayTaken ?>" /> </td>
-                                <td> <input id="noOfTotalTaken" type="number" min="0" max="366" name="noTotalTaken" readonly value="<?php echo $exNoOfTotalTaken ?>" /> </td>
+                                <td> <input id="noOfCasualTaken" type="number" min="0" max="21" readonly value="<?php echo $exNoOfCasualTaken ?>" /> </td>
+                                <td> <input id="noOfMedicalTaken" type="number" min="0" max="20" readonly value="<?php echo $exNoOfMedicalTaken ?>" /> </td>
+                                <td> <input id="noOfDutyTaken" type="number" min="0" max="99" readonly value="<?php echo $exNoOfDutyTaken ?>" /> </td>
+                                <td> <input id="noOfNoPayTaken" type="number" min="0" max="99" readonly value="<?php echo $exNoOfNoPayTaken ?>" /> </td>
+                                <td> <input id="noOfTotalTaken" type="number" min="0" max="366" readonly value="<?php echo $exNoOfTotalTaken ?>" /> </td>
                             </tr>
                         </table>
 
@@ -336,12 +311,12 @@
                 </tr>
                 <tr>
                     <td> Address when on Leave  </td>
-                    <td > <input type = "text" name="address" value="<?php echo $exAddressOnLeave ?>"/ readonly> </td>
+                    <td > <input type = "text" value="<?php echo $exAddressOnLeave ?>"/ readonly> </td>
                 </tr>
 
                 <tr>
                     <td>Reason</td>
-                    <td > <input type = "textarea" name="otherreasons" value="<?php echo $exReason ?>"/ readonly> </td>
+                    <td > <input type = "textarea" value="<?php echo $exReason ?>"/ readonly> </td>
                 </tr>
                 <tr>
                     <td> Start Date </td>
@@ -350,7 +325,7 @@
 
                 <tr>
                     <td> Date Assuming Duty</td>
-                    <td > <input type="date" name="endDate" value="<?php echo $exEndDate ?>" </td>
+                    <td > <input type="date" value="<?php echo $exEndDate ?>" </td>
                 </tr>
             </table>
 
@@ -359,8 +334,8 @@
 
             <table align="center">
                 <tr>
-                    <td> <input type="submit" name="approve" style="width: 110px" value="<?php echo $approvelang ?>"> </td>
-                    <td> <input type="submit" name="reject"  style="width: 110px" value="<?php echo $rejectlang ?>">  </td>
+                    <td> <input type="submit" name="approve" value="<?php echo $approvelang ?>"> </td>
+                    <td> <input type="submit" name="reject"  value="<?php echo $rejectlang ?>">  </td>
 <!--                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>-->
                 </tr>
             </table>

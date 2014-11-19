@@ -1274,77 +1274,30 @@ function getOtherLeaveData($StaffID)
     return $set;
 } //Gets a single instance of applied leave for a staff member
 
-/**/function approveLeave($StaffID, $sDate, $ReviewedBy = null)
+/**/function reviewLeave($StaffID, $sDate, $ReviewedBy = null, $status = 1)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
-    $result = getFullLeaveData($StaffID);
-
-    $noOfCasual = $noOfDuty = $noOfMedical = 0;
-
-    foreach($result as $row)
-    {
-        if( isset( $result ) )
-        {
-            $noOfCasual = $row[0];
-            $noOfMedical = $row[1];
-            $noOfDuty = $row[2];
-        }
-    }
-
     if ($mysqli->connect_errno) {
-
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if($stmt = $mysqli->prepare("UPDATE  FullLeave l, LeaveData a SET l.Status = 1, l.ReviewedBy = ?,  l.ReviewedDate = ?, a.CasualLeave=?, a.MedicalLeave=?, a.DutyLeave=? WHERE l.StaffID = a.StaffID AND l.StaffID =?  AND l.StartDate = ?"))
+    $ReviewedDate = date("Y-m-d");
+
+    if($stmt = $mysqli->prepare("  UPDATE FullLeave l
+                                    SET l.Status = ?, l.ReviewedBy = ?,  l.ReviewedDate = ?
+                                    WHERE l.StaffID = ?
+                                      AND l.StartDate = ? "))
     {
-        $ReviewedDate = date("Y-m-d");
-
-        $stmt->bind_param("ssiiiss", $ReviewedBy, $ReviewedDate, $noOfCasual, $noOfMedical, $noOfDuty, $StaffID, $sDate);
-
+        $stmt->bind_param("issss", $status, $ReviewedBy, $ReviewedDate, $StaffID, $sDate);
         if($stmt->execute())
         {
             $stmt->close();
             return true;
         }
-
     }
     $mysqli->close();
-    return false;
-}
-
-function rejectLeave($StaffID, $sDate, $ReviewedBy)
-{
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    if($mysqli->connect_errno)
-    {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
-    }
-
-    if($stmt = $mysqli->prepare("UPDATE FullLeave SET ReviewedBy=?, Status=?, ReviewedDate=? WHERE StaffID=? AND StartDate=?"))
-    {
-        $status = 2;
-        $ReviewedDate = date("Y-m-d");
-
-        $stmt->bind_param("sisss", $ReviewedBy, $status, $ReviewedDate, $StaffID, $sDate);
-
-        if($stmt->execute())
-        {
-            if ($stmt -> affected_rows > 0)
-            {
-                $stmt->close();
-                $mysqli->close();
-                return true;
-            }
-        }
-        $stmt->close();
-    }
-    $mysqli->close();
-
     return false;
 }
 
