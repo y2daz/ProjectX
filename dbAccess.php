@@ -959,13 +959,14 @@ function getStaffID( $staffNo ){
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
-
-    if ($stmt = $mysqli->prepare("  SELECT `StaffID`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `RequestDate`, `StartDate`,
-                                      `EndDate`, `AddressOnLeave`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`, `isDeleted`
-                                    FROM FullLeave
-                                    WHERE StaffID = ?
-                                      AND isDeleted <> 0
-                                    ORDER BY RequestDate"))
+    if ($stmt = $mysqli->prepare("  SELECT f.`StaffID`, s.NameWithInitials, `NoOfCasual` + `NoOfNoPay` , `NoOfMedical`, `NoOfDuty`, `RequestDate`, `StartDate`,
+                                      `EndDate`, `AddressOnLeave`, `Reason`, `Status`, `ReviewedBy`, `ReviewedDate`
+                                    FROM FullLeave f INNER JOIN Staff s ON (s.StaffID = f.StaffId )
+                                    WHERE f.StaffID = ?
+                                      AND f.isDeleted = 0
+                                      AND Status = 1
+                                    ORDER BY RequestDate;
+"))
     {
         $stmt -> bind_param("s", $StaffID);
 
@@ -979,6 +980,7 @@ function getStaffID( $staffNo ){
             }
         }
     }
+
     $mysqli->close();
     return $set;
 

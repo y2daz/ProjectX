@@ -87,9 +87,14 @@
  * Getting configuration information
  */
 
-    function getConfigData(){
+    function getConfigData( $variable = null ){
         $config = include( "configuration/data.php" );
-        return $config;
+        if ( isset( $variable ) ){
+            return $config[ $variable ];
+        }
+        else{
+            return $config;
+        }
     }
 
     function storeConfigData( $config ){
