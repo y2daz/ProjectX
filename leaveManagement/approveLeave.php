@@ -311,21 +311,21 @@
                 </tr>
                 <tr>
                     <td> Address when on Leave  </td>
-                    <td > <input type = "text" value="<?php echo $exAddressOnLeave ?>"/ readonly> </td>
+                    <td > <input type = "text" value="<?php echo $exAddressOnLeave ?>" readonly /> </td>
                 </tr>
 
                 <tr>
                     <td>Reason</td>
-                    <td > <input type = "textarea" value="<?php echo $exReason ?>"/ readonly> </td>
+                    <td > <input type = "textarea" value="<?php echo $exReason ?>" readonly /> </td>
                 </tr>
                 <tr>
                     <td> Start Date </td>
-                    <td > <input type="date" name="startDate" value="<?php echo $exStartDate?>" </td>
+                    <td > <input type="date" name="startDate" value="<?php echo $exStartDate?>" readonly /> </td>
                 </tr>
 
                 <tr>
                     <td> Date Assuming Duty</td>
-                    <td > <input type="date" value="<?php echo $exEndDate ?>" </td>
+                    <td > <input type="date" value="<?php echo $exEndDate ?>" readonly /></td>
                 </tr>
             </table>
 

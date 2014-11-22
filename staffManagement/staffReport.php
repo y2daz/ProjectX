@@ -385,51 +385,53 @@ $column27Header3 = "උදා 583021007 V";
         else
         {
             foreach($result as $row){
+
                 echo "<tr>\n";
-                echo "<td>$row[0]</td>";
+                echo "\t<td>$row[0]</td>\n";
 
+                echo "\t<td>" . $row["NamewithInitials"]  . "</td>\n"; //WHY??!
                 $date = strtotime($row[2]); //DOB
-                echo "<td>$row[1]</td>";
-                echo "<td>" . date("y",  $date) . "</td>";
-                echo "<td>" . date("m",  $date) . "</td>";
-                echo "<td>" . date("d",  $date) . "</td>";
-                echo "<td>$row[3]</td>"; //Gender
-                echo "<td>$row[4]</td>"; //Nat/Race
-                echo "<td>$row[5]</td>"; //Religion
-                echo "<td>$row[6]</td>"; //Civil Status
-                $date = strtotime($row[10]); //Date Appointed to Post
-                echo "<td>" . date("y",  $date) . "</td>";
-                echo "<td>" . date("m",  $date) . "</td>";
-                $date = strtotime($row[11]); //Date Appointed to Post
-                echo "<td>" . date("y",  $date) . "</td>";
-                echo "<td>" . date("m",  $date) . "</td>";
-                echo "<td>$row[12]</td>"; //Employment Status
-                echo "<td>$row[13]</td>"; //Medium
-                echo "<td>$row[14]</td>"; //Position in School
-                echo "<td>$row[20]</td>"; //Highest Educational Qualification
-                echo "<td>$row[21]</td>"; //Highest Professional Qualification
-                echo "<td>$row[22]</td>"; //Course of Study
-                echo "<td>$row[15]</td>"; //Section
-                echo "<td>$row[16]</td>"; //Subje Most
-                echo "<td>$row[17]</td>"; //Subj 2nd Most
-                echo "<td>$row[18]</td>"; //Service Grade
-                echo "<td>$row[0]</td>"; //Other Leave
-                echo "<td>$row[0]</td>"; //Offical Leave
-                echo "<td>$row[0]</td>"; //Maternity
-                echo "<td class='salary'>" . number_format( $row[19], 2, ".", "," ). "</td>"; //Salary
+                echo "\t<td>" . date("y",  $date) . "</td>\n";
+                echo "\t<td>" . date("m",  $date) . "</td>\n";
+                echo "\t<td>" . date("d",  $date) . "</td>\n";
+                echo "\t<td>$row[3]</td>\n"; //Gender
+                echo "\t<td>$row[4]</td>\n"; //Race
+                echo "\t<td>$row[5]</td>\n"; //Religion
+                echo "\t<td>$row[6]</td>\n"; //Civil Status
+                $date = strtotime($row[7]); //Date Appointed to Post
+                echo "\t<td>" . date("y",  $date) . "</td>\n";
+                echo "\t<td>" . date("m",  $date) . "</td>\n";
+                $date = strtotime($row[8]); //Date Joined this school
+                echo "\t<td>" . date("y",  $date) . "</td>\n";
+                echo "\t<td>" . date("m",  $date) . "</td>\n";
+                echo "\t<td>$row[9]</td>\n"; //Employment Status
+                echo "\t<td>$row[10]</td>\n"; //Medium
+                echo "\t<td>$row[11]</td>\n"; //Designation
+                echo "\t<td>$row[12]</td>\n"; //Highest Educational Qualification
+                echo "\t<td>$row[13]</td>\n"; //Highest Professional Qualification
+                echo "\t<td>$row[14]</td>\n"; //Course of Study
+                echo "\t<td>$row[15]</td>\n"; //Section
+                echo "\t<td>$row[16]</td>\n"; //Subje Most
+                echo "\t<td>$row[17]</td>\n"; //Subj 2nd Most
+                echo "\t<td>$row[18]</td>\n"; //Service Grade
+                echo "\t<td>$row[19]</td>\n"; //Other Leave = Casual = No Pay
+                echo "\t<td>$row[20]</td>\n"; //Offical Leave = Duty
+                echo "\t<td>$row[21]</td>\n"; //Maternity = Medical
+                echo "\t<td class='salary'>" . number_format( $row[22], 2, ".", "," ). "</td>\n"; //Salary
 
 
-                echo "<td class='center'>" . substr($row[7], 0, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 1, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 2, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 3, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 4, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 5, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 6, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 7, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . substr($row[7], 8, 1) . "</td>";//NIC NUMBER
-                echo "<td class='center'>" . strtoupper( substr($row[7], 9, 1) ) . "</td>";//NIC NUMBER
-                echo "</tr>\n";
+                //FOR LOOP THIS PART YAZDAAN.
+                echo "\t<td class='center'>" . substr($row[23], 0, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 1, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 2, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 3, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 4, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 5, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 6, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 7, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . substr($row[23], 8, 1) . "</td>\n";//NIC NUMBER
+                echo "\t<td class='center'>" . strtoupper( substr($row[23], 9, 1) ) . "</td>";//NIC NUMBER
+                echo "\t</tr>\n";
             }
         }
 

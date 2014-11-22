@@ -866,21 +866,23 @@ function getAllStaffDetailed( $initial )
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`,
-                `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
-                `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `PositioninSchool`, `Section`, `SubjectMostTaught`,
-                `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
-                FROM Staff s WHERE s.isDeleted = 0 ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
+    if ($stmt = $mysqli->prepare("Select s.`StaffID`, s.`NamewithInitials`, s.`DateofBirth`, s.`Gender`, s.`Race`, s.`Religion`,
+                                    s.`CivilStatus`, s.`DateAppointedastoPost`, s.`DateJoinedthisSchool`, s.`EmploymentStatus`,
+                                    s.`Medium`, s.`Designation`, '1', '1', '1', s.`Section`, s.`SubjectMostTaught`,
+                                    s.`SubjectSecondMostTaught`, s.`ServiceGrade`, IFNULL( SUM(f.`NoOfCasual`) + SUM(f.`NoOfNoPay`), 0 ) , IFNULL( SUM(f.`NoOfDuty`), 0),
+                                    IFNULL( SUM(f.`NoOfMedical`), 0) , s.`Salary`, s.`NICNumber`
+                                    FROM Staff s LEFT OUTER JOIN FullLeave f ON (f.StaffID = s.StaffID)
+                                    WHERE s.isDeleted = 0 GROUP BY s.StaffID ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
     {
         $stmt -> bind_param("i", $initial);
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++ ]=$row;
+            while( $row = $result -> fetch_array() ){
+                $set[ $i++ ]=$row;
             }
+//            echo "<pre> " . var_dump($set) ." </pre><br />\n";
         }
     }
 
