@@ -6,6 +6,10 @@ STAFF nO FULL IMPLEMENTATION
 >resetting staff numbers
 >allocating staff numbers
 
+MYSQL DATE FORMAT yyyy-mm-dd for date comparison
+
+TRANSACTIONS
+
 ** new leave data
 
 leave reports interface
@@ -104,6 +108,9 @@ school staff
 css cleaning
 
 staff member finder
+
+add date range for leave data sql in all select queries (We only want data for current year)
+    Main staff report
 
 show year of staffid when registering/updating
 

@@ -42,7 +42,7 @@ ob_start();
             }
             input[name='Submit']{
                 position: relative;
-                left: 250px;
+                left: 220px;
             }
             .btnDateSet{
                 position: relative;
@@ -84,15 +84,11 @@ ob_start();
     </head>
     <body>
 
-        <h1 align="center"> Individual Leave Report </h1>
+        <h1 align="center"> Staff Leave Report </h1>
 
-        <form method="get" action="leaveReport.php">
+        <form method="get" action="staffLeaveReport.php">
 
             <table class="insert">
-                <tr>
-                    <td> <label> Staff ID </label></td>
-                    <td> <input type="text" class="text1" name="staffId" value="" required> </td>
-                </tr>
                 <tr>
                     <td> <label>From </label> </td>
                     <td> <input type="date" name="startDate" id="startDate" required/></td>

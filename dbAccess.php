@@ -869,10 +869,12 @@ function getAllStaffDetailed( $initial )
     if ($stmt = $mysqli->prepare("Select s.`StaffID`, s.`NamewithInitials`, s.`DateofBirth`, s.`Gender`, s.`Race`, s.`Religion`,
                                     s.`CivilStatus`, s.`DateAppointedastoPost`, s.`DateJoinedthisSchool`, s.`EmploymentStatus`,
                                     s.`Medium`, s.`Designation`, '1', '1', '1', s.`Section`, s.`SubjectMostTaught`,
-                                    s.`SubjectSecondMostTaught`, s.`ServiceGrade`, IFNULL( SUM(f.`NoOfCasual`) + SUM(f.`NoOfNoPay`), 0 ) , IFNULL( SUM(f.`NoOfDuty`), 0),
-                                    IFNULL( SUM(f.`NoOfMedical`), 0) , s.`Salary`, s.`NICNumber`
-                                    FROM Staff s LEFT OUTER JOIN FullLeave f ON (f.StaffID = s.StaffID)
-                                    WHERE s.isDeleted = 0 GROUP BY s.StaffID ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
+                                    s.`SubjectSecondMostTaught`, s.`ServiceGrade`, IFNULL( l.`OtherLeave`, 0) , IFNULL( l.`DutyLeave`, 0),
+                                    IFNULL( l.`MedicalLeave`, 0) , s.`Salary`, s.`NICNumber`
+                                    FROM Staff s LEFT OUTER JOIN VwLeaveNumbers l ON (l.StaffID = s.StaffID)
+                                    WHERE s.isDeleted = 0
+                                    GROUP BY s.StaffID
+                                    ORDER BY s.StaffId + 0 LIMIT ?, 20;"))
     {
         $stmt -> bind_param("i", $initial);
         if ($stmt->execute())
@@ -949,8 +951,10 @@ function getStaffID( $staffNo ){
 ///
 //
 
-/**/function getLeave($StaffID)
-{
+function getLeave($StaffID, $startDate, $endDate){
+    /**
+     * $startDate and $endDate shouuld be in the yyyy-mm-dd format
+     */
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -965,21 +969,109 @@ function getStaffID( $staffNo ){
                                     WHERE f.StaffID = ?
                                       AND f.isDeleted = 0
                                       AND Status = 1
-                                    ORDER BY RequestDate;
-"))
+                                      AND `StartDate` >= ?
+                                      AND `EndDate` < ?
+                                    ORDER BY RequestDate; "))
     {
-        $stmt -> bind_param("s", $StaffID);
+        $stmt -> bind_param("sss", $StaffID, $startDate, $endDate);
 
         if ($stmt->execute())
         {
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++ ]=$row;
             }
         }
     }
+
+    $mysqli->close();
+    return $set;
+
+} //Returns all the applied fullLeave of a non deleted staff member
+
+/**/function getStaffLeave( $startDate, $endDate ){ //Returns leave data of all staff members from $startDate to $endDate
+    /**
+     * Currently not working due to technical difficulties
+     */
+    /*
+        BEGIN TRANSACTION;
+
+        DROP VIEW IF EXISTS TempLeaveNumbers;
+
+        CREATE VIEW TempLeaveNumbers
+        AS
+        SELECT `StaffID`, SUM(`NoOfCasual` + `NoOfNoPay`) AS 'OtherLeave', SUM(`NoOfMedical`) AS 'MedicalLeave', SUM(`NoOfDuty`) AS 'DutyLeave'
+        FROM `FullLeave`
+        WHERE isDeleted = 0
+            AND Status = 1
+            AND StartDate >= '2014-01-01'
+            AND EndDate < '2015-01-01'
+        GROUP BY StaffID;
+
+        SELECT s.`StaffID`,  s.NameWithInitials, IFNULL(`OtherLeave`, 0) AS 'OtherLeave' , IFNULL(`MedicalLeave`, 0) AS 'MedicalLeave',
+            IFNULL(`DutyLeave`, 0) AS 'DutyLeave', IFNULL( `OtherLeave` + `DutyLeave` + `medicalLeave`, 0 ) AS 'Total'
+        FROM Staff s LEFT OUTER JOIN TempLeaveNumbers n ON (n.StaffId = s.StaffId)
+        WHERE s.isDeleted = 0;
+
+        COMMIT TRANSACTION;
+        DROP VIEW IF EXISTS TempLeaveNumbers;
+    */
+
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = NULL;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+    $mysqli -> begin_transaction();
+    $dropStmt = $mysqli->prepare("DROP VIEW IF EXISTS TempLeaveNumbers;");
+    $dropStmt -> execute();
+
+    $startDate = $mysqli -> real_escape_string( $startDate );
+    $endDate = $mysqli -> real_escape_string( $endDate );
+
+    echo "place 1";
+    if( $createStmt = $mysqli->prepare("CREATE VIEW TempLeaveNumbers AS
+                            SELECT `StaffID`, SUM(`NoOfCasual` + `NoOfNoPay`) AS 'OtherLeave', SUM(`NoOfMedical`) AS 'MedicalLeave', SUM(`NoOfDuty`) AS 'DutyLeave'
+                            FROM `FullLeave`
+                            WHERE isDeleted = 0
+                                AND Status = 1
+                                AND StartDate >= '$startDate'
+                                AND EndDate < '$endDate'
+                            GROUP BY StaffID;") )
+    {
+        echo "place 2.1";
+//        $createStmt -> bind_param("ss", $startDate, $endDate);
+        $createStmt -> execute();
+        $createStmt -> close();
+    }
+    else{
+        echo "place 2.2 <br /><br />" . $mysqli->error;
+        $mysqli -> rollback();
+        return NULL;
+    }
+
+    $selectStmt = $mysqli->prepare("SELECT s.`StaffID`,  s.NameWithInitials, IFNULL(`OtherLeave`, 0) AS 'OtherLeave',
+                                    IFNULL(`MedicalLeave`, 0) AS 'MedicalLeave', IFNULL(`DutyLeave`, 0) AS 'DutyLeave',
+                                    IFNULL( `OtherLeave` + `DutyLeave` + `medicalLeave`, 0 ) AS 'Total'
+                                FROM Staff s LEFT OUTER JOIN TempLeaveNumbers n ON (n.StaffId = s.StaffId)
+                                WHERE s.isDeleted = 0;");
+    if ($selectStmt->execute()){
+        $result = $selectStmt->get_result();
+        $i = 0;
+        while($row = $result->fetch_array()){
+            $set[$i++ ]=$row;
+        }
+    }
+    $selectStmt -> close();
+//    COMMIT TRANSACTION;
+    $mysqli -> commit();
+//    $dropStmt = $mysqli->prepare("DROP VIEW IF EXISTS TempLeaveNumbers;");
+    $dropStmt -> execute();
 
     $mysqli->close();
     return $set;
@@ -1489,17 +1581,17 @@ function insertNewTimetable($staffId)
     {
         $nullValue = null;
 
-        for($day = 0; $day < 5; $day++)
-        {
-            for($position=0; $position < 8; $position++)
-            {
+        $day = 0;
+        $position = 0;
+        for($day = 0; $day < 5; $day++){
+            for($position=0; $position < 8; $position++){
                 $stmt -> bind_param("isiissi",$nullValue,$nullValue,$day,$position,$nullValue, $staffId, $isDeleted  );
                 $stmt->execute();
             }
         }
         $stmt->close();
         $mysqli->close();
-        regenerateSubjectTable();
+//        regenerateSubjectTable();
         return true;
     }
 
@@ -1521,13 +1613,13 @@ function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
     if ($stmt = $mysqli->prepare('UPDATE Timetable set Grade=?, Class=?, Subject=?, isDeleted=? WHERE Day = ? AND Position = ? AND StaffId = ?;'))
     {
 
+        $i = $x = $number = 0;
+
         for($i = 0; $i < 5; $i++){
             for($x = 0; $x < 8; $x++){
                 $number = ($i * 8) + $x;
-
+                $stmt -> bind_param("issiiii", $curGrade, $ClassArr[ $number ], $SubjectArr[ $number ], $isDeleted, $i, $x, $staffId);
                 $curGrade = ($GradeArr[$number] == 0 ? null : $GradeArr[$number]);
-
-                $stmt -> bind_param("issiiii", $curGrade, $ClassArr[$number], $SubjectArr[$number], $isDeleted, $i, $x, $staffId);
                 $stmt -> execute();
             }
         }

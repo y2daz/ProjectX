@@ -13,13 +13,6 @@ require_once(THISROOT . "/formValidation.php");
 include(THISROOT . "/common.php");
 ob_start();
 
-/*if(isset($_GET["staffId"])){
-    $StaffId = $_GET[ "staffId" ];
-}else{
-    $StaffId = "";
-}*/
-
-$StaffId = isset( $_GET[ "staffId" ] ) ? $_GET[ "staffId" ] : "" ;
 $startDate = isset( $_GET[ "startDate" ] ) ? $_GET[ "startDate" ] : "" ;
 $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
@@ -76,45 +69,20 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
             <td><h4>Gregory's Road, Colombo 07, Sri Lanka.</h4></td>
         </tr>
         <tr>
-            <td><h3>Individual Staff Leave Report</h3></td>
+            <td><h3>Staff Leave Report</h3></td>
+        </tr>
+        <tr>
+            <td><h3>From <?php echo $startDate?> to <?php echo $endDate?> </h3></td>
         </tr>
     </table>
 
     <img id="flag" src="/images/abc.jpg"/>
 
 
-    <table class="leaveTable">
+   <table class="leaveTable2">
 
-        <?php
-
-        $result = getStaffMember( $StaffId );
-
-        $i = 1;
-
-
-        if ( isset( $result ) ){
-            foreach($result as $row){
-
-                $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
-
-                echo $top;
-                    echo "<td> Staff ID</td>";
-                    echo "<td> $row[0] </td>";
-                echo "</tr>";
-
-                echo "<tr>";
-                    echo "<td> Name </td>";
-                    echo "<td> $row[1] </td>";
-                echo "</tr>";
-            }
-        }
-        ?>
-    </table>
-
-    <table class="leaveTable2">
-
-        <th>Date Leave Begun</th>
-        <th>Date Assumed Duty</th>
+        <th>Staff IDn</th>
+        <th>Name</th>
 <!--        <th>-->
 <!--            <table>-->
 <!--                <tr>-->
@@ -132,23 +100,25 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
         <?php
 
-        $result = getLeave( $StaffId, $startDate, $endDate );
+        $startDate = date_format( date_create( $startDate ), 'Y-m-d' );
+        $endDate = date_format( date_create( $endDate ), 'Y-m-d' );
+
+        $result = getStaffLeave( $startDate, $endDate );
 
         $i = 1;
 
-
         if ( !isset( $result ) ){
-            echo "<tr><td colspan='10'>There are no Leave Requests.</td></tr>";
+            echo "<tr><td colspan='10'>There is no leave data for this period.</td></tr>";
         }
         else{
             foreach($result as $row){
                 echo "<tr>";
-                echo "<td>$row[6]</td>";
-                echo "<td>$row[7]</td>";
+                echo "<td>$row[0]</td>";
+                echo "<td>$row[1]</td>";
                 echo "<td>$row[4]</td>";
                 echo "<td>$row[3]</td>";
                 echo "<td>$row[2]</td>";
-                echo "<td>" . ( $row[2] + $row[3] + $row[4] ) . "</td>";
+                echo "<td>$row[5]</td>";
                 echo '</tr>';
 
             }

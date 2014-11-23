@@ -101,4 +101,10 @@
         file_put_contents( "configuration/data.php", '<?php return ' . var_export($config, true) . ';' );
     }
 
+    function setConfigData( $variable, $value ){
+        $config = getConfigData();
+        $config[ $variable ] = $value;
+        storeConfigData( $config );
+    }
+
 ?>
