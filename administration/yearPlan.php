@@ -28,8 +28,7 @@ ob_start();
 
 $dDaysOnPage = 37;
 $dDay = 1;//Sets weekend
-$dYear = date("Y");
-
+$dYear = getConfigData( "currentYear" );
 
 //var_dump($_POST);
 
@@ -42,8 +41,6 @@ if (isset($_POST["0"]))
     else
         sendNotification("Error changing year plan.");
 }
-
-$holidaysArr = getHolidays($dYear);
 
 function printArrJs($Arr){
     $output = "[";
@@ -59,7 +56,6 @@ function printArrJs($Arr){
 }
 
 ?>
-<html>
     <head>
         <script src="yearPlan.js"></script>
         <script>
@@ -69,7 +65,7 @@ function printArrJs($Arr){
                     this.classList.toggle("selected");
                 });
 
-                fillYearPlan(  <?php printArrJs($holidaysArr); ?> );
+<!--                fillYearPlan(  --><?php //printArrJs($holidaysArr); ?><!-- );-->
             });
 
         </script>
@@ -238,46 +234,30 @@ function printArrJs($Arr){
 
         function FriendlyDayOfWeek($dayNum) //Converts Sunday to 7
         {
-            if ($dayNum == 0)
-            {
-                return 7;
-            }
-            else
-            {
-                return $dayNum;
-            }
+            return ( $dayNum == 0 ? 7 : $dayNum );
         }
+
+        $holidaysArr = getHolidays($dYear);
+        $hDayCounter = 0; //Holiday counter
 
         for ($mC=1;$mC<=12;$mC++)
         { //mc is Month, dDay is digit of day
             $currentDT = mktime(0, 0, 0, $mC, $dDay, $dYear);
             echo "<tr><td class='monthName'><div>" . date("F", $currentDT) . "</div></td>";
             $daysInMonth = date("t", $currentDT);
-            echo InsertBlankTd(FriendlyDayOfWeek(date("w", $currentDT)) - 1);
+            echo InsertBlankTd( FriendlyDayOfWeek( date( "w", $currentDT ) ) - 1 );
 
             for ($i = 1; $i <= $daysInMonth; $i++) {
                 $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
                 $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
-//                echo $formattedDate . "\n";
 
-
-
-//                $noLeft = count($holidays);
-//                $class = "";
-
-//                var_dump($holidays);
-//
-//                while($noLeft > 0)
-//                {
-//                    for($x = 0; $x < $noLeft; $x++)
-//                    {
-//                        if (strcmp($formattedDate, $holidays[$x]) == 0) //Look for today (Not important to us)
-//                        {
-//                            $class = "selected"; break;
-//                        }
-//                    }
-//                }
-                $class = "";
+                if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
+                    $class = "selected";
+                    $hDayCounter++;
+                }
+                else{
+                    $class = "";
+                }
 
                 echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>";
             }
@@ -288,7 +268,6 @@ function printArrJs($Arr){
     ?>
             </table>
             </body>
-        </html>
 
     <br />
     <table id="sbtTable">

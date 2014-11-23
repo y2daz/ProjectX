@@ -1975,12 +1975,10 @@ function getHolidays($year){
     {
         $stmt -> bind_param("i", $year);
 
-        if ($stmt->execute())
-        {
+        if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++]=$row[0];
             }
         }
