@@ -19,6 +19,13 @@ require_once(THISROOT . "/common.php");
 ob_start();
 
 
+if( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $_GET[ "endDate" ] ) && isset( $_GET[ "sbtIndividualReport" ] ) ){
+    header("Location: leaveReport.php?staffId=" . $_GET[ "staffId" ] . "&startDate=" . $_GET[ "startDate" ] . "&endDate=" . $_GET[ "endDate" ]  );
+}
+elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $_GET[ "endDate" ] ) && isset( $_GET[ "sbtNiceReport" ] ) ){
+    header("Location: leaveReport.php?staffId=" . $_GET[ "staffId" ] . "&startDate=" . $_GET[ "startDate" ] . "&endDate=" . $_GET[ "endDate" ]  );
+}
+
 ?>
     <html>
     <head>
@@ -40,9 +47,15 @@ ob_start();
             .insert td{
                 padding:10px;
             }
-            input[name='Submit']{
+            input[name='sbtIndividualReport']{
                 position: relative;
-                left: 250px;
+                width: 150px;
+                left: 170px;
+            }
+            input[name='sbtNiceReport']{
+                position: relative;
+                width: 150px;
+                left: 170px;
             }
             .btnDateSet{
                 position: relative;
@@ -86,7 +99,7 @@ ob_start();
 
         <h1 align="center"> Individual Leave Report </h1>
 
-        <form method="get" action="leaveReport.php">
+        <form method="get">
 
             <table class="insert">
                 <tr>
@@ -106,7 +119,9 @@ ob_start();
                     <td><input type="button" class="btnDateSet" name="setEndDate" id="setEndDate" value="Dec 31st <?php echo getConfigData("currentYear")?>" /></td>
                 </tr>
             </table>
-            <input type="submit"  name="Submit" value="Generate Report" >
+            <br />
+            <input type="submit"  name="sbtIndividualReport" value="View Detailed Report" >
+            <input type="submit"  name="sbtNiceReport" value="View Visual Report" >
         </form>
     </body>
     </html>

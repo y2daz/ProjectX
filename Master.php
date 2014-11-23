@@ -26,8 +26,7 @@
         $logSuccess = ($operation == 0 ? false : true );
     }
 
-    if(!isset($_COOKIE['language']))
-    {
+    if(!isset($_COOKIE['language'])){
         setcookie('language', '0'); //where 0 is English and 1 is Sinhala
     }
 
@@ -39,12 +38,6 @@
     }
     else{
         $logging = "Log Out";
-    }
-
-    if(isset($_GET["logout"]))
-    {
-        $_SESSION["user"] = NULL;
-        header("Location: " . PATHFRONT . "/Menu.php");
     }
 
 ?>
