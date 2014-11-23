@@ -951,12 +951,14 @@ function getStaffID( $staffNo ){
 ///
 //
 
-function getLeave($StaffID, $startDate, $endDate){
+function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
     /**
      * $startDate and $endDate shouuld be in the yyyy-mm-dd format
      */
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
+
+    $orderField = ( strcmp( $orderField, "startDate" ) == 0 ? $orderField : "RequestDate" );
 
     $set = NULL;
 
@@ -971,7 +973,7 @@ function getLeave($StaffID, $startDate, $endDate){
                                       AND Status = 1
                                       AND `StartDate` >= ?
                                       AND `EndDate` < ?
-                                    ORDER BY RequestDate; "))
+                                    ORDER BY $orderField; "))
     {
         $stmt -> bind_param("sss", $StaffID, $startDate, $endDate);
 
@@ -991,9 +993,6 @@ function getLeave($StaffID, $startDate, $endDate){
 } //Returns all the applied fullLeave of a non deleted staff member
 
 /**/function getStaffLeave( $startDate, $endDate ){ //Returns leave data of all staff members from $startDate to $endDate
-    /**
-     * Currently not working due to technical difficulties
-     */
     /*
         BEGIN TRANSACTION;
 
@@ -1072,6 +1071,39 @@ function getLeave($StaffID, $startDate, $endDate){
     $mysqli->close();
     return $set;
 } //Returns all the applied fullLeave of a non deleted staff member
+
+function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant function not used,
+/*
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = NULL;
+
+    $startDate = ( isset( $startDate ) ? $startDate : getConfigData( 'currentYear' ) . '-01-01' );
+    $endDate = ( isset( $endDate ) ? $endDate : ( getConfigData( 'currentYear' ) + 1 ) . '-01-01' );
+
+    if( $stmt = $mysqli->prepare("SELECT `StaffID`, `StartDate`, `EndDate`, `NoOfCasual`, `NoOfMedical`, `NoOfDuty`, `NoOfNoPay`
+                                    FROM `FullLeave`
+                                    WHERE Status = 1
+                                        AND StartDate >= '2014-01-01'
+                                        AND EndDate < '2015-01-01'
+                                        AND STaffId = 4") )
+    {
+        $stmt -> bind_param( "ss", $startDate, $endDate );
+        if ( $stmt -> execute() ){
+            $result = $stmt -> get_result();
+            $i = 0;
+            while($row = $result -> fetch_array()){
+                $set[$i++ ]=$row;
+            }
+        }
+        $stmt -> close();
+    }
+
+    $mysqli -> close();
+    return $set;
+*/
+} //Redundant function. Not used.
 
 /**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $startDate, $endDate, $addressOnLeave, $reason)
 {
@@ -1175,8 +1207,7 @@ function getLeave($StaffID, $startDate, $endDate){
         {
             $result = $stmt->get_result();
             $i = 0;
-            while($row = $result->fetch_array())
-            {
+            while($row = $result->fetch_array()){
                 $set[$i++ ]=$row;
             }
         }

@@ -23,7 +23,7 @@ if( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $_GET
     header("Location: leaveReport.php?staffId=" . $_GET[ "staffId" ] . "&startDate=" . $_GET[ "startDate" ] . "&endDate=" . $_GET[ "endDate" ]  );
 }
 elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $_GET[ "endDate" ] ) && isset( $_GET[ "sbtNiceReport" ] ) ){
-    header("Location: leaveReport.php?staffId=" . $_GET[ "staffId" ] . "&startDate=" . $_GET[ "startDate" ] . "&endDate=" . $_GET[ "endDate" ]  );
+    header("Location: niceLeaveReport.php?staffId=" . $_GET[ "staffId" ] . "&startDate=" . $_GET[ "startDate" ] . "&endDate=" . $_GET[ "endDate" ]  );
 }
 
 ?>

@@ -152,31 +152,31 @@ function printArrJs($Arr){
 
         </style>
     </head>
-  <body>
-  <h1>Year Plan</h1>
+    <body>
+    <h1>Year Plan</h1>
 
 
-  <table id="legend">
-      <tr><th colspan="2">Legend</th></tr>
-      <tr></tr>
-      <tr>
+    <table id="legend">
+        <tr><th colspan="2">Legend</th></tr>
+        <tr></tr>
+        <tr>
           <td class="colourCol selected"></td>
           <td class="type">School Holiday</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
           <td class="colourCol poya"></td>
           <td class="type">Poya Day</td>
-      </tr>
-      <tr>
+        </tr>
+        <tr>
           <td class="colourCol publicHoliday"></td>
           <td class="type">Public Holiday</td>
-      </tr>
-  </table>
+        </tr>
+    </table>
 
 
-  <br />
-  <br />
-  <br />
+    <br />
+    <br />
+    <br />
 
     <table id="calendar" border="1">
         <tr>
@@ -222,50 +222,50 @@ function printArrJs($Arr){
 
 
 
-    <?php
+        <?php
 
-        function InsertBlankTd($numberOfTdsToAdd) {
-            $tdString = "";
-            for($i = 1; $i <= $numberOfTdsToAdd; $i++) {
-                $tdString .= "<td></td>";
-            }
-            return $tdString;
-        }
-
-        function FriendlyDayOfWeek($dayNum) //Converts Sunday to 7
-        {
-            return ( $dayNum == 0 ? 7 : $dayNum );
-        }
-
-        $holidaysArr = getHolidays($dYear);
-        $hDayCounter = 0; //Holiday counter
-
-        for ($mC=1;$mC<=12;$mC++)
-        { //mc is Month, dDay is digit of day
-            $currentDT = mktime(0, 0, 0, $mC, $dDay, $dYear);
-            echo "<tr><td class='monthName'><div>" . date("F", $currentDT) . "</div></td>";
-            $daysInMonth = date("t", $currentDT);
-            echo InsertBlankTd( FriendlyDayOfWeek( date( "w", $currentDT ) ) - 1 );
-
-            for ($i = 1; $i <= $daysInMonth; $i++) {
-                $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
-                $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
-
-                if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
-                    $class = "selected";
-                    $hDayCounter++;
+            function InsertBlankTd($numberOfTdsToAdd) {
+                $tdString = "";
+                for($i = 1; $i <= $numberOfTdsToAdd; $i++) {
+                    $tdString .= "<td></td>";
                 }
-                else{
-                    $class = "";
-                }
-
-                echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>";
+                return $tdString;
             }
 
-            echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT)) + 1);
-            echo "</tr>";
-        }
-    ?>
+            function FriendlyDayOfWeek($dayNum) //Converts Sunday to 7
+            {
+                return ( $dayNum == 0 ? 7 : $dayNum );
+            }
+
+            $holidaysArr = getHolidays($dYear);
+            $hDayCounter = 0; //Holiday counter
+
+            for ($mC=1;$mC<=12;$mC++)
+            { //mc is Month, dDay is digit of day
+                $currentDT = mktime(0, 0, 0, $mC, $dDay, $dYear);
+                echo "<tr><td class='monthName'><div>" . date("F", $currentDT) . "</div></td>";
+                $daysInMonth = date("t", $currentDT);
+                echo InsertBlankTd( FriendlyDayOfWeek( date( "w", $currentDT ) ) - 1 );
+
+                for ($i = 1; $i <= $daysInMonth; $i++) {
+                    $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
+                    $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
+
+                    if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
+                        $class = "selected";
+                        $hDayCounter++;
+                    }
+                    else{
+                        $class = "";
+                    }
+
+                    echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>";
+                }
+
+                echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT)) + 1);
+                echo "</tr>";
+            }
+        ?>
             </table>
             </body>
 
