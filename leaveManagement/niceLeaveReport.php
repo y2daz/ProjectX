@@ -83,11 +83,17 @@ $stfName = $staffMember[1];
         .monthName div {
             padding-left:10px;
         }
-        .selected {
+        .holiday {
             background-color: #bed9ff;
         }
-        .poya {
+        .dutyLeave{
             background-color: #ffa726;
+        }
+        .medicalLeave{
+            background-color: #ff4d51;
+        }
+        .otherLeave{
+            background-color: #d0ff7f;
         }
         .publicHoliday {
             background-color: #2baf2b;
@@ -99,20 +105,35 @@ $stfName = $staffMember[1];
         .button{
             left:100px;
         }
+
         #legend{
             position: relative;
-            left: 10%;
+            left: 745px;
             min-width: 200px;
-            display: none;
+            display: block;
+            border:1px #005e77 solid;
+            /*border-collapse: collapse;*/
         }
         #legend th{
             background-color: #005e77;
             color: white;
         }
+        #legend td{
+            border: none;
+            border-collapse: collapse;
+        }
         #legend .colourCol{
-            width: 20px;
-            height: 20px;
-            border: 1px solid #005e77;
+            /*width: 15px;*/
+            /*height: 30px;*/
+            padding-top:10px;
+            padding-bottom:10px;
+            padding-left:0px;
+            padding-right:0px;
+            vertical-align:top;
+            text-align:center;
+            min-width:15px;
+            border: 1px #005e77 solid;
+            al
         }
         #legend .type{
             padding-left: 20px;
@@ -127,7 +148,7 @@ $stfName = $staffMember[1];
 </head>
 <body>
 
-    <h2>Visual Leave Report for <?php echo $stfName; ?></h2>
+    <h1>Visual Leave Report for <?php echo $stfName; ?></h1>
 
     <table id="calendar" border="1">
         <tr>
@@ -208,23 +229,33 @@ $stfName = $staffMember[1];
             $i = 0;
 
             foreach( $leaveData as $row ){
-                $result[ $i ][ 0 ] = $row[ 6 ]; //startTime
-                $result[ $i ][ 1 ] = $row[ 7 ]; //endTime
+                $result[ $i ][ 0 ] = $row[ 6 ]; //startDate
+                $result[ $i ][ 1 ] = $row[ 7 ]; //endDate
                 $result[ $i ][ 2 ] = $row[ 4 ]; //NoOfDuty
                 $result[ $i ][ 3 ] = $row[ 3 ]; //NoOfMedical
                 $result[ $i++ ][ 4 ] = $row[ 2 ]; //NoOfOther
             }
-
+            //Prevent access array with index out of bounds
+            $result[ $i ][ 0 ] = NULL;
+            $result[ $i ][ 1 ] = NULL;
+            $result[ $i ][ 2 ] = NULL;
+            $result[ $i ][ 3 ] = NULL;
+            $result[ $i ][ 4 ] = NULL;
 //            echo "<pre>" . var_export( $result ) . "</pre>";
-
             return $result;
-
         }
 
         $leaveData = organiseFullLeaveData( $leaveData );
+        $leaveDataCounter = 0;
 
-//        $holidaysArr = getHolidays($dYear);
-//        $hDayCounter = 0; //Holiday counter
+        $holidaysArr = getHolidays($dYear);
+        $hDayCounter = 0; //Holiday counter
+
+        $noOfDuty = 0;
+        $noOfMedical = 0;
+        $noOfOther = 0;
+
+        $colouring = FALSE;
 
         for ($mC=1;$mC<=12;$mC++)
         { //mc is Month, dDay is digit of day
@@ -237,21 +268,116 @@ $stfName = $staffMember[1];
                 $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
                 $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
 
-//                if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
-//                    $class = "selected";
-//                    $hDayCounter++;
-//                }
-//                else{
-                    $class = "";
-//                }
+                $leaveSDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 0 ] ), 'd/m/Y' );
+                $leaveEDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 1 ] ), 'd/m/Y' );
+//                echo $leaveSDate . "<br />";
 
-                echo "<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>";
+                if( $colouring == TRUE){
+                    if( strcmp( $formattedDate, $leaveEDate ) == 0 ){
+                        $colouring = FALSE;
+                        $class = "";
+                        $leaveDataCounter++;
+                    }
+
+                    if( $noOfDuty > 0 ){
+                        $noOfDuty--;
+                        $class = "dutyLeave";
+                    }
+                    elseif( $noOfMedical > 0 ){
+                        $noOfMedical--;
+                        $class = "medicalLeave";
+                    }
+                    elseif( $noOfOther > 0 ){
+                        $noOfOther--;
+                        $class = "otherLeave";
+                    }
+                    else{
+                        $class = "otherLeave";
+                    }
+
+                }
+                elseif( strcmp( $formattedDate, $leaveSDate ) == 0 ){
+                    $colouring = TRUE;
+                    $noOfDuty = $leaveData[ $leaveDataCounter ][2];
+                    $noOfMedical = $leaveData[ $leaveDataCounter ][3];
+                    $noOfOther = $leaveData[ $leaveDataCounter ][4];
+
+                    //MORE STUFF
+
+                    if( $noOfDuty > 0 ){
+                        $noOfDuty--;
+                        $class = "dutyLeave";
+                    }
+                    elseif( $noOfMedical > 0 ){
+                        $noOfMedical--;
+                        $class = "medicalLeave";
+                    }
+                    elseif( $noOfOther > 0 ){
+                        $noOfOther--;
+                        $class = "otherLeave";
+                    }
+                    else{
+                        $class = "otherLeave";
+                    }
+
+                }else{
+                    $class = "";
+                }
+
+
+
+                if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
+                    $class .= " holiday";
+                    $hDayCounter++;
+                }
+
+                echo "\t\t<td class='" . $class. " days day" . FriendlyDayOfWeek(date("w",$exactDT)) . "' name=\"" . $formattedDate . "\"  >$i</td>\n";
             }
 
             echo InsertBlankTd($dDaysOnPage - $daysInMonth - FriendlyDayOfWeek(date("w",$currentDT)) + 1);
-            echo "</tr>";
+            echo "</tr>\n\n";
         }
         ?>
+    </table>
+
+    <br />
+
+    <table id="legend">
+        <tr>
+            <th colspan="11">Legend</th>
+        </tr>
+        <tr>
+            <td class="holiday">
+                <div class="colourCol">22</div>
+            </td>
+            <td>
+                School Holiday
+            </td>
+        </tr>
+        <tr>
+            <td class="dutyLeave">
+                <div class="colourCol">22</div>
+            </td>
+            <td>
+                Duty Leave
+            </td>
+        </tr>
+        <tr>
+            <td class="medicalLeave">
+                <div class="colourCol">22</div>
+            </td>
+            <td>
+                Medical Leave
+            </td>
+        </tr>
+        <tr>
+            <td class="otherLeave">
+                <div class="colourCol">22</div>
+            </td>
+            <td>
+                Other Leave
+            </td>
+        </tr>
     </table>
 
 </body>
