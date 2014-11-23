@@ -1034,7 +1034,6 @@ function getLeave($StaffID, $startDate, $endDate){
     $startDate = $mysqli -> real_escape_string( $startDate );
     $endDate = $mysqli -> real_escape_string( $endDate );
 
-    echo "place 1";
     if( $createStmt = $mysqli->prepare("CREATE VIEW TempLeaveNumbers AS
                             SELECT `StaffID`, SUM(`NoOfCasual` + `NoOfNoPay`) AS 'OtherLeave', SUM(`NoOfMedical`) AS 'MedicalLeave', SUM(`NoOfDuty`) AS 'DutyLeave'
                             FROM `FullLeave`
@@ -1044,13 +1043,10 @@ function getLeave($StaffID, $startDate, $endDate){
                                 AND EndDate < '$endDate'
                             GROUP BY StaffID;") )
     {
-        echo "place 2.1";
-//        $createStmt -> bind_param("ss", $startDate, $endDate);
         $createStmt -> execute();
         $createStmt -> close();
     }
     else{
-        echo "place 2.2 <br /><br />" . $mysqli->error;
         $mysqli -> rollback();
         return NULL;
     }
@@ -1059,7 +1055,8 @@ function getLeave($StaffID, $startDate, $endDate){
                                     IFNULL(`MedicalLeave`, 0) AS 'MedicalLeave', IFNULL(`DutyLeave`, 0) AS 'DutyLeave',
                                     IFNULL( `OtherLeave` + `DutyLeave` + `medicalLeave`, 0 ) AS 'Total'
                                 FROM Staff s LEFT OUTER JOIN TempLeaveNumbers n ON (n.StaffId = s.StaffId)
-                                WHERE s.isDeleted = 0;");
+                                WHERE s.isDeleted = 0
+                                ORDER BY Total ASC;");
     if ($selectStmt->execute()){
         $result = $selectStmt->get_result();
         $i = 0;
@@ -1068,14 +1065,12 @@ function getLeave($StaffID, $startDate, $endDate){
         }
     }
     $selectStmt -> close();
-//    COMMIT TRANSACTION;
+
     $mysqli -> commit();
-//    $dropStmt = $mysqli->prepare("DROP VIEW IF EXISTS TempLeaveNumbers;");
     $dropStmt -> execute();
 
     $mysqli->close();
     return $set;
-
 } //Returns all the applied fullLeave of a non deleted staff member
 
 /**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $startDate, $endDate, $addressOnLeave, $reason)

@@ -52,10 +52,20 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
             top: 350px;
         }
         .leaveTable2 td{
-            text-align: center;
+            /*text-align: center;*/
+            padding: 2px 5px 2px 5px;
         }
         .leaveTable2 th{
             width: 100px;
+        }
+        .left{
+            text-align: left;
+        }
+        .right{
+            text-align: right;
+        }
+        .center{
+            text-align: center;
         }
     </style>
 </head>
@@ -81,7 +91,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
    <table class="leaveTable2">
 
-        <th>Staff IDn</th>
+        <th>Staff ID</th>
         <th>Name</th>
 <!--        <th>-->
 <!--            <table>-->
@@ -113,14 +123,14 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
         else{
             foreach($result as $row){
                 echo "<tr>";
-                echo "<td>$row[0]</td>";
-                echo "<td>$row[1]</td>";
-                echo "<td>$row[4]</td>";
-                echo "<td>$row[3]</td>";
-                echo "<td>$row[2]</td>";
-                echo "<td>$row[5]</td>";
+                echo "<td class='right'>$row[0]</td>";
+                echo "<td class='left'>$row[1]</td>";
+                echo "<td class='right'>$row[4]</td>";
+                echo "<td class='right'>$row[3]</td>";
+                echo "<td class='right'>$row[2]</td>";
+                echo "<td class='right'>$row[5]</td>";
                 echo '</tr>';
-
+                echo ( $i++ % 5 == 0 ? "<tr><td colspan='10'>&nbsp;</td></tr>" : "" );
             }
         }
         ?>
