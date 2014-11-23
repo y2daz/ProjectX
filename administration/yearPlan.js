@@ -5,14 +5,14 @@
 
 function submitYearPlan()
 {
-    if ($('.selected').length > 0)
+    if ( $('.selected').length > 0)
     {
         var dates = new Array();
 
         $('.selected').each(function(i, obj)
         {
             var name = $(obj).attr('name');
-            dates.push(name);
+            dates.push( name );
             post(document.URL, dates, "POST");
         });
     }
