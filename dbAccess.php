@@ -1247,21 +1247,26 @@ function insertNewLeaveData($staffID){
     return;
 } //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
-function getFullLeaveData($StaffID)
+/*Change to better query for staff who've never applied for leave*/function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
     $set = NULL;
 
+    $year = getConfigData( "currentYear" );
+
+    $startDate = ( isset( $startDate ) ? $startDate : $year . '-01-01' );
+    $endDate = ( isset( $endDate ) ? $endDate : ( $year + 1 ) . '-01-01' );
+
     if($mysqli->connect_errno)
     {
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ) , SUM( l.NoOfMedical ), SUM( l.NoOfDuty ), SUM( l.NoOfNoPay ),
-                                      s.NameWithInitials, fSection.Data as 'Section', fDesignation.Data as 'Designation',
-                                      s.ContactNumber
+    if($stmt = $mysqli->prepare("SELECT IFNULL( SUM( l.NoOfCasual ), 0 ) , IFNULL( SUM( l.NoOfMedical ), 0 ), IFNULL( SUM( l.NoOfDuty ), 0 ),
+                                        IFNULL( SUM( l.NoOfNoPay ), 0 ), s.NameWithInitials, fSection.Data as 'Section',
+                                        fDesignation.Data as 'Designation',  s.ContactNumber
                                     FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
                                         FormOption fSection, FormOption fDesignation
                                     WHERE s.StaffId = ?
@@ -1270,9 +1275,11 @@ function getFullLeaveData($StaffID)
                                         AND fSection.Label = 'Section'
                                         AND fDesignation.Number = s.Designation
                                         AND fDesignation.Label = 'Designation'
+                                        AND l.StartDate >= ?
+                                        AND l.EndDate < ?
                                     GROUP BY l.Staffid;"))
     {
-        $stmt->bind_param("s", $StaffID);
+        $stmt->bind_param("sss", $StaffID, $startDate, $endDate );
 
         if($stmt->execute()){
             $result = $stmt->get_result();
@@ -1291,7 +1298,7 @@ function getFullLeaveData($StaffID)
     return $set;
 } //Returns full leave numbers for the staff member.
 
-function getOtherLeaveData($StaffID)
+/*NEEDS TIME RANGE*/function getOtherLeaveData($StaffID)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();

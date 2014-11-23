@@ -34,6 +34,8 @@ date range for each leave type
 leave appliacation buttons next to dates for frquently used dates
     if possible list box for frequently used reasons too... :P
 
+getFullLeaveData doesnt work if never applied for leave before
+
 insert all subjects
 >subject codes
 >timetable long subject name abbr

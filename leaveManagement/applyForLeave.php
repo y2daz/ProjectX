@@ -264,8 +264,6 @@
             });
 
         </script>
-
-
     </head>
     <body>
         <h1>Apply for Leave</h1>

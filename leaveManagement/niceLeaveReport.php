@@ -28,8 +28,14 @@ $dDay = 1;//Sets weekend
 $dYear = getConfigData( "currentYear" );
 
 $staffMember = getStaffMember( $StaffId );
-$staffMember = $staffMember[0];
+$staffMember = $staffMember[ 0 ];
 $stfName = $staffMember[1];
+
+$staffLeaveData = getFullLeaveData( $StaffId, $startDate, $endDate );
+$staffLeaveData = $staffLeaveData[ 0 ];
+$usedDuty = isset( $staffLeaveData ) ? $staffLeaveData[ 2 ] : 0 ;
+$usedMedical = isset( $staffLeaveData ) ? $staffLeaveData[ 1 ] : 0 ;
+$usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 3 ] : 0;
 
 ?>
 <html>
@@ -64,16 +70,7 @@ $stfName = $staffMember[1];
             min-width:15px;
             opacity: 1;
         }
-
-        .days:hover {
-            background:#9F0;
-            border-color:#000;
-            cursor: pointer;
-        }
-        .day6 {
-            background:#DEDEDE;
-        }
-        .day7 {
+        .day6, .day7 {
             background:#DEDEDE;
         }
         .monthName {
@@ -89,15 +86,21 @@ $stfName = $staffMember[1];
         .dutyLeave{
             background-color: #ffa726;
         }
+            .dutyLeave.day6, .dutyLeave.day7{
+                background-color: #EDC58A;
+            }
         .medicalLeave{
             background-color: #ff4d51;
         }
+            .medicalLeave.day6, .medicalLeave.day7{
+                background-color: #ED9C9E;
+            }
         .otherLeave{
             background-color: #d0ff7f;
         }
-        .publicHoliday {
-            background-color: #2baf2b;
-        }
+            .otherLeave.day6, .otherLeave.day7{
+                background-color: #D8EDB3;
+            }
 
         h1 {
             text-align:center;
@@ -225,6 +228,10 @@ $stfName = $staffMember[1];
              *      }
              */
 
+        if( !isset( $leaveData ) ){
+            return $leaveData;
+        }
+
             $result = array();
             $i = 0;
 
@@ -268,63 +275,65 @@ $stfName = $staffMember[1];
                 $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
                 $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
 
-                $leaveSDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 0 ] ), 'd/m/Y' );
-                $leaveEDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 1 ] ), 'd/m/Y' );
-//                echo $leaveSDate . "<br />";
+                if( isset( $leaveData ) ){
+                    $leaveSDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 0 ] ), 'd/m/Y' );
+                    $leaveEDate = date_format( date_create( $leaveData[ $leaveDataCounter ][ 1 ] ), 'd/m/Y' );
 
-                if( $colouring == TRUE){
-                    if( strcmp( $formattedDate, $leaveEDate ) == 0 ){
-                        $colouring = FALSE;
+                    if( $colouring == TRUE){
+                        if( strcmp( $formattedDate, $leaveEDate ) == 0 ){
+                            $colouring = FALSE;
+                            $class = "";
+                            $leaveDataCounter++;
+                        }
+
+                        if( $noOfDuty > 0 ){
+                            $noOfDuty--;
+                            $class = "dutyLeave";
+                        }
+                        elseif( $noOfMedical > 0 ){
+                            $noOfMedical--;
+                            $class = "medicalLeave";
+                        }
+                        elseif( $noOfOther > 0 ){
+                            $noOfOther--;
+                            $class = "otherLeave";
+                        }
+                        else{
+                            $class = "otherLeave";
+                        }
+
+                    }
+                    elseif( strcmp( $formattedDate, $leaveSDate ) == 0 ){
+                        $colouring = TRUE;
+                        $noOfDuty = $leaveData[ $leaveDataCounter ][2];
+                        $noOfMedical = $leaveData[ $leaveDataCounter ][3];
+                        $noOfOther = $leaveData[ $leaveDataCounter ][4];
+
+                        //MORE STUFF
+
+                        if( $noOfDuty > 0 ){
+                            $noOfDuty--;
+                            $class = "dutyLeave";
+                        }
+                        elseif( $noOfMedical > 0 ){
+                            $noOfMedical--;
+                            $class = "medicalLeave";
+                        }
+                        elseif( $noOfOther > 0 ){
+                            $noOfOther--;
+                            $class = "otherLeave";
+                        }
+                        else{
+                            $class = "otherLeave";
+                        }
+
+                    }else{
                         $class = "";
-                        $leaveDataCounter++;
                     }
-
-                    if( $noOfDuty > 0 ){
-                        $noOfDuty--;
-                        $class = "dutyLeave";
-                    }
-                    elseif( $noOfMedical > 0 ){
-                        $noOfMedical--;
-                        $class = "medicalLeave";
-                    }
-                    elseif( $noOfOther > 0 ){
-                        $noOfOther--;
-                        $class = "otherLeave";
-                    }
-                    else{
-                        $class = "otherLeave";
-                    }
-
                 }
-                elseif( strcmp( $formattedDate, $leaveSDate ) == 0 ){
-                    $colouring = TRUE;
-                    $noOfDuty = $leaveData[ $leaveDataCounter ][2];
-                    $noOfMedical = $leaveData[ $leaveDataCounter ][3];
-                    $noOfOther = $leaveData[ $leaveDataCounter ][4];
-
-                    //MORE STUFF
-
-                    if( $noOfDuty > 0 ){
-                        $noOfDuty--;
-                        $class = "dutyLeave";
-                    }
-                    elseif( $noOfMedical > 0 ){
-                        $noOfMedical--;
-                        $class = "medicalLeave";
-                    }
-                    elseif( $noOfOther > 0 ){
-                        $noOfOther--;
-                        $class = "otherLeave";
-                    }
-                    else{
-                        $class = "otherLeave";
-                    }
-
-                }else{
+                else{
                     $class = "";
                 }
-
-
 
                 if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
                     $class .= " holiday";
@@ -347,8 +356,16 @@ $stfName = $staffMember[1];
             <th colspan="11">Legend</th>
         </tr>
         <tr>
+            <td class="day6">
+                <div class="colourCol">--</div>
+            </td>
+            <td>
+                Weekend
+            </td>
+        </tr>
+        <tr>
             <td class="holiday">
-                <div class="colourCol">22</div>
+                <div class="colourCol"><?php echo count( $holidaysArr )?></div>
             </td>
             <td>
                 School Holiday
@@ -356,7 +373,7 @@ $stfName = $staffMember[1];
         </tr>
         <tr>
             <td class="dutyLeave">
-                <div class="colourCol">22</div>
+                <div class="colourCol"><?php echo $usedDuty ?></div>
             </td>
             <td>
                 Duty Leave
@@ -364,7 +381,7 @@ $stfName = $staffMember[1];
         </tr>
         <tr>
             <td class="medicalLeave">
-                <div class="colourCol">22</div>
+                <div class="colourCol"><?php echo $usedMedical ?></div>
             </td>
             <td>
                 Medical Leave
@@ -372,7 +389,7 @@ $stfName = $staffMember[1];
         </tr>
         <tr>
             <td class="otherLeave">
-                <div class="colourCol">22</div>
+                <div class="colourCol"><?php echo $usedOther ?></div>
             </td>
             <td>
                 Other Leave
