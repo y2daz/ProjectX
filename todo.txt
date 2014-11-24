@@ -16,76 +16,40 @@ leave reports interface
 
 access control file level.
 
-leave taken in leave application interface
-
 search leave by everything for staff
 
 qualifications interface
 
-no pay leave database part
-
 staff registration table, more splits
     Acedemic staff and non acedemic staff stuff
 
-short leave database
-
-date range for each leave type
-
 leave appliacation buttons next to dates for frquently used dates
     if possible list box for frequently used reasons too... :P
-
-getFullLeaveData doesnt work if never applied for leave before
 
 insert all subjects
 >subject codes
 >timetable long subject name abbr
 
-calculate leave days
->no of days leave applied
-
-apply leave interface change to form
-
-maybe remove year plan
-
 ** split staff table to
- general info
- qualifications
+    general info
+    qualifications
 
 qualification list database tables
-
-staff report actual leave data numbers
 
 reset leave data at the end of every year
 
 change all staff nos at the end of every year
 
-expanding nav hidden
-
 *** PRINT BUTTON ON REPORTS
 
 leave reviewing
 
-deleting staff delete all references inc leavedata
+deleting staff delete all references inc
 
 comments
-  on eeverything
-
-short leave another area on interface
-    short
-    late
-    half day
-
-leave address on leave
+    on eeverything
 
 function parameter proper indentation and queries the same thing? check I dunno
-
-maybe checkbox leaves
-
-menu order
-    register
-    search
-    class teac alloc
-    class and ind reports in report
 
 individual staff report
     reduce header line size
@@ -103,9 +67,6 @@ check all outer join queries
 
 best create two report templates (landscape portrait)
 
-logout top right corner
-show current logged in user
-
 edu emp id
 school staff
 
@@ -120,22 +81,12 @@ show year of staffid when registering/updating
 
 teacher id > staff id
 
-class allocation, use impromptu and shizzle
-    really thin class seperators
-
-justify about us text. remove sir's name... :P
-    remove "developed for ds"
-
-short leave database amd full
-
-
 PREPARE LIST OF QUESTIONS TO ASK DS.
 
 understanding this code on reused code pages. e.g. main.css
+separete css for common stuff
 
 untrained something else
-
-all queries return false on numrows <= 0 not just
 
 optimise deletion code in search update staff
 
@@ -153,7 +104,5 @@ Year plan additional info on each day
 education info select one educational qualif for reports
 
 describe short leave types
-
-fix approve leave retrieval
 
 check leave status whole thing is crap
