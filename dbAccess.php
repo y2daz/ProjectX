@@ -1247,7 +1247,7 @@ function insertNewLeaveData($staffID){
     return;
 } //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
-/*Change to better query for staff who've never applied for leave*/function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
+function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1316,15 +1316,28 @@ function insertNewLeaveData($staffID){
     return $set;
 } //Returns full leave numbers for the staff member.
 
-/*NEEDS TIME RANGE*/function getOtherLeaveData($StaffID)
+/*NEEDS TIME RANGE*/function getOtherLeaveData($StaffID, $month = NULL)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
+    if( !isset( $month ) || ( $month > 12 || $month < 1 ) ){
+        $month = date( "m");
+    }
+
+//    echo "MONTH IS $month";
+
+    $year = getConfigData( "currentYear" );
+
+    $nextYear = ( $month == 12 ? $year + 1 : $year );
+    $nextMonth = ( $month == 12 ? 1 : $month + 1 );
+
+    $startDate = "$year-$month-01";
+    $endDate = "$nextYear-$nextMonth-01";
+
     $set = NULL;
 
-    if($mysqli->connect_errno)
-    {
+    if($mysqli->connect_errno){
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
@@ -1332,9 +1345,11 @@ function insertNewLeaveData($staffID){
                                     FROM `OtherLeave`
                                     WHERE StaffID = ?
                                         AND isDeleted = 0
+										AND `LeaveDate` >= ?
+										AND `LeaveDate` < ?
                                     GROUP BY `LeaveType`; "))
     {
-        $stmt->bind_param("s", $StaffID);
+        $stmt->bind_param("sss", $StaffID, $startDate, $endDate );
 
         if($stmt->execute()){
             $result = $stmt->get_result();

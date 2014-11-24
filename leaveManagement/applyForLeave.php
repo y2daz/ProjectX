@@ -106,8 +106,18 @@
         $MedicalLeave = ($MedicalLeave < 0 ? 0 : $MedicalLeave);
         $DutyLeave = ($DutyLeave < 0 ? 0 : $DutyLeave);
 
-        $otherResult = getOtherLeaveData( $_POST["newStaffID"] );
+//        $enteredDate = date_create( $_POST["leaveDate"] );
 
+//        echo "date creat = " . date_create( $_POST["leaveDate"] ) . "<br /";
+
+        $month = ( isset( $_POST["leaveDate"] ) ? date( "m", strtotime( $_POST["leaveDate"] ) ) : NULL );
+//        echo "Entered month = $month";
+
+        $otherResult = getOtherLeaveData( $_POST["newStaffID"], $month );
+
+        for( $i = 0; $i < 3; $i++ ){
+            $otherResult[ $i ][ 1 ] = isset( $otherResult[ $i ][ 1 ] ) ? $otherResult[ $i ][ 1 ] : 0;
+        }
         $arrOtherLeave = array( $otherResult[0][1], $otherResult[1][1], $otherResult[2][1]);
     }
 
@@ -217,6 +227,13 @@
             .center{
                 text-align: center;
             }
+            .left{
+                text-align: left;
+                margin-left: 10%;
+            }
+            .strong{
+                font-weight: 700;
+            }
         </style>
 
         <script>
@@ -249,20 +266,36 @@
                     parseInt( $("#noOfDutyTaken").val() ) + parseInt( $("#noOfNoPayTaken").val() );
                 $("#noOfTotalTaken").val( totalTaken );
 
-                $( "[name='leaveType']").on("change", function(){
-                    var lType = $(this).attr("value");
+                $( "[name='leaveType']")
+                    .on("change", function(){
+                        var lType = $(this).attr("value");
 
-                    if( lType == "full"){
-                        $("#fullLeave").show();
-                        $("#shortLeave").hide();
-                    }
-                    else{
-                        $("#fullLeave").hide();
-                        $("#shortLeave").show();
-                    }
+                        if( lType == "full"){
+                            $("#fullLeave").show();
+                            $("#shortLeave").hide();
+                        }
+                        else{
+                            $("#fullLeave").hide();
+                            $("#shortLeave").show();
+                        }
+                    });
+
+                <?php
+                    $fL = '$("#rdFullLeave").';
+                    $sL = '$("#rdShortLeave").';
+                    $click = "click();";
+
+                    echo isset( $_POST["leaveDate"] ) ? $sL . $click . "\n" : $fL . $click . "\n" ;
+                ?>
+
+
+                $("[name='leaveDate']").on("change", function(){
+                    var staffId = $('#StaffID').val();
+                    var leaveDate = $(this).val();
+//                    alert( staffId + "_" + startDate + "_" + endDate + "_" + leaveType + "_" + otherReasons);
+                    var params = {"newStaffID" : staffId, "leaveDate" : leaveDate};
+                    post(document.URL, params, "post");
                 });
-
-                $( "[name='leaveType']" ).click();
             });
 
         </script>
@@ -294,10 +327,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label> <input type="radio" name="leaveType" value="short" checked/> Less than one day </label>
+                        <label> <input id="rdShortLeave" type="radio" name="leaveType" value="short"  /> Less than one day </label>
                     </td>
                     <td>
-                        <label> <input type="radio" name="leaveType" value="full"/> Other </label>
+                        <label> <input id="rdFullLeave" type="radio" name="leaveType" value="full"/> Other </label>
                     </td>
                 </tr>
             </table>
@@ -367,14 +400,18 @@
                 <table>
                     <tr>
                         <td>Date</td>
-                        <td><input id="leaveDate" type="date" name="leaveDate" value="" tabindex="2"/></td>
+                        <td><input id="leaveDate" type="date" name="leaveDate" value="<?php echo isset( $_POST["leaveDate"] ) ? $_POST["leaveDate"] : "" ;?>" tabindex="2"/></td>
                     </tr>
                     <tr>
                         <td colspan="3">
                             <table class="innerTable">
                                 <tr>
-                                    <th>&nbsp;</th>
-                                    <th colspan="3" class="center">Leave Type</th>
+                                    <?php
+
+                                    $strMonth = isset( $_POST["leaveDate"] ) ? date( "F", strtotime( $_POST["leaveDate"] ) ) : date( "F" );
+
+                                    ?>
+                                    <th colspan="4"> <span class="left"> For month of <span class="strong"><?php echo $strMonth; ?></span></span> </th>
                                 </tr>
                                 <tr>
                                     <td>Applying</td>
