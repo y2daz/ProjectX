@@ -147,3 +147,9 @@ Year plan additional info on each day
     think about different colours too.
 
 education info select one educational qualif for reports
+
+describe short leave types
+
+fix approve leave retrieval
+
+check leave status whole thing is crap

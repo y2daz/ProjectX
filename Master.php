@@ -40,6 +40,12 @@
         $logging = "Log Out";
     }
 
+    if(isset($_GET["logout"]))
+    {
+        $_SESSION["user"] = NULL;
+        header("Location: " . PATHFRONT . "/Menu.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html>

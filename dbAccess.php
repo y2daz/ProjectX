@@ -1264,8 +1264,8 @@ function insertNewLeaveData($staffID){
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT IFNULL( SUM( l.NoOfCasual ), 0 ) , IFNULL( SUM( l.NoOfMedical ), 0 ), IFNULL( SUM( l.NoOfDuty ), 0 ),
-                                        IFNULL( SUM( l.NoOfNoPay ), 0 ), s.NameWithInitials, fSection.Data as 'Section',
+    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ), SUM( l.NoOfMedical ), SUM( l.NoOfDuty ),
+                                        SUM( l.NoOfNoPay ), s.NameWithInitials, fSection.Data as 'Section',
                                         fDesignation.Data as 'Designation',  s.ContactNumber
                                     FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
                                         FormOption fSection, FormOption fDesignation

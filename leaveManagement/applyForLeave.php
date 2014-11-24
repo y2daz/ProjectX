@@ -200,7 +200,9 @@
                 font-size:15px;
                 Right:-335px;
                 top:20px;
-
+            }
+            textarea[name="reason"], textarea[name="otherReason"], input[name="addressOnLeave"]{
+                width: 345px;
             }
             .innerTable{
                 min-width: 550px;
@@ -303,6 +305,14 @@
             <div id="fullLeave">
                 <table>
                     <tr>
+                        <td><?php echo $startdate ?></td>
+                        <td><input id="startDate" type="date" name="startDate"  value="" tabindex="2"/></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo $enddate ?></td>
+                        <td><input id="endDate" type="date" name="endDate" value="" tabindex="3"/></td>
+                    </tr>
+                    <tr>
                         <td colspan="3">
                             <table class="innerTable">
                                 <tr>
@@ -343,14 +353,6 @@
                     <tr>
                         <td>Reason</td>
                         <td><textarea name="reason" rows="3" cols="25" draggable="false" tabindex="5" style="resize:none" tabindex="4"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td><?php echo $startdate ?></td>
-                        <td><input id="startDate" type="date" name="startDate"  value="" tabindex="2"/></td>
-                    </tr>
-                    <tr>
-                        <td><?php echo $enddate ?></td>
-                        <td><input id="endDate" type="date" name="endDate" value="" tabindex="3"/></td>
                     </tr>
                 </table>
 
@@ -404,6 +406,9 @@
                 </p>
             </div>
 
+            <div id="tooltip">
+                <p id="message"></p>
+            </div>
 
         </form>
     </body>
