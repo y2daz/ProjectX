@@ -1252,7 +1252,7 @@ function insertNewLeaveData($staffID){
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
-    $set = NULL;
+    $set = array( NULL );
 
     $year = getConfigData( "currentYear" );
 
@@ -1264,34 +1264,52 @@ function insertNewLeaveData($staffID){
         die ("Failed to connect to MySQL: " . $mysqli->connect_errno );
     }
 
-    if($stmt = $mysqli->prepare("SELECT SUM( l.NoOfCasual ), SUM( l.NoOfMedical ), SUM( l.NoOfDuty ),
-                                        SUM( l.NoOfNoPay ), s.NameWithInitials, fSection.Data as 'Section',
+    if( $checkStmt = $mysqli -> prepare( "SELECT SUM( l.NoOfCasual ), SUM( l.NoOfMedical ), SUM( l.NoOfDuty ),
+                                                SUM( l.NoOfNoPay )
+                                            FROM FullLeave l
+                                            WHERE l.StaffId = ?
+                                                AND l.status = 1
+                                                AND l.StartDate >= ?
+                                                AND l.EndDate < ?
+                                            GROUP BY l.Staffid;" ) )
+    {
+        $checkStmt -> bind_param("sss", $StaffID, $startDate, $endDate );
+        if($checkStmt -> execute()){
+            $result = $checkStmt -> get_result();
+
+            if( $result -> num_rows == 0){
+                $set[ 0 ][ 0 ] = 0;
+                $set[ 0 ][ 1 ] = 0;
+                $set[ 0 ][ 2 ] = 0;
+                $set[ 0 ][ 3 ] = 0;
+            }
+            else{
+                $row = $result -> fetch_array();
+                $set[ 0 ] = $row;
+            }
+        }
+    }
+    $checkStmt -> close();
+
+    if($stmt = $mysqli->prepare("SELECT s.NameWithInitials, fSection.Data as 'Section',
                                         fDesignation.Data as 'Designation',  s.ContactNumber
-                                    FROM FullLeave l INNER JOIN Staff s ON (l.StaffID = s.StaffID),
-                                        FormOption fSection, FormOption fDesignation
+                                    FROM Staff s , FormOption fSection, FormOption fDesignation
                                     WHERE s.StaffId = ?
-                                        AND l.status = 1
                                         AND fSection.Number = s.Section
                                         AND fSection.Label = 'Section'
                                         AND fDesignation.Number = s.Designation
-                                        AND fDesignation.Label = 'Designation'
-                                        AND l.StartDate >= ?
-                                        AND l.EndDate < ?
-                                    GROUP BY l.Staffid;"))
+                                        AND fDesignation.Label = 'Designation'; "))
     {
-        $stmt->bind_param("sss", $StaffID, $startDate, $endDate );
+        $stmt->bind_param("s", $StaffID );
 
         if($stmt->execute()){
             $result = $stmt->get_result();
-            $i = 0;
-            if($result->num_rows == 0){
-                insertNewLeaveData($StaffID);
-                return null;
-            }
 
-            while($row = $result->fetch_array()){
-                $set[$i++ ]=$row;
-            }
+            $row = $result->fetch_array();
+                $set[ 0 ][ 4 ] = $row[ 0 ];
+                $set[ 0 ][ 5 ] = $row[ 1 ];
+                $set[ 0 ][ 6 ] = $row[ 2 ];
+                $set[ 0 ][ 7 ] = $row[ 3 ];
         }
     }
     $mysqli->close();
