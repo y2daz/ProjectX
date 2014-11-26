@@ -148,8 +148,9 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
                 echo "<td>$row[4]</td>";
                 echo "<td>$row[3]</td>";
                 echo "<td>$row[2]</td>";
-                echo "<td>" . ( $row[2] + $row[3] + $row[4] ) . "</td>";
+                echo "<td>" . ( $row[2] + $row[3] ) . "</td>";
                 echo '</tr>';
+                echo ( $i++ % 5 == 0 ? "<tr><td>&nbsp;</td></tr>" : "" );
 
             }
         }

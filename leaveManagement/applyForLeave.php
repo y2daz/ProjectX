@@ -258,12 +258,12 @@
                     .val("0")
                     .on("input", function(){
                         var total = parseInt( $("#noOfCasual").val() ) + parseInt( $("#noOfMedical").val() ) +
-                            parseInt( $("#noOfDuty").val() ) + parseInt( $("#noOfNoPay").val() );
+                            parseInt( $("#noOfNoPay").val() );
                         $("#noOfTotal").val( total );
                 });
 
                 var totalTaken = parseInt( $("#noOfCasualTaken").val() ) + parseInt( $("#noOfMedicalTaken").val() ) +
-                    parseInt( $("#noOfDutyTaken").val() ) + parseInt( $("#noOfNoPayTaken").val() );
+                    parseInt( $("#noOfNoPayTaken").val() );
                 $("#noOfTotalTaken").val( totalTaken );
 
                 $( "[name='leaveType']")

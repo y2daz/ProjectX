@@ -1052,7 +1052,7 @@ function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
 
     $selectStmt = $mysqli->prepare("SELECT s.`StaffID`,  s.NameWithInitials, IFNULL(`OtherLeave`, 0) AS 'OtherLeave',
                                     IFNULL(`MedicalLeave`, 0) AS 'MedicalLeave', IFNULL(`DutyLeave`, 0) AS 'DutyLeave',
-                                    IFNULL( `OtherLeave` + `DutyLeave` + `medicalLeave`, 0 ) AS 'Total'
+                                    IFNULL( `OtherLeave` + `medicalLeave`, 0 ) AS 'Total'
                                 FROM Staff s LEFT OUTER JOIN TempLeaveNumbers n ON (n.StaffId = s.StaffId)
                                 WHERE s.isDeleted = 0
                                 ORDER BY Total ASC;");
@@ -1218,7 +1218,7 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
 
 } //Returns select records of a staff members applied leaves
 
-function insertNewLeaveData($staffID){
+/*UNUSED*/function insertNewLeaveData($staffID){
 /*
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1316,7 +1316,7 @@ function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
     return $set;
 } //Returns full leave numbers for the staff member.
 
-/*NEEDS TIME RANGE*/function getOtherLeaveData($StaffID, $month = NULL)
+function getOtherLeaveData($StaffID, $month = NULL)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();

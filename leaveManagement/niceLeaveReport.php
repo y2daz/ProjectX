@@ -83,10 +83,10 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
         .holiday {
             background-color: #bed9ff;
         }
-        .dutyLeave{
+        .otherLeave{
             background-color: #ffa726;
         }
-            .dutyLeave.day6, .dutyLeave.day7{
+            .otherLeave.day6, .otherLeave.day7{
                 background-color: #EDC58A;
             }
         .medicalLeave{
@@ -95,10 +95,10 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
             .medicalLeave.day6, .medicalLeave.day7{
                 background-color: #ED9C9E;
             }
-        .otherLeave{
+        .dutyLeave{
             background-color: #d0ff7f;
         }
-            .otherLeave.day6, .otherLeave.day7{
+            .dutyLeave.day6, .dutyLeave.day7{
                 background-color: #D8EDB3;
             }
 

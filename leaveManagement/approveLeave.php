@@ -101,8 +101,8 @@
                 $exDesignation = $row[ $i++ ];
                 $exContactNumber = $row[ $i++ ];
 
-                $exNoOfTotalLeave = $exNoOfCasualLeave + $exNoOfMedicalLeave + $exNoOfDutyLeave + $exNoOfNoPayLeave;
-                $exNoOfTotalTaken = $exNoOfCasualTaken + $exNoOfMedicalTaken + $exNoOfDutyTaken + $exNoOfNoPayTaken;
+                $exNoOfTotalLeave = $exNoOfCasualLeave + $exNoOfMedicalLeave + $exNoOfNoPayLeave;
+                $exNoOfTotalTaken = $exNoOfCasualTaken + $exNoOfMedicalTaken + $exNoOfNoPayTaken;
             }
         }
     }
