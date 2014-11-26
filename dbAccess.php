@@ -382,9 +382,10 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Race, 
                                         EmploymentStatus=?, Medium=?, Designation=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?,
                                         ServiceGrade=?, Salary=? WHERE StaffID = ?;"))
         {
-            $stmt -> bind_param("ssiiiisssssiiiiiiisiiis", $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus,
-                $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus,
-                $Medium, $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $staffID);
+            $stmt -> bind_param("ssiiiisssssiiiiiiiis", $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus,
+                $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool,
+                $EmploymentStatus, $Medium, $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught,
+                $ServiceGrade, $Salary, $staffID);
 
             if ($stmt->execute())
             {

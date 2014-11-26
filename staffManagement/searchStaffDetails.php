@@ -72,6 +72,15 @@ else{
     $fieldEnhancer = "";
 }
 
+
+
+if (!isset($_SESSION["queryString"])){
+    $_SESSION["queryString"] = null;
+}
+
+if (isset($_GET["search"])){
+$_SESSION["queryString"] = $_SERVER['QUERY_STRING'];
+}
 /*
 
 if( isset($_GET["staffID"]) )
@@ -85,10 +94,6 @@ if( isset($_GET["NamewithInitials"]))
 }
 
 
-
-if (!isset($_SESSION["queryString"])){
-    $_SESSION["queryString"] = null;
-}
 
 if ( !isset( $_GET["Choice"] ) ){
     $_GET["Choice"] = "Staffid";
@@ -135,7 +140,7 @@ if (isset($_POST["Submit"])) //Submit button to update staff
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
 
     if ($operation){
-        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"], parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
+        sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
     }
     else{
         sendNotification("Error updating information.");

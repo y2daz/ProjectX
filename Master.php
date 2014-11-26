@@ -185,7 +185,7 @@
                 $navMenu .= "<ul>\n";
                 $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/applyForLeave.php\">" . $applyForLeave . "</a><hr /></li>\n";
                 if ($user->hasPerm('Leave Approval')){
-                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . $approveLeave . "</a><hr /></li>\n";
+                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/approveLeave.php\">" . "Leave Pending Approval" . "</a><hr /></li>\n";
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/generateLeaveReport.php\">" . "Individual Leave Report " . "</a><hr /></li>\n";
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/leaveManagement/generateStaffLeaveReport.php\">" . "Staff Leave Report " . "</a><hr /></li>\n";
                 }

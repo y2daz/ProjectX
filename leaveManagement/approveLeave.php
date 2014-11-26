@@ -204,7 +204,7 @@
         </style>
     </head>
     <body>
-        <h1 align="center"> Approve Leave </h1>
+        <h1 align="center"> Leave Pending Approval  </h1>
         <br />
 
         <form method="post" class="viewGrid">
