@@ -992,7 +992,7 @@ function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
 
 } //Returns all the applied fullLeave of a non deleted staff member
 
-/**/function getStaffLeave( $startDate, $endDate ){ //Returns leave data of all staff members from $startDate to $endDate
+/**/function getStaffLeave( $startDate, $endDate ){ //Returns all the applied approved fullLeave of all non deleted staff members
     /*
         BEGIN TRANSACTION;
 
@@ -1070,7 +1070,7 @@ function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
 
     $mysqli->close();
     return $set;
-} //Returns all the applied fullLeave of a non deleted staff member
+} //Returns all the applied approved fullLeave of all non deleted staff members
 
 function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant function not used,
 /*

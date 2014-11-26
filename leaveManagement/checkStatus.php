@@ -7,7 +7,7 @@ require_once("../formValidation.php");
 require_once("../dbAccess.php");
 require_once(THISROOT . "/common.php");
 
-error_reporting(E_ERROR | E_PARSE);
+//error_reporting(E_ERROR | E_PARSE);
 
 ob_start();
 
@@ -47,19 +47,16 @@ if(isset($_POST["submit"]))
                 left: 245px;
                 top: 10px;
             }
-
             .checkStaff{
                 position: absolute;
                 left: 50px;
                 top: 110px;
             }
-
             .submitButton{
                 position: absolute;
                 left: 170px;
                 top: 140px;
             }
-
             .viewTable{
                 position: absolute;
                 left: 230px;
@@ -67,8 +64,6 @@ if(isset($_POST["submit"]))
                 border-collapse: collapse;
                 display: <?php echo $view ?>;
             }
-
-
             .viewTable th{
                 align:center;
                 color:white;
@@ -76,12 +71,9 @@ if(isset($_POST["submit"]))
                 height:25px;
                 padding:5px;
             }
-
             .viewTable td{
                 text-align: center;
             }
-
-
         </style>
     </head>
     <body>
@@ -102,7 +94,6 @@ if(isset($_POST["submit"]))
         <table class="viewTable">
 
             <th>Requested Date</th>
-            <th>Leave Type</th>
             <th>Approval Status</th>
 
             <?php
@@ -119,7 +110,7 @@ if(isset($_POST["submit"]))
                     $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
                     $Status = "Pending";
-                    $LeaveReason = $row[3];
+//                    $LeaveReason = $row[3];
 
                     if($row[1] == 0)
                     {
@@ -136,7 +127,7 @@ if(isset($_POST["submit"]))
 
                     echo $top;
                     echo "<td> $row[0] </td>";
-                    echo "<td> $LeaveType </td>";
+//                    echo "<td> $LeaveType </td>";
                     echo "<td> $Status </td>";
                     echo "</tr>";
                 }
@@ -148,9 +139,7 @@ if(isset($_POST["submit"]))
         </table>
 
     </form>
-
     </body>
-    </html>
 <?php
 //Change these to what you want
 $fullPageHeight = 600;
