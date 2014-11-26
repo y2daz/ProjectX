@@ -78,8 +78,8 @@ if (!isset($_SESSION["queryString"])){
     $_SESSION["queryString"] = null;
 }
 
-if (isset($_GET["search"])){
-$_SESSION["queryString"] = $_SERVER['QUERY_STRING'];
+if ( isset($_GET["search"]) || isset($_GET["searchAll"]) ){
+    $_SESSION["queryString"] = $_SERVER['QUERY_STRING'];
 }
 /*
 

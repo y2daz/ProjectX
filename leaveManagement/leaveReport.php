@@ -64,6 +64,12 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
         .leaveTable2 th{
             width: 100px;
         }
+        .right{
+            text-align: right;
+        }
+        .strong{
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
@@ -134,8 +140,8 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
         $result = getLeave( $StaffId, $startDate, $endDate );
 
-        $i = 1;
-
+        $i = 0;
+        $totalLeave = 0;
 
         if ( !isset( $result ) ){
             echo "<tr><td colspan='10'>There are no Leave Requests.</td></tr>";
@@ -149,10 +155,12 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
                 echo "<td>$row[3]</td>";
                 echo "<td>$row[2]</td>";
                 echo "<td>" . ( $row[2] + $row[3] ) . "</td>";
-                echo '</tr>';
-                echo ( $i++ % 5 == 0 ? "<tr><td>&nbsp;</td></tr>" : "" );
-
+                echo "</tr>\n";
+                $totalLeave += ( $row[2] + $row[3] );
+                echo ( ++$i % 5 == 0 ? "<tr><td colspan='7'>&nbsp;</td></tr>\n" : "" );
             }
+            echo ( $i % 5 == 0 ? "" : "<tr colspan='7'><td>&nbsp;</td></tr>\n" );
+            echo "<tr><td colspan='4' class='right'></td> <td class='strong'>Total taken:</td>  <td>$totalLeave</td></tr>\n";
         }
         ?>
 

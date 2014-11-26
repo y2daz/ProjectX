@@ -55,6 +55,15 @@ $(document).ready(function() {
         refreshPage();
     });
 
+//    staffMore( 4, "Madusha " );
+
+    $("input[name='moreApplyForLeave']").on("click", function(){
+        window.location.assign( "../leaveManagement/applyForLeave.php?StaffID=" + $(this).attr('id') );
+    })
+    $("input[name='moreViewTimetable']").on("click", function(){
+        window.location.assign( "../TimeTable/timetable.php?staffID=" + $(this).attr('id') + "&getTimetable=Get+Timetable" );
+    })
+
 });
 
 function setCookie(cName,value) //Sets a cookie.
@@ -290,6 +299,65 @@ function post(path, params, method) { //Allows us to set POST variables with jav
     }
     document.body.appendChild(form);
     form.submit();
+}
+
+function staffMore( staffId, name ){
+    var substitutionDate;
+    var states = {
+        state0: {
+            title: "Staff Member " + staffId + ", " + name,
+            html:'<table>' +
+                '   <tr>' +
+                '       <td><input type="button" id="' + staffId + '" name="moreApplyForLeave" value="Apply for Leave" /></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><input type="button" id="' + staffId + '" name="moreViewTimetable" value="View timetable" /></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Substituted teacher   </label></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
+                '   </tr>' +
+                '</table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                if( v == 4){
+                    $.prompt.goToState('state1', false);
+                }
+                else
+                    $.prompt.close();
+            }
+        },
+        state1: {
+            title: "Staff Member likes " + staffId,
+            html:'<table>' +
+                '   <tr>' +
+                '       <td style="text-align: center">  period</td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Substituted teacher   </label></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
+                '   </tr>' +
+                '</table>',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                if( v == 1){
+                    $.prompt.goToState('state0');
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
 }
 
 function substituteTeacher(day, position, originalID, replacementID, originalName, replacementName){

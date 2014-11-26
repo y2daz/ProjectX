@@ -57,14 +57,18 @@
 //            $CasualLeave = $row[0];
 //            $MedicalLeave = $row[1];
 //            $DutyLeave = $row[2];
-            insertFullLeaveFunc();
+
+            if( isset ( $_POST["startDate"] ) && isFilled( $_POST["startDate"] ) ){
+                if( isset ( $_POST["endDate"] ) && isFilled( $_POST["endDate"] ) ){
+                    insertFullLeaveFunc();
+                }
+            }
         }
         else{
             sendNotification("Staff Member Does Not Exist!");
         }
     }
-
-    if ( isset( $_POST[ "ApplyOther" ] ) ){ //user has clicked the button to apply short leave
+    elseif ( isset( $_POST[ "ApplyOther" ] ) ){ //user has clicked the button to apply short leave
         $checkStaffMember = checkStaffMember($_POST["staffid"]);
         if($checkStaffMember){
             insertOtherLeaveFunc();
@@ -86,7 +90,7 @@
 //        }
     }
 
-    if (isFilled($_POST["newStaffID"])){
+    if (isset($_POST["newStaffID"])){
 
         $result = getFullLeaveData($_POST["newStaffID"]);
 

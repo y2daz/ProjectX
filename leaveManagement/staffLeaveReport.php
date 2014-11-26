@@ -129,9 +129,12 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
                 echo "<td class='right'>$row[3]</td>";
                 echo "<td class='right'>$row[2]</td>";
                 echo "<td class='right'>$row[5]</td>";
-                echo '</tr>';
-                echo ( $i++ % 5 == 0 ? "<tr><td colspan='10'>&nbsp;</td></tr>" : "" );
+                echo "</tr>\n";
+                echo ( $i++ % 5 == 0 ? "<tr><td colspan='10'>&nbsp;</td></tr>\n" : "" );
             }
+            echo "<tr><td colspan='10'>&nbsp;</td></tr>\n";
+            echo "<tr><td colspan='10'>&nbsp;</td></tr>\n";
+            echo "<tr><td colspan='10'>&nbsp;</td></tr>\n";
         }
         ?>
 
