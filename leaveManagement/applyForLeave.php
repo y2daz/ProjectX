@@ -12,6 +12,20 @@
 
     ob_start();
 
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Leave Management System') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
+
     error_reporting(E_ERROR | E_PARSE);
 
     $staffIdVal = "";

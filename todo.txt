@@ -10,8 +10,6 @@ MYSQL DATE FORMAT yyyy-mm-dd for date comparison
 
 TRANSACTIONS
 
-** new leave data
-
 leave reports interface
 
 access control file level.

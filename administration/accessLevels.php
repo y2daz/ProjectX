@@ -16,7 +16,22 @@ define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 require_once(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/formValidation.php");
 require_once(THISROOT . "/common.php");
+
 ob_start();
+
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Manage Permissions') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
 
 if (!isset( $_GET["role"])){
     $_GET["role"] = 1;

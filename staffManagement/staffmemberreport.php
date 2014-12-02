@@ -12,6 +12,20 @@ include(THISROOT . "/dbAccess.php");
 include(THISROOT . "/common.php");
 ob_start();
 
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Staff Report') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
+
 error_reporting(0);
 
 if(isset($_GET["id"]))

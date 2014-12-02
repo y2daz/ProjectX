@@ -6,12 +6,24 @@
  * Time: 10:56
  */
 
-session_start();
-
 require_once("../dbAccess.php");
 require_once("../common.php");
 
 define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Staff Report') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
 
 if(!isFilled($_COOKIE['language']))
 {

@@ -13,6 +13,20 @@ include(THISROOT . "/common.php");
 include("timetableClass.php");
 ob_start();
 
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Timetables System') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
+
 $lang = $_COOKIE["language"];
 
 //$_GET["getTimetable"] = $_GET["getTimetable"] | "";

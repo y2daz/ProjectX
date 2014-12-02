@@ -11,7 +11,22 @@ define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
 include(THISROOT . "/dbAccess.php");
 require_once(THISROOT . "/formValidation.php");
 include(THISROOT . "/common.php");
+
 ob_start();
+
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Leave Approval') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
 
 $startDate = isset( $_GET[ "startDate" ] ) ? $_GET[ "startDate" ] : "" ;
 $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;

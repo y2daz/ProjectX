@@ -18,6 +18,20 @@ include(THISROOT . "/common.php");
 include("timetableClass.php");
 ob_start();
 
+/**
+ * Access Rights Management
+ */
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$user = Role::getRolePerms( $_SESSION["accessLevel"] );
+if( !$user->hasPerm('Timetables System') ){
+    header("Location: ../Menu.php?error=403");;
+}
+/**
+ * Access Rights Management
+ */
+
 $lang = $_COOKIE["language"];
 
 $currentStaffId = "";
@@ -25,16 +39,16 @@ $currentStaffName = "";
 
 error_reporting(0);//Temporarily turn of all errors
 
-if (isset($_POST["Submit"]))
-{
-
-    if ($operation == true){
-        sendNotification("Timetable updated.");
-    }else{
-        sendNotification("Error updating timetable.");
-    }
-
-}
+//if (isset($_POST["Submit"]))
+//{
+//
+//    if ($operation == true){
+//        sendNotification("Timetable updated.");
+//    }else{
+//        sendNotification("Error updating timetable.");
+//    }
+//
+//}
 $freeTeachersSet = null;
 
 if(isset($_POST["getSubstitute"]))
