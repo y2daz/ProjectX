@@ -85,6 +85,8 @@ PREPARE LIST OF QUESTIONS TO ASK DS.
 
 combine substitue and view timetable
 
+date of first appointment <- date appointed as tp
+
 understanding this code on reused code pages. e.g. main.css
 separete css for common stuff
 

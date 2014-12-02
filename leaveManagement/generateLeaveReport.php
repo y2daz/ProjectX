@@ -92,14 +92,14 @@ elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $
                     return day;
                 }
 
-                $("input[name='sbtNiceReport']")
+                /*$("input[name='sbtNiceReport']")
                     .hide();
 
                 $( document ).keypress(function(e) {
                     if( parseInt(e.which) == 62 || parseInt(e.which) == 60 ){
                         $("input[name='sbtNiceReport']").show();
                     }
-                });
+                });*/
 
             });
         </script>
