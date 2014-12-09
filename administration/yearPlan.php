@@ -95,10 +95,7 @@ function printArrJs($Arr){
                 color: white;
             }
             #calendar td {
-                padding-top:10px;
-                padding-bottom:10px;
-                padding-left:2px;
-                padding-right:2px;
+                padding: 10px 2px;
                 vertical-align:top;
                 text-align:center;
                 min-width:15px;

@@ -7,7 +7,7 @@ function submitYearPlan()
 {
     if ( $('.selected').length > 0)
     {
-        var dates = new Array();
+        var dates = [];
 
         $('.selected').each(function(i, obj)
         {
@@ -15,13 +15,5 @@ function submitYearPlan()
             dates.push( name );
             post(document.URL, dates, "POST");
         });
-    }
-}
-
-function fillYearPlan(holidays){
-    var i;
-    for ( i = 0; i < $(holidays).length; i++)
-    {
-        $('[name="' + holidays[i] + '"]').addClass("selected");
     }
 }

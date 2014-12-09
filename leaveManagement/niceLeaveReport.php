@@ -235,21 +235,23 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
              *      }
              */
 
-        if( !isset( $leaveData ) ){
-            return $leaveData;
-        }
+            if( !isset( $leaveData ) ){
+                return $leaveData;
+            }
 
             $result = array();
             $i = 0;
 
-            foreach( $leaveData as $row ){
+            foreach( $leaveData as $row )
+            {
                 $result[ $i ][ 0 ] = $row[ 6 ]; //startDate
                 $result[ $i ][ 1 ] = $row[ 7 ]; //endDate
                 $result[ $i ][ 2 ] = $row[ 4 ]; //NoOfDuty
                 $result[ $i ][ 3 ] = $row[ 3 ]; //NoOfMedical
-                $result[ $i++ ][ 4 ] = $row[ 2 ]; //NoOfOther
+                $result[ $i ][ 4 ] = $row[ 2 ]; //NoOfOther
+                $i++;
             }
-            //Prevent access array with index out of bounds
+            //Prevents index out of bounds
             $result[ $i ][ 0 ] = NULL;
             $result[ $i ][ 1 ] = NULL;
             $result[ $i ][ 2 ] = NULL;
