@@ -175,8 +175,8 @@ else{
                                 echo "<tr><td class=\"searchEmail\">";
                                 echo "$row[0]" . "</td>";
                                 echo "<td>$row[1]</td>";
-                                echo "<td><input name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
-                                echo "<td><input name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"requestConfirmation('Are you sure you want to delete this user?'," .
+                                echo "<td><input class='smallButton' name=\"Reset\" type=\"button\" value=\"Reset\" onclick=\"resetPassword('" . $row[0] . "');\" /> </td> ";
+                                echo "<td><input class='smallButton' name=\"Delete\" type=\"button\" value=\"Delete\" onclick=\"requestConfirmation('Are you sure you want to delete this user?'," .
                                 " 'Delete confirmation', 'delete', '" . $row[0] . "'); \" /> </td> ";
                                 echo "</td></tr>";
                                 echo ( $i++ % 3 == 0 ? "<tr class=\"blank\"> <td colspan='6'>&nbsp;</td>  </tr>" : "");

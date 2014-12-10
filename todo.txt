@@ -10,6 +10,8 @@ MYSQL DATE FORMAT yyyy-mm-dd for date comparison
 
 TRANSACTIONS
 
+buttons in a similar style
+
 leave reports interface
 
 access control file level.
@@ -33,8 +35,6 @@ insert all subjects
     qualifications
 
 qualification list database tables
-
-reset leave data at the end of every year
 
 change all staff nos at the end of every year
 
