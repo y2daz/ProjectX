@@ -6,4 +6,3 @@ return array (
     'UseYearPlan' => true,
     'currentYear' => 2014
 );
-

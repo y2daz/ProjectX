@@ -23,6 +23,8 @@ if (isset($_GET["error"])){
     sendNotification("That just caused an error. Maybe you shouldn't try that again?");
 }
 
+//echo renewStaffNos( '2012' );
+
 ?>
 <html>
     <head>

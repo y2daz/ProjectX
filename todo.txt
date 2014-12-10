@@ -1,7 +1,7 @@
 STAFF nO FULL IMPLEMENTATION
 >Register Staff member allow enter staff no
 >Suggest staff number
->Delete staff nod when deleting members
+>Delete staff notify when deleting members
 >search by staff number
 >resetting staff numbers
 >allocating staff numbers

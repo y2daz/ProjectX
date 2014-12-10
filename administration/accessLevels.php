@@ -147,7 +147,7 @@ if (isset( $_POST["sbtNewPermissions"])){
     </body>
 <?php
 //Change these to what you want
-$fullPageHeight = 900;
+$fullPageHeight = 1000;
 $footerTop = $fullPageHeight + 100;
 $pageTitle= "Access Levels";
 //Only change above

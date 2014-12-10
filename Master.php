@@ -64,6 +64,7 @@
 
         <!--Static Resource -->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/common.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
 
         <!--impromptu Links-->
@@ -249,7 +250,11 @@
                 if ($user->hasPerm('Manage Permissions')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/accessLevels.php\">" . "Manage User Permissions" . "</a><hr /></li>\n";
                 }
-                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a></li>\n";
+                $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/yearPlan.php\">" . "Year Plan" . "</a>";
+                $navMenu .= $user->hasPerm('System Configuration') ? "<hr /></li>\n" : "</li>\n";
+                if ($user->hasPerm('System Configuration')){
+                    $navMenu .= "<li><a href=\"" . PATHFRONT . "/administration/configuration.php\">" . "System Configuration" . "</a></li>\n";
+                }
                 $navMenu .= "</ul>\n";
                 $navMenu .= "</li>\n";
             }

@@ -779,7 +779,7 @@ function getNewStaffNo()
         }
     }
     $mysqli->close();
-} //Returns a new staffID as MAX( [currentStaffIDs] ) + 1
+} //Returns a new staffNo as MAX( [currentStaffIDs] ) + 1
 
 /**/function getAllStaff( $start = 0 , $limit = 20 )
 {
@@ -896,7 +896,9 @@ function getAllStaffDetailed( $initial )
 function getStaffID( $staffNo ){
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
-    $result = null ;
+
+    $result = null;
+    $year = getConfigData( "currentYear" );
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -904,23 +906,9 @@ function getStaffID( $staffNo ){
 
     $row = 0;
 
-    if ($stmt = $mysqli->prepare('SELECT MAX(Year) FROM StaffNo'))
-    {
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
-            $row = $result->fetch_array();
-        }
-    }
-
-    $mysqli->close();
-    $thisYear = $row[0];
-
-    $row = 0;
-
     if ($stmt = $mysqli->prepare('SELECT StaffID FROM StaffNo WHERE StaffNo = ? and Year = ?'))
     {
-        $stmt -> bind_param("ii", $staffNo, $thisYear );
+        $stmt -> bind_param("ii", $staffNo, $year );
 
         if ($stmt->execute())
         {
@@ -928,22 +916,137 @@ function getStaffID( $staffNo ){
             $mysqli->close();
             $stmt ->close();
             if( $result->num_rows > 1){
-                sendNotification( "More than one staff member has that number. Please reallocate staff numbers." );
-                return null;
+                return -1; //More than one staff member
             }
             elseif( $result->num_rows == 0 ){
                 sendNotification( "There are no staff members with that number." );
-                return null;
+                return 0; //No staff members
             }
             else{
                 $row = $result->fetch_array();
             }
-
-
         }
     }
     $mysqli->close();
     return $row[0];
+}
+
+function renewStaffNos( $year ) //Sets the new staff numbers for the given year
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $mysqli->begin_transaction();
+
+    $stmtDrop = $mysqli->prepare('DROP TABLE IF EXISTS tempStaffNo;');
+    $stmtDrop -> execute();
+    $stmtDrop -> close();
+
+    $stmtCreateTemp = $mysqli->prepare('
+        CREATE TABLE tempStaffNo(
+            StaffID VARCHAR(5),
+            StaffNo INT(11)
+        );' );
+    $stmtCreateTemp -> execute();
+    $stmtCreateTemp -> close();
+
+    $numRows = 0;
+
+    if( $stmtInsertTemp = $mysqli->prepare('
+        SELECT StaffID
+        FROM Staff
+        WHERE isDeleted = 0
+        ORDER BY Designation, DateJoinedThisSchool;') )
+    {
+        $stmtInsertTemp -> execute();
+    }
+    else
+    {
+        echo $mysqli->errno . " " . $mysqli->error . "<br /";
+    }
+
+    $result = $stmtInsertTemp -> get_result();
+    $numRows = $result -> num_rows;;
+//    echo $numRows . " rows <br />";
+
+    $arrStaffNo = array();
+    $i = 0;
+
+    while( $row = $result -> fetch_array() )
+    {
+        $arrStaffNo[ $i++ ] = $row[ 0 ];
+    }
+//    echo $i . " looping <br />";
+
+    $stmtInsertTemp ->close();
+
+    if( $stmtUpdateTemp = $mysqli->prepare('
+        INSERT INTO `tempStaffNo`
+          (`StaffNo`, `StaffID`)
+        VALUES ( ?, ? );
+        ') )
+    {
+        $i = 1;
+        $curStaffNo = "";
+        $stmtUpdateTemp -> bind_param( "is",  $i, $curStaffNo );
+        for( $i = 1; $i <= $numRows; $i++ )
+        {
+            $curStaffNo = $arrStaffNo[ $i - 1 ];
+            $stmtUpdateTemp -> execute();
+//            echo "$i " . $arrStaffNo[ $i - 1 ] . " <br />";
+        }
+        $stmtUpdateTemp -> close();
+    }
+    else{
+        echo $mysqli->errno . " " . $mysqli->error . "<br /";
+        die;
+    }
+
+    IF( $stmtDeleteStaffNo = $mysqli -> prepare( '
+        DELETE FROM `StaffNo`
+        WHERE year = ?;' ))
+    {
+        $stmtDeleteStaffNo -> bind_param('i', $year);
+        $stmtDeleteStaffNo -> execute();
+        $stmtDeleteStaffNo -> close();
+    }
+    else
+    {
+        echo $mysqli->errno . " " . $mysqli->error . "<br /";
+        die;
+    }
+
+    IF( $stmtInsertStaffNo = $mysqli -> prepare( '
+        INSERT INTO StaffNo
+        (StaffID, StaffNo, `Year`)
+        SELECT StaffID, StaffNo, ?
+        FROM tempStaffNo
+        ' ))
+    {
+        $stmtInsertStaffNo -> bind_param('i', $year);
+        $stmtInsertStaffNo -> execute();
+
+        $stmtInsertStaffNo -> store_result();
+        $numRows = $stmtInsertStaffNo -> affected_rows;
+        $stmtInsertStaffNo -> close();
+    }
+    else
+    {
+        echo $mysqli->errno . " " . $mysqli->error . "<br /";
+        die;
+    }
+
+    $stmtDrop = $mysqli->prepare('DROP TABLE tempStaffNo;');
+    $stmtDrop -> execute();
+    $stmtDrop -> close();
+
+    $mysqli->commit();
+    $mysqli->close();
+    return $numRows;
 }
 
 //

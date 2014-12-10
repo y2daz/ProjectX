@@ -1,0 +1,27 @@
+h1{
+    text-align: center;
+}
+.dataTable{
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.dataTable th{
+    background-color: #005e77;
+    color: white;
+    padding: 5px 10px 5px 30px;
+}
+.dataTable td{
+    padding: 4px 10px 4px 10px;
+}
+.mediumWidth{
+    width: 60px;
+}
+.right{
+    text-align: right;
+}
+.left{
+    text-align: left;
+}
+.center{
+    text-align: center;
+}
