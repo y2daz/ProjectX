@@ -77,8 +77,6 @@ add date range for leave data sql in all select queries (We only want data for c
 
 show year of staffid when registering/updating
 
-teacher id > staff id
-
 PREPARE LIST OF QUESTIONS TO ASK DS.
 
 combine substitue and view timetable
@@ -91,8 +89,6 @@ separete css for common stuff
 untrained something else
 
 optimise deletion code in search update staff
-
-give teacher's name after class teacher allocation
 
 substitute order by subject highlight correct subject
 
@@ -108,3 +104,6 @@ education info select one educational qualif for reports
 describe short leave types
 
 check leave status whole thing is crap
+
+
+teacher id > staff id

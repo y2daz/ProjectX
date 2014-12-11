@@ -288,10 +288,14 @@ function savePermissions($role, $permArr){
 ///
 //
 
-function checkStaffMember($StaffID)
+function checkStaffMember($staffID, $usingStaffNo = false)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
 
     $set = null;
 
@@ -301,7 +305,7 @@ function checkStaffMember($StaffID)
 
     if($stmt = $mysqli->prepare("SELECT StaffID from Staff WHERE StaffID = ? AND isDeleted = 0 "))
     {
-        $stmt->bind_param("s", $StaffID);
+        $stmt->bind_param("s", $staffID);
 
         if($stmt->execute())
         {
@@ -326,7 +330,7 @@ function checkStaffMember($StaffID)
 
 } //Checks if a staff member exists and isn't soft-deleted
 
-/**/function insertStaffMember($staffID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion, $CivilStatus,$NICNumber,
+/*StaffNo*/function insertStaffMember($staffID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion, $CivilStatus,$NICNumber,
                            $MailDeliveryAddress, $ContactNumber, $DateAppointedAsTeacherPrincipal, $DateJoinedThisSchool, $EmploymentStatus,$Medium,
                            $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
@@ -364,7 +368,7 @@ function checkStaffMember($StaffID)
     return false;
 } //Inserts new staff member, then creates blank timetable and unused leave data
 
-function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus, $NICNumber,
+/*StaffNo*/function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus, $NICNumber,
                      $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium,
                      $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
@@ -400,11 +404,16 @@ function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Race, 
     return false;
 } //Updates details of a staff member who hasn't been soft-deleted
 
-function getCivilStatus($staffID)
+function getCivilStatus($staffID, $usingStaffNo = false )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
     $result = null;
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
+
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
@@ -426,11 +435,15 @@ function getCivilStatus($staffID)
     return $row[0];
 } //Returns the civil status of a staff member
 
-function getGender($staffID)
+function getGender($staffID, $usingStaffNo = false )
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
     $result = null ;
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -453,8 +466,11 @@ function getGender($staffID)
     return $row[0];
 } //Returns the gender of a staff member
 
-function getStaffMember($StaffID)
+function getStaffMember($staffID, $usingStaffNo = false )
 {
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -472,7 +488,7 @@ function getStaffMember($StaffID)
             `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
         FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
     {
-        $stmt -> bind_param("s", $StaffID);
+        $stmt -> bind_param("s", $staffID);
 
         if ($stmt->execute())
         {
@@ -488,8 +504,12 @@ function getStaffMember($StaffID)
     return $set;
 } //Returns the whole record of a staff member from the staff table
 
-function deleteStaff($staffID)
+function deleteStaff($staffID, $usingStaffNo = false )
 {
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -535,7 +555,7 @@ function deleteStaff($staffID)
     return false;
 } //Deletes a staff member along with their classroom and their timetable
 
-/**/ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20 ){ //Searches for $limit staff members with $field $operator $value from $start
+/**/ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20, $usingStaffNo = false ){ //Searches for $limit staff members with $field $operator $value from $start
     /**
      * $operator values
      * 0 = Exactly equal
@@ -544,6 +564,14 @@ function deleteStaff($staffID)
      * 3 = Contains
      *
      */
+
+    if( strcmp( $field, "StaffID" ) == 0 ){
+        if( $usingStaffNo ){
+            $fieldValue = getStaffID( $fieldValue );
+        }
+
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -780,7 +808,7 @@ function getNewStaffNo()
         }
     }
     $mysqli->close();
-} //Returns a new staffNo as MAX( [currentStaffIDs] ) + 1
+} //Returns a new staffNo as MAX( [currentStaffNos] ) + 1
 
 /**/function getAllStaff( $start = 0 , $limit = 20 )
 {
@@ -920,7 +948,6 @@ function getStaffID( $staffNo ){
                 return -1; //More than one staff member
             }
             elseif( $result->num_rows == 0 ){
-                sendNotification( "There are no staff members with that number." );
                 return 0; //No staff members
             }
             else{
@@ -1950,7 +1977,7 @@ function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Pos
     return false;
 } //Inserts into isSubstituted the substitution record
 
-function getFreeTeachers($position,$day,$id)
+function getFreeTeachers($position, $day, $staffId)
 {
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1974,7 +2001,7 @@ function getFreeTeachers($position,$day,$id)
                                      ORDER BY sub.Name;"))
     {
         //  $id = "%" . $id . "%";
-        $stmt -> bind_param("iii", $position, $day, $id );
+        $stmt -> bind_param("iii", $position, $day, $staffId );
 
         if ($stmt->execute())
         {
