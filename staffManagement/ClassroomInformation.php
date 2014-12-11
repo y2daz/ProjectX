@@ -36,7 +36,7 @@ if (isset($_POST["changeClass"])) //User has clicked the submit button to add a 
     $thisGrade = $arrGradeClass[0];
     $thisClass = $arrGradeClass[1];
 
-    $operation = insertClassroom($_POST["staffId"], $thisGrade, $thisClass);
+    $operation = insertClassroom($_POST["staffId"], $thisGrade, $thisClass, true);
 
     if ($operation == 1)
     {

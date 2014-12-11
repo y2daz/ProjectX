@@ -33,9 +33,9 @@ if(isset($_POST["submit"]))
 
     if(is_numeric($StaffID))
     {
-        if(checkStaffMember($StaffID))
+        if( checkStaffMember($StaffID, true) )
         {
-            $result = checkLeaveStatus($StaffID);
+            $result = checkLeaveStatus( $StaffID, true );
             $view = "block";
         }
         else

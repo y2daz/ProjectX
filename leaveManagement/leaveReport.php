@@ -108,7 +108,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
         <?php
 
-        $result = getStaffMember( $StaffId );
+        $result = getStaffMember( $StaffId, true );
 
         $i = 1;
 
@@ -153,7 +153,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
         <?php
 
-        $result = getLeave( $StaffId, $startDate, $endDate );
+        $result = getLeave( $StaffId, $startDate, $endDate, NULL, true );
 
         $i = 0;
         $totalLeave = 0;

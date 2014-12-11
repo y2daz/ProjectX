@@ -59,7 +59,7 @@ if(isset($_POST["getSubstitute"]))
     $currentStaffId = $_POST["StaffID"];
 
 
-    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"] );
+    $freeTeachersSet = getFreeTeachers( $_POST["Position"], $_POST["Day"], $_POST["StaffID"], true );
 
 
     $selectedDay = $_POST["Day"];
@@ -79,7 +79,15 @@ if(isset($_POST["getSubstitute"]))
 }
 
 if(isset( $_POST["substitute"] )){
-    $operation = confirmSubstitution( $_POST["replacementStaffID"], null, null, $_POST["Day"], $_POST["Position"], $_POST["Date"], $_POST["originalID"]);
+    $operation = confirmSubstitution(
+        $_POST["replacementStaffID"],
+        null,
+        null,
+        $_POST["Day"],
+        $_POST["Position"],
+        $_POST["Date"],
+        $_POST["originalID"],
+        true);
 
     if ($operation){
         sendNotification( "Substitution successful" );
@@ -93,7 +101,7 @@ if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
 
-    $result = getStaffMember($_GET["staffID"]);
+    $result = getStaffMember( $_GET["staffID"], true);
     if($result == null)
     {
         sendNotification("Staff Member does not exist");

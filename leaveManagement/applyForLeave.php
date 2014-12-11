@@ -37,8 +37,18 @@ if( !$user->hasPerm('Leave Management System') ){
     }
 
     function insertFullLeaveFunc(){
-        $operation = insertFullLeave($_POST["staffid"], $_POST["noOfCasual"], $_POST["noOfMedical"], $_POST["noOfDuty"],  $_POST["noOfNoPay"], $_POST["startDate"], $_POST["endDate"],
-            $_POST["addressOnLeave"], $_POST["reason"]);
+        $operation = insertFullLeave(
+            $_POST["staffid"],
+            $_POST["noOfCasual"],
+            $_POST["noOfMedical"],
+            $_POST["noOfDuty"],
+            $_POST["noOfNoPay"],
+            $_POST["startDate"],
+            $_POST["endDate"],
+            $_POST["addressOnLeave"],
+            $_POST["reason"],
+            true
+        );
         $success = "Leave Request Sent!";
         $fail = "Error sending leave request.";
 
@@ -51,7 +61,13 @@ if( !$user->hasPerm('Leave Management System') ){
     }
 
     function insertOtherLeaveFunc(){
-        $operation = insertOtherLeave( $_POST["staffid"], $_POST["otherLeaveType"], $_POST["leaveDate"], $_POST["otherReason"] );
+        $operation = insertOtherLeave(
+            $_POST["staffid"],
+            $_POST["otherLeaveType"],
+            $_POST["leaveDate"],
+            $_POST["otherReason"],
+            true
+        );
         if($operation){
             sendNotification("Leave request sent.");
         }
@@ -62,7 +78,7 @@ if( !$user->hasPerm('Leave Management System') ){
 
     if (isset($_POST["ApplyFull"])) //user has clicked the button to apply full leave
     {
-        $checkStaffMember = checkStaffMember($_POST["staffid"]);
+        $checkStaffMember = checkStaffMember( $_POST["staffid"], true );
         if($checkStaffMember){
 //            $result = getFullLeaveData( $_POST["staffid"] );
 //
@@ -83,7 +99,7 @@ if( !$user->hasPerm('Leave Management System') ){
         }
     }
     elseif ( isset( $_POST[ "ApplyOther" ] ) ){ //user has clicked the button to apply short leave
-        $checkStaffMember = checkStaffMember($_POST["staffid"]);
+        $checkStaffMember = checkStaffMember( $_POST["staffid"], true );
         if($checkStaffMember){
             insertOtherLeaveFunc();
         }
@@ -106,7 +122,7 @@ if( !$user->hasPerm('Leave Management System') ){
 
     if (isset($_POST["newStaffID"])){
 
-        $result = getFullLeaveData($_POST["newStaffID"]);
+        $result = getFullLeaveData( $_POST["newStaffID"], true );
 
         foreach($result as $row)
         {
@@ -131,7 +147,7 @@ if( !$user->hasPerm('Leave Management System') ){
         $month = ( isset( $_POST["leaveDate"] ) ? date( "m", strtotime( $_POST["leaveDate"] ) ) : NULL );
 //        echo "Entered month = $month";
 
-        $otherResult = getOtherLeaveData( $_POST["newStaffID"], $month );
+        $otherResult = getOtherLeaveData( $_POST["newStaffID"], $month, true );
 
         for( $i = 0; $i < 3; $i++ ){
             $otherResult[ $i ][ 1 ] = isset( $otherResult[ $i ][ 1 ] ) ? $otherResult[ $i ][ 1 ] : 0;
@@ -329,7 +345,7 @@ if( !$user->hasPerm('Leave Management System') ){
                 <tr>
                     <td><?php echo $staffid ?></td>
                     <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true" tabindex="1"/></td>
-                    <td><input type="button" name="searchstaffid" value="<?php echo $searchstaffid ?>" onclick="location.href='../leaveManagement/searchStaffID.php'" /></td>
+<!--                    <td><input type="button" name="searchstaffid" value="--><?php //echo $searchstaffid ?><!--" onclick="location.href='../leaveManagement/searchStaffID.php'" /></td>-->
                 </tr>
                 <tr>
                     <td><?php echo $staffname ?></td>

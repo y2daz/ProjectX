@@ -34,7 +34,7 @@ if( !$user->hasPerm('Leave Approval') ){
     $displaygrid = "block";
 
     if(isset($_POST["reject"])){
-        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], null, 2);
+        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], null, 2, true);
 
         if($operation){
             sendNotification("Leave Request Rejected!", "approveLeave.php");
@@ -45,7 +45,7 @@ if( !$user->hasPerm('Leave Approval') ){
     }
 
     if(isset($_POST["approve"])){
-        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"]);
+        $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], NULL, 1, true);
 
         if($operation){
             sendNotification( "Leave Approved!", "approveLeave.php");
@@ -85,7 +85,7 @@ if( !$user->hasPerm('Leave Approval') ){
         $fullPageHeight = 800;
 
         if (isset($_GET["sdate"])){
-            $result = getStaffLeavetoApprove( $_GET["expand"], $_GET["sdate"] );
+            $result = getStaffLeavetoApprove( $_GET["expand"], $_GET["sdate"], true );
 
             if ( isset($result) ){
                 $row = $result[0];
@@ -102,7 +102,7 @@ if( !$user->hasPerm('Leave Approval') ){
                 $exAddressOnLeave = $row[ $i++ ];
                 $exReason = $row[ $i++ ];
 
-                $otherData = getFullLeaveData( $exStaffId );
+                $otherData = getFullLeaveData( $exStaffId, true );
                 $row = $otherData[0];
                 $i = 0;
 

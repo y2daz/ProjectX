@@ -25,7 +25,7 @@ class Timetable {
     }
 
     public function getTimetableFromDB(){
-        $result = getTimetable($this->staffId);
+        $result = getTimetable( $this->staffId, true);
 
         if(isFilled($result)){
             $i = 0;
@@ -77,7 +77,7 @@ class Timetable {
 //            echo $subjectArr[$i] . " _ " . $gradeArr[$i] . "_" .  $classArr[$i] . "<br/>";
         }
 
-        return updateTimetable($this->staffId, $gradeArr, $classArr, $subjectArr);
+        return updateTimetable($this->staffId, $gradeArr, $classArr, $subjectArr, true);
     }
 
     public function insertSLot($number, $grade , $class, $subject)

@@ -95,7 +95,7 @@ if (isset($_POST["Submit"]))
 if (isset($_GET["getTimetable"]))
 {
     $currentStaffId = $_GET["staffID"];
-    $result = getStaffMember($_GET["staffID"]);
+    $result = getStaffMember( $_GET["staffID"], true );
     if($result == null)
     {
         sendNotification("Staff Member does not exist");

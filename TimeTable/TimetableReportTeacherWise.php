@@ -44,7 +44,7 @@ if(!isFilled($_GET["staffID"]))
 }
 else{
     $currentStaffId = $_GET["staffID"];
-    $result = getStaffMember($_GET["staffID"]);
+    $result = getStaffMember( $_GET["staffID"], true );
     if($result == null)
     {
         sendNotification("Staff Member does not exist");
@@ -57,8 +57,8 @@ else{
     $myTime->staffId = "$currentStaffId";
     $myTime->getTimetableFromDB();
 }
-$civil = getCivilStatus($_GET["staffID"]);
-$gender = getGender($_GET["staffID"]);
+$civil = getCivilStatus( $_GET["staffID"], true );
+$gender = getGender( $_GET["staffID"], true );
 if ($gender == 1)
 {
     $status = "Mr. " ;

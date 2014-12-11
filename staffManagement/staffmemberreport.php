@@ -110,7 +110,7 @@ if(isset($_GET["id"]))
 
     <?php
 
-    $result = getStaffMember($StaffId);
+    $result = getStaffMember( $StaffId, true );
 
     $i = 1;
 

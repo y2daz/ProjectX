@@ -163,7 +163,7 @@ if (isset($_POST["Submit"])) //Submit button to update staff
 if (isset($_POST["valueName"]) && isset($_POST["valueMember"])) //Deletes a staff member
 {
 //    $operation = true;
-    $operation = deleteStaff($_POST["valueMember"]);
+    $operation = deleteStaff( $_POST["valueMember"], true );
 
     if ($operation == true){
         sendNotification("Staff member deleted.");
@@ -181,7 +181,7 @@ if ( isset( $_GET["search"] ) ){
     $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
     //GET AND SET OPERATOR.
 
-    $tableData = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator, "StaffId", "asc", ( $pageNo - 1 ) * 20 );
+    $tableData = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator, "StaffId", "asc", ( $pageNo - 1 ) * 20, 20, true );
 }
 elseif( isset( $_GET["searchAll"] ) ){
     $tableData = getAllStaff( ( $pageNo - 1 ) * 20 );
@@ -213,7 +213,7 @@ $Salary ="";
 
 if (isset($_GET["expand"]))
 {
-    $result = getStaffMember($_GET["expand"]);
+    $result = getStaffMember( $_GET["expand"] );
     $i = 0;
 
     foreach($result as $row) //

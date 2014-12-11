@@ -290,12 +290,12 @@ function savePermissions($role, $permArr){
 
 function checkStaffMember($staffID, $usingStaffNo = false)
 {
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
     if( $usingStaffNo ){
         $staffID = getStaffID( $staffID );
     }
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
 
     $set = null;
 
@@ -356,8 +356,8 @@ function checkStaffMember($staffID, $usingStaffNo = false)
         {
             $stmt->close();
             $mysqli->close();
-            insertNewTimetable($staffID);
-            insertNewLeaveData($staffID);
+            insertNewTimetable( $staffID, false ); //Does not use StaffNo
+            insertNewLeaveData( $staffID );
             return true;
         }
     }
@@ -545,7 +545,7 @@ function deleteStaff($staffID, $usingStaffNo = false )
                 }
             }
             $stmt->close();
-            deleteTimetable($staffID);
+            deleteTimetable( $staffID, false ); //Does not use StaffNo
             $mysqli->close();
             return TRUE;
         }
@@ -565,12 +565,13 @@ function deleteStaff($staffID, $usingStaffNo = false )
      *
      */
 
-    if( strcmp( $field, "StaffID" ) == 0 ){
+    /*if( strcmp( $field, "StaffID" ) == 0 ){
         if( $usingStaffNo ){
             $fieldValue = getStaffID( $fieldValue );
         }
-
     }
+    DOESN'T WORK LIKE THAT, Yazdaan.
+    */
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -944,6 +945,7 @@ function getStaffID( $staffNo ){
             $result = $stmt->get_result();
             $mysqli->close();
             $stmt ->close();
+
             if( $result->num_rows > 1){
                 return -1; //More than one staff member
             }
@@ -955,8 +957,8 @@ function getStaffID( $staffNo ){
             }
         }
     }
-    $mysqli->close();
-    return $row[0];
+    $name = $row[0];
+    return $name;
 }
 
 function renewStaffNos( $year ) //Sets the new staff numbers for the given year
@@ -1083,10 +1085,15 @@ function renewStaffNos( $year ) //Sets the new staff numbers for the given year
 ///
 //
 
-function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
+function getLeave($staffID, $startDate, $endDate, $orderField = NULL, $usingStaffNo = false){
     /**
      * $startDate and $endDate shouuld be in the yyyy-mm-dd format
      */
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1107,7 +1114,7 @@ function getLeave($StaffID, $startDate, $endDate, $orderField = NULL){
                                       AND `EndDate` < ?
                                     ORDER BY $orderField; "))
     {
-        $stmt -> bind_param("sss", $StaffID, $startDate, $endDate);
+        $stmt -> bind_param("sss", $staffID, $startDate, $endDate);
 
         if ($stmt->execute())
         {
@@ -1237,8 +1244,12 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
 */
 } //Redundant function. Not used.
 
-/**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $startDate, $endDate, $addressOnLeave, $reason)
+/**/function insertFullLeave($staffId, $noOfCasual, $noOfMedical, $noOfDuty, $noOfNoPay, $startDate, $endDate, $addressOnLeave, $reason, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1280,7 +1291,7 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
     return false;
 } //Inserts a leave application for a staff member
 
-/**/function insertOtherLeave( $staffID, $leaveType, $leaveDate, $reason ){
+/**/function insertOtherLeave( $staffId, $leaveType, $leaveDate, $reason, $usingStaffNo = false ){
     /**
      * FOR LeaveType
      * 0 = None
@@ -1288,6 +1299,10 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
      * 2 = Half day
      * 3 = Short leave
      */
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1305,7 +1320,7 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
     if ($stmt = $mysqli->prepare("INSERT INTO `OtherLeave` (`StaffID`, `LeaveType`, `RequestDate`, `LeaveDate`, `Reason`, `Status`, `ReviewedBy`,
             `ReviewedDate`, `isDeleted`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )"))
     {
-        $stmt -> bind_param("sisssissi", $staffID,  $leaveType, $currentDate, $leaveDate, $reason, $status, $reviewedBy, $reviewedDate, $isDeleted );
+        $stmt -> bind_param("sisssissi", $staffId,  $leaveType, $currentDate, $leaveDate, $reason, $status, $reviewedBy, $reviewedDate, $isDeleted );
 
         if ($stmt->execute()){
             $stmt->close();
@@ -1317,8 +1332,11 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
     return false;
 } //Inserts a (-n other) leave application for a staff member
 
-/**/function checkLeaveStatus($StaffID)
+/**/function checkLeaveStatus($staffId, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1333,7 +1351,7 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
 
     if($stmt  = $mysqli->prepare("SELECT RequestDate, Status, Reason FROM FullLeave WHERE StaffID = ? ORDER BY RequestDate"))
     {
-        $stmt->bind_param("s", $StaffID);
+        $stmt->bind_param("s", $staffId);
 
         if ($stmt->execute())
         {
@@ -1379,8 +1397,12 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
     return;
 } //Insert new set of numbers to a staff members leavedata (Remaining leave days)
 
-function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
+function getFullLeaveData($staffId, $startDate = NULL, $endDate = NULL, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1405,7 +1427,7 @@ function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
                                                 AND l.EndDate < ?
                                             GROUP BY l.Staffid;" ) )
     {
-        $checkStmt -> bind_param("sss", $StaffID, $startDate, $endDate );
+        $checkStmt -> bind_param("sss", $staffId, $startDate, $endDate );
         if($checkStmt -> execute()){
             $result = $checkStmt -> get_result();
 
@@ -1432,7 +1454,7 @@ function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
                                         AND fDesignation.Number = s.Designation
                                         AND fDesignation.Label = 'Designation'; "))
     {
-        $stmt->bind_param("s", $StaffID );
+        $stmt->bind_param("s", $staffId );
 
         if($stmt->execute()){
             $result = $stmt->get_result();
@@ -1448,8 +1470,12 @@ function getFullLeaveData($StaffID, $startDate = NULL, $endDate = NULL)
     return $set;
 } //Returns full leave numbers for the staff member.
 
-function getOtherLeaveData($StaffID, $month = NULL)
+function getOtherLeaveData($staffId, $month = NULL, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1481,7 +1507,7 @@ function getOtherLeaveData($StaffID, $month = NULL)
 										AND `LeaveDate` < ?
                                     GROUP BY `LeaveType`; "))
     {
-        $stmt->bind_param("sss", $StaffID, $startDate, $endDate );
+        $stmt->bind_param("sss", $staffId, $startDate, $endDate );
 
         if($stmt->execute()){
             $result = $stmt->get_result();
@@ -1536,7 +1562,11 @@ function getOtherLeaveData($StaffID, $month = NULL)
     return $set;
 } //Returns all leaves not reviewed along with their staff member's details
 
-/**/function getStaffLeavetoApprove( $StaffID, $sDate ){
+/**/function getStaffLeavetoApprove( $staffID, $sDate, $usingStaffNo = false )
+{
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1555,7 +1585,7 @@ function getOtherLeaveData($StaffID, $month = NULL)
                                         AND fl.`startDate` = ?
                                         AND fl.`Status` = 0;"))
     {
-        $stmt->bind_param("ss", $StaffID, $sDate);
+        $stmt->bind_param("ss", $staffID, $sDate);
         if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
@@ -1568,8 +1598,12 @@ function getOtherLeaveData($StaffID, $month = NULL)
     return $set;
 } //Gets a single instance of applied leave for a staff member
 
-/**/function reviewLeave($StaffID, $sDate, $ReviewedBy = null, $status = 1)
+/**/function reviewLeave($staffId, $sDate, $ReviewedBy = null, $status = 1, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1584,7 +1618,7 @@ function getOtherLeaveData($StaffID, $month = NULL)
                                     WHERE l.StaffID = ?
                                       AND l.StartDate = ? "))
     {
-        $stmt->bind_param("issss", $status, $ReviewedBy, $ReviewedDate, $StaffID, $sDate);
+        $stmt->bind_param("issss", $status, $ReviewedBy, $ReviewedDate, $staffId, $sDate);
         if($stmt->execute())
         {
             $stmt->close();
@@ -1601,8 +1635,12 @@ function getOtherLeaveData($StaffID, $month = NULL)
 ///
 //
 
-function insertClassroom($staffID, $grade, $class)
+function insertClassroom($staffId, $grade, $class, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1621,7 +1659,7 @@ function insertClassroom($staffID, $grade, $class)
             if ($stmt = $mysqli->prepare("INSERT INTO ClassInformation values(?, ?, ?, ?);"))
             {
                 $isDeleted = 0;
-                $stmt -> bind_param("sisi",$staffID, $grade, $class, $isDeleted);
+                $stmt -> bind_param("sisi",$staffId, $grade, $class, $isDeleted);
 
                 if ($stmt->execute())
                 {
@@ -1636,7 +1674,7 @@ function insertClassroom($staffID, $grade, $class)
             if ($stmt = $mysqli->prepare("UPDATE ClassInformation SET StaffID=?, isDeleted=? WHERE Grade=? AND Class=? ;"))
             {
                 $isDeleted = 0;
-                $stmt -> bind_param("iiis",$staffID, $isDeleted, $grade, $class );
+                $stmt -> bind_param("iiis",$staffId, $isDeleted, $grade, $class );
 
                 if ($stmt->execute())
                 {
@@ -1711,7 +1749,7 @@ function deleteClassroom($grade, $class)
     }
     $mysqli->close();
     return FALSE;
-} //Softdelets classroom information
+} //Soft-deletes classroom information
 
 //
 ///
@@ -1764,8 +1802,11 @@ function getAllSubjects()
     return $set;
 } //Self-explanatory
 
-function insertNewTimetable($staffId)
+function insertNewTimetable($staffId, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1797,8 +1838,11 @@ function insertNewTimetable($staffId)
     return false;
 } //Inserts blank timetable for a staff member
 
-function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
+function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1830,8 +1874,12 @@ function updateTimetable($staffId, $GradeArr, $ClassArr, $SubjectArr)
     return false;
 } //Self-explanatory
 
-function deleteTimetable($staffId)
+function deleteTimetable($staffId, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1860,8 +1908,12 @@ function deleteTimetable($staffId)
 
 } //Self-explanatory
 
-function getTimetable($staffId)
+function getTimetable($staffId, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1879,7 +1931,7 @@ function getTimetable($staffId)
             $result = $stmt->get_result();
 
             if($result->num_rows == 0){
-                insertNewTimetable($staffId);
+                insertNewTimetable( $staffId, false ); //Does not use StaffNo
                 return null;
             }
 
@@ -1952,8 +2004,13 @@ function substitute($subject)
 
 } //Unused
 
-function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID )
+function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Position , $Date , $SubstitutedTeacherID, $usingStaffNo = false )
 {
+    if( $usingStaffNo ){
+        $replacementStaffID = getStaffID( $replacementStaffID );
+        $SubstitutedTeacherID = getStaffID( $SubstitutedTeacherID );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -1977,8 +2034,12 @@ function confirmSubstitution($replacementStaffID , $Grade , $Class , $Day , $Pos
     return false;
 } //Inserts into isSubstituted the substitution record
 
-function getFreeTeachers($position, $day, $staffId)
+function getFreeTeachers($position, $day, $staffId, $usingStaffNo = false)
 {
+    if( $usingStaffNo ){
+        $staffId = getStaffID( $staffId );
+    }
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 

@@ -34,11 +34,11 @@ $dDaysOnPage = 37;
 $dDay = 1;//Sets weekend
 $dYear = getConfigData( "currentYear" );
 
-$staffMember = getStaffMember( $StaffId );
+$staffMember = getStaffMember( $StaffId, true );
 $staffMember = $staffMember[ 0 ];
 $stfName = $staffMember[1];
 
-$staffLeaveData = getFullLeaveData( $StaffId, $startDate, $endDate );
+$staffLeaveData = getFullLeaveData( $StaffId, $startDate, $endDate, true );
 $staffLeaveData = $staffLeaveData[ 0 ];
 $usedDuty = isset( $staffLeaveData ) ? $staffLeaveData[ 2 ] : 0 ;
 $usedMedical = isset( $staffLeaveData ) ? $staffLeaveData[ 1 ] : 0 ;
@@ -218,7 +218,7 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
             return ( $dayNum == 0 ? 7 : $dayNum );
         }
 
-        $leaveData = getLeave( $StaffId, $startDate, $endDate, "startDate" );
+        $leaveData = getLeave( $StaffId, $startDate, $endDate, "startDate", true );
 
         function organiseFullLeaveData( $leaveData ){
             /**

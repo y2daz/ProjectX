@@ -11,6 +11,6 @@ require_once("../common.php");
 
 if( isset( $_POST[ "staffId" ] ) )
 {
-    $result = getStaffMember( $_POST[ "staffId" ] );
+    $result = getStaffMember( $_POST[ "staffId" ], true );
     echo $result[0][1];
 }
