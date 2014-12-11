@@ -14,6 +14,9 @@
 
 define('THISROOT', $_SERVER['DOCUMENT_ROOT']);
 
+require_once("../dbAccess.php");
+require_once("../common.php");
+
 ob_start();
 
 /**

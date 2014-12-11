@@ -465,11 +465,12 @@ function getStaffMember($StaffID)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`,
-                `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
-                `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `Designation`, `Section`, `SubjectMostTaught`,
-                `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
-                FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
+    if ($stmt = $mysqli->prepare("
+        Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`,
+            `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
+            `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `Designation`, `Section`, `SubjectMostTaught`,
+            `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
+        FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
     {
         $stmt -> bind_param("s", $StaffID);
 

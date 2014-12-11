@@ -126,7 +126,7 @@ elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $
             <table class="insert">
                 <tr>
                     <td> <label> Staff ID </label></td>
-                    <td> <input type="text" class="text1" name="staffId" value="" required> </td>
+                    <td> <input type="text" class="text1" name="staffId" value="<?php echo isset( $_GET[ "staffId" ] ) ? $_GET[ "staffId" ] : "" ?>" required> </td>
                 </tr>
                 <tr>
                     <td> <label>From </label> </td>

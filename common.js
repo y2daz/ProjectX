@@ -57,12 +57,6 @@ $(document).ready(function() {
 
 //    staffMore( 4, "Madusha " );
 
-    $("input[name='moreApplyForLeave']").on("click", function(){
-        window.location.assign( "../leaveManagement/applyForLeave.php?StaffID=" + $(this).attr('id') );
-    })
-    $("input[name='moreViewTimetable']").on("click", function(){
-        window.location.assign( "../TimeTable/timetable.php?staffID=" + $(this).attr('id') + "&getTimetable=Get+Timetable" );
-    })
 
 });
 
@@ -302,58 +296,65 @@ function post(path, params, method) { //Allows us to set POST variables with jav
 }
 
 function staffMore( staffId, name ){
-    var substitutionDate;
+
+    var valueName = 'Delete';
+    var valueMember = staffId;
+
     var states = {
         state0: {
             title: "Staff Member " + staffId + ", " + name,
-            html:'<table>' +
+            html:
+                '<script src="moreStaff.js"></script>' +
+                '<style>' +
+                    '.littleMenu{' +
+                    'position: relative;' +
+                    'left: 30px;' +
+                    '}' +
+                    '.littleMenu .smallButton{' +
+                    'Width: 150px;' +
+                    '}' +
+                '</style>' +
+                '<table class="littleMenu">' +
                 '   <tr>' +
-                '       <td><input type="button" id="' + staffId + '" name="moreApplyForLeave" value="Apply for Leave" /></td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreApplyForLeave" value="Apply for Leave" /></td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreViewTimetable" value="View timetable" /></td>' +
                 '   </tr>' +
                 '   <tr>' +
-                '       <td><input type="button" id="' + staffId + '" name="moreViewTimetable" value="View timetable" /></td>' +
+                '       <td>&nbsp;</td>' +
                 '   </tr>' +
                 '   <tr>' +
-                '       <td><label>Substituted teacher   </label></td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreLeaveReport" value="View Leave Report" /></td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreStaffReport" value="View Staff Report" /></td>' +
                 '   </tr>' +
+                    '   <tr>' +
+                    '       <td>&nbsp;</td>' +
+                    '   </tr>' +
                 '   <tr>' +
-                '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
+//                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreLocate" value="Locate Staff Member" /></td>' +
+                '       <td>&nbsp;</td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreDelete" value="Delete" /></td>' +
                 '   </tr>' +
                 '</table>',
-            buttons: { Okay: 1, Cancel: -1 },
+            buttons: { Done: 1},
             focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                $.prompt.close();
+            }
+        },
+        stateDelete: {
+            title: 'Delete Staff Member',
+            html:'<p>Are you sure you want to delete staff member ' + name +'?</p>',
+            buttons: { Yes: 1, No: -1 },
             submit:function( e, v, m, f){
                 e.preventDefault();
 
-                if( v == 4){
-                    $.prompt.goToState('state1', false);
-                }
-                else
-                    $.prompt.close();
-            }
-        },
-        state1: {
-            title: "Staff Member likes " + staffId,
-            html:'<table>' +
-                '   <tr>' +
-                '       <td style="text-align: center">  period</td>' +
-                '   </tr>' +
-                '   <tr>' +
-                '       <td><label>Substituted teacher   </label></td>' +
-                '   </tr>' +
-                '   <tr>' +
-                '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
-                '   </tr>' +
-                '</table>',
-            buttons: { Okay: 1, Cancel: -1 },
-            focus: 1,
-            submit:function( e, v, m, f){
-                e.preventDefault();
                 if( v == 1){
-                    $.prompt.goToState('state0');
+                    var params = {"confirm" : 1, "valueName" : valueName, "valueMember" : valueMember};
+                    post(document.URL, params, "POST");
                 }
                 else
-                    $.prompt.close();
+                    $.prompt.goToState('state0', false);
             }
         }
     };

@@ -160,16 +160,16 @@ if (isset($_POST["Submit"])) //Submit button to update staff
     }
 }
 
-if (isset($_GET["valueName"]) && isset($_GET["valueMember"])) //Deletes a staff member
+if (isset($_POST["valueName"]) && isset($_POST["valueMember"])) //Deletes a staff member
 {
 //    $operation = true;
-    $operation = deleteStaff($_GET["valueMember"]);
+    $operation = deleteStaff($_POST["valueMember"]);
 
     if ($operation == true){
-        sendNotification("Staff member deleted.", "searchStaffDetails.php");
+        sendNotification("Staff member deleted.");
     }
     else{
-        sendNotification("Error deleting Staff member", "searchStaffDetails.php");
+        sendNotification("Error deleting Staff member" );
     }
 }
 
@@ -308,7 +308,7 @@ function printPagination( $pageNo, $maxPage, $position = "top" ){
     .viewTable{
         position: relative;
         border-collapse: collapse;
-        left:40px;
+        left:25px;
         max-width: 875px;
         min-width: 800px;
         display: <?php echo $tableViewTable ?>;
@@ -784,15 +784,17 @@ $searchby =getlanguage('searchby', $language);
                     echo "<td>$row[1]</td>\n\t\t";
                     echo "<td>$row[2]</td>\n\t\t";
                     echo "<td class='right'>$row[3]</td>\n\t\t";
-                    echo "<td><input name=\"Expand" . "\" type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n\t\t ";
-                    echo "<td><input name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
-                        . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";
+                    echo "<td><input class='smallButton' name='Expand' type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n\t\t ";
+                    /*echo "<td><input class='smallButton' name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
+                        . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";*/
+                    echo "<td><input class='smallButton' name='More' type=\"button\" value=\"More\" onClick=\"staffMore( " . $row[0] . ", '"
+                        . $row[1] . "'); \" /> </td>\n\t   ";
                     echo "</tr>";
                     echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
                 }
                 //Print an mepty row at the end if not printed
                 echo ( ($i - 1) % 5 != 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");
-                $fullPageHeight = ( 500 + ($i * 28) );
+                $fullPageHeight = ( 500 + ($i * 35) );
             }
 
             ?>
