@@ -55,8 +55,14 @@ $(document).ready(function() {
         refreshPage();
     });
 
-//    staffMore( 4, "Madusha " );
+    $( '#PrintButton' ).on( 'click', function(){
+        $("#PrintButton").attr( "hidden", "hidden" ) ;
 
+        var print = setInterval( function(){
+            window.print();
+            clearInterval( print );
+        }, 300 );
+    });
 
 });
 

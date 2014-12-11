@@ -65,6 +65,7 @@ $column3Header = "Teacher Name";
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+    <link href="<?php echo PATHFRONT ?>/Styles/common.css" rel='stylesheet' type='text/css'>
 
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
     <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
@@ -152,13 +153,6 @@ $column3Header = "Teacher Name";
             max-width: 240px;
             min-width: 240px;
         }
-
-        #PrintButton{
-            position: absolute;
-            top: 100px;
-            left :40px;
-            font-size: 1.5em;
-        }
     </style>
 </head>
 
@@ -223,9 +217,10 @@ $column3Header = "Teacher Name";
     ?>
 
 </table>
-<button id="PrintButton" onclick="printPage();" hidden="hidden" >Print Report</button>
 
 <br />
+
+<input id="PrintButton" class="printButton" type="button" value="Print Report" />
 
 </body>
 </html>

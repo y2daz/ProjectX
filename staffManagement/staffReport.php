@@ -96,23 +96,11 @@ $column27Header3 = "උදා 583021007 V";
 
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+    <link href="<?php echo PATHFRONT ?>/Styles/common.css" rel='stylesheet' type='text/css'>
 
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
     <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
     <script src="<?php echo PATHFRONT ?>/common.js"></script>
-
-    <script>
-        $(document).ready( function(){
-            $( '#PrintButton' ).on( 'click', function(){
-                $("#PrintButton").attr( "hidden", "hidden" ) ;
-
-                var print = setInterval( function(){
-                    window.print();
-                    clearInterval( print );
-                }, 300 );
-            });
-        });
-    </script>
 
     <style>
         *{
@@ -277,15 +265,6 @@ $column27Header3 = "උදා 583021007 V";
             filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
             /*vertical-align: top;*/
-        }
-        #PrintButton{
-            position: absolute;
-            top: 40px;
-            left :40px;
-            font-size: 1.5em;
-        }
-        #PrintButton .hidden{
-            display: none;
         }
     </style>
 </head>
@@ -453,7 +432,7 @@ $column27Header3 = "උදා 583021007 V";
 
     </table>
 
-    <input id="PrintButton" type="button" value="Print Report" />
+    <input id="PrintButton" class="printButton" type="button" value="Print Report" />
 
     <br />
 

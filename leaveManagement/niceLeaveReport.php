@@ -49,6 +49,7 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+    <link href="<?php echo PATHFRONT ?>/Styles/common.css" rel='stylesheet' type='text/css'>
 
     <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
     <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
@@ -405,6 +406,8 @@ $usedOther = isset( $staffLeaveData ) ? $staffLeaveData[ 0 ] + $staffLeaveData[ 
             </td>
         </tr>
     </table>
+
+    <input id="PrintButton" class="printButton" type="button" value="Print Report" />
 
 </body>
 </html>
