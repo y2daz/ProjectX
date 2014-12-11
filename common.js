@@ -254,7 +254,21 @@ function changeClassTeacher( Class ){
     var states = {
         state0: {
             title: "New teacher for " + Class,
-            html:'<table><tr><td><label>Staff ID of New Teacher</td><td><input type="text" name="jTxtStaffID" value=""></label></td></tr></table>',
+            html:
+                '<script src="moreStaff.js"></script>' +
+                '<table>' +
+                    '<tr>' +
+                    '<td>Staff ID of New Teacher</td>' +
+                    '<td><input type="text" name="jTxtStaffID" value=""></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td colspan="2"></td>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>&nbsp;</td>' +
+                    '<td id="jTxtStaffName"></td>' +
+                    '</tr>' +
+                '</table>',
             buttons: { Okay: 1, Cancel: -1 },
             focus: "input[name='jTxtStaffID']",
             submit:function( e, v, m, f){

@@ -23,4 +23,13 @@ $(document).ready(function(){
 //        requestConfirmation('Are you sure you want to delete this staff member?', 'Delete Confirmation', 'Delete', $(this).attr('id') );
     });
 
+    $("input[name='jTxtStaffID']").on("input propertychange paste", function(){
+        var staffId = $(this).val();
+
+        var postOb = { staffId : staffId };
+        $.post( "../requests/getStaffName.php", postOb, function( data, status ){
+            $('#jTxtStaffName').html( data );
+        });
+    });
+
 });

@@ -119,12 +119,19 @@ if( isset($_GET["grade"]) )
                 $("#gradeAndClass")
                     .on("focus", function(){
                         $("#suggestion").html(" e.g. 11A, 11 A, 11-A");
-                        console.log("Got focus");
                     })
                     .on("blur", function(){
                         $("#suggestion").html("");
-                        console.log("Lost focus");
                     });
+
+                $("input[name='staffId']").on("input propertychange paste", function(){
+                    var staffId = $(this).val();
+
+                    var postOb = { staffId : staffId };
+                    $.post( "../requests/getStaffName.php", postOb, function( data, status ){
+                        $("#staffName").html( data );
+                    });
+                });
             });
         </script>
     </head>
@@ -162,7 +169,8 @@ if( isset($_GET["grade"]) )
 
             <tr>
                 <td><?php echo getLanguage('staffID', $language)?> </td>
-                <td colspan="2"><input type=text name="staffId"  /> </td>
+                <td><input type=text name="staffId"  /> </td>
+                <td id="staffName"></td>
             </tr>
 
         </table>
