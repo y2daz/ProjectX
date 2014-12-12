@@ -15,6 +15,25 @@
         echo "<script> sendMessage(\"$message\", \"$relocatePath\" ); </script>";
     }
 
+    function JSONResultSet( $resultSet )
+    {
+        $out = "{\n";
+
+        foreach( $resultSet as $row ){
+            $out .= "{ ";
+            for( $i = 0; $i < 9; $i++){
+                $out .= $row[ $i ];
+                if ( $i != 9 - 1){
+                    $out .= ", ";
+                }
+            }
+            $out .= " }\n";
+        }
+        $out .= "}\n";
+
+        echo $out;
+    }
+
     function getGradeAndClass($text){
         $arrGradeClass = array();
         $text = trim( $text );
