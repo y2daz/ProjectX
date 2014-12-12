@@ -10,6 +10,8 @@ SMS System.
 
 staff member finder
 
+printe timetable red box aruond logo
+
 insert all subjects
 >subject codes
 >timetable long subject name abbr

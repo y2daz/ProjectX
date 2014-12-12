@@ -32,8 +32,13 @@ if( !$user->hasPerm('Leave Management System') ){
     $sectionVal = "";
     $designationVal = "";
 
-    if( isset( $_GET["StaffID"] ) ){
-        $_POST["newStaffID"] = getStaffID( $_GET["StaffID"] );
+    if( isset( $_GET["StaffID"] ) )
+    {
+        $_POST["newStaffID"] = $_GET["StaffID"];
+    }
+    if( isset( $_POST["newStaffID"] ) )
+    {
+        $_POST["newStaffID"] = getStaffID( $_POST["newStaffID"] );
     }
 
     function insertFullLeaveFunc(){
