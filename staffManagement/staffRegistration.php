@@ -562,7 +562,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         </tr>
         <tr><th><?php echo $employmentInformation?></th><th></th></tr>
         <tr>
-            <td><?php echo $dateAppointedAsTeacher?></td>
+            <td><?php echo "Date of First Appointment"?></td>
             <td><input name="dateAppointedAsTeacher" type="date" value="<?php echo ( isset( $_POST["dateAppointedAsTeacher"] ) ? $_POST["dateAppointedAsTeacher"] : "" ) ?>" ></td>
         </tr>
         <tr >

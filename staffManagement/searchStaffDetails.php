@@ -911,7 +911,7 @@ $searchby =getlanguage('searchby', $language);
 
             <tr><th><?php echo $employmentInformation?></th><th></th></tr>
             <tr>
-                <td><?php echo $dateAppointedAsTeacher?></td>
+                <td><?php echo "Date of First Appointment"?></td>
                 <td > <input type ="text" name="DateAppointedasTeacherPrincipal" value="<?php echo $DateAppointedasTeacherPrincipal?>"/> </td>
                 <td></td>
             </tr>

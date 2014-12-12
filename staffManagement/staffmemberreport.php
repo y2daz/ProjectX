@@ -248,12 +248,12 @@ if(isset($_GET["id"]))
             echo "</tr>";
 
             echo "<tr>";
-            echo "<td style='font-weight: bold'> Date Appointed as a Teacher/Principal </td>";
+            echo "<td style='font-weight: bold'> Date of First Appointment </td>";
             echo "<td style='text-align: left'> $row[10] </td>";
             echo "</tr>";
 
             echo "<tr>";
-            echo "<td style='font-weight: bold'> Date Joined To this School </td>";
+            echo "<td style='font-weight: bold'> Date Joined this School </td>";
             echo "<td style='text-align: left'> $row[11] </td>";
             echo "</tr>";
 
@@ -340,7 +340,7 @@ if(isset($_GET["id"]))
 
 
             echo "<tr>";
-            echo "<td style='font-weight: bold'>Position in School</td>";
+            echo "<td style='font-weight: bold'>Designation</td>";
             echo "<td style='text-align: left'>$positionInSchool</td>";
             echo "</tr>";
 
