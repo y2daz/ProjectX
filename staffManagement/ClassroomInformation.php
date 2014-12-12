@@ -220,9 +220,9 @@ if( isset($_GET["grade"]) )
                 $top = ($prev != $next)? "\n<tr><td>" : "\n<tr><td>";
 
                 echo $top;
-                echo "\n$row[0]" . "</td>" ;
+                echo "\n " . $row[0] . "</td>" ;
                 echo "\n<td>$row[1]</td>";
-                echo "\n<td>$row[2]</td>";
+                echo "\n<td> " . getStaffNo( $row[2] ) . "</td>";
                 echo "\n<td>$row[3]</td>";
                 echo "\n<td><input name=\"Change" . "\" type=\"button\" value=\"Change Teacher\" onClick=\"changeClassTeacher('$row[0] $row[1]'); \" /> </td>";
                 echo "\n<td><input name=\"Delete" . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete class $row[0] $row[1] ?', "

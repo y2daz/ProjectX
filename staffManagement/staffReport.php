@@ -378,7 +378,7 @@ $column27Header3 = "උදා 583021007 V";
             foreach($result as $row){
 
                 echo "<tr>\n";
-                echo "\t<td>$row[0]</td>\n";
+                echo "\t<td>" . getStaffNo( $row[0] ) . "</td>\n";
 
                 echo "\t<td>" . $row["NamewithInitials"]  . "</td>\n"; //WHY??!
                 $date = strtotime($row[2]); //DOB

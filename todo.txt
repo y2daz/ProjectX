@@ -70,6 +70,15 @@ school staff
 
 css cleaning
 
+bind staffMember to user account
+reset passwords and things like dat
+
+jquery apply leave
+
+help messages in unclear forms like substitue teacher and so on.
+
+classwise timetable has js problem
+
 staff member finder
 
 add date range for leave data sql in all select queries (We only want data for current year)

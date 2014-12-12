@@ -139,7 +139,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
         else{
             foreach($result as $row){
                 echo "<tr>";
-                echo "<td class='right'>$row[0]</td>";
+                echo "<td class='right'> " . getStaffNo( $row[0] ) . "</td>";
                 echo "<td class='left'>$row[1]</td>";
                 echo "<td class='right'>$row[4]</td>";
                 echo "<td class='right'>$row[3]</td>";

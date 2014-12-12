@@ -780,7 +780,7 @@ $searchby =getlanguage('searchby', $language);
                 foreach($tableData as $row)
                 {
                     echo "<tr class='left'>\n\t\t";
-                    echo "<td class='right'>$row[0]</td>\n\t\t";
+                    echo "<td class='right'> " . getStaffNo( $row[0] ) . "</td>\n\t\t";
                     echo "<td>$row[1]</td>\n\t\t";
                     echo "<td>$row[2]</td>\n\t\t";
                     echo "<td class='right'>$row[3]</td>\n\t\t";
@@ -810,7 +810,7 @@ $searchby =getlanguage('searchby', $language);
             <tr><th><?php echo $generalInformation?></th><th></th></tr>
             <tr>
                 <td> <?php echo $staffID?> </td>
-                <td > <input type = "text" name="staffID" readonly value="<?php echo $staffid?>" /> </td>
+                <td > <input type = "text" name="staffID" readonly value="<?php echo getStaffNo( $staffid )?>" /> </td>
                 <td></td>
             </tr>
             <tr>

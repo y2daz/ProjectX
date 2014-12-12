@@ -207,7 +207,7 @@ $column3Header = "Teacher Name";
         {
             echo "<tr>\n";
             echo "<td>$row[0] $row[1]</td>";
-            echo "<td>$row[2]</td>";
+            echo "<td> " . getStaffNo( $row[2] ) . "</td>";
             echo "<td>$row[3]</td>";
             echo "</tr>\n";
         }

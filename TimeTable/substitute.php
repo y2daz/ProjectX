@@ -237,7 +237,7 @@ if (isset($_GET["getTimetable"]))
                 foreach($freeTeachersSet as $row){
                     echo ( $rowcount % 2 == 0 ? "<tr>" : "<tr class='alt'>");
                     echo "<tr>";
-                    echo "<td>" . $row[0] . "</td>";
+                    echo "<td>" . getStaffNo( $row[0] ) . "</td>";
                     echo "<td id='replacementName_$row[0]' >" . $row[1] . "</td>";
                     echo "<td>" . $row[2] . "</td>";
                     echo "<td class='number'>" . $row[3] . "</td>";

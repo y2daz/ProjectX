@@ -923,7 +923,8 @@ function getAllStaffDetailed( $initial )
     return $set;
 } //Returns 20 records of non-deleted staff records starting from $initial
 
-function getStaffID( $staffNo ){
+function getStaffID( $staffNo ) //Gets the staffNo of a member with $staffId
+{
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
@@ -951,6 +952,45 @@ function getStaffID( $staffNo ){
             }
             elseif( $result->num_rows == 0 ){
                 return 0; //No staff members
+            }
+            else{
+                $row = $result->fetch_array();
+            }
+        }
+    }
+    $name = $row[0];
+    return $name;
+}
+
+function getStaffNo( $staffId ) //Gets the staffId of a member with $staffNo
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $result = null;
+    $year = getConfigData( "currentYear" );
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $row = 0;
+
+    if ($stmt = $mysqli->prepare('SELECT StaffNo FROM StaffNo WHERE StaffId = ? and Year = ?'))
+    {
+        $stmt -> bind_param("ii", $staffId, $year );
+
+        if ($stmt->execute())
+        {
+            $result = $stmt->get_result();
+            $mysqli->close();
+            $stmt ->close();
+
+            if( $result->num_rows > 1){
+                return -1; //More than one staff member
+            }
+            elseif( $result->num_rows == 0 ){
+                return NULL; //No staff members
             }
             else{
                 $row = $result->fetch_array();
@@ -1079,6 +1119,54 @@ function renewStaffNos( $year ) //Sets the new staff numbers for the given year
     return $numRows;
 }
 
+function recreateCurrentStaffNoView( $year )
+{
+    /**
+     * CREATE VIEW VwCurrentStaffNo
+        AS
+        SELECT s.`StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`, `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`, `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `Designation`, `Section`, `SubjectMostTaught`, `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`, sn.`StaffNo`
+        FROM `Staff` s LEFT OUTER JOIN `StaffNo` sn
+        ON( s.`StaffId` = sn.`StaffId` )
+        WHERE s.`isDeleted` = 0
+        AND sn.`Year` = '2014'
+     */
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $mysqli->begin_transaction();
+
+    if( !$stmtDrop = $mysqli->prepare('DROP VIEW IF EXISTS VwCurrentStaffNo;') )
+    {
+        echo "Error: " . $mysqli -> errno , ". " . $mysqli -> error . "<br />";
+        die;
+    };
+    $stmtDrop -> execute();
+    $stmtDrop -> close();
+
+    if( !$stmtCreate = $mysqli->prepare("
+        CREATE VIEW VwCurrentStaffNo
+        AS
+        SELECT s.`StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`, `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`, `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `Designation`, `Section`, `SubjectMostTaught`, `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`, sn.`StaffNo`
+        FROM `Staff` s LEFT OUTER JOIN `StaffNo` sn
+        ON( s.`StaffId` = sn.`StaffId` )
+        WHERE s.`isDeleted` = 0
+        AND sn.`Year` = '" . $mysqli -> real_escape_string( $year ) . "';"
+    ) )
+    {
+        echo "Error: " . $mysqli -> errno , ". " . $mysqli -> error . "<br />";
+        die;
+    };
+
+    $stmtCreate -> execute();
+    $stmtCreate -> close();
+
+    return;
+}
 //
 ///
 /////  LEAVE MANAGEMENT
@@ -1562,7 +1650,7 @@ function getOtherLeaveData($staffId, $month = NULL, $usingStaffNo = false)
     return $set;
 } //Returns all leaves not reviewed along with their staff member's details
 
-/**/function getStaffLeavetoApprove( $staffID, $sDate, $usingStaffNo = false )
+/**/function getStaffLeavetoApprove( $staffId, $sDate, $usingStaffNo = false )
 {
     if( $usingStaffNo ){
         $staffId = getStaffID( $staffId );
@@ -1585,7 +1673,7 @@ function getOtherLeaveData($staffId, $month = NULL, $usingStaffNo = false)
                                         AND fl.`startDate` = ?
                                         AND fl.`Status` = 0;"))
     {
-        $stmt->bind_param("ss", $staffID, $sDate);
+        $stmt->bind_param("ss", $staffId, $sDate);
         if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;

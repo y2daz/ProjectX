@@ -85,7 +85,7 @@ if( !$user->hasPerm('Leave Approval') ){
         $fullPageHeight = 800;
 
         if (isset($_GET["sdate"])){
-            $result = getStaffLeavetoApprove( $_GET["expand"], $_GET["sdate"], true );
+            $result = getStaffLeavetoApprove( $_GET["expand"], $_GET["sdate"], false );
 
             if ( isset($result) ){
                 $row = $result[0];
@@ -247,7 +247,7 @@ if( !$user->hasPerm('Leave Approval') ){
                     else{
                         foreach($result as $row){
                             echo "<tr>";
-                            echo "<td>$row[0]</td>";
+                            echo "<td> " . getStaffNo( $row[0] ) . "</td>";
                             echo "<td>$row[1]</td>";
                             echo "<td> " . ( $row[2] + $row[3] + $row[4] + $row[5] ) . "</td>";
                             echo "<td>$row[7] to $row[8]</td>";
@@ -273,7 +273,7 @@ if( !$user->hasPerm('Leave Approval') ){
                 </tr>
                 <tr>
                     <td>Staff ID</td>
-                    <td > <input type = "text" name="staffId" value="<?php echo $exStaffId ?>"/ readonly> </td>
+                    <td > <input type = "text" name="staffId" value="<?php echo getStaffNo( $exStaffId ) ?>"/ readonly> </td>
                 </tr>
                 <tr>
                     <td>Name</td>

@@ -120,7 +120,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
                 echo $top;
                     echo "<td> Staff ID</td>";
-                    echo "<td> $row[0] </td>";
+                    echo "<td> " . getStaffNo( $row[0] ) . "</td>";
                 echo "</tr>";
 
                 echo "<tr>";

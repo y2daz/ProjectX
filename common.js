@@ -64,6 +64,7 @@ $(document).ready(function() {
         }, 300 );
     });
 
+    console.log( 1 );
 });
 
 function setCookie(cName,value) //Sets a cookie.
@@ -322,7 +323,7 @@ function staffMore( staffId, name ){
 
     var states = {
         state0: {
-            title: "Staff Member " + staffId + ", " + name,
+            title: "Staff Member " + name,
             html:
                 '<script src="moreStaff.js"></script>' +
                 '<style>' +

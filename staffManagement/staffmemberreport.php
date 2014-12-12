@@ -129,7 +129,7 @@ if(isset($_GET["id"]))
 
             echo $top;
             echo "<td style='font-weight: bold'> Staff ID </td>";
-            echo "<td style='text-align: left'> $row[0] </td>";
+            echo "<td style='text-align: left'> " . getStaffNo( $row[0] ) . " </td>";
             echo "</tr>";
 
             echo "<tr>";

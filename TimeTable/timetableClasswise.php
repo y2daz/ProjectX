@@ -97,7 +97,10 @@ if (isset($_GET["getTimetable"]))
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/jquery-extras.min.js"></script>
         <script src="<?php echo PATHFRONT ?>/common.js"></script>
-        <script src="timetable.js"></script>
+<!--        <script src="timetable.js"></script>-->
+        <script>
+            console.log( 2 );
+        </script>
 
     </head>
     <body>
@@ -111,7 +114,7 @@ if (isset($_GET["getTimetable"]))
     <form method="get">
         <table id="info">
             <tr>
-                <td><label><?php echo getLanguage("class",$lang)?></td>
+                <td><?php echo getLanguage("class",$lang)?></td>
                 <td><input type="text" class="text1" name="classroom" value="<?php echo $classroom?>" /></td>
                 <td><input type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
                 <td><a href="<?php echo PATHFRONT . "/TimeTable/TimetableReportClasswise.php" . "?classroom=" . $classroom ?>" target="_blank" > Print Timetable</a></td>
