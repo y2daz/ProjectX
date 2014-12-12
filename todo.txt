@@ -1,3 +1,31 @@
+date of first appointment <- date appointed as tp
+
+new section list
+
+education info select one educational qualif for reports
+
+qualifications interface
+
+SMS System.
+
+staff member finder
+
+insert all subjects
+>subject codes
+>timetable long subject name abbr
+
+recommend list of all teachers who should be substituted.
+
+search leave by everything for multiple staff members staff
+
+individual staff report
+    reduce header line size
+    underline report heading
+
+reset passwords and things like dat
+
+jquery apply leave
+
 STAFF nO FULL IMPLEMENTATION
 >Register Staff member allow enter staff no
 >Suggest staff number
@@ -6,19 +34,9 @@ STAFF nO FULL IMPLEMENTATION
 >resetting staff numbers
 >allocating staff numbers
 
-MYSQL DATE FORMAT yyyy-mm-dd for date comparison
-
-TRANSACTIONS
-
 buttons in a similar style
 
 leave reports interface
-
-access control file level.
-
-search leave by everything for staff
-
-qualifications interface
 
 staff registration table, more splits
     Acedemic staff and non acedemic staff stuff
@@ -26,21 +44,7 @@ staff registration table, more splits
 leave appliacation buttons next to dates for frquently used dates
     if possible list box for frequently used reasons too... :P
 
-insert all subjects
->subject codes
->timetable long subject name abbr
-
-** split staff table to
-    general info
-    qualifications
-
-qualification list database tables
-
 change all staff nos at the end of every year
-
-*** PRINT BUTTON ON REPORTS
-
-leave reviewing
 
 deleting staff delete all references inc
 
@@ -48,10 +52,6 @@ comments
     on eeverything
 
 function parameter proper indentation and queries the same thing? check I dunno
-
-individual staff report
-    reduce header line size
-    underline report heading
 
 apply leave form required validation
 
@@ -65,32 +65,16 @@ check all outer join queries
 
 best create two report templates (landscape portrait)
 
-edu emp id
-school staff
-
 css cleaning
 
 bind staffMember to user account
-reset passwords and things like dat
-
-jquery apply leave
 
 help messages in unclear forms like substitue teacher and so on.
 
 classwise timetable has js problem
 
-staff member finder
-
-add date range for leave data sql in all select queries (We only want data for current year)
-    Main staff report
-
-show year of staffid when registering/updating
-
-PREPARE LIST OF QUESTIONS TO ASK DS.
-
 combine substitue and view timetable
 
-date of first appointment <- date appointed as tp
 
 understanding this code on reused code pages. e.g. main.css
 separete css for common stuff
@@ -101,18 +85,10 @@ optimise deletion code in search update staff
 
 substitute order by subject highlight correct subject
 
-recommend list of all teachers who should be substituted.
-
-SMS System.
 
 Year plan additional info on each day
     think about different colours too.
 
-education info select one educational qualif for reports
-
 describe short leave types
 
 check leave status whole thing is crap
-
-
-teacher id > staff id

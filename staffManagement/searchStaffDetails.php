@@ -787,7 +787,7 @@ $searchby =getlanguage('searchby', $language);
                     echo "<td><input class='smallButton' name='Expand' type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n\t\t ";
                     /*echo "<td><input class='smallButton' name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                         . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";*/
-                    echo "<td><input class='smallButton' name='More' type=\"button\" value=\"More\" onClick=\"staffMore( " . $row[0] . ", '"
+                    echo "<td><input class='smallButton' name='More' type=\"button\" value=\"More\" onClick=\"staffMore( " . getStaffNo( $row[0] ) . ", '"
                         . $row[1] . "'); \" /> </td>\n\t   ";
                     echo "</tr>";
                     echo ($i++ % 5 == 0 ? "<tr class=\"blank\">\n<td colspan='6'>&nbsp;</td>\n\t\t</tr>" : "");

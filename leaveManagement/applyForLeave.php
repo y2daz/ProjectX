@@ -33,7 +33,7 @@ if( !$user->hasPerm('Leave Management System') ){
     $designationVal = "";
 
     if( isset( $_GET["StaffID"] ) ){
-        $_POST["newStaffID"] = getStaffNo( $_GET["StaffID"] );
+        $_POST["newStaffID"] = getStaffID( $_GET["StaffID"] );
     }
 
     function insertFullLeaveFunc(){
@@ -135,7 +135,7 @@ if( !$user->hasPerm('Leave Management System') ){
             $designationVal = $row[6];
         }
 
-        $staffIdVal = $_POST["newStaffID"];
+        $staffIdVal = getStaffNo( $_POST["newStaffID"] );
         $CasualLeave = ($CasualLeave < 0 ? 0 : $CasualLeave);
         $MedicalLeave = ($MedicalLeave < 0 ? 0 : $MedicalLeave);
         $DutyLeave = ($DutyLeave < 0 ? 0 : $DutyLeave);
