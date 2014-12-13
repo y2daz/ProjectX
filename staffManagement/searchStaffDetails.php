@@ -70,13 +70,13 @@ if( isset( $_GET["field"] ) && isFilled( $_GET["field"] ) ){
         $fieldValue = isset( $_GET["fieldValue"] ) ? $_GET["fieldValue"] : "";
         $fieldEnhancer = "<input type='text' id='Qr1' name='fieldValue' value='$fieldValue' />";
         $selectedField = isset( $_GET["operator"] ) ? $_GET["operator"] : 3;
-        $isWord = "&nbsp;<select name='operator'>
+        $isWord = "<select name='operator'>
                         <option value='0' " . ( $selectedField == 0 ? "selected" : "" ) . " > is</option>
                         <option value='1' " . ( $selectedField == 1 ? "selected" : "" ) . " > begins with</option>
                         <option value='2' " . ( $selectedField == 2 ? "selected" : "" ) . " > ends with </option>
                         <option value='3' " . ( $selectedField == 3 ? "selected" : "" ) . " > contains </option>
 
-                    </select> &nbsp;";
+                    </select>";
         $fieldEnhancer = $isWord . $fieldEnhancer;
     }
 }
@@ -181,7 +181,7 @@ if ( isset( $_GET["search"] ) ){
     $operator = isset( $_GET["operator"] ) ? $_GET["operator"] : 0;
     //GET AND SET OPERATOR.
 
-    $tableData = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator, "StaffId", "asc", ( $pageNo - 1 ) * 20, 20, true );
+    $tableData = searchStaff( $_GET["field"], $_GET["fieldValue"], $operator, "StaffNo", "asc", ( $pageNo - 1 ) * 20, 20, true );
 }
 elseif( isset( $_GET["searchAll"] ) ){
     $tableData = getAllStaff( ( $pageNo - 1 ) * 20 );
@@ -739,16 +739,7 @@ $searchby =getlanguage('searchby', $language);
                         echo $searchButton;
                     ?>
                 </td>
-<!--                    <input class="button" name="search" type="submit" value=--><?php //echo getlanguage('search', $language)?><!-->
             </tr>
-            <!--<tr><td></td><td>&nbsp;</td></tr>
-            <tr>
-                <td><label><input type="RADIO" name="Choice" value="Staffid" <?php /*echo ( strcmp( $_GET["Choice"], "Staffid" ) == 0 ?  "checked />" : " />" ) . getLanguage('staffID', $language)*/?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="Name" <?php /*echo ( strcmp( $_GET["Choice"], "Name" ) == 0 ?  "checked />" : " />" ) . getLanguage('nameWithInitials', $language)*/?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="nicnumber" <?php /*echo ( strcmp( $_GET["Choice"], "nicnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('nicNumber', $language)*/?></label> </td>
-                <td><label><input type="RADIO" name="Choice" value="contactnumber" <?php /*echo ( strcmp( $_GET["Choice"], "contactnumber" ) == 0 ?  "checked />" : " />" ) . getLanguage('contactnumber', $language)*/?></label> </td>
-            </tr>-->
-
         </table>
     </form>
     <br />

@@ -555,7 +555,7 @@ function deleteStaff($staffID, $usingStaffNo = false )
     return false;
 } //Deletes a staff member along with their classroom and their timetable
 
-/**/ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffID", $order = "asc", $start = 0, $limit = 20, $usingStaffNo = false ){ //Searches for $limit staff members with $field $operator $value from $start
+/**/ function searchStaff( $field, $fieldValue, $operator = 0, $orderField = "StaffNo", $order = "asc", $start = 0, $limit = 20, $usingStaffNo = false ){ //Searches for $limit staff members with $field $operator $value from $start
     /**
      * $operator values
      * 0 = Exactly equal
@@ -587,13 +587,15 @@ function deleteStaff($staffID, $usingStaffNo = false )
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
+    //Yazdaan, open to attack. Get an array of possible $field values and check if it is in. Or something... Also $orderfield.
+    $query = 'Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM VwCurrentStaffNo WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
     $query .= 'ORDER BY ' . $orderField . ' + 0 ' . $order .  ' LIMIT ?, ?;';
 
-    $numberQuery = 'Select COUNT(*) FROM Staff WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
+    $numberQuery = 'Select COUNT(*) FROM VwCurrentStaffNo WHERE ' . ($field) . ' ' . $operator . ' ?  AND isDeleted = 0 ';
 
-//    echo "field $field, value $fieldValue, Yazdaan";
-//    echo "<br />" . " query = " . $query . "<br /> ";
+//    echo $numberQuery . "<br /> for rows <br />";
+//    echo $query . "<br /> for data <br />";
+
     if ($stmt = $mysqli->prepare( $numberQuery )){
         $stmt -> bind_param("s", $fieldValue);
         if ($stmt->execute())
@@ -818,6 +820,7 @@ function getNewStaffNo()
 
     $set = null;
     $noOfRows = 0;
+    $year = getConfigData( "currentYear" );
 
     if ($mysqli->connect_errno) {
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
@@ -833,8 +836,16 @@ function getNewStaffNo()
         }
     }
 
-    if ($stmt = $mysqli->prepare("Select StaffID, NamewithInitials, NICNumber, ContactNumber FROM Staff WHERE isDeleted = 0 ORDER BY StaffId + 0 LIMIT ?, ?;")){
-        $stmt -> bind_param("ii", $start, $limit);
+    if ($stmt = $mysqli->prepare("
+        Select s.StaffID, s.NamewithInitials, s.NICNumber, s.ContactNumber
+        FROM Staff s LEFT OUTER JOIN StaffNo n
+            ON (s.StaffId = n.StaffId )
+        WHERE s.isDeleted = 0
+            AND n.Year = ?
+        ORDER BY n.StaffNo + 0 LIMIT ?, ?;"
+    ))
+    {
+        $stmt -> bind_param("iii", $year, $start, $limit);
         if ($stmt->execute()){
             $result = $stmt->get_result();
             $i = 0;
