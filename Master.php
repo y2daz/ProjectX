@@ -290,31 +290,7 @@
         </div>
 
         <div id="messaging">
-            <?php
-            $pendingSMS = getAllSendingSMS();
 
-            if( isset($pendingSMS) )
-            {
-                echo "<li>\n";
-                $box = "<a>Messages being sent</a>\n";
-                $box .= "<ul>\n";
-                foreach( $pendingSMS as $message )
-                {
-                    $box .= "<li ><a><span class='boldText'>" . getStaffNameFromPhoneNumber( $message[1] ) . "</span><br /> " . $message[2] . "</a></li>\n";
-                }
-                $box .= "</ul>\n";
-                echo $box;
-                echo "</li>\n";
-            }
-            else
-            {
-            ?>
-            <li>
-                <a> There are no new messages </a>
-            </li>
-            <?php
-            }
-            ?>
         </div>
 
         <?php

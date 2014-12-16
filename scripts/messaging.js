@@ -24,8 +24,16 @@ $(document).ready( function(){
         else
         {
             $('#messaging').stop().animate({right: '0'}, 150);
+            getSendingMessages();
         }
     });
+
+    function getSendingMessages(){
+        var postOb = { sending : "yesPlease" };
+        $.post( "../requests/messaging.php", postOb, function( data, status ){
+            $("#messaging").html( data );
+        });
+    }
 //    $('.test2').on('click', function( e ){
 //        console.log("clickety");
 //        e.preventDefault();
