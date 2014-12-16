@@ -95,6 +95,31 @@
         return str_replace($url_components['query'],http_build_query($merged_result),$url);
     }
 
+    function preparePhoneNumber( $phoneNumber )
+    {
+        $number = trim( $phoneNumber );
+
+        if( strcmp( $number[ 0 ],  '+' ) != 0 )
+        {
+            if( strcmp( $number[ 0 ],  '0' ) != 0 )
+            {
+                if( strcmp( $number[ 0 ],  '0' ) == 7 )
+                {
+                    $number = '+94' . $number;
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            else
+            {
+                $number = '+94' . substr( $number, 1 );
+            }
+        }
+        return ( strlen( $number ) == 12 ? $number : "" ) ;
+    }
+
 /**
  * http://webcheatsheet.com/php/get_current_page_url.php
  */

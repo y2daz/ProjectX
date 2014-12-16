@@ -16,8 +16,8 @@ function isFilled($value){
         return false;
     }
     else{
-        if (is_string($value)){
-            if(strlen($value) == 0){
+        if ( is_string( $value ) ){
+            if(strlen( $value ) == 0){
                 return false;
             }
             else{

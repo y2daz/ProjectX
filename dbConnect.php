@@ -20,4 +20,17 @@ class dbConnect {
 
         return $connection;
     }
+
+    public function getSMSConnection()
+    {
+        $dbHost = "localhost";
+        $dbUser = "ozekiSystem";
+        $dbPass = "wkbwD6PMPuGTSJx";
+        $dbName = "ozekiSMS";
+
+        //Create Connection object
+        $connection = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+
+        return $connection;
+    }
 }

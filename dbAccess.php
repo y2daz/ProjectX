@@ -2385,6 +2385,54 @@ function insertHolidays($year, $dayArray)
 
 //
 ///
+/////  SMS System
+///
+//
+
+function sendSMS( $phoneNumber, $message )
+{
+    $sender = 'manaSystem';
+    $status = 'send';
+    $phoneNumber = preparePhoneNumber( $phoneNumber );
+
+    if( !isFilled( $phoneNumber ) )
+    {
+        return false;
+    }
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getSMSConnection();
+
+    $set = null;
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("
+        INSERT INTO ozekimessageout (sender, receiver, msg, status)
+        VALUES ( ?, ?, ?, ?);"
+    ) )
+    {
+        $stmt->bind_param("ssss", $sender, $phoneNumber, $message, $status);
+        if ( $stmt->execute() )
+        {
+            if( $stmt->affected_rows == 1 )
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $stmt->close();
+    }
+
+    $mysqli->close();
+    return false;
+}
+
+//
+///
 /////  UNCATALOGUED
 ///
 //
