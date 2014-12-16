@@ -63,17 +63,7 @@ $(document).ready(function() {
         }, 300 );
     });
 
-    $("#messageButton").on("click", function(){
-        this.classList.toggle("active");
 
-        if ($(this).hasClass('active')){
-            $('#messaging').stop().animate({right:'-105%'}, 150);
-        }
-        else
-        {
-            $('#messaging').stop().animate({right: '0'}, 150);
-        }
-    });
 });
 
 function setCookie(cName,value) //Sets a cookie.

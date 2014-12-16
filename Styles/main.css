@@ -61,11 +61,6 @@ body {
     margin: 0px auto;
 }
 
-
-
-
-
-
 #messaging, li, ul {
     list-style-type: none;
 }
@@ -87,36 +82,37 @@ body {
     text-decoration: none;
     color: #000;
 }
-#messaging li a:hover {
-    background: #ececec;
-    color: #00aee9;
-    cursor: pointer; cursor: hand;
-}
-#messaging li a:active {
-    background: #ececec;
-    color: #0099d4;
-}
-#messaging li ul {
-    display: none; /* used to hide sub-menus*/
-}
+/*#messaging li a:hover {*/
+    /*background: #ececec;*/
+    /*color: #00aee9;*/
+    /*cursor: pointer; cursor: hand;*/
+/*}*/
+/*#messaging li a:active {*/
+    /*background: #ececec;*/
+    /*color: #0099d4;*/
+/*}*/
+/*#messaging li ul {*/
+    /*display: none; *//* used to hide sub-menus*/
+/*}*/
 #messaging li ul li a {
-    padding: 10px 25px;
+    position: relative;
+    left: -30px;
+    padding: 10px 5px 5px 20px;
     background: #ffffff;
     font-size:14px;
 }
-#messaging li ul li a:hover {
-    padding: 10px 25px;
-    background: #ffffff;
-    font-size:14px;
-}
+/*#messaging li ul li a:hover {*/
+    /*position: relative;*/
+    /*left: -30px;*/
+    /*padding: 10px 5px 5px 20px;*/
+    /*background: #ffffff;*/
+    /*font-size:14px;*/
+/*}*/
 #messaging li ul li hr{
     width: 80%;
     padding: 0px 0px 0px 0px;
     margin: 0px auto;
 }
-
-
-
 
 
 

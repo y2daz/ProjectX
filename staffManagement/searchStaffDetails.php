@@ -150,6 +150,7 @@ else
 
 if (isset($_POST["Submit"])) //Submit button to update staff
 {
+    $_POST["staffID"] = getStaffID( $_POST["staffID"] );
     $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
 
     if ($operation){
@@ -213,7 +214,7 @@ $Salary ="";
 
 if (isset($_GET["expand"]))
 {
-    $result = getStaffMember( $_GET["expand"] );
+    $result = getStaffMember( $_GET["expand"], true );
     $i = 0;
 
     foreach($result as $row) //
@@ -775,7 +776,7 @@ $searchby =getlanguage('searchby', $language);
                     echo "<td>$row[1]</td>\n\t\t";
                     echo "<td>$row[2]</td>\n\t\t";
                     echo "<td class='right'>$row[3]</td>\n\t\t";
-                    echo "<td><input class='smallButton' name='Expand' type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . $row[0] . "\" /> </td>\n\t\t ";
+                    echo "<td><input class='smallButton' name='Expand' type=\"submit\" value=\"Expand \"formaction=\"searchStaffDetails.php?expand=" . getStaffNo( $row[0] ) . "\" /> </td>\n\t\t ";
                     /*echo "<td><input class='smallButton' name=\"Delete"  . "\" type=\"button\" value=\"Delete\" onClick=\"requestConfirmation('Are you sure you want to delete this staff member?', "
                         . "'Delete Confirmation', 'Delete', '" . $row[0] . "'); \" /> </td>\n\t   ";*/
                     echo "<td><input class='smallButton' name='More' type=\"button\" value=\"More\" onClick=\"staffMore( " . getStaffNo( $row[0] ) . ", '"

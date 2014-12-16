@@ -83,6 +83,10 @@ h1{
     text-decoration:none;
 }
 
+.boldText{
+    font-weight: 600;
+}
+
 .hidden{
     display: none;
 }

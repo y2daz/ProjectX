@@ -2321,13 +2321,6 @@ function getHolidays($year){
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
 
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
     $set = array();
 
     if ($mysqli->connect_errno) {
@@ -2429,6 +2422,54 @@ function sendSMS( $phoneNumber, $message )
 
     $mysqli->close();
     return false;
+}
+
+function getAllSendingSMS()
+{
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getSMSConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $set = array();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT id, receiver, msg FROM ozekimessageout WHERE status='sending' OR status='send'"))
+    {
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array()){
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+function getStaffNameFromPhoneNumber( $phoneNumber )
+{
+    $len = strlen( $phoneNumber );
+    if( $len >= 9 )
+    {
+        $key = substr( $phoneNumber, $len - 9, 9);
+        $result = searchStaff( "ContactNumber", $key, 2, "StaffNo", "asc", "0", "4", true );
+        $maxPage = $result[0];
+        $tableData = $result[1];
+        if( isset( $tableData ) )
+        {
+            $row = $tableData[0];
+            return $row[1];
+        }
+    }
+
+    return $phoneNumber . " (Unknown Number)";
 }
 
 //

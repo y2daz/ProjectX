@@ -43,6 +43,7 @@
     if(isset($_GET["logout"]))
     {
         $_SESSION["user"] = NULL;
+        $_SESSION["accessLevel"] = NULL;
         header("Location: " . PATHFRONT . "/Menu.php");
     }
 
@@ -100,6 +101,7 @@
                         $('#nav li a').removeClass('active');
                     }
                 });
+
 
                 $("#logInLink").on("click", function(e){
                     e.preventDefault();
@@ -276,20 +278,43 @@
 
         <?php
         $user = Role::getRolePerms( $_SESSION["accessLevel"] );
-        $navMenu = "";
         if ($user->hasPerm('SMS System'))
         {
 
         ?>
+
+        <script src="/scripts/messaging.js"></script>
 
         <div id="messageButton" class="active">
             <div id="icon"></div>
         </div>
 
         <div id="messaging">
+            <?php
+            $pendingSMS = getAllSendingSMS();
+
+            if( isset($pendingSMS) )
+            {
+                echo "<li>\n";
+                $box = "<a>Messages being sent</a>\n";
+                $box .= "<ul>\n";
+                foreach( $pendingSMS as $message )
+                {
+                    $box .= "<li ><a><span class='boldText'>" . getStaffNameFromPhoneNumber( $message[1] ) . "</span><br /> " . $message[2] . "</a></li>\n";
+                }
+                $box .= "</ul>\n";
+                echo $box;
+                echo "</li>\n";
+            }
+            else
+            {
+            ?>
             <li>
                 <a> There are no new messages </a>
             </li>
+            <?php
+            }
+            ?>
         </div>
 
         <?php
