@@ -10,7 +10,9 @@ require_once("../common.php");
 
 if( isset( $_POST["received"] ))
 {
-
+        echo "<li>\n";
+        echo "<a>No new messages have been received.</a>";
+        echo "</li>\n";
 }
 
 if( isset( $_POST["sending"] ))

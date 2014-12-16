@@ -25,13 +25,21 @@ $(document).ready( function(){
         {
             $('#messaging').stop().animate({right: '0'}, 150);
             getSendingMessages();
+            getReceivedMessages();
         }
     });
 
     function getSendingMessages(){
         var postOb = { sending : "yesPlease" };
         $.post( "../requests/messaging.php", postOb, function( data, status ){
-            $("#messaging").html( data );
+            $('#messaging').html( data );
+        });
+    }
+
+    function getReceivedMessages(){
+        var postOb = { received : "yesPlease" };
+        $.post( "../requests/messaging.php", postOb, function( data, status ){
+            $('#messaging').html( data + $('#messaging').html() );
         });
     }
 //    $('.test2').on('click', function( e ){

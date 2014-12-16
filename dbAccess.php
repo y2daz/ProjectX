@@ -2426,6 +2426,8 @@ function sendSMS( $phoneNumber, $message )
 
 function getAllSendingSMS()
 {
+    $i = 0;
+
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getSMSConnection();
 
@@ -2443,14 +2445,21 @@ function getAllSendingSMS()
     {
         if ($stmt->execute()){
             $result = $stmt->get_result();
-            $i = 0;
             while($row = $result->fetch_array()){
                 $set[$i++]=$row;
             }
         }
     }
     $mysqli->close();
-    return $set;
+
+    if( $i != 0)
+    {
+        return $set;
+    }
+    else
+    {
+        return null;
+    }
 }
 
 function getStaffNameFromPhoneNumber( $phoneNumber )
