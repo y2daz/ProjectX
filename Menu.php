@@ -23,17 +23,8 @@ if (isset($_GET["error"])){
     sendNotification("That just caused an error. Maybe you shouldn't try that again?");
 }
 
-recreateCurrentStaffNoView( '2014' );
+//recreateCurrentStaffNoView( '2014' );
 //echo renewStaffNos( '2012' );
-
-if( sendSMS( "0775087168", "Hello" ) )
-{
-    echo "Okay.";
-}
-else
-{
-    echo "Noo.";
-}
 
 ?>
 <html>

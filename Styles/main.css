@@ -60,6 +60,69 @@ body {
     padding: 0px 0px 0px 0px;
     margin: 0px auto;
 }
+
+
+
+
+
+
+#messaging, li, ul {
+    list-style-type: none;
+}
+#messaging {
+    position:absolute;
+    display:block;
+    background-color: white;
+    float: right;
+    width: 300px;
+    top: 260px;
+    right: -105%;
+    border: 2px solid #d5d5d5;
+    z-index: 3;
+}
+#messaging li a {
+    display: block;
+    padding: 10px 15px;
+    background: #ffffff;
+    text-decoration: none;
+    color: #000;
+}
+#messaging li a:hover {
+    background: #ececec;
+    color: #00aee9;
+    cursor: pointer; cursor: hand;
+}
+#messaging li a:active {
+    background: #ececec;
+    color: #0099d4;
+}
+#messaging li ul {
+    display: none; /* used to hide sub-menus*/
+}
+#messaging li ul li a {
+    padding: 10px 25px;
+    background: #ffffff;
+    font-size:14px;
+}
+#messaging li ul li a:hover {
+    padding: 10px 25px;
+    background: #ffffff;
+    font-size:14px;
+}
+#messaging li ul li hr{
+    width: 80%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+}
+
+
+
+
+
+
+
+
+
 #main {
     width:800px;
     /*height: Set dynamically;*/

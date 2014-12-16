@@ -69,8 +69,6 @@ function isContactNumber($contactnumber)
     }
 }
 
-
-
 function hasSpaces($value)
 {
     for ($i = 0; $i < strlen($value); $i++){

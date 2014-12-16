@@ -66,6 +66,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/common.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/messageicon.css";?>">
 
         <!--impromptu Links-->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/scripts/jquery-impromptu.min.css";?>">
@@ -160,10 +161,7 @@
             ?>
         </div>
 
-
-        <!-- DO NOT EDIT FOLLOWING -->
         <a id="menuButton" class="hidden"><span></span></a>
-
 
         <span id="messagingSystem"></span>
 
@@ -275,6 +273,28 @@
             ?>
 
         </div>
+
+        <?php
+        $user = Role::getRolePerms( $_SESSION["accessLevel"] );
+        $navMenu = "";
+        if ($user->hasPerm('SMS System'))
+        {
+
+        ?>
+
+        <div id="messageButton" class="active">
+            <div id="icon"></div>
+        </div>
+
+        <div id="messaging">
+            <li>
+                <a> There are no new messages </a>
+            </li>
+        </div>
+
+        <?php
+        }
+        ?>
 
         <div id="header">
             <img id="schoolLogo" src="<?php echo PATHFRONT ?>/images/logo.jpg" height="90px" />

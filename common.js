@@ -4,8 +4,7 @@
 
 $(document).ready(function() {
     window.open    = function(){};
-//    window.print   = function(){};
-    // Support hover state for mobile.
+
     if (false) {
         window.ontouchstart = function(){};
     }
@@ -55,7 +54,7 @@ $(document).ready(function() {
         refreshPage();
     });
 
-    $( '#PrintButton' ).on( 'click', function(){
+    $('#PrintButton').on( 'click', function(){
         $("#PrintButton").attr( "hidden", "hidden" ) ;
 
         var print = setInterval( function(){
@@ -64,7 +63,17 @@ $(document).ready(function() {
         }, 300 );
     });
 
-    console.log( 1 );
+    $("#messageButton").on("click", function(){
+        this.classList.toggle("active");
+
+        if ($(this).hasClass('active')){
+            $('#messaging').stop().animate({right:'-105%'}, 150);
+        }
+        else
+        {
+            $('#messaging').stop().animate({right: '0'}, 150);
+        }
+    });
 });
 
 function setCookie(cName,value) //Sets a cookie.

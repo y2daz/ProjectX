@@ -1,0 +1,34 @@
+#messageButton{
+    z-index: 20;
+    position: absolute;
+    right: 10px;
+    top: 180px;
+    cursor: pointer;
+}
+#messageButton #icon {
+    transition: all 100ms ease-in-out;
+    background-color: #00aee9;
+    position: relative;
+    height: 35px;
+    width: 50px;
+    overflow: hidden;
+}
+#messageButton #icon:after {
+    content: '';
+    position: absolute;
+    left: 4%;
+    transform: rotate(45deg) skew(-5deg, -5deg);
+    /*margin-left: -25px;*/
+    height: 47px;
+    width: 47px;
+    background-color: #00aee9;
+    top: -95%;
+    box-shadow: 4px 4px 0 0 #444;
+}
+
+#messageButton.active #icon{
+    background-color: #ececec;
+}
+#messageButton.active #icon:after{
+    background-color: #ececec;
+}
