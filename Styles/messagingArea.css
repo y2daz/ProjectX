@@ -1,0 +1,96 @@
+#messageButton{
+    z-index: 20;
+    position: absolute;
+    right: 10px;
+    top: 180px;
+    cursor: pointer;
+}
+#messageButton #icon {
+    transition: all 100ms ease-in-out;
+    background-color: #00aee9;
+    position: relative;
+    height: 35px;
+    width: 50px;
+    overflow: hidden;
+}
+#messageButton #icon:after {
+    content: '';
+    position: absolute;
+    left: 4%;
+    transform: rotate(45deg) skew(-5deg, -5deg);
+    /*margin-left: -25px;*/
+    height: 47px;
+    width: 47px;
+    background-color: #00aee9;
+    top: -95%;
+    box-shadow: 4px 4px 0 0 #444;
+}
+
+#messageButton.active #icon{
+    background-color: #ececec;
+}
+#messageButton.active #icon:after{
+    background-color: #ececec;
+}
+
+#messaging, li, ul {
+    list-style-type: none;
+}
+#messaging {
+    position:absolute;
+    display:block;
+    background-color: white;
+    float: right;
+    width: 300px;
+    top: 260px;
+    right: -105%;
+    border: 2px solid #d5d5d5;
+    z-index: 3;
+}
+#messaging > div > li > a{
+    display: block;
+    padding: 10px 15px 5px 10px;
+    background: #ffffff;
+    text-decoration: none;
+    color: #000;
+}
+/*#messaging li a:hover {*/
+/*background: #ececec;*/
+/*color: #00aee9;*/
+/*cursor: pointer; cursor: hand;*/
+/*}*/
+/*#messaging li a:active {*/
+/*background: #ececec;*/
+/*color: #0099d4;*/
+/*}*/
+/*#messaging li ul {*/
+    /*display: none;  *//**//*used to hide sub-menus*/
+/*}*/
+#messaging li ul li {
+    position: relative;
+    left: -30px;
+    padding: 10px 5px 20px 20px;
+    background: #ffffff;
+    font-size:14px;
+}
+#messagingReceived li ul li:hover {
+/*position: relative;*/
+/*left: -30px;*/
+/*padding: 10px 5px 5px 20px;*/
+    /*color: #00aee9;*/
+    background: #ececec;
+/*font-size:14px;*/
+}
+#messaging li ul li hr{
+    width: 80%;
+    padding: 0px 0px 0px 0px;
+    margin: 0px auto;
+}
+#messaging .removeButton{
+    position: relative;
+    float: right;
+    top: 4px;
+    /*left: 160px;*/
+    font-size: 12px;
+    padding: 4px 8px;
+}

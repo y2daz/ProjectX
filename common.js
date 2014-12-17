@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
     $( document ).keypress(function(e) {
         if (w <= 1280){
-            if( parseInt(e.which) == 62 || parseInt(e.which) == 60 ){
+            if( parseInt(e.which) == 96 || parseInt(e.which) == 167 ){
                 $("#menuButton").click();
             }
         }

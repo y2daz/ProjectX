@@ -14,32 +14,70 @@ $(document).ready( function(){
 //            $('#messaging li a').removeClass('active');
 //        }
 //    });
+    var checkMessages;
+    var i = 1;
+
+    $( document ).keypress(function(e) {
+//        console.log( parseInt(e.which) );
+        if( parseInt(e.which) == 92 || parseInt(e.which) == 43){
+            $("#messageButton").click();
+        }
+    });
 
     $("#messageButton").on("click", function(){
         this.classList.toggle("active");
 
         if ($(this).hasClass('active')){
             $('#messaging').stop().animate({right:'-105%'}, 150);
+            clearInterval( checkMessages );
         }
         else
         {
             $('#messaging').stop().animate({right: '0'}, 150);
-            getSendingMessages();
-            getReceivedMessages();
+            updateMessages();
+            checkMessages = setInterval( updateMessages, 5000 );
         }
     });
+
+    $("#messagingReceived").on( "click", ".removeButton", function(){
+//        console.log( "pears" );
+        var idArr = $(this).attr('name').split( "_" );
+        var id = idArr[1];
+
+        var removeMessageId = "#textMessage_" + id;
+
+        $( removeMessageId).slideUp( 150 );
+
+        readMessage( id );
+//        console.log( id );
+    });
+
+
+
+    function updateMessages(){
+//        console.log( "refessh number " + i++);
+        getSendingMessages();
+        getReceivedMessages();
+    }
 
     function getSendingMessages(){
         var postOb = { sending : "yesPlease" };
         $.post( "../requests/messaging.php", postOb, function( data, status ){
-            $('#messaging').html( data );
+            $('#messagingSending').html( data );
         });
     }
 
     function getReceivedMessages(){
         var postOb = { received : "yesPlease" };
         $.post( "../requests/messaging.php", postOb, function( data, status ){
-            $('#messaging').html( data + $('#messaging').html() );
+            $('#messagingReceived').html( data );
+        });
+    }
+
+    function readMessage( id ){
+        var postOb = { readMessage : id };
+        $.post( "../requests/messaging.php", postOb, function( data, status ){
+            $.noop();
         });
     }
 //    $('.test2').on('click', function( e ){

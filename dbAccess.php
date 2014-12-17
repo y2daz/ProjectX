@@ -2424,6 +2424,73 @@ function sendSMS( $phoneNumber, $message )
     return false;
 }
 
+function markMessageAsRead( $id ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getSMSConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("
+        UPDATE `ozekimessagein` SET status='read'
+        WHERE `id`= ?"
+    ) )
+    {
+        $stmt->bind_param("s", $id);
+        if ( $stmt->execute() )
+        {
+            if( $stmt->affected_rows == 1 )
+            {
+                $stmt->close();
+                $mysqli->close();
+                return true;
+            }
+        }
+        $stmt->close();
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getAllReceivedSMS()
+{
+    $i = 0;
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getSMSConnection();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $set = array();
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("SELECT id, sender, msg FROM ozekimessagein WHERE status = 'unread'"))
+    {
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            while($row = $result->fetch_array()){
+                $set[$i++]=$row;
+            }
+        }
+    }
+    $mysqli->close();
+
+    if( $i != 0)
+    {
+        return $set;
+    }
+    else
+    {
+        return null;
+    }
+}
+
 function getAllSendingSMS()
 {
     $i = 0;
@@ -2474,7 +2541,7 @@ function getStaffNameFromPhoneNumber( $phoneNumber )
         if( isset( $tableData ) )
         {
             $row = $tableData[0];
-            return $row[1];
+            return $row[1] . " - " . getStaffNo( $row[0] );
         }
     }
 

@@ -67,7 +67,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/main.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/common.css";?>">
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/navmenubutton.css";?>">
-        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/messageicon.css";?>">
+        <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/Styles/messagingArea.css";?>">
 
         <!--impromptu Links-->
         <link rel="stylesheet" type="text/css" href="<?php echo PATHFRONT . "/scripts/jquery-impromptu.min.css";?>">
@@ -290,7 +290,12 @@
         </div>
 
         <div id="messaging">
+            <div id="messagingReceived">
 
+            </div>
+            <div id="messagingSending">
+
+            </div>
         </div>
 
         <?php
