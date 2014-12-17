@@ -20,11 +20,13 @@ if( isset( $_POST["received"] ))
     if( isset($receivedSMS) )
     {
         echo "<li>\n";
-        $box = "<a>Messages received</a>\n";
+        $box = "<a class='message'>Messages received</a>\n";
         $box .= "<ul>\n";
         foreach( $receivedSMS as $message )
         {
-            $box .= "<li id='textMessage_" . $message[0] . "' >\n\t<a><span class='boldText'>" . getStaffNameFromPhoneNumber( $message[1] ) . "</span><br /> " . $message[2] . "</a>\n ";
+            $staff = getStaffNameFromPhoneNumber( $message[1] );
+            $number = intval( $staff[0] ) == 0 ? "" : " - " . $staff[0];
+            $box .= "<li id='textMessage_" . $message[0] . "' >\n\t<a><span class='boldText'>" . $staff[1] . $number . "</span><br /> " . $message[2] . "</a>\n ";
             $box .= "\t<input type='button' class='removeButton smallButton' value='Remove' name='btnReadMessage_" . $message[0] . "' /> ";
             $box .= "</li>\n";
         }
@@ -35,7 +37,7 @@ if( isset( $_POST["received"] ))
     else
     {
         echo "<li>\n";
-        echo "<a>No new messages have been received.</a>";
+        echo "<a class='message'>No new messages received.</a>";
         echo "</li>\n";
     }
 }
@@ -51,7 +53,9 @@ if( isset( $_POST["sending"] ))
         $box .= "<ul>\n";
         foreach( $sendingSMS as $message )
         {
-            $box .= "<li ><a><span class='boldText'>" . getStaffNameFromPhoneNumber( $message[1] ) . "</span><br /> " . $message[2] . "</a></li>\n";
+            $staff = getStaffNameFromPhoneNumber( $message[1] );
+            $number = intval( $staff[0] ) == 0 ? "" : " - " . $staff[0];
+            $box .= "<li ><a><span class='boldText'>" . $staff[1] . $number . "</span><br /> " . $message[2] . "</a></li>\n";
         }
         $box .= "</ul>\n";
         echo $box;
@@ -60,7 +64,7 @@ if( isset( $_POST["sending"] ))
     else
     {
         echo "<li>\n";
-        echo "<a>There are no messages being sent.</a>";
+        echo "<a class='message'>No messages being sent.</a>";
         echo "</li>\n";
     }
 }

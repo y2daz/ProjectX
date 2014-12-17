@@ -99,25 +99,29 @@
     {
         $number = trim( $phoneNumber );
 
-        if( strcmp( $number[ 0 ],  '+' ) != 0 )
+        if( isFilled( $phoneNumber ) )
         {
-            if( strcmp( $number[ 0 ],  '0' ) != 0 )
+            if( strcmp( $number[ 0 ],  '+' ) != 0 )
             {
-                if( strcmp( $number[ 0 ],  '0' ) == 7 )
+                if( strcmp( $number[ 0 ],  '0' ) != 0 )
                 {
-                    $number = '+94' . $number;
+                    if( strcmp( $number[ 0 ],  '0' ) == 7 )
+                    {
+                        $number = '+94' . $number;
+                    }
+                    else
+                    {
+                        return "";
+                    }
                 }
                 else
                 {
-                    return "";
+                    $number = '+94' . substr( $number, 1 );
                 }
             }
-            else
-            {
-                $number = '+94' . substr( $number, 1 );
-            }
+            return ( strlen( $number ) == 12 ? $number : "" ) ;
         }
-        return ( strlen( $number ) == 12 ? $number : "" ) ;
+        return null;
     }
 
 /**

@@ -2541,11 +2541,11 @@ function getStaffNameFromPhoneNumber( $phoneNumber )
         if( isset( $tableData ) )
         {
             $row = $tableData[0];
-            return $row[1] . " - " . getStaffNo( $row[0] );
+            return array( getStaffNo( $row[0] ), $row[1] );
         }
     }
 
-    return $phoneNumber . " (Unknown Number)";
+    return array( 0, $phoneNumber . " (Unknown Number)"  );
 }
 
 //

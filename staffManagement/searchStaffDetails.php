@@ -818,8 +818,8 @@ $searchby =getlanguage('searchby', $language);
             <tr>
                 <td><?php echo $gender?></td>
                 <td>
-                    <input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> /><?php echo $male?>
-                    <input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> /><?php echo $female?>
+                    <label><input type="radio" name="Gender" value="1" <?php echo $temp = ( $Gender == 1 ? "checked" : "") ; ?> /><?php echo $male?></label>
+                    <label><input type="radio" name="Gender" value="2" <?php echo $temp = ( $Gender != 1 ? "checked" : "") ; ?> /><?php echo $female?></label>
                 </td>
                 <td></td>
             </tr>
