@@ -37,15 +37,20 @@
     list-style-type: none;
 }
 #messaging {
+    /*transition: all 150ms ease-in-out;*/
     position:absolute;
     display:block;
     background-color: white;
     float: right;
     width: 300px;
     top: 260px;
-    right: -105%;
+    right: 0;
     border: 2px solid #d5d5d5;
     z-index: 3;
+    opacity: 0;
+}
+#messaging.active {
+    opacity: 1;
 }
 #messaging > div > li > a{
     display: block;

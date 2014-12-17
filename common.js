@@ -327,11 +327,11 @@ function staffMore( staffId, name ){
                 '<script src="moreStaff.js"></script>' +
                 '<style>' +
                     '.littleMenu{' +
-                    'position: relative;' +
-                    'left: 30px;' +
+                        'position: relative;' +
+                        'left: 30px;' +
                     '}' +
                     '.littleMenu .smallButton{' +
-                    'Width: 150px;' +
+                        'Width: 160px;' +
                     '}' +
                 '</style>' +
                 '<table class="littleMenu">' +
@@ -351,7 +351,7 @@ function staffMore( staffId, name ){
                     '   </tr>' +
                 '   <tr>' +
 //                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreLocate" value="Locate Staff Member" /></td>' +
-                '       <td>&nbsp;</td>' +
+                '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreSendMessage" value="Send SMS Message" /></td>' +
                 '       <td class="center"><input class="smallButton" type="button" id="' + staffId + '" name="moreDelete" value="Delete" /></td>' +
                 '   </tr>' +
                 '</table>',
@@ -372,6 +372,46 @@ function staffMore( staffId, name ){
                 if( v == 1){
                     var params = {"confirm" : 1, "valueName" : valueName, "valueMember" : valueMember};
                     post(document.URL, params, "POST");
+                }
+                else
+                    $.prompt.goToState('state0', false);
+            }
+        },
+        stateSendMessage: {
+            title: 'Message ' + name,
+            html:
+                '<script src="moreStaff.js"></script>' +
+                '<style>' +
+                    '.messageContent{' +
+                        'width: 98%;' +
+                        'height: 80px;' +
+                    '}' +
+                    '.characterCounter{' +
+                        'float: right;' +
+                    '}' +
+                '</style>' +
+                '<span>Message Content</span><span class="characterCounter" id="charCount">160 characters left</span>' +
+                '<textarea name="jTxtMessageArea" class="messageContent"></textarea>',
+            focus: "textarea[name='jTxtMessageArea']",
+            buttons: { Send: 1, Cancel: -1 },
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                var message = f["jTxtMessageArea"];
+
+//                console.log( message );
+
+                if( v == 1){
+                    var params = {"sendMessage" : staffId, "message" : message };
+                    $.post( "../requests/messaging.php", params, function( data, status ){
+                        if( $('#messageButton').hasClass('active') ){
+                            $("#messageButton").click();
+                        }
+                        else{
+                            $.noop();
+                        }
+                    });
+                    $.prompt.close();
                 }
                 else
                     $.prompt.goToState('state0', false);

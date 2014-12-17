@@ -28,12 +28,12 @@ $(document).ready( function(){
         this.classList.toggle("active");
 
         if ($(this).hasClass('active')){
-            $('#messaging').stop().animate({right:'-105%'}, 150);
+            $('#messaging').stop().animate( {opacity:'0'}, 150 );
             clearInterval( checkMessages );
         }
         else
         {
-            $('#messaging').stop().animate({right: '0'}, 150);
+            $('#messaging').stop().animate({opacity: '1'}, 150);
             updateMessages();
             checkMessages = setInterval( updateMessages, 5000 );
         }

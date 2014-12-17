@@ -13,6 +13,17 @@ if( isset( $_POST["readMessage"] ) )
     markMessageAsRead( $_POST["readMessage"] );
 }
 
+if( isset( $_POST["sendMessage"] ) )
+{
+    $staffMember = getStaffMember( $_POST["sendMessage"], true );
+    $staffMember = $staffMember[0];
+    $phoneNumber = $staffMember[9];
+
+    $message = $_POST["message"];
+
+    echo sendSMS( $phoneNumber, $_POST["message"] );
+}
+
 if( isset( $_POST["received"] ))
 {
     $receivedSMS = getAllReceivedSMS();
