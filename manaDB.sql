@@ -8,25 +8,27 @@
     -- PHP Version: 5.5.9-1ubuntu4.3
 
 DROP DATABASE IF EXISTS `manaDB`;
+DROP DATABASE IF EXISTS `ozekiSMS`;
 
-#   CREATE USER 'manaSystem'@'localhost' IDENTIFIED BY 'SMevHZxMEJVfv4Kc';
+#   GRANT USAGE ON *.* TO 'manaSystem'@'localhost' IDENTIFIED BY PASSWORD '*11D0781D755AF7279E36F7C6CF3A9A356C6B8C5A';
 #
-#   GRANT ALL PRIVILEGES ON manaDB.* TO 'manaSystem'@'localhost';
+#   GRANT ALL PRIVILEGES ON `manaDB`.* TO 'manaSystem'@'localhost' WITH GRANT OPTION;
 #
-#   FLUSH PRIVILEGES;
+#   GRANT SELECT, INSERT, UPDATE ON `ozekiSMS`.* TO 'manaSystem'@'localhost';
 
-#   CREATE USER 'manaReporting'@'localhost' IDENTIFIED BY 'eveA0njJ7pYsFC1M';
+
+#   CREATE USER 'ozekiSystem'@'localhost' IDENTIFIED BY 'wkbwD6PMPuGTSJx';
 #
-#   GRANT SELECT, FILE, CREATE TEMPORARY TABLES, CREATE VIEW, SHOW VIEW ON manaDB.* TO 'manaReporting'@'localhost' IDENTIFIED BY 'eveA0njJ7pYsFC1M' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+#   GRANT USAGE ON *.* TO 'ozekiSystem'@'localhost' IDENTIFIED BY PASSWORD '*5B78F2EB3BB94DECCB59DA8CB0DA415E3AC67E93';
 #
-#   FLUSH PRIVILEGES;
+#   GRANT SELECT, INSERT, UPDATE ON `ozekiSMS`.* TO 'ozekiSystem'@'localhost';
 
 -- phpMyAdmin SQL Dump
 -- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 10, 2014 at 12:25 PM
+-- Generation Time: Dec 18, 2014 at 10:03 AM
 -- Server version: 5.5.40-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.5
 
@@ -63,13 +65,15 @@ CREATE TABLE IF NOT EXISTS `ClassInformation` (
 INSERT INTO `ClassInformation` VALUES
   ('4', 0, '', 2),
   ('6', 0, 'B', 2),
+  ('2', 2, 'B', 0),
+  ('2', 2, 'C', 0),
   ('1', 6, 'A', 0),
   ('6', 7, 'A', 0),
   ('4', 7, 'C', 0),
   ('5', 8, 'B', 2),
   ('15', 10, 'A', 0),
   ('1', 10, 'C', 0),
-  ('13', 11, 'A', 0),
+  ('31', 11, 'A', 2),
   ('14', 11, 'B', 0),
   ('12', 11, 'C', 0),
   ('3', 11, 'D', 0);
@@ -421,7 +425,7 @@ INSERT INTO `FormOption` VALUES
   ('searchStaff', 'Salary', 'Salary', NULL, NULL),
   ('searchStaff', 'Section', 'Section', '15', 0),
   ('searchStaff', 'ServiceGrade', 'Service Grade', '18', 0),
-  ('searchStaff', 'StaffID', 'Staff ID', '0', 1),
+  ('searchStaff', 'StaffNo', 'Staff ID', '0', 1),
   ('searchStaff', 'SubjectMostTaught', 'Subject Most Taught', NULL, NULL),
   ('searchStaff', 'SubjectSecondMostTaught', 'Subject Second Most Taught', NULL, NULL),
   ('section', '1', 'Primary Multiple', NULL, NULL),
@@ -440,8 +444,8 @@ INSERT INTO `FormOption` VALUES
   ('section', '21', 'Health and Physical Education', NULL, NULL),
   ('section', '22', 'Optional', NULL, NULL),
   ('section', '23', 'Management', NULL, NULL),
-  ('section', '24', 'Staff Advisor (Part', NULL, NULL),
-  ('section', '25', 'Staff Advisor (Full', NULL, NULL),
+  ('section', '24', 'Staff Advisor (Part-time)', NULL, NULL),
+  ('section', '25', 'Staff Advisor (Full-time)', NULL, NULL),
   ('section', '26', 'Released To Other School', NULL, NULL),
   ('section', '27', 'Released To Other Institute/Office/Service', NULL, NULL),
   ('section', '28', 'On Paid Leave', NULL, NULL),
@@ -1280,6 +1284,7 @@ CREATE TABLE IF NOT EXISTS `OtherLeave` (
 --
 
 INSERT INTO `OtherLeave` VALUES
+  ('2', 1, '2014-12-17', '2014-12-17', '', 0, NULL, NULL, 0),
   ('4', 3, '2014-11-26', '0000-00-00', '', 0, NULL, NULL, 0),
   ('4', 1, '2014-11-24', '2014-10-15', '', 0, NULL, NULL, 0),
   ('4', 3, '2014-11-24', '2014-11-07', '', 0, NULL, NULL, 0),
@@ -1300,7 +1305,7 @@ CREATE TABLE IF NOT EXISTS `Permissions` (
   `permDesc` varchar(50) NOT NULL,
   `orderKey` int(11) DEFAULT '0',
   PRIMARY KEY (`permId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `Permissions`
@@ -1330,7 +1335,9 @@ INSERT INTO `Permissions` VALUES
   (21, 'Staff Report', 1),
   (22, 'Manage Users', 71),
   (23, 'Change Staff Details', 1),
-  (24, 'Manage Permissions', 72);
+  (24, 'Manage Permissions', 72),
+  (25, 'System Configuration', 73),
+  (26, 'SMS System', 80);
 
 -- --------------------------------------------------------
 
@@ -1417,78 +1424,28 @@ INSERT INTO `RolePerm` VALUES
   (3, 16),
   (3, 17),
   (3, 20),
-  (2, 2),
-  (2, 23),
-  (2, 21),
-  (2, 3),
-  (2, 4),
-  (2, 5),
-  (2, 6),
-  (2, 8),
-  (2, 7),
-  (2, 1),
-  (2, 22),
   (5, 2),
-  (5, 23),
   (5, 21),
+  (5, 23),
   (5, 3),
   (5, 4),
   (5, 6),
-  (5, 8),
   (5, 7),
+  (5, 8),
   (5, 9),
-  (5, 10),
   (5, 11),
+  (5, 10),
   (5, 12),
   (5, 13),
   (5, 14),
   (5, 15),
   (5, 16),
   (5, 17),
-  (5, 20),
-  (5, 19),
   (5, 18),
+  (5, 19),
+  (5, 20),
   (5, 1),
-  (4, 2),
-  (4, 23),
-  (4, 3),
-  (4, 4),
-  (4, 6),
-  (4, 8),
-  (4, 9),
-  (4, 11),
-  (4, 12),
-  (4, 13),
-  (4, 14),
-  (4, 15),
-  (4, 16),
-  (4, 17),
-  (4, 20),
-  (4, 19),
-  (1, 2),
-  (1, 21),
-  (1, 23),
-  (1, 3),
-  (1, 4),
-  (1, 5),
-  (1, 6),
-  (1, 7),
-  (1, 8),
-  (1, 9),
-  (1, 11),
-  (1, 10),
-  (1, 12),
-  (1, 13),
-  (1, 14),
-  (1, 15),
-  (1, 16),
-  (1, 17),
-  (1, 18),
-  (1, 19),
-  (1, 20),
-  (1, 1),
-  (1, 22),
-  (1, 24),
+  (5, 25),
   (6, 2),
   (6, 21),
   (6, 23),
@@ -1512,7 +1469,63 @@ INSERT INTO `RolePerm` VALUES
   (6, 20),
   (6, 1),
   (6, 22),
-  (6, 24);
+  (6, 24),
+  (6, 25),
+  (4, 2),
+  (4, 3),
+  (4, 4),
+  (4, 6),
+  (4, 8),
+  (4, 9),
+  (4, 11),
+  (4, 12),
+  (4, 13),
+  (4, 14),
+  (4, 15),
+  (4, 16),
+  (4, 17),
+  (4, 19),
+  (4, 20),
+  (1, 2),
+  (1, 21),
+  (1, 23),
+  (1, 3),
+  (1, 4),
+  (1, 5),
+  (1, 6),
+  (1, 7),
+  (1, 8),
+  (1, 9),
+  (1, 11),
+  (1, 10),
+  (1, 12),
+  (1, 13),
+  (1, 14),
+  (1, 16),
+  (1, 15),
+  (1, 17),
+  (1, 18),
+  (1, 19),
+  (1, 20),
+  (1, 1),
+  (1, 22),
+  (1, 24),
+  (1, 25),
+  (1, 26),
+  (2, 2),
+  (2, 21),
+  (2, 23),
+  (2, 3),
+  (2, 4),
+  (2, 5),
+  (2, 6),
+  (2, 7),
+  (2, 8),
+  (2, 1),
+  (2, 22),
+  (2, 24),
+  (2, 25),
+  (2, 26);
 
 -- --------------------------------------------------------
 
@@ -1574,39 +1587,39 @@ CREATE TABLE IF NOT EXISTS `Staff` (
 --
 
 INSERT INTO `Staff` VALUES
-  ('1', 'Vimukthi Joseph', '2014-08-13', 1, 3, 1, 1, '123456789V', 'Makola', '0714569232', '2014-08-18', '2014-08-19', 2, 3, 7, 1, 1, 1, 1, 100, 0),
-  ('10', 'Amritha Alston', '2014-08-26', 2, 4, 1, 1, '123456789V', 'Makola', '0756489326', '2014-08-06', '2014-08-30', 3, 1, 5, 6, 1, 1, 2, 260, 0),
-  ('11', 'Bihara De Silva', '2014-08-26', 2, 2, 1, 1, '923578963V', 'Kollupitiya', '0785693214', '2014-08-25', '2014-08-03', 2, 2, 1, 1, 1, 1, 1, 450, 0),
-  ('12', 'Chathuri Perera', '0081-08-02', 2, 1, 3, 3, '814562395V', 'Negombo', '0774379658', '2014-08-26', '2014-08-23', 2, 2, 7, 2, 1, 1, 5, 280, 0),
-  ('13', 'Anthony Ashan', '1987-01-21', 1, 1, 2, 1, '123456789V', 'Negombo', '0777777777', '2014-08-07', '2014-08-14', 1, 1, 7, 1, 2, 1, 1, 123, 0),
-  ('14', 'Tharindu Madusha Mendis', '1993-02-03', 1, 1, 4, 1, '543345543V', 'Kollupitiya', '098789123', '2000-08-02', '2001-09-09', 1, 1, 7, 19, 2, 3, 13, 170, 0),
-  ('15', 'Sahan Malinga Tissera', '1993-02-02', 1, 1, 4, 1, '932470039V', 'Kollupitiya', '0712624222', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 170, 0),
-  ('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '0776536611', '2011-12-01', '2014-12-01', 1, 1, 7, 14, 3, 7, 4, 250, 0),
-  ('17', 'Ashani G.H.L.N          ', '2014-09-03', 2, 4, 4, 4, '917894561v', '18/A Nawam Mawatha,Bellanwila', '0784561231', '2014-09-30', '2014-09-30', 1, 1, 7, 8, 1, 1, 6, 330, 0),
-  ('18', 'Devindi U.K.A.', '1987-06-23', 2, 1, 1, 1, '917894561v', '253/16/b Makola south,Makola', '0114562398', '2012-08-17', '2014-09-04', 2, 1, 7, 3, 4, 2, 4, 150, 0),
-  ('19', 'Prabuddhi D.V.M.', '1998-08-05', 2, 3, 3, 3, '923570039v', '13/M gangarama rd,kollupitiya', '0774563219', '2014-09-03', '2014-09-10', 4, 3, 4, 4, 4, 4, 1, 280, 0),
-  ('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '912587692V', 'kottawa', '07145236', '2014-08-19', '2014-08-14', 1, 2, 7, 2, 2, 2, 0, 300, 0),
-  ('20', 'Kavindi Weerakkodi', '1992-12-18', 2, 2, 2, 1, '123456789V', '85/a Dehiwala Rd, Dehiwala', '0774561234', '2014-09-24', '2014-09-25', 2, 2, 7, 3, 2, 1, 1, 140, 0),
-  ('21', 'Peiries M.S.E', '2014-09-03', 1, 3, 3, 3, '958964521V', '234/45 Galle rd,Wellawattha', '0774896532', '2014-09-18', '2014-10-25', 1, 1, 7, 7, 3, 3, 3, 120, 0),
-  ('22', 'Amarasinghe Bella', '1987-08-19', 2, 2, 2, 2, '874561239v', '56/A Mahara rd,Kadawatha', '0114567892', '2014-09-03', '2014-09-04', 4, 3, 4, 4, 4, 4, 4, 220, 0),
-  ('23', 'Samarakoon W.A', '2014-09-17', 2, 1, 1, 2, '896532147v', '54/k Kalubowila rd,Kalubowila', '0779632141', '2014-08-20', '2014-09-03', 1, 2, 7, 20, 1, 2, 2, 185, 0),
-  ('24', 'Rupasinghe Q.L', '2014-09-18', 2, 1, 1, 1, '945263879v', '89/B Mahara,Kadawatha', '0714562395', '2014-09-25', '2014-09-11', 2, 2, 7, 20, 2, 2, 3, 180, 0),
-  ('25', 'Samarasinghe V.V.M', '2003-01-11', 1, 1, 1, 4, '917894561V', '89/B Mahara,Kadawatha', '0774896532', '2014-09-11', '2014-09-27', 3, 2, 3, 3, 3, 3, 3, 260, 0),
-  ('26', 'Mendis M.Q.A', '2014-09-03', 2, 1, 1, 1, '896547891V', '59/Anuradapura Rd,Sigiriya', '0112365478', '2014-09-03', '2014-09-03', 2, 2, 7, 1, 2, 2, 2, 280, 0),
-  ('27', 'Dissanayake M..N', '2014-09-24', 2, 1, 3, 3, '936541278v', '64/shanthi mawatha,kiribathgoda', '0119632478', '2014-09-03', '2014-09-03', 2, 2, 7, 2, 2, 2, 2, 235, 0),
-  ('28', 'Perera T.M', '2014-09-03', 2, 3, 3, 2, '963214587v', '123/23/G Havelock rd,nugegoda', '0112365894', '2014-09-10', '2014-09-27', 2, 2, 7, 2, 2, 2, 2, 450, 0),
-  ('29', 'Fernando M.K.L.A', '2014-09-04', 2, 2, 2, 4, '923568741v', '123/23/G Havelock rd,nugegoda', '0714562395', '2014-09-03', '2014-09-25', 2, 1, 7, 20, 2, 3, 2, 200, 0),
-  ('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '936257891V', 'narammala', '0714563298', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 275, 0),
-  ('30', 'Jayawardena Mahela', '2014-09-19', 1, 1, 1, 1, '887456321v', '56/A Mahara rd,Kadawatha', '0112365892', '2014-09-02', '2014-09-18', 2, 2, 7, 2, 2, 2, 2, 200, 0),
-  ('31', 'Superman', '2014-09-16', 1, 1, 1, 1, '123456789v', 'asd', '1234567890', '2014-09-02', '2014-09-23', 1, 1, 7, 1, 1, 1, 1, 123, 0),
-  ('32', 'isuru A.N', '2014-10-02', 1, 1, 1, 1, '123456789v', 'makola', '0112962326', '2014-10-09', '2014-10-09', 1, 1, 7, 1, 6, 2, 1, 200, 0),
-  ('33', 'Dulip R.M', '2014-10-02', 2, 1, 1, 1, '123456789V', 'kottawa', '0112962326', '2014-10-09', '2014-10-31', 1, 1, 7, 10, 1, 1, 1, 200, 0),
-  ('4', 'Madhusha Mendis', '2014-08-27', 2, 1, 1, 1, '936541278V', 'Moratuwa', '0711701236', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 224, 0),
-  ('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879V', 'kurunegala', '011296875', '2014-08-27', '2014-08-29', 2, 2, 7, 2, 2, 2, 2, 120, 0),
-  ('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '958964525V', 'wellawattha', '07145693', '2014-08-13', '2014-08-22', 5, 3, 7, 1, 1, 1, 1, 234, 0),
+  ('1', 'Bihara De Silva', '2014-08-20', 2, 3, 1, 1, '923570039V', 'Nugegoda', '078569321', '2014-07-09', '2014-08-15', 3, 3, 7, 2, 3, 1, 1, 201, 0),
+  ('10', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '912587692V', 'kottawa', '0779320816', '2014-08-19', '2014-08-14', 1, 2, 7, 2, 2, 2, 0, 300, 0),
+  ('11', 'Yazdaan M.A.', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '0775087168', '2014-07-09', '2014-08-15', 3, 3, 7, 2, 3, 1, 1, 201, 0),
+  ('12', 'Felony E.S.N.', '2014-08-20', 2, 3, 1, 1, '923570039V', 'Nugegodaa', '077885522', '2014-07-09', '2014-08-15', 3, 3, 7, 2, 3, 1, 1, 201, 0),
+  ('13', 'Anthony Ashan', '1987-01-21', 1, 1, 2, 1, '123456789V', 'Negombo', '077777777', '2014-08-07', '2014-08-14', 1, 1, 7, 1, 2, 1, 1, 123, 0),
+  ('14', 'Anthony P.D', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '077885522', '2014-07-09', '2014-08-15', 3, 3, 7, 2, 3, 1, 1, 201, 0),
+  ('15', 'Sahan Malinga Tissera', '1993-02-02', 1, 1, 4, 1, '932470039V', 'Kollupitiya', '071262422', '2012-08-01', '2014-08-31', 1, 1, 7, 1, 6, 5, 13, 170, 0),
+  ('16', 'Amritha Maria Alston', '1993-11-01', 2, 1, 4, 1, '932470032V', 'Kollupitiya', '077653661', '2011-12-01', '2014-12-01', 1, 1, 7, 14, 3, 7, 4, 250, 0),
+  ('17', 'Ashani G.H.L.N          ', '2014-09-03', 2, 4, 4, 4, '917894561v', '18/A Nawam Mawatha,Bellanwila', '078456123', '2014-09-30', '2014-09-30', 1, 1, 7, 8, 1, 1, 6, 330, 0),
+  ('18', 'Devindi U.K.A.', '1987-06-23', 2, 1, 1, 1, '917894561v', '253/16/b Makola south,Makola', '011456239', '2012-08-17', '2014-09-04', 2, 1, 7, 3, 4, 2, 4, 150, 0),
+  ('19', 'Prabuddhi D.V.M.', '1998-08-05', 2, 3, 3, 3, '923570039v', '13/M gangarama rd,kollupitiya', '077456321', '2014-09-03', '2014-09-10', 4, 3, 4, 4, 4, 4, 1, 280, 0),
+  ('2', 'Dulip Rathnayake', '2014-08-13', 1, 2, 3, 2, '912587692V', 'kottawa', '077932081', '2014-08-19', '2014-08-14', 1, 2, 7, 2, 2, 2, 0, 300, 0),
+  ('20', 'Kavindi Weerakkodi', '1992-12-18', 2, 2, 2, 1, '123456789V', '85/a Dehiwala Rd, Dehiwala', '077456123', '2014-09-24', '2014-09-25', 2, 2, 7, 3, 2, 1, 1, 140, 0),
+  ('21', 'Peiries M.S.E', '2014-09-03', 1, 3, 3, 3, '958964521V', '234/45 Galle rd,Wellawattha', '077489653', '2014-09-18', '2014-10-25', 1, 1, 7, 7, 3, 3, 3, 120, 0),
+  ('22', 'Amarasinghe Bella', '1987-08-19', 2, 2, 2, 2, '874561239v', '56/A Mahara rd,Kadawatha', '011456789', '2014-09-03', '2014-09-04', 4, 3, 4, 4, 4, 4, 4, 220, 0),
+  ('23', 'Samarakoon W.A', '2014-09-17', 2, 1, 1, 2, '896532147v', '54/k Kalubowila rd,Kalubowila', '077963214', '2014-08-20', '2014-09-03', 1, 2, 7, 20, 1, 2, 2, 185, 0),
+  ('24', 'Rupasinghe Q.L', '2014-09-18', 2, 1, 1, 1, '945263879v', '89/B Mahara,Kadawatha', '071456239', '2014-09-25', '2014-09-11', 2, 2, 7, 20, 2, 2, 3, 180, 2),
+  ('25', 'Samarasinghe V.V.M', '2003-01-11', 1, 1, 1, 4, '917894561V', '89/B Mahara,Kadawatha', '077489653', '2014-09-11', '2014-09-27', 3, 2, 3, 3, 3, 3, 3, 260, 0),
+  ('26', 'Mendis M.Q.A', '2014-09-03', 2, 1, 1, 1, '896547891V', '59/Anuradapura Rd,Sigiriya', '011236547', '2014-09-03', '2014-09-03', 2, 2, 7, 1, 2, 2, 2, 280, 0),
+  ('27', 'Dissanayake M..N', '2014-09-24', 2, 1, 3, 3, '936541278v', '64/shanthi mawatha,kiribathgoda', '011963247', '2014-09-03', '2014-09-03', 2, 2, 7, 2, 2, 2, 2, 235, 0),
+  ('28', 'Perera T.M', '2014-09-03', 2, 3, 3, 2, '963214587v', '123/23/G Havelock rd,nugegoda', '011236589', '2014-09-10', '2014-09-27', 2, 2, 7, 2, 2, 2, 2, 450, 0),
+  ('29', 'Fernando M.K.L.A', '2014-09-04', 2, 2, 2, 4, '923568741v', '123/23/G Havelock rd,nugegoda', '071456239', '2014-09-03', '2014-09-25', 2, 1, 7, 20, 2, 3, 2, 200, 2),
+  ('3', 'Isuru jayakody', '2014-08-13', 1, 3, 3, 3, '936257891V', 'narammala', '071456329', '2014-08-05', '2014-08-07', 4, 3, 4, 4, 2, 1, 0, 275, 0),
+  ('30', 'Jayawardena Mahela', '2014-09-19', 1, 1, 1, 1, '887456321v', '56/A Mahara rd,Kadawatha', '011236589', '2014-09-02', '2014-09-18', 2, 2, 7, 2, 2, 2, 2, 200, 0),
+  ('31', 'Superman', '2014-09-16', 1, 1, 1, 1, '123456789v', 'asd', '123456789', '2014-09-02', '2014-09-23', 1, 1, 7, 1, 1, 1, 1, 123, 0),
+  ('32', 'isuru A.N', '2014-10-02', 1, 1, 1, 1, '123456789v', 'makola', '011296232', '2014-10-09', '2014-10-09', 1, 1, 7, 1, 6, 2, 1, 200, 0),
+  ('33', 'Dulip R.M', '2014-10-02', 2, 1, 1, 1, '123456789V', 'kottawa', '011296232', '2014-10-09', '2014-10-31', 1, 1, 7, 10, 1, 1, 1, 200, 0),
+  ('4', 'Madhusha Mendis', '2014-08-27', 1, 1, 1, 1, '936541278V', 'Moratuwa', '0712624225', '2014-09-12', '2014-08-02', 5, 1, 5, 5, 3, 3, 0, 224, 0),
+  ('5', 'Manoj Liyanage', '2014-08-13', 1, 2, 1, 1, '945263879V', 'kurunegala', '011296874', '2014-08-27', '2014-08-29', 2, 2, 7, 2, 2, 2, 2, 120, 0),
+  ('6', 'Shavin Peiries', '2014-08-30', 1, 3, 2, 1, '958964525V', 'wellawattha', '071456934', '2014-08-13', '2014-08-22', 5, 3, 7, 1, 1, 1, 1, 234, 0),
   ('7', 'Madhushan G.L.N.A.M', '2014-08-06', 2, 2, 3, 1, '932568745V', 'meegamuwa', '078256314', '2014-08-21', '2014-08-30', 3, 2, 7, 1, 1, 1, 1, 100, 0),
   ('8', 'Yazdaan M.A.', '2014-08-20', 1, 3, 1, 1, '923570039V', 'Nugegoda', '012236598', '2014-07-09', '2014-08-15', 3, 3, 7, 2, 3, 1, 1, 201, 0),
-  ('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '456321845V', 'wellawattha', '0112968756', '2014-08-20', '2014-08-29', 4, 3, 7, 6, 2, 2, 5, 450, 0);
+  ('9', 'Niruthi Yogalingam', '2014-08-13', 2, 3, 2, 2, '456321845V', 'wellawattha', '011296875', '2014-08-20', '2014-08-29', 4, 3, 7, 6, 2, 2, 5, 450, 0);
 
 -- --------------------------------------------------------
 
@@ -1618,7 +1631,7 @@ CREATE TABLE IF NOT EXISTS `StaffNo` (
   `staffID` varchar(5) NOT NULL,
   `staffNo` int(11) NOT NULL,
   `year` int(11) NOT NULL,
-  PRIMARY KEY (`staffID`)
+  PRIMARY KEY (`staffID`,`year`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -1626,39 +1639,99 @@ CREATE TABLE IF NOT EXISTS `StaffNo` (
 --
 
 INSERT INTO `StaffNo` VALUES
-  ('1', 1, 2014),
-  ('10', 10, 2014),
-  ('11', 11, 2014),
-  ('12', 12, 2014),
-  ('13', 13, 2014),
-  ('14', 14, 2014),
-  ('15', 15, 2014),
-  ('16', 16, 2014),
-  ('17', 17, 2014),
-  ('18', 18, 2014),
-  ('19', 19, 2014),
-  ('2', 2, 2014),
-  ('20', 20, 2014),
-  ('21', 21, 2014),
-  ('22', 22, 2014),
-  ('23', 23, 2014),
-  ('24', 24, 2014),
-  ('25', 25, 2014),
-  ('26', 26, 2014),
-  ('27', 27, 2014),
+  ('1', 12, 2012),
+  ('1', 12, 2013),
+  ('1', 12, 2014),
+  ('10', 7, 2012),
+  ('10', 7, 2013),
+  ('10', 7, 2014),
+  ('11', 1, 2012),
+  ('11', 1, 2013),
+  ('11', 1, 2014),
+  ('12', 14, 2012),
+  ('12', 14, 2013),
+  ('12', 14, 2014),
+  ('13', 9, 2012),
+  ('13', 9, 2013),
+  ('13', 9, 2014),
+  ('14', 8, 2012),
+  ('14', 8, 2013),
+  ('14', 8, 2014),
+  ('15', 18, 2012),
+  ('15', 18, 2013),
+  ('15', 18, 2014),
+  ('16', 31, 2012),
+  ('16', 33, 2013),
+  ('16', 33, 2014),
+  ('17', 27, 2012),
+  ('17', 29, 2013),
+  ('17', 29, 2014),
+  ('18', 22, 2012),
+  ('18', 22, 2013),
+  ('18', 22, 2014),
+  ('19', 5, 2012),
+  ('19', 5, 2013),
+  ('19', 5, 2014),
+  ('2', 10, 2012),
+  ('2', 10, 2013),
+  ('2', 10, 2014),
+  ('20', 25, 2012),
+  ('20', 27, 2013),
+  ('20', 27, 2014),
+  ('21', 29, 2012),
+  ('21', 31, 2013),
+  ('21', 31, 2014),
+  ('22', 4, 2012),
+  ('22', 4, 2013),
+  ('22', 4, 2014),
+  ('23', 19, 2012),
+  ('23', 19, 2013),
+  ('23', 19, 2014),
+  ('25', 2, 2012),
+  ('25', 2, 2013),
+  ('25', 2, 2014),
+  ('26', 20, 2012),
+  ('26', 20, 2013),
+  ('26', 20, 2014),
+  ('27', 21, 2012),
+  ('27', 21, 2013),
+  ('27', 21, 2014),
+  ('28', 26, 2012),
+  ('28', 28, 2013),
   ('28', 28, 2014),
-  ('29', 29, 2014),
+  ('3', 3, 2012),
+  ('3', 3, 2013),
   ('3', 3, 2014),
-  ('30', 30, 2014),
-  ('31', 31, 2014),
-  ('32', 32, 2014),
-  ('33', 33, 2014),
-  ('4', 4, 2014),
-  ('5', 5, 2014),
-  ('6', 6, 2014),
-  ('7', 7, 2014),
-  ('8', 8, 2014),
-  ('9', 9, 2014);
+  ('30', 23, 2012),
+  ('30', 24, 2013),
+  ('30', 24, 2014),
+  ('31', 24, 2012),
+  ('31', 25, 2013),
+  ('31', 25, 2014),
+  ('32', 28, 2012),
+  ('32', 30, 2013),
+  ('32', 30, 2014),
+  ('33', 30, 2012),
+  ('33', 32, 2013),
+  ('33', 32, 2014),
+  ('4', 6, 2012),
+  ('4', 6, 2013),
+  ('4', 6, 2014),
+  ('5', 15, 2012),
+  ('5', 15, 2013),
+  ('5', 15, 2014),
+  ('6', 13, 2012),
+  ('6', 13, 2013),
+  ('6', 13, 2014),
+  ('7', 17, 2012),
+  ('7', 17, 2013),
+  ('7', 17, 2014),
+  ('8', 11, 2012),
+  ('8', 11, 2013),
+  ('8', 11, 2014),
+  ('9', 16, 2012),
+  ('9', 16, 2013),
+  ('9', 16, 2014);
 
 -- --------------------------------------------------------
 
@@ -2099,6 +2172,46 @@ INSERT INTO `Timetable` VALUES
   (NULL, NULL, 4, 5, NULL, '2', 2),
   (NULL, NULL, 4, 6, NULL, '2', 2),
   (10, 'B', 4, 7, 'Maths', '2', 2),
+  (NULL, NULL, 0, 0, NULL, '22', 0),
+  (NULL, NULL, 0, 1, NULL, '22', 0),
+  (NULL, NULL, 0, 2, NULL, '22', 0),
+  (NULL, NULL, 0, 3, NULL, '22', 0),
+  (NULL, NULL, 0, 4, NULL, '22', 0),
+  (NULL, NULL, 0, 5, NULL, '22', 0),
+  (NULL, NULL, 0, 6, NULL, '22', 0),
+  (NULL, NULL, 0, 7, NULL, '22', 0),
+  (NULL, NULL, 1, 0, NULL, '22', 0),
+  (NULL, NULL, 1, 1, NULL, '22', 0),
+  (NULL, NULL, 1, 2, NULL, '22', 0),
+  (NULL, NULL, 1, 3, NULL, '22', 0),
+  (NULL, NULL, 1, 4, NULL, '22', 0),
+  (NULL, NULL, 1, 5, NULL, '22', 0),
+  (NULL, NULL, 1, 6, NULL, '22', 0),
+  (NULL, NULL, 1, 7, NULL, '22', 0),
+  (NULL, NULL, 2, 0, NULL, '22', 0),
+  (NULL, NULL, 2, 1, NULL, '22', 0),
+  (NULL, NULL, 2, 2, NULL, '22', 0),
+  (NULL, NULL, 2, 3, NULL, '22', 0),
+  (NULL, NULL, 2, 4, NULL, '22', 0),
+  (NULL, NULL, 2, 5, NULL, '22', 0),
+  (NULL, NULL, 2, 6, NULL, '22', 0),
+  (NULL, NULL, 2, 7, NULL, '22', 0),
+  (NULL, NULL, 3, 0, NULL, '22', 0),
+  (NULL, NULL, 3, 1, NULL, '22', 0),
+  (NULL, NULL, 3, 2, NULL, '22', 0),
+  (NULL, NULL, 3, 3, NULL, '22', 0),
+  (NULL, NULL, 3, 4, NULL, '22', 0),
+  (NULL, NULL, 3, 5, NULL, '22', 0),
+  (NULL, NULL, 3, 6, NULL, '22', 0),
+  (NULL, NULL, 3, 7, NULL, '22', 0),
+  (NULL, NULL, 4, 0, NULL, '22', 0),
+  (NULL, NULL, 4, 1, NULL, '22', 0),
+  (NULL, NULL, 4, 2, NULL, '22', 0),
+  (NULL, NULL, 4, 3, NULL, '22', 0),
+  (NULL, NULL, 4, 4, NULL, '22', 0),
+  (NULL, NULL, 4, 5, NULL, '22', 0),
+  (NULL, NULL, 4, 6, NULL, '22', 0),
+  (NULL, NULL, 4, 7, NULL, '22', 0),
   (NULL, NULL, 0, 0, NULL, '23', 0),
   (NULL, NULL, 0, 1, NULL, '23', 0),
   (NULL, NULL, 0, 2, NULL, '23', 0),
@@ -2259,46 +2372,46 @@ INSERT INTO `Timetable` VALUES
   (NULL, NULL, 4, 5, NULL, '29', 0),
   (NULL, NULL, 4, 6, NULL, '29', 0),
   (NULL, NULL, 4, 7, NULL, '29', 0),
-  (10, 'B', 0, 0, 'Sinhala', '3', 0),
-  (NULL, NULL, 0, 1, NULL, '3', 0),
-  (10, 'A', 0, 2, 'Sinhala', '3', 0),
-  (10, 'C', 0, 3, 'Sinhala', '3', 0),
-  (NULL, NULL, 0, 4, NULL, '3', 0),
-  (NULL, NULL, 0, 5, NULL, '3', 0),
-  (NULL, NULL, 0, 6, NULL, '3', 0),
-  (NULL, NULL, 0, 7, NULL, '3', 0),
-  (10, 'B', 1, 0, 'Sinhala', '3', 0),
-  (10, 'B', 1, 1, 'Business Studies', '3', 0),
-  (NULL, NULL, 1, 2, NULL, '3', 0),
-  (NULL, NULL, 1, 3, NULL, '3', 0),
-  (NULL, NULL, 1, 4, NULL, '3', 0),
-  (10, 'C', 1, 5, 'Sinhala', '3', 0),
-  (NULL, NULL, 1, 6, NULL, '3', 0),
-  (10, 'A', 1, 7, 'Sinhala', '3', 0),
-  (10, 'B', 2, 0, 'Sinhala', '3', 0),
-  (10, 'B', 2, 1, 'Business Studies', '3', 0),
-  (NULL, NULL, 2, 2, NULL, '3', 0),
-  (10, 'C', 2, 3, 'Sinhala', '3', 0),
-  (NULL, NULL, 2, 4, NULL, '3', 0),
-  (NULL, NULL, 2, 5, NULL, '3', 0),
-  (10, 'A', 2, 6, 'Sinhala', '3', 0),
-  (NULL, NULL, 2, 7, NULL, '3', 0),
-  (10, 'B', 3, 0, 'Sinhala', '3', 0),
-  (10, 'C', 3, 1, 'Sinhala', '3', 0),
-  (10, 'C', 3, 2, 'Sinhala', '3', 0),
-  (NULL, NULL, 3, 3, NULL, '3', 0),
-  (NULL, NULL, 3, 4, NULL, '3', 0),
-  (NULL, NULL, 3, 5, NULL, '3', 0),
-  (10, 'A', 3, 6, 'Sinhala', '3', 0),
-  (10, 'A', 3, 7, 'Sinhala', '3', 0),
-  (10, 'B', 4, 0, 'Sinhala', '3', 0),
-  (NULL, NULL, 4, 1, NULL, '3', 0),
-  (NULL, NULL, 4, 2, NULL, '3', 0),
-  (10, 'C', 4, 3, 'Sinhala', '3', 0),
-  (NULL, NULL, 4, 4, NULL, '3', 0),
-  (NULL, NULL, 4, 5, NULL, '3', 0),
-  (10, 'A', 4, 6, 'Sinhala', '3', 0),
-  (NULL, NULL, 4, 7, NULL, '3', 0),
+  (10, 'B', 0, 0, 'Sinhala', '3', 2),
+  (NULL, NULL, 0, 1, NULL, '3', 2),
+  (10, 'A', 0, 2, 'Sinhala', '3', 2),
+  (10, 'C', 0, 3, 'Sinhala', '3', 2),
+  (NULL, NULL, 0, 4, NULL, '3', 2),
+  (NULL, NULL, 0, 5, NULL, '3', 2),
+  (NULL, NULL, 0, 6, NULL, '3', 2),
+  (NULL, NULL, 0, 7, NULL, '3', 2),
+  (10, 'B', 1, 0, 'Sinhala', '3', 2),
+  (10, 'B', 1, 1, 'Business Studies', '3', 2),
+  (NULL, NULL, 1, 2, NULL, '3', 2),
+  (NULL, NULL, 1, 3, NULL, '3', 2),
+  (NULL, NULL, 1, 4, NULL, '3', 2),
+  (10, 'C', 1, 5, 'Sinhala', '3', 2),
+  (NULL, NULL, 1, 6, NULL, '3', 2),
+  (10, 'A', 1, 7, 'Sinhala', '3', 2),
+  (10, 'B', 2, 0, 'Sinhala', '3', 2),
+  (10, 'B', 2, 1, 'Business Studies', '3', 2),
+  (NULL, NULL, 2, 2, NULL, '3', 2),
+  (10, 'C', 2, 3, 'Sinhala', '3', 2),
+  (NULL, NULL, 2, 4, NULL, '3', 2),
+  (NULL, NULL, 2, 5, NULL, '3', 2),
+  (10, 'A', 2, 6, 'Sinhala', '3', 2),
+  (NULL, NULL, 2, 7, NULL, '3', 2),
+  (10, 'B', 3, 0, 'Sinhala', '3', 2),
+  (10, 'C', 3, 1, 'Sinhala', '3', 2),
+  (10, 'C', 3, 2, 'Sinhala', '3', 2),
+  (NULL, NULL, 3, 3, NULL, '3', 2),
+  (NULL, NULL, 3, 4, NULL, '3', 2),
+  (NULL, NULL, 3, 5, NULL, '3', 2),
+  (10, 'A', 3, 6, 'Sinhala', '3', 2),
+  (10, 'A', 3, 7, 'Sinhala', '3', 2),
+  (10, 'B', 4, 0, 'Sinhala', '3', 2),
+  (NULL, NULL, 4, 1, NULL, '3', 2),
+  (NULL, NULL, 4, 2, NULL, '3', 2),
+  (10, 'C', 4, 3, 'Sinhala', '3', 2),
+  (NULL, NULL, 4, 4, NULL, '3', 2),
+  (NULL, NULL, 4, 5, NULL, '3', 2),
+  (10, 'A', 4, 6, 'Sinhala', '3', 2),
+  (NULL, NULL, 4, 7, NULL, '3', 2),
   (NULL, NULL, 0, 0, NULL, '31', 0),
   (NULL, NULL, 0, 1, NULL, '31', 0),
   (NULL, NULL, 0, 2, NULL, '31', 0),
@@ -2728,6 +2841,35 @@ INSERT INTO `User` VALUES
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `VwCurrentStaffNo`
+--
+CREATE TABLE IF NOT EXISTS `VwCurrentStaffNo` (
+   `StaffID` varchar(5)
+  ,`NamewithInitials` varchar(60)
+  ,`DateofBirth` date
+  ,`Gender` int(11)
+  ,`Race` int(11)
+  ,`Religion` int(11)
+  ,`CivilStatus` int(11)
+  ,`NICNumber` varchar(10)
+  ,`MailDeliveryAddress` varchar(100)
+  ,`ContactNumber` varchar(15)
+  ,`DateAppointedastoPost` date
+  ,`DateJoinedthisSchool` date
+  ,`EmploymentStatus` int(11)
+  ,`Medium` int(11)
+  ,`Designation` int(11)
+  ,`Section` int(11)
+  ,`SubjectMostTaught` int(11)
+  ,`SubjectSecondMostTaught` int(11)
+  ,`ServiceGrade` int(11)
+  ,`Salary` float
+  ,`isDeleted` tinyint(4)
+  ,`StaffNo` int(11)
+);
+-- --------------------------------------------------------
+
+--
 -- Stand-in structure for view `VwLeaveNumbers`
 --
 CREATE TABLE IF NOT EXISTS `VwLeaveNumbers` (
@@ -2736,6 +2878,15 @@ CREATE TABLE IF NOT EXISTS `VwLeaveNumbers` (
   ,`DutyLeave` decimal(32,0)
   ,`MedicalLeave` decimal(32,0)
 );
+-- --------------------------------------------------------
+
+--
+-- Structure for view `VwCurrentStaffNo`
+--
+DROP TABLE IF EXISTS `VwCurrentStaffNo`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`manaSystem`@`localhost` SQL SECURITY DEFINER VIEW `VwCurrentStaffNo` AS select `s`.`StaffID` AS `StaffID`,`s`.`NamewithInitials` AS `NamewithInitials`,`s`.`DateofBirth` AS `DateofBirth`,`s`.`Gender` AS `Gender`,`s`.`Race` AS `Race`,`s`.`Religion` AS `Religion`,`s`.`CivilStatus` AS `CivilStatus`,`s`.`NICNumber` AS `NICNumber`,`s`.`MailDeliveryAddress` AS `MailDeliveryAddress`,`s`.`ContactNumber` AS `ContactNumber`,`s`.`DateAppointedastoPost` AS `DateAppointedastoPost`,`s`.`DateJoinedthisSchool` AS `DateJoinedthisSchool`,`s`.`EmploymentStatus` AS `EmploymentStatus`,`s`.`Medium` AS `Medium`,`s`.`Designation` AS `Designation`,`s`.`Section` AS `Section`,`s`.`SubjectMostTaught` AS `SubjectMostTaught`,`s`.`SubjectSecondMostTaught` AS `SubjectSecondMostTaught`,`s`.`ServiceGrade` AS `ServiceGrade`,`s`.`Salary` AS `Salary`,`s`.`isDeleted` AS `isDeleted`,`sn`.`staffNo` AS `StaffNo` from (`Staff` `s` left join `StaffNo` `sn` on((`s`.`StaffID` = `sn`.`staffID`))) where ((`s`.`isDeleted` = 0) and (`sn`.`year` = '2014'));
+
 -- --------------------------------------------------------
 
 --
@@ -2837,4 +2988,81 @@ ADD CONSTRAINT `Timetable_ibfk_2` FOREIGN KEY (`StaffID`) REFERENCES `Staff` (`S
 --
 ALTER TABLE `User`
 ADD CONSTRAINT `User_ibfk_1` FOREIGN KEY (`accessLevel`) REFERENCES `Roles` (`roleId`);
+--
+-- Database: `ozekiSMS`
+--
+CREATE DATABASE IF NOT EXISTS `ozekiSMS` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `ozekiSMS`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ozekimessagein`
+--
+
+CREATE TABLE IF NOT EXISTS `ozekimessagein` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(30) DEFAULT NULL,
+  `receiver` varchar(30) DEFAULT NULL,
+  `msg` text,
+  `senttime` varchar(100) DEFAULT NULL,
+  `receivedtime` varchar(100) DEFAULT NULL,
+  `operator` varchar(100) DEFAULT NULL,
+  `msgtype` varchar(160) DEFAULT NULL,
+  `reference` varchar(100) DEFAULT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'unread',
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `ozekimessagein`
+--
+
+INSERT INTO `ozekimessagein` VALUES
+  (1, '+94779320817', '+94775087168', 'Hello Ozeki.', '2014-12-17 14:36:22', '2014-12-17 14:36:25', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (2, '+94779320816', '+94775087168', 'I am comng late today.', '2014-12-17 14:49:39', '2014-12-17 14:49:44', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (3, '+94712624225', '+94775087168', 'No he didn''t reply ', '2014-12-17 23:06:16', '2014-12-17 23:06:21', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (4, '+94712624225', '+94775087168', 'No ', '2014-12-17 23:07:35', '2014-12-17 23:07:42', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (5, '+94712624225', '+94775087168', 'I can''t reach him ', '2014-12-17 23:08:06', '2014-12-17 23:08:12', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (6, '+94712624225', '+94775087168', 'Are you using dongle now \nYour line is busy ', '2014-12-17 23:10:57', '2014-12-17 23:11:03', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'read'),
+  (7, '+94712624225', '+94775087168', 'Okay can you call me ', '2014-12-17 23:12:25', '2014-12-17 23:12:30', 'YAZDAAN-DIALOG', 'SMS:TEXT', NULL, 'unread');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ozekimessageout`
+--
+
+CREATE TABLE IF NOT EXISTS `ozekimessageout` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(30) DEFAULT NULL,
+  `receiver` varchar(30) DEFAULT NULL,
+  `msg` text,
+  `senttime` varchar(100) DEFAULT NULL,
+  `receivedtime` varchar(100) DEFAULT NULL,
+  `reference` varchar(100) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `msgtype` varchar(160) DEFAULT NULL,
+  `operator` varchar(100) DEFAULT NULL,
+  `errormsg` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  KEY `id_2` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `ozekimessageout`
+--
+
+INSERT INTO `ozekimessageout` VALUES
+  (1, 'manaSystem', '+94779320816', 'Lalala', '2014-12-17 21:16:02', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (2, 'manaSystem', '+94779320816', 'Ozeki test message.', '2014-12-17 21:35:13', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (3, 'manaSystem', '+94779320816', 'another message,', '2014-12-17 21:45:54', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (4, 'manaSystem', '+94779320816', 'this is number 4', '2014-12-17 21:46:25', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (5, 'manaSystem', '+94712624225', 'Have you confirmed with sir we don''t have the meeting tomorrow? (Reply by SMS)', '2014-12-17 23:05:04', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (6, 'manaSystem', '+94712624225', 'Have you confirmed with Sir we don''t have the meeting tomorrow?', '2014-12-17 23:06:55', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (7, 'manaSystem', '+94712624225', 'Okay. No meeting tomorrow. Try to call him in the morning...', '2014-12-17 23:09:16', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (8, 'manaSystem', '+94712624225', 'Yeah, using the dongle and Ozeki to send SMS... :D', '2014-12-17 23:11:57', NULL, NULL, 'delivered', NULL, NULL, NULL),
+  (9, 'manaSystem', '+94712624225', 'Yeah... Wait until I put the SIM back into the phone... ', '2014-12-17 23:13:18', NULL, NULL, 'delivered', NULL, NULL, NULL);
 COMMIT;
