@@ -330,13 +330,15 @@ function checkStaffMember($staffID, $usingStaffNo = false)
 
 } //Checks if a staff member exists and isn't soft-deleted
 
-/*StaffNo*/function insertStaffMember($staffID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion, $CivilStatus,$NICNumber,
+/*StaffNo*/function insertStaffMember($staffNo, $employeeID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion, $CivilStatus,$NICNumber,
                            $MailDeliveryAddress, $ContactNumber, $DateAppointedAsTeacherPrincipal, $DateJoinedThisSchool, $EmploymentStatus,$Medium,
                            $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
 //    if ( isFilled( getStaffID( $staffID ) ) ){
 //        return false;
 //    }
+
+    $staffID = getNewStaffId();
 
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -345,30 +347,43 @@ function checkStaffMember($staffID, $usingStaffNo = false)
         die ("Failed to connect to MySQL: " . $mysqli->connect_error );
     }
 
-    if ($stmt = $mysqli->prepare("INSERT INTO Staff values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
+    if ($stmt = $mysqli->prepare("INSERT INTO Staff values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"))
     {
         $isdeleted = 0;
-        $stmt -> bind_param("sssiiiisssssiiiiiiidi",$staffID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion,
+        $stmt -> bind_param("ssssiiiisssssiiiiiiidi", $staffID, $employeeID, $NameWithInitials, $DateOfBirth, $Gender, $Race, $Religion,
                         $CivilStatus, $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedAsTeacherPrincipal, $DateJoinedThisSchool,
                         $EmploymentStatus, $Medium, $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary, $isdeleted);
 
         if ($stmt->execute())
         {
             $stmt->close();
-            $mysqli->close();
-            insertNewTimetable( $staffID, false ); //Does not use StaffNo
-            insertNewLeaveData( $staffID );
-            return true;
+
+            if( $stmtStaffNo = $mysqli -> prepare("INSERT INTO `StaffNo`(`staffID`, `staffNo`, `year`) VALUES ( ?, ?, ?);") )
+            {
+                $year = getConfigData('currentYear');
+
+                $stmtStaffNo -> bind_param("sii", $staffID, $staffNo, $year );
+                echo $mysqli->error;
+                if( $stmtStaffNo->execute() )
+                {
+                    $stmtStaffNo -> close();
+                    $mysqli -> close();
+                    insertNewTimetable( $staffID, false ); //Does not use StaffNo
+                    return true;
+                }
+                else{
+                    echo $mysqli->error;
+                }
+                echo $mysqli->error;
+            }
         }
     }
-
-
 
     $mysqli->close();
     return false;
 } //Inserts new staff member, then creates blank timetable and unused leave data
 
-/*StaffNo*/function Updatestaff($staffID, $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus, $NICNumber,
+/*StaffNo*/function Updatestaff($staffID, $employeeID, $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus, $NICNumber,
                      $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool, $EmploymentStatus, $Medium,
                      $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught, $ServiceGrade, $Salary)
 {
@@ -380,13 +395,32 @@ function checkStaffMember($staffID, $usingStaffNo = false)
     }
 
     if( checkStaffMember( $staffID ) ){
-
-        if ($stmt = $mysqli->prepare("UPDATE Staff SET NamewithInitials=?, DateofBirth=?, Gender=?, Race=?, Religion=?, CivilStatus=?,
-                                        NICNumber=?, MailDeliveryAddress=?, ContactNumber=?, DateAppointedastoPost=?, DateJoinedthisSchool=?,
-                                        EmploymentStatus=?, Medium=?, Designation=?, Section=?, SubjectMostTaught=?, SubjectSecondMostTaught=?,
-                                        ServiceGrade=?, Salary=? WHERE StaffID = ?;"))
+        if ($stmt = $mysqli->prepare("
+            UPDATE Staff SET
+                EmployeeID = ?,
+                NamewithInitials = ?,
+                DateofBirth = ?,
+                Gender = ?,
+                Race = ?,
+                Religion = ?,
+                CivilStatus = ?,
+                NICNumber = ?,
+                MailDeliveryAddress = ?,
+                ContactNumber = ?,
+                DateAppointedastoPost = ?,
+                DateJoinedthisSchool = ?,
+                EmploymentStatus = ?,
+                Medium = ?,
+                Designation = ?,
+                Section = ?,
+                SubjectMostTaught = ?,
+                SubjectSecondMostTaught = ?,
+                ServiceGrade = ?,
+                Salary = ?
+            WHERE StaffID = ?;"
+        ))
         {
-            $stmt -> bind_param("ssiiiisssssiiiiiiiis", $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus,
+            $stmt -> bind_param("sssiiiisssssiiiiiiiis", $employeeID, $NamewithInitials, $DateofBirth, $Gender, $Race, $Religion, $CivilStatus,
                 $NICNumber, $MailDeliveryAddress, $ContactNumber, $DateAppointedasTeacherPrincipal, $DatejoinedthisSchool,
                 $EmploymentStatus, $Medium, $Designation, $Section, $SubjectMostTaught, $SubjectSecondMostTaught,
                 $ServiceGrade, $Salary, $staffID);
@@ -485,7 +519,7 @@ function getStaffMember($staffID, $usingStaffNo = false )
         Select `StaffID`, `NamewithInitials`, `DateofBirth`, `Gender`, `Race`,
             `Religion`, `CivilStatus`, `NICNumber`, `MailDeliveryAddress`, `ContactNumber`, `DateAppointedastoPost`,
             `DateJoinedthisSchool`, `EmploymentStatus`, `Medium`, `Designation`, `Section`, `SubjectMostTaught`,
-            `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `isDeleted`
+            `SubjectSecondMostTaught`, `ServiceGrade`, `Salary`, `EmployeeID`, `isDeleted`
         FROM Staff WHERE StaffID=? AND isDeleted = 0 LIMIT 1;"))
     {
         $stmt -> bind_param("s", $staffID);

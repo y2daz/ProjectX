@@ -151,7 +151,7 @@ else
 if (isset($_POST["Submit"])) //Submit button to update staff
 {
     $_POST["staffID"] = getStaffID( $_POST["staffID"] );
-    $operation = Updatestaff($_POST["staffID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
+    $operation = Updatestaff($_POST["staffID"], $_POST["employeeID"], $_POST["NamewithInitials"], $_POST["DateofBirth"], $_POST["Gender"], $_POST["NationalityRace"], $_POST["Religion"],$_POST["CivilStatus"],strtoupper($_POST["NICNumber"]), $_POST["MailDeliveryAddress"], $_POST["ContactNumber"], $_POST["DateAppointedasTeacherPrincipal"], $_POST["DatejoinedthisSchool"], $_POST["EmploymentStatus"],$_POST["Medium"], $_POST["PositioninSchool"], $_POST["Section"], $_POST["SubjectMostTaught"], $_POST["SubjectSecondMostTaught"], $_POST["ServiceGrade"], $_POST["Salary"]);
 
     if ($operation){
         sendNotification("Staff Details successfully updated.", parse_url(FULLPATH, PHP_URL_PATH). "?" . $_SESSION["queryString"]);
@@ -211,6 +211,7 @@ $SubjectMostTaught ="";
 $SubjectSecondMostTaught ="";
 $ServiceGrade ="";
 $Salary ="";
+$employeeId = "";
 
 if (isset($_GET["expand"]))
 {
@@ -239,6 +240,7 @@ if (isset($_GET["expand"]))
         $SubjectSecondMostTaught = $row[$i++];
         $ServiceGrade = $row[$i++];
         $Salary = $row[$i++];
+        $employeeId = $row[$i++];
     }
 
     $fullPageHeight = 1100;
@@ -803,6 +805,11 @@ $searchby =getlanguage('searchby', $language);
             <tr>
                 <td> <?php echo $staffID?> </td>
                 <td > <input type = "text" name="staffID" readonly value="<?php echo getStaffNo( $staffid )?>" /> </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> Employee ID </td>
+                <td> <input type = "text" name="employeeID" value="<?php echo $employeeId ?>" /> </td>
                 <td></td>
             </tr>
             <tr>

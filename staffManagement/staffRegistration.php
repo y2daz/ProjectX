@@ -79,21 +79,21 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         $validationPass = false;
         $errorArr[ $i++ ] = "Subject Second MostTaught";
     }
-    if( !isNumeric( $_POST["serviceGrade"]))
-    {
-        $validationPass = false;
-        $errorArr[ $i++ ] = "Service Grade";
-    }
+//    if( !isNumeric( $_POST["serviceGrade"]))
+//    {
+//        $validationPass = false;
+//        $errorArr[ $i++ ] = "Service Grade";
+//    }
     if( !isNumeric( $_POST["Salary"]))
     {
         $validationPass = false;
         $errorArr[ $i++ ] = "Salary";
     }
-    if( !isContactNumber($_POST["contactnumber"]))
-    {
-        $validationPass = false;
-        $errorArr[ $i++ ] = "Contact Number";
-    }
+//    if( !isContactNumber($_POST["contactnumber"]))
+//    {
+//        $validationPass = false;
+//        $errorArr[ $i++ ] = "Contact Number";
+//    }
     if( !isNIC($_POST["nicNumber"]))
     {
         $validationPass = false;
@@ -102,7 +102,7 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
 
 
     if ($validationPass == true){
-        $operation = insertStaffMember($_POST["staffID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"]);
+        $operation = insertStaffMember($_POST["staffID"], $_POST["employeeID"], $_POST["nameWithInitials"], $_POST["dateOfBirth"], $_POST["gender"], $_POST["nRace"], $_POST["religion"], $_POST["civilStatus"], $_POST["nicNumber"], $_POST["maildeliveryaddress"], $_POST["contactnumber"], $_POST["dateAppointedAsTeacher"], $_POST["dateJoinedSchool"], $_POST["employmentStatus"], $_POST["medium"], $_POST["positionInSchool"], $_POST["section"], $_POST["subjectMostTaught"], $_POST["subjectSecondMostTaught"], $_POST["serviceGrade"], $_POST["Salary"]);
         if ($operation == 1)
         {
             sendNotification("Staff Member successfully added.", "  staffRegistration.php");
@@ -465,6 +465,10 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
         <tr>
             <td><?php echo $staffID?></td>
             <td><input name="staffID" type="text" value="<?php echo getNewStaffNo() ?>" ></td>
+        </tr>
+        <tr>
+            <td>Employee ID</td>
+            <td><input name="employeeID" type="text" value="" ></td>
         </tr>
         <tr >
             <td><?php echo $nameWithInitials?></td>
