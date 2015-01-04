@@ -59,6 +59,7 @@ if( !$user->hasPerm('Leave Management System') ){
 
         if($operation){
             sendNotification($success);
+            sendSMS("404", "Your leave has been applied.");
         }
         else{
             sendNotification($fail);
@@ -75,6 +76,7 @@ if( !$user->hasPerm('Leave Management System') ){
         );
         if($operation){
             sendNotification("Leave request sent.");
+            sendSMS("404", "Your leave has been applied.");
         }
         else{
             sendNotification("Error sending leave request.");

@@ -74,7 +74,7 @@
 #messaging li ul li {
     position: relative;
     left: -30px;
-    padding: 10px 5px 20px 20px;
+    padding: 10px 5px 40px 20px;
     background: #ffffff;
     font-size:14px;
 }
@@ -94,7 +94,7 @@
 #messaging .removeButton{
     position: relative;
     float: right;
-    top: 4px;
+    bottom: 0px;
     /*left: 160px;*/
     font-size: 12px;
     padding: 4px 8px;

@@ -37,6 +37,7 @@ if( isset( $_POST["received"] ))
         {
             $staff = getStaffNameFromPhoneNumber( $message[1] );
             $number = intval( $staff[0] ) == 0 ? "" : " - " . $staff[0];
+
             $box .= "<li id='textMessage_" . $message[0] . "' >\n\t<a><span class='boldText'>" . $staff[1] . $number . "</span><br /> " . $message[2] . "</a>\n ";
             $box .= "\t<input type='button' class='removeButton smallButton' value='Remove' name='btnReadMessage_" . $message[0] . "' /> ";
             $box .= "</li>\n";
