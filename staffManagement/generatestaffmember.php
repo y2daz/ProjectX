@@ -85,7 +85,7 @@ if( !$user->hasPerm('Staff Report') ){
         <table class="insert">
 
             <tr>
-                <td>Enter Staff ID</td>
+                <td>Enter Serial No</td>
                 <td>
                     <input type="text" class="text1" name="id" value="">
                 </td>

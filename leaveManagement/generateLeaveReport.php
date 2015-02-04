@@ -138,15 +138,17 @@ elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $
                     <td> &nbsp; </td>
                     <td><input type="button" class="btnDateSet" name="setStartDate" id="setStartDate" value="Jan 1st <?php echo getConfigData("currentYear")?>" /></td>
                     <td> &nbsp; </td>
-                    <td><input type="button" class="btnDateSet" name="setEndDate" id="setEndDate" value="Dec 31st <?php echo getConfigData("currentYear")?>" /></td>
+                    <td><input type="button" class="btnDateSet" name="setEndDate" id="setEndDate" value="Dec 31st <?php /*echo getConfigData("currentYear")*/?>" /></td>
                 </tr>
             </table>
             <br />
             <input type="submit"  name="sbtIndividualReport" value="View Detailed Report" >
-            <input type="submit"  name="sbtNiceReport" value="View Visual Report" >
-        </form>
-    </body>
-    </html>
+            <!--
+            YAZDAAN THIS REPORT IS BUGGY. WHY?! FIX IT! FIX IT! FIX IT! FIX IT!
+            <input type="submit"  name="sbtNiceReport" value="View Visual Report" >-->
+</form>
+</body>
+</html>
 <?php
 //Change these to what you want
 $fullPageHeight = 800;
