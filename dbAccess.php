@@ -2192,6 +2192,7 @@ function getFreeTeachers($position, $day, $staffId, $usingStaffNo = false)
                                             AND isDeleted = 0
                                             AND (Subject IS NULL)
                                             AND StaffID <> ?)
+                                        AND s.isDeleted = 0
                                      ORDER BY sub.Name;"))
     {
         //  $id = "%" . $id . "%";
@@ -2392,7 +2393,7 @@ function insertHolidays($year, $dayArray)
         $stmtDel -> execute();
         $stmtDel -> close();
 
-        if ($stmtIns = $mysqli->prepare("INSERT INTO Holiday values(?, (SELECT STR_TO_DATE(?, '%d/%m/%Y') ));"))
+        if ($stmtIns = $mysqli->prepare("INSERT INTO Holiday values(?, (SELECT STR_TO_DATE(?, '%d/%m/%Y') ), null, null);"))
         {
             for($i = 0; $i < count($dayArray); $i++)
             {
@@ -2402,12 +2403,12 @@ function insertHolidays($year, $dayArray)
 
             $stmtIns->close();
             $mysqli->close();
-            return 1;
+            return true;
         }
     }
 
     $mysqli->close();
-    return 0;
+    return false;
 } //Deletes records of $year and inserts new holidays
 
 //

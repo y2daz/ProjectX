@@ -250,6 +250,7 @@ function printArrJs($Arr){
             $holidaysArr = getHolidays($dYear);
             $hDayCounter = 0; //Holiday counter
 
+
             for ($mC=1;$mC<=12;$mC++)
             { //mc is Month, dDay is digit of day
                 $currentDT = mktime(0, 0, 0, $mC, $dDay, $dYear);
@@ -261,7 +262,9 @@ function printArrJs($Arr){
                     $exactDT = mktime(0, 0, 0, $mC, $i, $dYear);
                     $formattedDate = date("d/m/Y", $exactDT); /*$i . "/$mC" . "/$dYear";*/
 
-                    if( strcmp( $formattedDate, $holidaysArr[ $hDayCounter ] ) == 0 ){
+                    $currentHoliday = isset( $holidaysArr[ $hDayCounter ] ) ? $holidaysArr[ $hDayCounter ] : "";
+
+                    if( strcmp( $formattedDate, $currentHoliday) == 0 ){
                         $class = "selected";
                         $hDayCounter++;
                     }

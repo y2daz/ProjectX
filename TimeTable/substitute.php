@@ -125,13 +125,14 @@ if (isset($_GET["getTimetable"]))
                 position: relative;
                 border-collapse: collapse;
                 left:25px;
-                max-width: 750px;
+                width: 750px;
                 display: <?php echo ( isset($_POST["getSubstitute"]) ? "block" : "none")  ?> ;
             }
             .viewTable th{
-                width: 200px;
+                /*width: 200px;*/
                 font-weight: 600;
                 color:white;
+                padding: 4px 8px;
                 background-color: #005e77;
             }
             .viewTable th .name{
@@ -141,7 +142,7 @@ if (isset($_GET["getTimetable"]))
                 background-color: #bed9ff;
             }
             .viewTable td{
-                padding: 4px;
+                padding: 4px 8px;
                 min-width: 60px;
                 text-align: left;
             }
@@ -153,6 +154,10 @@ if (isset($_GET["getTimetable"]))
             }
             .viewTable .alt{
                 background-color: #bed9ff;
+            }
+            .subject textarea{
+                cursor: hand;
+                cursor: pointer;
             }
         </style>
         <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
@@ -244,7 +249,8 @@ if (isset($_GET["getTimetable"]))
                     // $date = date("y/m/d");
                     echo "<td class='center'><input id='confirm_$row[0]' class='confirm' type='button' value='Confirm' name='Confirm_  $row[0]' </td>";
                     echo "</tr>";
-                    $rowcount++;
+
+                    echo ( ( ++$rowcount % 5 == 0 ) && ( $rowcount != 0 ) ? "<tr><td colspan='7'>&nbsp;</td> </tr>" : "");
                 }
 
 

@@ -45,18 +45,6 @@ h2{
     text-align: center;
     color: #444444;
 }
-
-.subject textarea{
-    width:100px;
-    height:44px;
-    resize: none;
-    border: 0px solid;
-    outline: 0;
-    font-size: 1em;
-    text-align: center;
-    color: #444444;
-}
-
 .timetable .interval{
     background-color: #005e77;
     color: white;

@@ -1,0 +1,333 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: yazdaan
+ * Date: 03/02/15
+ * Time: 11:11
+ */
+define('PATHFRONT', 'http://'.$_SERVER['HTTP_HOST']);
+
+require_once("../dbAccess.php");
+require_once("../common.php");
+
+
+?>
+<html>
+<head>
+    <link href="<?php echo PATHFRONT ?>/Styles/fonts.css" rel='stylesheet' type='text/css'>
+
+    <script src="<?php echo PATHFRONT ?>/jquery-1.11.1.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/scripts/jquery-impromptu.min.js"></script>
+    <script src="<?php echo PATHFRONT ?>/common.js"></script>
+
+    <script>
+        $(document).ready( function(){
+            var entireList = $("#other").html().split("\n");
+            var subject;
+            var newList = [];
+            var i = 1;
+
+            console.log( "Here");
+
+            while( subject = entireList.shift() ){
+//                subject = subject.toLowerCase();
+//                subject = UCFirst( subject );
+                if( $.inArray( subject, newList ) >= 0 ){
+                    $.noop();
+                    console.log( "Here - " + i + " " + subject);
+                }
+                else
+                {
+                    newList.unshift( subject );
+
+                    console.log( "Here - " + i);
+
+                    var statement = "INSERT INTO `FormOption` (`Label`, `Number`, `Data`) VALUES ( 'SubjectAppointed', '" + i++ + "', '" + subject + "');";
+
+                    $("#myArea").html( $("#myArea").html() + "\n" + statement );
+                }
+            }
+
+            function UCFirst(string)
+            {
+                return string.charAt(0).toUpperCase() + string.slice(1);
+            }
+        });
+    </script>
+<style>
+    textarea {
+        height: 900px;
+        width: 300px;
+    }
+    #myArea{
+        position: absolute;
+        left: 450px;
+        width: 1050px;
+    }
+</style>
+</head>
+<body>
+<textarea id="other">
+PRINCIPAL
+DEP.PRINCIPAL
+DEP.PRINCIPAL
+DEP.PRINCIPAL
+DEP.PRINCIPAL
+ASS.PRINCIPAL
+ASS.PRINCIPAL
+ASS.PRINCIPAL
+ASS.PRINCIPAL
+BSC
+BSC
+P.T
+MATHS
+SOCIAL STUDIES
+ENGLISH
+BA
+PRIMARY
+BUDDHIS
+BSC
+BA
+PRIMARY
+BA
+ENGLISH
+SCIENCE
+WESTERN MUSIC
+MATHS
+SCIENCE/MATHS
+BA
+CHEMISTRY
+PRIMARY
+SINHALA
+PRIMARY
+SECOND LANGUAGE
+BUDDHISM
+PHYSICS
+PRIMARY
+BCOM
+PRIMARY
+MATHS
+SPECIAL EDUCATION
+PRIMARY
+SCIENCE
+ART
+ENGLISH
+CHEMISTRY
+TECHNICAL - ELECTRONIC SCIENCE
+PRIMARY
+ENGLISH
+ENGLISH
+AGRICULTURE
+B. STUDIES
+B. STUDIES
+PRIMARY
+PHYSICS
+HOME.SCIENCE
+PRIMARY
+SCIENCE
+MATHS
+MATHS
+ENGLISH
+SOCIAL STUDIES
+ENGLISH
+ENGLISH
+MATHS
+ENGLISH
+BSC
+ENGLISH
+ECONOMICS
+ENGLISH
+PHYSICS
+DANCING
+PRIMARY
+LIBRARY
+MUSIC
+SOCIAL STUDIES
+PRIMARY
+POLITICAL
+SPECIAL EDUCATION
+PRIMARY
+ROMAN CATHOLIC
+BA
+ENGLISH
+BIOLOGY
+JAPANESE
+PRIMARY
+PRIMARY
+POLITICAL
+PRIMARY
+PRIMARY
+MATHS
+SINHALA
+BIOLOGY
+SP.EDUCATION
+SCIENCE
+BUS ST
+POLITICAL SCIENCE
+ART
+BIOLOGY
+ART
+SINHALA
+BIOLOGY
+CHEMISTRY
+ENGLISH
+HINDU
+PHYSICS
+P.T
+MUSIC
+ENGLISH
+ENGLISH
+TAMIL
+PRIMARY
+MATHS
+ENGLISH
+SCIENCE
+PHYSICS
+MATHS
+PRIMARY
+SCIENCE
+PHYSICS
+FRENCH
+SCIENCE
+MATHS
+SOCIAL SCIENCE
+SECOND LANGUAGE - SINHALA
+SPECIAL EDUCATION - MATHS
+DRAMA
+ICT
+PHYSICS
+PRIMARY
+SCIENCE
+PRIMARY
+PHYSICS
+P.T
+MATHS
+ENGLISH
+PRIMARY
+SCIENCE
+CHEMISTRY
+BIOLOGY
+BIOLOGY
+ACCOUNTS
+GEOGRAPHY
+BUSINESS STUDIES
+CHEMISTRY
+ACCOUNTS
+SCIENCE/ MATHS
+BA
+ART
+ENGLISH
+SCIENCE
+PRIMARY
+BA
+AGRICULTURE
+BA - FINE ART
+HISTORY
+MATHS
+ENGLISH
+MATHS
+COUNCELING
+SCIENCE
+PRIMARY
+ACCOUNTS
+DANCING
+PRIMARY
+SOCIAL STUDIES
+CHEMISTRY
+SINHALA
+DANCING
+MUSIC
+MUSIC
+DRAMA
+MUSIC
+ART
+ART
+DRAMA
+DANCE - BARATHAM
+BUDHIST CULTURE
+LOGIC
+PRIMARY
+ENGLISH
+ENGLISH LITERATURE
+ENGLISH
+DANCING
+ENGLISH
+ENGLISH
+ENGLISH
+ROMAN CATHOLIC
+ENGLISH
+HINDUSIM
+ENGLISH
+JAPANESE
+ECONOMICS
+PRIMARY
+PRIMARY
+CHEMISTRY
+ECONOMICS
+SCIENCE
+MATHS
+PRIMARY
+PRIMARY
+HOME.SCIENCE
+INFORMATION TECHNOLOGY
+SINHALA
+ENGLISH
+SCIENCE
+SCIENCE
+MATHS
+INFORMATION TECHNOLOGY
+DRAMA & THEATRE
+BUS.STUDIES
+PRIMARY
+INFORMATION TECHNOLOGY
+PRIMARY
+SCIENCE
+PRIMARY
+BA
+BA
+ENGLISH
+SCIENCE/MATHS
+COMMERCE
+SCIENCE/MATHS
+SCIENCE
+PRIMARY
+BSC
+SCIENCE/ MATHS
+PRIMARY
+PRIMARY
+SCIENCE
+ENGLISH
+MATHS
+MATHS
+MATHS
+ART
+BSC
+PHYSICAL EDUCATION
+SCIENCE
+ENGLISH
+ENGLISH
+BA
+PRIMARY
+AGRICULTURE
+IT
+BIOLOGY
+PRIMARY
+BA
+PRIMARY
+HEALTH & P.EDU.
+PRIMARY
+PHYSICAL EDUCATION
+ENGLISH & ICT
+TAMIL LANGUAGE
+ACCOUNTS
+GEOGRAPHY
+SECOND LANGUAGE
+IT
+PHYSICS
+ENGLISH
+TAMIL LANGUAGE
+</textarea>
+
+<textarea id="myArea"></textarea>
+</body>
+</html>
