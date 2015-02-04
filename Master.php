@@ -183,7 +183,7 @@
                     $navMenu .= "<ul>\n";
                         $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/staffRegistration.php\">" .  $registerStaffMember . "</a><hr /></li>\n";
                         $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/searchStaffDetails.php\">" . $searchStaffMember . "</a><hr /></li>\n";
-                        $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/educationInformation.php\">" . "Education Information" . "</a><hr /></li>\n";
+// YAZDAAN LOOK HERE FIX THIS                        $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/educationInformation.php\">" . "Education Information" . "</a><hr /></li>\n";
                         $navMenu .= "<li><a href=\"" . PATHFRONT . "/staffManagement/ClassroomInformation.php\">" . "Class-teacher Allocation" . "</a></li>\n";
                     $navMenu .= "</ul>\n";
                     $navMenu .= "</li>\n";
