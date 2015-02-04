@@ -478,9 +478,11 @@ function substituteTeacher(day, position, originalID, replacementID, originalNam
     var weekday = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
     var period = new Array('1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th');
     var substitutionDate;
+    var blnSend = false;
+    var params;
     var states = {
         state0: {
-            title: "Substituting " +  originalName /*+ " with ID " + originalID*/,
+            title: "Substituting " +  originalName,
             html:'<table>' +
                 '   <tr>' +
                 '       <td style="text-align: center">' + weekday[day] + ' ' + period[position] + ' period</td>' +
@@ -490,6 +492,12 @@ function substituteTeacher(day, position, originalID, replacementID, originalNam
                 '   </tr>' +
                 '   <tr>' +
                 '       <td><label>Date &nbsp;&nbsp;&nbsp;&nbsp; <input name="jDteSubstituted" type="date" min="' + getTodayDate() + '" /> </label></td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td colspan="3">&nbsp;</td>' +
+                '   </tr>' +
+                '   <tr>' +
+                '       <td><label><input id="chkSendSMS" type="checkbox" name="chkSendSMS" />Send an SMS to the staff member to confirm</label></td>' +
                 '   </tr>' +
                 '</table>',
             buttons: { Okay: 1, Cancel: -1 },
@@ -501,6 +509,9 @@ function substituteTeacher(day, position, originalID, replacementID, originalNam
                 var selectedDay = new Date(selectedDate);
 
                 selectedDay = selectedDay.getDay() - 1;
+
+                blnSend = $("#chkSendSMS").is(":checked");
+
                 if (selectedDay == -1){
                     selectedDay = 6;
                 }
@@ -524,8 +535,27 @@ function substituteTeacher(day, position, originalID, replacementID, originalNam
             submit:function( e, v, m, f){
                 e.preventDefault();
                 if( v == 1 ){
-//                    $.prompt.goToState('state0');
-                    var params = {"substitute":true, "replacementStaffID" : replacementID, "Grade" : null, "Class" : null, "Day" : day, "Position" : position, "Date" : substitutionDate, "originalID" : originalID};
+                    if( blnSend ){
+                        params = {"substitute" : true,
+                            "replacementStaffID" : replacementID,
+                            "Grade" : null,
+                            "Class" : null,
+                            "Day" : day,
+                            "Position" : position,
+                            "Date" : substitutionDate,
+                            "originalID" : originalID,
+                            "sendSMS" : true};
+                    }
+                    else{
+                        params = {"substitute" : true,
+                            "replacementStaffID" : replacementID,
+                            "Grade" : null,
+                            "Class" : null,
+                            "Day" : day,
+                            "Position" : position,
+                            "Date" : substitutionDate,
+                            "originalID" : originalID};
+                    }
                     post(document.URL, params, "post");
                 }
                 else{

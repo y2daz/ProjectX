@@ -91,6 +91,21 @@ if(isset( $_POST["substitute"] )){
 
     if ($operation){
         sendNotification( "Substitution successful" );
+
+        if( isset($_POST["sendSMS"]) ){
+            $staffMember = getStaffMember( $_POST["replacementStaffID"], true );
+            $contactNo = $staffMember[0][9];
+            sendNotification( "Substitution successful. Sending SMS." );
+//            sendSMS( $contactNo, "Your leave starting on " . $_POST["startDate"] . " has been rejected. -Staff Management System" );
+            //YAZDAAN. Must get class and everything. Here's a sample  message:
+            /*
+             * You have been allocated to class [] as a substitute teacher on [] for the [] period. - Staff Management System
+             */
+        }
+        else{
+            sendNotification( "Substitution successful" );
+        }
+
     }
     else{
         sendNotification( "Error substituting" );
