@@ -37,7 +37,15 @@ if( !$user->hasPerm('Leave Approval') ){
         $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], null, 2, true);
 
         if($operation){
-            sendNotification("Leave Request Rejected!", "approveLeave.php");
+            if( isset($_POST["sendSMS"]) ){
+                $staffMember = getStaffMember( $_POST["staffId"], true );
+                $contactNo = $staffMember[0][9];
+                sendNotification("Leave Request Rejected!", "approveLeave.php");
+                sendSMS( $contactNo, "Your leave starting on " . $_POST["startDate"] . " has been rejected. -Staff Management System" );
+            }
+            else{
+                sendNotification("Leave Request Rejected!", "approveLeave.php");
+            }
         }
         else{
             sendNotification("Error rejecting leave request.");
@@ -47,8 +55,18 @@ if( !$user->hasPerm('Leave Approval') ){
     if(isset($_POST["approve"])){
         $operation = reviewLeave($_POST["staffId"], $_POST["startDate"], NULL, 1, true);
 
+//        $operation = true;
+
         if($operation){
-            sendNotification( "Leave Approved!", "approveLeave.php");
+            if( isset($_POST["sendSMS"]) ){
+                $staffMember = getStaffMember( $_POST["staffId"], true );
+                $contactNo = $staffMember[0][9];
+                sendNotification( "Leave Approved! Sending SMS.", "approveLeave.php");
+                sendSMS( $contactNo, "Your leave starting on " . $_POST["startDate"] . " has been approved. -Staff Management System" );
+            }
+            else{
+                sendNotification( "Leave Approved!", "approveLeave.php");
+            }
         }
         else{
             sendNotification( "Error approving leave request." );
@@ -216,9 +234,30 @@ if( !$user->hasPerm('Leave Approval') ){
                 text-align: left;
             }
         </style>
+        <script>
+            $(document).ready(function(){
+
+                $("#sbtApprove").on("click", function(){
+
+                    var staffId = $("input[name='staffId']").val();
+                    var startDate = $("input[name='startDate']").val();
+
+                    reviewLeave( staffId, startDate, 1 );
+
+                });
+
+                $("#sbtReject").on("click", function(){
+
+                    var staffId = $("input[name='staffId']").val();
+                    var startDate = $("input[name='startDate']").val();
+
+                    reviewLeave( staffId, startDate, 2 );
+                });
+            });
+        </script>
     </head>
     <body>
-        <h1 align="center"> Leave Pending Approval  </h1>
+        <h1> Leave Pending Approval  </h1>
         <br />
 
         <form method="post" class="viewGrid">
@@ -348,8 +387,8 @@ if( !$user->hasPerm('Leave Approval') ){
 
             <table align="center">
                 <tr>
-                    <td> <input type="submit" name="approve" value="<?php echo $approvelang ?>"> </td>
-                    <td> <input type="submit" name="reject"  value="<?php echo $rejectlang ?>">  </td>
+                    <td> <input id="sbtApprove" type="button" name="approve" value="<?php echo $approvelang ?>"> </td>
+                    <td> <input id="sbtReject" type="button" name="reject"  value="<?php echo $rejectlang ?>">  </td>
 <!--                    <td> <input type="reset" name="reset" value="Reset" onclick=""> </td>-->
                 </tr>
             </table>

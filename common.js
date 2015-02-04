@@ -421,6 +421,58 @@ function staffMore( staffId, name ){
     $.prompt(states);
 }
 
+function reviewLeave( staffId, startDate, reviewal ){
+    /*
+        reviewal = 1 for approved leaves.
+        reviewal = 2 for rejected leaves.
+    */
+
+    reviewal = reviewal == 1 ? reviewal : ( reviewal == 2 ? reviewal : 1);
+
+    var reviewText = reviewal == 1 ? "approval" : "rejection";
+    var params;
+
+    var states = {
+        state0: {
+            title: "Leave Review",
+            html:
+                '<p> Confirm leave ' + reviewText +  '?</p>' +
+                '<label><input id="chkSendSMS" type="checkbox" name="chkSendSMS" />Send an SMS to the staff member to confirm</label>',
+            buttons: { Okay: 1, Cancel: -1 },
+            submit:function( e, v, m, f){
+                e.preventDefault();
+
+                var blnSend = $("#chkSendSMS").is(":checked");
+
+                if( v == 1){
+                    if( blnSend ){
+                        if( reviewal == 1 ){
+                            params = {"sendSMS" : "true", "staffId" : staffId, "startDate" : startDate, "approve" : "true"};
+                        }
+                        else{
+                            params = {"sendSMS" : "true", "staffId" : staffId, "startDate" : startDate, "reject" : "true"};
+                        }
+                        post(document.URL, params, "post");
+                    }
+                    else{
+                        if( reviewal == 1 ){
+                            params = { "staffId" : staffId, "startDate" : startDate, "approve" : "true"};
+                        }
+                        else{
+                            params = { "staffId" : staffId, "startDate" : startDate, "reject" : "true"};
+                        }
+                        post(document.URL, params, "post");
+                    }
+                    $.prompt.close();
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
+}
+
 function substituteTeacher(day, position, originalID, replacementID, originalName, replacementName){
 //    indexNo += subject;
     var weekday = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
