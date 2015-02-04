@@ -350,7 +350,7 @@ if( !$user->hasPerm('Leave Management System') ){
                 <tr><th><?php echo $enterdetails ?><th></th> <th></th> </tr>
 
                 <tr>
-                    <td><?php echo $staffid ?></td>
+                    <td>Serial No</td>
                     <td><input type="text" id="StaffID" name="staffid" value="<?php echo $staffIdVal ?>" required="true" tabindex="1"/></td>
 <!--                    <td><input type="button" name="searchstaffid" value="--><?php //echo $searchstaffid ?><!--" onclick="location.href='../leaveManagement/searchStaffID.php'" /></td>-->
                 </tr>

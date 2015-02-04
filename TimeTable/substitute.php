@@ -230,7 +230,7 @@ if (isset($_GET["getTimetable"]))
     <form method="get">
         <table id="info">
             <tr>
-                <td><label><?php echo getLanguage("staffId",$lang)?></td>
+                <td><label>Serial No</td>
                 <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
                 <td><input type="submit" class="text1" name="getTimetable" value="Submit"/></td>
             </tr>
@@ -244,7 +244,7 @@ if (isset($_GET["getTimetable"]))
     <form method="post">
         <table class="viewTable">
             <tr>
-                <th>Staff ID</th>
+                <th>Serial No</th>
                 <th id="name">Teacher's Name</th>
                 <th>Main Subject</th>
                 <th class="number" >Contact Number</th>

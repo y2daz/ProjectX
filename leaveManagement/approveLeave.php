@@ -263,7 +263,7 @@ if( !$user->hasPerm('Leave Approval') ){
         <form method="post" class="viewGrid">
             <table class="leaveTable" align="center">
                 <tr>
-                    <th>Staff ID</th>
+                    <th>Serial No</th>
                     <th>Name with Initials</th>
                     <th>No of Days</th>
                     <th>Date Range</th>
@@ -311,7 +311,7 @@ if( !$user->hasPerm('Leave Approval') ){
                     <th colspan="6">Leave application of <?php echo $exName ?></th>
                 </tr>
                 <tr>
-                    <td>Staff ID</td>
+                    <td>Serial No</td>
                     <td > <input type = "text" name="staffId" value="<?php echo getStaffNo( $exStaffId ) ?>"/ readonly> </td>
                 </tr>
                 <tr>

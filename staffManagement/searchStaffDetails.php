@@ -174,6 +174,7 @@ if (isset($_POST["valueName"]) && isset($_POST["valueMember"])) //Deletes a staf
     }
 }
 
+//YAZDAAN, searching using signature number doesn't work. It's searrching the view. The view doesnt have the field.
 
 $tableData = NULL;
 $pageNo = intval( isset( $_GET["pageNo"] ) ? $_GET["pageNo"]: 1 );
@@ -756,7 +757,7 @@ $searchby =getlanguage('searchby', $language);
     <form method="post">
         <table id="staffList" class="viewTable">
             <tr class="left">
-                <th class="right"><?php echo getLanguage('staffID', $language)?></th>
+                <th class="right">Serial No</th>
                 <th><?php echo getLanguage('nameWithInitials', $language)?></th>
                 <th><?php echo getLanguage('nicNumber', $language)?></th>
                 <th class="right"><?php echo getLanguage('contactnumber', $language)?></th>
@@ -803,12 +804,12 @@ $searchby =getlanguage('searchby', $language);
         <table class="details" >
             <tr><th><?php echo $generalInformation?></th><th></th></tr>
             <tr>
-                <td> <?php echo $staffID?> </td>
+                <td> Serial No </td>
                 <td > <input type = "text" name="staffID" readonly value="<?php echo getStaffNo( $staffid )?>" /> </td>
                 <td></td>
             </tr>
             <tr>
-                <td> Employee ID </td>
+                <td>Employee No</td>
                 <td> <input type = "text" name="employeeID" value="<?php echo $employeeId ?>" /> </td>
                 <td></td>
             </tr>

@@ -50,7 +50,7 @@ $line3 = "Gregory's Road, Colombo 7";
 
 $column0Header = "Grade and Class";
 $column1Header = "Class";
-$column2Header = "Teacher ID";
+$column2Header = "Serial No";
 $column3Header = "Teacher Name";
 
 /*LANGUAGE

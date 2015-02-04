@@ -181,7 +181,7 @@ if (isset($_GET["getTimetable"]))
 
         <table id="info">
             <tr>
-                <td><label><?php echo getLanguage("staffId",$lang)?></td>
+                <td><label>Serial No</td>
                     <td><input type="text" class="text1" name="staffID" value="<?php echo $currentStaffId?>" /></td>
                     <td><input id="getTimetable" type="submit" class="text1" name="getTimetable" value="Get Timetable" /></td>
 

@@ -119,7 +119,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
                 $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
                 echo $top;
-                    echo "<td> Staff ID</td>";
+                    echo "<td>Serial No</td>";
                     echo "<td> " . getStaffNo( $row[0] ) . "</td>";
                 echo "</tr>";
 

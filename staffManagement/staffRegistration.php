@@ -463,11 +463,11 @@ if (isset($_POST["newStaff"])) //User has clicked the submit button to add a use
             <th></th>
         </tr>
         <tr>
-            <td><?php echo $staffID?></td>
+            <td>Serial No</td>
             <td><input name="staffID" type="text" value="<?php echo getNewStaffNo() ?>" ></td>
         </tr>
         <tr>
-            <td>Employee ID</td>
+            <td>Signature No</td>
             <td><input name="employeeID" type="text" value="" ></td>
         </tr>
         <tr >

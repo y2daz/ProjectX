@@ -168,7 +168,7 @@ if( isset($_GET["grade"]) )
             </tr>
 
             <tr>
-                <td><?php echo getLanguage('staffID', $language)?> </td>
+                <td>Serial No </td>
                 <td><input type=text name="staffId"  /> </td>
                 <td id="staffName"></td>
             </tr>

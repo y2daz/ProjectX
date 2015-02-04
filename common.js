@@ -264,7 +264,7 @@ function changeClassTeacher( Class ){
                 '<script src="moreStaff.js"></script>' +
                 '<table>' +
                     '<tr>' +
-                    '<td>Staff ID of New Teacher</td>' +
+                    '<td>Serial No of New Teacher</td>' +
                     '<td><input type="text" name="jTxtStaffID" value=""></td>' +
                     '</tr>' +
                     '<tr>' +

@@ -128,7 +128,7 @@ if(isset($_GET["id"]))
             $top = ($i++ % 2 == 0)? "<tr class=\"alt\">":"<tr>";
 
             echo $top;
-            echo "<td style='font-weight: bold'> Staff ID </td>";
+            echo "<td style='font-weight: bold'>Serial No</td>";
             echo "<td style='text-align: left'> " . getStaffNo( $row[0] ) . " </td>";
             echo "</tr>";
 

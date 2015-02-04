@@ -107,7 +107,7 @@ $endDate = isset( $_GET[ "endDate" ] ) ? $_GET[ "endDate" ] : "" ;
 
    <table class="leaveTable2">
 
-        <th>Staff ID</th>
+        <th>Serial No</th>
         <th>Name</th>
 <!--        <th>-->
 <!--            <table>-->
