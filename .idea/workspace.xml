@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0b267609-a414-46a3-ad81-81f95131f85b" name="Default" comment="More things. My messages aren't helpful at all, are they?">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Other/newStaff.sql" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Other/subjects.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbAccess.php" afterPath="$PROJECT_DIR$/dbAccess.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manaDB.sql" afterPath="$PROJECT_DIR$/manaDB.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TimeTable/substitute.php" afterPath="$PROJECT_DIR$/TimeTable/substitute.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TimeTable/timetable.css" afterPath="$PROJECT_DIR$/TimeTable/timetable.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/administration/yearPlan.php" afterPath="$PROJECT_DIR$/administration/yearPlan.php" />
     </list>
     <ignored path="ProjectX.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1407,7 +1401,11 @@
       <created>1420389560411</created>
       <updated>1420389560411</updated>
     </task>
-    <option name="localTasksCounter" value="228" />
+    <task id="LOCAL-00228" summary="More things. My messages aren't helpful at all, are they?">
+      <created>1423058892690</created>
+      <updated>1423058892691</updated>
+    </task>
+    <option name="localTasksCounter" value="229" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
