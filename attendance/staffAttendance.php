@@ -142,6 +142,7 @@ else{
                     .keyup( function(e){
                         if( e.which == 109 ){
                             $(this).val("");
+                            $('.staffRow').show();
                         }
                     })
 
@@ -220,7 +221,7 @@ else{
     //Assign all Page Specific variables
 
     if( $i > 10 ){
-        $fullPageHeight = 250 + ($i * 23);
+        $fullPageHeight = 250 + ($i * 25);
     }
     else{
         $fullPageHeight = 600;
