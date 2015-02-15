@@ -129,6 +129,10 @@
 <!--                    window.open("--><?php //echo PATHFRONT?><!--" + "/staffManagement/staffReport.php?start=" + 0, '_blank');-->
                 });
 
+                $('#hrefAbsenteesList').on('click', function(e){
+                    displayAbsenteesList();
+                });
+
             });
 
 
@@ -191,8 +195,9 @@
                 if ($user->hasPerm('Attendance System')){
                     $navMenu .= "<li><a>Attendance</a>\n";
                     $navMenu .= "<ul>\n";
-                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/staffAttendance.php\">" . "Mark Attendance" . "</a></li>\n";
-//                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/classwise.php\">" . "Class-wise Report" . "</a></li>\n";
+                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/staffAttendance.php\">" . "Mark Attendance" . "</a><hr /></li>\n";
+                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/attendanceReport.php\">" . "Attendance Report" . "</a><hr /></li>\n";
+                    $navMenu .= "<li><a id='hrefAbsenteesList' >Absentees List</a></li>\n";
                     //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/studentwise.php\">" . "Student-wise Report" . "</a><hr /></li>\n";
                     //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/viewAttendance.php\">" . "View Attendance" . "</a></li>\n";
                     $navMenu .= "</ul>\n";

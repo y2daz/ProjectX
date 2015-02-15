@@ -698,6 +698,87 @@ function searchStaffByStaffID($key)
 } //Returns non-deleted staff member with staffID $key
 */
 
+function attendanceMarkedOnDay( $date = null ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if( !isset( $date ) ){
+        $date = strftime( "%Y-%m-%d",  time() );
+    }
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("
+        Select a.StaffID, a.`Date`
+        FROM  Attendance a
+        WHERE a.`Date` = ?;"
+    ))
+    {
+        $stmt -> bind_param("s", $date );
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $stmt->close();
+            if( $result->num_rows > 0){
+                $mysqli->close();
+                return true;
+            }
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function getAbsenteesList( $date = null ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+    $year = getConfigData( "currentYear" );
+
+    if( !isset( $date ) ){
+        $date = strftime( "%Y-%m-%d",  time() );
+    }
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if( !attendanceMarkedOnDay( $date) ){
+        return null;
+    }
+
+
+    if ($stmt = $mysqli->prepare("
+        Select s.StaffID, n.StaffNo, s.NamewithInitials, s.Medium, a.isPresent, s.`Section`
+        FROM Staff s LEFT OUTER JOIN StaffNo n
+                ON (s.StaffId = n.StaffId )
+            LEFT OUTER JOIN Attendance a
+                ON (s.StaffId = a.StaffID AND a.`Date` LIKE ? )
+        WHERE s.isDeleted = 0
+            AND n.Year = ?
+        GROUP BY (s.StaffID)
+        ORDER BY s.Section + 0;"
+    ))
+    {
+        $stmt -> bind_param("si", $date, $year );
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array()){
+                $row[4] = isset( $row[4] ) ? $row[4] : 0;
+
+                //Accepts NULL and 0 as absentees.
+                if( $row[4] == 0 ){
+                    $set[ $i++ ] = $row;
+                }
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
 function getStaffMembersToMarkAttendance( $date = null ){
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -733,6 +814,88 @@ function getStaffMembersToMarkAttendance( $date = null ){
             }
         }
     }
+    $mysqli->close();
+    return $set;
+}
+
+function getNoOfSchoolDaysMarked( $startDate = null, $endDate = null ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+    $year = getConfigData( "currentYear" );
+
+    if( !( isset( $startDate ) && ( isset( $endDate) ) ) ) {
+        $startDate = $year . '-01-01';
+        $endDate = $year . '-12-31';
+    }
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("
+        SELECT COUNT(DISTINCT `Date`) FROM `Attendance`
+        WHERE `Date` BETWEEN ? AND ?"
+    ))
+    {
+        $stmt -> bind_param("ss", $startDate, $endDate );
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array()){
+                $set[ $i++ ] = $row;
+            }
+        }
+    }
+    $mysqli->close();
+    $row = $set[0];
+
+    return $row[0];
+}
+
+function getToMarkedAttendanceReport( $startDate = null, $endDate = null ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+    $year = getConfigData( "currentYear" );
+
+    if( !( isset( $startDate ) && ( isset( $endDate) ) ) ) {
+        $startDate = $year . '-01-01';
+        $endDate = $year . '-12-31';
+    }
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $noOfSchoolDays = getNoOfSchoolDaysMarked( $startDate, $endDate );
+
+    if ($stmt = $mysqli->prepare("
+        Select s.StaffID, n.StaffNo, s.NamewithInitials, s.Medium, SUM(a.isPresent), s.Section
+        FROM Staff s LEFT OUTER JOIN StaffNo n
+                ON (s.StaffId = n.StaffId )
+            LEFT OUTER JOIN Attendance a
+                ON (s.StaffId = a.StaffID AND a.`Date` BETWEEN ? AND ? )
+        WHERE s.isDeleted = 0
+            AND n.Year = ?
+        GROUP BY (s.StaffID)
+        ORDER BY s.Section, SUM(a.isPresent);"
+    ))
+    {
+        $stmt -> bind_param("ssi", $startDate, $endDate, $year );
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array()){
+
+                $row[4] = $noOfSchoolDays - ( isset( $row[4] ) ? $row[4] : 0 );
+                $set[ $i++ ] = $row;
+            }
+        }
+    }
+
     $mysqli->close();
     return $set;
 }

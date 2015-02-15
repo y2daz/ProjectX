@@ -166,6 +166,30 @@ function requestConfirmation(message, title, valueName, valueMember){
     $.prompt(states);
 }
 
+function displayAbsenteesList(){
+    var params;
+    var states = {
+        state0: {
+            title: "Producing Absentees List",
+            html:'<p>Select date to prepare absentees list for:</p>' +
+                '<input type="date" name="jDtDate" />',
+            buttons: { Okay: 1, Cancel: -1 },
+            focus: 1,
+            submit:function( e, v, m, f){
+                e.preventDefault();
+                var selectedDate = f["jDtDate"];
+
+                if( v == 1){
+                    window.location.replace("../attendance/absenteesList.php?date=" + selectedDate );
+                }
+                else
+                    $.prompt.close();
+            }
+        }
+    };
+    $.prompt(states);
+}
+
 function resetPassword(user){
     var message = "";
     if (user == null){
