@@ -167,9 +167,14 @@ function requestConfirmation(message, title, valueName, valueMember){
 }
 
 function resetPassword(user){
+    var message = "";
+    if (user == null){
+        message = "you";
+        user = "";
+    }
     var states = {
         state0: {
-            title: "New Password for " + user,
+            title: "New Password for " + user + message,
             html:'<table><tr><td><label>Password </td><td><input type="password" name="jTxtPassword" value=""></label></td></tr>'+
                 '<tr><td><label>Confirm Password </td><td><input type="password" name="jTxtConfirmPassword" value=""></label></td></tr></table>',
             buttons: { Okay: 1, Cancel: -1 },
@@ -183,8 +188,17 @@ function resetPassword(user){
                 if(v==1){
                     if (password === confPassword){
                         if (password !== ""){
-                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
-                            post(document.URL, params, "post");
+//                            var params = {"reset" : "Reset", "newPassword" : password, "user" : user};
+//                            post(document.URL, params, "post");
+                            var postOb = {"reset" : "Reset", "newPassword" : password, "user" : user};
+                            $.post( "../requests/passwordReset.php", postOb, function( data, status ){
+                                if( data ){
+                                    $.prompt.goToState('state3');
+                                }
+                                else{
+                                    $.prompt.goToState('state4');
+                                }
+                            });
                         }
                         else
                             $.prompt.goToState('state2');
@@ -222,6 +236,24 @@ function resetPassword(user){
                     $.prompt.goToState('state0');
                 else
                     $.prompt.close();
+            }
+        },
+        state3: {
+            title: "Success",
+            html:'<span>Password has been changed</span>',
+            buttons: { Okay: 1 },
+            submit:function(e,v,m,f){
+                e.preventDefault();
+                $.prompt.close();
+            }
+        },
+        state4: {
+            title: "Error",
+            html:'<span>Something went wrong when changing the password. Try again later.</span>',
+            buttons: { Okay: 1 },
+            submit:function(e,v,m,f){
+                e.preventDefault();
+                $.prompt.close();
             }
         }
     }

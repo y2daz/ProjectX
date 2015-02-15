@@ -175,6 +175,7 @@ body {
         #currentUser{
             position: relative;
             width:440px;
+            left: -120px;
             text-align: right;
             background: none;
         }
@@ -182,10 +183,24 @@ body {
                 position: relative;
                 top: 15px;
             }
+        #changePassword{
+            position: relative;
+            background: none;
+            text-decoration: underline;
+            left: -100px;
+            width: 150px;
+            /*color: red;*/
+        }
+            #changePassword a{
+                font-weight: 400;
+                color: #cc7f00;
+            }
         #logging{
             position: relative;
             background: none;
             text-decoration: underline;
+            left: -90px;
+            width: 90px;
             /*color: red;*/
         }
             #logging a{

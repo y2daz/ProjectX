@@ -318,9 +318,19 @@
 
         <div id="divMenu">
             <div id="topMenu">
-                    <div class="topMenuItem" id="home"><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></div>
-                    <div class="topMenuItem" id="currentUser"><span><?php echo (isset($_SESSION["user"]) ? $_SESSION["user"] : "Not logged in" ) ; ?> </span></div>
-                    <div class="topMenuItem" id="logging"><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></div>
+                <div class="topMenuItem" id="home"><a href="<?php echo PATHFRONT ?>/Menu.php">Home</a></div>
+                <div class="topMenuItem" id="currentUser"><span><?php echo (isset($_SESSION["user"]) ? $_SESSION["user"] : "Not logged in" ) ; ?> </span></div>
+                <?php
+                    if ( isset($_SESSION["user"]) ){
+                ?>
+                        <div class="topMenuItem" id="changePassword"><a onclick="resetPassword()">Change Password</a></div>
+                <?php
+                    }
+                    else{
+                        echo '<div class="topMenuItem" id="changePassword"></div>';
+                    }
+                ?>
+                <div class="topMenuItem" id="logging"><a href=<?php echo (isset($_SESSION["user"]) ? "\"" . PATHFRONT . "/Menu.php?logout=1\"" : "\"#\" id=\"logInLink\"" );?>><?php echo $logging ?></a></div>
             </div>
         </div>
 

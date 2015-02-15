@@ -143,9 +143,9 @@ elseif( isset( $_GET[ "staffId" ] ) && isset( $_GET[ "startDate" ] ) && isset( $
             </table>
             <br />
             <input type="submit"  name="sbtIndividualReport" value="View Detailed Report" >
-            <!--
-            YAZDAAN THIS REPORT IS BUGGY. WHY?! FIX IT! FIX IT! FIX IT! FIX IT!
-            <input type="submit"  name="sbtNiceReport" value="View Visual Report" >-->
+
+<!--            YAZDAAN THIS REPORT IS BUGGY. WHY?! FIX IT! FIX IT! FIX IT! FIX IT!-->
+            <input type="submit"  name="sbtNiceReport" value="View Visual Report" >
 </form>
 </body>
 </html>
