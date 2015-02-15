@@ -19,7 +19,7 @@ $(document).ready( function(){
 
     $( document ).keypress(function(e) {
 //        console.log( parseInt(e.which) );
-        if( parseInt(e.which) == 92 || parseInt(e.which) == 43){
+        if( parseInt(e.which) == 92 || false){
             $("#messageButton").click();
         }
     });

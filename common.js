@@ -505,6 +505,21 @@ function reviewLeave( staffId, startDate, reviewal ){
     $.prompt(states);
 }
 
+function markPresent( id, date ){
+    var postOb = { markPresent : true, staffID : id, markedDate : date };
+    $.post( "../requests/markAttendance.php", postOb, function( data, status ){
+        $('#markButtonContainer_' + id).html( data );
+    });
+}
+
+function undoMarkPresent( id, date ){
+    var postOb = { undoMarkPresent : true, staffID : id, markedDate : date };
+    $.post( "../requests/markAttendance.php", postOb, function( data, status ){
+        $('#markButtonContainer_' + id).html( data );
+    });
+}
+
+
 function substituteTeacher(day, position, originalID, replacementID, originalName, replacementName){
 //    indexNo += subject;
     var weekday = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');

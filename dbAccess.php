@@ -13,6 +13,7 @@
     require_once("dbConnect.php");
     require_once("formValidation.php");
     require_once("RoleClass.php");
+    require_once("common.php");
 
 //
 ///
@@ -665,6 +666,7 @@ function deleteStaff($staffID, $usingStaffNo = false )
     return $returnArray;
 }
 
+/*
 function searchStaffByStaffID($key)
 {
     $dbObj = new dbConnect();
@@ -694,7 +696,48 @@ function searchStaffByStaffID($key)
     $mysqli->close();
     return $set;
 } //Returns non-deleted staff member with staffID $key
+*/
 
+function getStaffMembersToMarkAttendance( $date = null ){
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    $set = null;
+    $year = getConfigData( "currentYear" );
+
+    if( !isset( $date ) ){
+        $date = strftime( "%Y-%m-%d",  time() );
+    }
+
+    if ($mysqli->connect_errno) {
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    if ($stmt = $mysqli->prepare("
+        Select s.StaffID, n.StaffNo, s.NamewithInitials, s.Medium, a.isPresent
+        FROM Staff s LEFT OUTER JOIN StaffNo n
+                ON (s.StaffId = n.StaffId )
+            LEFT OUTER JOIN Attendance a
+                ON (s.StaffId = a.StaffID AND a.`Date` LIKE ? )
+        WHERE s.isDeleted = 0
+            AND n.Year = ?
+        ORDER BY n.StaffNo + 0;"
+    ))
+    {
+        $stmt -> bind_param("si", $date, $year );
+        if ($stmt->execute()){
+            $result = $stmt->get_result();
+            $i = 0;
+            while($row = $result->fetch_array()){
+                $set[ $i++ ] = $row;
+            }
+        }
+    }
+    $mysqli->close();
+    return $set;
+}
+
+/*
 function SearchStaffbyname($key)
 {
     $dbObj = new dbConnect();
@@ -724,8 +767,9 @@ function SearchStaffbyname($key)
     $mysqli->close();
     return $set;
 } //Returns non-deleted staff member with namewithintials $key
+*/
 
-function SearchStaffbycontactnumber($key)
+/* function SearchStaffbycontactnumber($key)
 {
 
     $dbObj = new dbConnect();
@@ -754,8 +798,11 @@ function SearchStaffbycontactnumber($key)
     }
     $mysqli->close();
     return $set;
-} //Returns non-deleted staff member with contactnumber $key
 
+} //Returns non-deleted staff member with contactnumber $key
+*/
+
+/*
 function SearchStaffbynic($key)
 {
 
@@ -786,6 +833,7 @@ function SearchStaffbynic($key)
     $mysqli->close();
     return $set;
 } //Returns non-deleted staff member with NIC $key
+*/
 
 function getNewStaffId()
 {
@@ -1212,6 +1260,7 @@ function recreateCurrentStaffNoView( $year )
 
     return;
 }
+
 //
 ///
 /////  LEAVE MANAGEMENT
@@ -1501,7 +1550,7 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
 
 } //Returns select records of a staff members applied leaves
 
-/*UNUSED*/function insertNewLeaveData($staffID){
+/*UNUSEDfunction insertNewLeaveData($staffID){
 /*
     $dbObj = new dbConnect();
     $mysqli = $dbObj->getConnection();
@@ -1526,9 +1575,9 @@ function getDaysOnLeave( $startDate = null, $endDate = null ){ //Redundant funct
         $stmt->close();
     }
 
-    $mysqli->close();*/
+    $mysqli->close();
     return;
-} //Insert new set of numbers to a staff members leavedata (Remaining leave days)
+} //Insert new set of numbers to a staff members leavedata (Remaining leave days) */
 
 function getFullLeaveData($staffId, $startDate = NULL, $endDate = NULL, $usingStaffNo = false)
 {
@@ -1890,49 +1939,9 @@ function deleteClassroom($grade, $class)
 ///
 //
 
-/*function regenerateSubjectTable(){
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-    $query = "DELETE FROM Subject WHERE 1;";
-    $query .= " INSERT INTO Subject (Name) SELECT DISTINCT Subject FROM Timetable WHERE Subject IS NOT NULL AND Subject <> '' ORDER BY Subject;";
-
-    if ( $stmt = $mysqli->prepare($query) ){
-        $stmt -> execute();
-    }
-
-    $mysqli->close();
-    return false;
-}*/
-
 function getAllSubjects()
 {
-    $dbObj = new dbConnect();
-    $mysqli = $dbObj->getConnection();
-
-    $set = null;
-
-    if ($mysqli->connect_errno) {
-        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
-    }
-
-    if ($stmt = $mysqli->prepare("Select Number, Name FROM Subject ORDER BY Number;"))
-    {
-        if ($stmt->execute())
-        {
-            $result = $stmt->get_result();
-            $i = 0;
-            while($row = $result->fetch_array())
-            {
-                $set[$i++]=$row;
-            }
-        }
-    }
-    $mysqli->close();
-    return $set;
+    return getFormOptions('SubjectAppointed', 1);
 } //Self-explanatory
 
 function insertNewTimetable($staffId, $usingStaffNo = false)
@@ -2211,6 +2220,73 @@ function getFreeTeachers($position, $day, $staffId, $usingStaffNo = false)
     $mysqli->close();
     return $set;
 } //Returns all free staff members on a slot in the timetable
+
+//
+///
+/////  STAFF ATTENDANCE
+///
+//
+
+function markPresent( $staffID, $date, $usingStaffNo = false ){
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $query = "INSERT INTO Attendance (`StaffID`, `Date`, `isPresent`) VALUES ( ?, ?, 1)";
+
+    $stmt = $mysqli->prepare( $query );
+    if ( $stmt )
+    {
+        $stmt -> bind_param("ss", $staffID,  $date );
+        if ( $stmt -> execute() ){
+            $stmt -> close();
+            $mysqli -> close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
+function undoMarkPresent( $staffID, $date, $usingStaffNo = false ){
+
+    if( $usingStaffNo ){
+        $staffID = getStaffID( $staffID );
+    }
+
+    $dbObj = new dbConnect();
+    $mysqli = $dbObj->getConnection();
+
+    if ($mysqli->connect_errno) {
+
+        die ("Failed to connect to MySQL: " . $mysqli->connect_error );
+    }
+
+    $query = "DELETE FROM Attendance WHERE `StaffID` = ? AND `Date` = ? ";
+
+    $stmt = $mysqli->prepare( $query );
+    if ( $stmt )
+    {
+        $stmt -> bind_param("ss", $staffID,  $date );
+        if ( $stmt -> execute() ){
+            $stmt -> close();
+            $mysqli -> close();
+            return true;
+        }
+    }
+    $mysqli->close();
+    return false;
+}
+
 
 //
 ///

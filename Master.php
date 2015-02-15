@@ -188,6 +188,16 @@
                     $navMenu .= "</ul>\n";
                     $navMenu .= "</li>\n";
                 }
+                if ($user->hasPerm('Attendance System')){
+                    $navMenu .= "<li><a>Attendance</a>\n";
+                    $navMenu .= "<ul>\n";
+                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/staffAttendance.php\">" . "Mark Attendance" . "</a></li>\n";
+//                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/classwise.php\">" . "Class-wise Report" . "</a></li>\n";
+                    //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/studentwise.php\">" . "Student-wise Report" . "</a><hr /></li>\n";
+                    //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/viewAttendance.php\">" . "View Attendance" . "</a></li>\n";
+                    $navMenu .= "</ul>\n";
+                    $navMenu .= "</li>\n";
+                }
                 if ($user->hasPerm('Leave Management System')){
                     $navMenu .= "<li><a>" . "$leaveManagement" . "</a>\n";
                     $navMenu .= "<ul>\n";
@@ -222,16 +232,6 @@
                 }
                 if ($user->hasPerm('Event Management System')){
                     $navMenu .= "<li><a href=\"" . PATHFRONT . "/eventManagement/eventList.php\">" . $eventManagement . "</a>\n";
-                    $navMenu .= "</li>\n";
-                }
-                if ($user->hasPerm('Attendance System')){
-                    $navMenu .= "<li><a>Attendance</a>\n";
-                    $navMenu .= "<ul>\n";
-                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/markAttendance.php\">" . "Mark Attendance" . "</a><hr /></li>\n";
-                    $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/classwise.php\">" . "Class-wise Report" . "</a></li>\n";
-    //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/studentwise.php\">" . "Student-wise Report" . "</a><hr /></li>\n";
-    //                $navMenu .= "<li><a  href=\"" . PATHFRONT . "/attendance/viewAttendance.php\">" . "View Attendance" . "</a></li>\n";
-                    $navMenu .= "</ul>\n";
                     $navMenu .= "</li>\n";
                 }
                 if ($user->hasPerm('Marks and Grading System')){
